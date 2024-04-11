@@ -1,13 +1,13 @@
 //
-//  EighteenUITests.swift
-//  EighteenUITests
+//  ATeenUITests.swift
+//  ATeenUITests
 //
-//  Created by 최동호 on 3/11/24.
+//  Created by 최동호 on 4/11/24.
 //
 
 import XCTest
 
-final class EighteenUITests: XCTestCase {
+final class ATeenUITests: XCTestCase {
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.

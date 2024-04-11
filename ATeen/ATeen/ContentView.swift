@@ -1,8 +1,8 @@
 //
 //  ContentView.swift
-//  Eighteen
+//  ATeen
 //
-//  Created by 최동호 on 3/11/24.
+//  Created by 최동호 on 4/11/24.
 //
 
 import SwiftUI
@@ -19,6 +19,4 @@ struct ContentView: View {
     }
 }
 
-#Preview {
-    ContentView()
-}
+
