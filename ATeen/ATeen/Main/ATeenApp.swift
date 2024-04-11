@@ -11,7 +11,7 @@ import SwiftUI
 struct ATeenApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            MainTabView()
         }
     }
 }
