@@ -39,8 +39,8 @@ struct NoticeBoardView: View {
         }
         .sheet(
             item: $store.scope(state: \.destination?.openWrite, action: \.destination.openWrite)
-        ) { WriteFeature in
-            PostWriteView(store: WriteFeature)
+        ) { PostWriteFeature in
+            PostWriteView(store: PostWriteFeature)
         }
     }
 }

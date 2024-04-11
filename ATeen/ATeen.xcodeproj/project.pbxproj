@@ -42,6 +42,8 @@
 		41CDEAB92BC7CAA600C9EAE2 /* PostDetailFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41CDEAB82BC7CAA600C9EAE2 /* PostDetailFeature.swift */; };
 		41CDEABB2BC7D16800C9EAE2 /* NoteWriteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41CDEABA2BC7D16700C9EAE2 /* NoteWriteView.swift */; };
 		41CDEABD2BC7D17000C9EAE2 /* NoteWriteFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41CDEABC2BC7D17000C9EAE2 /* NoteWriteFeature.swift */; };
+		41CDEABF2BC7D51100C9EAE2 /* NoteFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41CDEABE2BC7D51100C9EAE2 /* NoteFeature.swift */; };
+		41CDEAC12BC7D5E000C9EAE2 /* NoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41CDEAC02BC7D5E000C9EAE2 /* NoteView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -98,6 +100,8 @@
 		41CDEAB82BC7CAA600C9EAE2 /* PostDetailFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailFeature.swift; sourceTree = "<group>"; };
 		41CDEABA2BC7D16700C9EAE2 /* NoteWriteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteWriteView.swift; sourceTree = "<group>"; };
 		41CDEABC2BC7D17000C9EAE2 /* NoteWriteFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteWriteFeature.swift; sourceTree = "<group>"; };
+		41CDEABE2BC7D51100C9EAE2 /* NoteFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteFeature.swift; sourceTree = "<group>"; };
+		41CDEAC02BC7D5E000C9EAE2 /* NoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -276,6 +280,7 @@
 			children = (
 				41CDEA7C2BC7A80B00C9EAE2 /* MessengerView.swift */,
 				41CDEABA2BC7D16700C9EAE2 /* NoteWriteView.swift */,
+				41CDEAC02BC7D5E000C9EAE2 /* NoteView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -285,6 +290,7 @@
 			children = (
 				41CDEA952BC7A9A200C9EAE2 /* MessengerFeature.swift */,
 				41CDEABC2BC7D17000C9EAE2 /* NoteWriteFeature.swift */,
+				41CDEABE2BC7D51100C9EAE2 /* NoteFeature.swift */,
 			);
 			path = Feature;
 			sourceTree = "<group>";
@@ -499,6 +505,7 @@
 				41CDEAA62BC7AE4700C9EAE2 /* NoticeView.swift in Sources */,
 				41CDEA902BC7A97700C9EAE2 /* HomeFeature.swift in Sources */,
 				41CDEA792BC7A6FA00C9EAE2 /* BoardView.swift in Sources */,
+				41CDEABF2BC7D51100C9EAE2 /* NoteFeature.swift in Sources */,
 				41CDEAA82BC7AE6F00C9EAE2 /* NoticeFeature.swift in Sources */,
 				41CDEABD2BC7D17000C9EAE2 /* NoteWriteFeature.swift in Sources */,
 				41CDEAB12BC7BED500C9EAE2 /* PostWriteFeature.swift in Sources */,
@@ -516,6 +523,7 @@
 				41CDEA9B2BC7AA1E00C9EAE2 /* LoginView.swift in Sources */,
 				41CDEA962BC7A9A200C9EAE2 /* MessengerFeature.swift in Sources */,
 				41CDEAB72BC7CA9100C9EAE2 /* PostDetailView.swift in Sources */,
+				41CDEAC12BC7D5E000C9EAE2 /* NoteView.swift in Sources */,
 				41CDEA942BC7A99400C9EAE2 /* ProfileFeature.swift in Sources */,
 				41CDEAB32BC7C53C00C9EAE2 /* NoticeBoardView.swift in Sources */,
 				41CDEAAF2BC7BEC900C9EAE2 /* PostWriteView.swift in Sources */,

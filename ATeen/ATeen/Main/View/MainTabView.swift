@@ -39,7 +39,12 @@ struct MainTabView: View {
                 }
                 .tag("Board")
                 
-                MessengerView()
+                MessengerView(
+                    store: Store(
+                        initialState: MessengerFeature.State()) {
+                            MessengerFeature()
+                    }
+                )
                 .tabItem {
                     Label("", systemImage: "message")
                 }
