@@ -34,6 +34,14 @@
 		41CDEAA82BC7AE6F00C9EAE2 /* NoticeFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41CDEAA72BC7AE6F00C9EAE2 /* NoticeFeature.swift */; };
 		41CDEAAB2BC7B2B000C9EAE2 /* OtherUserProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41CDEAAA2BC7B2B000C9EAE2 /* OtherUserProfileView.swift */; };
 		41CDEAAD2BC7B2F200C9EAE2 /* OtherUserProfileFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41CDEAAC2BC7B2F200C9EAE2 /* OtherUserProfileFeature.swift */; };
+		41CDEAAF2BC7BEC900C9EAE2 /* PostWriteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41CDEAAE2BC7BEC900C9EAE2 /* PostWriteView.swift */; };
+		41CDEAB12BC7BED500C9EAE2 /* PostWriteFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41CDEAB02BC7BED500C9EAE2 /* PostWriteFeature.swift */; };
+		41CDEAB32BC7C53C00C9EAE2 /* NoticeBoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41CDEAB22BC7C53C00C9EAE2 /* NoticeBoardView.swift */; };
+		41CDEAB52BC7C54E00C9EAE2 /* NoticeBoardFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41CDEAB42BC7C54E00C9EAE2 /* NoticeBoardFeature.swift */; };
+		41CDEAB72BC7CA9100C9EAE2 /* PostDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41CDEAB62BC7CA9100C9EAE2 /* PostDetailView.swift */; };
+		41CDEAB92BC7CAA600C9EAE2 /* PostDetailFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41CDEAB82BC7CAA600C9EAE2 /* PostDetailFeature.swift */; };
+		41CDEABB2BC7D16800C9EAE2 /* NoteWriteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41CDEABA2BC7D16700C9EAE2 /* NoteWriteView.swift */; };
+		41CDEABD2BC7D17000C9EAE2 /* NoteWriteFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41CDEABC2BC7D17000C9EAE2 /* NoteWriteFeature.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -82,6 +90,14 @@
 		41CDEAA72BC7AE6F00C9EAE2 /* NoticeFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeFeature.swift; sourceTree = "<group>"; };
 		41CDEAAA2BC7B2B000C9EAE2 /* OtherUserProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherUserProfileView.swift; sourceTree = "<group>"; };
 		41CDEAAC2BC7B2F200C9EAE2 /* OtherUserProfileFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherUserProfileFeature.swift; sourceTree = "<group>"; };
+		41CDEAAE2BC7BEC900C9EAE2 /* PostWriteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostWriteView.swift; sourceTree = "<group>"; };
+		41CDEAB02BC7BED500C9EAE2 /* PostWriteFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostWriteFeature.swift; sourceTree = "<group>"; };
+		41CDEAB22BC7C53C00C9EAE2 /* NoticeBoardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeBoardView.swift; sourceTree = "<group>"; };
+		41CDEAB42BC7C54E00C9EAE2 /* NoticeBoardFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeBoardFeature.swift; sourceTree = "<group>"; };
+		41CDEAB62BC7CA9100C9EAE2 /* PostDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailView.swift; sourceTree = "<group>"; };
+		41CDEAB82BC7CAA600C9EAE2 /* PostDetailFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailFeature.swift; sourceTree = "<group>"; };
+		41CDEABA2BC7D16700C9EAE2 /* NoteWriteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteWriteView.swift; sourceTree = "<group>"; };
+		41CDEABC2BC7D17000C9EAE2 /* NoteWriteFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteWriteFeature.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -259,6 +275,7 @@
 			isa = PBXGroup;
 			children = (
 				41CDEA7C2BC7A80B00C9EAE2 /* MessengerView.swift */,
+				41CDEABA2BC7D16700C9EAE2 /* NoteWriteView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -267,6 +284,7 @@
 			isa = PBXGroup;
 			children = (
 				41CDEA952BC7A9A200C9EAE2 /* MessengerFeature.swift */,
+				41CDEABC2BC7D17000C9EAE2 /* NoteWriteFeature.swift */,
 			);
 			path = Feature;
 			sourceTree = "<group>";
@@ -275,6 +293,9 @@
 			isa = PBXGroup;
 			children = (
 				41CDEA782BC7A6FA00C9EAE2 /* BoardView.swift */,
+				41CDEAAE2BC7BEC900C9EAE2 /* PostWriteView.swift */,
+				41CDEAB22BC7C53C00C9EAE2 /* NoticeBoardView.swift */,
+				41CDEAB62BC7CA9100C9EAE2 /* PostDetailView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -283,6 +304,9 @@
 			isa = PBXGroup;
 			children = (
 				41CDEA912BC7A98300C9EAE2 /* BoardFeature.swift */,
+				41CDEAB02BC7BED500C9EAE2 /* PostWriteFeature.swift */,
+				41CDEAB42BC7C54E00C9EAE2 /* NoticeBoardFeature.swift */,
+				41CDEAB82BC7CAA600C9EAE2 /* PostDetailFeature.swift */,
 			);
 			path = Feature;
 			sourceTree = "<group>";
@@ -468,6 +492,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				41CDEAAB2BC7B2B000C9EAE2 /* OtherUserProfileView.swift in Sources */,
+				41CDEAB52BC7C54E00C9EAE2 /* NoticeBoardFeature.swift in Sources */,
 				41CDEA432BC7A2F200C9EAE2 /* ATeenApp.swift in Sources */,
 				41CDEA7D2BC7A80B00C9EAE2 /* MessengerView.swift in Sources */,
 				41CDEA732BC7A66100C9EAE2 /* SplashView.swift in Sources */,
@@ -475,18 +500,25 @@
 				41CDEA902BC7A97700C9EAE2 /* HomeFeature.swift in Sources */,
 				41CDEA792BC7A6FA00C9EAE2 /* BoardView.swift in Sources */,
 				41CDEAA82BC7AE6F00C9EAE2 /* NoticeFeature.swift in Sources */,
+				41CDEABD2BC7D17000C9EAE2 /* NoteWriteFeature.swift in Sources */,
+				41CDEAB12BC7BED500C9EAE2 /* PostWriteFeature.swift in Sources */,
 				41CDEA772BC7A6DD00C9EAE2 /* HomeView.swift in Sources */,
+				41CDEAB92BC7CAA600C9EAE2 /* PostDetailFeature.swift in Sources */,
 				41CDEAA22BC7AA5900C9EAE2 /* SettingView.swift in Sources */,
 				41CDEA9E2BC7AA3200C9EAE2 /* LoginFeature.swift in Sources */,
 				41CDEA7B2BC7A74200C9EAE2 /* ProfileView.swift in Sources */,
 				41CDEAA42BC7AA6300C9EAE2 /* SettingFeature.swift in Sources */,
 				41CDEA752BC7A6B300C9EAE2 /* MainTabView.swift in Sources */,
+				41CDEABB2BC7D16800C9EAE2 /* NoteWriteView.swift in Sources */,
 				41CDEAAD2BC7B2F200C9EAE2 /* OtherUserProfileFeature.swift in Sources */,
 				41CDEA8E2BC7A96A00C9EAE2 /* MainTabFeature.swift in Sources */,
 				41CDEA922BC7A98300C9EAE2 /* BoardFeature.swift in Sources */,
 				41CDEA9B2BC7AA1E00C9EAE2 /* LoginView.swift in Sources */,
 				41CDEA962BC7A9A200C9EAE2 /* MessengerFeature.swift in Sources */,
+				41CDEAB72BC7CA9100C9EAE2 /* PostDetailView.swift in Sources */,
 				41CDEA942BC7A99400C9EAE2 /* ProfileFeature.swift in Sources */,
+				41CDEAB32BC7C53C00C9EAE2 /* NoticeBoardView.swift in Sources */,
+				41CDEAAF2BC7BEC900C9EAE2 /* PostWriteView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

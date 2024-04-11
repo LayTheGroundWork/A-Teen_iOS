@@ -28,7 +28,12 @@ struct MainTabView: View {
                 }
                 .tag("Home")
                 
-                BoardView()
+                BoardView(
+                    store: Store(
+                        initialState: BoardFeature.State()) {
+                            BoardFeature()
+                    }
+                )
                 .tabItem {
                     Label("", systemImage: "square.and.pencil")
                 }

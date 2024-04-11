@@ -15,20 +15,30 @@ struct HomeView: View {
     var body: some View {
         NavigationStack(path: $store.scope(state: \.path, action: \.path)) {
             VStack {
-                Button {
-                    store.send(.openNotice)
-                } label: {
-                    Text("Notice")
+                HStack {
+                    Spacer()
+                    Button {
+                        store.send(.openNotice)
+                    } label: {
+                        Text("Notice")
+                    }
                 }
+                .padding()
+                
+                Spacer()
+                
+                Text("Home")
                 
                 Button {
                     store.send(.openOtherUserProfile)
                 } label: {
                     RoundedRectangle(cornerRadius: 10)
-                        .foregroundStyle(.blue)
-                        .frame(width: 30, height: 30)
+                        .foregroundStyle(.gray)
+                        .frame(width: 300, height: 300)
                 }
-                Text("Home")
+                
+                Spacer()
+                
             }
         } destination: { store in
             switch store.state {
