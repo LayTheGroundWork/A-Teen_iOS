@@ -30,6 +30,10 @@
 		41CDEA9E2BC7AA3200C9EAE2 /* LoginFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41CDEA9D2BC7AA3200C9EAE2 /* LoginFeature.swift */; };
 		41CDEAA22BC7AA5900C9EAE2 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41CDEAA12BC7AA5900C9EAE2 /* SettingView.swift */; };
 		41CDEAA42BC7AA6300C9EAE2 /* SettingFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41CDEAA32BC7AA6300C9EAE2 /* SettingFeature.swift */; };
+		41CDEAA62BC7AE4700C9EAE2 /* NoticeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41CDEAA52BC7AE4700C9EAE2 /* NoticeView.swift */; };
+		41CDEAA82BC7AE6F00C9EAE2 /* NoticeFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41CDEAA72BC7AE6F00C9EAE2 /* NoticeFeature.swift */; };
+		41CDEAAB2BC7B2B000C9EAE2 /* OtherUserProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41CDEAAA2BC7B2B000C9EAE2 /* OtherUserProfileView.swift */; };
+		41CDEAAD2BC7B2F200C9EAE2 /* OtherUserProfileFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41CDEAAC2BC7B2F200C9EAE2 /* OtherUserProfileFeature.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,6 +78,10 @@
 		41CDEA9D2BC7AA3200C9EAE2 /* LoginFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginFeature.swift; sourceTree = "<group>"; };
 		41CDEAA12BC7AA5900C9EAE2 /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
 		41CDEAA32BC7AA6300C9EAE2 /* SettingFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingFeature.swift; sourceTree = "<group>"; };
+		41CDEAA52BC7AE4700C9EAE2 /* NoticeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeView.swift; sourceTree = "<group>"; };
+		41CDEAA72BC7AE6F00C9EAE2 /* NoticeFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeFeature.swift; sourceTree = "<group>"; };
+		41CDEAAA2BC7B2B000C9EAE2 /* OtherUserProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherUserProfileView.swift; sourceTree = "<group>"; };
+		41CDEAAC2BC7B2F200C9EAE2 /* OtherUserProfileFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherUserProfileFeature.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,7 +140,6 @@
 				41CDEA802BC7A81F00C9EAE2 /* Messenger */,
 				41CDEA812BC7A82500C9EAE2 /* Profile */,
 				41CDEA972BC7A9D900C9EAE2 /* Sign */,
-				41CDEA982BC7A9EF00C9EAE2 /* Setting */,
 				41CDEA462BC7A2F300C9EAE2 /* Assets.xcassets */,
 				41CDEA482BC7A2F300C9EAE2 /* Preview Content */,
 			);
@@ -213,6 +220,8 @@
 		41CDEA832BC7A8B700C9EAE2 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				41CDEAA52BC7AE4700C9EAE2 /* NoticeView.swift */,
+				41CDEAAA2BC7B2B000C9EAE2 /* OtherUserProfileView.swift */,
 				41CDEA762BC7A6DD00C9EAE2 /* HomeView.swift */,
 			);
 			path = View;
@@ -222,6 +231,8 @@
 			isa = PBXGroup;
 			children = (
 				41CDEA8F2BC7A97700C9EAE2 /* HomeFeature.swift */,
+				41CDEAA72BC7AE6F00C9EAE2 /* NoticeFeature.swift */,
+				41CDEAAC2BC7B2F200C9EAE2 /* OtherUserProfileFeature.swift */,
 			);
 			path = Feature;
 			sourceTree = "<group>";
@@ -230,6 +241,7 @@
 			isa = PBXGroup;
 			children = (
 				41CDEA7A2BC7A74200C9EAE2 /* ProfileView.swift */,
+				41CDEAA12BC7AA5900C9EAE2 /* SettingView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -238,6 +250,7 @@
 			isa = PBXGroup;
 			children = (
 				41CDEA932BC7A99400C9EAE2 /* ProfileFeature.swift */,
+				41CDEAA32BC7AA6300C9EAE2 /* SettingFeature.swift */,
 			);
 			path = Feature;
 			sourceTree = "<group>";
@@ -300,15 +313,6 @@
 			path = Sign;
 			sourceTree = "<group>";
 		};
-		41CDEA982BC7A9EF00C9EAE2 /* Setting */ = {
-			isa = PBXGroup;
-			children = (
-				41CDEA9F2BC7AA4800C9EAE2 /* View */,
-				41CDEAA02BC7AA4D00C9EAE2 /* Feature */,
-			);
-			path = Setting;
-			sourceTree = "<group>";
-		};
 		41CDEA992BC7AA1200C9EAE2 /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -321,22 +325,6 @@
 			isa = PBXGroup;
 			children = (
 				41CDEA9D2BC7AA3200C9EAE2 /* LoginFeature.swift */,
-			);
-			path = Feature;
-			sourceTree = "<group>";
-		};
-		41CDEA9F2BC7AA4800C9EAE2 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				41CDEAA12BC7AA5900C9EAE2 /* SettingView.swift */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		41CDEAA02BC7AA4D00C9EAE2 /* Feature */ = {
-			isa = PBXGroup;
-			children = (
-				41CDEAA32BC7AA6300C9EAE2 /* SettingFeature.swift */,
 			);
 			path = Feature;
 			sourceTree = "<group>";
@@ -479,17 +467,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				41CDEAAB2BC7B2B000C9EAE2 /* OtherUserProfileView.swift in Sources */,
 				41CDEA432BC7A2F200C9EAE2 /* ATeenApp.swift in Sources */,
 				41CDEA7D2BC7A80B00C9EAE2 /* MessengerView.swift in Sources */,
 				41CDEA732BC7A66100C9EAE2 /* SplashView.swift in Sources */,
+				41CDEAA62BC7AE4700C9EAE2 /* NoticeView.swift in Sources */,
 				41CDEA902BC7A97700C9EAE2 /* HomeFeature.swift in Sources */,
 				41CDEA792BC7A6FA00C9EAE2 /* BoardView.swift in Sources */,
+				41CDEAA82BC7AE6F00C9EAE2 /* NoticeFeature.swift in Sources */,
 				41CDEA772BC7A6DD00C9EAE2 /* HomeView.swift in Sources */,
 				41CDEAA22BC7AA5900C9EAE2 /* SettingView.swift in Sources */,
 				41CDEA9E2BC7AA3200C9EAE2 /* LoginFeature.swift in Sources */,
 				41CDEA7B2BC7A74200C9EAE2 /* ProfileView.swift in Sources */,
 				41CDEAA42BC7AA6300C9EAE2 /* SettingFeature.swift in Sources */,
 				41CDEA752BC7A6B300C9EAE2 /* MainTabView.swift in Sources */,
+				41CDEAAD2BC7B2F200C9EAE2 /* OtherUserProfileFeature.swift in Sources */,
 				41CDEA8E2BC7A96A00C9EAE2 /* MainTabFeature.swift in Sources */,
 				41CDEA922BC7A98300C9EAE2 /* BoardFeature.swift in Sources */,
 				41CDEA9B2BC7AA1E00C9EAE2 /* LoginView.swift in Sources */,
@@ -666,7 +658,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -696,7 +688,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

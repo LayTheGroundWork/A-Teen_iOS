@@ -5,14 +5,53 @@
 //  Created by 최동호 on 4/11/24.
 //
 
+import ComposableArchitecture
+
 import SwiftUI
 
 struct MainTabView: View {
+    let store: StoreOf<MainTabFeature>
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        if !store.isFetchedData {
+            SplashView()
+        } else {
+            TabView {
+                HomeView(
+                    store: Store(
+                        initialState: HomeFeature.State()) {
+                            HomeFeature()
+                    }
+                )
+                .tabItem {
+                    Label("", systemImage: "house")
+                }
+                .tag("Home")
+                
+                BoardView()
+                .tabItem {
+                    Label("", systemImage: "square.and.pencil")
+                }
+                .tag("Board")
+                
+                MessengerView()
+                .tabItem {
+                    Label("", systemImage: "message")
+                }
+                .tag("Messenger")
+                
+                ProfileView(
+                    store: Store(
+                        initialState: ProfileFeature.State()) {
+                            ProfileFeature()
+                    }
+                )
+                .tabItem {
+                    Label("", systemImage: "person")
+                }
+                .tag("Profile")
+            }
+        }
     }
 }
 
-#Preview {
-    MainTabView()
-}
