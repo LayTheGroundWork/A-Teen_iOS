@@ -10,13 +10,13 @@ import ComposableArchitecture
 import SwiftUI
 
 struct MainTabView: View {
-    let store: StoreOf<MainTabFeature>
-    
+    @Bindable var store: StoreOf<MainTabFeature>
+     
     var body: some View {
         if !store.isFetchedData {
             SplashView()
         } else {
-            TabView {
+            TabView(selection: $store.tabState.sending(\.changeTab)) {
                 HomeView(
                     store: Store(
                         initialState: HomeFeature.State()) {
@@ -26,7 +26,7 @@ struct MainTabView: View {
                 .tabItem {
                     Label("", systemImage: "house")
                 }
-                .tag("Home")
+                .tag(TabState.Home)
                 
                 BoardView(
                     store: Store(
@@ -37,7 +37,7 @@ struct MainTabView: View {
                 .tabItem {
                     Label("", systemImage: "square.and.pencil")
                 }
-                .tag("Board")
+                .tag(TabState.Board)
                 
                 MessengerView(
                     store: Store(
@@ -48,7 +48,7 @@ struct MainTabView: View {
                 .tabItem {
                     Label("", systemImage: "message")
                 }
-                .tag("Messenger")
+                .tag(TabState.Messenger)
                 
                 ProfileView(
                     store: Store(
@@ -59,7 +59,17 @@ struct MainTabView: View {
                 .tabItem {
                     Label("", systemImage: "person")
                 }
-                .tag("Profile")
+                .tag(TabState.Profile)
+            }
+            .onChange(of: store.tabState) { oldValue, newValue in
+                if newValue == TabState.Profile {
+                    store.send(.openLoginView)
+                }
+            }
+            .sheet(
+                item: $store.scope(state: \.destination?.openLoginView, action: \.destination.openLoginView)
+            ) { LoginFeature in
+                LoginView(store: LoginFeature)
             }
         }
     }

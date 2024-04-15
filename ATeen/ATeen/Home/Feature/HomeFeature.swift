@@ -14,7 +14,7 @@ struct HomeFeature {
     @ObservableState
     struct State: Equatable {
         var path = StackState<Path.State>()
-
+        
     }
     
     enum Action {
