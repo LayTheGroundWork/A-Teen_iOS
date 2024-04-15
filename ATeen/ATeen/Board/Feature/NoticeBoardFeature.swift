@@ -15,7 +15,7 @@ struct NoticeBoardFeature {
     struct State: Equatable {
         @Presents var destination: Destination.State?
         
-        var boardTitle: String
+        var boardTitle: String = ""
     }
     
     enum Action {

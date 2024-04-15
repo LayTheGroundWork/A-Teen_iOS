@@ -16,7 +16,7 @@ struct LoginView: View {
         NavigationStack {
             VStack {
                 Button {
-                    
+                    store.send(.loginWithKakao)
                 } label: {
                     Text("카카오")
                 }

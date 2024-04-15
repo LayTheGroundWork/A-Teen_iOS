@@ -48,6 +48,11 @@
 		41CDEABD2BC7D17000C9EAE2 /* NoteWriteFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41CDEABC2BC7D17000C9EAE2 /* NoteWriteFeature.swift */; };
 		41CDEABF2BC7D51100C9EAE2 /* NoteFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41CDEABE2BC7D51100C9EAE2 /* NoteFeature.swift */; };
 		41CDEAC12BC7D5E000C9EAE2 /* NoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41CDEAC02BC7D5E000C9EAE2 /* NoteView.swift */; };
+		735D41A32BCD0F62001FDA43 /* KakaoSDKAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 735D41A22BCD0F62001FDA43 /* KakaoSDKAuth */; };
+		735D41A52BCD0F62001FDA43 /* KakaoSDKCommon in Frameworks */ = {isa = PBXBuildFile; productRef = 735D41A42BCD0F62001FDA43 /* KakaoSDKCommon */; };
+		735D41A72BCD0F62001FDA43 /* KakaoSDKUser in Frameworks */ = {isa = PBXBuildFile; productRef = 735D41A62BCD0F62001FDA43 /* KakaoSDKUser */; };
+		735D41AC2BCD1269001FDA43 /* Bundle +.swift in Sources */ = {isa = PBXBuildFile; fileRef = 735D41AB2BCD1269001FDA43 /* Bundle +.swift */; };
+		735D41AE2BCD1349001FDA43 /* KaKaoAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 735D41AD2BCD1349001FDA43 /* KaKaoAPI.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -110,6 +115,10 @@
 		41CDEABC2BC7D17000C9EAE2 /* NoteWriteFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteWriteFeature.swift; sourceTree = "<group>"; };
 		41CDEABE2BC7D51100C9EAE2 /* NoteFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteFeature.swift; sourceTree = "<group>"; };
 		41CDEAC02BC7D5E000C9EAE2 /* NoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteView.swift; sourceTree = "<group>"; };
+		735D41A82BCD0F89001FDA43 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		735D41A92BCD1005001FDA43 /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
+		735D41AB2BCD1269001FDA43 /* Bundle +.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle +.swift"; sourceTree = "<group>"; };
+		735D41AD2BCD1349001FDA43 /* KaKaoAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KaKaoAPI.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,8 +126,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				735D41A52BCD0F62001FDA43 /* KakaoSDKCommon in Frameworks */,
 				41CDEA712BC7A3B500C9EAE2 /* ComposableArchitecture in Frameworks */,
 				41CDEA6E2BC7A38000C9EAE2 /* Kingfisher in Frameworks */,
+				735D41A72BCD0F62001FDA43 /* KakaoSDKUser in Frameworks */,
+				735D41A32BCD0F62001FDA43 /* KakaoSDKAuth in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -150,7 +162,9 @@
 		4179F8762BCCF15600D70F1C /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				735D41AA2BCD1250001FDA43 /* Extension */,
 				4179F8772BCCF1C400D70F1C /* Constants.swift */,
+				735D41AD2BCD1349001FDA43 /* KaKaoAPI.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -162,6 +176,7 @@
 				41CDEA522BC7A2F300C9EAE2 /* ATeenTests */,
 				41CDEA5C2BC7A2F300C9EAE2 /* ATeenUITests */,
 				41CDEA402BC7A2F200C9EAE2 /* Products */,
+				735D41A12BCD0F62001FDA43 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -178,6 +193,8 @@
 		41CDEA412BC7A2F200C9EAE2 /* ATeen */ = {
 			isa = PBXGroup;
 			children = (
+				735D41A82BCD0F89001FDA43 /* Info.plist */,
+				735D41A92BCD1005001FDA43 /* Config.xcconfig */,
 				41CDEA7E2BC7A81200C9EAE2 /* Main */,
 				41CDEA822BC7A87700C9EAE2 /* Home */,
 				41CDEA7F2BC7A81900C9EAE2 /* Board */,
@@ -387,6 +404,21 @@
 			path = Feature;
 			sourceTree = "<group>";
 		};
+		735D41A12BCD0F62001FDA43 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		735D41AA2BCD1250001FDA43 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				735D41AB2BCD1269001FDA43 /* Bundle +.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -406,6 +438,9 @@
 			packageProductDependencies = (
 				41CDEA6D2BC7A38000C9EAE2 /* Kingfisher */,
 				41CDEA702BC7A3B500C9EAE2 /* ComposableArchitecture */,
+				735D41A22BCD0F62001FDA43 /* KakaoSDKAuth */,
+				735D41A42BCD0F62001FDA43 /* KakaoSDKCommon */,
+				735D41A62BCD0F62001FDA43 /* KakaoSDKUser */,
 			);
 			productName = ATeen;
 			productReference = 41CDEA3F2BC7A2F200C9EAE2 /* ATeen.app */;
@@ -482,6 +517,7 @@
 			packageReferences = (
 				41CDEA6C2BC7A38000C9EAE2 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				41CDEA6F2BC7A3B500C9EAE2 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */,
+				735D41A02BCD0F20001FDA43 /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */,
 			);
 			productRefGroup = 41CDEA402BC7A2F200C9EAE2 /* Products */;
 			projectDirPath = "";
@@ -533,6 +569,7 @@
 				41CDEA732BC7A66100C9EAE2 /* SplashView.swift in Sources */,
 				41CDEAA62BC7AE4700C9EAE2 /* NoticeView.swift in Sources */,
 				4179F8782BCCF1C400D70F1C /* Constants.swift in Sources */,
+				735D41AC2BCD1269001FDA43 /* Bundle +.swift in Sources */,
 				41CDEA902BC7A97700C9EAE2 /* HomeFeature.swift in Sources */,
 				41CDEA792BC7A6FA00C9EAE2 /* BoardView.swift in Sources */,
 				4179F87A2BCCF97100D70F1C /* LoginPhoneNumberView.swift in Sources */,
@@ -558,6 +595,7 @@
 				41CDEAC12BC7D5E000C9EAE2 /* NoteView.swift in Sources */,
 				41CDEA942BC7A99400C9EAE2 /* ProfileFeature.swift in Sources */,
 				41CDEAB32BC7C53C00C9EAE2 /* NoticeBoardView.swift in Sources */,
+				735D41AE2BCD1349001FDA43 /* KaKaoAPI.swift in Sources */,
 				41CDEAAF2BC7BEC900C9EAE2 /* PostWriteView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -597,6 +635,7 @@
 /* Begin XCBuildConfiguration section */
 		41CDEA612BC7A2F300C9EAE2 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 735D41A92BCD1005001FDA43 /* Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -660,6 +699,7 @@
 		};
 		41CDEA622BC7A2F300C9EAE2 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 735D41A92BCD1005001FDA43 /* Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -716,15 +756,17 @@
 		};
 		41CDEA642BC7A2F300C9EAE2 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 735D41A92BCD1005001FDA43 /* Config.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"ATeen/Preview Content\"";
-				DEVELOPMENT_TEAM = UAG934M4Q7;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ATeen/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -746,15 +788,17 @@
 		};
 		41CDEA652BC7A2F300C9EAE2 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 735D41A92BCD1005001FDA43 /* Config.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"ATeen/Preview Content\"";
-				DEVELOPMENT_TEAM = UAG934M4Q7;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ATeen/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -908,6 +952,14 @@
 				minimumVersion = 1.9.2;
 			};
 		};
+		735D41A02BCD0F20001FDA43 /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kakao/kakao-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.22.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -920,6 +972,21 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 41CDEA6F2BC7A3B500C9EAE2 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */;
 			productName = ComposableArchitecture;
+		};
+		735D41A22BCD0F62001FDA43 /* KakaoSDKAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 735D41A02BCD0F20001FDA43 /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */;
+			productName = KakaoSDKAuth;
+		};
+		735D41A42BCD0F62001FDA43 /* KakaoSDKCommon */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 735D41A02BCD0F20001FDA43 /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */;
+			productName = KakaoSDKCommon;
+		};
+		735D41A62BCD0F62001FDA43 /* KakaoSDKUser */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 735D41A02BCD0F20001FDA43 /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */;
+			productName = KakaoSDKUser;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
