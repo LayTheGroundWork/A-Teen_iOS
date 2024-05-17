@@ -7,6 +7,27 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		418CB1C92BF71A4F001DA795 /* LogInFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418CB1C82BF71A4F001DA795 /* LogInFactory.swift */; };
+		418CB1CC2BF71AE7001DA795 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418CB1CB2BF71AE7001DA795 /* LogInViewController.swift */; };
+		418CB1D12BF71CAD001DA795 /* LogInCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418CB1D02BF71CAD001DA795 /* LogInCoordinator.swift */; };
+		418CB1D52BF71DC8001DA795 /* LogInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418CB1D42BF71DC8001DA795 /* LogInViewModel.swift */; };
+		418CB1DA2BF726E7001DA795 /* MainTabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418CB1D92BF726E7001DA795 /* MainTabController.swift */; };
+		418CB1DC2BF7270A001DA795 /* MainTabFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418CB1DB2BF7270A001DA795 /* MainTabFactory.swift */; };
+		418CB1DE2BF727C3001DA795 /* MainTabCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418CB1DD2BF727C3001DA795 /* MainTabCoordinator.swift */; };
+		418CB1E52BF73CE3001DA795 /* ItemSettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418CB1E42BF73CE3001DA795 /* ItemSettingViewModel.swift */; };
+		418CB1E72BF73D1B001DA795 /* SettingsViewNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418CB1E62BF73D1B001DA795 /* SettingsViewNavigation.swift */; };
+		418CB1E92BF73E4C001DA795 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418CB1E82BF73E4C001DA795 /* SettingsViewModel.swift */; };
+		418CB1EB2BF73E6F001DA795 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418CB1EA2BF73E6F001DA795 /* SettingsViewController.swift */; };
+		418CB1EF2BF740F6001DA795 /* Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418CB1EE2BF740F6001DA795 /* Reusable.swift */; };
+		418CB1F22BF74138001DA795 /* AppLocalized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418CB1F12BF74138001DA795 /* AppLocalized.swift */; };
+		418CB1F42BF743AE001DA795 /* SettingsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418CB1F32BF743AE001DA795 /* SettingsCoordinator.swift */; };
+		418CB1F62BF743B8001DA795 /* SettingsFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418CB1F52BF743B8001DA795 /* SettingsFactory.swift */; };
+		418CB1F82BF74867001DA795 /* ItemTabFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418CB1F72BF74867001DA795 /* ItemTabFactory.swift */; };
+		418CB1FC2BF74CD8001DA795 /* ExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418CB1FB2BF74CD8001DA795 /* ExampleViewController.swift */; };
+		418CB1FE2BF74D16001DA795 /* SettingsCoordinator+SettingsViewControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418CB1FD2BF74D16001DA795 /* SettingsCoordinator+SettingsViewControllerCoordinator.swift */; };
+		418CB2072BF74E88001DA795 /* CommunitiesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418CB2062BF74E88001DA795 /* CommunitiesViewController.swift */; };
+		418CB2092BF74EAC001DA795 /* CommunitiesFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418CB2082BF74EAC001DA795 /* CommunitiesFactory.swift */; };
+		418CB20B2BF74F77001DA795 /* CommunitiesCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418CB20A2BF74F77001DA795 /* CommunitiesCoordinator.swift */; };
 		4190F8C52BF4E6EF00FCC0A3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4190F8C42BF4E6EF00FCC0A3 /* AppDelegate.swift */; };
 		4190F8C72BF4E6EF00FCC0A3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4190F8C62BF4E6EF00FCC0A3 /* SceneDelegate.swift */; };
 		4190F8CE2BF4E6F100FCC0A3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4190F8CD2BF4E6F100FCC0A3 /* Assets.xcassets */; };
@@ -19,6 +40,27 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		418CB1C82BF71A4F001DA795 /* LogInFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInFactory.swift; sourceTree = "<group>"; };
+		418CB1CB2BF71AE7001DA795 /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
+		418CB1D02BF71CAD001DA795 /* LogInCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInCoordinator.swift; sourceTree = "<group>"; };
+		418CB1D42BF71DC8001DA795 /* LogInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewModel.swift; sourceTree = "<group>"; };
+		418CB1D92BF726E7001DA795 /* MainTabController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabController.swift; sourceTree = "<group>"; };
+		418CB1DB2BF7270A001DA795 /* MainTabFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabFactory.swift; sourceTree = "<group>"; };
+		418CB1DD2BF727C3001DA795 /* MainTabCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabCoordinator.swift; sourceTree = "<group>"; };
+		418CB1E42BF73CE3001DA795 /* ItemSettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemSettingViewModel.swift; sourceTree = "<group>"; };
+		418CB1E62BF73D1B001DA795 /* SettingsViewNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewNavigation.swift; sourceTree = "<group>"; };
+		418CB1E82BF73E4C001DA795 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
+		418CB1EA2BF73E6F001DA795 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		418CB1EE2BF740F6001DA795 /* Reusable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reusable.swift; sourceTree = "<group>"; };
+		418CB1F12BF74138001DA795 /* AppLocalized.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLocalized.swift; sourceTree = "<group>"; };
+		418CB1F32BF743AE001DA795 /* SettingsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCoordinator.swift; sourceTree = "<group>"; };
+		418CB1F52BF743B8001DA795 /* SettingsFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsFactory.swift; sourceTree = "<group>"; };
+		418CB1F72BF74867001DA795 /* ItemTabFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemTabFactory.swift; sourceTree = "<group>"; };
+		418CB1FB2BF74CD8001DA795 /* ExampleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleViewController.swift; sourceTree = "<group>"; };
+		418CB1FD2BF74D16001DA795 /* SettingsCoordinator+SettingsViewControllerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SettingsCoordinator+SettingsViewControllerCoordinator.swift"; sourceTree = "<group>"; };
+		418CB2062BF74E88001DA795 /* CommunitiesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunitiesViewController.swift; sourceTree = "<group>"; };
+		418CB2082BF74EAC001DA795 /* CommunitiesFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunitiesFactory.swift; sourceTree = "<group>"; };
+		418CB20A2BF74F77001DA795 /* CommunitiesCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunitiesCoordinator.swift; sourceTree = "<group>"; };
 		4190F8C12BF4E6EF00FCC0A3 /* ATeen.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ATeen.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4190F8C42BF4E6EF00FCC0A3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4190F8C62BF4E6EF00FCC0A3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -43,6 +85,198 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		418CB1C62BF71A22001DA795 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				418CB1CA2BF71AD3001DA795 /* Presentation */,
+				418CB1C72BF71A31001DA795 /* Composition */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		418CB1C72BF71A31001DA795 /* Composition */ = {
+			isa = PBXGroup;
+			children = (
+				418CB1C82BF71A4F001DA795 /* LogInFactory.swift */,
+				418CB1D02BF71CAD001DA795 /* LogInCoordinator.swift */,
+			);
+			path = Composition;
+			sourceTree = "<group>";
+		};
+		418CB1CA2BF71AD3001DA795 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				418CB1D22BF71DB8001DA795 /* View */,
+				418CB1D32BF71DBD001DA795 /* ViewModel */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		418CB1D22BF71DB8001DA795 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				418CB1CB2BF71AE7001DA795 /* LogInViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		418CB1D32BF71DBD001DA795 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				418CB1D42BF71DC8001DA795 /* LogInViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		418CB1D62BF726A3001DA795 /* MainTab */ = {
+			isa = PBXGroup;
+			children = (
+				418CB1D72BF726B0001DA795 /* Presentation */,
+				418CB1D82BF726C7001DA795 /* Composition */,
+			);
+			path = MainTab;
+			sourceTree = "<group>";
+		};
+		418CB1D72BF726B0001DA795 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				418CB1D92BF726E7001DA795 /* MainTabController.swift */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		418CB1D82BF726C7001DA795 /* Composition */ = {
+			isa = PBXGroup;
+			children = (
+				418CB1DB2BF7270A001DA795 /* MainTabFactory.swift */,
+				418CB1DD2BF727C3001DA795 /* MainTabCoordinator.swift */,
+				418CB1F72BF74867001DA795 /* ItemTabFactory.swift */,
+			);
+			path = Composition;
+			sourceTree = "<group>";
+		};
+		418CB1DF2BF73C7F001DA795 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				418CB1E12BF73CB9001DA795 /* Presentation */,
+				418CB1E02BF73CAD001DA795 /* Composition */,
+			);
+			name = Settings;
+			path = MainTab;
+			sourceTree = "<group>";
+		};
+		418CB1E02BF73CAD001DA795 /* Composition */ = {
+			isa = PBXGroup;
+			children = (
+				418CB1F32BF743AE001DA795 /* SettingsCoordinator.swift */,
+				418CB1F52BF743B8001DA795 /* SettingsFactory.swift */,
+				418CB1FD2BF74D16001DA795 /* SettingsCoordinator+SettingsViewControllerCoordinator.swift */,
+			);
+			name = Composition;
+			sourceTree = "<group>";
+		};
+		418CB1E12BF73CB9001DA795 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				418CB1E32BF73CD5001DA795 /* View */,
+				418CB1E22BF73CCC001DA795 /* ViewModel */,
+			);
+			name = Presentation;
+			sourceTree = "<group>";
+		};
+		418CB1E22BF73CCC001DA795 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				418CB1E62BF73D1B001DA795 /* SettingsViewNavigation.swift */,
+				418CB1E42BF73CE3001DA795 /* ItemSettingViewModel.swift */,
+				418CB1E82BF73E4C001DA795 /* SettingsViewModel.swift */,
+			);
+			name = ViewModel;
+			sourceTree = "<group>";
+		};
+		418CB1E32BF73CD5001DA795 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				418CB1EA2BF73E6F001DA795 /* SettingsViewController.swift */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		418CB1EC2BF740C8001DA795 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				418CB1F02BF74124001DA795 /* Localize */,
+				418CB1ED2BF740E5001DA795 /* Utils */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		418CB1ED2BF740E5001DA795 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				418CB1EE2BF740F6001DA795 /* Reusable.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		418CB1F02BF74124001DA795 /* Localize */ = {
+			isa = PBXGroup;
+			children = (
+				418CB1F12BF74138001DA795 /* AppLocalized.swift */,
+			);
+			path = Localize;
+			sourceTree = "<group>";
+		};
+		418CB1F92BF74C3B001DA795 /* Example */ = {
+			isa = PBXGroup;
+			children = (
+				418CB1FB2BF74CD8001DA795 /* ExampleViewController.swift */,
+			);
+			path = Example;
+			sourceTree = "<group>";
+		};
+		418CB1FF2BF74E56001DA795 /* Communities */ = {
+			isa = PBXGroup;
+			children = (
+				418CB2032BF74E6E001DA795 /* Presentation */,
+				418CB2022BF74E69001DA795 /* Composition */,
+			);
+			path = Communities;
+			sourceTree = "<group>";
+		};
+		418CB2022BF74E69001DA795 /* Composition */ = {
+			isa = PBXGroup;
+			children = (
+				418CB2082BF74EAC001DA795 /* CommunitiesFactory.swift */,
+				418CB20A2BF74F77001DA795 /* CommunitiesCoordinator.swift */,
+			);
+			path = Composition;
+			sourceTree = "<group>";
+		};
+		418CB2032BF74E6E001DA795 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				418CB2052BF74E7A001DA795 /* ViewModel */,
+				418CB2042BF74E76001DA795 /* View */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		418CB2042BF74E76001DA795 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				418CB2062BF74E88001DA795 /* CommunitiesViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		418CB2052BF74E7A001DA795 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		4190F8B82BF4E6EF00FCC0A3 = {
 			isa = PBXGroup;
 			children = (
@@ -63,8 +297,9 @@
 			isa = PBXGroup;
 			children = (
 				4190F8EE2BF4EC0900FCC0A3 /* Resources */,
-				4190F8DA2BF4E7E400FCC0A3 /* Scenes */,
 				4190F8D92BF4E7D200FCC0A3 /* Composition */,
+				418CB1EC2BF740C8001DA795 /* Common */,
+				4190F8DA2BF4E7E400FCC0A3 /* Scenes */,
 				4190F8D82BF4E7CB00FCC0A3 /* Auth */,
 				4190F8D22BF4E6F100FCC0A3 /* Info.plist */,
 			);
@@ -93,6 +328,11 @@
 		4190F8DA2BF4E7E400FCC0A3 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				418CB1FF2BF74E56001DA795 /* Communities */,
+				418CB1F92BF74C3B001DA795 /* Example */,
+				418CB1DF2BF73C7F001DA795 /* Settings */,
+				418CB1D62BF726A3001DA795 /* MainTab */,
+				418CB1C62BF71A22001DA795 /* Login */,
 				4190F8DD2BF4E80700FCC0A3 /* LaunchScreen */,
 			);
 			path = Scenes;
@@ -234,13 +474,34 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				418CB1FE2BF74D16001DA795 /* SettingsCoordinator+SettingsViewControllerCoordinator.swift in Sources */,
 				4190F8E42BF4E91000FCC0A3 /* AppCoordinator.swift in Sources */,
+				418CB1F22BF74138001DA795 /* AppLocalized.swift in Sources */,
+				418CB2092BF74EAC001DA795 /* CommunitiesFactory.swift in Sources */,
 				4190F8C52BF4E6EF00FCC0A3 /* AppDelegate.swift in Sources */,
+				418CB1DA2BF726E7001DA795 /* MainTabController.swift in Sources */,
+				418CB1F42BF743AE001DA795 /* SettingsCoordinator.swift in Sources */,
+				418CB1E72BF73D1B001DA795 /* SettingsViewNavigation.swift in Sources */,
+				418CB1D52BF71DC8001DA795 /* LogInViewModel.swift in Sources */,
+				418CB1F82BF74867001DA795 /* ItemTabFactory.swift in Sources */,
+				418CB1F62BF743B8001DA795 /* SettingsFactory.swift in Sources */,
+				418CB1DC2BF7270A001DA795 /* MainTabFactory.swift in Sources */,
+				418CB20B2BF74F77001DA795 /* CommunitiesCoordinator.swift in Sources */,
+				418CB1D12BF71CAD001DA795 /* LogInCoordinator.swift in Sources */,
+				418CB1CC2BF71AE7001DA795 /* LogInViewController.swift in Sources */,
+				418CB1E92BF73E4C001DA795 /* SettingsViewModel.swift in Sources */,
 				4190F8C72BF4E6EF00FCC0A3 /* SceneDelegate.swift in Sources */,
 				4190F8E22BF4E8DA00FCC0A3 /* Coordinator.swift in Sources */,
 				4190F8E82BF4E98C00FCC0A3 /* AppFactory.swift in Sources */,
 				4190F8EA2BF4E9D800FCC0A3 /* Auth.swift in Sources */,
+				418CB2072BF74E88001DA795 /* CommunitiesViewController.swift in Sources */,
+				418CB1FC2BF74CD8001DA795 /* ExampleViewController.swift in Sources */,
+				418CB1DE2BF727C3001DA795 /* MainTabCoordinator.swift in Sources */,
+				418CB1C92BF71A4F001DA795 /* LogInFactory.swift in Sources */,
+				418CB1E52BF73CE3001DA795 /* ItemSettingViewModel.swift in Sources */,
+				418CB1EF2BF740F6001DA795 /* Reusable.swift in Sources */,
 				4190F8ED2BF4EAAB00FCC0A3 /* AppContainer.swift in Sources */,
+				418CB1EB2BF73E6F001DA795 /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
