@@ -37,6 +37,17 @@
 		4190F8E82BF4E98C00FCC0A3 /* AppFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4190F8E72BF4E98C00FCC0A3 /* AppFactory.swift */; };
 		4190F8EA2BF4E9D800FCC0A3 /* Auth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4190F8E92BF4E9D800FCC0A3 /* Auth.swift */; };
 		4190F8ED2BF4EAAB00FCC0A3 /* AppContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4190F8EC2BF4EAAB00FCC0A3 /* AppContainer.swift */; };
+		41BB4BE12BFB179D00D26A5D /* MyPostsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BB4BE02BFB179D00D26A5D /* MyPostsViewController.swift */; };
+		41BB4BE32BFB1AE200D26A5D /* MyPostsFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BB4BE22BFB1AE200D26A5D /* MyPostsFactory.swift */; };
+		41BB4BE82BFB1B1E00D26A5D /* NewPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BB4BE72BFB1B1E00D26A5D /* NewPostViewController.swift */; };
+		41BB4BEA2BFB258500D26A5D /* MyPostsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BB4BE92BFB258500D26A5D /* MyPostsCoordinator.swift */; };
+		41BB4BEC2BFB26AF00D26A5D /* MyPostsMediator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BB4BEB2BFB26AF00D26A5D /* MyPostsMediator.swift */; };
+		41BB4BF32BFB2E0F00D26A5D /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BB4BF22BFB2E0F00D26A5D /* HomeViewController.swift */; };
+		41BB4BF52BFB2EB400D26A5D /* HomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BB4BF42BFB2EB400D26A5D /* HomeCoordinator.swift */; };
+		41BB4BF72BFB2ED900D26A5D /* HomeFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BB4BF62BFB2ED900D26A5D /* HomeFactory.swift */; };
+		41BB4BFC2BFB36EC00D26A5D /* PostDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BB4BFB2BFB36EC00D26A5D /* PostDetailViewController.swift */; };
+		41BB4BFE2BFB38E900D26A5D /* PostDetailFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BB4BFD2BFB38E900D26A5D /* PostDetailFactory.swift */; };
+		41BB4C002BFB39FA00D26A5D /* PostDetailCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BB4BFF2BFB39FA00D26A5D /* PostDetailCoordinator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -72,6 +83,17 @@
 		4190F8E72BF4E98C00FCC0A3 /* AppFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFactory.swift; sourceTree = "<group>"; };
 		4190F8E92BF4E9D800FCC0A3 /* Auth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Auth.swift; sourceTree = "<group>"; };
 		4190F8EC2BF4EAAB00FCC0A3 /* AppContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppContainer.swift; sourceTree = "<group>"; };
+		41BB4BE02BFB179D00D26A5D /* MyPostsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPostsViewController.swift; sourceTree = "<group>"; };
+		41BB4BE22BFB1AE200D26A5D /* MyPostsFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPostsFactory.swift; sourceTree = "<group>"; };
+		41BB4BE72BFB1B1E00D26A5D /* NewPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPostViewController.swift; sourceTree = "<group>"; };
+		41BB4BE92BFB258500D26A5D /* MyPostsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPostsCoordinator.swift; sourceTree = "<group>"; };
+		41BB4BEB2BFB26AF00D26A5D /* MyPostsMediator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPostsMediator.swift; sourceTree = "<group>"; };
+		41BB4BF22BFB2E0F00D26A5D /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		41BB4BF42BFB2EB400D26A5D /* HomeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoordinator.swift; sourceTree = "<group>"; };
+		41BB4BF62BFB2ED900D26A5D /* HomeFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeFactory.swift; sourceTree = "<group>"; };
+		41BB4BFB2BFB36EC00D26A5D /* PostDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailViewController.swift; sourceTree = "<group>"; };
+		41BB4BFD2BFB38E900D26A5D /* PostDetailFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailFactory.swift; sourceTree = "<group>"; };
+		41BB4BFF2BFB39FA00D26A5D /* PostDetailCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailCoordinator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -328,6 +350,10 @@
 		4190F8DA2BF4E7E400FCC0A3 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				41BB4BF82BFB36C900D26A5D /* PostDetail */,
+				41BB4BEF2BFB2DF200D26A5D /* Home */,
+				41BB4BE62BFB1B1100D26A5D /* NewPost */,
+				41BB4BDB2BFB176400D26A5D /* MyPosts */,
 				418CB1FF2BF74E56001DA795 /* Communities */,
 				418CB1F92BF74C3B001DA795 /* Example */,
 				418CB1DF2BF73C7F001DA795 /* Settings */,
@@ -404,6 +430,101 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		41BB4BDB2BFB176400D26A5D /* MyPosts */ = {
+			isa = PBXGroup;
+			children = (
+				41BB4BDC2BFB176F00D26A5D /* Presentation */,
+				41BB4BDD2BFB177600D26A5D /* Composition */,
+			);
+			path = MyPosts;
+			sourceTree = "<group>";
+		};
+		41BB4BDC2BFB176F00D26A5D /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				41BB4BDF2BFB179400D26A5D /* View */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		41BB4BDD2BFB177600D26A5D /* Composition */ = {
+			isa = PBXGroup;
+			children = (
+				41BB4BE22BFB1AE200D26A5D /* MyPostsFactory.swift */,
+				41BB4BE92BFB258500D26A5D /* MyPostsCoordinator.swift */,
+				41BB4BEB2BFB26AF00D26A5D /* MyPostsMediator.swift */,
+			);
+			path = Composition;
+			sourceTree = "<group>";
+		};
+		41BB4BDF2BFB179400D26A5D /* View */ = {
+			isa = PBXGroup;
+			children = (
+				41BB4BE02BFB179D00D26A5D /* MyPostsViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		41BB4BE62BFB1B1100D26A5D /* NewPost */ = {
+			isa = PBXGroup;
+			children = (
+				41BB4BE72BFB1B1E00D26A5D /* NewPostViewController.swift */,
+			);
+			path = NewPost;
+			sourceTree = "<group>";
+		};
+		41BB4BEF2BFB2DF200D26A5D /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				41BB4BF12BFB2E0600D26A5D /* Presentation */,
+				41BB4BF02BFB2DFC00D26A5D /* Composition */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		41BB4BF02BFB2DFC00D26A5D /* Composition */ = {
+			isa = PBXGroup;
+			children = (
+				41BB4BF42BFB2EB400D26A5D /* HomeCoordinator.swift */,
+				41BB4BF62BFB2ED900D26A5D /* HomeFactory.swift */,
+			);
+			path = Composition;
+			sourceTree = "<group>";
+		};
+		41BB4BF12BFB2E0600D26A5D /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				41BB4BF22BFB2E0F00D26A5D /* HomeViewController.swift */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		41BB4BF82BFB36C900D26A5D /* PostDetail */ = {
+			isa = PBXGroup;
+			children = (
+				41BB4BFA2BFB36D800D26A5D /* Presentation */,
+				41BB4BF92BFB36D300D26A5D /* Composition */,
+			);
+			path = PostDetail;
+			sourceTree = "<group>";
+		};
+		41BB4BF92BFB36D300D26A5D /* Composition */ = {
+			isa = PBXGroup;
+			children = (
+				41BB4BFD2BFB38E900D26A5D /* PostDetailFactory.swift */,
+				41BB4BFF2BFB39FA00D26A5D /* PostDetailCoordinator.swift */,
+			);
+			path = Composition;
+			sourceTree = "<group>";
+		};
+		41BB4BFA2BFB36D800D26A5D /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				41BB4BFB2BFB36EC00D26A5D /* PostDetailViewController.swift */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -474,33 +595,44 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				41BB4BE12BFB179D00D26A5D /* MyPostsViewController.swift in Sources */,
 				418CB1FE2BF74D16001DA795 /* SettingsCoordinator+SettingsViewControllerCoordinator.swift in Sources */,
 				4190F8E42BF4E91000FCC0A3 /* AppCoordinator.swift in Sources */,
+				41BB4BF32BFB2E0F00D26A5D /* HomeViewController.swift in Sources */,
 				418CB1F22BF74138001DA795 /* AppLocalized.swift in Sources */,
 				418CB2092BF74EAC001DA795 /* CommunitiesFactory.swift in Sources */,
 				4190F8C52BF4E6EF00FCC0A3 /* AppDelegate.swift in Sources */,
+				41BB4BE32BFB1AE200D26A5D /* MyPostsFactory.swift in Sources */,
 				418CB1DA2BF726E7001DA795 /* MainTabController.swift in Sources */,
 				418CB1F42BF743AE001DA795 /* SettingsCoordinator.swift in Sources */,
+				41BB4BEC2BFB26AF00D26A5D /* MyPostsMediator.swift in Sources */,
 				418CB1E72BF73D1B001DA795 /* SettingsViewNavigation.swift in Sources */,
+				41BB4BF52BFB2EB400D26A5D /* HomeCoordinator.swift in Sources */,
 				418CB1D52BF71DC8001DA795 /* LogInViewModel.swift in Sources */,
 				418CB1F82BF74867001DA795 /* ItemTabFactory.swift in Sources */,
+				41BB4BFC2BFB36EC00D26A5D /* PostDetailViewController.swift in Sources */,
 				418CB1F62BF743B8001DA795 /* SettingsFactory.swift in Sources */,
 				418CB1DC2BF7270A001DA795 /* MainTabFactory.swift in Sources */,
+				41BB4BF72BFB2ED900D26A5D /* HomeFactory.swift in Sources */,
 				418CB20B2BF74F77001DA795 /* CommunitiesCoordinator.swift in Sources */,
 				418CB1D12BF71CAD001DA795 /* LogInCoordinator.swift in Sources */,
+				41BB4BE82BFB1B1E00D26A5D /* NewPostViewController.swift in Sources */,
 				418CB1CC2BF71AE7001DA795 /* LogInViewController.swift in Sources */,
 				418CB1E92BF73E4C001DA795 /* SettingsViewModel.swift in Sources */,
 				4190F8C72BF4E6EF00FCC0A3 /* SceneDelegate.swift in Sources */,
 				4190F8E22BF4E8DA00FCC0A3 /* Coordinator.swift in Sources */,
 				4190F8E82BF4E98C00FCC0A3 /* AppFactory.swift in Sources */,
+				41BB4BEA2BFB258500D26A5D /* MyPostsCoordinator.swift in Sources */,
 				4190F8EA2BF4E9D800FCC0A3 /* Auth.swift in Sources */,
 				418CB2072BF74E88001DA795 /* CommunitiesViewController.swift in Sources */,
 				418CB1FC2BF74CD8001DA795 /* ExampleViewController.swift in Sources */,
 				418CB1DE2BF727C3001DA795 /* MainTabCoordinator.swift in Sources */,
 				418CB1C92BF71A4F001DA795 /* LogInFactory.swift in Sources */,
+				41BB4BFE2BFB38E900D26A5D /* PostDetailFactory.swift in Sources */,
 				418CB1E52BF73CE3001DA795 /* ItemSettingViewModel.swift in Sources */,
 				418CB1EF2BF740F6001DA795 /* Reusable.swift in Sources */,
 				4190F8ED2BF4EAAB00FCC0A3 /* AppContainer.swift in Sources */,
+				41BB4C002BFB39FA00D26A5D /* PostDetailCoordinator.swift in Sources */,
 				418CB1EB2BF73E6F001DA795 /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

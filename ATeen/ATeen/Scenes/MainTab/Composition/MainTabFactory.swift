@@ -18,10 +18,40 @@ struct MainTabFactory {
     }
     
     func makeChildCoordinators(delegate: SettingsCoordinatorDelegate) -> [Coordinator] {
-        let settingsCoordinator = makeSettingsCoordinator(delegate: delegate)
+        let homeCoordinator = makeHomeCoordinator()
+        let myPostsCoordinator = makeMyPostsCoordinator()
         let communitiesCoordinator = makeCommunitiesCoordinator()
+        let settingsCoordinator = makeSettingsCoordinator(delegate: delegate)
         
-        return [communitiesCoordinator, settingsCoordinator]
+        return [homeCoordinator,
+                myPostsCoordinator,
+                communitiesCoordinator,
+                settingsCoordinator]
+    }
+    
+    private func makeHomeCoordinator() -> Coordinator {
+        let navigation = UINavigationController()
+        let factory = HomeFactoryImp()
+        return HomeCoordinator(
+            navigation: navigation,
+            factory: factory)
+    }
+    
+    private func makeMyPostsCoordinator() -> Coordinator {
+        let navigation = UINavigationController()
+        let factory = MyPostsFactory()
+        let mediator = MyPostsMediatorImp()
+        return MyPostsCoordinator(
+            navigation: navigation,
+            factory: factory,
+            mediator: mediator)
+    }
+    private func makeCommunitiesCoordinator() -> Coordinator {
+        let factory = CommunitiesFactoryImp()
+        let navigation = UINavigationController()
+        return CommunitiesCoordinator(
+            navigation: navigation,
+            factory: factory)
     }
     
     private func makeSettingsCoordinator(delegate: SettingsCoordinatorDelegate) -> Coordinator {
@@ -32,14 +62,5 @@ struct MainTabFactory {
             factory: factory,
             delegate: delegate)
     }
-    
-    private func makeCommunitiesCoordinator() -> Coordinator {
-        let factory = CommunitiesFactoryImp()
-        let navigation = UINavigationController()
-        return CommunitiesCoordinator(
-            navigation: navigation,
-            factory: factory)
-    }
-    
 
 }
