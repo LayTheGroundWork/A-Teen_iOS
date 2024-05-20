@@ -11,7 +11,7 @@ struct AppFactory {
     let appContainer: AppContainer?
     
     func makeLogInCoordinator(
-        navigation: UINavigationController,
+        navigation: Navigation,
         delegate: LogInCoordinatorDelegate
     ) -> Coordinator {
         let logInFactory = LogInFactory(appContainer: appContainer)
@@ -23,7 +23,7 @@ struct AppFactory {
     }
     
     func makeMainTabCoordinator(
-        navigation: UINavigationController,
+        navigation: Navigation,
         delegate: MainTabCoordinatorDelegate
     ) -> Coordinator {
         let factory = MainTabFactory(appContainer: appContainer)

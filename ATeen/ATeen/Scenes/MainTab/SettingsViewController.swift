@@ -72,9 +72,9 @@ extension SettingsViewController {
         contentConfiguration.image = UIImage(systemName: viewModel.icon)
         cell.contentConfiguration = contentConfiguration
         
-        if !viewModel.isNavigable {
-            cell.selectionStyle = .none
-        }
+   
+        cell.selectionStyle = .none
+        
         
         return cell
     }

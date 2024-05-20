@@ -10,7 +10,7 @@ final class SettingsViewModel {
         ItemSettingViewModel(
             title: "User Configuration",
             icon: "person",
-            isNavigable: false,
+            isNavigable: true,
             navigation: .userConfiguration),
         ItemSettingViewModel(
             title: "Account",

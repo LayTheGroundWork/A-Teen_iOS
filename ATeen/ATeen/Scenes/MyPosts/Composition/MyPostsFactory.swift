@@ -7,7 +7,14 @@
 
 import UIKit
 
-struct MyPostsFactory: ItemTabFactory{
+protocol MyPostsFactory {
+    func makeMyPostViewController(coordinator: MyPostsViewControllerCoordinator) -> UIViewController
+    func makeItemTabBar(navigation: Navigation)
+    func makeNewPostViewController(coordinator: NewPostViewControllerCoordinator) -> UIViewController
+    func makePostDetailCoordinator(navigation: Navigation, id: Int, parentCoordinator: ParentCoordinator) -> Coordinator
+}
+
+struct MyPostsFactoryImp: MyPostsFactory{
     func makeMyPostViewController(coordinator: MyPostsViewControllerCoordinator) -> UIViewController {
         let layout = UICollectionViewFlowLayout()
         layout.itemSize = CGSize(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.width / 2)
@@ -22,7 +29,7 @@ struct MyPostsFactory: ItemTabFactory{
         return controller
     }
     
-    func makeItemTabBar(navigation: UINavigationController) {
+    func makeItemTabBar(navigation: Navigation) {
         makeItemTabBar(
             navigation: navigation,
             title: "My Posts",
@@ -35,9 +42,14 @@ struct MyPostsFactory: ItemTabFactory{
         return controller
     }
     
-    func makePostDetailCoordinator(navigation: UINavigationController, id: Int) -> Coordinator {
+    func makePostDetailCoordinator(navigation: Navigation, id: Int, parentCoordinator: ParentCoordinator) -> Coordinator {
         let factory = PostDetailFactoryImp(id: id)
-        let coordinator = PostDetailCoordinator(navigation: navigation, factory: factory)
+        let coordinator = PostDetailCoordinator(
+            navigation: navigation,
+            factory: factory,
+            parentCoordinator: parentCoordinator)
         return coordinator
     }
 }
+
+extension MyPostsFactoryImp: ItemTabFactory { }

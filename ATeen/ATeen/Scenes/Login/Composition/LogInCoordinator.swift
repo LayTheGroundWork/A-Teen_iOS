@@ -12,12 +12,12 @@ protocol LogInCoordinatorDelegate: AnyObject {
 }
 
 final class LogInCoordinator: Coordinator {
-    var navigation: UINavigationController
+    var navigation: Navigation
     var factory: LogInFactory
     weak var delegate: LogInCoordinatorDelegate?
     
     init(
-        navigation: UINavigationController,
+        navigation: Navigation,
         factory: LogInFactory,
         delegate: LogInCoordinatorDelegate? = nil
     ) {
@@ -30,7 +30,7 @@ final class LogInCoordinator: Coordinator {
         navigation.pushViewController(controller, animated: true)
     }
 }
-
+ 
 extension LogInCoordinator: LogInViewControllerCoordinator {
     func didFinish() {
         delegate?.didFinishLogin()

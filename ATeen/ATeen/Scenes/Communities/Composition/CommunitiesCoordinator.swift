@@ -8,11 +8,11 @@
 import UIKit
 
 final class CommunitiesCoordinator: Coordinator {
-    var navigation: UINavigationController
+    var navigation: Navigation
     private var factory: CommunitiesFactory
     
     init(
-        navigation: UINavigationController,
+        navigation: Navigation,
         factory: CommunitiesFactory
     ) {
         self.navigation = navigation

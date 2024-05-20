@@ -30,7 +30,7 @@ struct MainTabFactory {
     }
     
     private func makeHomeCoordinator() -> Coordinator {
-        let navigation = UINavigationController()
+        let navigation = NavigationImp(rootViewController: UINavigationController())
         let factory = HomeFactoryImp()
         return HomeCoordinator(
             navigation: navigation,
@@ -38,8 +38,8 @@ struct MainTabFactory {
     }
     
     private func makeMyPostsCoordinator() -> Coordinator {
-        let navigation = UINavigationController()
-        let factory = MyPostsFactory()
+        let navigation = NavigationImp(rootViewController: UINavigationController())
+        let factory = MyPostsFactoryImp()
         let mediator = MyPostsMediatorImp()
         return MyPostsCoordinator(
             navigation: navigation,
@@ -48,7 +48,7 @@ struct MainTabFactory {
     }
     private func makeCommunitiesCoordinator() -> Coordinator {
         let factory = CommunitiesFactoryImp()
-        let navigation = UINavigationController()
+        let navigation = NavigationImp(rootViewController: UINavigationController())
         return CommunitiesCoordinator(
             navigation: navigation,
             factory: factory)
@@ -56,7 +56,7 @@ struct MainTabFactory {
     
     private func makeSettingsCoordinator(delegate: SettingsCoordinatorDelegate) -> Coordinator {
         let factory = SettingsFactory(appContainer: appContainer)
-        let navigation = UINavigationController()
+        let navigation = NavigationImp(rootViewController: UINavigationController())
         return SettingsCoordinator(
             navigation: navigation,
             factory: factory,

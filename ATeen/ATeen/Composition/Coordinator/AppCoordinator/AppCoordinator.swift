@@ -8,7 +8,7 @@
 import UIKit
 
 final class AppCoordinator: Coordinator {
-    var navigation: UINavigationController
+    var navigation: Navigation
     var window: UIWindow?
     var factory: AppFactory?
     var auth: SessionCheckAuth?
@@ -17,7 +17,7 @@ final class AppCoordinator: Coordinator {
     private var mainTabCoordinator: Coordinator?
     
     init(
-        navigation: UINavigationController,
+        navigation: Navigation,
         window: UIWindow?,
         factory: AppFactory?,
         auth: SessionCheckAuth?
@@ -34,7 +34,7 @@ final class AppCoordinator: Coordinator {
     }
     
     private func configWindow() {
-        window?.rootViewController = navigation
+        window?.rootViewController = navigation.rootViewController
         window?.makeKeyAndVisible()
     }
     

@@ -12,13 +12,13 @@ protocol MainTabCoordinatorDelegate: AnyObject {
 }
 
 final class MainTabCoordinator: Coordinator {
-    var navigation: UINavigationController
+    var navigation: Navigation
     private let factory: MainTabFactory
     private weak var delegate: MainTabCoordinatorDelegate?
     var childCoordinators: [Coordinator] = []
     
     init(
-        navigation: UINavigationController,
+        navigation: Navigation,
         factory: MainTabFactory,
         delegate: MainTabCoordinatorDelegate
     ) {
@@ -33,7 +33,7 @@ final class MainTabCoordinator: Coordinator {
         navigation.navigationBar.isHidden = true
         
         childCoordinators = factory.makeChildCoordinators(delegate: self)
-        let childNavigation = childCoordinators.map { $0.navigation }
+        let childNavigation = childCoordinators.map { $0.navigation.rootViewController }
         childCoordinators.forEach { $0.start() }
         navigationTab.viewControllers = childNavigation
     }

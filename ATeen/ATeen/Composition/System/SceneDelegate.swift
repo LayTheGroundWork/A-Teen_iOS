@@ -23,7 +23,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         appContainer = AppContainer()
         appFactory = AppFactory(appContainer: appContainer)
         appCoordinator = AppCoordinator(
-            navigation: UINavigationController(),
+            navigation: NavigationImp(rootViewController: UINavigationController()),
             window: window,
             factory: appFactory,
             auth: appContainer?.auth)

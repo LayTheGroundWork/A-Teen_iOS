@@ -19,7 +19,7 @@ struct SettingsFactory: ItemTabFactory {
         return controller
     }
     
-    func makeTabBarItem(navigation: UINavigationController) {
+    func makeTabBarItem(navigation: Navigation) {
         makeItemTabBar(
             navigation: navigation,
             title: "Settings",
@@ -40,4 +40,10 @@ struct SettingsFactory: ItemTabFactory {
         return controller
     }
     
+    func makeUserConfigurationCoordinator(delegate: UserConfigurationCoordinatorDelegate) -> Coordinator {
+        let factory = UserConfigurationFactory()
+        let navigationController = UINavigationController()
+        let navigation = NavigationImp(rootViewController: navigationController)
+        return UserConfigurationCoordinator(navigation: navigation, factory: factory, delegate: delegate)
+    }
 }
