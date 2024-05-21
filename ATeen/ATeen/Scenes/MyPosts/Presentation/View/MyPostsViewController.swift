@@ -13,8 +13,6 @@ protocol MyPostsViewControllerCoordinator: AnyObject {
 }
 
 final class MyPostsViewController: UICollectionViewController {
-    // MARK: - Public properties
-    
     // MARK: - Private properties
     private weak var coordinator: MyPostsViewControllerCoordinator?
     private var counter = 1

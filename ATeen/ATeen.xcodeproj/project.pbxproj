@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		41735B4C2BFCE8E300E4A339 /* SettingsCoordinator+UserConfigurationCoordinatorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41735B4B2BFCE8E300E4A339 /* SettingsCoordinator+UserConfigurationCoordinatorDelegate.swift */; };
+		41735B4E2BFCEC0B00E4A339 /* NavigationImp+UINavigationControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41735B4D2BFCEC0B00E4A339 /* NavigationImp+UINavigationControllerDelegate.swift */; };
+		41735B502BFCEC4A00E4A339 /* NavigationImp+UIAdaptivePresentationControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41735B4F2BFCEC4A00E4A339 /* NavigationImp+UIAdaptivePresentationControllerDelegate.swift */; };
+		41735B522BFCEC9700E4A339 /* NavigationImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41735B512BFCEC9700E4A339 /* NavigationImp.swift */; };
+		41735B542BFCEDE000E4A339 /* PostDetailCoordinator+PostDetailViewControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41735B532BFCEDE000E4A339 /* PostDetailCoordinator+PostDetailViewControllerCoordinator.swift */; };
+		41735B562BFCEE2200E4A339 /* PostDetailFactoryImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41735B552BFCEE2200E4A339 /* PostDetailFactoryImp.swift */; };
+		41735B582BFCEEC300E4A339 /* HomeCoordinator+HomeViewControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41735B572BFCEEC300E4A339 /* HomeCoordinator+HomeViewControllerCoordinator.swift */; };
 		418CB1C92BF71A4F001DA795 /* LogInFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418CB1C82BF71A4F001DA795 /* LogInFactory.swift */; };
 		418CB1CC2BF71AE7001DA795 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418CB1CB2BF71AE7001DA795 /* LogInViewController.swift */; };
 		418CB1D12BF71CAD001DA795 /* LogInCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418CB1D02BF71CAD001DA795 /* LogInCoordinator.swift */; };
@@ -56,6 +63,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		41735B4B2BFCE8E300E4A339 /* SettingsCoordinator+UserConfigurationCoordinatorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SettingsCoordinator+UserConfigurationCoordinatorDelegate.swift"; sourceTree = "<group>"; };
+		41735B4D2BFCEC0B00E4A339 /* NavigationImp+UINavigationControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NavigationImp+UINavigationControllerDelegate.swift"; sourceTree = "<group>"; };
+		41735B4F2BFCEC4A00E4A339 /* NavigationImp+UIAdaptivePresentationControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NavigationImp+UIAdaptivePresentationControllerDelegate.swift"; sourceTree = "<group>"; };
+		41735B512BFCEC9700E4A339 /* NavigationImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationImp.swift; sourceTree = "<group>"; };
+		41735B532BFCEDE000E4A339 /* PostDetailCoordinator+PostDetailViewControllerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PostDetailCoordinator+PostDetailViewControllerCoordinator.swift"; sourceTree = "<group>"; };
+		41735B552BFCEE2200E4A339 /* PostDetailFactoryImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailFactoryImp.swift; sourceTree = "<group>"; };
+		41735B572BFCEEC300E4A339 /* HomeCoordinator+HomeViewControllerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeCoordinator+HomeViewControllerCoordinator.swift"; sourceTree = "<group>"; };
 		418CB1C82BF71A4F001DA795 /* LogInFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInFactory.swift; sourceTree = "<group>"; };
 		418CB1CB2BF71AE7001DA795 /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		418CB1D02BF71CAD001DA795 /* LogInCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInCoordinator.swift; sourceTree = "<group>"; };
@@ -203,6 +217,7 @@
 				418CB1F32BF743AE001DA795 /* SettingsCoordinator.swift */,
 				418CB1F52BF743B8001DA795 /* SettingsFactory.swift */,
 				418CB1FD2BF74D16001DA795 /* SettingsCoordinator+SettingsViewControllerCoordinator.swift */,
+				41735B4B2BFCE8E300E4A339 /* SettingsCoordinator+UserConfigurationCoordinatorDelegate.swift */,
 			);
 			name = Composition;
 			sourceTree = "<group>";
@@ -499,6 +514,7 @@
 			children = (
 				41BB4BF42BFB2EB400D26A5D /* HomeCoordinator.swift */,
 				41BB4BF62BFB2ED900D26A5D /* HomeFactory.swift */,
+				41735B572BFCEEC300E4A339 /* HomeCoordinator+HomeViewControllerCoordinator.swift */,
 			);
 			path = Composition;
 			sourceTree = "<group>";
@@ -524,7 +540,9 @@
 			isa = PBXGroup;
 			children = (
 				41BB4BFD2BFB38E900D26A5D /* PostDetailFactory.swift */,
+				41735B552BFCEE2200E4A339 /* PostDetailFactoryImp.swift */,
 				41BB4BFF2BFB39FA00D26A5D /* PostDetailCoordinator.swift */,
+				41735B532BFCEDE000E4A339 /* PostDetailCoordinator+PostDetailViewControllerCoordinator.swift */,
 			);
 			path = Composition;
 			sourceTree = "<group>";
@@ -541,6 +559,9 @@
 			isa = PBXGroup;
 			children = (
 				41BB4C022BFBA32000D26A5D /* Navigation.swift */,
+				41735B4D2BFCEC0B00E4A339 /* NavigationImp+UINavigationControllerDelegate.swift */,
+				41735B4F2BFCEC4A00E4A339 /* NavigationImp+UIAdaptivePresentationControllerDelegate.swift */,
+				41735B512BFCEC9700E4A339 /* NavigationImp.swift */,
 			);
 			path = Navigation;
 			sourceTree = "<group>";
@@ -650,6 +671,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				41735B582BFCEEC300E4A339 /* HomeCoordinator+HomeViewControllerCoordinator.swift in Sources */,
 				41BB4BE12BFB179D00D26A5D /* MyPostsViewController.swift in Sources */,
 				418CB1FE2BF74D16001DA795 /* SettingsCoordinator+SettingsViewControllerCoordinator.swift in Sources */,
 				4190F8E42BF4E91000FCC0A3 /* AppCoordinator.swift in Sources */,
@@ -658,15 +680,20 @@
 				418CB2092BF74EAC001DA795 /* CommunitiesFactory.swift in Sources */,
 				4190F8C52BF4E6EF00FCC0A3 /* AppDelegate.swift in Sources */,
 				41BB4BE32BFB1AE200D26A5D /* MyPostsFactory.swift in Sources */,
+				41735B4E2BFCEC0B00E4A339 /* NavigationImp+UINavigationControllerDelegate.swift in Sources */,
 				418CB1DA2BF726E7001DA795 /* MainTabController.swift in Sources */,
 				418CB1F42BF743AE001DA795 /* SettingsCoordinator.swift in Sources */,
+				41735B4C2BFCE8E300E4A339 /* SettingsCoordinator+UserConfigurationCoordinatorDelegate.swift in Sources */,
 				41BB4C052BFBADDA00D26A5D /* ParentCoordinator.swift in Sources */,
+				41735B502BFCEC4A00E4A339 /* NavigationImp+UIAdaptivePresentationControllerDelegate.swift in Sources */,
 				41BB4C0D2BFBBA2300D26A5D /* UserConfigurationFactory.swift in Sources */,
 				41BB4BEC2BFB26AF00D26A5D /* MyPostsMediator.swift in Sources */,
 				418CB1E72BF73D1B001DA795 /* SettingsViewNavigation.swift in Sources */,
 				41BB4BF52BFB2EB400D26A5D /* HomeCoordinator.swift in Sources */,
+				41735B562BFCEE2200E4A339 /* PostDetailFactoryImp.swift in Sources */,
 				418CB1D52BF71DC8001DA795 /* LogInViewModel.swift in Sources */,
 				418CB1F82BF74867001DA795 /* ItemTabFactory.swift in Sources */,
+				41735B522BFCEC9700E4A339 /* NavigationImp.swift in Sources */,
 				41BB4BFC2BFB36EC00D26A5D /* PostDetailViewController.swift in Sources */,
 				418CB1F62BF743B8001DA795 /* SettingsFactory.swift in Sources */,
 				418CB1DC2BF7270A001DA795 /* MainTabFactory.swift in Sources */,
@@ -691,6 +718,7 @@
 				41BB4BFE2BFB38E900D26A5D /* PostDetailFactory.swift in Sources */,
 				418CB1E52BF73CE3001DA795 /* ItemSettingViewModel.swift in Sources */,
 				418CB1EF2BF740F6001DA795 /* Reusable.swift in Sources */,
+				41735B542BFCEDE000E4A339 /* PostDetailCoordinator+PostDetailViewControllerCoordinator.swift in Sources */,
 				4190F8ED2BF4EAAB00FCC0A3 /* AppContainer.swift in Sources */,
 				41BB4C002BFB39FA00D26A5D /* PostDetailCoordinator.swift in Sources */,
 				418CB1EB2BF73E6F001DA795 /* SettingsViewController.swift in Sources */,

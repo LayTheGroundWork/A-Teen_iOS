@@ -12,13 +12,10 @@ protocol HomeViewControllerCoordinator: AnyObject {
 }
 
 final class HomeViewController: UICollectionViewController {
-    // MARK: - Public properties
-    
     // MARK: - Private properties
     private weak var coordinator: HomeViewControllerCoordinator?
     
     // MARK: - Life Cycle
-    
     init(
         collectionViewLayout: UICollectionViewLayout,
         coordinator: HomeViewControllerCoordinator
@@ -46,8 +43,6 @@ final class HomeViewController: UICollectionViewController {
         collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "id")
         collectionView.backgroundColor = .systemGroupedBackground
     }
-    
-
 }
 
 // MARK: - Extensions here
@@ -82,7 +77,4 @@ extension HomeViewController {
     ) {
         coordinator?.didSelectPost(id: indexPath.row)
     }
-    
 }
-
-

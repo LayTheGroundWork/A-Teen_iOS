@@ -12,7 +12,6 @@ protocol NewPostViewControllerCoordinator: AnyObject {
 }
 
 final class NewPostViewController: UIViewController {
-    // MARK: - Public properties
     
     // MARK: - Private properties
     private let savePostButton: UIButton = {
@@ -67,6 +66,3 @@ final class NewPostViewController: UIViewController {
     }
     
 }
-
-// MARK: - Extensions here
-

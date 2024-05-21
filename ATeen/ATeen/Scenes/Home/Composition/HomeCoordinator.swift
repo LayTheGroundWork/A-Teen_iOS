@@ -9,7 +9,7 @@ import UIKit
 
 final class HomeCoordinator: Coordinator {
     var navigation: Navigation
-    private let factory: HomeFactory
+    let factory: HomeFactory
     var childCoordinators: [Coordinator] = []
     
     init(
@@ -25,16 +25,6 @@ final class HomeCoordinator: Coordinator {
         factory.makeItemTabBar(navigation: navigation)
         navigation.navigationBar.prefersLargeTitles = true
         navigation.pushViewController(controller, animated: true)
-    }
-}
-
-extension HomeCoordinator: HomeViewControllerCoordinator {
-    func didSelectPost(id: Int) {
-        let postDetailCoordinator = factory.makePostDetailCoordinator(
-            navigation: navigation,
-            id: id,
-            parentCoordinator: self)
-        addChildCoordinatorStart(postDetailCoordinator)
     }
 }
 

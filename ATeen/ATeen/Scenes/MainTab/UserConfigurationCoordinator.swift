@@ -6,7 +6,7 @@
 //
 
 protocol UserConfigurationCoordinatorDelegate: AnyObject {
-    func didFinish()
+    func didFinish(childCoordinator: Coordinator)
 }
 
 final class UserConfigurationCoordinator: Coordinator {
@@ -36,6 +36,6 @@ extension UserConfigurationCoordinator: UserConfigurationViewControllerCoordinat
     }
     
     func didFinishFlow() {
-        delegate?.didFinish()
+        delegate?.didFinish(childCoordinator: self)
     }
 }

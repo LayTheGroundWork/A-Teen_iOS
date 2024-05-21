@@ -95,5 +95,3 @@ final class PostDetailViewController: UIViewController {
     
 }
 
-// MARK: - Extensions here
-

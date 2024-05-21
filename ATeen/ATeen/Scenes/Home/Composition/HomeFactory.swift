@@ -14,7 +14,6 @@ protocol HomeFactory {
 }
 
 struct HomeFactoryImp: HomeFactory {
-    
     func makeHomeViewController(coordinator: HomeViewControllerCoordinator) -> UIViewController {
         let layout = UICollectionViewFlowLayout()
         layout.itemSize = CGSize(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.width / 2)
@@ -43,7 +42,6 @@ struct HomeFactoryImp: HomeFactory {
             parentCoordinator: parentCoordinator)
         return coordinator
     }
-    
 }
 
 extension HomeFactoryImp: ItemTabFactory { }

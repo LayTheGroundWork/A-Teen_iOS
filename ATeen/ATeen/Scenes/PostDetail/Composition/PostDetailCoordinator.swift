@@ -9,7 +9,7 @@ import UIKit
 
 final class PostDetailCoordinator: Coordinator {
     var navigation: Navigation
-    private let factory: PostDetailFactory
+    let factory: PostDetailFactory
     private weak var parentCoordinator: ParentCoordinator?
     
     init(
@@ -27,19 +27,5 @@ final class PostDetailCoordinator: Coordinator {
             guard let self = self else { return }
             self.parentCoordinator?.removeChildCoordinator(self)
         }
-    }
-}
-
-extension PostDetailCoordinator: PostDetailViewControllerCoordinator {
-    func didTapPhotoButton() {
-        navigation.present(factory.makePhotosViewController(), animated: true)
-    }
-    
-    func didTapMoreDetailButton() {
-        navigation.present(factory.makeMoreDetailViewController(), animated: true)
-    }
-    
-    func didTapSourceButton() {
-        navigation.present(factory.makeSourceViewController(), animated: true)
     }
 }

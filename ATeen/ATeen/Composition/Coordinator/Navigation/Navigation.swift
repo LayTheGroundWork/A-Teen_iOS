@@ -2,7 +2,7 @@
 //  Navigation.swift
 //  ATeen
 //
-//  Created by 최동호 on 5/21/24.
+//  Created by Pozol on 5/21/24.
 //
 
 import UIKit
@@ -27,81 +27,5 @@ extension Navigation {
         animated: Bool
     ) {
         pushViewController(viewControllerToPresent, animated: animated, backCompletion: nil)
-    }
-}
-
-final class NavigationImp: NSObject {
-    var rootViewController: UINavigationController
-    var dismissNavigation: (() -> Void)?
-    
-    private var backCompletions: [UIViewController: () -> Void] = [:]
-    
-    init(rootViewController: UINavigationController) {
-        self.rootViewController = rootViewController
-        super.init()
-        rootViewController.delegate = self
-        rootViewController.presentationController?.delegate = self
-    }
-}
-
-extension NavigationImp: Navigation {
-    var viewControllers: [UIViewController] {
-        get {
-            rootViewController.viewControllers
-        }
-        set {
-            rootViewController.viewControllers = newValue
-        }
-    }
-    
-    var navigationBar: UINavigationBar {
-        rootViewController.navigationBar
-    }
-    
-    func present(_ viewControllerToPresent: UIViewController, animated: Bool) {
-        rootViewController.present(viewControllerToPresent, animated: animated)
-    }
-    
-    func dismiss(animated: Bool) {
-        rootViewController.dismiss(animated: animated)
-    }
-    
-    func pushViewController(
-        _ viewControllerToPresent: UIViewController,
-        animated: Bool,
-        backCompletion: (() -> Void)?
-    ) {
-        if let backCompletion = backCompletion {
-            backCompletions[viewControllerToPresent] = backCompletion
-        }
-        rootViewController.pushViewController(viewControllerToPresent, animated: animated)
-    }
-    
-}
-
-
-extension NavigationImp: UINavigationControllerDelegate {
-    func navigationController(
-        _ navigationController: UINavigationController,
-        didShow viewController: UIViewController,
-        animated: Bool
-    ) {
-        guard
-            let controller = navigationController
-                .transitionCoordinator?
-                .viewController(forKey: .from),
-              !navigationController.viewControllers.contains(controller)
-        else { return }
-        
-        guard let completion = backCompletions[controller] else { return }
-        completion()
-        backCompletions.removeValue(forKey: controller)
-    }
-}
-
-extension NavigationImp: UIAdaptivePresentationControllerDelegate {
-    func presentationControllerDidDismiss(_ presentationController: UIPresentationController) {
-        dismissNavigation?()
-        dismissNavigation = nil
     }
 }

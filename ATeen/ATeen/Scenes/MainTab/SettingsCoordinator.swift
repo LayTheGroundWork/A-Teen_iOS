@@ -15,7 +15,7 @@ final class SettingsCoordinator: Coordinator {
     var navigation: Navigation
     var factory: SettingsFactory
     weak var delegate: SettingsCoordinatorDelegate?
-    var userConfigurationCoordinator: Coordinator?
+    var childCoordinators: [Coordinator] = []
     
     init(
         navigation: Navigation,
@@ -34,5 +34,7 @@ final class SettingsCoordinator: Coordinator {
         factory.makeTabBarItem(navigation: navigation)
     }
 }
+
+extension SettingsCoordinator: ParentCoordinator { }
 
 

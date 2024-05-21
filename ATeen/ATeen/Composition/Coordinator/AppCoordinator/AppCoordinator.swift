@@ -13,8 +13,7 @@ final class AppCoordinator: Coordinator {
     var factory: AppFactory?
     var auth: SessionCheckAuth?
     
-    private var loginCoordinator: Coordinator?
-    private var mainTabCoordinator: Coordinator?
+    var childCoordinators: [Coordinator] = []
     
     init(
         navigation: Navigation,
@@ -45,33 +44,40 @@ final class AppCoordinator: Coordinator {
     }
     
     private func startLoginCoordinator() {
-        loginCoordinator = factory?.makeLogInCoordinator(
+        let loginCoordinator = factory?.makeLogInCoordinator(
             navigation: navigation,
             delegate: self)
-        loginCoordinator?.start()
+        addChildCoordinatorStart(loginCoordinator)
     }
     
     private func startMainTabCoordinator() {
-        mainTabCoordinator = factory?.makeMainTabCoordinator(
+        let mainTabCoordinator = factory?.makeMainTabCoordinator(
             navigation: navigation,
             delegate: self)
-        mainTabCoordinator?.start()
+        addChildCoordinatorStart(mainTabCoordinator)
     }
-    
+
+    // MARK: - Private helpers
+    private func clearCoordinatorsAndStart() {
+        navigation.viewControllers = []
+        clearAllChildsCoordinator()
+        startSomeCoordinator()
+    }
 }
 
+// MARK: - LogInCoordinatorDelegate
 extension AppCoordinator: LogInCoordinatorDelegate {
     func didFinishLogin() {
-        navigation.viewControllers = []
-        loginCoordinator = nil
-        startSomeCoordinator()
+        clearCoordinatorsAndStart()
     }
 }
 
+// MARK: - MainTabCoordinatorDelegate
 extension AppCoordinator: MainTabCoordinatorDelegate {
     func didFinish() {
-        navigation.viewControllers = []
-        mainTabCoordinator = nil
-        startSomeCoordinator()
+        clearCoordinatorsAndStart()
     }
 }
+
+// MARK: - ParentCoordinator
+extension AppCoordinator: ParentCoordinator { }

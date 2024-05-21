@@ -8,6 +8,7 @@
 import UIKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
+    
     var window: UIWindow?
     var appCoordinator: Coordinator?
     var appFactory: AppFactory?
