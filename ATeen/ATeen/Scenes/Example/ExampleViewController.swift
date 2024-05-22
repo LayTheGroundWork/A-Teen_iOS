@@ -26,6 +26,5 @@ final class ExampleViewController: UIViewController {
     // MARK: - Actions
     
 }
-
 // MARK: - Extensions here
 

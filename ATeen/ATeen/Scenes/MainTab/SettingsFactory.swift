@@ -22,9 +22,9 @@ struct SettingsFactory: ItemTabFactory {
     func makeTabBarItem(navigation: Navigation) {
         makeItemTabBar(
             navigation: navigation,
-            title: "Settings",
-            image: "gearshape.2",
-            selectedImage: "gearshape.2.fill"
+            title: "Chat",
+            image: "chatIcon",
+            selectedImage: "chatIconSelected"
         )
     }
     

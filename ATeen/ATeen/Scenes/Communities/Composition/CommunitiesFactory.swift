@@ -22,9 +22,9 @@ struct CommunitiesFactoryImp: CommunitiesFactory {
     func makeItemTabBar(navigation: Navigation) {
         makeItemTabBar(
             navigation: navigation,
-            title: "Communities",
-            image: "person.3",
-            selectedImage: "person.3.fill")
+            title: "Teen",
+            image: "teenIcon",
+            selectedImage: "teenIconSelected")
     }
 }
 

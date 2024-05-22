@@ -18,8 +18,8 @@ extension ItemTabFactory {
     ) {
         let tabBarItem = UITabBarItem(
             title: title,
-            image: UIImage(systemName: image),
-            selectedImage: UIImage(systemName: selectedImage))
+            image: UIImage(named: image),
+            selectedImage: UIImage(named: selectedImage))
         
         navigation.rootViewController.tabBarItem = tabBarItem
     }

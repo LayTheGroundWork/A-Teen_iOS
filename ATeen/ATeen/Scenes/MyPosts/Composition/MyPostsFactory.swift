@@ -32,9 +32,9 @@ struct MyPostsFactoryImp: MyPostsFactory{
     func makeItemTabBar(navigation: Navigation) {
         makeItemTabBar(
             navigation: navigation,
-            title: "My Posts",
-            image: "list.bullet.rectangle.portrait",
-            selectedImage: "list.bullet.rectangle.portrait.fill")
+            title: "Ranking",
+            image: "rankingIcon",
+            selectedImage: "rankingIconSelected")
     }
     
     func makeNewPostViewController(coordinator: NewPostViewControllerCoordinator) -> UIViewController {

@@ -29,9 +29,9 @@ struct HomeFactoryImp: HomeFactory {
     func makeItemTabBar(navigation: Navigation) {
         makeItemTabBar(
             navigation: navigation,
-            title: "Home",
-            image: "house",
-            selectedImage: "house.fill")
+            title: "Main",
+            image: "mainIcon",
+            selectedImage: "mainIconSelected")
     }
     
     func makePostDetailCoordinator(navigation: Navigation, id: Int, parentCoordinator: ParentCoordinator) -> Coordinator {

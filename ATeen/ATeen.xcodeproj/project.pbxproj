@@ -44,6 +44,8 @@
 		4190F8E82BF4E98C00FCC0A3 /* AppFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4190F8E72BF4E98C00FCC0A3 /* AppFactory.swift */; };
 		4190F8EA2BF4E9D800FCC0A3 /* Auth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4190F8E92BF4E9D800FCC0A3 /* Auth.swift */; };
 		4190F8ED2BF4EAAB00FCC0A3 /* AppContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4190F8EC2BF4EAAB00FCC0A3 /* AppContainer.swift */; };
+		41A8F3BD2BFE500C0092CBFA /* UIView+Contraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A8F3BC2BFE500C0092CBFA /* UIView+Contraints.swift */; };
+		41A8F3BF2BFE52E30092CBFA /* CustomTabBarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A8F3BE2BFE52E30092CBFA /* CustomTabBarButton.swift */; };
 		41BB4BE12BFB179D00D26A5D /* MyPostsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BB4BE02BFB179D00D26A5D /* MyPostsViewController.swift */; };
 		41BB4BE32BFB1AE200D26A5D /* MyPostsFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BB4BE22BFB1AE200D26A5D /* MyPostsFactory.swift */; };
 		41BB4BE82BFB1B1E00D26A5D /* NewPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BB4BE72BFB1B1E00D26A5D /* NewPostViewController.swift */; };
@@ -102,6 +104,8 @@
 		4190F8E72BF4E98C00FCC0A3 /* AppFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFactory.swift; sourceTree = "<group>"; };
 		4190F8E92BF4E9D800FCC0A3 /* Auth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Auth.swift; sourceTree = "<group>"; };
 		4190F8EC2BF4EAAB00FCC0A3 /* AppContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppContainer.swift; sourceTree = "<group>"; };
+		41A8F3BC2BFE500C0092CBFA /* UIView+Contraints.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Contraints.swift"; sourceTree = "<group>"; };
+		41A8F3BE2BFE52E30092CBFA /* CustomTabBarButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarButton.swift; sourceTree = "<group>"; };
 		41BB4BE02BFB179D00D26A5D /* MyPostsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPostsViewController.swift; sourceTree = "<group>"; };
 		41BB4BE22BFB1AE200D26A5D /* MyPostsFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPostsFactory.swift; sourceTree = "<group>"; };
 		41BB4BE72BFB1B1E00D26A5D /* NewPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPostViewController.swift; sourceTree = "<group>"; };
@@ -187,6 +191,7 @@
 			isa = PBXGroup;
 			children = (
 				418CB1D92BF726E7001DA795 /* MainTabController.swift */,
+				41A8F3BE2BFE52E30092CBFA /* CustomTabBarButton.swift */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -252,6 +257,7 @@
 		418CB1EC2BF740C8001DA795 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				41A8F3BB2BFE4FF90092CBFA /* Extension */,
 				418CB1F02BF74124001DA795 /* Localize */,
 				418CB1ED2BF740E5001DA795 /* Utils */,
 			);
@@ -455,6 +461,14 @@
 				4190F8CD2BF4E6F100FCC0A3 /* Assets.xcassets */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		41A8F3BB2BFE4FF90092CBFA /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				41A8F3BC2BFE500C0092CBFA /* UIView+Contraints.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 		41BB4BDB2BFB176400D26A5D /* MyPosts */ = {
@@ -717,7 +731,9 @@
 				418CB1C92BF71A4F001DA795 /* LogInFactory.swift in Sources */,
 				41BB4BFE2BFB38E900D26A5D /* PostDetailFactory.swift in Sources */,
 				418CB1E52BF73CE3001DA795 /* ItemSettingViewModel.swift in Sources */,
+				41A8F3BF2BFE52E30092CBFA /* CustomTabBarButton.swift in Sources */,
 				418CB1EF2BF740F6001DA795 /* Reusable.swift in Sources */,
+				41A8F3BD2BFE500C0092CBFA /* UIView+Contraints.swift in Sources */,
 				41735B542BFCEDE000E4A339 /* PostDetailCoordinator+PostDetailViewControllerCoordinator.swift in Sources */,
 				4190F8ED2BF4EAAB00FCC0A3 /* AppContainer.swift in Sources */,
 				41BB4C002BFB39FA00D26A5D /* PostDetailCoordinator.swift in Sources */,
