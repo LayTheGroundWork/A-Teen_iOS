@@ -20,7 +20,6 @@ struct AppFactory {
             navigation: navigation,
             factory: logInFactory,
             delegate: delegate)
-
     }
     
     func makeMainTabCoordinator(

@@ -9,10 +9,30 @@ import UIKit
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
+    
+    var auth: SessionCheckAuth?
+    var appContainer: AppContainer?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        appContainer = AppContainer()
+        guard
+            let auth = auth
+        else {
+            loadHomeDate()
+            return true
+        }
+
+        auth.isSessionActive ? loadAllData() : loadHomeDate()
         return true
+    }
+  
+    private func loadAllData() {
+        Thread.sleep(forTimeInterval: 5.0)
+    }
+    
+    private func loadHomeDate() {
+        Thread.sleep(forTimeInterval: 3.0)
     }
 
     // MARK: UISceneSession Lifecycle

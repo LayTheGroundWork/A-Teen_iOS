@@ -11,45 +11,42 @@ final class AppCoordinator: Coordinator {
     var navigation: Navigation
     var window: UIWindow?
     var factory: AppFactory?
-    var auth: SessionCheckAuth?
     
     var childCoordinators: [Coordinator] = []
     
     init(
         navigation: Navigation,
         window: UIWindow?,
-        factory: AppFactory?,
-        auth: SessionCheckAuth?
+        factory: AppFactory?
     ) {
         self.navigation = navigation
         self.window = window
         self.factory = factory
-        self.auth = auth
     }
     
     func start() {
         configWindow()
-        startSomeCoordinator()
+        startMainTabCoordinator()
     }
     
     private func configWindow() {
         window?.rootViewController = navigation.rootViewController
         window?.makeKeyAndVisible()
     }
-    
-    private func startSomeCoordinator() {
-        guard let auth = auth else { return }
-        auth.isSessionActive ? startMainTabCoordinator() : startLoginCoordinator()
-        
-    }
-    
-    private func startLoginCoordinator() {
-        let loginCoordinator = factory?.makeLogInCoordinator(
-            navigation: navigation,
-            delegate: self)
-        addChildCoordinatorStart(loginCoordinator)
-    }
-    
+
+//    private func startSomeCoordinator() {
+//        guard let auth = auth else { return }
+//        auth.isSessionActive ? startMainTabCoordinator() : startLoginCoordinator()
+//        
+//    }
+//
+//    private func startLoginCoordinator() {
+//        let loginCoordinator = factory?.makeLogInCoordinator(
+//            navigation: navigation,
+//            delegate: self)
+//        addChildCoordinatorStart(loginCoordinator)
+//    }
+
     private func startMainTabCoordinator() {
         let mainTabCoordinator = factory?.makeMainTabCoordinator(
             navigation: navigation,
@@ -61,7 +58,8 @@ final class AppCoordinator: Coordinator {
     private func clearCoordinatorsAndStart() {
         navigation.viewControllers = []
         clearAllChildsCoordinator()
-        startSomeCoordinator()
+        startMainTabCoordinator()
+//        startSomeCoordinator()
     }
 }
 
