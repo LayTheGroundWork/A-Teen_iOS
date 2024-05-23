@@ -19,6 +19,8 @@
 		417286E62BFF1FE7004F88F9 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 417286E52BFF1FE7004F88F9 /* MainViewController.swift */; };
 		417286E92BFF1FFB004F88F9 /* MainFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 417286E82BFF1FFB004F88F9 /* MainFactory.swift */; };
 		417286EB2BFF2004004F88F9 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 417286EA2BFF2004004F88F9 /* MainCoordinator.swift */; };
+		417286F32BFF2822004F88F9 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 417286F22BFF2822004F88F9 /* SnapKit */; };
+		417286F52BFF2822004F88F9 /* SnapKit-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = 417286F42BFF2822004F88F9 /* SnapKit-Dynamic */; };
 		41735B4C2BFCE8E300E4A339 /* SettingsCoordinator+UserConfigurationCoordinatorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41735B4B2BFCE8E300E4A339 /* SettingsCoordinator+UserConfigurationCoordinatorDelegate.swift */; };
 		41735B4E2BFCEC0B00E4A339 /* NavigationImp+UINavigationControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41735B4D2BFCEC0B00E4A339 /* NavigationImp+UINavigationControllerDelegate.swift */; };
 		41735B502BFCEC4A00E4A339 /* NavigationImp+UIAdaptivePresentationControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41735B4F2BFCEC4A00E4A339 /* NavigationImp+UIAdaptivePresentationControllerDelegate.swift */; };
@@ -151,6 +153,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				417286F32BFF2822004F88F9 /* SnapKit in Frameworks */,
+				417286F52BFF2822004F88F9 /* SnapKit-Dynamic in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -752,6 +756,10 @@
 			dependencies = (
 			);
 			name = ATeen;
+			packageProductDependencies = (
+				417286F22BFF2822004F88F9 /* SnapKit */,
+				417286F42BFF2822004F88F9 /* SnapKit-Dynamic */,
+			);
 			productName = ATeen;
 			productReference = 4190F8C12BF4E6EF00FCC0A3 /* ATeen.app */;
 			productType = "com.apple.product-type.application";
@@ -780,6 +788,9 @@
 				Base,
 			);
 			mainGroup = 4190F8B82BF4E6EF00FCC0A3;
+			packageReferences = (
+				417286F12BFF2822004F88F9 /* XCRemoteSwiftPackageReference "SnapKit" */,
+			);
 			productRefGroup = 4190F8C22BF4E6EF00FCC0A3 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -1086,6 +1097,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		417286F12BFF2822004F88F9 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.7.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		417286F22BFF2822004F88F9 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 417286F12BFF2822004F88F9 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+		417286F42BFF2822004F88F9 /* SnapKit-Dynamic */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 417286F12BFF2822004F88F9 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = "SnapKit-Dynamic";
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 4190F8B92BF4E6EF00FCC0A3 /* Project object */;
 }
