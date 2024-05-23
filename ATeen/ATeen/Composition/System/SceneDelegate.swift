@@ -8,25 +8,25 @@
 import UIKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
+    
     var window: UIWindow?
     var appCoordinator: Coordinator?
     var appFactory: AppFactory?
     var appContainer: AppContainer?
-
     func scene(
         _ scene: UIScene,
         willConnectTo session: UISceneSession,
         options connectionOptions: UIScene.ConnectionOptions
     ) {
         guard let scene = (scene as? UIWindowScene) else { return }
+        guard let data = UIApplication.shared.delegate as? AppDelegate else { return }
         window = UIWindow(windowScene: scene)
-        appContainer = AppContainer()
+        appContainer = data.appContainer
         appFactory = AppFactory(appContainer: appContainer)
         appCoordinator = AppCoordinator(
-            navigation: UINavigationController(),
+            navigation: NavigationImp(rootViewController: UINavigationController()),
             window: window,
-            factory: appFactory,
-            auth: appContainer?.auth)
+            factory: appFactory)
         appCoordinator?.start()
     }
 

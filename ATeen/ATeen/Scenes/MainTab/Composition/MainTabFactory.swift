@@ -1,0 +1,75 @@
+//
+//  MainTabFactory.swift
+//  ATeen
+//
+//  Created by 최동호 on 5/17/24.
+//
+
+import UIKit
+
+struct MainTabFactory {
+    let appContainer: AppContainer?
+    
+    func makeMainTabController() -> UITabBarController {
+        let mainTabController = MainTabController()
+        mainTabController.viewControllers = []
+        mainTabController.title = "Main"
+        return mainTabController
+    }
+    
+    func makeChildCoordinators(delegate: SettingsCoordinatorDelegate) -> [Coordinator] {
+        let mainCoordinator = makeMainCoordinator()
+        let rankingCoordinator = makeRankingCoordinator()
+        let teenCoordinator = makeTeenCoordinator()
+        let chatCoordinator = makeChatCoordinator()
+        let profileCoordinator = makeProfileCoordinator(delegate: delegate)
+        
+        return [mainCoordinator,
+                rankingCoordinator,
+                teenCoordinator,
+                chatCoordinator,
+                profileCoordinator]
+    }
+    
+    private func makeMainCoordinator() -> Coordinator {
+        let navigation = NavigationImp(rootViewController: UINavigationController())
+        let factory = MainFactoryImp()
+        return MainCoordinator(
+            navigation: navigation,
+            factory: factory)
+    }
+    
+    private func makeRankingCoordinator() -> Coordinator {
+        let navigation = NavigationImp(rootViewController: UINavigationController())
+        let factory = RankingFactoryImp()
+        return RankingCoordinator(
+            navigation: navigation,
+            factory: factory)
+    }
+    private func makeTeenCoordinator() -> Coordinator {
+        let factory = TeenFactoryImp()
+        let navigation = NavigationImp(rootViewController: UINavigationController())
+        return TeenCoordinator(
+            navigation: navigation,
+            factory: factory)
+    }
+    
+    private func makeChatCoordinator() -> Coordinator {
+        let factory = ChatFactoryImp()
+        let navigation = NavigationImp(rootViewController: UINavigationController())
+        return ChatCoordinator(
+            navigation: navigation,
+            factory: factory)
+    }
+    
+    private func makeProfileCoordinator(delegate: SettingsCoordinatorDelegate) -> Coordinator {
+        let factory = ProfileFactoryImp(appContainer: appContainer)
+        let navigation = NavigationImp(rootViewController: UINavigationController())
+        return ProfileCoordinator(
+            navigation: navigation,
+            factory: factory,
+            delegate: delegate)
+    }
+    
+
+}
