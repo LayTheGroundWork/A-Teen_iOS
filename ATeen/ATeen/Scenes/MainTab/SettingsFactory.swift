@@ -7,7 +7,14 @@
 
 import UIKit
 
-struct SettingsFactory{
+protocol SettingsFactory {
+    func makeSettingsCotroller(coordinator: SettingsViewControllerCoordinator) -> UIViewController
+    func makeAccountViewController() -> UIViewController
+    func makeThemeViewController() -> UIViewController
+    func makeUserConfigurationCoordinator(delegate: UserConfigurationCoordinatorDelegate) -> Coordinator
+}
+
+struct SettingsFactoryImp: SettingsFactory {
     let appContainer: AppContainer?
     
     func makeSettingsCotroller(coordinator: SettingsViewControllerCoordinator) -> UIViewController {

@@ -18,7 +18,7 @@ final class CustomTabBarButton: UIButton {
         imageView.image = UIImage(named: imageName)
         return imageView
     }()
-
+    
     lazy var customLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
@@ -28,8 +28,6 @@ final class CustomTabBarButton: UIButton {
         return label
     }()
     
-    // MARK: - private properties
-
     // MARK: - Life Cycle
     init(
         imageName: String,
@@ -41,6 +39,7 @@ final class CustomTabBarButton: UIButton {
         self.textColor = textColor
         self.labelText = labelText
         super.init(frame: frame)
+        
         configuration()
     }
     

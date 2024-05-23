@@ -49,7 +49,6 @@ final class SettingsViewController: UITableViewController {
     }
     
     // MARK: - Actions
-    
 }
 
 // MARK: - DataSource
@@ -71,10 +70,7 @@ extension SettingsViewController {
         contentConfiguration.text = viewModel.title
         contentConfiguration.image = UIImage(systemName: viewModel.icon)
         cell.contentConfiguration = contentConfiguration
-        
-   
         cell.selectionStyle = .none
-        
         
         return cell
     }
@@ -86,5 +82,4 @@ extension SettingsViewController {
         let navigation = viewModel.cellSelected(row: indexPath.row)
         coordinator?.didSelectCell(settingsViewNavigation: navigation)
     }
-    
 }

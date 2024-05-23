@@ -15,7 +15,7 @@ struct AppFactory {
         navigation: Navigation,
         delegate: LogInCoordinatorDelegate
     ) -> Coordinator {
-        let logInFactory = LogInFactory(appContainer: appContainer)
+        let logInFactory = LogInFactoryImp(appContainer: appContainer)
         return LogInCoordinator(
             navigation: navigation,
             factory: logInFactory,
@@ -26,11 +26,11 @@ struct AppFactory {
         navigation: Navigation,
         delegate: MainTabCoordinatorDelegate
     ) -> Coordinator {
-        let factory = MainTabFactory(appContainer: appContainer)
+        let factory = MainTabFactoryImp(appContainer: appContainer)
         return MainTabCoordinator(
             navigation: navigation,
-            factory: factory,
-            delegate: delegate)
+            delegate: delegate, 
+            factory: factory)
 
     }
 }

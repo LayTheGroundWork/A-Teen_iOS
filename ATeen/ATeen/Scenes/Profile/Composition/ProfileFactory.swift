@@ -32,7 +32,7 @@ struct ProfileFactoryImp: ProfileFactory {
         delegate: SettingsCoordinatorDelegate,
         childCoordinators: [Coordinator]
     ) -> Coordinator {
-        let factory = SettingsFactory(appContainer: appContainer)
+        let factory = SettingsFactoryImp(appContainer: appContainer)
         let coordinator = SettingsCoordinator(
             navigation: navigation,
             factory: factory,

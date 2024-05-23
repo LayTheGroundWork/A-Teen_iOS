@@ -8,7 +8,8 @@
 import UIKit
 
 final class MainTabController: UITabBarController {
-    // MARK: - Life Cycle
+    
+    // MARK: - Public properties
     lazy var mainButton: CustomTabBarButton = {
         let button = CustomTabBarButton(
             imageName: "mainIconSelected",
@@ -88,6 +89,7 @@ final class MainTabController: UITabBarController {
         return view
     }()
     
+    // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         configUserInterface()
@@ -124,7 +126,6 @@ extension MainTabController {
     @objc func clickButton(_ sender: CustomTabBarButton) {
         let beforeIndex = self.selectedIndex
         
-        //4번은 뷰컨이 없어서 색이 흰색으로 안됨
         switch beforeIndex {
         case 0:
             changeBeforeButtonState(button: mainButton)

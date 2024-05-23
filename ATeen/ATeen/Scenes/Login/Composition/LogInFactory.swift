@@ -7,7 +7,11 @@
 
 import UIKit
 
-struct LogInFactory {
+protocol LogInFactory {
+    func makeLoginViewController(coordinator: LogInViewControllerCoordinator) -> UIViewController
+}
+
+struct LogInFactoryImp: LogInFactory {
     let appContainer: AppContainer?
     
     func makeLoginViewController(coordinator: LogInViewControllerCoordinator) -> UIViewController {

@@ -7,7 +7,12 @@
 
 import UIKit
 
-struct MainTabFactory {
+protocol MainTabFactory {
+    func makeMainTabController() -> UITabBarController
+    func makeChildCoordinators(delegate: SettingsCoordinatorDelegate) -> [Coordinator]
+}
+
+struct MainTabFactoryImp: MainTabFactory {
     let appContainer: AppContainer?
     
     func makeMainTabController() -> UITabBarController {
@@ -70,6 +75,4 @@ struct MainTabFactory {
             factory: factory,
             delegate: delegate)
     }
-    
-
 }

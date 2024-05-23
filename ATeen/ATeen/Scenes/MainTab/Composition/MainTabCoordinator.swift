@@ -13,18 +13,20 @@ protocol MainTabCoordinatorDelegate: AnyObject {
 
 final class MainTabCoordinator: Coordinator {
     var navigation: Navigation
-    private let factory: MainTabFactory
-    private weak var delegate: MainTabCoordinatorDelegate?
     var childCoordinators: [Coordinator] = []
+    weak var delegate: MainTabCoordinatorDelegate?
+    
+    private let factory: MainTabFactory
+
     
     init(
         navigation: Navigation,
-        factory: MainTabFactory,
-        delegate: MainTabCoordinatorDelegate
+        delegate: MainTabCoordinatorDelegate,
+        factory: MainTabFactory
     ) {
         self.navigation = navigation
-        self.factory = factory
         self.delegate = delegate
+        self.factory = factory
     }
     
     func start() {
@@ -38,11 +40,4 @@ final class MainTabCoordinator: Coordinator {
         navigationTab.viewControllers = childNavigation
     }
 
-}
-
-extension MainTabCoordinator: SettingsCoordinatorDelegate {
-    func didTapLogOut() {
-        childCoordinators = []
-        delegate?.didFinish()
-    }
 }

@@ -20,7 +20,7 @@ struct UserConfigurationFactory {
     
     func makeAvatarViewController() -> UIViewController {
         let exampleController = ExampleViewController()
-        exampleController.title = "Make your avatar"
+        exampleController.title = "Profile Edit"
         return exampleController
     }
 }

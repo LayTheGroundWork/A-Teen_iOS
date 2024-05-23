@@ -30,9 +30,3 @@ final class LogInCoordinator: Coordinator {
         navigation.pushViewController(controller, animated: true)
     }
 }
- 
-extension LogInCoordinator: LogInViewControllerCoordinator {
-    func didFinish() {
-        delegate?.didFinishLogin()
-    }
-}
