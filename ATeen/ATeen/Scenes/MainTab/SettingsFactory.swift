@@ -7,7 +7,7 @@
 
 import UIKit
 
-struct SettingsFactory: ItemTabFactory {
+struct SettingsFactory{
     let appContainer: AppContainer?
     
     func makeSettingsCotroller(coordinator: SettingsViewControllerCoordinator) -> UIViewController {
@@ -17,15 +17,6 @@ struct SettingsFactory: ItemTabFactory {
             coordinator: coordinator)
         controller.title = "Settings ⚙️"
         return controller
-    }
-    
-    func makeTabBarItem(navigation: Navigation) {
-        makeItemTabBar(
-            navigation: navigation,
-            title: "Chat",
-            image: "chatIcon",
-            selectedImage: "chatIconSelected"
-        )
     }
     
     func makeAccountViewController() -> UIViewController {

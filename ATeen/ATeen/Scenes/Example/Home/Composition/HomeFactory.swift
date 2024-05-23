@@ -9,7 +9,6 @@ import UIKit
 
 protocol HomeFactory {
     func makeHomeViewController(coordinator: HomeViewControllerCoordinator) -> UIViewController
-    func makeItemTabBar(navigation: Navigation)
     func makePostDetailCoordinator(navigation: Navigation, id: Int, parentCoordinator: ParentCoordinator) -> Coordinator
 }
 
@@ -26,14 +25,6 @@ struct HomeFactoryImp: HomeFactory {
         return controller
     }
     
-    func makeItemTabBar(navigation: Navigation) {
-        makeItemTabBar(
-            navigation: navigation,
-            title: "Main",
-            image: "mainIcon",
-            selectedImage: "mainIconSelected")
-    }
-    
     func makePostDetailCoordinator(navigation: Navigation, id: Int, parentCoordinator: ParentCoordinator) -> Coordinator {
         let factory = PostDetailFactoryImp(id: id)
         let coordinator = PostDetailCoordinator(
@@ -43,5 +34,3 @@ struct HomeFactoryImp: HomeFactory {
         return coordinator
     }
 }
-
-extension HomeFactoryImp: ItemTabFactory { }

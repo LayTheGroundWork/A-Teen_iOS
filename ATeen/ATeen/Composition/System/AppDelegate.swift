@@ -28,11 +28,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
   
     private func loadAllData() {
-        Thread.sleep(forTimeInterval: 5.0)
+        Thread.sleep(forTimeInterval: 1.0)
     }
     
     private func loadHomeDate() {
-        Thread.sleep(forTimeInterval: 3.0)
+        Thread.sleep(forTimeInterval: 1.0)
     }
 
     // MARK: UISceneSession Lifecycle

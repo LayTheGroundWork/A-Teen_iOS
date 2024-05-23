@@ -59,7 +59,6 @@ final class AppCoordinator: Coordinator {
         navigation.viewControllers = []
         clearAllChildsCoordinator()
         startMainTabCoordinator()
-//        startSomeCoordinator()
     }
 }
 

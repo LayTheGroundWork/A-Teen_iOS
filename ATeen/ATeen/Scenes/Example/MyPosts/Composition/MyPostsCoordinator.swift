@@ -25,7 +25,6 @@ final class MyPostsCoordinator: Coordinator {
     
     func start() {
         let controller = factory.makeMyPostViewController(coordinator: self)
-        factory.makeItemTabBar(navigation: navigation)
         navigation.navigationBar.prefersLargeTitles = true
         navigation.pushViewController(controller, animated: true)
     }

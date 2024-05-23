@@ -7,6 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		417286CA2BFF0AEA004F88F9 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 417286C92BFF0AEA004F88F9 /* ProfileViewController.swift */; };
+		417286CC2BFF0B03004F88F9 /* ProfileFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 417286CB2BFF0B03004F88F9 /* ProfileFactory.swift */; };
+		417286CE2BFF0B83004F88F9 /* ProfileCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 417286CD2BFF0B83004F88F9 /* ProfileCoordinator.swift */; };
+		417286D32BFF0CE4004F88F9 /* ChatViewContoller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 417286D22BFF0CE4004F88F9 /* ChatViewContoller.swift */; };
+		417286D52BFF0D0D004F88F9 /* ChatFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 417286D42BFF0D0D004F88F9 /* ChatFactory.swift */; };
+		417286D72BFF0D16004F88F9 /* ChatCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 417286D62BFF0D16004F88F9 /* ChatCoordinator.swift */; };
+		417286DF2BFF1FB6004F88F9 /* RankingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 417286DE2BFF1FB6004F88F9 /* RankingViewController.swift */; };
+		417286E12BFF1FCA004F88F9 /* RankingFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 417286E02BFF1FCA004F88F9 /* RankingFactory.swift */; };
+		417286E42BFF1FDC004F88F9 /* RankingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 417286E32BFF1FDC004F88F9 /* RankingCoordinator.swift */; };
+		417286E62BFF1FE7004F88F9 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 417286E52BFF1FE7004F88F9 /* MainViewController.swift */; };
+		417286E92BFF1FFB004F88F9 /* MainFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 417286E82BFF1FFB004F88F9 /* MainFactory.swift */; };
+		417286EB2BFF2004004F88F9 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 417286EA2BFF2004004F88F9 /* MainCoordinator.swift */; };
 		41735B4C2BFCE8E300E4A339 /* SettingsCoordinator+UserConfigurationCoordinatorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41735B4B2BFCE8E300E4A339 /* SettingsCoordinator+UserConfigurationCoordinatorDelegate.swift */; };
 		41735B4E2BFCEC0B00E4A339 /* NavigationImp+UINavigationControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41735B4D2BFCEC0B00E4A339 /* NavigationImp+UINavigationControllerDelegate.swift */; };
 		41735B502BFCEC4A00E4A339 /* NavigationImp+UIAdaptivePresentationControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41735B4F2BFCEC4A00E4A339 /* NavigationImp+UIAdaptivePresentationControllerDelegate.swift */; };
@@ -29,12 +41,11 @@
 		418CB1F22BF74138001DA795 /* AppLocalized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418CB1F12BF74138001DA795 /* AppLocalized.swift */; };
 		418CB1F42BF743AE001DA795 /* SettingsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418CB1F32BF743AE001DA795 /* SettingsCoordinator.swift */; };
 		418CB1F62BF743B8001DA795 /* SettingsFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418CB1F52BF743B8001DA795 /* SettingsFactory.swift */; };
-		418CB1F82BF74867001DA795 /* ItemTabFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418CB1F72BF74867001DA795 /* ItemTabFactory.swift */; };
 		418CB1FC2BF74CD8001DA795 /* ExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418CB1FB2BF74CD8001DA795 /* ExampleViewController.swift */; };
 		418CB1FE2BF74D16001DA795 /* SettingsCoordinator+SettingsViewControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418CB1FD2BF74D16001DA795 /* SettingsCoordinator+SettingsViewControllerCoordinator.swift */; };
-		418CB2072BF74E88001DA795 /* CommunitiesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418CB2062BF74E88001DA795 /* CommunitiesViewController.swift */; };
-		418CB2092BF74EAC001DA795 /* CommunitiesFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418CB2082BF74EAC001DA795 /* CommunitiesFactory.swift */; };
-		418CB20B2BF74F77001DA795 /* CommunitiesCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418CB20A2BF74F77001DA795 /* CommunitiesCoordinator.swift */; };
+		418CB2072BF74E88001DA795 /* TeenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418CB2062BF74E88001DA795 /* TeenViewController.swift */; };
+		418CB2092BF74EAC001DA795 /* TeenFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418CB2082BF74EAC001DA795 /* TeenFactory.swift */; };
+		418CB20B2BF74F77001DA795 /* TeenCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418CB20A2BF74F77001DA795 /* TeenCoordinator.swift */; };
 		4190F8C52BF4E6EF00FCC0A3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4190F8C42BF4E6EF00FCC0A3 /* AppDelegate.swift */; };
 		4190F8C72BF4E6EF00FCC0A3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4190F8C62BF4E6EF00FCC0A3 /* SceneDelegate.swift */; };
 		4190F8CE2BF4E6F100FCC0A3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4190F8CD2BF4E6F100FCC0A3 /* Assets.xcassets */; };
@@ -65,6 +76,18 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		417286C92BFF0AEA004F88F9 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		417286CB2BFF0B03004F88F9 /* ProfileFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileFactory.swift; sourceTree = "<group>"; };
+		417286CD2BFF0B83004F88F9 /* ProfileCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCoordinator.swift; sourceTree = "<group>"; };
+		417286D22BFF0CE4004F88F9 /* ChatViewContoller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewContoller.swift; sourceTree = "<group>"; };
+		417286D42BFF0D0D004F88F9 /* ChatFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatFactory.swift; sourceTree = "<group>"; };
+		417286D62BFF0D16004F88F9 /* ChatCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatCoordinator.swift; sourceTree = "<group>"; };
+		417286DE2BFF1FB6004F88F9 /* RankingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingViewController.swift; sourceTree = "<group>"; };
+		417286E02BFF1FCA004F88F9 /* RankingFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingFactory.swift; sourceTree = "<group>"; };
+		417286E32BFF1FDC004F88F9 /* RankingCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingCoordinator.swift; sourceTree = "<group>"; };
+		417286E52BFF1FE7004F88F9 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		417286E82BFF1FFB004F88F9 /* MainFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainFactory.swift; sourceTree = "<group>"; };
+		417286EA2BFF2004004F88F9 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
 		41735B4B2BFCE8E300E4A339 /* SettingsCoordinator+UserConfigurationCoordinatorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SettingsCoordinator+UserConfigurationCoordinatorDelegate.swift"; sourceTree = "<group>"; };
 		41735B4D2BFCEC0B00E4A339 /* NavigationImp+UINavigationControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NavigationImp+UINavigationControllerDelegate.swift"; sourceTree = "<group>"; };
 		41735B4F2BFCEC4A00E4A339 /* NavigationImp+UIAdaptivePresentationControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NavigationImp+UIAdaptivePresentationControllerDelegate.swift"; sourceTree = "<group>"; };
@@ -87,12 +110,11 @@
 		418CB1F12BF74138001DA795 /* AppLocalized.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLocalized.swift; sourceTree = "<group>"; };
 		418CB1F32BF743AE001DA795 /* SettingsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCoordinator.swift; sourceTree = "<group>"; };
 		418CB1F52BF743B8001DA795 /* SettingsFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsFactory.swift; sourceTree = "<group>"; };
-		418CB1F72BF74867001DA795 /* ItemTabFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemTabFactory.swift; sourceTree = "<group>"; };
 		418CB1FB2BF74CD8001DA795 /* ExampleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleViewController.swift; sourceTree = "<group>"; };
 		418CB1FD2BF74D16001DA795 /* SettingsCoordinator+SettingsViewControllerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SettingsCoordinator+SettingsViewControllerCoordinator.swift"; sourceTree = "<group>"; };
-		418CB2062BF74E88001DA795 /* CommunitiesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunitiesViewController.swift; sourceTree = "<group>"; };
-		418CB2082BF74EAC001DA795 /* CommunitiesFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunitiesFactory.swift; sourceTree = "<group>"; };
-		418CB20A2BF74F77001DA795 /* CommunitiesCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunitiesCoordinator.swift; sourceTree = "<group>"; };
+		418CB2062BF74E88001DA795 /* TeenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeenViewController.swift; sourceTree = "<group>"; };
+		418CB2082BF74EAC001DA795 /* TeenFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeenFactory.swift; sourceTree = "<group>"; };
+		418CB20A2BF74F77001DA795 /* TeenCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeenCoordinator.swift; sourceTree = "<group>"; };
 		4190F8C12BF4E6EF00FCC0A3 /* ATeen.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ATeen.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4190F8C42BF4E6EF00FCC0A3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4190F8C62BF4E6EF00FCC0A3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -135,6 +157,110 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		417286C62BFF0ACF004F88F9 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				417286C72BFF0AD7004F88F9 /* Presentation */,
+				417286C82BFF0ADC004F88F9 /* Composition */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		417286C72BFF0AD7004F88F9 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				417286C92BFF0AEA004F88F9 /* ProfileViewController.swift */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		417286C82BFF0ADC004F88F9 /* Composition */ = {
+			isa = PBXGroup;
+			children = (
+				417286CB2BFF0B03004F88F9 /* ProfileFactory.swift */,
+				417286CD2BFF0B83004F88F9 /* ProfileCoordinator.swift */,
+			);
+			path = Composition;
+			sourceTree = "<group>";
+		};
+		417286CF2BFF0CCA004F88F9 /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				417286D02BFF0CD0004F88F9 /* Presentation */,
+				417286D12BFF0CD6004F88F9 /* Composition */,
+			);
+			path = Chat;
+			sourceTree = "<group>";
+		};
+		417286D02BFF0CD0004F88F9 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				417286D22BFF0CE4004F88F9 /* ChatViewContoller.swift */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		417286D12BFF0CD6004F88F9 /* Composition */ = {
+			isa = PBXGroup;
+			children = (
+				417286D42BFF0D0D004F88F9 /* ChatFactory.swift */,
+				417286D62BFF0D16004F88F9 /* ChatCoordinator.swift */,
+			);
+			path = Composition;
+			sourceTree = "<group>";
+		};
+		417286D82BFF1F88004F88F9 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				417286DD2BFF1FA7004F88F9 /* Presentation */,
+				417286DC2BFF1FA2004F88F9 /* Composition */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		417286D92BFF1F8E004F88F9 /* Ranking */ = {
+			isa = PBXGroup;
+			children = (
+				417286DB2BFF1F9D004F88F9 /* Presentation */,
+				417286DA2BFF1F97004F88F9 /* Composition */,
+			);
+			path = Ranking;
+			sourceTree = "<group>";
+		};
+		417286DA2BFF1F97004F88F9 /* Composition */ = {
+			isa = PBXGroup;
+			children = (
+				417286E02BFF1FCA004F88F9 /* RankingFactory.swift */,
+				417286E32BFF1FDC004F88F9 /* RankingCoordinator.swift */,
+			);
+			path = Composition;
+			sourceTree = "<group>";
+		};
+		417286DB2BFF1F9D004F88F9 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				417286DE2BFF1FB6004F88F9 /* RankingViewController.swift */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		417286DC2BFF1FA2004F88F9 /* Composition */ = {
+			isa = PBXGroup;
+			children = (
+				417286E82BFF1FFB004F88F9 /* MainFactory.swift */,
+				417286EA2BFF2004004F88F9 /* MainCoordinator.swift */,
+			);
+			path = Composition;
+			sourceTree = "<group>";
+		};
+		417286DD2BFF1FA7004F88F9 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				417286E52BFF1FE7004F88F9 /* MainViewController.swift */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
 		418CB1C62BF71A22001DA795 /* Login */ = {
 			isa = PBXGroup;
 			children = (
@@ -201,7 +327,6 @@
 			children = (
 				418CB1DB2BF7270A001DA795 /* MainTabFactory.swift */,
 				418CB1DD2BF727C3001DA795 /* MainTabCoordinator.swift */,
-				418CB1F72BF74867001DA795 /* ItemTabFactory.swift */,
 			);
 			path = Composition;
 			sourceTree = "<group>";
@@ -283,25 +408,29 @@
 		418CB1F92BF74C3B001DA795 /* Example */ = {
 			isa = PBXGroup;
 			children = (
+				41BB4BEF2BFB2DF200D26A5D /* Home */,
+				41BB4BE62BFB1B1100D26A5D /* NewPost */,
+				41BB4BF82BFB36C900D26A5D /* PostDetail */,
+				41BB4BDB2BFB176400D26A5D /* MyPosts */,
 				418CB1FB2BF74CD8001DA795 /* ExampleViewController.swift */,
 			);
 			path = Example;
 			sourceTree = "<group>";
 		};
-		418CB1FF2BF74E56001DA795 /* Communities */ = {
+		418CB1FF2BF74E56001DA795 /* Teen */ = {
 			isa = PBXGroup;
 			children = (
 				418CB2032BF74E6E001DA795 /* Presentation */,
 				418CB2022BF74E69001DA795 /* Composition */,
 			);
-			path = Communities;
+			path = Teen;
 			sourceTree = "<group>";
 		};
 		418CB2022BF74E69001DA795 /* Composition */ = {
 			isa = PBXGroup;
 			children = (
-				418CB2082BF74EAC001DA795 /* CommunitiesFactory.swift */,
-				418CB20A2BF74F77001DA795 /* CommunitiesCoordinator.swift */,
+				418CB2082BF74EAC001DA795 /* TeenFactory.swift */,
+				418CB20A2BF74F77001DA795 /* TeenCoordinator.swift */,
 			);
 			path = Composition;
 			sourceTree = "<group>";
@@ -309,7 +438,6 @@
 		418CB2032BF74E6E001DA795 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
-				418CB2052BF74E7A001DA795 /* ViewModel */,
 				418CB2042BF74E76001DA795 /* View */,
 			);
 			path = Presentation;
@@ -318,16 +446,9 @@
 		418CB2042BF74E76001DA795 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				418CB2062BF74E88001DA795 /* CommunitiesViewController.swift */,
+				418CB2062BF74E88001DA795 /* TeenViewController.swift */,
 			);
 			path = View;
-			sourceTree = "<group>";
-		};
-		418CB2052BF74E7A001DA795 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		4190F8B82BF4E6EF00FCC0A3 = {
@@ -381,13 +502,13 @@
 		4190F8DA2BF4E7E400FCC0A3 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
-				41BB4BF82BFB36C900D26A5D /* PostDetail */,
-				41BB4BEF2BFB2DF200D26A5D /* Home */,
-				41BB4BE62BFB1B1100D26A5D /* NewPost */,
-				41BB4BDB2BFB176400D26A5D /* MyPosts */,
-				418CB1FF2BF74E56001DA795 /* Communities */,
-				418CB1F92BF74C3B001DA795 /* Example */,
+				417286D82BFF1F88004F88F9 /* Main */,
+				417286D92BFF1F8E004F88F9 /* Ranking */,
+				417286C62BFF0ACF004F88F9 /* Profile */,
 				418CB1DF2BF73C7F001DA795 /* Settings */,
+				417286CF2BFF0CCA004F88F9 /* Chat */,
+				418CB1FF2BF74E56001DA795 /* Teen */,
+				418CB1F92BF74C3B001DA795 /* Example */,
 				418CB1D62BF726A3001DA795 /* MainTab */,
 				418CB1C62BF71A22001DA795 /* Login */,
 				4190F8DD2BF4E80700FCC0A3 /* LaunchScreen */,
@@ -691,7 +812,7 @@
 				4190F8E42BF4E91000FCC0A3 /* AppCoordinator.swift in Sources */,
 				41BB4BF32BFB2E0F00D26A5D /* HomeViewController.swift in Sources */,
 				418CB1F22BF74138001DA795 /* AppLocalized.swift in Sources */,
-				418CB2092BF74EAC001DA795 /* CommunitiesFactory.swift in Sources */,
+				418CB2092BF74EAC001DA795 /* TeenFactory.swift in Sources */,
 				4190F8C52BF4E6EF00FCC0A3 /* AppDelegate.swift in Sources */,
 				41BB4BE32BFB1AE200D26A5D /* MyPostsFactory.swift in Sources */,
 				41735B4E2BFCEC0B00E4A339 /* NavigationImp+UINavigationControllerDelegate.swift in Sources */,
@@ -699,25 +820,34 @@
 				418CB1F42BF743AE001DA795 /* SettingsCoordinator.swift in Sources */,
 				41735B4C2BFCE8E300E4A339 /* SettingsCoordinator+UserConfigurationCoordinatorDelegate.swift in Sources */,
 				41BB4C052BFBADDA00D26A5D /* ParentCoordinator.swift in Sources */,
+				417286D72BFF0D16004F88F9 /* ChatCoordinator.swift in Sources */,
 				41735B502BFCEC4A00E4A339 /* NavigationImp+UIAdaptivePresentationControllerDelegate.swift in Sources */,
+				417286E92BFF1FFB004F88F9 /* MainFactory.swift in Sources */,
 				41BB4C0D2BFBBA2300D26A5D /* UserConfigurationFactory.swift in Sources */,
+				417286E62BFF1FE7004F88F9 /* MainViewController.swift in Sources */,
+				417286D52BFF0D0D004F88F9 /* ChatFactory.swift in Sources */,
 				41BB4BEC2BFB26AF00D26A5D /* MyPostsMediator.swift in Sources */,
+				417286DF2BFF1FB6004F88F9 /* RankingViewController.swift in Sources */,
 				418CB1E72BF73D1B001DA795 /* SettingsViewNavigation.swift in Sources */,
 				41BB4BF52BFB2EB400D26A5D /* HomeCoordinator.swift in Sources */,
 				41735B562BFCEE2200E4A339 /* PostDetailFactoryImp.swift in Sources */,
 				418CB1D52BF71DC8001DA795 /* LogInViewModel.swift in Sources */,
-				418CB1F82BF74867001DA795 /* ItemTabFactory.swift in Sources */,
 				41735B522BFCEC9700E4A339 /* NavigationImp.swift in Sources */,
 				41BB4BFC2BFB36EC00D26A5D /* PostDetailViewController.swift in Sources */,
 				418CB1F62BF743B8001DA795 /* SettingsFactory.swift in Sources */,
 				418CB1DC2BF7270A001DA795 /* MainTabFactory.swift in Sources */,
 				41BB4BF72BFB2ED900D26A5D /* HomeFactory.swift in Sources */,
-				418CB20B2BF74F77001DA795 /* CommunitiesCoordinator.swift in Sources */,
+				418CB20B2BF74F77001DA795 /* TeenCoordinator.swift in Sources */,
+				417286E42BFF1FDC004F88F9 /* RankingCoordinator.swift in Sources */,
 				418CB1D12BF71CAD001DA795 /* LogInCoordinator.swift in Sources */,
+				417286CC2BFF0B03004F88F9 /* ProfileFactory.swift in Sources */,
 				41BB4BE82BFB1B1E00D26A5D /* NewPostViewController.swift in Sources */,
 				418CB1CC2BF71AE7001DA795 /* LogInViewController.swift in Sources */,
+				417286D32BFF0CE4004F88F9 /* ChatViewContoller.swift in Sources */,
 				418CB1E92BF73E4C001DA795 /* SettingsViewModel.swift in Sources */,
 				4190F8C72BF4E6EF00FCC0A3 /* SceneDelegate.swift in Sources */,
+				417286CE2BFF0B83004F88F9 /* ProfileCoordinator.swift in Sources */,
+				417286CA2BFF0AEA004F88F9 /* ProfileViewController.swift in Sources */,
 				41BB4C0B2BFBB8BE00D26A5D /* UserConfigurationViewController.swift in Sources */,
 				41BB4C0F2BFBBB1A00D26A5D /* UserConfigurationCoordinator.swift in Sources */,
 				4190F8E22BF4E8DA00FCC0A3 /* Coordinator.swift in Sources */,
@@ -725,7 +855,7 @@
 				41BB4C032BFBA32000D26A5D /* Navigation.swift in Sources */,
 				41BB4BEA2BFB258500D26A5D /* MyPostsCoordinator.swift in Sources */,
 				4190F8EA2BF4E9D800FCC0A3 /* Auth.swift in Sources */,
-				418CB2072BF74E88001DA795 /* CommunitiesViewController.swift in Sources */,
+				418CB2072BF74E88001DA795 /* TeenViewController.swift in Sources */,
 				418CB1FC2BF74CD8001DA795 /* ExampleViewController.swift in Sources */,
 				418CB1DE2BF727C3001DA795 /* MainTabCoordinator.swift in Sources */,
 				418CB1C92BF71A4F001DA795 /* LogInFactory.swift in Sources */,
@@ -733,9 +863,11 @@
 				418CB1E52BF73CE3001DA795 /* ItemSettingViewModel.swift in Sources */,
 				41A8F3BF2BFE52E30092CBFA /* CustomTabBarButton.swift in Sources */,
 				418CB1EF2BF740F6001DA795 /* Reusable.swift in Sources */,
+				417286EB2BFF2004004F88F9 /* MainCoordinator.swift in Sources */,
 				41A8F3BD2BFE500C0092CBFA /* UIView+Contraints.swift in Sources */,
 				41735B542BFCEDE000E4A339 /* PostDetailCoordinator+PostDetailViewControllerCoordinator.swift in Sources */,
 				4190F8ED2BF4EAAB00FCC0A3 /* AppContainer.swift in Sources */,
+				417286E12BFF1FCA004F88F9 /* RankingFactory.swift in Sources */,
 				41BB4C002BFB39FA00D26A5D /* PostDetailCoordinator.swift in Sources */,
 				418CB1EB2BF73E6F001DA795 /* SettingsViewController.swift in Sources */,
 			);

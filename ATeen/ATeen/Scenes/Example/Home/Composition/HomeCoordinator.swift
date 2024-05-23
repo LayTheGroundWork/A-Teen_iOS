@@ -22,7 +22,6 @@ final class HomeCoordinator: Coordinator {
     
     func start() {
         let controller = factory.makeHomeViewController(coordinator: self)
-        factory.makeItemTabBar(navigation: navigation)
         navigation.navigationBar.prefersLargeTitles = true
         navigation.pushViewController(controller, animated: true)
     }

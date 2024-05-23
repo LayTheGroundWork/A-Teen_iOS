@@ -18,49 +18,58 @@ struct MainTabFactory {
     }
     
     func makeChildCoordinators(delegate: SettingsCoordinatorDelegate) -> [Coordinator] {
-        let homeCoordinator = makeHomeCoordinator()
-        let myPostsCoordinator = makeMyPostsCoordinator()
-        let communitiesCoordinator = makeCommunitiesCoordinator()
-        let settingsCoordinator = makeSettingsCoordinator(delegate: delegate)
+        let mainCoordinator = makeMainCoordinator()
+        let rankingCoordinator = makeRankingCoordinator()
+        let teenCoordinator = makeTeenCoordinator()
+        let chatCoordinator = makeChatCoordinator()
+        let profileCoordinator = makeProfileCoordinator(delegate: delegate)
         
-        return [homeCoordinator,
-                myPostsCoordinator,
-                communitiesCoordinator,
-                settingsCoordinator]
+        return [mainCoordinator,
+                rankingCoordinator,
+                teenCoordinator,
+                chatCoordinator,
+                profileCoordinator]
     }
     
-    private func makeHomeCoordinator() -> Coordinator {
+    private func makeMainCoordinator() -> Coordinator {
         let navigation = NavigationImp(rootViewController: UINavigationController())
-        let factory = HomeFactoryImp()
-        return HomeCoordinator(
+        let factory = MainFactoryImp()
+        return MainCoordinator(
             navigation: navigation,
             factory: factory)
     }
     
-    private func makeMyPostsCoordinator() -> Coordinator {
+    private func makeRankingCoordinator() -> Coordinator {
         let navigation = NavigationImp(rootViewController: UINavigationController())
-        let factory = MyPostsFactoryImp()
-        let mediator = MyPostsMediatorImp()
-        return MyPostsCoordinator(
+        let factory = RankingFactoryImp()
+        return RankingCoordinator(
             navigation: navigation,
-            factory: factory,
-            mediator: mediator)
+            factory: factory)
     }
-    private func makeCommunitiesCoordinator() -> Coordinator {
-        let factory = CommunitiesFactoryImp()
+    private func makeTeenCoordinator() -> Coordinator {
+        let factory = TeenFactoryImp()
         let navigation = NavigationImp(rootViewController: UINavigationController())
-        return CommunitiesCoordinator(
+        return TeenCoordinator(
             navigation: navigation,
             factory: factory)
     }
     
-    private func makeSettingsCoordinator(delegate: SettingsCoordinatorDelegate) -> Coordinator {
-        let factory = SettingsFactory(appContainer: appContainer)
+    private func makeChatCoordinator() -> Coordinator {
+        let factory = ChatFactoryImp()
         let navigation = NavigationImp(rootViewController: UINavigationController())
-        return SettingsCoordinator(
+        return ChatCoordinator(
+            navigation: navigation,
+            factory: factory)
+    }
+    
+    private func makeProfileCoordinator(delegate: SettingsCoordinatorDelegate) -> Coordinator {
+        let factory = ProfileFactoryImp(appContainer: appContainer)
+        let navigation = NavigationImp(rootViewController: UINavigationController())
+        return ProfileCoordinator(
             navigation: navigation,
             factory: factory,
             delegate: delegate)
     }
+    
 
 }

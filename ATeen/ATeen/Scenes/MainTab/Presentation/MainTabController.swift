@@ -55,7 +55,7 @@ final class MainTabController: UITabBarController {
     
     lazy var profileButton: CustomTabBarButton = {
         let button = CustomTabBarButton(
-            imageName: "logo",
+            imageName: "profile",
             textColor: .white,
             labelText: "My",
             frame: .zero)

@@ -9,7 +9,6 @@ import UIKit
 
 protocol MyPostsFactory {
     func makeMyPostViewController(coordinator: MyPostsViewControllerCoordinator) -> UIViewController
-    func makeItemTabBar(navigation: Navigation)
     func makeNewPostViewController(coordinator: NewPostViewControllerCoordinator) -> UIViewController
     func makePostDetailCoordinator(navigation: Navigation, id: Int, parentCoordinator: ParentCoordinator) -> Coordinator
 }
@@ -29,14 +28,6 @@ struct MyPostsFactoryImp: MyPostsFactory{
         return controller
     }
     
-    func makeItemTabBar(navigation: Navigation) {
-        makeItemTabBar(
-            navigation: navigation,
-            title: "Ranking",
-            image: "rankingIcon",
-            selectedImage: "rankingIconSelected")
-    }
-    
     func makeNewPostViewController(coordinator: NewPostViewControllerCoordinator) -> UIViewController {
         let controller = NewPostViewController(coordinator: coordinator)
         return controller
@@ -51,5 +42,3 @@ struct MyPostsFactoryImp: MyPostsFactory{
         return coordinator
     }
 }
-
-extension MyPostsFactoryImp: ItemTabFactory { }
