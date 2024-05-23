@@ -13,14 +13,13 @@ final class CustomTabBarButton: UIButton {
     var textColor: UIColor
     var labelText: String
     
-    // MARK: - lazy properties
-    private lazy var customImageView: UIImageView = {
+    lazy var customImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: imageName)
         return imageView
     }()
 
-    private lazy var customLabelView: UILabel = {
+    lazy var customLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
         label.text = labelText
@@ -28,6 +27,8 @@ final class CustomTabBarButton: UIButton {
         label.font = UIFont.preferredFont(forTextStyle: .footnote)
         return label
     }()
+    
+    // MARK: - private properties
 
     // MARK: - Life Cycle
     init(
@@ -51,14 +52,14 @@ final class CustomTabBarButton: UIButton {
     private func configuration() {
         self.backgroundColor = .clear
         self.addSubview(customImageView)
-        self.addSubview(customLabelView)
+        self.addSubview(customLabel)
+        
+        customLabel.centerX()
+        customLabel.setConstraints(bottom: self.bottomAnchor, pBottom: 22)
         
         customImageView.centerX()
-        customImageView.setConstraints(bottom: customLabelView.topAnchor, pBottom: 2)
-        customImageView.setWidthConstraint(with: 24)
-        customImageView.setHeightConstraint(with: 24)
-        customLabelView.centerX()
-        customLabelView.setConstraints(bottom: self.bottomAnchor, pBottom: 26)
-   
+        customImageView.setConstraints(bottom: customLabel.topAnchor, pBottom: 2)
+        customImageView.setWidthConstraint(with: 28)
+        customImageView.setHeightConstraint(with: 28)
     }
 }
