@@ -9,7 +9,7 @@ import UIKit
 
 protocol MainTabFactory {
     func makeMainTabController() -> UITabBarController
-    func makeChildCoordinators(delegate: SettingsCoordinatorDelegate) -> [Coordinator]
+    func makeChildCoordinators(delegate: SettingsCoordinatorDelegate, hiddenDelegate: MainTabHiddenDelegate) -> [Coordinator]
 }
 
 struct MainTabFactoryImp: MainTabFactory {
@@ -22,8 +22,8 @@ struct MainTabFactoryImp: MainTabFactory {
         return mainTabController
     }
     
-    func makeChildCoordinators(delegate: SettingsCoordinatorDelegate) -> [Coordinator] {
-        let mainCoordinator = makeMainCoordinator()
+    func makeChildCoordinators(delegate: SettingsCoordinatorDelegate, hiddenDelegate: MainTabHiddenDelegate) -> [Coordinator] {
+        let mainCoordinator = makeMainCoordinator(hiddenDelegate: hiddenDelegate)
         let rankingCoordinator = makeRankingCoordinator()
         let teenCoordinator = makeTeenCoordinator()
         let chatCoordinator = makeChatCoordinator()
@@ -36,12 +36,13 @@ struct MainTabFactoryImp: MainTabFactory {
                 profileCoordinator]
     }
     
-    private func makeMainCoordinator() -> Coordinator {
+    private func makeMainCoordinator(hiddenDelegate: MainTabHiddenDelegate) -> Coordinator {
         let navigation = NavigationImp(rootViewController: UINavigationController())
         let factory = MainFactoryImp()
         return MainCoordinator(
             navigation: navigation,
-            factory: factory)
+            factory: factory,
+            delegate: hiddenDelegate)
     }
     
     private func makeRankingCoordinator() -> Coordinator {

@@ -11,7 +11,10 @@ protocol Navigation {
     var rootViewController: UINavigationController { get }
     var viewControllers: [UIViewController] { get set }
     var navigationBar: UINavigationBar { get }
-    func present(_ viewControllerToPresent: UIViewController, animated: Bool)
+    func present(
+        _ viewControllerToPresent: UIViewController,
+        animated: Bool,
+        completion: (() -> Void)?)
     func pushViewController(
     _ viewControllerToPresent: UIViewController,
     animated: Bool,
@@ -27,5 +30,12 @@ extension Navigation {
         animated: Bool
     ) {
         pushViewController(viewControllerToPresent, animated: animated, backCompletion: nil)
+    }
+    
+    func present(
+        _ viewControllerToPresent: UIViewController,
+        animated: Bool
+    ) {
+        present(viewControllerToPresent, animated: animated, completion: nil)
     }
 }

@@ -11,6 +11,10 @@ protocol MainTabCoordinatorDelegate: AnyObject {
     func didFinish()
 }
 
+protocol MainTabHiddenDelegate: AnyObject {
+    func isHiddenTabbar()
+}
+
 final class MainTabCoordinator: Coordinator {
     var navigation: Navigation
     var childCoordinators: [Coordinator] = []
@@ -18,6 +22,11 @@ final class MainTabCoordinator: Coordinator {
     
     private let factory: MainTabFactory
 
+    lazy var navigationTab: UITabBarController = {
+        var navigationTab = UITabBarController()
+        navigationTab = factory.makeMainTabController()
+        return navigationTab
+    }()
     
     init(
         navigation: Navigation,
@@ -30,14 +39,12 @@ final class MainTabCoordinator: Coordinator {
     }
     
     func start() {
-        let navigationTab = factory.makeMainTabController()
         navigation.pushViewController(navigationTab, animated: false)
         navigation.navigationBar.isHidden = true
         
-        childCoordinators = factory.makeChildCoordinators(delegate: self)
+        childCoordinators = factory.makeChildCoordinators(delegate: self, hiddenDelegate: self)
         let childNavigation = childCoordinators.map { $0.navigation.rootViewController }
         childCoordinators.forEach { $0.start() }
         navigationTab.viewControllers = childNavigation
     }
-
 }

@@ -60,7 +60,7 @@
 		4190F8E82BF4E98C00FCC0A3 /* AppFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4190F8E72BF4E98C00FCC0A3 /* AppFactory.swift */; };
 		4190F8EA2BF4E9D800FCC0A3 /* Auth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4190F8E92BF4E9D800FCC0A3 /* Auth.swift */; };
 		4190F8ED2BF4EAAB00FCC0A3 /* AppContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4190F8EC2BF4EAAB00FCC0A3 /* AppContainer.swift */; };
-		41A8F3BD2BFE500C0092CBFA /* UIView+Contraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A8F3BC2BFE500C0092CBFA /* UIView+Contraints.swift */; };
+		41A8F3BD2BFE500C0092CBFA /* UIView+Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A8F3BC2BFE500C0092CBFA /* UIView+Constraints.swift */; };
 		41A8F3BF2BFE52E30092CBFA /* CustomTabBarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A8F3BE2BFE52E30092CBFA /* CustomTabBarButton.swift */; };
 		41BB4BE12BFB179D00D26A5D /* MyPostsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BB4BE02BFB179D00D26A5D /* MyPostsViewController.swift */; };
 		41BB4BE32BFB1AE200D26A5D /* MyPostsFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BB4BE22BFB1AE200D26A5D /* MyPostsFactory.swift */; };
@@ -78,6 +78,28 @@
 		41BB4C0B2BFBB8BE00D26A5D /* UserConfigurationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BB4C0A2BFBB8BE00D26A5D /* UserConfigurationViewController.swift */; };
 		41BB4C0D2BFBBA2300D26A5D /* UserConfigurationFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BB4C0C2BFBBA2300D26A5D /* UserConfigurationFactory.swift */; };
 		41BB4C0F2BFBBB1A00D26A5D /* UserConfigurationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BB4C0E2BFBBB1A00D26A5D /* UserConfigurationCoordinator.swift */; };
+		735AC8FF2C005AB9004C3D21 /* CategoryTournamentCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 735AC8E62C005AB9004C3D21 /* CategoryTournamentCollectionViewCell.swift */; };
+		735AC9002C005AB9004C3D21 /* TodayTeenCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 735AC8E72C005AB9004C3D21 /* TodayTeenCollectionViewCell.swift */; };
+		735AC9012C005AB9004C3D21 /* CategoryTodayCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 735AC8E82C005AB9004C3D21 /* CategoryTodayCollectionViewCell.swift */; };
+		735AC9022C005AB9004C3D21 /* TournamentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 735AC8EA2C005AB9004C3D21 /* TournamentTableViewCell.swift */; };
+		735AC9032C005AB9004C3D21 /* AnotherTeenTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 735AC8EB2C005AB9004C3D21 /* AnotherTeenTableViewCell.swift */; };
+		735AC9042C005AB9004C3D21 /* TodayTeenTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 735AC8EC2C005AB9004C3D21 /* TodayTeenTableViewCell.swift */; };
+		735AC9052C005AB9004C3D21 /* AboutATeenTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 735AC8ED2C005AB9004C3D21 /* AboutATeenTableViewCell.swift */; };
+		735AC9062C005AB9004C3D21 /* HeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 735AC8EE2C005AB9004C3D21 /* HeaderTableViewCell.swift */; };
+		735AC90A2C005B52004C3D21 /* CustomNaviView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 735AC9092C005B52004C3D21 /* CustomNaviView.swift */; };
+		735AC90E2C005B5D004C3D21 /* CustomQuestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 735AC90B2C005B5D004C3D21 /* CustomQuestionView.swift */; };
+		735AC90F2C005B5D004C3D21 /* CustomAboutATeenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 735AC90C2C005B5D004C3D21 /* CustomAboutATeenView.swift */; };
+		735AC9102C005B5D004C3D21 /* CustomQuestionTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 735AC90D2C005B5D004C3D21 /* CustomQuestionTextView.swift */; };
+		735AC9152C005B9F004C3D21 /* CustomHeartButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 735AC9132C005B9F004C3D21 /* CustomHeartButton.swift */; };
+		735AC9162C005B9F004C3D21 /* CustomProfileButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 735AC9142C005B9F004C3D21 /* CustomProfileButton.swift */; };
+		735AC9182C005BAD004C3D21 /* ProfileDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 735AC9172C005BAD004C3D21 /* ProfileDetailViewController.swift */; };
+		735AC9232C005CCF004C3D21 /* UILabel+Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 735AC9222C005CCF004C3D21 /* UILabel+Constraints.swift */; };
+		735AC9292C005D21004C3D21 /* TournamentCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 735AC9252C005D21004C3D21 /* TournamentCategory.swift */; };
+		735AC92A2C005D21004C3D21 /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = 735AC9262C005D21004C3D21 /* Question.swift */; };
+		735AC92B2C005D21004C3D21 /* TodayTeen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 735AC9272C005D21004C3D21 /* TodayTeen.swift */; };
+		735AC92C2C005D21004C3D21 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 735AC9282C005D21004C3D21 /* Category.swift */; };
+		735AC9352C005EB0004C3D21 /* MainCoordinator+MainViewControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 735AC9342C005EB0004C3D21 /* MainCoordinator+MainViewControllerCoordinator.swift */; };
+		735AC93A2C0061B9004C3D21 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 735AC9392C0061B9004C3D21 /* MainViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -134,7 +156,7 @@
 		4190F8E72BF4E98C00FCC0A3 /* AppFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFactory.swift; sourceTree = "<group>"; };
 		4190F8E92BF4E9D800FCC0A3 /* Auth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Auth.swift; sourceTree = "<group>"; };
 		4190F8EC2BF4EAAB00FCC0A3 /* AppContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppContainer.swift; sourceTree = "<group>"; };
-		41A8F3BC2BFE500C0092CBFA /* UIView+Contraints.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Contraints.swift"; sourceTree = "<group>"; };
+		41A8F3BC2BFE500C0092CBFA /* UIView+Constraints.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Constraints.swift"; sourceTree = "<group>"; };
 		41A8F3BE2BFE52E30092CBFA /* CustomTabBarButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarButton.swift; sourceTree = "<group>"; };
 		41BB4BE02BFB179D00D26A5D /* MyPostsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPostsViewController.swift; sourceTree = "<group>"; };
 		41BB4BE22BFB1AE200D26A5D /* MyPostsFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPostsFactory.swift; sourceTree = "<group>"; };
@@ -152,6 +174,28 @@
 		41BB4C0A2BFBB8BE00D26A5D /* UserConfigurationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserConfigurationViewController.swift; sourceTree = "<group>"; };
 		41BB4C0C2BFBBA2300D26A5D /* UserConfigurationFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserConfigurationFactory.swift; sourceTree = "<group>"; };
 		41BB4C0E2BFBBB1A00D26A5D /* UserConfigurationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserConfigurationCoordinator.swift; sourceTree = "<group>"; };
+		735AC8E62C005AB9004C3D21 /* CategoryTournamentCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryTournamentCollectionViewCell.swift; sourceTree = "<group>"; };
+		735AC8E72C005AB9004C3D21 /* TodayTeenCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodayTeenCollectionViewCell.swift; sourceTree = "<group>"; };
+		735AC8E82C005AB9004C3D21 /* CategoryTodayCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryTodayCollectionViewCell.swift; sourceTree = "<group>"; };
+		735AC8EA2C005AB9004C3D21 /* TournamentTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TournamentTableViewCell.swift; sourceTree = "<group>"; };
+		735AC8EB2C005AB9004C3D21 /* AnotherTeenTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnotherTeenTableViewCell.swift; sourceTree = "<group>"; };
+		735AC8EC2C005AB9004C3D21 /* TodayTeenTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodayTeenTableViewCell.swift; sourceTree = "<group>"; };
+		735AC8ED2C005AB9004C3D21 /* AboutATeenTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutATeenTableViewCell.swift; sourceTree = "<group>"; };
+		735AC8EE2C005AB9004C3D21 /* HeaderTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderTableViewCell.swift; sourceTree = "<group>"; };
+		735AC9092C005B52004C3D21 /* CustomNaviView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomNaviView.swift; sourceTree = "<group>"; };
+		735AC90B2C005B5D004C3D21 /* CustomQuestionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomQuestionView.swift; sourceTree = "<group>"; };
+		735AC90C2C005B5D004C3D21 /* CustomAboutATeenView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomAboutATeenView.swift; sourceTree = "<group>"; };
+		735AC90D2C005B5D004C3D21 /* CustomQuestionTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomQuestionTextView.swift; sourceTree = "<group>"; };
+		735AC9132C005B9F004C3D21 /* CustomHeartButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomHeartButton.swift; sourceTree = "<group>"; };
+		735AC9142C005B9F004C3D21 /* CustomProfileButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomProfileButton.swift; sourceTree = "<group>"; };
+		735AC9172C005BAD004C3D21 /* ProfileDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileDetailViewController.swift; sourceTree = "<group>"; };
+		735AC9222C005CCF004C3D21 /* UILabel+Constraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Constraints.swift"; sourceTree = "<group>"; };
+		735AC9252C005D21004C3D21 /* TournamentCategory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TournamentCategory.swift; sourceTree = "<group>"; };
+		735AC9262C005D21004C3D21 /* Question.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
+		735AC9272C005D21004C3D21 /* TodayTeen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodayTeen.swift; sourceTree = "<group>"; };
+		735AC9282C005D21004C3D21 /* Category.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		735AC9342C005EB0004C3D21 /* MainCoordinator+MainViewControllerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainCoordinator+MainViewControllerCoordinator.swift"; sourceTree = "<group>"; };
+		735AC9392C0061B9004C3D21 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -225,6 +269,7 @@
 			children = (
 				417286DD2BFF1FA7004F88F9 /* Presentation */,
 				417286DC2BFF1FA2004F88F9 /* Composition */,
+				735AC9082C005B29004C3D21 /* Components */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -260,6 +305,7 @@
 			children = (
 				417286E82BFF1FFB004F88F9 /* MainFactory.swift */,
 				417286EA2BFF2004004F88F9 /* MainCoordinator.swift */,
+				735AC9342C005EB0004C3D21 /* MainCoordinator+MainViewControllerCoordinator.swift */,
 			);
 			path = Composition;
 			sourceTree = "<group>";
@@ -267,7 +313,8 @@
 		417286DD2BFF1FA7004F88F9 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
-				417286E52BFF1FE7004F88F9 /* MainViewController.swift */,
+				735AC8D12C005A5C004C3D21 /* View */,
+				735AC9382C00619E004C3D21 /* ViewModel */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -395,6 +442,7 @@
 		418CB1EC2BF740C8001DA795 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				735AC92D2C005D2A004C3D21 /* Layer */,
 				41A8F3BB2BFE4FF90092CBFA /* Extension */,
 				418CB1F02BF74124001DA795 /* Localize */,
 				418CB1ED2BF740E5001DA795 /* Utils */,
@@ -600,7 +648,8 @@
 		41A8F3BB2BFE4FF90092CBFA /* Extension */ = {
 			isa = PBXGroup;
 			children = (
-				41A8F3BC2BFE500C0092CBFA /* UIView+Contraints.swift */,
+				41A8F3BC2BFE500C0092CBFA /* UIView+Constraints.swift */,
+				735AC9222C005CCF004C3D21 /* UILabel+Constraints.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -749,6 +798,112 @@
 			name = Composition;
 			sourceTree = "<group>";
 		};
+		735AC8D12C005A5C004C3D21 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				417286E52BFF1FE7004F88F9 /* MainViewController.swift */,
+				735AC9172C005BAD004C3D21 /* ProfileDetailViewController.swift */,
+				735AC8E42C005AB9004C3D21 /* Cell */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		735AC8E42C005AB9004C3D21 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				735AC8E92C005AB9004C3D21 /* TableViewCell */,
+				735AC8E52C005AB9004C3D21 /* CollectionViewCell */,
+			);
+			name = Cell;
+			path = Cell/Cell;
+			sourceTree = "<group>";
+		};
+		735AC8E52C005AB9004C3D21 /* CollectionViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				735AC8E62C005AB9004C3D21 /* CategoryTournamentCollectionViewCell.swift */,
+				735AC8E72C005AB9004C3D21 /* TodayTeenCollectionViewCell.swift */,
+				735AC8E82C005AB9004C3D21 /* CategoryTodayCollectionViewCell.swift */,
+			);
+			path = CollectionViewCell;
+			sourceTree = "<group>";
+		};
+		735AC8E92C005AB9004C3D21 /* TableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				735AC8EC2C005AB9004C3D21 /* TodayTeenTableViewCell.swift */,
+				735AC8ED2C005AB9004C3D21 /* AboutATeenTableViewCell.swift */,
+				735AC8EA2C005AB9004C3D21 /* TournamentTableViewCell.swift */,
+				735AC8EE2C005AB9004C3D21 /* HeaderTableViewCell.swift */,
+				735AC8EB2C005AB9004C3D21 /* AnotherTeenTableViewCell.swift */,
+			);
+			path = TableViewCell;
+			sourceTree = "<group>";
+		};
+		735AC9082C005B29004C3D21 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				735AC9112C005B6E004C3D21 /* View */,
+				735AC9122C005B7D004C3D21 /* Button */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		735AC9112C005B6E004C3D21 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				735AC9092C005B52004C3D21 /* CustomNaviView.swift */,
+				735AC90C2C005B5D004C3D21 /* CustomAboutATeenView.swift */,
+				735AC90D2C005B5D004C3D21 /* CustomQuestionTextView.swift */,
+				735AC90B2C005B5D004C3D21 /* CustomQuestionView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		735AC9122C005B7D004C3D21 /* Button */ = {
+			isa = PBXGroup;
+			children = (
+				735AC9132C005B9F004C3D21 /* CustomHeartButton.swift */,
+				735AC9142C005B9F004C3D21 /* CustomProfileButton.swift */,
+			);
+			path = Button;
+			sourceTree = "<group>";
+		};
+		735AC92D2C005D2A004C3D21 /* Layer */ = {
+			isa = PBXGroup;
+			children = (
+				735AC92E2C005D3A004C3D21 /* Domain */,
+			);
+			path = Layer;
+			sourceTree = "<group>";
+		};
+		735AC92E2C005D3A004C3D21 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				735AC92F2C005D43004C3D21 /* Entities */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		735AC92F2C005D43004C3D21 /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				735AC9252C005D21004C3D21 /* TournamentCategory.swift */,
+				735AC9262C005D21004C3D21 /* Question.swift */,
+				735AC9272C005D21004C3D21 /* TodayTeen.swift */,
+				735AC9282C005D21004C3D21 /* Category.swift */,
+			);
+			path = Entities;
+			sourceTree = "<group>";
+		};
+		735AC9382C00619E004C3D21 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				735AC9392C0061B9004C3D21 /* MainViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -826,8 +981,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				735AC90E2C005B5D004C3D21 /* CustomQuestionView.swift in Sources */,
 				41735B582BFCEEC300E4A339 /* HomeCoordinator+HomeViewControllerCoordinator.swift in Sources */,
 				41BB4BE12BFB179D00D26A5D /* MyPostsViewController.swift in Sources */,
+				735AC90F2C005B5D004C3D21 /* CustomAboutATeenView.swift in Sources */,
 				418CB1FE2BF74D16001DA795 /* SettingsCoordinator+SettingsViewControllerCoordinator.swift in Sources */,
 				4190F8E42BF4E91000FCC0A3 /* AppCoordinator.swift in Sources */,
 				41BB4BF32BFB2E0F00D26A5D /* HomeViewController.swift in Sources */,
@@ -835,10 +992,13 @@
 				418CB2092BF74EAC001DA795 /* TeenFactory.swift in Sources */,
 				4190F8C52BF4E6EF00FCC0A3 /* AppDelegate.swift in Sources */,
 				41BB4BE32BFB1AE200D26A5D /* MyPostsFactory.swift in Sources */,
+				735AC9232C005CCF004C3D21 /* UILabel+Constraints.swift in Sources */,
 				41735B4E2BFCEC0B00E4A339 /* NavigationImp+UINavigationControllerDelegate.swift in Sources */,
 				418CB1DA2BF726E7001DA795 /* MainTabController.swift in Sources */,
+				735AC9152C005B9F004C3D21 /* CustomHeartButton.swift in Sources */,
 				418CB1F42BF743AE001DA795 /* SettingsCoordinator.swift in Sources */,
 				41735B4C2BFCE8E300E4A339 /* SettingsCoordinator+UserConfigurationCoordinatorDelegate.swift in Sources */,
+				735AC9102C005B5D004C3D21 /* CustomQuestionTextView.swift in Sources */,
 				41BB4C052BFBADDA00D26A5D /* ParentCoordinator.swift in Sources */,
 				417286D72BFF0D16004F88F9 /* ChatCoordinator.swift in Sources */,
 				41735B502BFCEC4A00E4A339 /* NavigationImp+UIAdaptivePresentationControllerDelegate.swift in Sources */,
@@ -850,6 +1010,8 @@
 				417286DF2BFF1FB6004F88F9 /* RankingViewController.swift in Sources */,
 				418CB1E72BF73D1B001DA795 /* SettingsViewNavigation.swift in Sources */,
 				41BB4BF52BFB2EB400D26A5D /* HomeCoordinator.swift in Sources */,
+				735AC9182C005BAD004C3D21 /* ProfileDetailViewController.swift in Sources */,
+				735AC9032C005AB9004C3D21 /* AnotherTeenTableViewCell.swift in Sources */,
 				417286FB2BFF91D0004F88F9 /* LogInCoordinator+LogInViewControllerCoordinator.swift in Sources */,
 				41735B562BFCEE2200E4A339 /* PostDetailFactoryImp.swift in Sources */,
 				418CB1D52BF71DC8001DA795 /* LogInViewModel.swift in Sources */,
@@ -864,19 +1026,30 @@
 				418CB1D12BF71CAD001DA795 /* LogInCoordinator.swift in Sources */,
 				417286CC2BFF0B03004F88F9 /* ProfileFactory.swift in Sources */,
 				41BB4BE82BFB1B1E00D26A5D /* NewPostViewController.swift in Sources */,
+				735AC9062C005AB9004C3D21 /* HeaderTableViewCell.swift in Sources */,
+				735AC92C2C005D21004C3D21 /* Category.swift in Sources */,
 				418CB1CC2BF71AE7001DA795 /* LogInViewController.swift in Sources */,
 				417286D32BFF0CE4004F88F9 /* ChatViewContoller.swift in Sources */,
 				418CB1E92BF73E4C001DA795 /* SettingsViewModel.swift in Sources */,
+				735AC8FF2C005AB9004C3D21 /* CategoryTournamentCollectionViewCell.swift in Sources */,
 				4190F8C72BF4E6EF00FCC0A3 /* SceneDelegate.swift in Sources */,
+				735AC92B2C005D21004C3D21 /* TodayTeen.swift in Sources */,
 				417286CE2BFF0B83004F88F9 /* ProfileCoordinator.swift in Sources */,
 				417286CA2BFF0AEA004F88F9 /* ProfileViewController.swift in Sources */,
 				41BB4C0B2BFBB8BE00D26A5D /* UserConfigurationViewController.swift in Sources */,
 				41BB4C0F2BFBBB1A00D26A5D /* UserConfigurationCoordinator.swift in Sources */,
+				735AC9042C005AB9004C3D21 /* TodayTeenTableViewCell.swift in Sources */,
+				735AC9162C005B9F004C3D21 /* CustomProfileButton.swift in Sources */,
+				735AC9022C005AB9004C3D21 /* TournamentTableViewCell.swift in Sources */,
 				4190F8E22BF4E8DA00FCC0A3 /* Coordinator.swift in Sources */,
 				4190F8E82BF4E98C00FCC0A3 /* AppFactory.swift in Sources */,
+				735AC92A2C005D21004C3D21 /* Question.swift in Sources */,
+				735AC9292C005D21004C3D21 /* TournamentCategory.swift in Sources */,
 				41BB4C032BFBA32000D26A5D /* Navigation.swift in Sources */,
+				735AC93A2C0061B9004C3D21 /* MainViewModel.swift in Sources */,
 				41BB4BEA2BFB258500D26A5D /* MyPostsCoordinator.swift in Sources */,
 				4190F8EA2BF4E9D800FCC0A3 /* Auth.swift in Sources */,
+				735AC9012C005AB9004C3D21 /* CategoryTodayCollectionViewCell.swift in Sources */,
 				418CB2072BF74E88001DA795 /* TeenViewController.swift in Sources */,
 				418CB1FC2BF74CD8001DA795 /* ExampleViewController.swift in Sources */,
 				418CB1DE2BF727C3001DA795 /* MainTabCoordinator.swift in Sources */,
@@ -886,13 +1059,17 @@
 				41A8F3BF2BFE52E30092CBFA /* CustomTabBarButton.swift in Sources */,
 				418CB1EF2BF740F6001DA795 /* Reusable.swift in Sources */,
 				417286EB2BFF2004004F88F9 /* MainCoordinator.swift in Sources */,
-				41A8F3BD2BFE500C0092CBFA /* UIView+Contraints.swift in Sources */,
+				41A8F3BD2BFE500C0092CBFA /* UIView+Constraints.swift in Sources */,
+				735AC90A2C005B52004C3D21 /* CustomNaviView.swift in Sources */,
 				41735B542BFCEDE000E4A339 /* PostDetailCoordinator+PostDetailViewControllerCoordinator.swift in Sources */,
 				4190F8ED2BF4EAAB00FCC0A3 /* AppContainer.swift in Sources */,
 				417286FD2BFF93A4004F88F9 /* ProfileCoordinator+ProfileViewControllerCoordinator.swift in Sources */,
 				417286E12BFF1FCA004F88F9 /* RankingFactory.swift in Sources */,
+				735AC9002C005AB9004C3D21 /* TodayTeenCollectionViewCell.swift in Sources */,
+				735AC9052C005AB9004C3D21 /* AboutATeenTableViewCell.swift in Sources */,
 				41BB4C002BFB39FA00D26A5D /* PostDetailCoordinator.swift in Sources */,
 				418CB1EB2BF73E6F001DA795 /* SettingsViewController.swift in Sources */,
+				735AC9352C005EB0004C3D21 /* MainCoordinator+MainViewControllerCoordinator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

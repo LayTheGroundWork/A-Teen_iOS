@@ -35,7 +35,7 @@ extension NavigationImp: Navigation {
         rootViewController.navigationBar
     }
     
-    func present(_ viewControllerToPresent: UIViewController, animated: Bool) {
+    func present(_ viewControllerToPresent: UIViewController, animated: Bool, completion: (() -> Void)? = nil) {
         rootViewController.present(viewControllerToPresent, animated: animated)
     }
     
