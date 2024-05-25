@@ -9,11 +9,11 @@ import UIKit
 
 protocol MainFactory {
     func makeMainViewController(coordinator: MainViewControllerCoordinator) -> UIViewController
-    func makeProfileDetailViewController(
-        collectionView: UICollectionView,
-        indexPath: IndexPath,
+    func makeProfileDetailCoordinator(
+        delegate: ProfileDetailCoordinatorDelegate,
+        frame: CGRect,
         todayTeen: TodayTeen
-    ) -> UIViewController
+    ) -> Coordinator
 }
 
 struct MainFactoryImp: MainFactory {
@@ -26,23 +26,21 @@ struct MainFactoryImp: MainFactory {
         return controller
     }
     
-    func makeProfileDetailViewController(
-        collectionView: UICollectionView,
-        indexPath: IndexPath,
+    func makeProfileDetailCoordinator(
+        delegate: ProfileDetailCoordinatorDelegate,
+        frame: CGRect,
         todayTeen: TodayTeen
-    ) -> UIViewController {
-        guard let cellClicked = collectionView.cellForItem(at: indexPath),
-              let frame = cellClicked.superview?.convert(cellClicked.frame, to: nil)
-        else {
-            return UINavigationController()
-        }
-        let controller = ProfileDetailViewController()
-        controller.modalPresentationStyle = .overCurrentContext
-        controller.frame = frame
-        controller.todayTeen = todayTeen
-        let navigation = UINavigationController(rootViewController: controller)
-        navigation.modalPresentationStyle = .overCurrentContext
-        navigation.view.backgroundColor = .clear
-        return navigation
+    ) -> Coordinator {
+        let factory = ProfileDetailFactoryImp(frame: frame, todayTeen: todayTeen)
+        let navigationController = UINavigationController()
+        navigationController.modalPresentationStyle = .overFullScreen
+        navigationController.view.backgroundColor = .clear
+        let navigation = NavigationImp(rootViewController: navigationController)
+        
+        return ProfileDetailCoordinator(
+            navigation: navigation,
+            factory: factory,
+            delegate: delegate,
+            childCoordinators: [])
     }
 }

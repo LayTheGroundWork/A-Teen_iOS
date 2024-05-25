@@ -9,17 +9,23 @@ import UIKit
 
 extension MainCoordinator: MainViewControllerCoordinator {
     func didSelectTodayTeenImage(
-        collectionView: UICollectionView,
-        indexPath: IndexPath,
+        frame: CGRect,
         todayTeen: TodayTeen
     ) {
-        delegate?.isHiddenTabbar()
+        let profileDetailCoordinator = factory.makeProfileDetailCoordinator(
+            delegate: self,
+            frame: frame,
+            todayTeen: todayTeen)
+        
+        addChildCoordinatorStart(profileDetailCoordinator)
+        
         navigation.present(
-            factory.makeProfileDetailViewController(
-                collectionView: collectionView,
-                indexPath: indexPath,
-                todayTeen: todayTeen),
+            profileDetailCoordinator.navigation.rootViewController,
             animated: false)
+        
+        profileDetailCoordinator.navigation.dismissNavigation = { [weak self] in
+            self?.removeChildCoordinator(profileDetailCoordinator)
+        }
     }
     
     func didSelectTodayTeenChattingButton() {
@@ -54,7 +60,23 @@ extension MainCoordinator: MainViewControllerCoordinator {
         print("MoreButton")
     }
     
-    func didSelectAnotherTeenCell(row: Int) {
-        print("Select Item: \(row)")
+    func didSelectAnotherTeenCell(
+        frame: CGRect,
+        todayTeen: TodayTeen
+    ) {
+        let profileDetailCoordinator = factory.makeProfileDetailCoordinator(
+            delegate: self,
+            frame: frame,
+            todayTeen: todayTeen)
+        
+        addChildCoordinatorStart(profileDetailCoordinator)
+        
+        navigation.present(
+            profileDetailCoordinator.navigation.rootViewController,
+            animated: false)
+        
+        profileDetailCoordinator.navigation.dismissNavigation = { [weak self] in
+            self?.removeChildCoordinator(profileDetailCoordinator)
+        }
     }
 }

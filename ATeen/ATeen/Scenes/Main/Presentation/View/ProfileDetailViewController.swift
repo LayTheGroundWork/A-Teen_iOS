@@ -9,6 +9,10 @@ import SnapKit
 
 import UIKit
 
+protocol ProfileDetailViewControllerCoordinator: AnyObject {
+    func didFinishFlow()
+}
+
 class ProfileDetailViewController: UIViewController {
     let colors: [CGColor] = [
         .init(red: 0, green: 0, blue: 0, alpha: 0.5),
@@ -45,6 +49,9 @@ class ProfileDetailViewController: UIViewController {
             """),
     ]
     
+    private var viewModel: ProfileDetailViewModel
+    private weak var coordinator: ProfileDetailViewControllerCoordinator?
+    
     var todayTeen: TodayTeen?
     
     var frame: CGRect?
@@ -57,6 +64,23 @@ class ProfileDetailViewController: UIViewController {
     var informationViewHeightAnchor: Constraint?
     var questionViewHeightAnchor: Constraint?
     var questionTextViewHeightAnchor: Constraint?
+    
+    init(
+        viewModel: ProfileDetailViewModel,
+        coordinator: ProfileDetailViewControllerCoordinator,
+        frame: CGRect,
+        todayTeen: TodayTeen
+    ) {
+        self.viewModel = viewModel
+        self.coordinator = coordinator
+        self.frame = frame
+        self.todayTeen = todayTeen
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     lazy var topGradientLayer: CAGradientLayer = {
         let layer = CAGradientLayer()
@@ -642,7 +666,7 @@ extension ProfileDetailViewController {
                 self.view.layoutIfNeeded()
             }
         } completion: { _ in
-            self.dismiss(animated: false, completion: nil)
+            self.coordinator?.didFinishFlow()
         }
     }
 }

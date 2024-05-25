@@ -11,14 +11,15 @@ import UIKit
 
 protocol MainViewControllerCoordinator: AnyObject {
     func didSelectTodayTeenImage(
-        collectionView: UICollectionView,
-        indexPath: IndexPath,
+        frame: CGRect,
         todayTeen: TodayTeen)
     func didSelectTodayTeenChattingButton()
     func didSelectAboutATeenCell(tag: Int)
     func didSelectTournamentImage(collectionView: UICollectionView, indexPath: IndexPath)
     func didSelectTournamentMoreButton()
-    func didSelectAnotherTeenCell(row: Int)
+    func didSelectAnotherTeenCell(
+        frame: CGRect,
+        todayTeen: TodayTeen)
 }
 
 final class MainViewController: UIViewController {
@@ -177,7 +178,19 @@ extension MainViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.section {
         case 4:
-            coordinator?.didSelectAnotherTeenCell(row: indexPath.row)
+            guard let cellClicked = tableView.cellForRow(at: indexPath),
+                  let frame = cellClicked.superview?.convert(
+                    CGRect(
+                        x: 16,
+                        y: cellClicked.frame.origin.y,
+                        width: cellClicked.frame.width - 32,
+                        height: cellClicked.frame.height),
+                    to: nil)
+            else { return }
+            
+            coordinator?.didSelectAnotherTeenCell(
+                frame: frame,
+                todayTeen: viewModel.getTodayTeenItemMainViewModel(row: indexPath.row))
         default:
             break
         }

@@ -10,17 +10,14 @@ import UIKit
 final class MainCoordinator: Coordinator {
     var navigation: Navigation
     let factory: MainFactory
-    weak var delegate: MainTabHiddenDelegate?
     var childCoordinators: [Coordinator] = []
     
     init(
         navigation: Navigation,
-        factory: MainFactory,
-        delegate: MainTabHiddenDelegate
+        factory: MainFactory
     ) {
         self.navigation = navigation
         self.factory = factory
-        self.delegate = delegate
     }
     
     func start() {
