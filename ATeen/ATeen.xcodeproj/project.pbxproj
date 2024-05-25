@@ -103,6 +103,10 @@
 		735AC92C2C005D21004C3D21 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 735AC9282C005D21004C3D21 /* Category.swift */; };
 		735AC9352C005EB0004C3D21 /* MainCoordinator+MainViewControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 735AC9342C005EB0004C3D21 /* MainCoordinator+MainViewControllerCoordinator.swift */; };
 		735AC93A2C0061B9004C3D21 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 735AC9392C0061B9004C3D21 /* MainViewModel.swift */; };
+		73F9B8242C02182200684152 /* ProfileDetailFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73F9B8232C02182200684152 /* ProfileDetailFactory.swift */; };
+		73F9B8262C02182C00684152 /* ProfileDetailCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73F9B8252C02182C00684152 /* ProfileDetailCoordinator.swift */; };
+		73F9B8282C021E7800684152 /* ProfileDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73F9B8272C021E7800684152 /* ProfileDetailViewModel.swift */; };
+		73F9B82A2C02331400684152 /* MainCoordinator+ProfileCoordinatorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73F9B8292C02331400684152 /* MainCoordinator+ProfileCoordinatorDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -202,6 +206,10 @@
 		735AC9282C005D21004C3D21 /* Category.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		735AC9342C005EB0004C3D21 /* MainCoordinator+MainViewControllerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainCoordinator+MainViewControllerCoordinator.swift"; sourceTree = "<group>"; };
 		735AC9392C0061B9004C3D21 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
+		73F9B8232C02182200684152 /* ProfileDetailFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDetailFactory.swift; sourceTree = "<group>"; };
+		73F9B8252C02182C00684152 /* ProfileDetailCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDetailCoordinator.swift; sourceTree = "<group>"; };
+		73F9B8272C021E7800684152 /* ProfileDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDetailViewModel.swift; sourceTree = "<group>"; };
+		73F9B8292C02331400684152 /* MainCoordinator+ProfileCoordinatorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainCoordinator+ProfileCoordinatorDelegate.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -320,6 +328,9 @@
 				417286E82BFF1FFB004F88F9 /* MainFactory.swift */,
 				417286EA2BFF2004004F88F9 /* MainCoordinator.swift */,
 				735AC9342C005EB0004C3D21 /* MainCoordinator+MainViewControllerCoordinator.swift */,
+				73F9B8292C02331400684152 /* MainCoordinator+ProfileCoordinatorDelegate.swift */,
+				73F9B8232C02182200684152 /* ProfileDetailFactory.swift */,
+				73F9B8252C02182C00684152 /* ProfileDetailCoordinator.swift */,
 			);
 			path = Composition;
 			sourceTree = "<group>";
@@ -836,9 +847,9 @@
 		735AC8E52C005AB9004C3D21 /* CollectionViewCell */ = {
 			isa = PBXGroup;
 			children = (
-				735AC8E62C005AB9004C3D21 /* CategoryTournamentCollectionViewCell.swift */,
-				735AC8E72C005AB9004C3D21 /* TodayTeenCollectionViewCell.swift */,
 				735AC8E82C005AB9004C3D21 /* CategoryTodayCollectionViewCell.swift */,
+				735AC8E72C005AB9004C3D21 /* TodayTeenCollectionViewCell.swift */,
+				735AC8E62C005AB9004C3D21 /* CategoryTournamentCollectionViewCell.swift */,
 			);
 			path = CollectionViewCell;
 			sourceTree = "<group>";
@@ -917,6 +928,7 @@
 			isa = PBXGroup;
 			children = (
 				735AC9392C0061B9004C3D21 /* MainViewModel.swift */,
+				73F9B8272C021E7800684152 /* ProfileDetailViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -1020,6 +1032,7 @@
 				41BB4C052BFBADDA00D26A5D /* ParentCoordinator.swift in Sources */,
 				417286D72BFF0D16004F88F9 /* ChatCoordinator.swift in Sources */,
 				41735B502BFCEC4A00E4A339 /* NavigationImp+UIAdaptivePresentationControllerDelegate.swift in Sources */,
+				73F9B8242C02182200684152 /* ProfileDetailFactory.swift in Sources */,
 				417286E92BFF1FFB004F88F9 /* MainFactory.swift in Sources */,
 				41BB4C0D2BFBBA2300D26A5D /* UserConfigurationFactory.swift in Sources */,
 				417286E62BFF1FE7004F88F9 /* MainViewController.swift in Sources */,
@@ -1029,6 +1042,7 @@
 				418CB1E72BF73D1B001DA795 /* SettingsViewNavigation.swift in Sources */,
 				41BB4BF52BFB2EB400D26A5D /* HomeCoordinator.swift in Sources */,
 				735AC9182C005BAD004C3D21 /* ProfileDetailViewController.swift in Sources */,
+				73F9B8282C021E7800684152 /* ProfileDetailViewModel.swift in Sources */,
 				735AC9032C005AB9004C3D21 /* AnotherTeenTableViewCell.swift in Sources */,
 				417286FB2BFF91D0004F88F9 /* LogInCoordinator+LogInViewControllerCoordinator.swift in Sources */,
 				41735B562BFCEE2200E4A339 /* PostDetailFactoryImp.swift in Sources */,
@@ -1051,6 +1065,7 @@
 				418CB1E92BF73E4C001DA795 /* SettingsViewModel.swift in Sources */,
 				735AC8FF2C005AB9004C3D21 /* CategoryTournamentCollectionViewCell.swift in Sources */,
 				4190F8C72BF4E6EF00FCC0A3 /* SceneDelegate.swift in Sources */,
+				73F9B82A2C02331400684152 /* MainCoordinator+ProfileCoordinatorDelegate.swift in Sources */,
 				735AC92B2C005D21004C3D21 /* TodayTeen.swift in Sources */,
 				417286CE2BFF0B83004F88F9 /* ProfileCoordinator.swift in Sources */,
 				417286CA2BFF0AEA004F88F9 /* ProfileViewController.swift in Sources */,
@@ -1089,6 +1104,7 @@
 				735AC9052C005AB9004C3D21 /* AboutATeenTableViewCell.swift in Sources */,
 				41BB4C002BFB39FA00D26A5D /* PostDetailCoordinator.swift in Sources */,
 				418CB1EB2BF73E6F001DA795 /* SettingsViewController.swift in Sources */,
+				73F9B8262C02182C00684152 /* ProfileDetailCoordinator.swift in Sources */,
 				735AC9352C005EB0004C3D21 /* MainCoordinator+MainViewControllerCoordinator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

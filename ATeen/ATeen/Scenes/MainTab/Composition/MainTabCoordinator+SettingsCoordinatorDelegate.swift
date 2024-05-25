@@ -13,11 +13,3 @@ extension MainTabCoordinator: SettingsCoordinatorDelegate {
         delegate?.didFinish()
     }
 }
-
-extension MainTabCoordinator: MainTabHiddenDelegate {
-    func isHiddenTabbar() {
-        guard let navigationTab = self.navigationTab as? MainTabController else { return }
-        
-        navigationTab.tabBarView.isHidden = true
-    }
-}

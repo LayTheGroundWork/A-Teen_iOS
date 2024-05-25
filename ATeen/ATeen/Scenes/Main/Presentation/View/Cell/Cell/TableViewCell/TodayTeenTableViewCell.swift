@@ -170,9 +170,12 @@ extension TodayTeenTableViewCell: UICollectionViewDelegate {
             collectionView.reloadData()
             
         case self.teenCollectionView:
+            guard let cellClicked = collectionView.cellForItem(at: indexPath),
+                  let frame = cellClicked.superview?.convert(cellClicked.frame, to: nil)
+            else { return }
+            
             delegate?.didSelectTodayTeenImage(
-                collectionView: collectionView,
-                indexPath: indexPath,
+                frame: frame,
                 todayTeen: viewModel.getTodayTeenItemMainViewModel(row: indexPath.row))
         default:
             break
