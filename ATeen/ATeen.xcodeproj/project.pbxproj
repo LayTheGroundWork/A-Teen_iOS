@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0922B4A22C022C1200375953 /* CustomImageLabelButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0922B4A12C022C1200375953 /* CustomImageLabelButton.swift */; };
 		417286CA2BFF0AEA004F88F9 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 417286C92BFF0AEA004F88F9 /* ProfileViewController.swift */; };
 		417286CC2BFF0B03004F88F9 /* ProfileFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 417286CB2BFF0B03004F88F9 /* ProfileFactory.swift */; };
 		417286CE2BFF0B83004F88F9 /* ProfileCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 417286CD2BFF0B83004F88F9 /* ProfileCoordinator.swift */; };
@@ -60,6 +61,8 @@
 		4190F8E82BF4E98C00FCC0A3 /* AppFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4190F8E72BF4E98C00FCC0A3 /* AppFactory.swift */; };
 		4190F8EA2BF4E9D800FCC0A3 /* Auth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4190F8E92BF4E9D800FCC0A3 /* Auth.swift */; };
 		4190F8ED2BF4EAAB00FCC0A3 /* AppContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4190F8EC2BF4EAAB00FCC0A3 /* AppContainer.swift */; };
+		41A515A62C022B3000EDAEA2 /* ProfileDetailBottomBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A515A52C022B3000EDAEA2 /* ProfileDetailBottomBar.swift */; };
+		41A515A82C02338B00EDAEA2 /* CustomVoteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A515A72C02338B00EDAEA2 /* CustomVoteButton.swift */; };
 		41A8F3BD2BFE500C0092CBFA /* UIView+Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A8F3BC2BFE500C0092CBFA /* UIView+Constraints.swift */; };
 		41A8F3BF2BFE52E30092CBFA /* CustomTabBarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A8F3BE2BFE52E30092CBFA /* CustomTabBarButton.swift */; };
 		41BB4BE12BFB179D00D26A5D /* MyPostsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BB4BE02BFB179D00D26A5D /* MyPostsViewController.swift */; };
@@ -107,6 +110,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0922B4A12C022C1200375953 /* CustomImageLabelButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomImageLabelButton.swift; sourceTree = "<group>"; };
 		417286C92BFF0AEA004F88F9 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		417286CB2BFF0B03004F88F9 /* ProfileFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileFactory.swift; sourceTree = "<group>"; };
 		417286CD2BFF0B83004F88F9 /* ProfileCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCoordinator.swift; sourceTree = "<group>"; };
@@ -160,6 +164,8 @@
 		4190F8E72BF4E98C00FCC0A3 /* AppFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFactory.swift; sourceTree = "<group>"; };
 		4190F8E92BF4E9D800FCC0A3 /* Auth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Auth.swift; sourceTree = "<group>"; };
 		4190F8EC2BF4EAAB00FCC0A3 /* AppContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppContainer.swift; sourceTree = "<group>"; };
+		41A515A52C022B3000EDAEA2 /* ProfileDetailBottomBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDetailBottomBar.swift; sourceTree = "<group>"; };
+		41A515A72C02338B00EDAEA2 /* CustomVoteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomVoteButton.swift; sourceTree = "<group>"; };
 		41A8F3BC2BFE500C0092CBFA /* UIView+Constraints.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Constraints.swift"; sourceTree = "<group>"; };
 		41A8F3BE2BFE52E30092CBFA /* CustomTabBarButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarButton.swift; sourceTree = "<group>"; };
 		41BB4BE02BFB179D00D26A5D /* MyPostsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPostsViewController.swift; sourceTree = "<group>"; };
@@ -219,6 +225,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0922B4A02C022B8100375953 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				0922B4A12C022C1200375953 /* CustomImageLabelButton.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
 		417286C62BFF0ACF004F88F9 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
@@ -453,6 +467,7 @@
 		418CB1EC2BF740C8001DA795 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				0922B4A02C022B8100375953 /* Components */,
 				735AC92D2C005D2A004C3D21 /* Layer */,
 				41A8F3BB2BFE4FF90092CBFA /* Extension */,
 				418CB1F02BF74124001DA795 /* Localize */,
@@ -867,6 +882,7 @@
 				735AC90C2C005B5D004C3D21 /* CustomAboutATeenView.swift */,
 				735AC90D2C005B5D004C3D21 /* CustomQuestionTextView.swift */,
 				735AC90B2C005B5D004C3D21 /* CustomQuestionView.swift */,
+				41A515A52C022B3000EDAEA2 /* ProfileDetailBottomBar.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -876,6 +892,7 @@
 			children = (
 				735AC9132C005B9F004C3D21 /* CustomHeartButton.swift */,
 				735AC9142C005B9F004C3D21 /* CustomProfileButton.swift */,
+				41A515A72C02338B00EDAEA2 /* CustomVoteButton.swift */,
 			);
 			path = Button;
 			sourceTree = "<group>";
@@ -1010,6 +1027,7 @@
 				735AC9152C005B9F004C3D21 /* CustomHeartButton.swift in Sources */,
 				418CB1F42BF743AE001DA795 /* SettingsCoordinator.swift in Sources */,
 				41735B4C2BFCE8E300E4A339 /* SettingsCoordinator+UserConfigurationCoordinatorDelegate.swift in Sources */,
+				41A515A62C022B3000EDAEA2 /* ProfileDetailBottomBar.swift in Sources */,
 				735AC9102C005B5D004C3D21 /* CustomQuestionTextView.swift in Sources */,
 				41BB4C052BFBADDA00D26A5D /* ParentCoordinator.swift in Sources */,
 				417286D72BFF0D16004F88F9 /* ChatCoordinator.swift in Sources */,
@@ -1053,6 +1071,7 @@
 				417286CA2BFF0AEA004F88F9 /* ProfileViewController.swift in Sources */,
 				41BB4C0B2BFBB8BE00D26A5D /* UserConfigurationViewController.swift in Sources */,
 				41BB4C0F2BFBBB1A00D26A5D /* UserConfigurationCoordinator.swift in Sources */,
+				41A515A82C02338B00EDAEA2 /* CustomVoteButton.swift in Sources */,
 				735AC9042C005AB9004C3D21 /* TodayTeenTableViewCell.swift in Sources */,
 				735AC9162C005B9F004C3D21 /* CustomProfileButton.swift in Sources */,
 				735AC9022C005AB9004C3D21 /* TournamentTableViewCell.swift in Sources */,
@@ -1065,6 +1084,7 @@
 				41BB4BEA2BFB258500D26A5D /* MyPostsCoordinator.swift in Sources */,
 				4190F8EA2BF4E9D800FCC0A3 /* Auth.swift in Sources */,
 				735AC9012C005AB9004C3D21 /* CategoryTodayCollectionViewCell.swift in Sources */,
+				0922B4A22C022C1200375953 /* CustomImageLabelButton.swift in Sources */,
 				418CB2072BF74E88001DA795 /* TeenViewController.swift in Sources */,
 				418CB1FC2BF74CD8001DA795 /* ExampleViewController.swift in Sources */,
 				418CB1DE2BF727C3001DA795 /* MainTabCoordinator.swift in Sources */,

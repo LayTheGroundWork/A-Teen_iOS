@@ -107,6 +107,7 @@ class ProfileDetailViewController: UIViewController {
         scrollView.showsVerticalScrollIndicator = false
         scrollView.clipsToBounds = true
         scrollView.layer.cornerRadius = 20
+        scrollView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 90, right: 0)
         return scrollView
     }()
     
@@ -146,7 +147,15 @@ class ProfileDetailViewController: UIViewController {
     }()
     
     lazy var heartButton: CustomHeartButton = {
-        let button = CustomHeartButton(frame: .zero, text: "123")
+        let button = CustomHeartButton(
+            imageName: "heartIcon",
+            imageColor: .white,
+            textColor: .white,
+            labelText: "123",
+            buttonBackgroundColor: .black,
+            labelFont: UIFont.preferredFont(
+                forTextStyle: .footnote),
+            frame: .zero)
         button.layer.cornerRadius = 35
         button.addTarget(self, action: #selector(clickHeartButton(_:)), for: .touchUpInside)
         return button
@@ -283,9 +292,7 @@ class ProfileDetailViewController: UIViewController {
     }()
     
     lazy var barView: UIView = {
-        let view = UIView()
-        view.backgroundColor = UIColor(named: "mainColor")
-        view.alpha = 0
+        let view = ProfileDetailBottomBar()
         return view
     }()
 
@@ -359,6 +366,7 @@ extension ProfileDetailViewController {
             }
         }
     }
+ 
 }
 
 // MARK: - UI
@@ -387,7 +395,7 @@ extension ProfileDetailViewController {
         
         self.barView.snp.makeConstraints { make in
             make.leading.trailing.bottom.equalToSuperview()
-            make.height.equalTo(80)
+            make.height.equalTo(90)
         }
         
         addBackgroundView(frame: frame)
@@ -613,7 +621,7 @@ extension ProfileDetailViewController {
             self.topAnchor?.update(offset: 0)
             self.leadingAnchor?.update(offset: 0)
             self.widthAnchor?.update(offset: self.view.frame.width)
-            self.heightAnchor?.update(offset: self.view.frame.height - 80)
+            self.heightAnchor?.update(offset: self.view.frame.height)
             
             self.scrollView.layer.cornerRadius = 0
             self.backgroundView.layer.cornerRadius = 0
@@ -623,13 +631,13 @@ extension ProfileDetailViewController {
                 x: 0,
                 y: 0,
                 width: self.todayTeenImageView.frame.width,
-                height: self.todayTeenImageView.frame.height/2)
+                height: self.todayTeenImageView.frame.height / 2)
             
             self.bottomGradientLayer.frame = CGRect(
                 x: 0,
-                y: self.todayTeenImageView.frame.height/2,
+                y: self.todayTeenImageView.frame.height / 2,
                 width: self.todayTeenImageView.frame.width,
-                height: self.todayTeenImageView.frame.height/2)
+                height: self.todayTeenImageView.frame.height / 2)
             
             self.view.layoutIfNeeded()
             

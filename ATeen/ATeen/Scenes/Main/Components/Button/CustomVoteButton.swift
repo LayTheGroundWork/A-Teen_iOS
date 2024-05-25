@@ -1,15 +1,15 @@
 //
-//  CustomTabBarButton.swift
+//  CustomVoteButton.swift
 //  ATeen
 //
-//  Created by 최동호 on 5/23/24.
+//  Created by 최동호 on 5/25/24.
 //
 
 import SnapKit
 
 import UIKit
 
-final class CustomTabBarButton: CustomImageLabelButton {
+final class CustomVoteButton: CustomImageLabelButton {
     override init(
         imageName: String,
         imageColor: UIColor?,
@@ -33,23 +33,27 @@ final class CustomTabBarButton: CustomImageLabelButton {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    override func configuration() {
+        self.backgroundColor = self.buttonBackgroundColor
+        layoutSubviews()
+    }
 }
 
 // MARK: - Layout
-extension CustomTabBarButton {
+extension CustomVoteButton {
+ 
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        customLabel.snp.makeConstraints { make in
-            make.centerX.equalToSuperview()
-            make.bottom.equalToSuperview().offset(-22)
-        }
+        let stackView = UIStackView(arrangedSubviews: [customImageView, customLabel])
+        stackView.axis = .horizontal
+        stackView.spacing = 3
         
-        customImageView.snp.makeConstraints { make in
+        self.addSubview(stackView)
+        stackView.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
-            make.bottom.equalTo(self.customLabel.snp.top).offset(-2)
-            make.width.equalTo(28)
-            make.height.equalTo(28)
+            make.centerY.equalToSuperview()
         }
     }
 }
