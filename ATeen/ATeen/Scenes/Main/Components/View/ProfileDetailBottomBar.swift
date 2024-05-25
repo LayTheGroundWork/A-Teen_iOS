@@ -7,73 +7,115 @@
 
 import UIKit
 
-final class ProfileDetailBottomBar: UIViewController {
-    // MARK: - Public properties
-    
+final class ProfileDetailBottomBar: UIView {
     // MARK: - Private properties
-    lazy var tabBarView: UIView = {
-        let view = UIView()
-        view.backgroundColor = UIColor.white.withAlphaComponent(0.5)
-        view.layer.cornerRadius = 20
-        view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        view.layer.maskedCorners = CACornerMask(arrayLiteral: [.layerMinXMinYCorner, .layerMaxXMinYCorner])
-        view.clipsToBounds = true
+    lazy var voteButton: UIButton = {
+        let button = CustomVoteButton(
+            imageName: "heartIcon",
+            imageColor: .white,
+            textColor: .white,
+            labelText: "투표하기",
+            buttonBackgroundColor: .main,
+            labelFont: UIFont.preferredFont(forTextStyle: .caption1),
+            frame: .zero)
+        button.layer.cornerRadius = 20
+        return button
+    }()
+    
+    lazy var messageButton: UIButton = makeSmallButton(imageName: "blackChattingIcon")
+    
+    lazy var snsButton: UIButton = makeSmallButton(imageName: "instaIcon")
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        configUserInterface()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+    // MARK: - Helpers
+    private func configUserInterface() {
+        let screenWidth = UIScreen.main.bounds.width
+        let voteButtonWidth = (screenWidth - 48) / 2
+        
+        selfConfiguration()
+        
+        self.addSubview(voteButton)
+        self.addSubview(messageButton)
+        self.addSubview(snsButton)
+        
+        voteButton.snp.makeConstraints { make in
+            make.width.equalTo(voteButtonWidth)
+            make.height.equalTo(50)
+            make.leading.equalToSuperview().offset(16)
+            make.top.equalToSuperview().offset(15)
+        }
+        
+        messageButton.snp.makeConstraints { make in
+            make.width.equalTo((voteButtonWidth - 16) / 2)
+            make.height.equalTo(50)
+            make.leading.equalTo(voteButton.snp.trailing).offset(16)
+            make.top.equalToSuperview().offset(15)
+        }
+        
+        snsButton.snp.makeConstraints { make in
+            make.width.equalTo(messageButton)
+            make.height.equalTo(50)
+            make.leading.equalTo(messageButton.snp.trailing).offset(16)
+            make.trailing.equalToSuperview().offset(-16)
+            make.top.equalToSuperview().offset(15)
+        }
+    }
+    
+    private func selfConfiguration() {
+        self.backgroundColor = UIColor.white.withAlphaComponent(0.5)
+        self.layer.cornerRadius = 20
+        self.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        self.layer.maskedCorners = CACornerMask(arrayLiteral: [.layerMinXMinYCorner, .layerMaxXMinYCorner])
+        self.clipsToBounds = true
         
         // 그림자 설정
-        view.layer.shadowColor = UIColor.black.cgColor
-        view.layer.shadowOpacity = 0.1
-        view.layer.shadowOffset = CGSize(width: 0, height: 1)
-        view.layer.shadowRadius = 30
-        view.layer.masksToBounds = false
+        self.layer.shadowColor = UIColor.black.cgColor
+        self.layer.shadowOpacity = 0.1
+        self.layer.shadowOffset = CGSize(width: 0, height: 1)
+        self.layer.shadowRadius = 30
+        self.layer.masksToBounds = false
         
         // 블러 효과 추가
         let blurEffect = UIBlurEffect(style: .regular)
         let blurEffectView = UIVisualEffectView(effect: blurEffect)
-        blurEffectView.frame = view.bounds
-        blurEffectView.alpha = 0.9
+        blurEffectView.frame = self.bounds
+        blurEffectView.alpha = 0.8
         blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         blurEffectView.layer.cornerRadius = 20
         blurEffectView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         blurEffectView.clipsToBounds = true
         
-        view.addSubview(blurEffectView)
-        return view
-    }()
-    
-    lazy var voteButton: UIButton = makeCustomVoteButton()
-    
-    // MARK: - Life Cycle
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        configUserInterface()
+        self.addSubview(blurEffectView)
     }
     
-    // MARK: - Helpers
-    private func configUserInterface() {
-        view.backgroundColor = .main
-    }
-    
-    private func makeCustomVoteButton() -> UIButton {
+    private func makeSmallButton(imageName: String) -> UIButton {
         let button = UIButton()
+        button.layer.cornerRadius = 20
+        button.backgroundColor = .white
+        // 그림자 설정
+        button.layer.shadowColor = UIColor.black.cgColor
+        button.layer.shadowOpacity = 0.1
+        button.layer.shadowOffset = CGSize(width: 0, height: 1)
+        button.layer.shadowRadius = 30
+        button.layer.masksToBounds = false
         
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "heartIcon")
-        imageView.tintColor = .white
-        
-        let label = UILabel()
-        label.text = "투표하기"
-        label.tintColor = .white
-        label.font = UIFont.preferredFont(forTextStyle: .caption1)
-        
+        imageView.image = UIImage(named: imageName)
         button.addSubview(imageView)
-        button.addSubview(label)
+        
+        imageView.snp.makeConstraints { make in
+            make.width.height.equalTo(26)
+            make.center.equalToSuperview()
+        }
         
         return button
     }
-    
-    // MARK: - Actions
-    
 }
-
-// MARK: - Extensions here
-

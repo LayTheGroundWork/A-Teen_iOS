@@ -62,7 +62,7 @@ class CustomImageLabelButton: UIButton {
     }
     
     // MARK: - Helpers
-    private func configuration() {
+    func configuration() {
         self.backgroundColor = self.buttonBackgroundColor
         self.addSubview(customImageView)
         self.addSubview(customLabel)
