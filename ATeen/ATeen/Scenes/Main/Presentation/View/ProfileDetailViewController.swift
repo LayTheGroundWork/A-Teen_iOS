@@ -122,7 +122,15 @@ class ProfileDetailViewController: UIViewController {
     }()
     
     lazy var heartButton: CustomHeartButton = {
-        let button = CustomHeartButton(frame: .zero, text: "123")
+        let button = CustomHeartButton(
+            imageName: "heartIcon",
+            imageColor: .white,
+            textColor: .white,
+            labelText: "123",
+            buttonBackgroundColor: .black,
+            labelFont: UIFont.preferredFont(
+                forTextStyle: .footnote),
+            frame: .zero)
         button.layer.cornerRadius = 35
         button.addTarget(self, action: #selector(clickHeartButton(_:)), for: .touchUpInside)
         return button

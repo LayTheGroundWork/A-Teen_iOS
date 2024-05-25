@@ -13,8 +13,12 @@ final class MainTabController: UITabBarController {
     lazy var mainButton: CustomTabBarButton = {
         let button = CustomTabBarButton(
             imageName: "mainIconSelected",
+            imageColor: nil,
             textColor: .main,
             labelText: "Main",
+            buttonBackgroundColor: .clear,
+            labelFont: UIFont.preferredFont(
+                forTextStyle: .footnote),
             frame: .zero)
         button.tag = 0
         button.addTarget(self, action: #selector(clickButton(_:)), for: .touchUpInside)
@@ -24,8 +28,12 @@ final class MainTabController: UITabBarController {
     lazy var rankingButton: CustomTabBarButton = {
         let button = CustomTabBarButton(
             imageName: "rankingIcon",
+            imageColor: nil,
             textColor: .white,
             labelText: "Ranking",
+            buttonBackgroundColor: .clear,
+            labelFont: UIFont.preferredFont(
+                forTextStyle: .footnote),
             frame: .zero)
         button.tag = 1
         button.addTarget(self, action: #selector(clickButton(_:)), for: .touchUpInside)
@@ -35,8 +43,12 @@ final class MainTabController: UITabBarController {
     lazy var teenButton: CustomTabBarButton = {
         let button = CustomTabBarButton(
             imageName: "teenIcon",
+            imageColor: nil,
             textColor: .white,
             labelText: "Teen",
+            buttonBackgroundColor: .clear,
+            labelFont: UIFont.preferredFont(
+                forTextStyle: .footnote),
             frame: .zero)
         button.tag = 2
         button.addTarget(self, action: #selector(clickButton(_:)), for: .touchUpInside)
@@ -46,8 +58,12 @@ final class MainTabController: UITabBarController {
     lazy var chatButton: CustomTabBarButton = {
         let button = CustomTabBarButton(
             imageName: "chatIcon",
+            imageColor: nil,
             textColor: .white,
             labelText: "Chat",
+            buttonBackgroundColor: .clear,
+            labelFont: UIFont.preferredFont(
+                forTextStyle: .footnote),
             frame: .zero)
         button.tag = 3
         button.addTarget(self, action: #selector(clickButton(_:)), for: .touchUpInside)
@@ -57,8 +73,12 @@ final class MainTabController: UITabBarController {
     lazy var profileButton: CustomTabBarButton = {
         let button = CustomTabBarButton(
             imageName: "profile",
+            imageColor: nil,
             textColor: .white,
             labelText: "My",
+            buttonBackgroundColor: .clear,
+            labelFont: UIFont.preferredFont(
+                forTextStyle: .footnote),
             frame: .zero)
         button.tag = 4
         button.layer.masksToBounds = true
