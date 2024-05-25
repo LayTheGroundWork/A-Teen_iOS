@@ -78,8 +78,8 @@ final class ProfileDetailBottomBar: UIView {
         
         // 그림자 설정
         self.layer.shadowColor = UIColor.black.cgColor
-        self.layer.shadowOpacity = 0.1
-        self.layer.shadowOffset = CGSize(width: 0, height: 1)
+        self.layer.shadowOpacity = 0.2
+        self.layer.shadowOffset = CGSize(width: 0, height: 0)
         self.layer.shadowRadius = 30
         self.layer.masksToBounds = false
         
@@ -102,9 +102,9 @@ final class ProfileDetailBottomBar: UIView {
         button.backgroundColor = .white
         // 그림자 설정
         button.layer.shadowColor = UIColor.black.cgColor
-        button.layer.shadowOpacity = 0.1
-        button.layer.shadowOffset = CGSize(width: 0, height: 1)
-        button.layer.shadowRadius = 30
+        button.layer.shadowOpacity = 0.15
+        button.layer.shadowOffset = CGSize(width: 4, height: 4)
+        button.layer.shadowRadius = 14
         button.layer.masksToBounds = false
         
         let imageView = UIImageView()
