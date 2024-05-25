@@ -12,7 +12,7 @@ import UIKit
 class CustomNaviView: UIView {
     lazy var titleImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "aTeenTitle")
+        imageView.image = UIImage(named: "logo")
         imageView.contentMode = .scaleAspectFill
         return imageView
     }()
