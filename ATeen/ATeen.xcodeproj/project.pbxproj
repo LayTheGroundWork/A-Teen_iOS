@@ -61,6 +61,7 @@
 		4190F8E82BF4E98C00FCC0A3 /* AppFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4190F8E72BF4E98C00FCC0A3 /* AppFactory.swift */; };
 		4190F8EA2BF4E9D800FCC0A3 /* Auth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4190F8E92BF4E9D800FCC0A3 /* Auth.swift */; };
 		4190F8ED2BF4EAAB00FCC0A3 /* AppContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4190F8EC2BF4EAAB00FCC0A3 /* AppContainer.swift */; };
+		41A515A62C022B3000EDAEA2 /* ProfileDetailBottomBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A515A52C022B3000EDAEA2 /* ProfileDetailBottomBar.swift */; };
 		41A8F3BD2BFE500C0092CBFA /* UIView+Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A8F3BC2BFE500C0092CBFA /* UIView+Constraints.swift */; };
 		41A8F3BF2BFE52E30092CBFA /* CustomTabBarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A8F3BE2BFE52E30092CBFA /* CustomTabBarButton.swift */; };
 		41BB4BE12BFB179D00D26A5D /* MyPostsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BB4BE02BFB179D00D26A5D /* MyPostsViewController.swift */; };
@@ -158,6 +159,7 @@
 		4190F8E72BF4E98C00FCC0A3 /* AppFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFactory.swift; sourceTree = "<group>"; };
 		4190F8E92BF4E9D800FCC0A3 /* Auth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Auth.swift; sourceTree = "<group>"; };
 		4190F8EC2BF4EAAB00FCC0A3 /* AppContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppContainer.swift; sourceTree = "<group>"; };
+		41A515A52C022B3000EDAEA2 /* ProfileDetailBottomBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDetailBottomBar.swift; sourceTree = "<group>"; };
 		41A8F3BC2BFE500C0092CBFA /* UIView+Constraints.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Constraints.swift"; sourceTree = "<group>"; };
 		41A8F3BE2BFE52E30092CBFA /* CustomTabBarButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarButton.swift; sourceTree = "<group>"; };
 		41BB4BE02BFB179D00D26A5D /* MyPostsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPostsViewController.swift; sourceTree = "<group>"; };
@@ -867,6 +869,7 @@
 				735AC90C2C005B5D004C3D21 /* CustomAboutATeenView.swift */,
 				735AC90D2C005B5D004C3D21 /* CustomQuestionTextView.swift */,
 				735AC90B2C005B5D004C3D21 /* CustomQuestionView.swift */,
+				41A515A52C022B3000EDAEA2 /* ProfileDetailBottomBar.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1009,6 +1012,7 @@
 				735AC9152C005B9F004C3D21 /* CustomHeartButton.swift in Sources */,
 				418CB1F42BF743AE001DA795 /* SettingsCoordinator.swift in Sources */,
 				41735B4C2BFCE8E300E4A339 /* SettingsCoordinator+UserConfigurationCoordinatorDelegate.swift in Sources */,
+				41A515A62C022B3000EDAEA2 /* ProfileDetailBottomBar.swift in Sources */,
 				735AC9102C005B5D004C3D21 /* CustomQuestionTextView.swift in Sources */,
 				41BB4C052BFBADDA00D26A5D /* ParentCoordinator.swift in Sources */,
 				417286D72BFF0D16004F88F9 /* ChatCoordinator.swift in Sources */,
