@@ -14,7 +14,7 @@ protocol MainViewControllerCoordinator: AnyObject {
         frame: CGRect,
         todayTeen: TodayTeen)
     func didSelectTodayTeenChattingButton()
-    func didSelectAboutATeenCell(tag: Int)
+    func didSelectAboutATeenCell(tag: TabTag)
     func didSelectTournamentImage(collectionView: UICollectionView, indexPath: IndexPath)
     func didSelectTournamentMoreButton()
     func didSelectAnotherTeenCell(
@@ -203,7 +203,7 @@ extension MainViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch indexPath.section {
         case 0:
-            return 547
+            return 187 + ViewValues.todayTeenImageHeight
         case 1:
             return 369
         case 2:
@@ -211,7 +211,7 @@ extension MainViewController: UITableViewDelegate {
         case 3:
             return 76
         case 4:
-            return (self.view.frame.width - 32) * 1.16
+            return ViewValues.anotherTeenImageHeight
         default:
             return 0
         }

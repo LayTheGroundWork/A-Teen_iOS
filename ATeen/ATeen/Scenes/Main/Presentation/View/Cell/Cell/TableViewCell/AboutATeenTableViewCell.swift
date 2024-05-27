@@ -12,9 +12,9 @@ class AboutATeenTableViewCell: UITableViewCell {
     
     lazy var titleLabel: UILabel = {
         let label = UILabel()
-        label.text = "Abount A-Teen"
+        label.text = AppLocalized.aboutATeen
         label.textAlignment = .left
-        label.font = UIFont.systemFont(ofSize: 20, weight: .bold)
+        label.font = UIFont.customFont(forTextStyle: .title3, weight: .bold)
         return label
     }()
     
@@ -22,7 +22,7 @@ class AboutATeenTableViewCell: UITableViewCell {
         let stack = UIStackView(arrangedSubviews: [firstStackView, SecondStackView])
         stack.axis = .vertical
         stack.distribution = .fillEqually
-        stack.spacing = 16
+        stack.spacing = ViewValues.defaultSpacing
         return stack
     }()
     
@@ -30,7 +30,7 @@ class AboutATeenTableViewCell: UITableViewCell {
         let stack = UIStackView(arrangedSubviews: [teenBox, tournamentBox])
         stack.axis = .horizontal
         stack.distribution = .fillEqually
-        stack.spacing = 16
+        stack.spacing = ViewValues.defaultSpacing
         return stack
     }()
     
@@ -38,7 +38,7 @@ class AboutATeenTableViewCell: UITableViewCell {
         let stack = UIStackView(arrangedSubviews: [chattingBox, profileBox])
         stack.axis = .horizontal
         stack.distribution = .fillEqually
-        stack.spacing = 16
+        stack.spacing = ViewValues.defaultSpacing
         return stack
     }()
     
@@ -46,8 +46,8 @@ class AboutATeenTableViewCell: UITableViewCell {
         let view = CustomAboutATeenView(
             frame: .zero,
             imageName: "person",
-            title: "Teen",
-            text: "친구들의 프로필을 투표해보세요!")
+            title: AppLocalized.teenTitle,
+            text: AppLocalized.teenText)
         view.tag = 0
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(clickedView(_:)))
         view.addGestureRecognizer(tapGesture)
@@ -58,8 +58,8 @@ class AboutATeenTableViewCell: UITableViewCell {
         let view = CustomAboutATeenView(
             frame: .zero,
             imageName: "person",
-            title: "토너먼트",
-            text: "투표 결과를 한 눈에 볼 수 있어요! ")
+            title: AppLocalized.tournamentTitle,
+            text: AppLocalized.tournamentText)
         view.tag = 1
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(clickedView(_:)))
         view.addGestureRecognizer(tapGesture)
@@ -70,8 +70,8 @@ class AboutATeenTableViewCell: UITableViewCell {
         let view = CustomAboutATeenView(
             frame: .zero,
             imageName: "person",
-            title: "채팅",
-            text: "채팅을 통해 친구들과 소통해보세요!")
+            title: AppLocalized.chatTitle,
+            text: AppLocalized.chatText)
         view.tag = 2
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(clickedView(_:)))
         view.addGestureRecognizer(tapGesture)
@@ -82,8 +82,8 @@ class AboutATeenTableViewCell: UITableViewCell {
         let view = CustomAboutATeenView(
             frame: .zero,
             imageName: "person",
-            title: "나만의 Teen",
-            text: "나만의의 프로필을 등록해보세요!")
+            title: AppLocalized.myTeenTitle,
+            text: AppLocalized.myTeenText)
         view.tag = 3
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(clickedView(_:)))
         view.addGestureRecognizer(tapGesture)
@@ -137,7 +137,18 @@ class AboutATeenTableViewCell: UITableViewCell {
 extension AboutATeenTableViewCell {
     @objc func clickedView(_ sender: UIGestureRecognizer) {
         if let tag = sender.view?.tag {
-            delegate?.didSelectAboutATeenCell(tag: tag)
+            switch tag {
+            case 0:
+                delegate?.didSelectAboutATeenCell(tag: TabTag.teenTab)
+            case 1:
+                delegate?.didSelectAboutATeenCell(tag: TabTag.rankingTab)
+            case 2:
+                delegate?.didSelectAboutATeenCell(tag: TabTag.chatTab)
+            case 3:
+                delegate?.didSelectAboutATeenCell(tag: TabTag.profileTab)
+            default:
+                break
+            }
         }
     }
 }

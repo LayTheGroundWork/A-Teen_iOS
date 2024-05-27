@@ -9,13 +9,14 @@ import SnapKit
 
 import UIKit
 
-class CustomAboutATeenView: UIView {
+final class CustomAboutATeenView: UIView {
+    
     lazy var customView: UIView = {
         let view = UIView()
         view.backgroundColor = .white
         view.layer.borderWidth = 2
         view.layer.borderColor = UIColor(named: "mainPartBorderColor")?.cgColor
-        view.layer.cornerRadius = 20
+        view.layer.cornerRadius = ViewValues.defaultRadius
         return view
     }()
     
@@ -29,7 +30,7 @@ class CustomAboutATeenView: UIView {
     lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.textColor = UIColor(named: "mainColor")
-        label.font = UIFont.systemFont(ofSize: 16, weight: .bold)
+        label.font = UIFont.customFont(forTextStyle: .callout, weight: .bold)
         return label
     }()
     
@@ -37,7 +38,7 @@ class CustomAboutATeenView: UIView {
         let label = UILabel()
         label.textAlignment = .left
         label.textColor = UIColor(named: "mainColor")
-        label.font = UIFont.systemFont(ofSize: 14, weight: .regular)
+        label.font = UIFont.customFont(forTextStyle: .footnote, weight: .regular)
         label.numberOfLines = 2
         return label
     }()
@@ -69,14 +70,14 @@ extension CustomAboutATeenView {
         }
         
         titleImageView.snp.makeConstraints { make in
-            make.leading.equalToSuperview().offset(16)
+            make.leading.equalToSuperview().offset(ViewValues.defaultPadding)
             make.top.equalToSuperview().offset(14)
             make.width.height.equalTo(24)
         }
         
         titleLabel.snp.makeConstraints { make in
             make.leading.equalTo(self.titleImageView.snp.trailing).offset(5)
-            make.trailing.equalToSuperview().offset(-16)
+            make.trailing.equalToSuperview().offset(-ViewValues.defaultPadding)
             make.top.equalToSuperview().offset(14)
             make.height.equalTo(24)
         }

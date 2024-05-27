@@ -21,4 +21,21 @@ extension MainTabCoordinator: MainCoordinatorDelegate {
             self?.removeChildCoordinator(loginCoordinator)
         }
     }
+    
+    func didSelectAboutATeenCell(tag: TabTag) {
+        guard let tab = navigation.viewControllers.first as? MainTabController else { return }
+        
+        switch tag {
+        case .mainTab:
+            tab.clickButton(tab.mainButton)
+        case .rankingTab:
+            tab.clickButton(tab.rankingButton)
+        case .teenTab:
+            tab.clickButton(tab.teenButton)
+        case .chatTab:
+            tab.clickButton(tab.chatButton)
+        case .profileTab:
+            tab.clickButton(tab.profileButton)
+        }
+    }
 }

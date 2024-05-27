@@ -8,7 +8,6 @@
 import UIKit
 
 class TournamentTableViewCell: UITableViewCell {
-    static let identifier = "TournamentTableViewCell"
     
     let categoryArr: [TournamentCategory] = [
         TournamentCategory(title: "운동", image: "exercise"),
@@ -23,17 +22,17 @@ class TournamentTableViewCell: UITableViewCell {
     
     lazy var titleLabel: UILabel = {
         let label = UILabel()
-        label.text = "진행 중인 토너먼트"
+        label.text = AppLocalized.runningTournament
         label.textAlignment = .left
-        label.font = UIFont.systemFont(ofSize: 20, weight: .bold)
+        label.font = UIFont.customFont(forTextStyle: .title3, weight: .bold)
         return label
     }()
     
     lazy var moreButton: UIButton = {
         let button = UIButton()
-        button.setTitle("더보기", for: .normal)
+        button.setTitle(AppLocalized.showMoreButton, for: .normal)
         button.setTitleColor(UIColor(named: "grayButtonColor"), for: .normal)
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 13, weight: .regular)
+        button.titleLabel?.font = UIFont.customFont(forTextStyle: .footnote, weight: .regular)
         button.addTarget(self, action: #selector(clickMoreButton(_:)), for: .touchUpInside)
         return button
     }()
@@ -42,7 +41,7 @@ class TournamentTableViewCell: UITableViewCell {
         let layout = UICollectionViewFlowLayout()
         let width: CGFloat = 204
         layout.scrollDirection = .horizontal
-        layout.minimumLineSpacing = 16
+        layout.minimumLineSpacing = ViewValues.defaultSpacing
         layout.minimumInteritemSpacing = 0
         layout.sectionInset = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
         layout.itemSize = CGSize(width: width, height: 213)

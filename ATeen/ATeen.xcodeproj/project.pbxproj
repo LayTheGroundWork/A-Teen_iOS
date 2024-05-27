@@ -63,6 +63,7 @@
 		4190F8ED2BF4EAAB00FCC0A3 /* AppContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4190F8EC2BF4EAAB00FCC0A3 /* AppContainer.swift */; };
 		419CCE812C04611500D2E7F8 /* ViewValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419CCE802C04611500D2E7F8 /* ViewValues.swift */; };
 		419CCE842C0466CA00D2E7F8 /* UIFont+TextStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419CCE832C0466CA00D2E7F8 /* UIFont+TextStyle.swift */; };
+		419CCE862C04C88E00D2E7F8 /* TabTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419CCE852C04C88E00D2E7F8 /* TabTag.swift */; };
 		41A515A62C022B3000EDAEA2 /* ProfileDetailBottomBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A515A52C022B3000EDAEA2 /* ProfileDetailBottomBar.swift */; };
 		41A515A82C02338B00EDAEA2 /* CustomVoteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A515A72C02338B00EDAEA2 /* CustomVoteButton.swift */; };
 		41A8F3BD2BFE500C0092CBFA /* UIView+Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A8F3BC2BFE500C0092CBFA /* UIView+Constraints.swift */; };
@@ -170,6 +171,7 @@
 		4190F8EC2BF4EAAB00FCC0A3 /* AppContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppContainer.swift; sourceTree = "<group>"; };
 		419CCE802C04611500D2E7F8 /* ViewValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewValues.swift; sourceTree = "<group>"; };
 		419CCE832C0466CA00D2E7F8 /* UIFont+TextStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+TextStyle.swift"; sourceTree = "<group>"; };
+		419CCE852C04C88E00D2E7F8 /* TabTag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabTag.swift; sourceTree = "<group>"; };
 		41A515A52C022B3000EDAEA2 /* ProfileDetailBottomBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDetailBottomBar.swift; sourceTree = "<group>"; };
 		41A515A72C02338B00EDAEA2 /* CustomVoteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomVoteButton.swift; sourceTree = "<group>"; };
 		41A8F3BC2BFE500C0092CBFA /* UIView+Constraints.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Constraints.swift"; sourceTree = "<group>"; };
@@ -499,6 +501,7 @@
 			isa = PBXGroup;
 			children = (
 				418CB1F12BF74138001DA795 /* AppLocalized.swift */,
+				419CCE852C04C88E00D2E7F8 /* TabTag.swift */,
 			);
 			path = Localize;
 			sourceTree = "<group>";
@@ -1087,6 +1090,7 @@
 				417286D32BFF0CE4004F88F9 /* ChatViewContoller.swift in Sources */,
 				418CB1E92BF73E4C001DA795 /* SettingsViewModel.swift in Sources */,
 				735AC8FF2C005AB9004C3D21 /* CategoryTournamentCollectionViewCell.swift in Sources */,
+				419CCE862C04C88E00D2E7F8 /* TabTag.swift in Sources */,
 				4190F8C72BF4E6EF00FCC0A3 /* SceneDelegate.swift in Sources */,
 				73F9B82A2C02331400684152 /* MainCoordinator+ProfileCoordinatorDelegate.swift in Sources */,
 				735AC92B2C005D21004C3D21 /* TodayTeen.swift in Sources */,

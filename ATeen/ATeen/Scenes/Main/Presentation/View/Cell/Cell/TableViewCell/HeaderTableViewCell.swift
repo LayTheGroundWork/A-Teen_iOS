@@ -8,13 +8,11 @@
 import UIKit
 
 class HeaderTableViewCell: UITableViewCell {
-    static let identifier = "HeaderTableViewCell"
-    
     lazy var titleLabel: UILabel = {
         let label = UILabel()
-        label.text = "또다른 Teen 살펴보기"
+        label.text = AppLocalized.anotherTeen
         label.textAlignment = .left
-        label.font = UIFont.systemFont(ofSize: 20, weight: .bold)
+        label.font = UIFont.customFont(forTextStyle: .title3, weight: .bold)
         return label
     }()
     
@@ -24,8 +22,8 @@ class HeaderTableViewCell: UITableViewCell {
         
         self.titleLabel.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(46)
-            make.leading.equalToSuperview().offset(16)
-            make.trailing.equalToSuperview().offset(-16)
+            make.leading.equalToSuperview().offset(ViewValues.defaultPadding)
+            make.trailing.equalToSuperview().offset(-ViewValues.defaultPadding)
             make.height.equalTo(24)
         }
     }
@@ -36,7 +34,6 @@ class HeaderTableViewCell: UITableViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
-    
     }
 }
 

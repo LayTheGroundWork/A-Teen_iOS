@@ -9,6 +9,7 @@ import UIKit
 
 protocol MainCoordinatorDelegate: AnyObject {
     func didSelectChattingButton()
+    func didSelectAboutATeenCell(tag: TabTag)
 }
 
 final class MainCoordinator: Coordinator {

@@ -30,9 +30,9 @@ class TodayTeenTableViewCell: UITableViewCell {
     
     lazy var titleLabel: UILabel = {
         let label = UILabel()
-        label.text = "오늘의 인기 Teen"
+        label.text = AppLocalized.todaysTeen
         label.textAlignment = .left
-        label.font = UIFont.systemFont(ofSize: 20, weight: .bold)
+        label.font = UIFont.customFont(forTextStyle: .title3, weight: .bold)
         return label
     }()
     

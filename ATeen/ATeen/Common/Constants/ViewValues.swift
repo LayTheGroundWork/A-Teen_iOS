@@ -8,6 +8,9 @@
 import UIKit
 
 struct ViewValues {
+    // MARK: - Spacing
+    static let defaultSpacing: CGFloat = 16
+    
     // MARK: - Padding
     static let defaultPadding = 16
     

@@ -21,7 +21,6 @@ struct MainTabFactoryImp: MainTabFactory {
     func makeMainTabController() -> UITabBarController {
         let mainTabController = MainTabController()
         mainTabController.viewControllers = []
-        mainTabController.title = "Main"
         return mainTabController
     }
     

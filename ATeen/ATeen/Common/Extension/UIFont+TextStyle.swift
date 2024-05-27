@@ -27,7 +27,7 @@ import UIKit
 
 extension UIFont {
     // 텍스트 스타일과 원하는 폰트 무게를 받아 폰트를 생성하는 함수
-    func customFont(forTextStyle style: UIFont.TextStyle, weight: UIFont.Weight) -> UIFont {
+    static func customFont(forTextStyle style: UIFont.TextStyle, weight: UIFont.Weight) -> UIFont {
         let systemFont = UIFont.preferredFont(forTextStyle: style)
         let fontMetrics = UIFontMetrics(forTextStyle: style)
         let descriptor = systemFont.fontDescriptor.addingAttributes([.traits: [UIFontDescriptor.TraitKey.weight: weight]])

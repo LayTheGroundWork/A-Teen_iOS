@@ -32,24 +32,8 @@ extension MainCoordinator: MainViewControllerCoordinator {
         delegate?.didSelectChattingButton()
     }
     
-    func didSelectAboutATeenCell(tag: Int) {
-        switch tag {
-        case 0:
-            print("Teen")
-            
-        case 1:
-            print("토너먼트")
-            
-        case 2:
-            print("채팅")
-            
-        case 3:
-            print("나만의 Teen")
-            
-        default:
-            print("break")
-            break
-        }
+    func didSelectAboutATeenCell(tag: TabTag) {
+        delegate?.didSelectAboutATeenCell(tag: tag)
     }
     
     func didSelectTournamentImage(collectionView: UICollectionView, indexPath: IndexPath) {
