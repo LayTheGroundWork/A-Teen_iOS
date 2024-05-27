@@ -174,7 +174,7 @@ extension CustomQuestionView {
             make.trailing.equalToSuperview().offset(-16)
             make.top.equalToSuperview().offset(15)
             make.height.equalTo(
-                self.oneTitleLabel.textHeight(width: UIScreen.main.bounds.width - 62, font: self.oneTitleLabel.font!, text: self.oneTitleLabel.text!)
+                self.oneTitleLabel.textHeight(width: ViewValues.questionHeight, font: self.oneTitleLabel.font!, text: self.oneTitleLabel.text!)
             )
         }
         
@@ -183,7 +183,7 @@ extension CustomQuestionView {
             make.trailing.equalToSuperview().offset(-16)
             make.top.equalTo(self.oneTitleLabel.snp.bottom).offset(7)
             make.height.equalTo(
-                self.oneTextLabel.textHeight(width: UIScreen.main.bounds.width - 62, font: self.oneTextLabel.font!, text: self.oneTextLabel.text!)
+                self.oneTextLabel.textHeight(width: ViewValues.questionHeight, font: self.oneTextLabel.font!, text: self.oneTextLabel.text!)
             )
         }
         
@@ -192,7 +192,7 @@ extension CustomQuestionView {
             make.trailing.equalToSuperview().offset(-16)
             make.top.equalTo(self.oneTextLabel.snp.bottom).offset(16)
             make.height.equalTo(
-                self.twoTitleLabel.textHeight(width: UIScreen.main.bounds.width - 62, font: self.twoTitleLabel.font!, text: self.twoTitleLabel.text!)
+                self.twoTitleLabel.textHeight(width: ViewValues.questionHeight, font: self.twoTitleLabel.font!, text: self.twoTitleLabel.text!)
             )
         }
         
@@ -201,7 +201,7 @@ extension CustomQuestionView {
             make.trailing.equalToSuperview().offset(-16)
             make.top.equalTo(self.twoTitleLabel.snp.bottom).offset(7)
             make.height.equalTo(
-                self.twoTextLabel.textHeight(width: UIScreen.main.bounds.width - 62, font: self.twoTextLabel.font!, text: self.twoTextLabel.text!)
+                self.twoTextLabel.textHeight(width: ViewValues.questionHeight, font: self.twoTextLabel.font!, text: self.twoTextLabel.text!)
             )
         }
         /*

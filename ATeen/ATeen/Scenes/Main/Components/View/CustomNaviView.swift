@@ -12,8 +12,8 @@ import UIKit
 class CustomNaviView: UIView {
     lazy var titleImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "logo")
-        imageView.contentMode = .scaleAspectFill
+        imageView.image = UIImage(named: "mainLogo")
+        imageView.contentMode = .scaleAspectFit
         return imageView
     }()
     
@@ -35,9 +35,6 @@ class CustomNaviView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.addSubview(titleImageView)
-        self.addSubview(alarmButton)
-        self.addSubview(searchButton)
     }
     
     required init?(coder: NSCoder) {
@@ -49,22 +46,26 @@ class CustomNaviView: UIView {
 extension CustomNaviView {
     override func layoutSubviews() {
         super.layoutSubviews()
+        
+        self.addSubview(titleImageView)
+        self.addSubview(alarmButton)
+        self.addSubview(searchButton)
+        
         self.titleImageView.snp.makeConstraints { make in
             make.leading.equalToSuperview()
-            make.top.equalToSuperview().offset(10)
-            make.width.equalTo(115)
+            make.centerY.equalToSuperview()
             make.height.equalTo(30)
         }
         
         self.alarmButton.snp.makeConstraints { make in
             make.trailing.equalToSuperview()
-            make.bottom.equalTo(self.titleImageView.snp.bottom).offset(-6)
+            make.centerY.equalToSuperview()
             make.width.height.equalTo(24)
         }
         
         self.searchButton.snp.makeConstraints { make in
             make.trailing.equalTo(self.alarmButton.snp.leading).offset(-20)
-            make.bottom.equalTo(self.titleImageView.snp.bottom).offset(-6)
+            make.centerY.equalToSuperview()
             make.width.height.equalTo(24)
         }
     }

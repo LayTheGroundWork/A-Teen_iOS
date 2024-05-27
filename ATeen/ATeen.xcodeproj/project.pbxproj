@@ -61,6 +61,8 @@
 		4190F8E82BF4E98C00FCC0A3 /* AppFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4190F8E72BF4E98C00FCC0A3 /* AppFactory.swift */; };
 		4190F8EA2BF4E9D800FCC0A3 /* Auth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4190F8E92BF4E9D800FCC0A3 /* Auth.swift */; };
 		4190F8ED2BF4EAAB00FCC0A3 /* AppContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4190F8EC2BF4EAAB00FCC0A3 /* AppContainer.swift */; };
+		419CCE812C04611500D2E7F8 /* ViewValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419CCE802C04611500D2E7F8 /* ViewValues.swift */; };
+		419CCE842C0466CA00D2E7F8 /* UIFont+TextStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419CCE832C0466CA00D2E7F8 /* UIFont+TextStyle.swift */; };
 		41A515A62C022B3000EDAEA2 /* ProfileDetailBottomBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A515A52C022B3000EDAEA2 /* ProfileDetailBottomBar.swift */; };
 		41A515A82C02338B00EDAEA2 /* CustomVoteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A515A72C02338B00EDAEA2 /* CustomVoteButton.swift */; };
 		41A8F3BD2BFE500C0092CBFA /* UIView+Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A8F3BC2BFE500C0092CBFA /* UIView+Constraints.swift */; };
@@ -164,6 +166,8 @@
 		4190F8E72BF4E98C00FCC0A3 /* AppFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFactory.swift; sourceTree = "<group>"; };
 		4190F8E92BF4E9D800FCC0A3 /* Auth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Auth.swift; sourceTree = "<group>"; };
 		4190F8EC2BF4EAAB00FCC0A3 /* AppContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppContainer.swift; sourceTree = "<group>"; };
+		419CCE802C04611500D2E7F8 /* ViewValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewValues.swift; sourceTree = "<group>"; };
+		419CCE832C0466CA00D2E7F8 /* UIFont+TextStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+TextStyle.swift"; sourceTree = "<group>"; };
 		41A515A52C022B3000EDAEA2 /* ProfileDetailBottomBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDetailBottomBar.swift; sourceTree = "<group>"; };
 		41A515A72C02338B00EDAEA2 /* CustomVoteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomVoteButton.swift; sourceTree = "<group>"; };
 		41A8F3BC2BFE500C0092CBFA /* UIView+Constraints.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Constraints.swift"; sourceTree = "<group>"; };
@@ -467,6 +471,7 @@
 		418CB1EC2BF740C8001DA795 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				419CCE822C04617B00D2E7F8 /* Constants */,
 				0922B4A02C022B8100375953 /* Components */,
 				735AC92D2C005D2A004C3D21 /* Layer */,
 				41A8F3BB2BFE4FF90092CBFA /* Extension */,
@@ -671,11 +676,20 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		419CCE822C04617B00D2E7F8 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				419CCE802C04611500D2E7F8 /* ViewValues.swift */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
 		41A8F3BB2BFE4FF90092CBFA /* Extension */ = {
 			isa = PBXGroup;
 			children = (
 				41A8F3BC2BFE500C0092CBFA /* UIView+Constraints.swift */,
 				735AC9222C005CCF004C3D21 /* UILabel+Constraints.swift */,
+				419CCE832C0466CA00D2E7F8 /* UIFont+TextStyle.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -1017,6 +1031,7 @@
 				418CB1FE2BF74D16001DA795 /* SettingsCoordinator+SettingsViewControllerCoordinator.swift in Sources */,
 				4190F8E42BF4E91000FCC0A3 /* AppCoordinator.swift in Sources */,
 				41BB4BF32BFB2E0F00D26A5D /* HomeViewController.swift in Sources */,
+				419CCE842C0466CA00D2E7F8 /* UIFont+TextStyle.swift in Sources */,
 				418CB1F22BF74138001DA795 /* AppLocalized.swift in Sources */,
 				418CB2092BF74EAC001DA795 /* TeenFactory.swift in Sources */,
 				4190F8C52BF4E6EF00FCC0A3 /* AppDelegate.swift in Sources */,
@@ -1024,6 +1039,7 @@
 				735AC9232C005CCF004C3D21 /* UILabel+Constraints.swift in Sources */,
 				41735B4E2BFCEC0B00E4A339 /* NavigationImp+UINavigationControllerDelegate.swift in Sources */,
 				418CB1DA2BF726E7001DA795 /* MainTabController.swift in Sources */,
+				419CCE812C04611500D2E7F8 /* ViewValues.swift in Sources */,
 				735AC9152C005B9F004C3D21 /* CustomHeartButton.swift in Sources */,
 				418CB1F42BF743AE001DA795 /* SettingsCoordinator.swift in Sources */,
 				41735B4C2BFCE8E300E4A339 /* SettingsCoordinator+UserConfigurationCoordinatorDelegate.swift in Sources */,

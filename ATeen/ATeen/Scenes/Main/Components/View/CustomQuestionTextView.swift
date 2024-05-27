@@ -47,13 +47,29 @@ extension CustomQuestionTextView {
         super.layoutSubviews()
         titleLabel.snp.makeConstraints { make in
             make.leading.trailing.top.equalToSuperview()
-            make.height.greaterThanOrEqualTo(self.textLabel.textHeight(width: UIScreen.main.bounds.width - 31, font: self.titleLabel.font!, text: self.titleLabel.text!))
+            make.height.greaterThanOrEqualTo(
+                self.textLabel.textHeight(
+                    width: ViewValues.questionWidth,
+                    font: self.titleLabel.font!,
+                    text: self.titleLabel.text!
+                )
+            )
         }
         
         textLabel.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview()
-            make.top.equalToSuperview().offset((self.titleLabel.text! as NSString).size(withAttributes: [NSAttributedString.Key.font: self.titleLabel.font!]).height + 7)
-            make.height.greaterThanOrEqualTo(self.textLabel.textHeight(width: UIScreen.main.bounds.width - 31, font: self.textLabel.font!, text: self.textLabel.text!))
+            make.top.equalToSuperview()
+                .offset((self.titleLabel.text! as NSString)
+                    .size(withAttributes: [NSAttributedString.Key.font: self.titleLabel.font!])
+                    .height + 7
+                )
+            make.height.greaterThanOrEqualTo(
+                self.textLabel.textHeight(
+                    width: ViewValues.questionWidth,
+                    font: self.textLabel.font!,
+                    text: self.textLabel.text!
+                )
+            )
         }
     }
 }

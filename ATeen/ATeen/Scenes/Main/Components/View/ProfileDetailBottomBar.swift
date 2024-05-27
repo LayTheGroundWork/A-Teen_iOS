@@ -18,7 +18,7 @@ final class ProfileDetailBottomBar: UIView {
             buttonBackgroundColor: .main,
             labelFont: UIFont.preferredFont(forTextStyle: .caption1),
             frame: .zero)
-        button.layer.cornerRadius = 20
+        button.layer.cornerRadius = ViewValues.defaultRadius
         return button
     }()
     
@@ -37,8 +37,6 @@ final class ProfileDetailBottomBar: UIView {
 
     // MARK: - Helpers
     private func configUserInterface() {
-        let screenWidth = UIScreen.main.bounds.width
-        let voteButtonWidth = (screenWidth - 48) / 2
         
         selfConfiguration()
         
@@ -47,31 +45,31 @@ final class ProfileDetailBottomBar: UIView {
         self.addSubview(snsButton)
         
         voteButton.snp.makeConstraints { make in
-            make.width.equalTo(voteButtonWidth)
+            make.width.equalTo(ViewValues.bottomVoteButtonWidth)
             make.height.equalTo(50)
-            make.leading.equalToSuperview().offset(16)
+            make.leading.equalToSuperview().offset(ViewValues.defaultPadding)
             make.top.equalToSuperview().offset(15)
         }
         
         messageButton.snp.makeConstraints { make in
-            make.width.equalTo((voteButtonWidth - 16) / 2)
+            make.width.equalTo(ViewValues.bottomSmallButtonWidth)
             make.height.equalTo(50)
-            make.leading.equalTo(voteButton.snp.trailing).offset(16)
+            make.leading.equalTo(voteButton.snp.trailing).offset(ViewValues.defaultPadding)
             make.top.equalToSuperview().offset(15)
         }
         
         snsButton.snp.makeConstraints { make in
             make.width.equalTo(messageButton)
             make.height.equalTo(50)
-            make.leading.equalTo(messageButton.snp.trailing).offset(16)
-            make.trailing.equalToSuperview().offset(-16)
+            make.leading.equalTo(messageButton.snp.trailing).offset(ViewValues.defaultPadding)
+            make.trailing.equalToSuperview().offset(-ViewValues.defaultPadding)
             make.top.equalToSuperview().offset(15)
         }
     }
     
     private func selfConfiguration() {
         self.backgroundColor = UIColor.white.withAlphaComponent(0.5)
-        self.layer.cornerRadius = 20
+        self.layer.cornerRadius = ViewValues.defaultRadius
         self.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         self.layer.maskedCorners = CACornerMask(arrayLiteral: [.layerMinXMinYCorner, .layerMaxXMinYCorner])
         self.clipsToBounds = true
@@ -80,7 +78,7 @@ final class ProfileDetailBottomBar: UIView {
         self.layer.shadowColor = UIColor.black.cgColor
         self.layer.shadowOpacity = 0.2
         self.layer.shadowOffset = CGSize(width: 0, height: 0)
-        self.layer.shadowRadius = 30
+        self.layer.shadowRadius = ViewValues.defaultRadius
         self.layer.masksToBounds = false
         
         // 블러 효과 추가
@@ -89,7 +87,7 @@ final class ProfileDetailBottomBar: UIView {
         blurEffectView.frame = self.bounds
         blurEffectView.alpha = 0.8
         blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        blurEffectView.layer.cornerRadius = 20
+        blurEffectView.layer.cornerRadius = ViewValues.defaultRadius
         blurEffectView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         blurEffectView.clipsToBounds = true
         
@@ -98,7 +96,7 @@ final class ProfileDetailBottomBar: UIView {
     
     private func makeSmallButton(imageName: String) -> UIButton {
         let button = UIButton()
-        button.layer.cornerRadius = 20
+        button.layer.cornerRadius = ViewValues.defaultRadius
         button.backgroundColor = .white
         // 그림자 설정
         button.layer.shadowColor = UIColor.black.cgColor

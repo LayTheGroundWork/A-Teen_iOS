@@ -335,7 +335,7 @@ extension ProfileDetailViewController {
     @objc func clickMoreButton(_ sender: UIButton) {
         print("펼치기 버튼 클릭")
         if sender.titleLabel?.text == "펼쳐서 보기" {
-            UIView.animate(withDuration: 0.4, delay: 0, options: .showHideTransitionViews) {
+            UIView.animate(withDuration: 0.3, delay: 0, options: .showHideTransitionViews) {
                 self.questionTextViewHeightAnchor?.update(offset: self.questionTextView.recursiveUnionInDepthFor(view: self.questionTextView).height + 16)
                 
                 self.view.layoutIfNeeded()
@@ -350,7 +350,7 @@ extension ProfileDetailViewController {
                 sender.setTitle("접기", for: .normal)
             }
         } else {
-            UIView.animate(withDuration: 0.4, delay: 0, options: .showHideTransitionViews) {
+            UIView.animate(withDuration: 0.3, delay: 0, options: .showHideTransitionViews) {
                 self.questionTextViewHeightAnchor?.update(offset: 267)
                 
                 self.view.layoutIfNeeded()
@@ -617,7 +617,7 @@ extension ProfileDetailViewController {
 // MARK: - Animation
 extension ProfileDetailViewController {
     func animateView() {
-        UIView.animate(withDuration: 0.4, delay: 0, options: .overrideInheritedCurve) {
+        UIView.animate(withDuration: 0.3, delay: 0, options: .overrideInheritedCurve) {
             self.topAnchor?.update(offset: 0)
             self.leadingAnchor?.update(offset: 0)
             self.widthAnchor?.update(offset: self.view.frame.width)
@@ -664,7 +664,7 @@ extension ProfileDetailViewController {
         
         self.todayTeenImageView.clipsToBounds = false
         
-        UIView.animate(withDuration: 0.4, delay: 0, options: .showHideTransitionViews) {
+        UIView.animate(withDuration: 0.3, delay: 0, options: .showHideTransitionViews) {
             if let frame = self.frame {
                 self.topAnchor?.update(offset: frame.origin.y)
                 self.leadingAnchor?.update(offset: frame.origin.x)

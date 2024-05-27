@@ -22,7 +22,6 @@ struct MainFactoryImp: MainFactory {
         let controller = MainViewController(
             viewModel: viewModel,
             coordinator: coordinator)
-        controller.navigationItem.titleView =  CustomNaviView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 40))
         return controller
     }
     

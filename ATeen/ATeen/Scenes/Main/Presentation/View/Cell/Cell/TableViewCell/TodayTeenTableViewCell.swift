@@ -38,12 +38,11 @@ class TodayTeenTableViewCell: UITableViewCell {
     
     lazy var teenCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
-        let width: CGFloat = contentView.frame.width - 50
         layout.scrollDirection = .horizontal
         layout.minimumLineSpacing = 16
         layout.minimumInteritemSpacing = 0
-        layout.sectionInset = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
-        layout.itemSize = CGSize(width: width, height: 360)
+        layout.sectionInset = UIEdgeInsets(top: 0, left: 25, bottom: 0, right: 25)
+        layout.itemSize = CGSize(width: ViewValues.todayTeenImageWidth, height: ViewValues.todayTeenImageHeight)
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.backgroundColor = .white
         collectionView.showsHorizontalScrollIndicator = false
@@ -81,7 +80,7 @@ class TodayTeenTableViewCell: UITableViewCell {
         self.teenCollectionView.snp.makeConstraints { make in
             make.top.equalTo(self.titleLabel.snp.bottom).offset(14)
             make.leading.trailing.equalToSuperview()
-            make.height.equalTo(360)
+            make.height.equalTo(ViewValues.todayTeenImageHeight)
         }
         
         self.grayLine.snp.makeConstraints { make in

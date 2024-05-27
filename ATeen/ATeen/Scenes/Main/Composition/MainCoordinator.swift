@@ -22,7 +22,6 @@ final class MainCoordinator: Coordinator {
     
     func start() {
         let controller = factory.makeMainViewController(coordinator: self)
-        
         navigation.pushViewController(controller, animated: true)
     }
 }

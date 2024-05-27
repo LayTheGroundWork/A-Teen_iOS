@@ -62,6 +62,10 @@ final class MainViewController: UIViewController {
         configUserInterface()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationItem.titleView =  CustomNaviView(frame: CGRect(x: 0, y: 0, width: ViewValues.width, height: 40))
+    }
+    
     // MARK: - Helpers
     private func configUserInterface() {
         view.backgroundColor = .systemBackground
@@ -207,7 +211,7 @@ extension MainViewController: UITableViewDelegate {
         case 3:
             return 76
         case 4:
-            return 317
+            return (self.view.frame.width - 32) * 1.16
         default:
             return 0
         }

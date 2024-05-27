@@ -22,7 +22,7 @@ class TodayTeenCollectionViewCell: UICollectionViewCell {
     
     lazy var topGradientLayer: CAGradientLayer = {
         let layer = CAGradientLayer()
-        layer.frame = CGRect(x: 0, y: 0, width: contentView.frame.width, height: 180)
+        layer.frame = CGRect(x: 0, y: 0, width: contentView.frame.width, height: contentView.frame.height / 2)
         layer.colors = colors
         layer.startPoint = CGPoint(x: 0.5, y: 0.0)
         layer.endPoint = CGPoint(x: 0.5, y: 1.0)
@@ -32,7 +32,7 @@ class TodayTeenCollectionViewCell: UICollectionViewCell {
     
     lazy var bottomGradientLayer: CAGradientLayer = {
         let layer = CAGradientLayer()
-        layer.frame = CGRect(x: 0, y: 180, width: contentView.frame.width, height: 180)
+        layer.frame = CGRect(x: 0, y: contentView.frame.height / 2, width: contentView.frame.width, height: contentView.frame.height / 2)
         layer.colors = colors
         layer.startPoint = CGPoint(x: 0.5, y: 1.0)
         layer.endPoint = CGPoint(x: 0.5, y: 0.0)
@@ -106,6 +106,7 @@ class TodayTeenCollectionViewCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        
         contentView.addSubview(titleImageView)
         contentView.addSubview(schoolImageView)
         contentView.addSubview(schoolLabel)
