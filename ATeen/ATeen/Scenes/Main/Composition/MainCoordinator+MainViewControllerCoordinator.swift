@@ -29,7 +29,7 @@ extension MainCoordinator: MainViewControllerCoordinator {
     }
     
     func didSelectTodayTeenChattingButton() {
-        print("ChattingButton")
+        delegate?.didSelectChattingButton()
     }
     
     func didSelectAboutATeenCell(tag: Int) {

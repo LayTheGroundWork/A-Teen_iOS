@@ -17,8 +17,11 @@ protocol MainFactory {
 }
 
 struct MainFactoryImp: MainFactory {
+    let appContainer: AppContainer?
+    
     func makeMainViewController(coordinator: MainViewControllerCoordinator) -> UIViewController {
         let viewModel = MainViewModel()
+        viewModel.auth = appContainer?.auth
         let controller = MainViewController(
             viewModel: viewModel,
             coordinator: coordinator)

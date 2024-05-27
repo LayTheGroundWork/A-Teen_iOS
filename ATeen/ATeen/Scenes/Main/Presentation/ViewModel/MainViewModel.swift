@@ -8,6 +8,8 @@
 import UIKit
 
 class MainViewModel {
+    var auth: Auth?
+    
     var categoryList: [Category] = [
         Category(title: "전체", isSelect: true),
         Category(title: "뷰티", isSelect: false),
