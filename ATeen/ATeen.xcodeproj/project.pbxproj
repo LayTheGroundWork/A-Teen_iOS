@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0444E82E2C05A81500FB96FD /* SeachSchoolViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0444E82D2C05A81500FB96FD /* SeachSchoolViewController.swift */; };
 		0922B4A22C022C1200375953 /* CustomImageLabelButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0922B4A12C022C1200375953 /* CustomImageLabelButton.swift */; };
 		417286CA2BFF0AEA004F88F9 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 417286C92BFF0AEA004F88F9 /* ProfileViewController.swift */; };
 		417286CC2BFF0B03004F88F9 /* ProfileFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 417286CB2BFF0B03004F88F9 /* ProfileFactory.swift */; };
@@ -115,6 +116,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0444E82D2C05A81500FB96FD /* SeachSchoolViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeachSchoolViewController.swift; sourceTree = "<group>"; };
 		0922B4A12C022C1200375953 /* CustomImageLabelButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomImageLabelButton.swift; sourceTree = "<group>"; };
 		417286C92BFF0AEA004F88F9 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		417286CB2BFF0B03004F88F9 /* ProfileFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileFactory.swift; sourceTree = "<group>"; };
@@ -386,6 +388,7 @@
 			isa = PBXGroup;
 			children = (
 				418CB1CB2BF71AE7001DA795 /* LogInViewController.swift */,
+				0444E82D2C05A81500FB96FD /* SeachSchoolViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1051,6 +1054,7 @@
 				419CCE812C04611500D2E7F8 /* ViewValues.swift in Sources */,
 				735AC9152C005B9F004C3D21 /* CustomHeartButton.swift in Sources */,
 				418CB1F42BF743AE001DA795 /* SettingsCoordinator.swift in Sources */,
+				0444E82E2C05A81500FB96FD /* SeachSchoolViewController.swift in Sources */,
 				41735B4C2BFCE8E300E4A339 /* SettingsCoordinator+UserConfigurationCoordinatorDelegate.swift in Sources */,
 				41A515A62C022B3000EDAEA2 /* ProfileDetailBottomBar.swift in Sources */,
 				735AC9102C005B5D004C3D21 /* CustomQuestionTextView.swift in Sources */,
