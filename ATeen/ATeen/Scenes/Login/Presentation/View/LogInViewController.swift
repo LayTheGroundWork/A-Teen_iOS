@@ -11,6 +11,7 @@ import UIKit
 
 protocol LogInViewControllerCoordinator: AnyObject {
     func didFinish()
+    func didSelectSignUpButton()
 }
 
 final class LogInViewController: UIViewController {
@@ -57,6 +58,9 @@ final class LogInViewController: UIViewController {
         button.layer.borderWidth = 1
         button.layer.borderColor = UIColor.grayQuestionCell.cgColor
         button.layer.cornerRadius = ViewValues.defaultRadius
+        button.addTarget(self,
+                         action: #selector(didSelectSignUpButton(_:)),
+                         for: .touchUpInside)
         return button
     }()
     
@@ -193,6 +197,14 @@ final class LogInViewController: UIViewController {
             self?.coordinator?.didFinish()
         }
         loginButton.addAction(loginAction, for: .touchUpInside)
+    }
+}
+
+// MARK: - Extensions
+extension LogInViewController {
+    @objc func didSelectSignUpButton(_ sender: UIButton) {
+        // TODO: - TermsOfUseViewController 로 이동
+        coordinator?.didSelectSignUpButton()
     }
 }
 

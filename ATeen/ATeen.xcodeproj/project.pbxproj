@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		0922B4A22C022C1200375953 /* CustomImageLabelButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0922B4A12C022C1200375953 /* CustomImageLabelButton.swift */; };
+		09F9EFF02C05C699009DE3A0 /* TermsOfUseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F9EFEF2C05C699009DE3A0 /* TermsOfUseViewController.swift */; };
+		09F9EFF22C062199009DE3A0 /* TermsOfUseFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F9EFF12C062199009DE3A0 /* TermsOfUseFactory.swift */; };
+		09F9EFF42C0621B7009DE3A0 /* TermsOfUseCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F9EFF32C0621B7009DE3A0 /* TermsOfUseCoordinator.swift */; };
 		417286CA2BFF0AEA004F88F9 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 417286C92BFF0AEA004F88F9 /* ProfileViewController.swift */; };
 		417286CC2BFF0B03004F88F9 /* ProfileFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 417286CB2BFF0B03004F88F9 /* ProfileFactory.swift */; };
 		417286CE2BFF0B83004F88F9 /* ProfileCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 417286CD2BFF0B83004F88F9 /* ProfileCoordinator.swift */; };
@@ -116,6 +119,9 @@
 
 /* Begin PBXFileReference section */
 		0922B4A12C022C1200375953 /* CustomImageLabelButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomImageLabelButton.swift; sourceTree = "<group>"; };
+		09F9EFEF2C05C699009DE3A0 /* TermsOfUseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsOfUseViewController.swift; sourceTree = "<group>"; };
+		09F9EFF12C062199009DE3A0 /* TermsOfUseFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsOfUseFactory.swift; sourceTree = "<group>"; };
+		09F9EFF32C0621B7009DE3A0 /* TermsOfUseCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsOfUseCoordinator.swift; sourceTree = "<group>"; };
 		417286C92BFF0AEA004F88F9 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		417286CB2BFF0B03004F88F9 /* ProfileFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileFactory.swift; sourceTree = "<group>"; };
 		417286CD2BFF0B83004F88F9 /* ProfileCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCoordinator.swift; sourceTree = "<group>"; };
@@ -369,6 +375,8 @@
 				418CB1C82BF71A4F001DA795 /* LogInFactory.swift */,
 				418CB1D02BF71CAD001DA795 /* LogInCoordinator.swift */,
 				417286FA2BFF91D0004F88F9 /* LogInCoordinator+LogInViewControllerCoordinator.swift */,
+				09F9EFF12C062199009DE3A0 /* TermsOfUseFactory.swift */,
+				09F9EFF32C0621B7009DE3A0 /* TermsOfUseCoordinator.swift */,
 			);
 			path = Composition;
 			sourceTree = "<group>";
@@ -386,6 +394,7 @@
 			isa = PBXGroup;
 			children = (
 				418CB1CB2BF71AE7001DA795 /* LogInViewController.swift */,
+				09F9EFEF2C05C699009DE3A0 /* TermsOfUseViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1048,6 +1057,7 @@
 				735AC9232C005CCF004C3D21 /* UILabel+Constraints.swift in Sources */,
 				41735B4E2BFCEC0B00E4A339 /* NavigationImp+UINavigationControllerDelegate.swift in Sources */,
 				418CB1DA2BF726E7001DA795 /* MainTabController.swift in Sources */,
+				09F9EFF02C05C699009DE3A0 /* TermsOfUseViewController.swift in Sources */,
 				419CCE812C04611500D2E7F8 /* ViewValues.swift in Sources */,
 				735AC9152C005B9F004C3D21 /* CustomHeartButton.swift in Sources */,
 				418CB1F42BF743AE001DA795 /* SettingsCoordinator.swift in Sources */,
@@ -1063,10 +1073,12 @@
 				41BB4C0D2BFBBA2300D26A5D /* UserConfigurationFactory.swift in Sources */,
 				417286E62BFF1FE7004F88F9 /* MainViewController.swift in Sources */,
 				417286D52BFF0D0D004F88F9 /* ChatFactory.swift in Sources */,
+				09F9EFF42C0621B7009DE3A0 /* TermsOfUseCoordinator.swift in Sources */,
 				41BB4BEC2BFB26AF00D26A5D /* MyPostsMediator.swift in Sources */,
 				417286DF2BFF1FB6004F88F9 /* RankingViewController.swift in Sources */,
 				418CB1E72BF73D1B001DA795 /* SettingsViewNavigation.swift in Sources */,
 				41BB4BF52BFB2EB400D26A5D /* HomeCoordinator.swift in Sources */,
+				09F9EFF22C062199009DE3A0 /* TermsOfUseFactory.swift in Sources */,
 				735AC9182C005BAD004C3D21 /* ProfileDetailViewController.swift in Sources */,
 				73F9B8282C021E7800684152 /* ProfileDetailViewModel.swift in Sources */,
 				735AC9032C005AB9004C3D21 /* AnotherTeenTableViewCell.swift in Sources */,

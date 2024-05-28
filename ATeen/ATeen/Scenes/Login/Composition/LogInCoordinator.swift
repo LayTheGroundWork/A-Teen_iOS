@@ -15,6 +15,7 @@ final class LogInCoordinator: Coordinator {
     var navigation: Navigation
     var factory: LogInFactory
     weak var delegate: LogInCoordinatorDelegate?
+    var childCoordinators: [Coordinator] = []
     
     init(
         navigation: Navigation,
@@ -30,3 +31,5 @@ final class LogInCoordinator: Coordinator {
         navigation.pushViewController(controller, animated: true)
     }
 }
+
+extension LogInCoordinator: ParentCoordinator { }
