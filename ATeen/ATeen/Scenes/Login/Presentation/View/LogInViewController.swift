@@ -30,7 +30,7 @@ final class LogInViewController: UIViewController {
     
     private lazy var signupTitleLabel: UILabel = {
         let label = UILabel()
-        label.text = "가입하기"
+        label.text = AppLocalized.signupTitle
         label.textAlignment = .center
         label.font = UIFont.customFont(forTextStyle: .title2, weight: .bold)
         return label
@@ -38,10 +38,7 @@ final class LogInViewController: UIViewController {
     
     private lazy var signupSubTitleLabel: UILabel = {
         let label = UILabel()
-        label.text = """
-                    프로필을 만들어 나의 사진을 자랑하고
-                    TEEN에서 경쟁해보세요
-                    """
+        label.text = AppLocalized.signupSubTitle
         label.numberOfLines = 2
         label.textAlignment = .center
         label.font = UIFont.customFont(forTextStyle: .callout, weight: .regular)
@@ -53,7 +50,7 @@ final class LogInViewController: UIViewController {
         let button = UIButton()
         button.titleLabel?.font = UIFont.customFont(forTextStyle: .callout,
                                                     weight: .regular)
-        button.setTitle("전화번호로 회원가입", for: .normal)
+        button.setTitle(AppLocalized.signupPhoneNumberButton, for: .normal)
         button.setTitleColor(.black, for: .normal)
         button.layer.borderWidth = 1
         button.layer.borderColor = UIColor.grayQuestionCell.cgColor
@@ -66,11 +63,7 @@ final class LogInViewController: UIViewController {
     
     private lazy var agreeTermsGuideLabel: UILabel = {
         let label = UILabel()
-        label.text = """
-                    대한민국에서 위치한 계정으로 계속하면
-                    당사의 서비스 약관의 동의하고
-                    개인정보 처리방침을 읽었음을 인정하는 것입니다.
-                    """
+        label.text = AppLocalized.agreeTermsGuideTitle
         label.numberOfLines = 3
         label.textAlignment = .center
         label.font = UIFont.customFont(forTextStyle: .footnote, weight: .regular)
@@ -91,7 +84,7 @@ final class LogInViewController: UIViewController {
 
     private lazy var accountCheckLabel: UILabel = {
         let label = UILabel()
-        label.text = "이미 계정이 있으신가요?"
+        label.text = AppLocalized.uHaveAccountText
         label.textAlignment = .center
         label.font = UIFont.customFont(forTextStyle: .callout, weight: .regular)
         return label
@@ -180,13 +173,13 @@ final class LogInViewController: UIViewController {
         let attributedStr = NSMutableAttributedString(string: agreeTermsGuideLabel.text!)
         attributedStr.addAttribute(.foregroundColor,
                                    value: UIColor.black,
-                                   range: (agreeTermsGuideLabel.text! as NSString).range(of: "대한민국"))
+                                   range: (agreeTermsGuideLabel.text! as NSString).range(of: AppLocalized.koreaText))
         attributedStr.addAttribute(.foregroundColor,
                                    value: UIColor.black,
-                                   range: (agreeTermsGuideLabel.text! as NSString).range(of: "서비스 약관"))
+                                   range: (agreeTermsGuideLabel.text! as NSString).range(of: AppLocalized.serviceTermsText))
         attributedStr.addAttribute(.foregroundColor,
                                    value: UIColor.black,
-                                   range: (agreeTermsGuideLabel.text! as NSString).range(of: "개인정보 처리방침"))
+                                   range: (agreeTermsGuideLabel.text! as NSString).range(of: AppLocalized.userInfoPolicyText))
         agreeTermsGuideLabel.attributedText = attributedStr
     }
     
@@ -215,7 +208,7 @@ final class CustomLoginButton: CustomImageLabelButton {
         imageName: String = "chevron.right",
         imageColor: UIColor? = .main,
         textColor: UIColor = .main,
-        labelText: String = "로그인",
+        labelText: String = AppLocalized.loginButton,
         buttonBackgroundColor: UIColor = .clear,
         labelFont: UIFont = UIFont.customFont(forTextStyle: .callout,
                                               weight: .regular),

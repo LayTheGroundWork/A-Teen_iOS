@@ -15,7 +15,7 @@ final class TermsOfUseViewController: UIViewController {
     // MARK: - Private properties
     private lazy var termsOfUseLabel: UILabel = {
         let label = UILabel()
-        label.text = "사용 약관"
+        label.text = AppLocalized.usingTermsText
         label.textAlignment = .center
         label.font = UIFont.customFont(forTextStyle: .title3,
                                        weight: .bold)
@@ -24,7 +24,7 @@ final class TermsOfUseViewController: UIViewController {
     
     private lazy var allAgreeLabel: UILabel = {
         let label = UILabel()
-        label.text = "모두 동의"
+        label.text = AppLocalized.allAgreeText
         label.textAlignment = .center
         label.font = UIFont.customFont(forTextStyle: .callout,
                                        weight: .regular)
@@ -33,7 +33,7 @@ final class TermsOfUseViewController: UIViewController {
     
     private lazy var serviceTermsLabel: UILabel = {
         let label = UILabel()
-        label.text = "서비스 약관에 동의 (필수)"
+        label.text = AppLocalized.serviceTermsAgreeText
         label.textAlignment = .center
         label.font = UIFont.customFont(forTextStyle: .callout,
                                        weight: .regular)
@@ -42,7 +42,7 @@ final class TermsOfUseViewController: UIViewController {
     
     private lazy var informationAgreeLabel: UILabel = {
         let label = UILabel()
-        label.text = "개인 정보 수집 및 사용에 동의 (필수)"
+        label.text = AppLocalized.userInfoAgreeText
         label.textAlignment = .center
         label.font = UIFont.customFont(forTextStyle: .callout,
                                        weight: .regular)
@@ -51,7 +51,7 @@ final class TermsOfUseViewController: UIViewController {
     
     private lazy var alarmAgreeLabel: UILabel = {
         let label = UILabel()
-        label.text = "인기 콘텐츠 및 알림 수신 동의 (선택)"
+        label.text = AppLocalized.alarmAgreeText
         label.textAlignment = .center
         label.font = UIFont.customFont(forTextStyle: .callout,
                                        weight: .regular)
@@ -60,7 +60,7 @@ final class TermsOfUseViewController: UIViewController {
     
     private lazy var alarmAgreeExplanationLabel: UILabel = {
         let label = UILabel()
-        label.text = "A-TEEN에서 인기 콘텐츠 및 프로모션에 대한 알림을 받습니다. 언제든지 설정을 검토하고 편집할 수 있습니다. 동의를 하지 않아도 A-TEEN 서비스 사용이 제한되지 않습니다."
+        label.text = AppLocalized.alarmAgreeExplanationText
         label.numberOfLines = 4
         label.textAlignment = .left
         label.font = UIFont.customFont(forTextStyle: .footnote,
@@ -91,7 +91,7 @@ final class TermsOfUseViewController: UIViewController {
         let button = UIButton()
         button.titleLabel?.font = UIFont.customFont(forTextStyle: .callout,
                                                     weight: .regular)
-        button.setTitle("다음으로", for: .normal)
+        button.setTitle(AppLocalized.nextButton, for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.backgroundColor = .black
         button.layer.cornerRadius = ViewValues.defaultRadius
@@ -307,7 +307,7 @@ final class CustomShowDetailButton: CustomImageLabelButton {
         imageName: String = "chevron.right",
         imageColor: UIColor? = .graySchool,
         textColor: UIColor = .graySchool,
-        labelText: String = "세부 정보 보기",
+        labelText: String = AppLocalized.showDetailsButton,
         buttonBackgroundColor: UIColor = .clear,
         labelFont: UIFont = UIFont.customFont(forTextStyle: .footnote,
                                               weight: .regular),
