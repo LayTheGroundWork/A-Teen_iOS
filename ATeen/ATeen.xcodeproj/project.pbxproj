@@ -106,6 +106,9 @@
 		735AC92C2C005D21004C3D21 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 735AC9282C005D21004C3D21 /* Category.swift */; };
 		735AC9352C005EB0004C3D21 /* MainCoordinator+MainViewControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 735AC9342C005EB0004C3D21 /* MainCoordinator+MainViewControllerCoordinator.swift */; };
 		735AC93A2C0061B9004C3D21 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 735AC9392C0061B9004C3D21 /* MainViewModel.swift */; };
+		736355AF2C05A88000926CBB /* LoginBirthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736355AE2C05A88000926CBB /* LoginBirthViewController.swift */; };
+		736355B32C05AEF500926CBB /* CustomBirthButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736355B22C05AEF500926CBB /* CustomBirthButton.swift */; };
+		736355B52C05B0D000926CBB /* CustomServiceButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736355B42C05B0D000926CBB /* CustomServiceButton.swift */; };
 		73BB940C2C047FDE00687A97 /* MainTabCoordinator+MainCoordinatorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73BB940B2C047FDE00687A97 /* MainTabCoordinator+MainCoordinatorDelegate.swift */; };
 		73BB940E2C0480D700687A97 /* MainTabCoordinator+LogInCoordinatorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73BB940D2C0480D600687A97 /* MainTabCoordinator+LogInCoordinatorDelegate.swift */; };
 		73F9B8242C02182200684152 /* ProfileDetailFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73F9B8232C02182200684152 /* ProfileDetailFactory.swift */; };
@@ -214,6 +217,9 @@
 		735AC9282C005D21004C3D21 /* Category.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		735AC9342C005EB0004C3D21 /* MainCoordinator+MainViewControllerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainCoordinator+MainViewControllerCoordinator.swift"; sourceTree = "<group>"; };
 		735AC9392C0061B9004C3D21 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
+		736355AE2C05A88000926CBB /* LoginBirthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginBirthViewController.swift; sourceTree = "<group>"; };
+		736355B22C05AEF500926CBB /* CustomBirthButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomBirthButton.swift; sourceTree = "<group>"; };
+		736355B42C05B0D000926CBB /* CustomServiceButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomServiceButton.swift; sourceTree = "<group>"; };
 		73BB940B2C047FDE00687A97 /* MainTabCoordinator+MainCoordinatorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainTabCoordinator+MainCoordinatorDelegate.swift"; sourceTree = "<group>"; };
 		73BB940D2C0480D600687A97 /* MainTabCoordinator+LogInCoordinatorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainTabCoordinator+LogInCoordinatorDelegate.swift"; sourceTree = "<group>"; };
 		73F9B8232C02182200684152 /* ProfileDetailFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDetailFactory.swift; sourceTree = "<group>"; };
@@ -386,6 +392,9 @@
 			isa = PBXGroup;
 			children = (
 				418CB1CB2BF71AE7001DA795 /* LogInViewController.swift */,
+				736355AE2C05A88000926CBB /* LoginBirthViewController.swift */,
+				736355B22C05AEF500926CBB /* CustomBirthButton.swift */,
+				736355B42C05B0D000926CBB /* CustomServiceButton.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1061,6 +1070,7 @@
 				73F9B8242C02182200684152 /* ProfileDetailFactory.swift in Sources */,
 				417286E92BFF1FFB004F88F9 /* MainFactory.swift in Sources */,
 				41BB4C0D2BFBBA2300D26A5D /* UserConfigurationFactory.swift in Sources */,
+				736355B32C05AEF500926CBB /* CustomBirthButton.swift in Sources */,
 				417286E62BFF1FE7004F88F9 /* MainViewController.swift in Sources */,
 				417286D52BFF0D0D004F88F9 /* ChatFactory.swift in Sources */,
 				41BB4BEC2BFB26AF00D26A5D /* MyPostsMediator.swift in Sources */,
@@ -1068,6 +1078,7 @@
 				418CB1E72BF73D1B001DA795 /* SettingsViewNavigation.swift in Sources */,
 				41BB4BF52BFB2EB400D26A5D /* HomeCoordinator.swift in Sources */,
 				735AC9182C005BAD004C3D21 /* ProfileDetailViewController.swift in Sources */,
+				736355B52C05B0D000926CBB /* CustomServiceButton.swift in Sources */,
 				73F9B8282C021E7800684152 /* ProfileDetailViewModel.swift in Sources */,
 				735AC9032C005AB9004C3D21 /* AnotherTeenTableViewCell.swift in Sources */,
 				417286FB2BFF91D0004F88F9 /* LogInCoordinator+LogInViewControllerCoordinator.swift in Sources */,
@@ -1093,6 +1104,7 @@
 				419CCE862C04C88E00D2E7F8 /* TabTag.swift in Sources */,
 				4190F8C72BF4E6EF00FCC0A3 /* SceneDelegate.swift in Sources */,
 				73F9B82A2C02331400684152 /* MainCoordinator+ProfileCoordinatorDelegate.swift in Sources */,
+				736355AF2C05A88000926CBB /* LoginBirthViewController.swift in Sources */,
 				735AC92B2C005D21004C3D21 /* TodayTeen.swift in Sources */,
 				417286CE2BFF0B83004F88F9 /* ProfileCoordinator.swift in Sources */,
 				417286CA2BFF0AEA004F88F9 /* ProfileViewController.swift in Sources */,

@@ -31,6 +31,8 @@ struct ViewValues {
     
     static let tabBarHegith = 80
     
+    static let defaultButtonSize = 24
+    
     // MARK: - CornerRadius
     static let defaultRadius: CGFloat = 20
     
