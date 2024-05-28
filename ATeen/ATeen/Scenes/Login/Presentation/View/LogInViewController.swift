@@ -5,6 +5,8 @@
 //  Created by 최동호 on 5/17/24.
 //
 
+import SnapKit
+
 import UIKit
 
 protocol LogInViewControllerCoordinator: AnyObject {
@@ -18,13 +20,77 @@ final class LogInViewController: UIViewController {
     private weak var coordinator: LogInViewControllerCoordinator?
     private let viewModel: LogInViewModel
     
-    private let loginButton: UIButton = {
-        let button = UIButton(type: .system)
-        var configuration = UIButton.Configuration.filled()
-        configuration.title = "Log In"
-        button.configuration = configuration
-        button.translatesAutoresizingMaskIntoConstraints = false
+    private lazy var ateenLogoImage: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = UIImage(named: "mainLogo")
+        imageView.contentMode = .scaleAspectFit
+        return imageView
+    }()
+    
+    private lazy var signupTitleLabel: UILabel = {
+        let label = UILabel()
+        label.text = "가입하기"
+        label.textAlignment = .center
+        label.font = UIFont.customFont(forTextStyle: .title2, weight: .bold)
+        return label
+    }()
+    
+    private lazy var signupSubTitleLabel: UILabel = {
+        let label = UILabel()
+        label.text = """
+                    프로필을 만들어 나의 사진을 자랑하고
+                    TEEN에서 경쟁해보세요
+                    """
+        label.numberOfLines = 2
+        label.textAlignment = .center
+        label.font = UIFont.customFont(forTextStyle: .callout, weight: .regular)
+        label.textColor = .grayText
+        return label
+    }()
+    
+    private lazy var signupToPhoneButton: UIButton = {
+        let button = UIButton()
+        button.titleLabel?.font = UIFont.customFont(forTextStyle: .callout,
+                                                    weight: .regular)
+        button.setTitle("전화번호로 회원가입", for: .normal)
+        button.setTitleColor(.black, for: .normal)
+        button.layer.borderWidth = 1
+        button.layer.borderColor = UIColor.grayQuestionCell.cgColor
+        button.layer.cornerRadius = ViewValues.defaultRadius
         return button
+    }()
+    
+    private lazy var agreeTermsGuideLabel: UILabel = {
+        let label = UILabel()
+        label.text = """
+                    대한민국에서 위치한 계정으로 계속하면
+                    당사의 서비스 약관의 동의하고
+                    개인정보 처리방침을 읽었음을 인정하는 것입니다.
+                    """
+        label.numberOfLines = 3
+        label.textAlignment = .center
+        label.font = UIFont.customFont(forTextStyle: .footnote, weight: .regular)
+        label.textColor = .grayText
+        return label
+    }()
+
+    private lazy var bottomBarView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .grayQuestionCell
+        return view
+    }()
+    
+    private lazy var loginButton: CustomLoginButton = {
+        let button = CustomLoginButton()
+        return button
+    }()
+
+    private lazy var accountCheckLabel: UILabel = {
+        let label = UILabel()
+        label.text = "이미 계정이 있으신가요?"
+        label.textAlignment = .center
+        label.font = UIFont.customFont(forTextStyle: .callout, weight: .regular)
+        return label
     }()
     
     // MARK: - Life Cycle
@@ -50,11 +116,74 @@ final class LogInViewController: UIViewController {
     // MARK: - Helpers
     private func configUserInterface() {
         view.backgroundColor = .systemBackground
+
+        configAgreeTermsGuideLabel()
+
+        let topTextStackView = UIStackView(
+            arrangedSubviews: [ateenLogoImage, signupTitleLabel])
+        topTextStackView.axis = .horizontal
+        topTextStackView.alignment = .top
+        topTextStackView.spacing = 7
         
-        view.addSubview(loginButton)
+        view.addSubview(topTextStackView)
+        view.addSubview(signupSubTitleLabel)
+        view.addSubview(signupToPhoneButton)
+        view.addSubview(agreeTermsGuideLabel)
+        view.addSubview(bottomBarView)
         
-        loginButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        loginButton.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        topTextStackView.snp.makeConstraints { make in
+            // 상단 네비 생기면, make.top.equalTo(네비.snp.bottom).offset(25)
+            make.top.equalToSuperview().offset(105)
+            make.centerX.equalToSuperview()
+            make.height.equalTo(34)
+        }
+        
+        signupSubTitleLabel.snp.makeConstraints { make in
+            make.top.equalTo(topTextStackView.snp.bottom).offset(11)
+            make.centerX.equalToSuperview()
+        }
+        
+        signupToPhoneButton.snp.makeConstraints { make in
+            make.top.equalTo(signupSubTitleLabel.snp.bottom).offset(34)
+            make.centerX.equalToSuperview()
+            make.height.equalTo(50)
+            make.width.equalTo(ViewValues.width - 32)
+        }
+        
+        bottomBarView.snp.makeConstraints { make in
+            make.leading.trailing.bottom.equalToSuperview()
+            make.height.equalTo(85)
+        }
+        
+        agreeTermsGuideLabel.snp.makeConstraints { make in
+            make.bottom.equalTo(bottomBarView.snp.top).offset(-27)
+            make.centerX.equalToSuperview()
+        }
+        
+        let bottomBarStackView = UIStackView(
+            arrangedSubviews: [accountCheckLabel, loginButton])
+        bottomBarStackView.axis = .horizontal
+        bottomBarStackView.spacing = 10
+        
+        bottomBarView.addSubview(bottomBarStackView)
+        
+        bottomBarStackView.snp.makeConstraints { make in
+            make.center.equalTo(bottomBarView.snp.center)
+        }
+    }
+    
+    private func configAgreeTermsGuideLabel() {
+        let attributedStr = NSMutableAttributedString(string: agreeTermsGuideLabel.text!)
+        attributedStr.addAttribute(.foregroundColor,
+                                   value: UIColor.black,
+                                   range: (agreeTermsGuideLabel.text! as NSString).range(of: "대한민국"))
+        attributedStr.addAttribute(.foregroundColor,
+                                   value: UIColor.black,
+                                   range: (agreeTermsGuideLabel.text! as NSString).range(of: "서비스 약관"))
+        attributedStr.addAttribute(.foregroundColor,
+                                   value: UIColor.black,
+                                   range: (agreeTermsGuideLabel.text! as NSString).range(of: "개인정보 처리방침"))
+        agreeTermsGuideLabel.attributedText = attributedStr
     }
     
     // MARK: - Actions
@@ -65,7 +194,50 @@ final class LogInViewController: UIViewController {
         }
         loginButton.addAction(loginAction, for: .touchUpInside)
     }
-    
 }
 
-// MARK: - Extensions here
+// MARK: - Custom Login Button
+// TODO: ( 파일 분리 예정 )
+final class CustomLoginButton: CustomImageLabelButton {
+    override init(
+        imageName: String = "chevron.right",
+        imageColor: UIColor? = .main,
+        textColor: UIColor = .main,
+        labelText: String = "로그인",
+        buttonBackgroundColor: UIColor = .clear,
+        labelFont: UIFont = UIFont.customFont(forTextStyle: .callout,
+                                              weight: .regular),
+        frame: CGRect = .zero
+    ) {
+        super.init(
+            imageName: imageName,
+            imageColor: imageColor,
+            textColor: textColor,
+            labelText: labelText,
+            buttonBackgroundColor: buttonBackgroundColor,
+            labelFont: labelFont,
+            frame: frame
+        )
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+}
+
+// MARK: - Custom Login Button Layout
+extension CustomLoginButton {
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        customLabel.snp.makeConstraints { make in
+            make.centerY.equalToSuperview()
+            make.leading.equalToSuperview()
+        }
+        
+        customImageView.snp.makeConstraints { make in
+            make.centerY.equalToSuperview()
+            make.leading.equalTo(customLabel.snp.trailing).offset(3)
+        }
+    }
+}
