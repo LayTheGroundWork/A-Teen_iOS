@@ -8,9 +8,12 @@
 import UIKit
 
 class SearchSchoolResultTableViewController: UITableView, UITableViewDelegate, UITableViewDataSource {
+    // MARK: - Public properties
     var schools: [String] = []
     var filteredSchools: [String] = []
+    var selectedIndexPath: IndexPath?
     weak var searchDelegate: SchoolTableViewSearchDelegate?
+    
     
     override init(frame: CGRect, style: UITableView.Style) {
         super.init(frame: frame, style: style)
@@ -22,8 +25,9 @@ class SearchSchoolResultTableViewController: UITableView, UITableViewDelegate, U
         setup()
     }
     
+    // MARK: - Helpers
     private func setup() {
-        self.register(SeachSchoolResultTableViewCell.self, forCellReuseIdentifier: "SchoolCell")
+        self.register(SearchSchoolResultTableViewCell.self, forCellReuseIdentifier: "SchoolCell")
         self.delegate = self
         self.dataSource = self
     }
@@ -50,13 +54,12 @@ class SearchSchoolResultTableViewController: UITableView, UITableViewDelegate, U
     }
     
     // MARK: - UITableViewDataSource
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return filteredSchools.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "SchoolCell", for: indexPath) as? SeachSchoolResultTableViewCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "SchoolCell", for: indexPath) as? SearchSchoolResultTableViewCell else {
             return UITableViewCell()
         }
         cell.configure(with: filteredSchools[indexPath.row])
@@ -65,50 +68,21 @@ class SearchSchoolResultTableViewController: UITableView, UITableViewDelegate, U
     
     // MARK: - UITableViewDelegate
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        searchDelegate?.didSelectSchool(filteredSchools[indexPath.row])
+        if let previousIndexPath = selectedIndexPath {
+            if let previousCell = tableView.cellForRow(at: previousIndexPath) as? SearchSchoolResultTableViewCell {
+                previousCell.configure(with: filteredSchools[previousIndexPath.row], isBold: false)
+            } // 이전 선택된 Cell Bold 취소
+        }
+        
+        if let selectedCell = tableView.cellForRow(at: indexPath) as? SearchSchoolResultTableViewCell {
+            selectedCell.configure(with: filteredSchools[indexPath.row], isBold: true)
+        } // 선택된 Cell Bold
+        
+        selectedIndexPath = indexPath
+        searchDelegate?.didSelectSchool(filteredSchools[indexPath.row]) // tableViewCell 선택 시 textField로 값 전달
     }
 }
-
-
 
 protocol SchoolTableViewSearchDelegate: AnyObject {
     func didSelectSchool(_ schoolName: String)
 }
-
-
-
-
-
-//class SchoolSearchViewController: UIViewController, SchoolTableViewSearchDelegate, UITextFieldDelegate {
-//    
-//    let searchTextField = SeachSchoolViewController().textField
-//    let schoolTableView = SchoolTableView()
-//    let searchButton = UIButton()
-//    
-//    // 예시 데이터 (학교 이름)
-//    let schools = ["seoul", "busan", "busan2", "changwon", "anyang"]
-//    
-//    override func viewDidLoad() {
-//        super.viewDidLoad()
-//        
-//        // UI 설정
-//        
-//        // 델리게이트 설정
-//        searchTextField.delegate = self
-//        schoolTableView.searchDelegate = self
-//        
-//        // 학교 데이터 설정
-//        schoolTableView.schools = schools
-//    }
-//    
-//    @objc private func textFieldDidChange(_ textField: UITextField) {
-//        guard let query = textField.text else { return }
-//        schoolTableView.filterSchools(with: query)
-//    }
-//    
-//    // MARK: - SchoolTableViewSearchDelegate
-//    
-//    func didSelectSchool(_ schoolName: String) {
-//        searchTextField.text = schoolName
-//    }
-//}

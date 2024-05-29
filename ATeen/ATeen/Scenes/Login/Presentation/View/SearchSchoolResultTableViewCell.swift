@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SeachSchoolResultTableViewCell: UITableViewCell {
+class SearchSchoolResultTableViewCell: UITableViewCell {
     
     let schoolNameLabel = UILabel()
     
@@ -22,15 +22,22 @@ class SeachSchoolResultTableViewCell: UITableViewCell {
     
     func configUserInterface() {
         contentView.addSubview(schoolNameLabel)
+        schoolNameLabel.font = UIFont.systemFont(ofSize: 16)
         
         schoolNameLabel.snp.makeConstraints { make in
             make.centerY.equalToSuperview()
             make.leading.equalToSuperview().offset(ViewValues.defaultSpacing)
             make.trailing.equalToSuperview().offset(-ViewValues.defaultSpacing)
+            make.height.equalTo(100)
         }
     }
     
-    func configure(with schoolName: String) {
-        schoolNameLabel.text = schoolName
-    }
+    func configure(with schoolName: String, isBold: Bool = false) {
+            schoolNameLabel.text = schoolName
+            if isBold {
+                schoolNameLabel.font = UIFont.boldSystemFont(ofSize: 16)
+            } else {
+                schoolNameLabel.font = UIFont.systemFont(ofSize: 16)
+            }
+        }
 }

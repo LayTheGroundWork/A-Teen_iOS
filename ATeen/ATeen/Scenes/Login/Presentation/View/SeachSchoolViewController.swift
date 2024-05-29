@@ -8,6 +8,7 @@
 import UIKit
 
 class SeachSchoolViewController: UIViewController, UITextFieldDelegate, SchoolTableViewSearchDelegate {
+    // MARK: - Public properties
     var label: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 20, weight: .bold)
@@ -25,6 +26,10 @@ class SeachSchoolViewController: UIViewController, UITextFieldDelegate, SchoolTa
         textField.layer.cornerRadius = 12
         textField.layer.borderColor = mainColor?.cgColor
         textField.layer.sublayerTransform = CATransform3DMakeTranslation(15, 0, 0) // 텍스트필드 앞에 공백 넣어주기
+        textField.autocorrectionType = .no
+        textField.spellCheckingType = .no
+        textField.tintColor = .gray
+        
         
         let image = UIImage(systemName: "magnifyingglass")
         let imageView = UIImageView(image: image)
@@ -34,7 +39,6 @@ class SeachSchoolViewController: UIViewController, UITextFieldDelegate, SchoolTa
         let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: 50, height: 25)) // 이미지 패딩값 넣어주기
         paddingView.addSubview(imageView)
         
-        textField.tintColor = .gray
         textField.rightView = paddingView
         textField.rightViewMode = .always
         
@@ -54,14 +58,6 @@ class SeachSchoolViewController: UIViewController, UITextFieldDelegate, SchoolTa
     
     var tableView = SearchSchoolResultTableViewController()
     let schools = ["seoul", "busan", "busan2", "changwon", "anyang", "busan3", "busan4", "busan5", "busan6", "busan7", "busan8", "busan9", "busan10", "busan11","busan12"]
-    func didSelectSchool(_ schoolName: String) {
-        textField.text = schoolName
-    }
-    
-    @objc private func textFieldDidChange(_ textField: UITextField) {
-        guard let query = textField.text else { return }
-        tableView.filterSchools(with: query)
-    }
     
     // MARK: - Life Cycle
     override func viewDidLoad() {
@@ -69,7 +65,14 @@ class SeachSchoolViewController: UIViewController, UITextFieldDelegate, SchoolTa
         configUserInterface()
         
         textField.delegate = self
+        
+        tableView.rowHeight = 47 // 디버그창에 Cell 기본 높이 잡으라는 에러떠서 넣음
+        tableView.searchDelegate = self
         tableView.schools = schools
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
     }
     
     // MARK: - Helpers
@@ -104,12 +107,22 @@ class SeachSchoolViewController: UIViewController, UITextFieldDelegate, SchoolTa
         tableView.snp.makeConstraints { make in
             make.top.equalTo(textField.snp.bottom).offset(10)
             make.leading.equalToSuperview().offset(10)
-            make.trailing.equalToSuperview().offset(-ViewValues.defaultSpacing)
-            make.height.equalTo(100)
+            make.trailing.equalToSuperview().offset(-60)
+            make.height.equalTo(230)
         }
+    }
+    
+    func didSelectSchool(_ schoolName: String) {
+        textField.text = schoolName
+    }
+    
+    @objc private func textFieldDidChange(_ textField: UITextField) {
+        guard let query = textField.text else { return }
+        tableView.filterSchools(with: query)
     }
 }
 
+// MARK: - Extensions here
 extension UILabel {
     func setLineSpacing(spacing: CGFloat) {
         guard let text = text else { return }
