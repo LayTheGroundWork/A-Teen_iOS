@@ -87,6 +87,8 @@
 		41BB4C0B2BFBB8BE00D26A5D /* UserConfigurationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BB4C0A2BFBB8BE00D26A5D /* UserConfigurationViewController.swift */; };
 		41BB4C0D2BFBBA2300D26A5D /* UserConfigurationFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BB4C0C2BFBBA2300D26A5D /* UserConfigurationFactory.swift */; };
 		41BB4C0F2BFBBB1A00D26A5D /* UserConfigurationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BB4C0E2BFBBB1A00D26A5D /* UserConfigurationCoordinator.swift */; };
+		63AC6C8A2C06FE9A004EC50C /* UserIdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AC6C892C06FE9A004EC50C /* UserIdViewController.swift */; };
+		63AC6C8C2C06FEA7004EC50C /* UserNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AC6C8B2C06FEA7004EC50C /* UserNameViewController.swift */; };
 		735AC8FF2C005AB9004C3D21 /* CategoryTournamentCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 735AC8E62C005AB9004C3D21 /* CategoryTournamentCollectionViewCell.swift */; };
 		735AC9002C005AB9004C3D21 /* TodayTeenCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 735AC8E72C005AB9004C3D21 /* TodayTeenCollectionViewCell.swift */; };
 		735AC9012C005AB9004C3D21 /* CategoryTodayCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 735AC8E82C005AB9004C3D21 /* CategoryTodayCollectionViewCell.swift */; };
@@ -198,6 +200,8 @@
 		41BB4C0A2BFBB8BE00D26A5D /* UserConfigurationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserConfigurationViewController.swift; sourceTree = "<group>"; };
 		41BB4C0C2BFBBA2300D26A5D /* UserConfigurationFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserConfigurationFactory.swift; sourceTree = "<group>"; };
 		41BB4C0E2BFBBB1A00D26A5D /* UserConfigurationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserConfigurationCoordinator.swift; sourceTree = "<group>"; };
+		63AC6C892C06FE9A004EC50C /* UserIdViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserIdViewController.swift; sourceTree = "<group>"; };
+		63AC6C8B2C06FEA7004EC50C /* UserNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNameViewController.swift; sourceTree = "<group>"; };
 		735AC8E62C005AB9004C3D21 /* CategoryTournamentCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryTournamentCollectionViewCell.swift; sourceTree = "<group>"; };
 		735AC8E72C005AB9004C3D21 /* TodayTeenCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodayTeenCollectionViewCell.swift; sourceTree = "<group>"; };
 		735AC8E82C005AB9004C3D21 /* CategoryTodayCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryTodayCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -395,6 +399,8 @@
 			children = (
 				418CB1CB2BF71AE7001DA795 /* LogInViewController.swift */,
 				09F9EFEF2C05C699009DE3A0 /* TermsOfUseViewController.swift */,
+				63AC6C892C06FE9A004EC50C /* UserIdViewController.swift */,
+				63AC6C8B2C06FEA7004EC50C /* UserNameViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1049,6 +1055,7 @@
 				418CB1FE2BF74D16001DA795 /* SettingsCoordinator+SettingsViewControllerCoordinator.swift in Sources */,
 				4190F8E42BF4E91000FCC0A3 /* AppCoordinator.swift in Sources */,
 				41BB4BF32BFB2E0F00D26A5D /* HomeViewController.swift in Sources */,
+				63AC6C8A2C06FE9A004EC50C /* UserIdViewController.swift in Sources */,
 				419CCE842C0466CA00D2E7F8 /* UIFont+TextStyle.swift in Sources */,
 				418CB1F22BF74138001DA795 /* AppLocalized.swift in Sources */,
 				418CB2092BF74EAC001DA795 /* TeenFactory.swift in Sources */,
@@ -1071,6 +1078,7 @@
 				73F9B8242C02182200684152 /* ProfileDetailFactory.swift in Sources */,
 				417286E92BFF1FFB004F88F9 /* MainFactory.swift in Sources */,
 				41BB4C0D2BFBBA2300D26A5D /* UserConfigurationFactory.swift in Sources */,
+				63AC6C8C2C06FEA7004EC50C /* UserNameViewController.swift in Sources */,
 				417286E62BFF1FE7004F88F9 /* MainViewController.swift in Sources */,
 				417286D52BFF0D0D004F88F9 /* ChatFactory.swift in Sources */,
 				09F9EFF42C0621B7009DE3A0 /* TermsOfUseCoordinator.swift in Sources */,

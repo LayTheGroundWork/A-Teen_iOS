@@ -55,4 +55,16 @@ enum AppLocalized {
     static let alarmAgreeText = "인기 콘텐츠 및 알림 수신 동의 (선택)"
     static let alarmAgreeExplanationText = "A-TEEN에서 인기 콘텐츠 및 프로모션에 대한 알림을 받습니다. 언제든지 설정을 검토하고 편집할 수 있습니다. 동의를 하지 않아도 A-TEEN 서비스 사용이 제한되지 않습니다."
     static let showDetailsButton = "세부 정보 보기"
+    
+    // MARK: - UserIdViewController
+    static let welcomeText = "반가워요! :)"
+    static let idInstructionText = "사용하실 아이디를 입력해주세요"
+    static let idCountText = "0/11"
+    static let idGuideText = "소문자 알파벳 + 숫자 (4~11자리)\n아이디는 이후에 변경할 수 없습니다."
+    
+    // MARK: - UserNameViewController
+    static let secondWelcomeText = "A-TEEN에서 쓰일"
+    static let nameInstructionText = "이름 혹은 닉네임을 알려주세요"
+    static let nameCountText = "3/8"
+    static let nameGuideText = "특수문자를 제외한 한글/영어/숫자 (2~8자리)\n* 추후 언제든 수정 가능합니다."
 }
