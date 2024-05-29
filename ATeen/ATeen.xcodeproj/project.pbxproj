@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		0444E82E2C05A81500FB96FD /* SeachSchoolViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0444E82D2C05A81500FB96FD /* SeachSchoolViewController.swift */; };
+		0444E83A2C06F80E00FB96FD /* SearchSchoolResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0444E8392C06F80E00FB96FD /* SearchSchoolResultViewController.swift */; };
+		0444E83C2C06FD4400FB96FD /* SeachSchoolResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0444E83B2C06FD4400FB96FD /* SeachSchoolResultTableViewCell.swift */; };
 		0922B4A22C022C1200375953 /* CustomImageLabelButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0922B4A12C022C1200375953 /* CustomImageLabelButton.swift */; };
 		417286CA2BFF0AEA004F88F9 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 417286C92BFF0AEA004F88F9 /* ProfileViewController.swift */; };
 		417286CC2BFF0B03004F88F9 /* ProfileFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 417286CB2BFF0B03004F88F9 /* ProfileFactory.swift */; };
@@ -117,6 +119,8 @@
 
 /* Begin PBXFileReference section */
 		0444E82D2C05A81500FB96FD /* SeachSchoolViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeachSchoolViewController.swift; sourceTree = "<group>"; };
+		0444E8392C06F80E00FB96FD /* SearchSchoolResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchSchoolResultViewController.swift; sourceTree = "<group>"; };
+		0444E83B2C06FD4400FB96FD /* SeachSchoolResultTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeachSchoolResultTableViewCell.swift; sourceTree = "<group>"; };
 		0922B4A12C022C1200375953 /* CustomImageLabelButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomImageLabelButton.swift; sourceTree = "<group>"; };
 		417286C92BFF0AEA004F88F9 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		417286CB2BFF0B03004F88F9 /* ProfileFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileFactory.swift; sourceTree = "<group>"; };
@@ -389,6 +393,8 @@
 			children = (
 				418CB1CB2BF71AE7001DA795 /* LogInViewController.swift */,
 				0444E82D2C05A81500FB96FD /* SeachSchoolViewController.swift */,
+				0444E8392C06F80E00FB96FD /* SearchSchoolResultViewController.swift */,
+				0444E83B2C06FD4400FB96FD /* SeachSchoolResultTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1116,6 +1122,7 @@
 				41BB4BEA2BFB258500D26A5D /* MyPostsCoordinator.swift in Sources */,
 				4190F8EA2BF4E9D800FCC0A3 /* Auth.swift in Sources */,
 				735AC9012C005AB9004C3D21 /* CategoryTodayCollectionViewCell.swift in Sources */,
+				0444E83A2C06F80E00FB96FD /* SearchSchoolResultViewController.swift in Sources */,
 				0922B4A22C022C1200375953 /* CustomImageLabelButton.swift in Sources */,
 				418CB2072BF74E88001DA795 /* TeenViewController.swift in Sources */,
 				418CB1FC2BF74CD8001DA795 /* ExampleViewController.swift in Sources */,
@@ -1136,6 +1143,7 @@
 				735AC9052C005AB9004C3D21 /* AboutATeenTableViewCell.swift in Sources */,
 				41BB4C002BFB39FA00D26A5D /* PostDetailCoordinator.swift in Sources */,
 				418CB1EB2BF73E6F001DA795 /* SettingsViewController.swift in Sources */,
+				0444E83C2C06FD4400FB96FD /* SeachSchoolResultTableViewCell.swift in Sources */,
 				73F9B8262C02182C00684152 /* ProfileDetailCoordinator.swift in Sources */,
 				735AC9352C005EB0004C3D21 /* MainCoordinator+MainViewControllerCoordinator.swift in Sources */,
 			);
