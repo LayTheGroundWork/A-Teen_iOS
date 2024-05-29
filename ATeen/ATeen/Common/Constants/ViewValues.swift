@@ -33,6 +33,9 @@ struct ViewValues {
     
     static let defaultButtonSize = 24
     
+    static let componentPickerWidth = UIScreen.main.bounds.width / 5
+    static let componentPickerHight = componentPickerWidth * 0.72
+    
     // MARK: - CornerRadius
     static let defaultRadius: CGFloat = 20
     

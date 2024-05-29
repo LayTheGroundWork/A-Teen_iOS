@@ -13,6 +13,8 @@ class LoginBirthViewController: UIViewController {
     // MARK: - Public properties
     
     // MARK: - Private properties
+    private var viewModel = LoginBirthViewModel()
+    
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.text = "당신의\n생년월일을 알려주세요!"
@@ -53,6 +55,7 @@ class LoginBirthViewController: UIViewController {
     // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationItem.title = "Sample"
         configUserInterface()
     }
     
@@ -87,12 +90,29 @@ class LoginBirthViewController: UIViewController {
     
     // MARK: - Actions
     @objc func didSelectBirh(_ sender: UIButton) {
+        let controller = LoginBirthSelectViewController(
+            coordinator: self,
+            viewModel: viewModel,
+            beforeYear: viewModel.year,
+            beforeMonth: viewModel.month,
+            beforeDay: viewModel.day)
         
+        controller.modalPresentationStyle = .overFullScreen
+        
+        self.present(controller, animated: false)
     }
     
     @objc func didSelectService(_ sender: UIButton) {
-        
+        print("234")
     }
 }
 
 // MARK: - Extensions here
+extension LoginBirthViewController: LoginBirthSelectViewControllerCoordinator {
+    func didSelectBirth() {
+        birthButton.changeWidth(
+            year: viewModel.year,
+            month: viewModel.month,
+            day: viewModel.day)
+    }
+}

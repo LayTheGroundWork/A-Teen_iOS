@@ -111,6 +111,9 @@
 		736355B52C05B0D000926CBB /* CustomServiceButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736355B42C05B0D000926CBB /* CustomServiceButton.swift */; };
 		73BB940C2C047FDE00687A97 /* MainTabCoordinator+MainCoordinatorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73BB940B2C047FDE00687A97 /* MainTabCoordinator+MainCoordinatorDelegate.swift */; };
 		73BB940E2C0480D700687A97 /* MainTabCoordinator+LogInCoordinatorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73BB940D2C0480D600687A97 /* MainTabCoordinator+LogInCoordinatorDelegate.swift */; };
+		73EC85082C06F9D200ABE16A /* LoginBirthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73EC85072C06F9D200ABE16A /* LoginBirthViewModel.swift */; };
+		73EC850A2C06F9F200ABE16A /* LoginBirthSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73EC85092C06F9F200ABE16A /* LoginBirthSelectViewController.swift */; };
+		73EC850C2C06FA2300ABE16A /* CustomLineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73EC850B2C06FA2300ABE16A /* CustomLineView.swift */; };
 		73F9B8242C02182200684152 /* ProfileDetailFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73F9B8232C02182200684152 /* ProfileDetailFactory.swift */; };
 		73F9B8262C02182C00684152 /* ProfileDetailCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73F9B8252C02182C00684152 /* ProfileDetailCoordinator.swift */; };
 		73F9B8282C021E7800684152 /* ProfileDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73F9B8272C021E7800684152 /* ProfileDetailViewModel.swift */; };
@@ -222,6 +225,9 @@
 		736355B42C05B0D000926CBB /* CustomServiceButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomServiceButton.swift; sourceTree = "<group>"; };
 		73BB940B2C047FDE00687A97 /* MainTabCoordinator+MainCoordinatorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainTabCoordinator+MainCoordinatorDelegate.swift"; sourceTree = "<group>"; };
 		73BB940D2C0480D600687A97 /* MainTabCoordinator+LogInCoordinatorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainTabCoordinator+LogInCoordinatorDelegate.swift"; sourceTree = "<group>"; };
+		73EC85072C06F9D200ABE16A /* LoginBirthViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginBirthViewModel.swift; sourceTree = "<group>"; };
+		73EC85092C06F9F200ABE16A /* LoginBirthSelectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginBirthSelectViewController.swift; sourceTree = "<group>"; };
+		73EC850B2C06FA2300ABE16A /* CustomLineView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomLineView.swift; sourceTree = "<group>"; };
 		73F9B8232C02182200684152 /* ProfileDetailFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDetailFactory.swift; sourceTree = "<group>"; };
 		73F9B8252C02182C00684152 /* ProfileDetailCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDetailCoordinator.swift; sourceTree = "<group>"; };
 		73F9B8272C021E7800684152 /* ProfileDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDetailViewModel.swift; sourceTree = "<group>"; };
@@ -393,8 +399,10 @@
 			children = (
 				418CB1CB2BF71AE7001DA795 /* LogInViewController.swift */,
 				736355AE2C05A88000926CBB /* LoginBirthViewController.swift */,
+				73EC85092C06F9F200ABE16A /* LoginBirthSelectViewController.swift */,
 				736355B22C05AEF500926CBB /* CustomBirthButton.swift */,
 				736355B42C05B0D000926CBB /* CustomServiceButton.swift */,
+				73EC850B2C06FA2300ABE16A /* CustomLineView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -403,6 +411,7 @@
 			isa = PBXGroup;
 			children = (
 				418CB1D42BF71DC8001DA795 /* LogInViewModel.swift */,
+				73EC85072C06F9D200ABE16A /* LoginBirthViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -1050,6 +1059,7 @@
 				4190F8E42BF4E91000FCC0A3 /* AppCoordinator.swift in Sources */,
 				41BB4BF32BFB2E0F00D26A5D /* HomeViewController.swift in Sources */,
 				419CCE842C0466CA00D2E7F8 /* UIFont+TextStyle.swift in Sources */,
+				73EC85082C06F9D200ABE16A /* LoginBirthViewModel.swift in Sources */,
 				418CB1F22BF74138001DA795 /* AppLocalized.swift in Sources */,
 				418CB2092BF74EAC001DA795 /* TeenFactory.swift in Sources */,
 				4190F8C52BF4E6EF00FCC0A3 /* AppDelegate.swift in Sources */,
@@ -1109,6 +1119,7 @@
 				417286CE2BFF0B83004F88F9 /* ProfileCoordinator.swift in Sources */,
 				417286CA2BFF0AEA004F88F9 /* ProfileViewController.swift in Sources */,
 				41BB4C0B2BFBB8BE00D26A5D /* UserConfigurationViewController.swift in Sources */,
+				73EC850A2C06F9F200ABE16A /* LoginBirthSelectViewController.swift in Sources */,
 				41BB4C0F2BFBBB1A00D26A5D /* UserConfigurationCoordinator.swift in Sources */,
 				41A515A82C02338B00EDAEA2 /* CustomVoteButton.swift in Sources */,
 				735AC9042C005AB9004C3D21 /* TodayTeenTableViewCell.swift in Sources */,
@@ -1135,6 +1146,7 @@
 				418CB1EF2BF740F6001DA795 /* Reusable.swift in Sources */,
 				417286EB2BFF2004004F88F9 /* MainCoordinator.swift in Sources */,
 				41A8F3BD2BFE500C0092CBFA /* UIView+Constraints.swift in Sources */,
+				73EC850C2C06FA2300ABE16A /* CustomLineView.swift in Sources */,
 				735AC90A2C005B52004C3D21 /* CustomNaviView.swift in Sources */,
 				41735B542BFCEDE000E4A339 /* PostDetailCoordinator+PostDetailViewControllerCoordinator.swift in Sources */,
 				4190F8ED2BF4EAAB00FCC0A3 /* AppContainer.swift in Sources */,
