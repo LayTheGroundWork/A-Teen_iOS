@@ -54,7 +54,7 @@ class UserNameViewController: UIViewController, UITextFieldDelegate {
         let textField = UITextField()
         textField.borderStyle = .roundedRect
         textField.layer.borderWidth = 2.0
-        textField.layer.borderColor = UIColor.systemBlue.cgColor
+        textField.layer.borderColor = UIColor.main.cgColor
         textField.backgroundColor = UIColor.white
         textField.textColor = UIColor.black
         textField.layer.cornerRadius = 10
@@ -145,7 +145,7 @@ class UserNameViewController: UIViewController, UITextFieldDelegate {
         if containsSpecialCharacterOrInvalidLength(updatedText) || isIncompleteKoreanWord(updatedText) {
             textField.layer.borderColor = UIColor.red.cgColor
         } else {
-            textField.layer.borderColor = UIColor.systemBlue.cgColor
+            textField.layer.borderColor = UIColor.main.cgColor
         }
 
         charCountLabel.text = "\(updatedText.count)/8"
