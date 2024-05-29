@@ -53,7 +53,7 @@ final class LogInViewController: UIViewController {
         button.setTitle(AppLocalized.signupPhoneNumberButton, for: .normal)
         button.setTitleColor(.black, for: .normal)
         button.layer.borderWidth = 1
-        button.layer.borderColor = UIColor.grayQuestionCell.cgColor
+        button.layer.borderColor = UIColor.gray03.cgColor
         button.layer.cornerRadius = ViewValues.defaultRadius
         button.addTarget(self,
                          action: #selector(didSelectSignUpButton(_:)),
@@ -73,7 +73,7 @@ final class LogInViewController: UIViewController {
 
     private lazy var bottomBarView: UIView = {
         let view = UIView()
-        view.backgroundColor = .grayQuestionCell
+        view.backgroundColor = .gray03
         return view
     }()
     

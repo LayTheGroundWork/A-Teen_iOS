@@ -9,10 +9,16 @@ import SnapKit
 
 import UIKit
 
+protocol TermsOfUseViewControllerCoordinator: AnyObject {
+    func didSelectNextButton()
+}
+
 final class TermsOfUseViewController: UIViewController {
     // MARK: - Public properties
     
     // MARK: - Private properties
+    private weak var coordinator: TermsOfUseViewControllerCoordinator?
+    
     private lazy var termsOfUseLabel: UILabel = {
         let label = UILabel()
         label.text = AppLocalized.usingTermsText
@@ -65,7 +71,7 @@ final class TermsOfUseViewController: UIViewController {
         label.textAlignment = .left
         label.font = UIFont.customFont(forTextStyle: .footnote,
                                        weight: .regular)
-        label.textColor = .graySchool
+        label.textColor = .gray01
         return label
     }()
     
@@ -99,6 +105,15 @@ final class TermsOfUseViewController: UIViewController {
     }()
     
     // MARK: - Life Cycle
+    init(coordinator: TermsOfUseViewControllerCoordinator?) {
+        self.coordinator = coordinator
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configUserInterface()
@@ -217,7 +232,6 @@ final class TermsOfUseViewController: UIViewController {
         let button = UIButton()
         button.setImage(UIImage(named: "grayCheckButton"), for: .normal)
         button.setImage(UIImage(named: "mainCheckButton"), for: .selected)
-        button.backgroundColor = .grayQuestionCell // 선택 시, main 으로 변경
         button.layer.cornerRadius = 10
         button.isSelected = false
         button.tag = tag
@@ -237,6 +251,9 @@ final class TermsOfUseViewController: UIViewController {
         alarmCheckButton.addTarget(self,
                                    action: #selector(clickButton(_:)),
                                    for: .touchUpInside)
+        nextButton.addTarget(self,
+                             action: #selector(didSelectNextButton(_:)),
+                             for: .touchUpInside)
     }
     
     // MARK: - Actions
@@ -249,6 +266,10 @@ final class TermsOfUseViewController: UIViewController {
         default:
             break
         }
+    }
+    
+    @objc private func didSelectNextButton(_ sender: UIButton) {
+        coordinator?.didSelectNextButton()
     }
 }
 
@@ -297,53 +318,5 @@ extension TermsOfUseViewController {
             updateSelectedCustomCheckButtonState(button)
         }
         verifyAllCustomCheckButtonState()
-    }
-}
-
-// MARK: - Custom Show Detail Button
-// TODO: ( 파일 분리 예정 )
-final class CustomShowDetailButton: CustomImageLabelButton {
-    override init(
-        imageName: String = "chevron.right",
-        imageColor: UIColor? = .graySchool,
-        textColor: UIColor = .graySchool,
-        labelText: String = AppLocalized.showDetailsButton,
-        buttonBackgroundColor: UIColor = .clear,
-        labelFont: UIFont = UIFont.customFont(forTextStyle: .footnote,
-                                              weight: .regular),
-        frame: CGRect = .zero
-    ) {
-        super.init(
-            imageName: imageName,
-            imageColor: imageColor,
-            textColor: textColor,
-            labelText: labelText,
-            buttonBackgroundColor: buttonBackgroundColor,
-            labelFont: labelFont,
-            frame: frame
-        )
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-}
-
-// MARK: - Custom Show Detail Button Layout
-extension CustomShowDetailButton {
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        
-        customLabel.snp.makeConstraints { make in
-            make.centerY.equalToSuperview()
-            make.leading.equalToSuperview()
-        }
-        
-        customImageView.snp.makeConstraints { make in
-            make.centerY.equalToSuperview()
-            make.leading.equalTo(customLabel.snp.trailing).offset(2)
-            make.height.equalTo(13)
-            make.width.equalTo(7)
-        }
     }
 }

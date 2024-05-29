@@ -1,0 +1,165 @@
+//
+//  SignUpViewController.swift
+//  ATeen
+//
+//  Created by 최동호 on 5/29/24.
+//
+
+import UIKit
+
+final class SignUpViewController: UIViewController {
+    
+    // MARK: - Private properties
+    private var currentIndexPath = IndexPath(item: 0, section: 0)
+
+    private lazy var progressView: UIProgressView = {
+        let view = UIProgressView()
+        view.trackTintColor = .gray03
+        view.progressTintColor = .main
+        view.progress = ViewValues.signUpProgress
+        return view
+    }()
+    
+    // 뒤로 가기 버튼
+    private lazy var backButton: UIButton = {
+        let button = UIButton()
+        button.setImage(UIImage(named: "leftArrowIcon"), for: .normal)
+        button.tintColor = .black
+        return button
+    }()
+    
+    // 콜렉션 뷰
+    private lazy var collectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .horizontal
+        layout.itemSize = CGSize(width: ViewValues.width, height: ViewValues.halfHeight)
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionView.backgroundColor = .white
+        collectionView.showsHorizontalScrollIndicator = false
+        collectionView.isScrollEnabled = false
+        
+        collectionView.register(UserIdCollectionViewCell.self, forCellWithReuseIdentifier: UserIdCollectionViewCell.reuseIdentifier)
+        collectionView.register(UserNameCollectionViewCell.self, forCellWithReuseIdentifier: UserNameCollectionViewCell.reuseIdentifier)
+       
+        return collectionView
+    }()
+    
+    // 더보기 버튼
+    private lazy var moreButton: UIButton = {
+        let button = UIButton()
+        button.setImage(UIImage(named: "xMarkIcon"), for: .normal)
+        button.tintColor = .black
+        return button
+    }()
+    
+    private lazy var nextButton: UIButton = {
+        let button = UIButton()
+        button.titleLabel?.font = UIFont.customFont(forTextStyle: .callout,
+                                                    weight: .regular)
+        button.setTitle(AppLocalized.nextButton, for: .normal)
+        button.setTitleColor(.white, for: .normal)
+        button.backgroundColor = .black
+        button.layer.cornerRadius = ViewValues.defaultRadius
+        return button
+    }()
+    
+    // MARK: - Life Cycle
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        configUserInterface()
+    }
+    
+    // MARK: - Helpers
+    private func configUserInterface() {
+        view.backgroundColor = .systemBackground
+        self.view.addSubview(progressView)
+        self.view.addSubview(collectionView)
+        self.view.addSubview(nextButton)
+        
+        collectionView.delegate = self
+        collectionView.dataSource = self
+
+        progressView.snp.makeConstraints { make in
+            make.top.equalTo(self.view.safeAreaLayoutGuide.snp.top).offset(ViewValues.defaultPadding)
+            make.leading.equalToSuperview().offset(ViewValues.defaultPadding)
+            make.trailing.equalToSuperview().offset(-ViewValues.defaultPadding)
+            make.height.equalTo(5)
+        }
+        
+        collectionView.snp.makeConstraints { make in
+            make.top.equalTo(progressView.snp.bottom).offset(ViewValues.defaultPadding)
+            make.leading.trailing.equalToSuperview()
+            make.height.equalTo(ViewValues.halfHeight)
+        }
+        
+        nextButton.snp.makeConstraints { make in
+            make.trailing.equalToSuperview().offset(-ViewValues.defaultPadding)
+            make.bottom.equalToSuperview().offset(-50)
+            make.width.equalTo(ViewValues.signUpNextButtonWidth)
+            make.height.equalTo(ViewValues.signUpNextButtonHeight)
+        }
+        
+        nextButton.addTarget(self,
+                             action: #selector(didSelectNextButton(_: )),
+                             for: .touchUpInside)
+    }
+    
+    // MARK: - Actions
+    @objc private func didSelectNextButton(_ sender: UIButton) {
+        guard currentIndexPath.section < collectionView.numberOfSections - 1 else { return }
+        
+        currentIndexPath.section += 1
+        
+        progressView.setProgress(progressView.progress + ViewValues.signUpProgress, animated: true)
+        
+        collectionView.scrollToItem(
+            at: currentIndexPath,
+            at: .centeredHorizontally,
+            animated: true
+        )
+        
+    }
+}
+
+// MARK: - Extensions here
+extension SignUpViewController: UICollectionViewDelegate {
+    
+}
+
+extension SignUpViewController: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        1
+    }
+    
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        2
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        switch indexPath.section {
+        case 0:
+            guard
+                let cell = collectionView.dequeueReusableCell(
+                withReuseIdentifier: UserIdCollectionViewCell.reuseIdentifier,
+                for: indexPath) as? UserIdCollectionViewCell
+            else {
+                return UICollectionViewCell()
+            }
+            
+            return cell
+        case 1:
+            guard
+                let cell = collectionView.dequeueReusableCell(
+                withReuseIdentifier: UserNameCollectionViewCell.reuseIdentifier,
+                for: indexPath) as? UserNameCollectionViewCell
+            else {
+                return UICollectionViewCell()
+            }
+            
+            return cell
+
+        default:
+            return UICollectionViewCell()
+        }
+    }
+}

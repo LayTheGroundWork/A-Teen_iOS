@@ -179,14 +179,14 @@ class ProfileDetailViewController: UIViewController {
     lazy var schoolImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(systemName: "graduationcap.fill")
-        imageView.tintColor = UIColor(named: "graySchoolColor")
+        imageView.tintColor = .gray01
         return imageView
     }()
     
     lazy var schoolLabel: UILabel = {
         let label = UILabel()
         label.text = "인덕원고등학교, 18세"
-        label.textColor = UIColor(named: "graySchoolColor")
+        label.textColor = .gray01
         label.textAlignment = .left
         label.font = UIFont.systemFont(ofSize: 13, weight: .regular)
         return label
@@ -226,7 +226,7 @@ class ProfileDetailViewController: UIViewController {
     lazy var mbtiLabel: UILabel = {
         let label = UILabel()
         label.text = "INFP"
-        label.textColor = UIColor(named: "grayTextColor")
+        label.textColor = .gray02
         label.textAlignment = .center
         label.font = UIFont.systemFont(ofSize: 13, weight: .regular)
         label.backgroundColor = UIColor(named: "grayMbtiCellColor")
@@ -240,7 +240,7 @@ class ProfileDetailViewController: UIViewController {
         label.text = """
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
         """
-        label.textColor = UIColor(named: "grayTextColor")
+        label.textColor = .gray02
         label.textAlignment = .left
         label.numberOfLines = 0
         label.font = UIFont.systemFont(ofSize: 14, weight: .regular)
@@ -269,7 +269,7 @@ class ProfileDetailViewController: UIViewController {
     
     lazy var addBackgroundView: UIView = {
         let view = UIView()
-        view.backgroundColor = UIColor(named: "grayQuestionCellColor")
+        view.backgroundColor = .gray03
         view.layer.cornerRadius = 20
         view.layer.maskedCorners = CACornerMask(arrayLiteral: [.layerMinXMaxYCorner, .layerMaxXMaxYCorner])
         return view
@@ -285,7 +285,7 @@ class ProfileDetailViewController: UIViewController {
     lazy var moreButton: UIButton = {
         let button = UIButton()
         button.setTitle("펼쳐서 보기", for: .normal)
-        button.setTitleColor(UIColor(named: "grayTextColor"), for: .normal)
+        button.setTitleColor(.gray02, for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 14, weight: .regular)
         button.addTarget(self, action: #selector(clickMoreButton(_:)), for: .touchUpInside)
         return button

@@ -1,25 +1,25 @@
 //
-//  TermsOfUseCoordinator.swift
+//  SignUpCoordinator.swift
 //  ATeen
 //
-//  Created by phang on 5/28/24.
+//  Created by 최동호 on 5/29/24.
 //
 
 import Foundation
 
-final class TermsOfUseCoordinator: Coordinator {
+final class SignUpCoordinator: Coordinator {
     var navigation: Navigation
-    var factory: TermsOfUseFactory
+    var factory: SignUpFactory
     
     init(navigation: Navigation,
-         factory: TermsOfUseFactory
+         factory: SignUpFactory
     ) {
         self.navigation = navigation
         self.factory = factory
     }
     
     func start() {
-        let controller = factory.makeTermsOfUseViewController(coordinator: self)
+        let controller = factory.makeSignUpViewController(coordinator: self)
         navigation.pushViewController(controller, animated: true)
     }
 }

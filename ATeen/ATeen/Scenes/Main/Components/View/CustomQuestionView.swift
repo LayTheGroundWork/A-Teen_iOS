@@ -22,7 +22,7 @@ class CustomQuestionView: UIView {
     lazy var oneTextLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .left
-        label.textColor = UIColor(named: "grayTextColor")
+        label.textColor = .gray02
         label.numberOfLines = 0
         label.font = UIFont.systemFont(ofSize: 14, weight: .regular)
         return label
@@ -40,7 +40,7 @@ class CustomQuestionView: UIView {
     lazy var twoTextLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .left
-        label.textColor = UIColor(named: "grayTextColor")
+        label.textColor = .gray02
         label.numberOfLines = 0
         label.font = UIFont.systemFont(ofSize: 14, weight: .regular)
         return label
@@ -100,7 +100,7 @@ class CustomQuestionView: UIView {
     
     init(frame: CGRect, questionList: [Question]) {
         super.init(frame: frame)
-        self.backgroundColor = UIColor(named: "grayQuestionCellColor")
+        self.backgroundColor = .gray03
         self.layer.masksToBounds = true
         self.layer.cornerRadius = 20
         self.layer.maskedCorners = CACornerMask(arrayLiteral: [.layerMinXMinYCorner, .layerMaxXMinYCorner])

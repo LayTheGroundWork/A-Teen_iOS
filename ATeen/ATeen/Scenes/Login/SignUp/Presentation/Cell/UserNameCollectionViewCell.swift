@@ -1,34 +1,18 @@
 //
-//  UserNameViewController.swift
+//  UserNameCollectionViewCell.swift
 //  ATeen
 //
-//  Created by 강치우 on 5/29/24.
+//  Created by 최동호 on 5/29/24.
 //
 
-import UIKit
 import SnapKit
 
-class UserNameViewController: UIViewController, UITextFieldDelegate {
+import UIKit
+
+final class UserNameCollectionViewCell: UICollectionViewCell {
     // MARK: - Public properties
     
     // MARK: - Private properties
-    
-    // 뒤로 가기 버튼
-    private let backButton: UIButton = {
-        let button = UIButton()
-        button.setImage(UIImage(systemName: "arrow.left"), for: .normal)
-        button.tintColor = .black
-        return button
-    }()
-
-    // 더보기 버튼
-    private let moreButton: UIButton = {
-        let button = UIButton()
-        button.setImage(UIImage(systemName: "ellipsis"), for: .normal)
-        button.tintColor = .black
-        return button
-    }()
-
     // 환영 메시지 레이블
     private let welcomeLabel: UILabel = {
         let label = UILabel()
@@ -57,8 +41,8 @@ class UserNameViewController: UIViewController, UITextFieldDelegate {
         textField.layer.cornerRadius = 10
         textField.layer.borderColor = UIColor.main.cgColor
         textField.backgroundColor = UIColor.white
-        textField.textColor = UIColor.black
-        textField.tintColor = UIColor.gray01
+        textField.textColor = .black
+        textField.tintColor = .gray01
         return textField
     }()
 
@@ -68,6 +52,7 @@ class UserNameViewController: UIViewController, UITextFieldDelegate {
         label.text = AppLocalized.nameCountText
         label.font = UIFont.customFont(forTextStyle: .footnote,
                                        weight: .regular)
+        label.text = "0/8"
         label.textColor = .black
         return label
     }()
@@ -82,48 +67,42 @@ class UserNameViewController: UIViewController, UITextFieldDelegate {
         label.numberOfLines = 2
         return label
     }()
-
+    
     // MARK: - Life Cycle
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        view.backgroundColor = .white
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        self.contentView.backgroundColor = .white
         setupLayout()
         textField.delegate = self
     }
     
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     // MARK: - Helpers
     private func setupLayout() {
-        view.addSubview(backButton)
-        view.addSubview(moreButton)
-        view.addSubview(welcomeLabel)
-        view.addSubview(instructionLabel)
-        view.addSubview(textField)
-        view.addSubview(charCountLabel)
-        view.addSubview(guideLabel)
+        self.contentView.addSubview(welcomeLabel)
+        self.contentView.addSubview(instructionLabel)
+        self.contentView.addSubview(textField)
+        self.contentView.addSubview(charCountLabel)
+        self.contentView.addSubview(guideLabel)
         
-        backButton.snp.makeConstraints { make in
-            make.top.equalTo(view.safeAreaLayoutGuide).offset(20)
-            make.leading.equalToSuperview().offset(20)
-        }
-        
-        moreButton.snp.makeConstraints { make in
-            make.top.equalTo(view.safeAreaLayoutGuide).offset(20)
-            make.trailing.equalToSuperview().offset(-20)
-        }
-
         welcomeLabel.snp.makeConstraints { make in
-            make.top.equalTo(backButton.snp.bottom).offset(60)
-            make.leading.equalToSuperview().offset(20)
+            make.top.equalToSuperview()
+            make.leading.equalToSuperview().offset(ViewValues.defaultPadding)
+            make.trailing.greaterThanOrEqualTo(self.contentView.snp.trailing).offset(-ViewValues.defaultPadding)
         }
-
+        
         instructionLabel.snp.makeConstraints { make in
             make.top.equalTo(welcomeLabel.snp.bottom).offset(5)
-            make.leading.equalToSuperview().offset(20)
+            make.leading.equalToSuperview().offset(ViewValues.defaultPadding)
+            make.trailing.greaterThanOrEqualTo(self.contentView.snp.trailing).offset(ViewValues.defaultPadding)
         }
 
         textField.snp.makeConstraints { make in
             make.top.equalTo(instructionLabel.snp.bottom).offset(10)
-            make.leading.trailing.equalToSuperview().inset(20)
+            make.leading.trailing.equalToSuperview().inset(ViewValues.defaultPadding)
             make.height.equalTo(50)
         }
 
@@ -138,10 +117,20 @@ class UserNameViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
-    // UITextFieldDelegate
+    // MARK: - Actions
+    
+    // MARK: - Extensions here
+    
+}
+
+extension UserNameCollectionViewCell: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         guard let currentText = textField.text else { return true }
         let updatedText = (currentText as NSString).replacingCharacters(in: range, with: string)
+        
+        if updatedText.count > 8 {
+            return false
+        }
 
         if containsSpecialCharacterOrInvalidLength(updatedText) || isIncompleteKoreanWord(updatedText) {
             textField.layer.borderColor = UIColor.red.cgColor
@@ -152,7 +141,7 @@ class UserNameViewController: UIViewController, UITextFieldDelegate {
         charCountLabel.text = "\(updatedText.count)/8"
         return true
     }
-
+    
     // 특수문자 포함 여부 및 길이 확인
     private func containsSpecialCharacterOrInvalidLength(_ text: String) -> Bool {
         let specialCharacterRegex = "[^a-zA-Z0-9ㄱ-ㅎㅏ-ㅣ가-힣]"
@@ -181,3 +170,4 @@ class UserNameViewController: UIViewController, UITextFieldDelegate {
     }
 }
 
+extension UserNameCollectionViewCell: Reusable { }
