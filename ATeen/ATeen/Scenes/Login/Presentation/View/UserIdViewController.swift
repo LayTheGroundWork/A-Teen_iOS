@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class UserIDViewController: UIViewController, UITextFieldDelegate {
+class UserIdViewController: UIViewController, UITextFieldDelegate {
     // MARK: - Public properties
     
     // MARK: - Private properties
