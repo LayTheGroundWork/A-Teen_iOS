@@ -9,7 +9,7 @@ import UIKit
 
 protocol TermsOfUseFactory {
     func makeTermsOfUseViewController(coordinator: TermsOfUseViewControllerCoordinator) -> UIViewController
-    func makeSignUpCoordinator(navigation: Navigation) -> Coordinator
+    func makeSignUpCoordinator(navigation: Navigation, childCoordinators: [Coordinator]) -> Coordinator
 }
 
 struct TermsOfUseFactoryImp: TermsOfUseFactory {
@@ -18,8 +18,11 @@ struct TermsOfUseFactoryImp: TermsOfUseFactory {
         return controller
     }
     
-    func makeSignUpCoordinator(navigation: Navigation) -> Coordinator {
+    func makeSignUpCoordinator(navigation: Navigation, childCoordinators: [Coordinator]) -> Coordinator {
         let factory = SignUpFactoryImp()
-        return SignUpCoordinator(navigation: navigation, factory: factory)
+        return SignUpCoordinator(
+            navigation: navigation,
+            factory: factory,
+            childCoordinators: childCoordinators)
     }
 }

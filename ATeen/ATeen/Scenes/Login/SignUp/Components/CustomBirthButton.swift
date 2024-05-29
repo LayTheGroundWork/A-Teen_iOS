@@ -56,9 +56,6 @@ final class CustomBirthButton: CustomImageLabelButton {
         self.customLabel.attributedText = attributedStr
         
         self.customLabel.sizeToFit()
-        
-//        self.customLabelWidthAnchor?.update(
-//            offset: (self.customLabel.attributedText as NSString).size(withAttributes: [NSAttributedString.Key.font: self.customLabel.attributedText]).width + 10)
     }
 }
 

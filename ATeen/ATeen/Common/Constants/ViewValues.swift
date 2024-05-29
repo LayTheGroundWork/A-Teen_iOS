@@ -44,6 +44,6 @@ struct ViewValues {
     static let defaultRadius: CGFloat = 20
     
     // MARK: - Progress
-    static let signUpProgress: Float = 0.25
+    static let signUpProgress: Float = 0.2
     
 }

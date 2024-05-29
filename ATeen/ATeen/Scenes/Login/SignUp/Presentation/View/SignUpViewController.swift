@@ -5,12 +5,22 @@
 //  Created by 최동호 on 5/29/24.
 //
 
+import SnapKit
+
 import UIKit
+
+protocol SignUpViewControllerCoordinator: AnyObject {
+    func didSelectBirth()
+    func didSelectService()
+}
 
 final class SignUpViewController: UIViewController {
     
     // MARK: - Private properties
     private var currentIndexPath = IndexPath(item: 0, section: 0)
+    
+    private var viewModel: LoginBirthViewModel
+    private weak var coordinator: SignUpViewControllerCoordinator?
 
     private lazy var progressView: UIProgressView = {
         let view = UIProgressView()
@@ -40,6 +50,7 @@ final class SignUpViewController: UIViewController {
         
         collectionView.register(UserIdCollectionViewCell.self, forCellWithReuseIdentifier: UserIdCollectionViewCell.reuseIdentifier)
         collectionView.register(UserNameCollectionViewCell.self, forCellWithReuseIdentifier: UserNameCollectionViewCell.reuseIdentifier)
+        collectionView.register(UserBirthCollectionViewCell.self, forCellWithReuseIdentifier: UserBirthCollectionViewCell.reuseIdentifier)
        
         return collectionView
     }()
@@ -62,6 +73,18 @@ final class SignUpViewController: UIViewController {
         button.layer.cornerRadius = ViewValues.defaultRadius
         return button
     }()
+    
+    init(viewModel: LoginBirthViewModel,
+         coordinator: SignUpViewControllerCoordinator
+    ) {
+        self.viewModel = viewModel
+        self.coordinator = coordinator
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     // MARK: - Life Cycle
     override func viewDidLoad() {
@@ -117,7 +140,6 @@ final class SignUpViewController: UIViewController {
             at: .centeredHorizontally,
             animated: true
         )
-        
     }
 }
 
@@ -132,7 +154,7 @@ extension SignUpViewController: UICollectionViewDataSource {
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        2
+        3
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -155,6 +177,20 @@ extension SignUpViewController: UICollectionViewDataSource {
             else {
                 return UICollectionViewCell()
             }
+            
+            return cell
+            
+        case 2:
+            guard
+                let cell = collectionView.dequeueReusableCell(
+                withReuseIdentifier: UserBirthCollectionViewCell.reuseIdentifier,
+                for: indexPath) as? UserBirthCollectionViewCell
+            else {
+                return UICollectionViewCell()
+            }
+            
+            guard let coordinator = coordinator else { return UICollectionViewCell() }
+            cell.setProperties(viewModel: viewModel, coordinator: coordinator)
             
             return cell
 

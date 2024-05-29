@@ -1,19 +1,20 @@
 //
-//  LoginBirthViewController.swift
+//  UserBirthCollectionViewCell.swift
 //  ATeen
 //
-//  Created by 노주영 on 5/28/24.
+//  Created by 노주영 on 5/30/24.
 //
 
 import SnapKit
 
 import UIKit
 
-class LoginBirthViewController: UIViewController {
+final class UserBirthCollectionViewCell: UICollectionViewCell {
     // MARK: - Public properties
     
     // MARK: - Private properties
-    private var viewModel = LoginBirthViewModel()
+    private var viewModel: LoginBirthViewModel?
+    private weak var coordinator: SignUpViewControllerCoordinator?
     
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
@@ -34,7 +35,7 @@ class LoginBirthViewController: UIViewController {
             buttonBackgroundColor: .white,
             labelFont: UIFont.customFont(forTextStyle: .callout, weight: .regular),
             frame: .zero)
-        button.addTarget(self, action: #selector(didSelectBirh(_:)), for: .touchUpInside)
+        button.addTarget(self, action: #selector(didSelectBirth(_:)), for: .touchUpInside)
         return button
     }()
     
@@ -53,24 +54,36 @@ class LoginBirthViewController: UIViewController {
     }()
     
     // MARK: - Life Cycle
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        self.navigationItem.title = "Sample"
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(handleNotification(_:)),
+            name: .selectBirth,
+            object: nil)
         configUserInterface()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     // MARK: - Helpers
     private func configUserInterface() {
-        view.backgroundColor = .systemBackground
+        contentView.backgroundColor = .systemBackground
         
-        view.addSubview(titleLabel)
-        view.addSubview(birthButton)
-        view.addSubview(serviceButton)
+        contentView.addSubview(titleLabel)
+        contentView.addSubview(birthButton)
+        contentView.addSubview(serviceButton)
         
+        configLayout()
+    }
+    
+    private func configLayout() {
         titleLabel.snp.makeConstraints { make in
             make.leading.equalToSuperview().offset(ViewValues.defaultPadding)
             make.trailing.equalToSuperview().offset(-ViewValues.defaultPadding)
-            make.top.equalTo(self.view.safeAreaLayoutGuide.snp.top)
+            make.top.equalToSuperview()
         }
         
         birthButton.snp.makeConstraints { make in
@@ -89,30 +102,29 @@ class LoginBirthViewController: UIViewController {
     }
     
     // MARK: - Actions
-    @objc func didSelectBirh(_ sender: UIButton) {
-        let controller = LoginBirthSelectViewController(
-            coordinator: self,
-            viewModel: viewModel,
-            beforeYear: viewModel.year,
-            beforeMonth: viewModel.month,
-            beforeDay: viewModel.day)
-        
-        controller.modalPresentationStyle = .overFullScreen
-        
-        self.present(controller, animated: false)
+    func setProperties(viewModel: LoginBirthViewModel, coordinator: SignUpViewControllerCoordinator) {
+        self.viewModel = viewModel
+        self.coordinator = coordinator
+    }
+    
+    @objc func didSelectBirth(_ sender: UIButton) {
+        coordinator?.didSelectBirth()
     }
     
     @objc func didSelectService(_ sender: UIButton) {
-        print("234")
+        coordinator?.didSelectService()
     }
-}
-
-// MARK: - Extensions here
-extension LoginBirthViewController: LoginBirthSelectViewControllerCoordinator {
-    func didSelectBirth() {
+    
+    @objc func handleNotification(_ notification: Notification) {
+        guard let viewModel = viewModel else { return }
         birthButton.changeWidth(
             year: viewModel.year,
             month: viewModel.month,
             day: viewModel.day)
     }
+    
+    // MARK: - Extensions here
+    
 }
+
+extension UserBirthCollectionViewCell: Reusable { }

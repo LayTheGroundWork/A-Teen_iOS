@@ -1,5 +1,5 @@
 //
-//  LoginBirthSelectViewController.swift
+//  SelectBirthViewController.swift
 //  HiProject
 //
 //  Created by 노주영 on 5/28/24.
@@ -9,11 +9,11 @@ import SnapKit
 
 import UIKit
 
-protocol LoginBirthSelectViewControllerCoordinator: AnyObject {
-    func didSelectBirth()
+protocol SelectBirthViewControllerCoordinator: AnyObject {
+    func didFinsh(didSelectBirth: Bool)
 }
 
-final class LoginBirthSelectViewController: UIViewController {
+final class SelectBirthViewController: UIViewController {
     // MARK: - Private properties
     private let monthList: [String] = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"]
     private let dayList: [String] = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31"]
@@ -25,9 +25,9 @@ final class LoginBirthSelectViewController: UIViewController {
     private var beforeDay: String
     
     private var alertViewHeightAnchor: Constraint?
-    private var viewModel: LoginBirthViewModel
     
-    private weak var coordinator: LoginBirthSelectViewControllerCoordinator?
+    private var viewModel: LoginBirthViewModel
+    private weak var coordinator: SelectBirthViewControllerCoordinator?
     
     private lazy var alertView: UIView = {
         let view = UIView(frame: CGRect(x: 0, y: ViewValues.height, width: ViewValues.height, height: 0))
@@ -81,7 +81,7 @@ final class LoginBirthSelectViewController: UIViewController {
     
     // MARK: - Life Cycle
     init(
-        coordinator: LoginBirthSelectViewControllerCoordinator,
+        coordinator: SelectBirthViewControllerCoordinator,
         viewModel: LoginBirthViewModel,
         beforeYear: String,
         beforeMonth: String,
@@ -128,7 +128,7 @@ final class LoginBirthSelectViewController: UIViewController {
     
     private func configUserInterface() {
         //메인 뷰
-        self.view.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5)
+        view.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5)
         
         view.addSubview(alertView)
         
@@ -195,15 +195,14 @@ final class LoginBirthSelectViewController: UIViewController {
 
     // MARK: - Actions
     @objc func didSelectOkButton(_ sender: UIButton) {
-        coordinator?.didSelectBirth()
-        closeAnimation()
+        closeAnimation(didSelectBirth: true)
     }
     
     @objc func didSelectBackView(_ sender: Any) {
         viewModel.year = beforeYear
         viewModel.month = beforeMonth
         viewModel.day = beforeDay
-        closeAnimation()
+        closeAnimation(didSelectBirth: false)
     }
     
     @objc func didSelectTouchView(_ sender: Any) {
@@ -212,7 +211,7 @@ final class LoginBirthSelectViewController: UIViewController {
 }
 
 // MARK: - Animation
-extension LoginBirthSelectViewController {
+extension SelectBirthViewController {
     func animateView() {
         UIView.animate(withDuration: 0.4, delay: 0, options: .showHideTransitionViews) {
             self.alertViewHeightAnchor?.update(offset: self.view.frame.height / 2)
@@ -223,20 +222,20 @@ extension LoginBirthSelectViewController {
         }
     }
     
-    func closeAnimation() {
+    func closeAnimation(didSelectBirth: Bool) {
         UIView.animate(withDuration: 0.4, delay: 0, options: .showHideTransitionViews) {
             self.okButton.isHidden = true
             
             self.alertViewHeightAnchor?.update(offset: 0)
             self.view.layoutIfNeeded()
         } completion: { _ in
-            self.dismiss(animated: false)
+            self.coordinator?.didFinsh(didSelectBirth: didSelectBirth)
         }
     }
 }
 
 // MARK: - UIPickerViewDataSource
-extension LoginBirthSelectViewController: UIPickerViewDataSource {
+extension SelectBirthViewController: UIPickerViewDataSource {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 3
     }
@@ -256,7 +255,7 @@ extension LoginBirthSelectViewController: UIPickerViewDataSource {
 }
 
 // MARK: - UIPickerViewDelegate
-extension LoginBirthSelectViewController: UIPickerViewDelegate {
+extension SelectBirthViewController: UIPickerViewDelegate {
     func pickerView(_ pickerView: UIPickerView, widthForComponent component: Int) -> CGFloat {
         return ViewValues.componentPickerWidth
     }

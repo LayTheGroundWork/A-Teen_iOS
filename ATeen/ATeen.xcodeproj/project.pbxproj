@@ -70,7 +70,7 @@
 		41A0147A2C070F220046856B /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A014792C070F220046856B /* SignUpViewController.swift */; };
 		41A0147C2C070F2C0046856B /* SignUpFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A0147B2C070F2C0046856B /* SignUpFactory.swift */; };
 		41A0147E2C070F340046856B /* SignUpCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A0147D2C070F340046856B /* SignUpCoordinator.swift */; };
-		41A014802C0710D50046856B /* SignUpCoordinator+TermsOfUseViewControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A0147F2C0710D50046856B /* SignUpCoordinator+TermsOfUseViewControllerCoordinator.swift */; };
+		41A014802C0710D50046856B /* TermsOfUseCoordinator+TermsOfUseViewControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A0147F2C0710D50046856B /* TermsOfUseCoordinator+TermsOfUseViewControllerCoordinator.swift */; };
 		41A0148C2C0717E60046856B /* UserIdCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A0148B2C0717E60046856B /* UserIdCollectionViewCell.swift */; };
 		41A0148E2C0717F30046856B /* UserNameCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A0148D2C0717F30046856B /* UserNameCollectionViewCell.swift */; };
 		41A515A62C022B3000EDAEA2 /* ProfileDetailBottomBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A515A52C022B3000EDAEA2 /* ProfileDetailBottomBar.swift */; };
@@ -97,9 +97,8 @@
 		41DC1A192C076DC20035ED4C /* CustomShowDetailButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41DC1A182C076DC20035ED4C /* CustomShowDetailButton.swift */; };
 		41DC1A1D2C077DE60035ED4C /* CustomBirthButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41DC1A1C2C077DE60035ED4C /* CustomBirthButton.swift */; };
 		41DC1A1F2C077E420035ED4C /* CustomLineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41DC1A1E2C077E420035ED4C /* CustomLineView.swift */; };
-		41DC1A232C077E540035ED4C /* LoginBirthSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41DC1A202C077E540035ED4C /* LoginBirthSelectViewController.swift */; };
+		41DC1A232C077E540035ED4C /* SelectBirthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41DC1A202C077E540035ED4C /* SelectBirthViewController.swift */; };
 		41DC1A242C077E540035ED4C /* CustomServiceButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41DC1A212C077E540035ED4C /* CustomServiceButton.swift */; };
-		41DC1A252C077E540035ED4C /* LoginBirthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41DC1A222C077E540035ED4C /* LoginBirthViewController.swift */; };
 		41DC1A272C077E6F0035ED4C /* LoginBirthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41DC1A262C077E6F0035ED4C /* LoginBirthViewModel.swift */; };
 		735AC8FF2C005AB9004C3D21 /* CategoryTournamentCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 735AC8E62C005AB9004C3D21 /* CategoryTournamentCollectionViewCell.swift */; };
 		735AC9002C005AB9004C3D21 /* TodayTeenCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 735AC8E72C005AB9004C3D21 /* TodayTeenCollectionViewCell.swift */; };
@@ -123,9 +122,15 @@
 		735AC92C2C005D21004C3D21 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 735AC9282C005D21004C3D21 /* Category.swift */; };
 		735AC9352C005EB0004C3D21 /* MainCoordinator+MainViewControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 735AC9342C005EB0004C3D21 /* MainCoordinator+MainViewControllerCoordinator.swift */; };
 		735AC93A2C0061B9004C3D21 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 735AC9392C0061B9004C3D21 /* MainViewModel.swift */; };
+		736D18DC2C0782F5003A2243 /* UserBirthCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736D18DB2C0782F5003A2243 /* UserBirthCollectionViewCell.swift */; };
+		736D18DE2C0787AC003A2243 /* SignUpCoordinator+SignUpViewControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736D18DD2C0787AC003A2243 /* SignUpCoordinator+SignUpViewControllerCoordinator.swift */; };
+		736D18E02C078908003A2243 /* SelectBirthCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736D18DF2C078908003A2243 /* SelectBirthCoordinator.swift */; };
+		736D18E22C078914003A2243 /* SelectBirthFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736D18E12C078914003A2243 /* SelectBirthFactory.swift */; };
+		736D18E42C078B00003A2243 /* SelectBirthCoordinator+SelectBirthViewControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736D18E32C078B00003A2243 /* SelectBirthCoordinator+SelectBirthViewControllerCoordinator.swift */; };
+		736D18E62C078C18003A2243 /* SignUpCoordinator+SelectBirthCoordinatorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736D18E52C078C18003A2243 /* SignUpCoordinator+SelectBirthCoordinatorDelegate.swift */; };
+		736D18E82C07968F003A2243 /* Notification+Name.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736D18E72C07968F003A2243 /* Notification+Name.swift */; };
 		73BB940C2C047FDE00687A97 /* MainTabCoordinator+MainCoordinatorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73BB940B2C047FDE00687A97 /* MainTabCoordinator+MainCoordinatorDelegate.swift */; };
 		73BB940E2C0480D700687A97 /* MainTabCoordinator+LogInCoordinatorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73BB940D2C0480D600687A97 /* MainTabCoordinator+LogInCoordinatorDelegate.swift */; };
-		73EC85082C06F9D200ABE16A /* LoginBirthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73EC85072C06F9D200ABE16A /* LoginBirthViewModel.swift */; };
 		73F9B8242C02182200684152 /* ProfileDetailFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73F9B8232C02182200684152 /* ProfileDetailFactory.swift */; };
 		73F9B8262C02182C00684152 /* ProfileDetailCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73F9B8252C02182C00684152 /* ProfileDetailCoordinator.swift */; };
 		73F9B8282C021E7800684152 /* ProfileDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73F9B8272C021E7800684152 /* ProfileDetailViewModel.swift */; };
@@ -196,7 +201,7 @@
 		41A014792C070F220046856B /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		41A0147B2C070F2C0046856B /* SignUpFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpFactory.swift; sourceTree = "<group>"; };
 		41A0147D2C070F340046856B /* SignUpCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpCoordinator.swift; sourceTree = "<group>"; };
-		41A0147F2C0710D50046856B /* SignUpCoordinator+TermsOfUseViewControllerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SignUpCoordinator+TermsOfUseViewControllerCoordinator.swift"; sourceTree = "<group>"; };
+		41A0147F2C0710D50046856B /* TermsOfUseCoordinator+TermsOfUseViewControllerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TermsOfUseCoordinator+TermsOfUseViewControllerCoordinator.swift"; sourceTree = "<group>"; };
 		41A0148B2C0717E60046856B /* UserIdCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserIdCollectionViewCell.swift; sourceTree = "<group>"; };
 		41A0148D2C0717F30046856B /* UserNameCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNameCollectionViewCell.swift; sourceTree = "<group>"; };
 		41A515A52C022B3000EDAEA2 /* ProfileDetailBottomBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDetailBottomBar.swift; sourceTree = "<group>"; };
@@ -223,9 +228,8 @@
 		41DC1A182C076DC20035ED4C /* CustomShowDetailButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomShowDetailButton.swift; sourceTree = "<group>"; };
 		41DC1A1C2C077DE60035ED4C /* CustomBirthButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomBirthButton.swift; sourceTree = "<group>"; };
 		41DC1A1E2C077E420035ED4C /* CustomLineView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomLineView.swift; sourceTree = "<group>"; };
-		41DC1A202C077E540035ED4C /* LoginBirthSelectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginBirthSelectViewController.swift; sourceTree = "<group>"; };
+		41DC1A202C077E540035ED4C /* SelectBirthViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectBirthViewController.swift; sourceTree = "<group>"; };
 		41DC1A212C077E540035ED4C /* CustomServiceButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomServiceButton.swift; sourceTree = "<group>"; };
-		41DC1A222C077E540035ED4C /* LoginBirthViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginBirthViewController.swift; sourceTree = "<group>"; };
 		41DC1A262C077E6F0035ED4C /* LoginBirthViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginBirthViewModel.swift; sourceTree = "<group>"; };
 		735AC8E62C005AB9004C3D21 /* CategoryTournamentCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryTournamentCollectionViewCell.swift; sourceTree = "<group>"; };
 		735AC8E72C005AB9004C3D21 /* TodayTeenCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodayTeenCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -249,6 +253,13 @@
 		735AC9282C005D21004C3D21 /* Category.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		735AC9342C005EB0004C3D21 /* MainCoordinator+MainViewControllerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainCoordinator+MainViewControllerCoordinator.swift"; sourceTree = "<group>"; };
 		735AC9392C0061B9004C3D21 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
+		736D18DB2C0782F5003A2243 /* UserBirthCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserBirthCollectionViewCell.swift; sourceTree = "<group>"; };
+		736D18DD2C0787AC003A2243 /* SignUpCoordinator+SignUpViewControllerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SignUpCoordinator+SignUpViewControllerCoordinator.swift"; sourceTree = "<group>"; };
+		736D18DF2C078908003A2243 /* SelectBirthCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectBirthCoordinator.swift; sourceTree = "<group>"; };
+		736D18E12C078914003A2243 /* SelectBirthFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectBirthFactory.swift; sourceTree = "<group>"; };
+		736D18E32C078B00003A2243 /* SelectBirthCoordinator+SelectBirthViewControllerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SelectBirthCoordinator+SelectBirthViewControllerCoordinator.swift"; sourceTree = "<group>"; };
+		736D18E52C078C18003A2243 /* SignUpCoordinator+SelectBirthCoordinatorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SignUpCoordinator+SelectBirthCoordinatorDelegate.swift"; sourceTree = "<group>"; };
+		736D18E72C07968F003A2243 /* Notification+Name.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification+Name.swift"; sourceTree = "<group>"; };
 		73BB940B2C047FDE00687A97 /* MainTabCoordinator+MainCoordinatorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainTabCoordinator+MainCoordinatorDelegate.swift"; sourceTree = "<group>"; };
 		73BB940D2C0480D600687A97 /* MainTabCoordinator+LogInCoordinatorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainTabCoordinator+LogInCoordinatorDelegate.swift"; sourceTree = "<group>"; };
 		73EC85072C06F9D200ABE16A /* LoginBirthViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginBirthViewModel.swift; sourceTree = "<group>"; };
@@ -405,7 +416,11 @@
 			children = (
 				41A0147B2C070F2C0046856B /* SignUpFactory.swift */,
 				41A0147D2C070F340046856B /* SignUpCoordinator.swift */,
-				41A0147F2C0710D50046856B /* SignUpCoordinator+TermsOfUseViewControllerCoordinator.swift */,
+				736D18DD2C0787AC003A2243 /* SignUpCoordinator+SignUpViewControllerCoordinator.swift */,
+				736D18E52C078C18003A2243 /* SignUpCoordinator+SelectBirthCoordinatorDelegate.swift */,
+				736D18E12C078914003A2243 /* SelectBirthFactory.swift */,
+				736D18DF2C078908003A2243 /* SelectBirthCoordinator.swift */,
+				736D18E32C078B00003A2243 /* SelectBirthCoordinator+SelectBirthViewControllerCoordinator.swift */,
 			);
 			path = Composition;
 			sourceTree = "<group>";
@@ -424,7 +439,7 @@
 			isa = PBXGroup;
 			children = (
 				41A014792C070F220046856B /* SignUpViewController.swift */,
-				41DC1A202C077E540035ED4C /* LoginBirthSelectViewController.swift */,
+				41DC1A202C077E540035ED4C /* SelectBirthViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -800,8 +815,9 @@
 		41A014892C07153F0046856B /* Composition */ = {
 			isa = PBXGroup;
 			children = (
-				09F9EFF32C0621B7009DE3A0 /* TermsOfUseCoordinator.swift */,
 				09F9EFF12C062199009DE3A0 /* TermsOfUseFactory.swift */,
+				09F9EFF32C0621B7009DE3A0 /* TermsOfUseCoordinator.swift */,
+				41A0147F2C0710D50046856B /* TermsOfUseCoordinator+TermsOfUseViewControllerCoordinator.swift */,
 			);
 			path = Composition;
 			sourceTree = "<group>";
@@ -811,7 +827,7 @@
 			children = (
 				41A0148B2C0717E60046856B /* UserIdCollectionViewCell.swift */,
 				41A0148D2C0717F30046856B /* UserNameCollectionViewCell.swift */,
-				41DC1A222C077E540035ED4C /* LoginBirthViewController.swift */,
+				736D18DB2C0782F5003A2243 /* UserBirthCollectionViewCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -823,6 +839,7 @@
 				735AC9222C005CCF004C3D21 /* UILabel+Constraints.swift */,
 				419CCE832C0466CA00D2E7F8 /* UIFont+TextStyle.swift */,
 				41DC1A142C076BC10035ED4C /* UIViewController+TouchGesture.swift */,
+				736D18E72C07968F003A2243 /* Notification+Name.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -1207,10 +1224,9 @@
 				41A0148E2C0717F30046856B /* UserNameCollectionViewCell.swift in Sources */,
 				418CB1FE2BF74D16001DA795 /* SettingsCoordinator+SettingsViewControllerCoordinator.swift in Sources */,
 				4190F8E42BF4E91000FCC0A3 /* AppCoordinator.swift in Sources */,
-				41DC1A232C077E540035ED4C /* LoginBirthSelectViewController.swift in Sources */,
+				41DC1A232C077E540035ED4C /* SelectBirthViewController.swift in Sources */,
 				41BB4BF32BFB2E0F00D26A5D /* HomeViewController.swift in Sources */,
 				419CCE842C0466CA00D2E7F8 /* UIFont+TextStyle.swift in Sources */,
-				73EC85082C06F9D200ABE16A /* LoginBirthViewModel.swift in Sources */,
 				418CB1F22BF74138001DA795 /* AppLocalized.swift in Sources */,
 				418CB2092BF74EAC001DA795 /* TeenFactory.swift in Sources */,
 				4190F8C52BF4E6EF00FCC0A3 /* AppDelegate.swift in Sources */,
@@ -1248,6 +1264,7 @@
 				417286FB2BFF91D0004F88F9 /* LogInCoordinator+LogInViewControllerCoordinator.swift in Sources */,
 				41735B562BFCEE2200E4A339 /* PostDetailFactoryImp.swift in Sources */,
 				418CB1D52BF71DC8001DA795 /* LogInViewModel.swift in Sources */,
+				736D18DC2C0782F5003A2243 /* UserBirthCollectionViewCell.swift in Sources */,
 				41735B522BFCEC9700E4A339 /* NavigationImp.swift in Sources */,
 				41BB4BFC2BFB36EC00D26A5D /* PostDetailViewController.swift in Sources */,
 				418CB1F62BF743B8001DA795 /* SettingsFactory.swift in Sources */,
@@ -1271,6 +1288,7 @@
 				4190F8C72BF4E6EF00FCC0A3 /* SceneDelegate.swift in Sources */,
 				73F9B82A2C02331400684152 /* MainCoordinator+ProfileCoordinatorDelegate.swift in Sources */,
 				735AC92B2C005D21004C3D21 /* TodayTeen.swift in Sources */,
+				736D18DE2C0787AC003A2243 /* SignUpCoordinator+SignUpViewControllerCoordinator.swift in Sources */,
 				417286CE2BFF0B83004F88F9 /* ProfileCoordinator.swift in Sources */,
 				417286CA2BFF0AEA004F88F9 /* ProfileViewController.swift in Sources */,
 				41BB4C0B2BFBB8BE00D26A5D /* UserConfigurationViewController.swift in Sources */,
@@ -1290,6 +1308,7 @@
 				735AC93A2C0061B9004C3D21 /* MainViewModel.swift in Sources */,
 				41BB4BEA2BFB258500D26A5D /* MyPostsCoordinator.swift in Sources */,
 				4190F8EA2BF4E9D800FCC0A3 /* Auth.swift in Sources */,
+				736D18E02C078908003A2243 /* SelectBirthCoordinator.swift in Sources */,
 				735AC9012C005AB9004C3D21 /* CategoryTodayCollectionViewCell.swift in Sources */,
 				0922B4A22C022C1200375953 /* CustomImageLabelButton.swift in Sources */,
 				418CB2072BF74E88001DA795 /* TeenViewController.swift in Sources */,
@@ -1299,24 +1318,27 @@
 				418CB1C92BF71A4F001DA795 /* LogInFactory.swift in Sources */,
 				41BB4BFE2BFB38E900D26A5D /* PostDetailFactory.swift in Sources */,
 				41DC1A272C077E6F0035ED4C /* LoginBirthViewModel.swift in Sources */,
+				736D18E62C078C18003A2243 /* SignUpCoordinator+SelectBirthCoordinatorDelegate.swift in Sources */,
 				418CB1E52BF73CE3001DA795 /* ItemSettingViewModel.swift in Sources */,
-				41A014802C0710D50046856B /* SignUpCoordinator+TermsOfUseViewControllerCoordinator.swift in Sources */,
+				41A014802C0710D50046856B /* TermsOfUseCoordinator+TermsOfUseViewControllerCoordinator.swift in Sources */,
 				41A8F3BF2BFE52E30092CBFA /* CustomTabBarButton.swift in Sources */,
 				418CB1EF2BF740F6001DA795 /* Reusable.swift in Sources */,
 				417286EB2BFF2004004F88F9 /* MainCoordinator.swift in Sources */,
 				41A8F3BD2BFE500C0092CBFA /* UIView+Constraints.swift in Sources */,
 				735AC90A2C005B52004C3D21 /* CustomNaviView.swift in Sources */,
-				41DC1A252C077E540035ED4C /* LoginBirthViewController.swift in Sources */,
 				41735B542BFCEDE000E4A339 /* PostDetailCoordinator+PostDetailViewControllerCoordinator.swift in Sources */,
 				4190F8ED2BF4EAAB00FCC0A3 /* AppContainer.swift in Sources */,
+				736D18E82C07968F003A2243 /* Notification+Name.swift in Sources */,
 				417286FD2BFF93A4004F88F9 /* ProfileCoordinator+ProfileViewControllerCoordinator.swift in Sources */,
 				417286E12BFF1FCA004F88F9 /* RankingFactory.swift in Sources */,
+				736D18E22C078914003A2243 /* SelectBirthFactory.swift in Sources */,
 				735AC9002C005AB9004C3D21 /* TodayTeenCollectionViewCell.swift in Sources */,
 				735AC9052C005AB9004C3D21 /* AboutATeenTableViewCell.swift in Sources */,
 				41BB4C002BFB39FA00D26A5D /* PostDetailCoordinator.swift in Sources */,
 				418CB1EB2BF73E6F001DA795 /* SettingsViewController.swift in Sources */,
 				73F9B8262C02182C00684152 /* ProfileDetailCoordinator.swift in Sources */,
 				735AC9352C005EB0004C3D21 /* MainCoordinator+MainViewControllerCoordinator.swift in Sources */,
+				736D18E42C078B00003A2243 /* SelectBirthCoordinator+SelectBirthViewControllerCoordinator.swift in Sources */,
 				41A0147E2C070F340046856B /* SignUpCoordinator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
