@@ -13,38 +13,21 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var appCoordinator: Coordinator?
     var appFactory: AppFactory?
     var appContainer: AppContainer?
-//    func scene(
-//        _ scene: UIScene,
-//        willConnectTo session: UISceneSession,
-//        options connectionOptions: UIScene.ConnectionOptions
-//    ) {
-//        guard let scene = (scene as? UIWindowScene) else { return }
-//        guard let data = UIApplication.shared.delegate as? AppDelegate else { return }
-//        window = UIWindow(windowScene: scene)
-//        appContainer = data.appContainer
-//        appFactory = AppFactory(appContainer: appContainer)
-//        appCoordinator = AppCoordinator(
-//            navigation: NavigationImp(rootViewController: UINavigationController()),
-//            window: window,
-//            factory: appFactory)
-//        appCoordinator?.start()
-//    }
-    
-    func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
-        // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
-        // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
-        
-        guard let windowScene = (scene as? UIWindowScene) else { return }
-        
-        window = UIWindow(frame: UIScreen.main.bounds) // SceneDelegate의 프로퍼티에 설정
-        
-        let viewController = UserNameViewController() // 처음 보일 view controller
-        
-        window?.rootViewController = UserNameViewController()     // 위에서 만든 view controller를 첫 화면으로 띄우기
-        
-        window?.makeKeyAndVisible()     // 화면에 보이게끔
-        window?.windowScene = windowScene
+    func scene(
+        _ scene: UIScene,
+        willConnectTo session: UISceneSession,
+        options connectionOptions: UIScene.ConnectionOptions
+    ) {
+        guard let scene = (scene as? UIWindowScene) else { return }
+        guard let data = UIApplication.shared.delegate as? AppDelegate else { return }
+        window = UIWindow(windowScene: scene)
+        appContainer = data.appContainer
+        appFactory = AppFactory(appContainer: appContainer)
+        appCoordinator = AppCoordinator(
+            navigation: NavigationImp(rootViewController: UINavigationController()),
+            window: window,
+            factory: appFactory)
+        appCoordinator?.start()
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
