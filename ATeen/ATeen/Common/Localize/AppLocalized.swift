@@ -16,6 +16,8 @@ enum AppLocalized {
     static let publicRelations = "자기 소개"
     static let tenQuestions = "10문 10답"
     static let voteButton = "투표하기"
+    static let loginButton = "로그인"
+    static let nextButton = "다음으로"
     
     // MARK: - AboutATeenTableViewCell
     static let teenTitle = "Teen"
@@ -27,4 +29,30 @@ enum AppLocalized {
     static let tournamentText = "투표 결과를 한 눈에 볼 수 있어요!"
     static let chatText = "채팅을 통해 친구들과 소통해보세요!"
     static let myTeenText = "나만의의 프로필을 등록해보세요!"
+    
+    // MARK: - LogInViewController
+    static let signupTitle = "가입하기"
+    static let signupSubTitle = """
+                                프로필을 만들어 나의 사진을 자랑하고
+                                TEEN에서 경쟁해보세요
+                                """
+    static let signupPhoneNumberButton = "전화번호로 회원가입"
+    static let agreeTermsGuideTitle = """
+                                    대한민국에서 위치한 계정으로 계속하면
+                                    당사의 서비스 약관의 동의하고
+                                    개인정보 처리방침을 읽었음을 인정하는 것입니다.
+                                    """
+    static let uHaveAccountText = "이미 계정이 있으신가요?"
+    static let koreaText = "대한민국"
+    static let serviceTermsText = "서비스 약관"
+    static let userInfoPolicyText = "개인정보 처리방침"
+    
+    // MARK: - TermsOfUseViewController
+    static let usingTermsText = "사용 약관"
+    static let allAgreeText = "모두 동의"
+    static let serviceTermsAgreeText = "서비스 약관에 동의 (필수)"
+    static let userInfoAgreeText = "개인 정보 수집 및 사용에 동의 (필수)"
+    static let alarmAgreeText = "인기 콘텐츠 및 알림 수신 동의 (선택)"
+    static let alarmAgreeExplanationText = "A-TEEN에서 인기 콘텐츠 및 프로모션에 대한 알림을 받습니다. 언제든지 설정을 검토하고 편집할 수 있습니다. 동의를 하지 않아도 A-TEEN 서비스 사용이 제한되지 않습니다."
+    static let showDetailsButton = "세부 정보 보기"
 }
