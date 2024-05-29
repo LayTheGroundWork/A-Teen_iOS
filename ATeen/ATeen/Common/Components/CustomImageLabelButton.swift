@@ -19,7 +19,7 @@ class CustomImageLabelButton: UIButton {
     
     lazy var customImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: imageName)
+        imageView.image = UIImage(named: imageName) ?? UIImage(systemName: imageName)
         if let imageColor = imageColor {
             imageView.tintColor = imageColor
         }

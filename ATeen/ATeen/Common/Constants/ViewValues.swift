@@ -17,6 +17,7 @@ struct ViewValues {
     // MARK: - Width / Height
     static let width = UIScreen.main.bounds.width
     static let height = UIScreen.main.bounds.height
+    static let halfHeight = height / 2
     
     static let todayTeenImageWidth = width - 50
     static let todayTeenImageHeight = todayTeenImageWidth * 1.16
@@ -29,6 +30,9 @@ struct ViewValues {
     static let bottomVoteButtonWidth = (width - 48) / 2
     static let bottomSmallButtonWidth = (bottomVoteButtonWidth - 16) / 2
     
+    static let signUpNextButtonWidth = width * 0.32
+    static let signUpNextButtonHeight = 50
+
     static let tabBarHegith = 80
     
     static let defaultButtonSize = 24
@@ -38,5 +42,8 @@ struct ViewValues {
     
     // MARK: - CornerRadius
     static let defaultRadius: CGFloat = 20
+    
+    // MARK: - Progress
+    static let signUpProgress: Float = 0.25
     
 }

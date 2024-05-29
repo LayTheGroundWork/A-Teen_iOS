@@ -9,4 +9,9 @@ extension LogInCoordinator: LogInViewControllerCoordinator {
     func didFinish() {
         delegate?.didFinishLogin()
     }
+    
+    func didSelectSignUpButton() {
+        let coordinator = factory.makeTermsOfUseViewController(navigation: self.navigation, childCoordinators: childCoordinators)
+        addChildCoordinatorStart(coordinator)
+    }
 }

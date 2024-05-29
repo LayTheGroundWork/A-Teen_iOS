@@ -21,7 +21,7 @@ class CustomQuestionTextView: UIView {
     lazy var textLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .left
-        label.textColor = UIColor(named: "grayTextColor")
+        label.textColor = .gray02
         label.numberOfLines = 0
         label.font = UIFont.systemFont(ofSize: 14, weight: .regular)
         return label
