@@ -54,10 +54,11 @@ class UserNameViewController: UIViewController, UITextFieldDelegate {
         let textField = UITextField()
         textField.borderStyle = .roundedRect
         textField.layer.borderWidth = 2.0
+        textField.layer.cornerRadius = 10
         textField.layer.borderColor = UIColor.main.cgColor
         textField.backgroundColor = UIColor.white
         textField.textColor = UIColor.black
-        textField.layer.cornerRadius = 10
+        textField.tintColor = UIColor.gray01
         return textField
     }()
 
