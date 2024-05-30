@@ -35,10 +35,15 @@ struct ViewValues {
 
     static let tabBarHegith = 80
     
+    static let defaultButtonSize = 24
+    
+    static let componentPickerWidth = width / 5
+    static let componentPickerHight = componentPickerWidth * 0.72
+    
     // MARK: - CornerRadius
     static let defaultRadius: CGFloat = 20
     
     // MARK: - Progress
-    static let signUpProgress: Float = 0.25
+    static let signUpProgress: Float = 0.2
     
 }
