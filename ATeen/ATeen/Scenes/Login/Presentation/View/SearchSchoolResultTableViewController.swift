@@ -7,13 +7,18 @@
 
 import UIKit
 
+protocol SchoolTableViewSearchDelegate: AnyObject {
+    func didSelectFilteredSchool(schoolName: String)
+    func didUpdateFilteredSchools(isEmpty: Bool)
+    func didUpdateFilterSchoolsCount(count: Int)
+}
+
 class SearchSchoolResultTableViewController: UITableView, UITableViewDelegate, UITableViewDataSource {
     // MARK: - Public properties
     var schools: [String] = []
     var filteredSchools: [String] = []
     var selectedIndexPath: IndexPath?
     weak var searchDelegate: SchoolTableViewSearchDelegate?
-    
     
     override init(frame: CGRect, style: UITableView.Style) {
         super.init(frame: frame, style: style)
@@ -30,6 +35,9 @@ class SearchSchoolResultTableViewController: UITableView, UITableViewDelegate, U
         self.register(SearchSchoolResultTableViewCell.self, forCellReuseIdentifier: "SchoolCell")
         self.delegate = self
         self.dataSource = self
+        self.layer.cornerRadius = ViewValues.defaultRadius
+        self.rowHeight = 47 // 디버그창에 Cell 기본 높이 잡으라는 에러떠서 넣음
+        self.showsVerticalScrollIndicator = true
     }
     
     func filterSchools(with query: String) {
@@ -50,6 +58,8 @@ class SearchSchoolResultTableViewController: UITableView, UITableViewDelegate, U
                 return true
             }
         }
+        searchDelegate?.didUpdateFilteredSchools(isEmpty: filteredSchools.isEmpty)
+        searchDelegate?.didUpdateFilterSchoolsCount(count: filteredSchools.count)
         self.reloadData()
     }
     
@@ -63,6 +73,7 @@ class SearchSchoolResultTableViewController: UITableView, UITableViewDelegate, U
             return UITableViewCell()
         }
         cell.configure(with: filteredSchools[indexPath.row])
+        cell.selectionStyle = .none // cell 선택 시 테두리 제거
         return cell
     }
     
@@ -79,10 +90,8 @@ class SearchSchoolResultTableViewController: UITableView, UITableViewDelegate, U
         } // 선택된 Cell Bold
         
         selectedIndexPath = indexPath
-        searchDelegate?.didSelectSchool(filteredSchools[indexPath.row]) // tableViewCell 선택 시 textField로 값 전달
+        searchDelegate?.didSelectFilteredSchool(schoolName: filteredSchools[indexPath.row]) // tableViewCell 선택 시 textField로 값 전달
     }
 }
 
-protocol SchoolTableViewSearchDelegate: AnyObject {
-    func didSelectSchool(_ schoolName: String)
-}
+

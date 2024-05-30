@@ -1,5 +1,5 @@
 //
-//  SeachSchoolViewController.swift
+//  SearchSchoolViewController.swift
 //  ATeen
 //
 //  Created by 김명현 on 5/28/24.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SeachSchoolViewController: UIViewController, UITextFieldDelegate, SchoolTableViewSearchDelegate {
+class SearchSchoolViewController: UIViewController, UITextFieldDelegate, SchoolTableViewSearchDelegate {
     // MARK: - Public properties
     var label: UILabel = {
         let label = UILabel()
@@ -29,7 +29,6 @@ class SeachSchoolViewController: UIViewController, UITextFieldDelegate, SchoolTa
         textField.autocorrectionType = .no
         textField.spellCheckingType = .no
         textField.tintColor = .gray
-        
         
         let image = UIImage(systemName: "magnifyingglass")
         let imageView = UIImageView(image: image)
@@ -56,35 +55,43 @@ class SeachSchoolViewController: UIViewController, UITextFieldDelegate, SchoolTa
         return button
     }()
     
+    var tableBackgroundView: UIView = {
+        let tableBackgroundView = UIView()
+        tableBackgroundView.backgroundColor = .white
+        tableBackgroundView.layer.cornerRadius = ViewValues.defaultRadius
+        
+        return tableBackgroundView
+    }()
+    
     var tableView = SearchSchoolResultTableViewController()
-    let schools = ["seoul", "busan", "busan2", "changwon", "anyang", "busan3", "busan4", "busan5", "busan6", "busan7", "busan8", "busan9", "busan10", "busan11","busan12"]
+    let schools = ["seoul","seoul2", "busan", "busan2", "changwon", "anyang", "busan3", "busan4", "busan5", "busan6", "busan7", "busan8", "busan9", "busan10", "busan11","busan12"]
     
     // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         configUserInterface()
+        configLayout()
         
         textField.delegate = self
         
-        tableView.rowHeight = 47 // 디버그창에 Cell 기본 높이 잡으라는 에러떠서 넣음
         tableView.searchDelegate = self
         tableView.schools = schools
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(true)
+        tableBackgroundView.isHidden = true
     }
     
     // MARK: - Helpers
     private func configUserInterface() {
-        view.backgroundColor = .systemBackground
+        view.backgroundColor = UIColor(named: "backgroundColor")
         textField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
         
         self.view.addSubview(label)
         self.view.addSubview(textField)
+        self.view.addSubview(tableBackgroundView)
         self.view.addSubview(button)
-        self.view.addSubview(tableView)
-        
+        tableBackgroundView.addSubview(tableView)
+    }
+    
+    private func configLayout() {
         label.snp.makeConstraints { make in
             make.top.equalTo(self.view.safeAreaLayoutGuide.snp.top).offset(31)
             make.leading.equalToSuperview().offset(ViewValues.defaultPadding)
@@ -106,14 +113,45 @@ class SeachSchoolViewController: UIViewController, UITextFieldDelegate, SchoolTa
         
         tableView.snp.makeConstraints { make in
             make.top.equalTo(textField.snp.bottom).offset(10)
-            make.leading.equalToSuperview().offset(10)
-            make.trailing.equalToSuperview().offset(-60)
-            make.height.equalTo(230)
+            make.leading.equalTo(tableBackgroundView.snp.leading).offset(5)
+            make.trailing.equalTo(tableBackgroundView.snp.trailing).offset(-44)
+            make.height.equalTo(0)
+            
+        }
+        
+        tableBackgroundView.snp.makeConstraints { make in
+            make.top.equalTo(textField.snp.bottom).offset(10)
+            make.leading.equalToSuperview().offset(18)
+            make.trailing.equalToSuperview().offset(-ViewValues.defaultPadding)
+            make.height.equalTo(0)
         }
     }
     
-    func didSelectSchool(_ schoolName: String) {
+    func didSelectFilteredSchool(schoolName: String) {
         textField.text = schoolName
+    }
+    
+    func didUpdateFilteredSchools(isEmpty: Bool) {
+        tableBackgroundView.isHidden = isEmpty
+    }
+    
+    func didUpdateFilterSchoolsCount(count: Int) {
+        let height = 45
+        tableBackgroundView.snp.updateConstraints { make in
+            if count < 6 {
+                make.height.equalTo(height * count)
+            } else {
+                make.height.equalTo(240)
+            }
+        }
+        
+        tableView.snp.updateConstraints { make in
+            if count < 6 {
+                make.height.equalTo(height * count)
+            } else {
+                make.height.equalTo(240)
+            }
+        }
     }
     
     @objc private func textFieldDidChange(_ textField: UITextField) {
@@ -124,7 +162,7 @@ class SeachSchoolViewController: UIViewController, UITextFieldDelegate, SchoolTa
 
 // MARK: - Extensions here
 extension UILabel {
-    func setLineSpacing(spacing: CGFloat) {
+    func setLineSpacing(spacing: CGFloat) { // 줄 간격 조절
         guard let text = text else { return }
         
         let attributeString = NSMutableAttributedString(string: text)
@@ -136,9 +174,4 @@ extension UILabel {
         attributedText = attributeString
     }
 }
-
-
-
-
-
 
