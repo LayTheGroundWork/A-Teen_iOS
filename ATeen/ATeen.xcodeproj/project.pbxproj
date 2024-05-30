@@ -77,6 +77,7 @@
 		41A515A82C02338B00EDAEA2 /* CustomVoteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A515A72C02338B00EDAEA2 /* CustomVoteButton.swift */; };
 		41A8F3BD2BFE500C0092CBFA /* UIView+Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A8F3BC2BFE500C0092CBFA /* UIView+Constraints.swift */; };
 		41A8F3BF2BFE52E30092CBFA /* CustomTabBarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A8F3BE2BFE52E30092CBFA /* CustomTabBarButton.swift */; };
+		41B61AF52C0842B100E8B4AB /* LogInCoordinator+TermsOfUseCoordinatorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B61AF42C0842B100E8B4AB /* LogInCoordinator+TermsOfUseCoordinatorDelegate.swift */; };
 		41BB4BE12BFB179D00D26A5D /* MyPostsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BB4BE02BFB179D00D26A5D /* MyPostsViewController.swift */; };
 		41BB4BE32BFB1AE200D26A5D /* MyPostsFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BB4BE22BFB1AE200D26A5D /* MyPostsFactory.swift */; };
 		41BB4BE82BFB1B1E00D26A5D /* NewPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BB4BE72BFB1B1E00D26A5D /* NewPostViewController.swift */; };
@@ -208,6 +209,7 @@
 		41A515A72C02338B00EDAEA2 /* CustomVoteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomVoteButton.swift; sourceTree = "<group>"; };
 		41A8F3BC2BFE500C0092CBFA /* UIView+Constraints.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Constraints.swift"; sourceTree = "<group>"; };
 		41A8F3BE2BFE52E30092CBFA /* CustomTabBarButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarButton.swift; sourceTree = "<group>"; };
+		41B61AF42C0842B100E8B4AB /* LogInCoordinator+TermsOfUseCoordinatorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LogInCoordinator+TermsOfUseCoordinatorDelegate.swift"; sourceTree = "<group>"; };
 		41BB4BE02BFB179D00D26A5D /* MyPostsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPostsViewController.swift; sourceTree = "<group>"; };
 		41BB4BE22BFB1AE200D26A5D /* MyPostsFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPostsFactory.swift; sourceTree = "<group>"; };
 		41BB4BE72BFB1B1E00D26A5D /* NewPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPostViewController.swift; sourceTree = "<group>"; };
@@ -774,6 +776,7 @@
 				418CB1C82BF71A4F001DA795 /* LogInFactory.swift */,
 				418CB1D02BF71CAD001DA795 /* LogInCoordinator.swift */,
 				417286FA2BFF91D0004F88F9 /* LogInCoordinator+LogInViewControllerCoordinator.swift */,
+				41B61AF42C0842B100E8B4AB /* LogInCoordinator+TermsOfUseCoordinatorDelegate.swift */,
 			);
 			path = Composition;
 			sourceTree = "<group>";
@@ -1313,6 +1316,7 @@
 				0922B4A22C022C1200375953 /* CustomImageLabelButton.swift in Sources */,
 				418CB2072BF74E88001DA795 /* TeenViewController.swift in Sources */,
 				418CB1FC2BF74CD8001DA795 /* ExampleViewController.swift in Sources */,
+				41B61AF52C0842B100E8B4AB /* LogInCoordinator+TermsOfUseCoordinatorDelegate.swift in Sources */,
 				41A0147C2C070F2C0046856B /* SignUpFactory.swift in Sources */,
 				418CB1DE2BF727C3001DA795 /* MainTabCoordinator.swift in Sources */,
 				418CB1C92BF71A4F001DA795 /* LogInFactory.swift in Sources */,
