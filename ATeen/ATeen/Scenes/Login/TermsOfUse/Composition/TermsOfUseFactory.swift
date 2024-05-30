@@ -12,17 +12,17 @@ protocol TermsOfUseFactory {
     func makeSignUpCoordinator(navigation: Navigation, childCoordinators: [Coordinator]) -> Coordinator
 }
 
-struct TermsOfUseFactoryImp: TermsOfUseFactory {
-    func makeTermsOfUseViewController(coordinator: TermsOfUseViewControllerCoordinator) -> UIViewController {
-        let controller = TermsOfUseViewController(coordinator: coordinator)
-        return controller
-    }
-    
-    func makeSignUpCoordinator(navigation: Navigation, childCoordinators: [Coordinator]) -> Coordinator {
-        let factory = SignUpFactoryImp()
-        return SignUpCoordinator(
-            navigation: navigation,
-            factory: factory,
-            childCoordinators: childCoordinators)
-    }
-}
+//struct TermsOfUseFactoryImp: TermsOfUseFactory {
+//    func makeTermsOfUseViewController(coordinator: TermsOfUseViewControllerCoordinator) -> UIViewController {
+//        let controller = TermsOfUseViewController(coordinator: coordinator)
+//        return controller
+//    }
+//    
+//    func makeSignUpCoordinator(navigation: Navigation, childCoordinators: [Coordinator]) -> Coordinator {
+//        let factory = SignUpFactoryImp()
+//        return SignUpCoordinator(
+//            navigation: navigation,
+//            factory: factory,
+//            childCoordinators: childCoordinators)
+//    }
+//}

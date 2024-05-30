@@ -77,6 +77,8 @@
 		41A515A82C02338B00EDAEA2 /* CustomVoteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A515A72C02338B00EDAEA2 /* CustomVoteButton.swift */; };
 		41A8F3BD2BFE500C0092CBFA /* UIView+Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A8F3BC2BFE500C0092CBFA /* UIView+Constraints.swift */; };
 		41A8F3BF2BFE52E30092CBFA /* CustomTabBarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A8F3BE2BFE52E30092CBFA /* CustomTabBarButton.swift */; };
+		41B61AF72C08463000E8B4AB /* TermsOfUseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B61AF62C08463000E8B4AB /* TermsOfUseCollectionViewCell.swift */; };
+		41B61AF92C084F5B00E8B4AB /* LogInCoordinator+SignUpCoordinatorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B61AF82C084F5B00E8B4AB /* LogInCoordinator+SignUpCoordinatorDelegate.swift */; };
 		41BB4BE12BFB179D00D26A5D /* MyPostsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BB4BE02BFB179D00D26A5D /* MyPostsViewController.swift */; };
 		41BB4BE32BFB1AE200D26A5D /* MyPostsFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BB4BE22BFB1AE200D26A5D /* MyPostsFactory.swift */; };
 		41BB4BE82BFB1B1E00D26A5D /* NewPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BB4BE72BFB1B1E00D26A5D /* NewPostViewController.swift */; };
@@ -208,6 +210,8 @@
 		41A515A72C02338B00EDAEA2 /* CustomVoteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomVoteButton.swift; sourceTree = "<group>"; };
 		41A8F3BC2BFE500C0092CBFA /* UIView+Constraints.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Constraints.swift"; sourceTree = "<group>"; };
 		41A8F3BE2BFE52E30092CBFA /* CustomTabBarButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarButton.swift; sourceTree = "<group>"; };
+		41B61AF62C08463000E8B4AB /* TermsOfUseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsOfUseCollectionViewCell.swift; sourceTree = "<group>"; };
+		41B61AF82C084F5B00E8B4AB /* LogInCoordinator+SignUpCoordinatorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LogInCoordinator+SignUpCoordinatorDelegate.swift"; sourceTree = "<group>"; };
 		41BB4BE02BFB179D00D26A5D /* MyPostsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPostsViewController.swift; sourceTree = "<group>"; };
 		41BB4BE22BFB1AE200D26A5D /* MyPostsFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPostsFactory.swift; sourceTree = "<group>"; };
 		41BB4BE72BFB1B1E00D26A5D /* NewPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPostViewController.swift; sourceTree = "<group>"; };
@@ -773,6 +777,7 @@
 			children = (
 				418CB1C82BF71A4F001DA795 /* LogInFactory.swift */,
 				418CB1D02BF71CAD001DA795 /* LogInCoordinator.swift */,
+				41B61AF82C084F5B00E8B4AB /* LogInCoordinator+SignUpCoordinatorDelegate.swift */,
 				417286FA2BFF91D0004F88F9 /* LogInCoordinator+LogInViewControllerCoordinator.swift */,
 			);
 			path = Composition;
@@ -828,6 +833,7 @@
 				41A0148B2C0717E60046856B /* UserIdCollectionViewCell.swift */,
 				41A0148D2C0717F30046856B /* UserNameCollectionViewCell.swift */,
 				736D18DB2C0782F5003A2243 /* UserBirthCollectionViewCell.swift */,
+				41B61AF62C08463000E8B4AB /* TermsOfUseCollectionViewCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -1240,6 +1246,7 @@
 				418CB1F42BF743AE001DA795 /* SettingsCoordinator.swift in Sources */,
 				41735B4C2BFCE8E300E4A339 /* SettingsCoordinator+UserConfigurationCoordinatorDelegate.swift in Sources */,
 				41A515A62C022B3000EDAEA2 /* ProfileDetailBottomBar.swift in Sources */,
+				41B61AF92C084F5B00E8B4AB /* LogInCoordinator+SignUpCoordinatorDelegate.swift in Sources */,
 				735AC9102C005B5D004C3D21 /* CustomQuestionTextView.swift in Sources */,
 				41BB4C052BFBADDA00D26A5D /* ParentCoordinator.swift in Sources */,
 				417286D72BFF0D16004F88F9 /* ChatCoordinator.swift in Sources */,
@@ -1272,6 +1279,7 @@
 				418CB1DC2BF7270A001DA795 /* MainTabFactory.swift in Sources */,
 				41BB4BF72BFB2ED900D26A5D /* HomeFactory.swift in Sources */,
 				418CB20B2BF74F77001DA795 /* TeenCoordinator.swift in Sources */,
+				41B61AF72C08463000E8B4AB /* TermsOfUseCollectionViewCell.swift in Sources */,
 				417286E42BFF1FDC004F88F9 /* RankingCoordinator.swift in Sources */,
 				418CB1D12BF71CAD001DA795 /* LogInCoordinator.swift in Sources */,
 				41DC1A1D2C077DE60035ED4C /* CustomBirthButton.swift in Sources */,

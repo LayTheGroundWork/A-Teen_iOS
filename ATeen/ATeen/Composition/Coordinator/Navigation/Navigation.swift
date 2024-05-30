@@ -21,6 +21,7 @@ protocol Navigation {
     backCompletion: (() -> Void)?
     )
     func dismiss(animated: Bool)
+    func popViewController(animated: Bool)
     var dismissNavigation: (() -> Void)? { get set }
 }
 

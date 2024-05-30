@@ -10,6 +10,7 @@ import SnapKit
 import UIKit
 
 protocol SignUpViewControllerCoordinator: AnyObject {
+    func didFinish()
     func didSelectBirth()
     func didSelectService()
 }
@@ -31,9 +32,11 @@ final class SignUpViewController: UIViewController {
     }()
     
     // 뒤로 가기 버튼
-    private lazy var backButton: UIButton = {
-        let button = UIButton()
-        button.setImage(UIImage(named: "leftArrowIcon"), for: .normal)
+    private lazy var backButton: UIBarButtonItem = {
+        let button = UIBarButtonItem(image: UIImage(named: "leftArrowIcon"),
+                                     style: .plain,
+                                     target: self,
+                                     action: #selector(didSelectBackButton(_:)))
         button.tintColor = .black
         return button
     }()
@@ -48,19 +51,12 @@ final class SignUpViewController: UIViewController {
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.isScrollEnabled = false
         
+        collectionView.register(TermsOfUseCollectionViewCell.self, forCellWithReuseIdentifier: TermsOfUseCollectionViewCell.reuseIdentifier)
         collectionView.register(UserIdCollectionViewCell.self, forCellWithReuseIdentifier: UserIdCollectionViewCell.reuseIdentifier)
         collectionView.register(UserNameCollectionViewCell.self, forCellWithReuseIdentifier: UserNameCollectionViewCell.reuseIdentifier)
         collectionView.register(UserBirthCollectionViewCell.self, forCellWithReuseIdentifier: UserBirthCollectionViewCell.reuseIdentifier)
        
         return collectionView
-    }()
-    
-    // 더보기 버튼
-    private lazy var moreButton: UIButton = {
-        let button = UIButton()
-        button.setImage(UIImage(named: "xMarkIcon"), for: .normal)
-        button.tintColor = .black
-        return button
     }()
     
     private lazy var nextButton: UIButton = {
@@ -89,7 +85,10 @@ final class SignUpViewController: UIViewController {
     // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationItem.leftBarButtonItem = backButton
         configUserInterface()
+        configLayout()
+        setupActions()
     }
     
     // MARK: - Helpers
@@ -101,7 +100,9 @@ final class SignUpViewController: UIViewController {
         
         collectionView.delegate = self
         collectionView.dataSource = self
-
+    }
+    
+    private func configLayout() {
         progressView.snp.makeConstraints { make in
             make.top.equalTo(self.view.safeAreaLayoutGuide.snp.top).offset(ViewValues.defaultPadding)
             make.leading.equalToSuperview().offset(ViewValues.defaultPadding)
@@ -121,7 +122,9 @@ final class SignUpViewController: UIViewController {
             make.width.equalTo(ViewValues.signUpNextButtonWidth)
             make.height.equalTo(ViewValues.signUpNextButtonHeight)
         }
-        
+    }
+    
+    private func setupActions() {
         nextButton.addTarget(self,
                              action: #selector(didSelectNextButton(_: )),
                              for: .touchUpInside)
@@ -141,6 +144,10 @@ final class SignUpViewController: UIViewController {
             animated: true
         )
     }
+    
+    @objc private func didSelectBackButton(_ sender: UIBarButtonItem) {
+        coordinator?.didFinish()
+    }
 }
 
 // MARK: - Extensions here
@@ -154,12 +161,22 @@ extension SignUpViewController: UICollectionViewDataSource {
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        3
+        4
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         switch indexPath.section {
         case 0:
+            guard
+                let cell = collectionView.dequeueReusableCell(
+                withReuseIdentifier: TermsOfUseCollectionViewCell.reuseIdentifier,
+                for: indexPath) as? TermsOfUseCollectionViewCell
+            else {
+                return UICollectionViewCell()
+            }
+            
+            return cell
+        case 1:
             guard
                 let cell = collectionView.dequeueReusableCell(
                 withReuseIdentifier: UserIdCollectionViewCell.reuseIdentifier,
@@ -169,7 +186,7 @@ extension SignUpViewController: UICollectionViewDataSource {
             }
             
             return cell
-        case 1:
+        case 2:
             guard
                 let cell = collectionView.dequeueReusableCell(
                 withReuseIdentifier: UserNameCollectionViewCell.reuseIdentifier,
@@ -180,7 +197,7 @@ extension SignUpViewController: UICollectionViewDataSource {
             
             return cell
             
-        case 2:
+        case 3:
             guard
                 let cell = collectionView.dequeueReusableCell(
                 withReuseIdentifier: UserBirthCollectionViewCell.reuseIdentifier,

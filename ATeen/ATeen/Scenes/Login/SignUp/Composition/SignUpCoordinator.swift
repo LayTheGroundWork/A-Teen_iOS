@@ -7,19 +7,26 @@
 
 import Foundation
 
+protocol SignUpCoordinatorDelegate: AnyObject {
+    func didFinish(childCoordinator: Coordinator)
+}
+
 final class SignUpCoordinator: Coordinator {
     var navigation: Navigation
     var factory: SignUpFactory
     var childCoordinators: [Coordinator]
     var viewModel = LoginBirthViewModel()
+    weak var delegate: SignUpCoordinatorDelegate?
     
     init(navigation: Navigation,
          factory: SignUpFactory,
-         childCoordinators: [Coordinator]
+         childCoordinators: [Coordinator],
+         delegate: SignUpCoordinatorDelegate
     ) {
         self.navigation = navigation
         self.factory = factory
         self.childCoordinators = childCoordinators
+        self.delegate = delegate
     }
     
     func start() {

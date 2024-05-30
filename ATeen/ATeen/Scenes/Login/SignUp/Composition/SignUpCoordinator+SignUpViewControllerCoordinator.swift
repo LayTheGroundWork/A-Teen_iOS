@@ -8,6 +8,10 @@
 import Foundation
 
 extension SignUpCoordinator: SignUpViewControllerCoordinator {
+    func didFinish() {
+        delegate?.didFinish(childCoordinator: self)
+    }
+    
     func didSelectBirth() {
         let selectBirthCoordinator = factory.makeSelectBirthCoordinator(
             delegate: self,
