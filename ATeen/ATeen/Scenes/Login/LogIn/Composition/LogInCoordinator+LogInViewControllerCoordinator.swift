@@ -11,10 +11,9 @@ extension LogInCoordinator: LogInViewControllerCoordinator {
     }
     
     func didSelectSignUpButton() {
-        let coordinator = factory.makeSignUpCoordinator(
+        let coordinator = factory.makeTermsOfUseCoordinator(
             navigation: navigation,
-            childCoordinators: childCoordinators,
-            delegate: self)
+            childCoordinators: childCoordinators)
         addChildCoordinatorStart(coordinator)
     }
 }

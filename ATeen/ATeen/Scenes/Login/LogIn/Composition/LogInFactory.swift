@@ -9,10 +9,9 @@ import UIKit
 
 protocol LogInFactory {
     func makeLoginViewController(coordinator: LogInViewControllerCoordinator) -> UIViewController
-    func makeSignUpCoordinator(
+    func makeTermsOfUseCoordinator(
         navigation: Navigation,
-        childCoordinators: [Coordinator],
-        delegate: SignUpCoordinatorDelegate
+        childCoordinators: [Coordinator]
     ) -> Coordinator
 }
 
@@ -26,16 +25,14 @@ struct LogInFactoryImp: LogInFactory {
             viewModel: viewModel)
     }
     
-    func makeSignUpCoordinator(
+    func makeTermsOfUseCoordinator(
         navigation: Navigation,
-        childCoordinators: [Coordinator],
-        delegate: SignUpCoordinatorDelegate
+        childCoordinators: [Coordinator]
     ) -> Coordinator {
-        let factory = SignUpFactoryImp()
-        return SignUpCoordinator(
+        let factory = TermsOfUseFactoryImp()
+        return TermsOfUseCoordinator(
             navigation: navigation,
             factory: factory,
-            childCoordinators: childCoordinators,
-            delegate: delegate)
+            childCoordinators: childCoordinators)
     }
 }

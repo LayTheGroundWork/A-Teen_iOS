@@ -51,7 +51,6 @@ final class SignUpViewController: UIViewController {
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.isScrollEnabled = false
         
-        collectionView.register(TermsOfUseCollectionViewCell.self, forCellWithReuseIdentifier: TermsOfUseCollectionViewCell.reuseIdentifier)
         collectionView.register(UserIdCollectionViewCell.self, forCellWithReuseIdentifier: UserIdCollectionViewCell.reuseIdentifier)
         collectionView.register(UserNameCollectionViewCell.self, forCellWithReuseIdentifier: UserNameCollectionViewCell.reuseIdentifier)
         collectionView.register(UserBirthCollectionViewCell.self, forCellWithReuseIdentifier: UserBirthCollectionViewCell.reuseIdentifier)
@@ -161,22 +160,13 @@ extension SignUpViewController: UICollectionViewDataSource {
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        4
+        3
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         switch indexPath.section {
+
         case 0:
-            guard
-                let cell = collectionView.dequeueReusableCell(
-                withReuseIdentifier: TermsOfUseCollectionViewCell.reuseIdentifier,
-                for: indexPath) as? TermsOfUseCollectionViewCell
-            else {
-                return UICollectionViewCell()
-            }
-            
-            return cell
-        case 1:
             guard
                 let cell = collectionView.dequeueReusableCell(
                 withReuseIdentifier: UserIdCollectionViewCell.reuseIdentifier,
@@ -186,7 +176,7 @@ extension SignUpViewController: UICollectionViewDataSource {
             }
             
             return cell
-        case 2:
+        case 1:
             guard
                 let cell = collectionView.dequeueReusableCell(
                 withReuseIdentifier: UserNameCollectionViewCell.reuseIdentifier,
@@ -197,7 +187,7 @@ extension SignUpViewController: UICollectionViewDataSource {
             
             return cell
             
-        case 3:
+        case 2:
             guard
                 let cell = collectionView.dequeueReusableCell(
                 withReuseIdentifier: UserBirthCollectionViewCell.reuseIdentifier,

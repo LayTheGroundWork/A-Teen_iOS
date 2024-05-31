@@ -9,20 +9,29 @@ import UIKit
 
 protocol TermsOfUseFactory {
     func makeTermsOfUseViewController(coordinator: TermsOfUseViewControllerCoordinator) -> UIViewController
-    func makeSignUpCoordinator(navigation: Navigation, childCoordinators: [Coordinator]) -> Coordinator
+    func makeSignUpCoordinator(
+        navigation: Navigation,
+        childCoordinators: [Coordinator],
+        delegate: SignUpCoordinatorDelegate
+    ) -> Coordinator
 }
 
-//struct TermsOfUseFactoryImp: TermsOfUseFactory {
-//    func makeTermsOfUseViewController(coordinator: TermsOfUseViewControllerCoordinator) -> UIViewController {
-//        let controller = TermsOfUseViewController(coordinator: coordinator)
-//        return controller
-//    }
-//    
-//    func makeSignUpCoordinator(navigation: Navigation, childCoordinators: [Coordinator]) -> Coordinator {
-//        let factory = SignUpFactoryImp()
-//        return SignUpCoordinator(
-//            navigation: navigation,
-//            factory: factory,
-//            childCoordinators: childCoordinators)
-//    }
-//}
+struct TermsOfUseFactoryImp: TermsOfUseFactory {
+    func makeTermsOfUseViewController(coordinator: TermsOfUseViewControllerCoordinator) -> UIViewController {
+        let controller = TermsOfUseViewController(coordinator: coordinator)
+        return controller
+    }
+    
+    func makeSignUpCoordinator(
+        navigation: Navigation,
+        childCoordinators: [Coordinator],
+        delegate: SignUpCoordinatorDelegate
+    ) -> Coordinator {
+        let factory = SignUpFactoryImp()
+        return SignUpCoordinator(
+            navigation: navigation,
+            factory: factory,
+            childCoordinators: childCoordinators,
+            delegate: delegate)
+    }
+}
