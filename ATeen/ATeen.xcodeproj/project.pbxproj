@@ -99,6 +99,9 @@
 		41D0F72B2C09A61600488C18 /* PhoneNumberCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D0F72A2C09A61600488C18 /* PhoneNumberCoordinator.swift */; };
 		41D0F72D2C09A7A100488C18 /* PhoneNumberCoordinator+PhoneNumberViewControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D0F72C2C09A7A100488C18 /* PhoneNumberCoordinator+PhoneNumberViewControllerCoordinator.swift */; };
 		41D0F72F2C09AAB200488C18 /* LogInCoordinator+PhoneNumberCoordinatorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D0F72E2C09AAB200488C18 /* LogInCoordinator+PhoneNumberCoordinatorDelegate.swift */; };
+		41D0F7332C09AC3800488C18 /* PhoneNumberCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D0F7322C09AC3800488C18 /* PhoneNumberCollectionViewCell.swift */; };
+		41D0F7352C09AC4500488C18 /* CertificationCodeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D0F7342C09AC4500488C18 /* CertificationCodeCollectionViewCell.swift */; };
+		41D0F7372C09BEC600488C18 /* PhoneNumberCoordinator+TermsOfUseCoordinatorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D0F7362C09BEC600488C18 /* PhoneNumberCoordinator+TermsOfUseCoordinatorDelegate.swift */; };
 		41DC1A152C076BC10035ED4C /* UIViewController+TouchGesture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41DC1A142C076BC10035ED4C /* UIViewController+TouchGesture.swift */; };
 		41DC1A192C076DC20035ED4C /* CustomShowDetailButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41DC1A182C076DC20035ED4C /* CustomShowDetailButton.swift */; };
 		41DC1A1D2C077DE60035ED4C /* CustomBirthButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41DC1A1C2C077DE60035ED4C /* CustomBirthButton.swift */; };
@@ -236,6 +239,9 @@
 		41D0F72A2C09A61600488C18 /* PhoneNumberCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberCoordinator.swift; sourceTree = "<group>"; };
 		41D0F72C2C09A7A100488C18 /* PhoneNumberCoordinator+PhoneNumberViewControllerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PhoneNumberCoordinator+PhoneNumberViewControllerCoordinator.swift"; sourceTree = "<group>"; };
 		41D0F72E2C09AAB200488C18 /* LogInCoordinator+PhoneNumberCoordinatorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LogInCoordinator+PhoneNumberCoordinatorDelegate.swift"; sourceTree = "<group>"; };
+		41D0F7322C09AC3800488C18 /* PhoneNumberCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberCollectionViewCell.swift; sourceTree = "<group>"; };
+		41D0F7342C09AC4500488C18 /* CertificationCodeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CertificationCodeCollectionViewCell.swift; sourceTree = "<group>"; };
+		41D0F7362C09BEC600488C18 /* PhoneNumberCoordinator+TermsOfUseCoordinatorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PhoneNumberCoordinator+TermsOfUseCoordinatorDelegate.swift"; sourceTree = "<group>"; };
 		41DC1A142C076BC10035ED4C /* UIViewController+TouchGesture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+TouchGesture.swift"; sourceTree = "<group>"; };
 		41DC1A182C076DC20035ED4C /* CustomShowDetailButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomShowDetailButton.swift; sourceTree = "<group>"; };
 		41DC1A1C2C077DE60035ED4C /* CustomBirthButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomBirthButton.swift; sourceTree = "<group>"; };
@@ -1015,7 +1021,8 @@
 		41D0F7242C09A43400488C18 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
-				41D0F7262C09A46B00488C18 /* PhoneNumberViewController.swift */,
+				41D0F7302C09AC1F00488C18 /* View */,
+				41D0F7312C09AC2A00488C18 /* Cell */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -1026,8 +1033,26 @@
 				41D0F7282C09A60E00488C18 /* PhoneNumberFactory.swift */,
 				41D0F72A2C09A61600488C18 /* PhoneNumberCoordinator.swift */,
 				41D0F72C2C09A7A100488C18 /* PhoneNumberCoordinator+PhoneNumberViewControllerCoordinator.swift */,
+				41D0F7362C09BEC600488C18 /* PhoneNumberCoordinator+TermsOfUseCoordinatorDelegate.swift */,
 			);
 			path = Composition;
+			sourceTree = "<group>";
+		};
+		41D0F7302C09AC1F00488C18 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				41D0F7262C09A46B00488C18 /* PhoneNumberViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		41D0F7312C09AC2A00488C18 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				41D0F7322C09AC3800488C18 /* PhoneNumberCollectionViewCell.swift */,
+				41D0F7342C09AC4500488C18 /* CertificationCodeCollectionViewCell.swift */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		41DC1A162C076D5C0035ED4C /* View */ = {
@@ -1268,6 +1293,7 @@
 				4190F8E42BF4E91000FCC0A3 /* AppCoordinator.swift in Sources */,
 				41DC1A232C077E540035ED4C /* SelectBirthViewController.swift in Sources */,
 				41BB4BF32BFB2E0F00D26A5D /* HomeViewController.swift in Sources */,
+				41D0F7352C09AC4500488C18 /* CertificationCodeCollectionViewCell.swift in Sources */,
 				419CCE842C0466CA00D2E7F8 /* UIFont+TextStyle.swift in Sources */,
 				418CB1F22BF74138001DA795 /* AppLocalized.swift in Sources */,
 				418CB2092BF74EAC001DA795 /* TeenFactory.swift in Sources */,
@@ -1312,6 +1338,7 @@
 				41BB4BFC2BFB36EC00D26A5D /* PostDetailViewController.swift in Sources */,
 				418CB1F62BF743B8001DA795 /* SettingsFactory.swift in Sources */,
 				417286F92BFF915D004F88F9 /* MainTabCoordinator+SettingsCoordinatorDelegate.swift in Sources */,
+				41D0F7332C09AC3800488C18 /* PhoneNumberCollectionViewCell.swift in Sources */,
 				418CB1DC2BF7270A001DA795 /* MainTabFactory.swift in Sources */,
 				41BB4BF72BFB2ED900D26A5D /* HomeFactory.swift in Sources */,
 				418CB20B2BF74F77001DA795 /* TeenCoordinator.swift in Sources */,
@@ -1380,6 +1407,7 @@
 				736D18E22C078914003A2243 /* SelectBirthFactory.swift in Sources */,
 				735AC9002C005AB9004C3D21 /* TodayTeenCollectionViewCell.swift in Sources */,
 				735AC9052C005AB9004C3D21 /* AboutATeenTableViewCell.swift in Sources */,
+				41D0F7372C09BEC600488C18 /* PhoneNumberCoordinator+TermsOfUseCoordinatorDelegate.swift in Sources */,
 				41BB4C002BFB39FA00D26A5D /* PostDetailCoordinator.swift in Sources */,
 				41D0F7292C09A60E00488C18 /* PhoneNumberFactory.swift in Sources */,
 				418CB1EB2BF73E6F001DA795 /* SettingsViewController.swift in Sources */,

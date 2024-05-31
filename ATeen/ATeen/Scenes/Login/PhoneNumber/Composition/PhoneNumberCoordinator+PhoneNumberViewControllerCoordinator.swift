@@ -9,12 +9,12 @@ extension PhoneNumberCoordinator: PhoneNumberViewControllerCoordinator {
     func didFinish() {
         delegate?.didFinish(childCoordinator: self)
     }
-    
+
     func didSelectNextButton() {
-        
-    }
-    
-    func didSelectCertificateButton() {
-        
+        let coordinator = factory.makeTermsOfUseCoordinator(
+            navigation: navigation,
+            childCoordinators: childCoordinators,
+            delegate: self)
+        addChildCoordinatorStart(coordinator)
     }
 }

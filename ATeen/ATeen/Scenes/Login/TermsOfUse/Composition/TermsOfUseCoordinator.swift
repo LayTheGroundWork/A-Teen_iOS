@@ -7,18 +7,25 @@
 
 import Foundation
 
+protocol TermsOfUseCoordinatorDelegate: AnyObject {
+    func didFinish(childCoordinator: Coordinator)
+}
+
 final class TermsOfUseCoordinator: Coordinator {
     var navigation: Navigation
     var factory: TermsOfUseFactory
     var childCoordinators: [Coordinator]
+    weak var delegate: TermsOfUseCoordinatorDelegate?
     
     init(navigation: Navigation,
          factory: TermsOfUseFactory,
-         childCoordinators: [Coordinator]
+         childCoordinators: [Coordinator],
+         delegate: TermsOfUseCoordinatorDelegate
     ) {
         self.navigation = navigation
         self.factory = factory
         self.childCoordinators = childCoordinators
+        self.delegate = delegate
     }
     
     func start() {
