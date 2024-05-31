@@ -43,6 +43,10 @@ extension NavigationImp: Navigation {
         rootViewController.dismiss(animated: animated)
     }
     
+    func popViewController(animated: Bool) {
+        rootViewController.popViewController(animated: animated)
+    }
+    
     func pushViewController(
         _ viewControllerToPresent: UIViewController,
         animated: Bool,
