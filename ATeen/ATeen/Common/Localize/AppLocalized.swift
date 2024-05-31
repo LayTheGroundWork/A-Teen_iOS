@@ -74,5 +74,7 @@ enum AppLocalized {
     
     // MARK: - CertificationCodeCollectionViewCell
     static let inputCodeText = "6자리 코드 입력"
+    static let resendText = "코드를 받지 못하셨나요? 다시 전송해보세요!"
+    static let resendButtonText = "다시 전송하기"
     
 }

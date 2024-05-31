@@ -17,4 +17,8 @@ extension PhoneNumberCoordinator: PhoneNumberViewControllerCoordinator {
             delegate: self)
         addChildCoordinatorStart(coordinator)
     }
+    
+    func didSelectResendCode() {
+        // TODO: 코드 재전송
+    }
 }
