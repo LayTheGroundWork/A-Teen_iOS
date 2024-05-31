@@ -10,7 +10,6 @@ import SnapKit
 import UIKit
 
 protocol TermsOfUseViewControllerCoordinator: AnyObject {
-    func didFinish()
     func didSelectNextButton()
 }
 
