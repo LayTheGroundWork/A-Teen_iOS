@@ -64,9 +64,9 @@ final class PhoneNumberViewController: UIViewController {
         configLayout()
     }
     
-    // 뷰 이동시 인증 번호 초기화
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
         if let visibleCells = collectionView.visibleCells as? [CertificationCodeCollectionViewCell] {
             for cell in visibleCells {
                 cell.clearTextFields()

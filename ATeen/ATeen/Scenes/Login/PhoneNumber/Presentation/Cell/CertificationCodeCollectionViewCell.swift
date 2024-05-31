@@ -222,7 +222,8 @@ extension CertificationCodeCollectionViewCell: UITextFieldDelegate {
         // 텍스트 필드에 텍스트 설정
         textField.text = updatedText
         
-        // 입력이 비어 있는 경우 이전 텍스트 필드로 이동
+        /// 입력이 비어 있는 경우 이전 텍스트 필드로 이동
+        /// **현재 입력이 비어있어도 이전 텍스트 필드로 이동을 못하는 버그가 있음**
         if string.isEmpty {
             if updatedText.isEmpty, textField.tag > 1 {
                 let previousTextField = textFields[textField.tag - 2]
