@@ -8,7 +8,6 @@
 import UIKit
 
 class SearchSchoolResultTableViewCell: UITableViewCell {
-    
     let schoolNameLabel = UILabel()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -32,12 +31,8 @@ class SearchSchoolResultTableViewCell: UITableViewCell {
         }
     }
     
-    func configure(with schoolName: String, isBold: Bool = false) {
-            schoolNameLabel.text = schoolName
-            if isBold {
-                schoolNameLabel.font = UIFont.boldSystemFont(ofSize: 16)
-            } else {
-                schoolNameLabel.font = UIFont.systemFont(ofSize: 16)
-            }
-        }
+    func fontChange(with schoolName: String, isBold: Bool = false) {
+        schoolNameLabel.text = schoolName
+        schoolNameLabel.font = isBold ? UIFont.boldSystemFont(ofSize: 17) : UIFont.systemFont(ofSize: 17)
+    }
 }

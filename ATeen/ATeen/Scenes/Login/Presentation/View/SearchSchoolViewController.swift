@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SearchSchoolViewController: UIViewController, UITextFieldDelegate, SchoolTableViewSearchDelegate {
+class SearchSchoolViewController: UIViewController, UITextFieldDelegate {
     // MARK: - Public properties
     var label: UILabel = {
         let label = UILabel()
@@ -127,6 +127,28 @@ class SearchSchoolViewController: UIViewController, UITextFieldDelegate, SchoolT
         }
     }
     
+    @objc private func textFieldDidChange(_ textField: UITextField) {
+        guard let query = textField.text else { return }
+        tableView.filterSchools(with: query)
+    }
+}
+
+// MARK: - Extensions here
+extension UILabel {
+    func setLineSpacing(spacing: CGFloat) { // 줄 간격 조절
+        guard let text = text else { return }
+        
+        let attributeString = NSMutableAttributedString(string: text)
+        let style = NSMutableParagraphStyle()
+        style.lineSpacing = spacing
+        attributeString.addAttribute(.paragraphStyle,
+                                     value: style,
+                                     range: NSRange(location: 0, length: attributeString.length))
+        attributedText = attributeString
+    }
+}
+
+extension SearchSchoolViewController: SchoolTableViewSearchDelegate {
     func didSelectFilteredSchool(schoolName: String) {
         textField.text = schoolName
     }
@@ -152,26 +174,6 @@ class SearchSchoolViewController: UIViewController, UITextFieldDelegate, SchoolT
                 make.height.equalTo(240)
             }
         }
-    }
-    
-    @objc private func textFieldDidChange(_ textField: UITextField) {
-        guard let query = textField.text else { return }
-        tableView.filterSchools(with: query)
-    }
-}
-
-// MARK: - Extensions here
-extension UILabel {
-    func setLineSpacing(spacing: CGFloat) { // 줄 간격 조절
-        guard let text = text else { return }
-        
-        let attributeString = NSMutableAttributedString(string: text)
-        let style = NSMutableParagraphStyle()
-        style.lineSpacing = spacing
-        attributeString.addAttribute(.paragraphStyle,
-                                     value: style,
-                                     range: NSRange(location: 0, length: attributeString.length))
-        attributedText = attributeString
     }
 }
 

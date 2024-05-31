@@ -37,7 +37,7 @@ class SearchSchoolResultTableViewController: UITableView, UITableViewDelegate, U
         self.dataSource = self
         self.layer.cornerRadius = ViewValues.defaultRadius
         self.rowHeight = 47 // 디버그창에 Cell 기본 높이 잡으라는 에러떠서 넣음
-        self.showsVerticalScrollIndicator = true
+        self.showsVerticalScrollIndicator = false
     }
     
     func filterSchools(with query: String) {
@@ -72,8 +72,9 @@ class SearchSchoolResultTableViewController: UITableView, UITableViewDelegate, U
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "SchoolCell", for: indexPath) as? SearchSchoolResultTableViewCell else {
             return UITableViewCell()
         }
-        cell.configure(with: filteredSchools[indexPath.row])
         cell.selectionStyle = .none // cell 선택 시 테두리 제거
+        cell.fontChange(with: filteredSchools[indexPath.row], isBold: indexPath == selectedIndexPath)
+        
         return cell
     }
     
@@ -81,12 +82,12 @@ class SearchSchoolResultTableViewController: UITableView, UITableViewDelegate, U
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let previousIndexPath = selectedIndexPath {
             if let previousCell = tableView.cellForRow(at: previousIndexPath) as? SearchSchoolResultTableViewCell {
-                previousCell.configure(with: filteredSchools[previousIndexPath.row], isBold: false)
+                previousCell.fontChange(with: filteredSchools[previousIndexPath.row], isBold: false)
             } // 이전 선택된 Cell Bold 취소
         }
         
         if let selectedCell = tableView.cellForRow(at: indexPath) as? SearchSchoolResultTableViewCell {
-            selectedCell.configure(with: filteredSchools[indexPath.row], isBold: true)
+            selectedCell.fontChange(with: filteredSchools[indexPath.row], isBold: true)
         } // 선택된 Cell Bold
         
         selectedIndexPath = indexPath
