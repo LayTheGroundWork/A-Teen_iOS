@@ -105,7 +105,7 @@ final class CertificationCodeCollectionViewCell: UICollectionViewCell {
             textField.tag = i + 1
             
             let bottomLine = UIView()
-            bottomLine.backgroundColor = .gray
+            bottomLine.backgroundColor = .gray03
             textField.addSubview(bottomLine)
             
             bottomLine.snp.makeConstraints { make in
