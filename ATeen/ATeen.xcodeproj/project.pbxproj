@@ -14,6 +14,9 @@
 		09F9EFFA2C09A254009DE3A0 /* CustomConfirmDialogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F9EFF92C09A254009DE3A0 /* CustomConfirmDialogViewController.swift */; };
 		09F9EFFD2C09A3DC009DE3A0 /* CustomLoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F9EFFC2C09A3DC009DE3A0 /* CustomLoginButton.swift */; };
 		09F9F0002C09B1E7009DE3A0 /* ReportDialogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F9EFFF2C09B1E7009DE3A0 /* ReportDialogViewController.swift */; };
+		09F9F0022C09CF33009DE3A0 /* CustomUsedToReportViewButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F9F0012C09CF33009DE3A0 /* CustomUsedToReportViewButton.swift */; };
+		09F9F0042C0B0BD1009DE3A0 /* ReportPopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F9F0032C0B0BD1009DE3A0 /* ReportPopoverViewController.swift */; };
+		09F9F0062C0C5FBC009DE3A0 /* ReportCompleteDialogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F9F0052C0C5FBC009DE3A0 /* ReportCompleteDialogViewController.swift */; };
 		417286CA2BFF0AEA004F88F9 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 417286C92BFF0AEA004F88F9 /* ProfileViewController.swift */; };
 		417286CC2BFF0B03004F88F9 /* ProfileFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 417286CB2BFF0B03004F88F9 /* ProfileFactory.swift */; };
 		417286CE2BFF0B83004F88F9 /* ProfileCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 417286CD2BFF0B83004F88F9 /* ProfileCoordinator.swift */; };
@@ -150,6 +153,9 @@
 		09F9EFF92C09A254009DE3A0 /* CustomConfirmDialogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomConfirmDialogViewController.swift; sourceTree = "<group>"; };
 		09F9EFFC2C09A3DC009DE3A0 /* CustomLoginButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLoginButton.swift; sourceTree = "<group>"; };
 		09F9EFFF2C09B1E7009DE3A0 /* ReportDialogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportDialogViewController.swift; sourceTree = "<group>"; };
+		09F9F0012C09CF33009DE3A0 /* CustomUsedToReportViewButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUsedToReportViewButton.swift; sourceTree = "<group>"; };
+		09F9F0032C0B0BD1009DE3A0 /* ReportPopoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportPopoverViewController.swift; sourceTree = "<group>"; };
+		09F9F0052C0C5FBC009DE3A0 /* ReportCompleteDialogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportCompleteDialogViewController.swift; sourceTree = "<group>"; };
 		417286C92BFF0AEA004F88F9 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		417286CB2BFF0B03004F88F9 /* ProfileFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileFactory.swift; sourceTree = "<group>"; };
 		417286CD2BFF0B83004F88F9 /* ProfileCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCoordinator.swift; sourceTree = "<group>"; };
@@ -1112,6 +1118,8 @@
 				735AC90B2C005B5D004C3D21 /* CustomQuestionView.swift */,
 				41A515A52C022B3000EDAEA2 /* ProfileDetailBottomBar.swift */,
 				09F9EFFF2C09B1E7009DE3A0 /* ReportDialogViewController.swift */,
+				09F9F0032C0B0BD1009DE3A0 /* ReportPopoverViewController.swift */,
+				09F9F0052C0C5FBC009DE3A0 /* ReportCompleteDialogViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1122,6 +1130,7 @@
 				735AC9132C005B9F004C3D21 /* CustomHeartButton.swift */,
 				735AC9142C005B9F004C3D21 /* CustomProfileButton.swift */,
 				41A515A72C02338B00EDAEA2 /* CustomVoteButton.swift */,
+				09F9F0012C09CF33009DE3A0 /* CustomUsedToReportViewButton.swift */,
 			);
 			path = Button;
 			sourceTree = "<group>";
@@ -1264,6 +1273,7 @@
 				41735B4C2BFCE8E300E4A339 /* SettingsCoordinator+UserConfigurationCoordinatorDelegate.swift in Sources */,
 				41A515A62C022B3000EDAEA2 /* ProfileDetailBottomBar.swift in Sources */,
 				735AC9102C005B5D004C3D21 /* CustomQuestionTextView.swift in Sources */,
+				09F9F0022C09CF33009DE3A0 /* CustomUsedToReportViewButton.swift in Sources */,
 				41BB4C052BFBADDA00D26A5D /* ParentCoordinator.swift in Sources */,
 				417286D72BFF0D16004F88F9 /* ChatCoordinator.swift in Sources */,
 				73BB940E2C0480D700687A97 /* MainTabCoordinator+LogInCoordinatorDelegate.swift in Sources */,
@@ -1313,6 +1323,7 @@
 				4190F8C72BF4E6EF00FCC0A3 /* SceneDelegate.swift in Sources */,
 				73F9B82A2C02331400684152 /* MainCoordinator+ProfileCoordinatorDelegate.swift in Sources */,
 				735AC92B2C005D21004C3D21 /* TodayTeen.swift in Sources */,
+				09F9F0062C0C5FBC009DE3A0 /* ReportCompleteDialogViewController.swift in Sources */,
 				736D18DE2C0787AC003A2243 /* SignUpCoordinator+SignUpViewControllerCoordinator.swift in Sources */,
 				417286CE2BFF0B83004F88F9 /* ProfileCoordinator.swift in Sources */,
 				417286CA2BFF0AEA004F88F9 /* ProfileViewController.swift in Sources */,
@@ -1338,6 +1349,7 @@
 				0922B4A22C022C1200375953 /* CustomImageLabelButton.swift in Sources */,
 				418CB2072BF74E88001DA795 /* TeenViewController.swift in Sources */,
 				09F9EFFD2C09A3DC009DE3A0 /* CustomLoginButton.swift in Sources */,
+				09F9F0042C0B0BD1009DE3A0 /* ReportPopoverViewController.swift in Sources */,
 				418CB1FC2BF74CD8001DA795 /* ExampleViewController.swift in Sources */,
 				41A0147C2C070F2C0046856B /* SignUpFactory.swift in Sources */,
 				418CB1DE2BF727C3001DA795 /* MainTabCoordinator.swift in Sources */,

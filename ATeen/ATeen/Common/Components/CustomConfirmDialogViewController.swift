@@ -9,7 +9,7 @@ import SnapKit
 
 import UIKit
 
-final class CustomConfirmDialogViewController: UIViewController {
+class CustomConfirmDialogViewController: UIViewController {
     var dialogTitle: String?
     var titleColor: UIColor
     var titleNumberOfLine: Int
@@ -19,12 +19,13 @@ final class CustomConfirmDialogViewController: UIViewController {
     var messageNumberOfLine: Int
     var messageFont: UIFont
     var buttonText: String
+    var buttonColor: UIColor
     
     // MARK: - Private properties
     private lazy var dialogView: UIView = {
         let view = UIView()
         view.backgroundColor = .white
-        view.layer.cornerRadius = 20
+        view.layer.cornerRadius = ViewValues.defaultRadius
         return view
     }()
     
@@ -60,7 +61,7 @@ final class CustomConfirmDialogViewController: UIViewController {
                                                     weight: .regular)
         button.setTitle(buttonText, for: .normal)
         button.setTitleColor(.white, for: .normal)
-        button.backgroundColor = .main
+        button.backgroundColor = buttonColor
         button.layer.cornerRadius = ViewValues.defaultRadius
         return button
     }()
@@ -75,7 +76,8 @@ final class CustomConfirmDialogViewController: UIViewController {
         messageColor: UIColor = .gray02,
         messageNumberOfLine: Int,
         messageFont: UIFont = .customFont(forTextStyle: .footnote, weight: .regular),
-        buttonText: String
+        buttonText: String,
+        buttonColor: UIColor
     ) {
         self.dialogTitle = dialogTitle
         self.titleColor = titleColor
@@ -86,6 +88,7 @@ final class CustomConfirmDialogViewController: UIViewController {
         self.messageNumberOfLine = messageNumberOfLine
         self.messageFont = messageFont
         self.buttonText = buttonText
+        self.buttonColor = buttonColor
         super.init(nibName: nil, bundle: nil)
     }
     

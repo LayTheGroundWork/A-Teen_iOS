@@ -54,5 +54,3 @@ extension CustomHeartButton {
         }
     }
 }
-
-
