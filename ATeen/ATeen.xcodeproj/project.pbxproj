@@ -17,6 +17,10 @@
 		09F9F0022C09CF33009DE3A0 /* CustomUsedToReportViewButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F9F0012C09CF33009DE3A0 /* CustomUsedToReportViewButton.swift */; };
 		09F9F0042C0B0BD1009DE3A0 /* ReportPopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F9F0032C0B0BD1009DE3A0 /* ReportPopoverViewController.swift */; };
 		09F9F0062C0C5FBC009DE3A0 /* ReportCompleteDialogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F9F0052C0C5FBC009DE3A0 /* ReportCompleteDialogViewController.swift */; };
+		09F9F0082C0C63C3009DE3A0 /* CustomPopoverButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F9F0072C0C63C3009DE3A0 /* CustomPopoverButton.swift */; };
+		09F9F00B2C0CB7EB009DE3A0 /* ReportPopoverCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F9F00A2C0CB7EB009DE3A0 /* ReportPopoverCoordinator.swift */; };
+		09F9F00D2C0CB7FA009DE3A0 /* ReportPopoverFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F9F00C2C0CB7FA009DE3A0 /* ReportPopoverFactory.swift */; };
+		09F9F00F2C0CBFF6009DE3A0 /* ReportPopoverCoordinator+ReportPopoverViewControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F9F00E2C0CBFF6009DE3A0 /* ReportPopoverCoordinator+ReportPopoverViewControllerCoordinator.swift */; };
 		417286CA2BFF0AEA004F88F9 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 417286C92BFF0AEA004F88F9 /* ProfileViewController.swift */; };
 		417286CC2BFF0B03004F88F9 /* ProfileFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 417286CB2BFF0B03004F88F9 /* ProfileFactory.swift */; };
 		417286CE2BFF0B83004F88F9 /* ProfileCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 417286CD2BFF0B83004F88F9 /* ProfileCoordinator.swift */; };
@@ -156,6 +160,10 @@
 		09F9F0012C09CF33009DE3A0 /* CustomUsedToReportViewButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUsedToReportViewButton.swift; sourceTree = "<group>"; };
 		09F9F0032C0B0BD1009DE3A0 /* ReportPopoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportPopoverViewController.swift; sourceTree = "<group>"; };
 		09F9F0052C0C5FBC009DE3A0 /* ReportCompleteDialogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportCompleteDialogViewController.swift; sourceTree = "<group>"; };
+		09F9F0072C0C63C3009DE3A0 /* CustomPopoverButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPopoverButton.swift; sourceTree = "<group>"; };
+		09F9F00A2C0CB7EB009DE3A0 /* ReportPopoverCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportPopoverCoordinator.swift; sourceTree = "<group>"; };
+		09F9F00C2C0CB7FA009DE3A0 /* ReportPopoverFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportPopoverFactory.swift; sourceTree = "<group>"; };
+		09F9F00E2C0CBFF6009DE3A0 /* ReportPopoverCoordinator+ReportPopoverViewControllerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ReportPopoverCoordinator+ReportPopoverViewControllerCoordinator.swift"; sourceTree = "<group>"; };
 		417286C92BFF0AEA004F88F9 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		417286CB2BFF0B03004F88F9 /* ProfileFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileFactory.swift; sourceTree = "<group>"; };
 		417286CD2BFF0B83004F88F9 /* ProfileCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCoordinator.swift; sourceTree = "<group>"; };
@@ -413,6 +421,9 @@
 				73F9B8292C02331400684152 /* MainCoordinator+ProfileCoordinatorDelegate.swift */,
 				73F9B8232C02182200684152 /* ProfileDetailFactory.swift */,
 				73F9B8252C02182C00684152 /* ProfileDetailCoordinator.swift */,
+				09F9F00C2C0CB7FA009DE3A0 /* ReportPopoverFactory.swift */,
+				09F9F00A2C0CB7EB009DE3A0 /* ReportPopoverCoordinator.swift */,
+				09F9F00E2C0CBFF6009DE3A0 /* ReportPopoverCoordinator+ReportPopoverViewControllerCoordinator.swift */,
 			);
 			path = Composition;
 			sourceTree = "<group>";
@@ -1063,6 +1074,9 @@
 			children = (
 				417286E52BFF1FE7004F88F9 /* MainViewController.swift */,
 				735AC9172C005BAD004C3D21 /* ProfileDetailViewController.swift */,
+				09F9F0032C0B0BD1009DE3A0 /* ReportPopoverViewController.swift */,
+				09F9EFFF2C09B1E7009DE3A0 /* ReportDialogViewController.swift */,
+				09F9F0052C0C5FBC009DE3A0 /* ReportCompleteDialogViewController.swift */,
 				735AC8E42C005AB9004C3D21 /* Cell */,
 			);
 			path = View;
@@ -1117,9 +1131,6 @@
 				735AC90D2C005B5D004C3D21 /* CustomQuestionTextView.swift */,
 				735AC90B2C005B5D004C3D21 /* CustomQuestionView.swift */,
 				41A515A52C022B3000EDAEA2 /* ProfileDetailBottomBar.swift */,
-				09F9EFFF2C09B1E7009DE3A0 /* ReportDialogViewController.swift */,
-				09F9F0032C0B0BD1009DE3A0 /* ReportPopoverViewController.swift */,
-				09F9F0052C0C5FBC009DE3A0 /* ReportCompleteDialogViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1131,6 +1142,7 @@
 				735AC9142C005B9F004C3D21 /* CustomProfileButton.swift */,
 				41A515A72C02338B00EDAEA2 /* CustomVoteButton.swift */,
 				09F9F0012C09CF33009DE3A0 /* CustomUsedToReportViewButton.swift */,
+				09F9F0072C0C63C3009DE3A0 /* CustomPopoverButton.swift */,
 			);
 			path = Button;
 			sourceTree = "<group>";
@@ -1263,6 +1275,7 @@
 				418CB2092BF74EAC001DA795 /* TeenFactory.swift in Sources */,
 				4190F8C52BF4E6EF00FCC0A3 /* AppDelegate.swift in Sources */,
 				41BB4BE32BFB1AE200D26A5D /* MyPostsFactory.swift in Sources */,
+				09F9F00D2C0CB7FA009DE3A0 /* ReportPopoverFactory.swift in Sources */,
 				735AC9232C005CCF004C3D21 /* UILabel+Constraints.swift in Sources */,
 				41735B4E2BFCEC0B00E4A339 /* NavigationImp+UINavigationControllerDelegate.swift in Sources */,
 				418CB1DA2BF726E7001DA795 /* MainTabController.swift in Sources */,
@@ -1285,6 +1298,7 @@
 				417286D52BFF0D0D004F88F9 /* ChatFactory.swift in Sources */,
 				09F9EFF42C0621B7009DE3A0 /* TermsOfUseCoordinator.swift in Sources */,
 				41DC1A242C077E540035ED4C /* CustomServiceButton.swift in Sources */,
+				09F9F00F2C0CBFF6009DE3A0 /* ReportPopoverCoordinator+ReportPopoverViewControllerCoordinator.swift in Sources */,
 				41DC1A192C076DC20035ED4C /* CustomShowDetailButton.swift in Sources */,
 				41BB4BEC2BFB26AF00D26A5D /* MyPostsMediator.swift in Sources */,
 				417286DF2BFF1FB6004F88F9 /* RankingViewController.swift in Sources */,
@@ -1322,6 +1336,7 @@
 				419CCE862C04C88E00D2E7F8 /* TabTag.swift in Sources */,
 				4190F8C72BF4E6EF00FCC0A3 /* SceneDelegate.swift in Sources */,
 				73F9B82A2C02331400684152 /* MainCoordinator+ProfileCoordinatorDelegate.swift in Sources */,
+				09F9F0082C0C63C3009DE3A0 /* CustomPopoverButton.swift in Sources */,
 				735AC92B2C005D21004C3D21 /* TodayTeen.swift in Sources */,
 				09F9F0062C0C5FBC009DE3A0 /* ReportCompleteDialogViewController.swift in Sources */,
 				736D18DE2C0787AC003A2243 /* SignUpCoordinator+SignUpViewControllerCoordinator.swift in Sources */,
@@ -1355,6 +1370,7 @@
 				418CB1DE2BF727C3001DA795 /* MainTabCoordinator.swift in Sources */,
 				418CB1C92BF71A4F001DA795 /* LogInFactory.swift in Sources */,
 				41BB4BFE2BFB38E900D26A5D /* PostDetailFactory.swift in Sources */,
+				09F9F00B2C0CB7EB009DE3A0 /* ReportPopoverCoordinator.swift in Sources */,
 				41DC1A272C077E6F0035ED4C /* LoginBirthViewModel.swift in Sources */,
 				736D18E62C078C18003A2243 /* SignUpCoordinator+SelectBirthCoordinatorDelegate.swift in Sources */,
 				418CB1E52BF73CE3001DA795 /* ItemSettingViewModel.swift in Sources */,

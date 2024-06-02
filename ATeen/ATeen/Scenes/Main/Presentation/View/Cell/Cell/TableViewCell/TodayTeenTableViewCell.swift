@@ -136,10 +136,6 @@ extension TodayTeenTableViewCell: UICollectionViewDataSource {
             cell.heartButtonAction = {
                 self.viewModel.didSelectTodayTeenHeartButton()
             }
-            
-            cell.menuButtonAction = {
-                self.viewModel.didSelectTodayTeenMenuButton()
-            }
             return cell
             
         default:

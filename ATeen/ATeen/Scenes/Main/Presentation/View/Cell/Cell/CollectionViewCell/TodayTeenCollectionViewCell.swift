@@ -18,7 +18,6 @@ class TodayTeenCollectionViewCell: UICollectionViewCell {
     weak var delegate: MainViewControllerCoordinator?
     
     var heartButtonAction: (() -> Void)?
-    var menuButtonAction: (() -> Void)?
     
     lazy var topGradientLayer: CAGradientLayer = {
         let layer = CAGradientLayer()
@@ -179,7 +178,16 @@ extension TodayTeenCollectionViewCell {
     }
     
     @objc func clickMenuButton(_ sender: UIButton) {
-        menuButtonAction?()
+        self.layoutIfNeeded()
+        guard let collectionView = superview,
+              let tableViewCell = collectionView.superview,
+              let tableView = tableViewCell.superview,
+              let mainView = tableView.superview,
+              let appView = mainView.superview
+        else { return }
+        
+        let menuButtonPosition = menuButton.convert(menuButton.bounds, to: appView)
+        delegate?.didSelectMenuButton(popoverPosition: menuButtonPosition)
     }
 }
 

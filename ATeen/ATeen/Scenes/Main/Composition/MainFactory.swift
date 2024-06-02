@@ -14,6 +14,11 @@ protocol MainFactory {
         frame: CGRect,
         todayTeen: TodayTeen
     ) -> Coordinator
+    func makeReportPopoverCoordinator(
+        navigation: Navigation,
+        popoverPosition: CGRect,
+        delegate: ReportPopoverCoordinatorDelegate
+    ) -> Coordinator
 }
 
 struct MainFactoryImp: MainFactory {
@@ -44,5 +49,19 @@ struct MainFactoryImp: MainFactory {
             factory: factory,
             delegate: delegate,
             childCoordinators: [])
+    }
+    
+    func makeReportPopoverCoordinator(
+        navigation: Navigation,
+        popoverPosition: CGRect,
+        delegate: ReportPopoverCoordinatorDelegate
+    ) -> Coordinator {
+        let factory = ReportPopoverFactoryImp()
+        return ReportPopoverCoordinator(
+            navigation: navigation,
+            factory: factory,
+            popoverPosition: popoverPosition,
+            delegate: delegate
+        )
     }
 }

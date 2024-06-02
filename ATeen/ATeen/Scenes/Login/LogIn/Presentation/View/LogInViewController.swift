@@ -196,7 +196,6 @@ final class LogInViewController: UIViewController {
 // MARK: - Extensions
 extension LogInViewController {
     @objc func didSelectSignUpButton(_ sender: UIButton) {
-        // TODO: - TermsOfUseViewController 로 이동
         coordinator?.didSelectSignUpButton()
     }
 }
