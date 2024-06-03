@@ -11,7 +11,9 @@ import UIKit
 class CustomImageLabelButton: UIButton {
     // MARK: - Public properties
     var imageName: String
+    var selectedImageName: String?
     var imageColor: UIColor?
+    var selectedImageColor: UIColor?
     var textColor: UIColor
     var labelText: String
     var buttonBackgroundColor: UIColor
@@ -19,7 +21,7 @@ class CustomImageLabelButton: UIButton {
     
     lazy var customImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: imageName)
+        imageView.image = UIImage(named: imageName) ?? UIImage(systemName: imageName)
         if let imageColor = imageColor {
             imageView.tintColor = imageColor
         }
@@ -38,7 +40,9 @@ class CustomImageLabelButton: UIButton {
     // MARK: - Life Cycle
     init(
         imageName: String,
+        selectedImageName: String? = nil,
         imageColor: UIColor?,
+        selectedImageColor: UIColor? = nil,
         textColor: UIColor,
         labelText: String,
         buttonBackgroundColor: UIColor,
@@ -46,7 +50,9 @@ class CustomImageLabelButton: UIButton {
         frame: CGRect
     ) {
         self.imageName = imageName
+        self.selectedImageName = selectedImageName
         self.imageColor = imageColor
+        self.selectedImageColor = selectedImageColor
         self.textColor = textColor
         self.labelText = labelText
         self.buttonBackgroundColor = buttonBackgroundColor
@@ -66,5 +72,25 @@ class CustomImageLabelButton: UIButton {
         self.backgroundColor = self.buttonBackgroundColor
         self.addSubview(customImageView)
         self.addSubview(customLabel)
+    }
+    
+    // MARK: - Actions
+    func updateImage(for state: UIControl.State) {
+        switch state {
+        case .selected:
+            if let selectedImageName = selectedImageName {
+                customImageView.image = UIImage(named: selectedImageName) ?? UIImage(systemName: selectedImageName)
+            }
+            if let selectedImageColor = selectedImageColor {
+                customImageView.tintColor = selectedImageColor
+            }
+        case .normal:
+            customImageView.image = UIImage(named: imageName) ?? UIImage(systemName: imageName)
+            if let imageColor = imageColor {
+                customImageView.tintColor = imageColor
+            }
+        default:
+            break
+        }
     }
 }

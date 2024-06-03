@@ -52,8 +52,4 @@ extension MainViewModel {
     func didSelectTodayTeenHeartButton() {
         print("HeartButton")
     }
-    
-    func didSelectTodayTeenMenuButton() {
-        print("MenuButton")
-    }
 }

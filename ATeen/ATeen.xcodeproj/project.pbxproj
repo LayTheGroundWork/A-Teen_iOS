@@ -13,6 +13,25 @@
 		0444E85C2C075DE700FB96FD /* SnapKit-Dynamic in Embed Frameworks */ = {isa = PBXBuildFile; productRef = 0444E8592C075DE700FB96FD /* SnapKit-Dynamic */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		0444E85D2C0760EE00FB96FD /* SnapKit-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = 0444E8592C075DE700FB96FD /* SnapKit-Dynamic */; };
 		0922B4A22C022C1200375953 /* CustomImageLabelButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0922B4A12C022C1200375953 /* CustomImageLabelButton.swift */; };
+		09F9EFF02C05C699009DE3A0 /* TermsOfUseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F9EFEF2C05C699009DE3A0 /* TermsOfUseViewController.swift */; };
+		09F9EFF22C062199009DE3A0 /* TermsOfUseFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F9EFF12C062199009DE3A0 /* TermsOfUseFactory.swift */; };
+		09F9EFF42C0621B7009DE3A0 /* TermsOfUseCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F9EFF32C0621B7009DE3A0 /* TermsOfUseCoordinator.swift */; };
+		09F9EFFA2C09A254009DE3A0 /* CustomConfirmDialogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F9EFF92C09A254009DE3A0 /* CustomConfirmDialogViewController.swift */; };
+		09F9EFFD2C09A3DC009DE3A0 /* CustomLoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F9EFFC2C09A3DC009DE3A0 /* CustomLoginButton.swift */; };
+		09F9F0002C09B1E7009DE3A0 /* ReportDialogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F9EFFF2C09B1E7009DE3A0 /* ReportDialogViewController.swift */; };
+		09F9F0022C09CF33009DE3A0 /* CustomUsedToReportViewButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F9F0012C09CF33009DE3A0 /* CustomUsedToReportViewButton.swift */; };
+		09F9F0042C0B0BD1009DE3A0 /* ReportPopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F9F0032C0B0BD1009DE3A0 /* ReportPopoverViewController.swift */; };
+		09F9F0062C0C5FBC009DE3A0 /* ReportCompleteDialogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F9F0052C0C5FBC009DE3A0 /* ReportCompleteDialogViewController.swift */; };
+		09F9F0082C0C63C3009DE3A0 /* CustomPopoverButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F9F0072C0C63C3009DE3A0 /* CustomPopoverButton.swift */; };
+		09F9F00B2C0CB7EB009DE3A0 /* ReportPopoverCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F9F00A2C0CB7EB009DE3A0 /* ReportPopoverCoordinator.swift */; };
+		09F9F00D2C0CB7FA009DE3A0 /* ReportPopoverFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F9F00C2C0CB7FA009DE3A0 /* ReportPopoverFactory.swift */; };
+		09F9F00F2C0CBFF6009DE3A0 /* ReportPopoverCoordinator+ReportPopoverViewControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F9F00E2C0CBFF6009DE3A0 /* ReportPopoverCoordinator+ReportPopoverViewControllerCoordinator.swift */; };
+		09F9F0132C0CE525009DE3A0 /* ReportDialogFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F9F0122C0CE525009DE3A0 /* ReportDialogFactory.swift */; };
+		09F9F0152C0CE52E009DE3A0 /* ReportDialogCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F9F0142C0CE52E009DE3A0 /* ReportDialogCoordinator.swift */; };
+		09F9F0172C0D8AB5009DE3A0 /* ReportDialogCoordinator+ReportDialogViewControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F9F0162C0D8AB4009DE3A0 /* ReportDialogCoordinator+ReportDialogViewControllerCoordinator.swift */; };
+		09F9F0192C0D93A3009DE3A0 /* ReportCompleteDialogFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F9F0182C0D93A3009DE3A0 /* ReportCompleteDialogFactory.swift */; };
+		09F9F01B2C0D93AA009DE3A0 /* ReportCompleteDialogCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F9F01A2C0D93AA009DE3A0 /* ReportCompleteDialogCoordinator.swift */; };
+		09F9F01D2C0D9571009DE3A0 /* ReportCompleteDialogCoordinator+ReportCompleteDialogViewControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F9F01C2C0D9571009DE3A0 /* ReportCompleteDialogCoordinator+ReportCompleteDialogViewControllerCoordinator.swift */; };
 		417286CA2BFF0AEA004F88F9 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 417286C92BFF0AEA004F88F9 /* ProfileViewController.swift */; };
 		417286CC2BFF0B03004F88F9 /* ProfileFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 417286CB2BFF0B03004F88F9 /* ProfileFactory.swift */; };
 		417286CE2BFF0B83004F88F9 /* ProfileCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 417286CD2BFF0B83004F88F9 /* ProfileCoordinator.swift */; };
@@ -67,6 +86,12 @@
 		419CCE812C04611500D2E7F8 /* ViewValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419CCE802C04611500D2E7F8 /* ViewValues.swift */; };
 		419CCE842C0466CA00D2E7F8 /* UIFont+TextStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419CCE832C0466CA00D2E7F8 /* UIFont+TextStyle.swift */; };
 		419CCE862C04C88E00D2E7F8 /* TabTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419CCE852C04C88E00D2E7F8 /* TabTag.swift */; };
+		41A0147A2C070F220046856B /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A014792C070F220046856B /* SignUpViewController.swift */; };
+		41A0147C2C070F2C0046856B /* SignUpFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A0147B2C070F2C0046856B /* SignUpFactory.swift */; };
+		41A0147E2C070F340046856B /* SignUpCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A0147D2C070F340046856B /* SignUpCoordinator.swift */; };
+		41A014802C0710D50046856B /* TermsOfUseCoordinator+TermsOfUseViewControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A0147F2C0710D50046856B /* TermsOfUseCoordinator+TermsOfUseViewControllerCoordinator.swift */; };
+		41A0148C2C0717E60046856B /* UserIdCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A0148B2C0717E60046856B /* UserIdCollectionViewCell.swift */; };
+		41A0148E2C0717F30046856B /* UserNameCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A0148D2C0717F30046856B /* UserNameCollectionViewCell.swift */; };
 		41A515A62C022B3000EDAEA2 /* ProfileDetailBottomBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A515A52C022B3000EDAEA2 /* ProfileDetailBottomBar.swift */; };
 		41A515A82C02338B00EDAEA2 /* CustomVoteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A515A72C02338B00EDAEA2 /* CustomVoteButton.swift */; };
 		41A8F3BD2BFE500C0092CBFA /* UIView+Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A8F3BC2BFE500C0092CBFA /* UIView+Constraints.swift */; };
@@ -87,6 +112,22 @@
 		41BB4C0B2BFBB8BE00D26A5D /* UserConfigurationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BB4C0A2BFBB8BE00D26A5D /* UserConfigurationViewController.swift */; };
 		41BB4C0D2BFBBA2300D26A5D /* UserConfigurationFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BB4C0C2BFBBA2300D26A5D /* UserConfigurationFactory.swift */; };
 		41BB4C0F2BFBBB1A00D26A5D /* UserConfigurationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41BB4C0E2BFBBB1A00D26A5D /* UserConfigurationCoordinator.swift */; };
+		41D0F7222C099BA600488C18 /* TermsOfUseCoordinator+SignUpCoordinatorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D0F7212C099BA600488C18 /* TermsOfUseCoordinator+SignUpCoordinatorDelegate.swift */; };
+		41D0F7272C09A46B00488C18 /* PhoneNumberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D0F7262C09A46B00488C18 /* PhoneNumberViewController.swift */; };
+		41D0F7292C09A60E00488C18 /* PhoneNumberFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D0F7282C09A60E00488C18 /* PhoneNumberFactory.swift */; };
+		41D0F72B2C09A61600488C18 /* PhoneNumberCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D0F72A2C09A61600488C18 /* PhoneNumberCoordinator.swift */; };
+		41D0F72D2C09A7A100488C18 /* PhoneNumberCoordinator+PhoneNumberViewControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D0F72C2C09A7A100488C18 /* PhoneNumberCoordinator+PhoneNumberViewControllerCoordinator.swift */; };
+		41D0F72F2C09AAB200488C18 /* LogInCoordinator+PhoneNumberCoordinatorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D0F72E2C09AAB200488C18 /* LogInCoordinator+PhoneNumberCoordinatorDelegate.swift */; };
+		41D0F7332C09AC3800488C18 /* PhoneNumberCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D0F7322C09AC3800488C18 /* PhoneNumberCollectionViewCell.swift */; };
+		41D0F7352C09AC4500488C18 /* CertificationCodeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D0F7342C09AC4500488C18 /* CertificationCodeCollectionViewCell.swift */; };
+		41D0F7372C09BEC600488C18 /* PhoneNumberCoordinator+TermsOfUseCoordinatorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D0F7362C09BEC600488C18 /* PhoneNumberCoordinator+TermsOfUseCoordinatorDelegate.swift */; };
+		41DC1A152C076BC10035ED4C /* UIViewController+TouchGesture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41DC1A142C076BC10035ED4C /* UIViewController+TouchGesture.swift */; };
+		41DC1A192C076DC20035ED4C /* CustomShowDetailButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41DC1A182C076DC20035ED4C /* CustomShowDetailButton.swift */; };
+		41DC1A1D2C077DE60035ED4C /* CustomBirthButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41DC1A1C2C077DE60035ED4C /* CustomBirthButton.swift */; };
+		41DC1A1F2C077E420035ED4C /* CustomLineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41DC1A1E2C077E420035ED4C /* CustomLineView.swift */; };
+		41DC1A232C077E540035ED4C /* SelectBirthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41DC1A202C077E540035ED4C /* SelectBirthViewController.swift */; };
+		41DC1A242C077E540035ED4C /* CustomServiceButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41DC1A212C077E540035ED4C /* CustomServiceButton.swift */; };
+		41DC1A272C077E6F0035ED4C /* LoginBirthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41DC1A262C077E6F0035ED4C /* LoginBirthViewModel.swift */; };
 		735AC8FF2C005AB9004C3D21 /* CategoryTournamentCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 735AC8E62C005AB9004C3D21 /* CategoryTournamentCollectionViewCell.swift */; };
 		735AC9002C005AB9004C3D21 /* TodayTeenCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 735AC8E72C005AB9004C3D21 /* TodayTeenCollectionViewCell.swift */; };
 		735AC9012C005AB9004C3D21 /* CategoryTodayCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 735AC8E82C005AB9004C3D21 /* CategoryTodayCollectionViewCell.swift */; };
@@ -109,6 +150,13 @@
 		735AC92C2C005D21004C3D21 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 735AC9282C005D21004C3D21 /* Category.swift */; };
 		735AC9352C005EB0004C3D21 /* MainCoordinator+MainViewControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 735AC9342C005EB0004C3D21 /* MainCoordinator+MainViewControllerCoordinator.swift */; };
 		735AC93A2C0061B9004C3D21 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 735AC9392C0061B9004C3D21 /* MainViewModel.swift */; };
+		736D18DC2C0782F5003A2243 /* UserBirthCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736D18DB2C0782F5003A2243 /* UserBirthCollectionViewCell.swift */; };
+		736D18DE2C0787AC003A2243 /* SignUpCoordinator+SignUpViewControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736D18DD2C0787AC003A2243 /* SignUpCoordinator+SignUpViewControllerCoordinator.swift */; };
+		736D18E02C078908003A2243 /* SelectBirthCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736D18DF2C078908003A2243 /* SelectBirthCoordinator.swift */; };
+		736D18E22C078914003A2243 /* SelectBirthFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736D18E12C078914003A2243 /* SelectBirthFactory.swift */; };
+		736D18E42C078B00003A2243 /* SelectBirthCoordinator+SelectBirthViewControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736D18E32C078B00003A2243 /* SelectBirthCoordinator+SelectBirthViewControllerCoordinator.swift */; };
+		736D18E62C078C18003A2243 /* SignUpCoordinator+SelectBirthCoordinatorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736D18E52C078C18003A2243 /* SignUpCoordinator+SelectBirthCoordinatorDelegate.swift */; };
+		736D18E82C07968F003A2243 /* Notification+Name.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736D18E72C07968F003A2243 /* Notification+Name.swift */; };
 		73BB940C2C047FDE00687A97 /* MainTabCoordinator+MainCoordinatorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73BB940B2C047FDE00687A97 /* MainTabCoordinator+MainCoordinatorDelegate.swift */; };
 		73BB940E2C0480D700687A97 /* MainTabCoordinator+LogInCoordinatorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73BB940D2C0480D600687A97 /* MainTabCoordinator+LogInCoordinatorDelegate.swift */; };
 		73F831412C09AEDE00CB4E89 /* SearchSchoolResultViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73F831402C09AEDE00CB4E89 /* SearchSchoolResultViewModel.swift */; };
@@ -136,6 +184,25 @@
 		0444E82D2C05A81500FB96FD /* SearchSchoolViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchSchoolViewController.swift; sourceTree = "<group>"; };
 		0444E83B2C06FD4400FB96FD /* SearchSchoolResultTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchSchoolResultTableViewCell.swift; sourceTree = "<group>"; };
 		0922B4A12C022C1200375953 /* CustomImageLabelButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomImageLabelButton.swift; sourceTree = "<group>"; };
+		09F9EFEF2C05C699009DE3A0 /* TermsOfUseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsOfUseViewController.swift; sourceTree = "<group>"; };
+		09F9EFF12C062199009DE3A0 /* TermsOfUseFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsOfUseFactory.swift; sourceTree = "<group>"; };
+		09F9EFF32C0621B7009DE3A0 /* TermsOfUseCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsOfUseCoordinator.swift; sourceTree = "<group>"; };
+		09F9EFF92C09A254009DE3A0 /* CustomConfirmDialogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomConfirmDialogViewController.swift; sourceTree = "<group>"; };
+		09F9EFFC2C09A3DC009DE3A0 /* CustomLoginButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLoginButton.swift; sourceTree = "<group>"; };
+		09F9EFFF2C09B1E7009DE3A0 /* ReportDialogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportDialogViewController.swift; sourceTree = "<group>"; };
+		09F9F0012C09CF33009DE3A0 /* CustomUsedToReportViewButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUsedToReportViewButton.swift; sourceTree = "<group>"; };
+		09F9F0032C0B0BD1009DE3A0 /* ReportPopoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportPopoverViewController.swift; sourceTree = "<group>"; };
+		09F9F0052C0C5FBC009DE3A0 /* ReportCompleteDialogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportCompleteDialogViewController.swift; sourceTree = "<group>"; };
+		09F9F0072C0C63C3009DE3A0 /* CustomPopoverButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPopoverButton.swift; sourceTree = "<group>"; };
+		09F9F00A2C0CB7EB009DE3A0 /* ReportPopoverCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportPopoverCoordinator.swift; sourceTree = "<group>"; };
+		09F9F00C2C0CB7FA009DE3A0 /* ReportPopoverFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportPopoverFactory.swift; sourceTree = "<group>"; };
+		09F9F00E2C0CBFF6009DE3A0 /* ReportPopoverCoordinator+ReportPopoverViewControllerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ReportPopoverCoordinator+ReportPopoverViewControllerCoordinator.swift"; sourceTree = "<group>"; };
+		09F9F0122C0CE525009DE3A0 /* ReportDialogFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportDialogFactory.swift; sourceTree = "<group>"; };
+		09F9F0142C0CE52E009DE3A0 /* ReportDialogCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportDialogCoordinator.swift; sourceTree = "<group>"; };
+		09F9F0162C0D8AB4009DE3A0 /* ReportDialogCoordinator+ReportDialogViewControllerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ReportDialogCoordinator+ReportDialogViewControllerCoordinator.swift"; sourceTree = "<group>"; };
+		09F9F0182C0D93A3009DE3A0 /* ReportCompleteDialogFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportCompleteDialogFactory.swift; sourceTree = "<group>"; };
+		09F9F01A2C0D93AA009DE3A0 /* ReportCompleteDialogCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportCompleteDialogCoordinator.swift; sourceTree = "<group>"; };
+		09F9F01C2C0D9571009DE3A0 /* ReportCompleteDialogCoordinator+ReportCompleteDialogViewControllerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ReportCompleteDialogCoordinator+ReportCompleteDialogViewControllerCoordinator.swift"; sourceTree = "<group>"; };
 		417286C92BFF0AEA004F88F9 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		417286CB2BFF0B03004F88F9 /* ProfileFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileFactory.swift; sourceTree = "<group>"; };
 		417286CD2BFF0B83004F88F9 /* ProfileCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCoordinator.swift; sourceTree = "<group>"; };
@@ -192,6 +259,12 @@
 		419CCE802C04611500D2E7F8 /* ViewValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewValues.swift; sourceTree = "<group>"; };
 		419CCE832C0466CA00D2E7F8 /* UIFont+TextStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+TextStyle.swift"; sourceTree = "<group>"; };
 		419CCE852C04C88E00D2E7F8 /* TabTag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabTag.swift; sourceTree = "<group>"; };
+		41A014792C070F220046856B /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		41A0147B2C070F2C0046856B /* SignUpFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpFactory.swift; sourceTree = "<group>"; };
+		41A0147D2C070F340046856B /* SignUpCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpCoordinator.swift; sourceTree = "<group>"; };
+		41A0147F2C0710D50046856B /* TermsOfUseCoordinator+TermsOfUseViewControllerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TermsOfUseCoordinator+TermsOfUseViewControllerCoordinator.swift"; sourceTree = "<group>"; };
+		41A0148B2C0717E60046856B /* UserIdCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserIdCollectionViewCell.swift; sourceTree = "<group>"; };
+		41A0148D2C0717F30046856B /* UserNameCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNameCollectionViewCell.swift; sourceTree = "<group>"; };
 		41A515A52C022B3000EDAEA2 /* ProfileDetailBottomBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDetailBottomBar.swift; sourceTree = "<group>"; };
 		41A515A72C02338B00EDAEA2 /* CustomVoteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomVoteButton.swift; sourceTree = "<group>"; };
 		41A8F3BC2BFE500C0092CBFA /* UIView+Constraints.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Constraints.swift"; sourceTree = "<group>"; };
@@ -212,6 +285,22 @@
 		41BB4C0A2BFBB8BE00D26A5D /* UserConfigurationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserConfigurationViewController.swift; sourceTree = "<group>"; };
 		41BB4C0C2BFBBA2300D26A5D /* UserConfigurationFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserConfigurationFactory.swift; sourceTree = "<group>"; };
 		41BB4C0E2BFBBB1A00D26A5D /* UserConfigurationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserConfigurationCoordinator.swift; sourceTree = "<group>"; };
+		41D0F7212C099BA600488C18 /* TermsOfUseCoordinator+SignUpCoordinatorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TermsOfUseCoordinator+SignUpCoordinatorDelegate.swift"; sourceTree = "<group>"; };
+		41D0F7262C09A46B00488C18 /* PhoneNumberViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberViewController.swift; sourceTree = "<group>"; };
+		41D0F7282C09A60E00488C18 /* PhoneNumberFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberFactory.swift; sourceTree = "<group>"; };
+		41D0F72A2C09A61600488C18 /* PhoneNumberCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberCoordinator.swift; sourceTree = "<group>"; };
+		41D0F72C2C09A7A100488C18 /* PhoneNumberCoordinator+PhoneNumberViewControllerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PhoneNumberCoordinator+PhoneNumberViewControllerCoordinator.swift"; sourceTree = "<group>"; };
+		41D0F72E2C09AAB200488C18 /* LogInCoordinator+PhoneNumberCoordinatorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LogInCoordinator+PhoneNumberCoordinatorDelegate.swift"; sourceTree = "<group>"; };
+		41D0F7322C09AC3800488C18 /* PhoneNumberCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberCollectionViewCell.swift; sourceTree = "<group>"; };
+		41D0F7342C09AC4500488C18 /* CertificationCodeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CertificationCodeCollectionViewCell.swift; sourceTree = "<group>"; };
+		41D0F7362C09BEC600488C18 /* PhoneNumberCoordinator+TermsOfUseCoordinatorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PhoneNumberCoordinator+TermsOfUseCoordinatorDelegate.swift"; sourceTree = "<group>"; };
+		41DC1A142C076BC10035ED4C /* UIViewController+TouchGesture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+TouchGesture.swift"; sourceTree = "<group>"; };
+		41DC1A182C076DC20035ED4C /* CustomShowDetailButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomShowDetailButton.swift; sourceTree = "<group>"; };
+		41DC1A1C2C077DE60035ED4C /* CustomBirthButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomBirthButton.swift; sourceTree = "<group>"; };
+		41DC1A1E2C077E420035ED4C /* CustomLineView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomLineView.swift; sourceTree = "<group>"; };
+		41DC1A202C077E540035ED4C /* SelectBirthViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectBirthViewController.swift; sourceTree = "<group>"; };
+		41DC1A212C077E540035ED4C /* CustomServiceButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomServiceButton.swift; sourceTree = "<group>"; };
+		41DC1A262C077E6F0035ED4C /* LoginBirthViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginBirthViewModel.swift; sourceTree = "<group>"; };
 		735AC8E62C005AB9004C3D21 /* CategoryTournamentCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryTournamentCollectionViewCell.swift; sourceTree = "<group>"; };
 		735AC8E72C005AB9004C3D21 /* TodayTeenCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodayTeenCollectionViewCell.swift; sourceTree = "<group>"; };
 		735AC8E82C005AB9004C3D21 /* CategoryTodayCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryTodayCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -234,9 +323,17 @@
 		735AC9282C005D21004C3D21 /* Category.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		735AC9342C005EB0004C3D21 /* MainCoordinator+MainViewControllerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainCoordinator+MainViewControllerCoordinator.swift"; sourceTree = "<group>"; };
 		735AC9392C0061B9004C3D21 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
+		736D18DB2C0782F5003A2243 /* UserBirthCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserBirthCollectionViewCell.swift; sourceTree = "<group>"; };
+		736D18DD2C0787AC003A2243 /* SignUpCoordinator+SignUpViewControllerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SignUpCoordinator+SignUpViewControllerCoordinator.swift"; sourceTree = "<group>"; };
+		736D18DF2C078908003A2243 /* SelectBirthCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectBirthCoordinator.swift; sourceTree = "<group>"; };
+		736D18E12C078914003A2243 /* SelectBirthFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectBirthFactory.swift; sourceTree = "<group>"; };
+		736D18E32C078B00003A2243 /* SelectBirthCoordinator+SelectBirthViewControllerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SelectBirthCoordinator+SelectBirthViewControllerCoordinator.swift"; sourceTree = "<group>"; };
+		736D18E52C078C18003A2243 /* SignUpCoordinator+SelectBirthCoordinatorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SignUpCoordinator+SelectBirthCoordinatorDelegate.swift"; sourceTree = "<group>"; };
+		736D18E72C07968F003A2243 /* Notification+Name.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification+Name.swift"; sourceTree = "<group>"; };
 		73BB940B2C047FDE00687A97 /* MainTabCoordinator+MainCoordinatorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainTabCoordinator+MainCoordinatorDelegate.swift"; sourceTree = "<group>"; };
 		73BB940D2C0480D600687A97 /* MainTabCoordinator+LogInCoordinatorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainTabCoordinator+LogInCoordinatorDelegate.swift"; sourceTree = "<group>"; };
 		73F831402C09AEDE00CB4E89 /* SearchSchoolResultViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchSchoolResultViewModel.swift; sourceTree = "<group>"; };
+		73EC85072C06F9D200ABE16A /* LoginBirthViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginBirthViewModel.swift; sourceTree = "<group>"; };
 		73F9B8232C02182200684152 /* ProfileDetailFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDetailFactory.swift; sourceTree = "<group>"; };
 		73F9B8252C02182C00684152 /* ProfileDetailCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDetailCoordinator.swift; sourceTree = "<group>"; };
 		73F9B8272C021E7800684152 /* ProfileDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDetailViewModel.swift; sourceTree = "<group>"; };
@@ -267,6 +364,15 @@
 			isa = PBXGroup;
 			children = (
 				0922B4A12C022C1200375953 /* CustomImageLabelButton.swift */,
+				09F9EFF92C09A254009DE3A0 /* CustomConfirmDialogViewController.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		09F9EFFB2C09A3CD009DE3A0 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				09F9EFFC2C09A3DC009DE3A0 /* CustomLoginButton.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -369,6 +475,15 @@
 				73F9B8292C02331400684152 /* MainCoordinator+ProfileCoordinatorDelegate.swift */,
 				73F9B8232C02182200684152 /* ProfileDetailFactory.swift */,
 				73F9B8252C02182C00684152 /* ProfileDetailCoordinator.swift */,
+				09F9F00C2C0CB7FA009DE3A0 /* ReportPopoverFactory.swift */,
+				09F9F00A2C0CB7EB009DE3A0 /* ReportPopoverCoordinator.swift */,
+				09F9F00E2C0CBFF6009DE3A0 /* ReportPopoverCoordinator+ReportPopoverViewControllerCoordinator.swift */,
+				09F9F0122C0CE525009DE3A0 /* ReportDialogFactory.swift */,
+				09F9F0142C0CE52E009DE3A0 /* ReportDialogCoordinator.swift */,
+				09F9F0162C0D8AB4009DE3A0 /* ReportDialogCoordinator+ReportDialogViewControllerCoordinator.swift */,
+				09F9F0182C0D93A3009DE3A0 /* ReportCompleteDialogFactory.swift */,
+				09F9F01A2C0D93AA009DE3A0 /* ReportCompleteDialogCoordinator.swift */,
+				09F9F01C2C0D9571009DE3A0 /* ReportCompleteDialogCoordinator+ReportCompleteDialogViewControllerCoordinator.swift */,
 			);
 			path = Composition;
 			sourceTree = "<group>";
@@ -385,8 +500,10 @@
 		418CB1C62BF71A22001DA795 /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				418CB1CA2BF71AD3001DA795 /* Presentation */,
-				418CB1C72BF71A31001DA795 /* Composition */,
+				41D0F7232C09A1EB00488C18 /* PhoneNumber */,
+				41A014852C0714F80046856B /* TermsOfUse */,
+				41A014822C0714C70046856B /* SignUp */,
+				41A014812C0714B40046856B /* LogIn */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -394,9 +511,13 @@
 		418CB1C72BF71A31001DA795 /* Composition */ = {
 			isa = PBXGroup;
 			children = (
-				418CB1C82BF71A4F001DA795 /* LogInFactory.swift */,
-				418CB1D02BF71CAD001DA795 /* LogInCoordinator.swift */,
-				417286FA2BFF91D0004F88F9 /* LogInCoordinator+LogInViewControllerCoordinator.swift */,
+				41A0147B2C070F2C0046856B /* SignUpFactory.swift */,
+				41A0147D2C070F340046856B /* SignUpCoordinator.swift */,
+				736D18DD2C0787AC003A2243 /* SignUpCoordinator+SignUpViewControllerCoordinator.swift */,
+				736D18E52C078C18003A2243 /* SignUpCoordinator+SelectBirthCoordinatorDelegate.swift */,
+				736D18E12C078914003A2243 /* SelectBirthFactory.swift */,
+				736D18DF2C078908003A2243 /* SelectBirthCoordinator.swift */,
+				736D18E32C078B00003A2243 /* SelectBirthCoordinator+SelectBirthViewControllerCoordinator.swift */,
 			);
 			path = Composition;
 			sourceTree = "<group>";
@@ -404,8 +525,9 @@
 		418CB1CA2BF71AD3001DA795 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				41DC1A282C077E770035ED4C /* ViewModel */,
+				41A0148A2C0717B40046856B /* Cell */,
 				418CB1D22BF71DB8001DA795 /* View */,
-				418CB1D32BF71DBD001DA795 /* ViewModel */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -413,20 +535,13 @@
 		418CB1D22BF71DB8001DA795 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				418CB1CB2BF71AE7001DA795 /* LogInViewController.swift */,
 				0444E82D2C05A81500FB96FD /* SearchSchoolViewController.swift */,
 				0444E83B2C06FD4400FB96FD /* SearchSchoolResultTableViewCell.swift */,
 				73F831402C09AEDE00CB4E89 /* SearchSchoolResultViewModel.swift */,
+				41A014792C070F220046856B /* SignUpViewController.swift */,
+				41DC1A202C077E540035ED4C /* SelectBirthViewController.swift */,
 			);
 			path = View;
-			sourceTree = "<group>";
-		};
-		418CB1D32BF71DBD001DA795 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				418CB1D42BF71DC8001DA795 /* LogInViewModel.swift */,
-			);
-			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		418CB1D62BF726A3001DA795 /* MainTab */ = {
@@ -588,7 +703,6 @@
 			children = (
 				4190F8C32BF4E6EF00FCC0A3 /* ATeen */,
 				4190F8C22BF4E6EF00FCC0A3 /* Products */,
-				0444E8582C075DE700FB96FD /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -725,12 +839,109 @@
 			path = Constants;
 			sourceTree = "<group>";
 		};
+		41A014812C0714B40046856B /* LogIn */ = {
+			isa = PBXGroup;
+			children = (
+				09F9EFFB2C09A3CD009DE3A0 /* Components */,
+				41A014832C0714D80046856B /* Presentation */,
+				41A014842C0714DE0046856B /* Composition */,
+			);
+			path = LogIn;
+			sourceTree = "<group>";
+		};
+		41A014822C0714C70046856B /* SignUp */ = {
+			isa = PBXGroup;
+			children = (
+				41DC1A1B2C077DDB0035ED4C /* Components */,
+				418CB1CA2BF71AD3001DA795 /* Presentation */,
+				418CB1C72BF71A31001DA795 /* Composition */,
+			);
+			path = SignUp;
+			sourceTree = "<group>";
+		};
+		41A014832C0714D80046856B /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				41A014862C07150D0046856B /* View */,
+				41A014872C0715140046856B /* ViewModel */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		41A014842C0714DE0046856B /* Composition */ = {
+			isa = PBXGroup;
+			children = (
+				418CB1C82BF71A4F001DA795 /* LogInFactory.swift */,
+				418CB1D02BF71CAD001DA795 /* LogInCoordinator.swift */,
+				41D0F72E2C09AAB200488C18 /* LogInCoordinator+PhoneNumberCoordinatorDelegate.swift */,
+				417286FA2BFF91D0004F88F9 /* LogInCoordinator+LogInViewControllerCoordinator.swift */,
+			);
+			path = Composition;
+			sourceTree = "<group>";
+		};
+		41A014852C0714F80046856B /* TermsOfUse */ = {
+			isa = PBXGroup;
+			children = (
+				41DC1A172C076D870035ED4C /* Components */,
+				41A014882C0715380046856B /* Presentation */,
+				41A014892C07153F0046856B /* Composition */,
+			);
+			path = TermsOfUse;
+			sourceTree = "<group>";
+		};
+		41A014862C07150D0046856B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				418CB1CB2BF71AE7001DA795 /* LogInViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		41A014872C0715140046856B /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				418CB1D42BF71DC8001DA795 /* LogInViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		41A014882C0715380046856B /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				41DC1A162C076D5C0035ED4C /* View */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		41A014892C07153F0046856B /* Composition */ = {
+			isa = PBXGroup;
+			children = (
+				09F9EFF12C062199009DE3A0 /* TermsOfUseFactory.swift */,
+				09F9EFF32C0621B7009DE3A0 /* TermsOfUseCoordinator.swift */,
+				41D0F7212C099BA600488C18 /* TermsOfUseCoordinator+SignUpCoordinatorDelegate.swift */,
+				41A0147F2C0710D50046856B /* TermsOfUseCoordinator+TermsOfUseViewControllerCoordinator.swift */,
+			);
+			path = Composition;
+			sourceTree = "<group>";
+		};
+		41A0148A2C0717B40046856B /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				41A0148B2C0717E60046856B /* UserIdCollectionViewCell.swift */,
+				41A0148D2C0717F30046856B /* UserNameCollectionViewCell.swift */,
+				736D18DB2C0782F5003A2243 /* UserBirthCollectionViewCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		41A8F3BB2BFE4FF90092CBFA /* Extension */ = {
 			isa = PBXGroup;
 			children = (
 				41A8F3BC2BFE500C0092CBFA /* UIView+Constraints.swift */,
 				735AC9222C005CCF004C3D21 /* UILabel+Constraints.swift */,
 				419CCE832C0466CA00D2E7F8 /* UIFont+TextStyle.swift */,
+				41DC1A142C076BC10035ED4C /* UIViewController+TouchGesture.swift */,
+				736D18E72C07968F003A2243 /* Notification+Name.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -879,11 +1090,102 @@
 			name = Composition;
 			sourceTree = "<group>";
 		};
+		41D0F7232C09A1EB00488C18 /* PhoneNumber */ = {
+			isa = PBXGroup;
+			children = (
+				41D0F7242C09A43400488C18 /* Presentation */,
+				41D0F7252C09A44200488C18 /* Composition */,
+			);
+			path = PhoneNumber;
+			sourceTree = "<group>";
+		};
+		41D0F7242C09A43400488C18 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				41D0F7302C09AC1F00488C18 /* View */,
+				41D0F7312C09AC2A00488C18 /* Cell */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		41D0F7252C09A44200488C18 /* Composition */ = {
+			isa = PBXGroup;
+			children = (
+				41D0F7282C09A60E00488C18 /* PhoneNumberFactory.swift */,
+				41D0F72A2C09A61600488C18 /* PhoneNumberCoordinator.swift */,
+				41D0F72C2C09A7A100488C18 /* PhoneNumberCoordinator+PhoneNumberViewControllerCoordinator.swift */,
+				41D0F7362C09BEC600488C18 /* PhoneNumberCoordinator+TermsOfUseCoordinatorDelegate.swift */,
+			);
+			path = Composition;
+			sourceTree = "<group>";
+		};
+		41D0F7302C09AC1F00488C18 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				41D0F7262C09A46B00488C18 /* PhoneNumberViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		41D0F7312C09AC2A00488C18 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				41D0F7322C09AC3800488C18 /* PhoneNumberCollectionViewCell.swift */,
+				41D0F7342C09AC4500488C18 /* CertificationCodeCollectionViewCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		41DC1A162C076D5C0035ED4C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				09F9EFEF2C05C699009DE3A0 /* TermsOfUseViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		41DC1A172C076D870035ED4C /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				41DC1A182C076DC20035ED4C /* CustomShowDetailButton.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		41DC1A1A2C077C620035ED4C /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				73EC85072C06F9D200ABE16A /* LoginBirthViewModel.swift */,
+			);
+			name = "Recovered References";
+			sourceTree = "<group>";
+		};
+		41DC1A1B2C077DDB0035ED4C /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				41DC1A1E2C077E420035ED4C /* CustomLineView.swift */,
+				41DC1A1C2C077DE60035ED4C /* CustomBirthButton.swift */,
+				41DC1A212C077E540035ED4C /* CustomServiceButton.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		41DC1A282C077E770035ED4C /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				41DC1A262C077E6F0035ED4C /* LoginBirthViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		735AC8D12C005A5C004C3D21 /* View */ = {
 			isa = PBXGroup;
 			children = (
 				417286E52BFF1FE7004F88F9 /* MainViewController.swift */,
 				735AC9172C005BAD004C3D21 /* ProfileDetailViewController.swift */,
+				09F9F0032C0B0BD1009DE3A0 /* ReportPopoverViewController.swift */,
+				09F9EFFF2C09B1E7009DE3A0 /* ReportDialogViewController.swift */,
+				09F9F0052C0C5FBC009DE3A0 /* ReportCompleteDialogViewController.swift */,
 				735AC8E42C005AB9004C3D21 /* Cell */,
 			);
 			path = View;
@@ -948,6 +1250,8 @@
 				735AC9132C005B9F004C3D21 /* CustomHeartButton.swift */,
 				735AC9142C005B9F004C3D21 /* CustomProfileButton.swift */,
 				41A515A72C02338B00EDAEA2 /* CustomVoteButton.swift */,
+				09F9F0012C09CF33009DE3A0 /* CustomUsedToReportViewButton.swift */,
+				09F9F0072C0C63C3009DE3A0 /* CustomPopoverButton.swift */,
 			);
 			path = Button;
 			sourceTree = "<group>";
@@ -1071,24 +1375,34 @@
 				41735B582BFCEEC300E4A339 /* HomeCoordinator+HomeViewControllerCoordinator.swift in Sources */,
 				41BB4BE12BFB179D00D26A5D /* MyPostsViewController.swift in Sources */,
 				735AC90F2C005B5D004C3D21 /* CustomAboutATeenView.swift in Sources */,
+				41DC1A152C076BC10035ED4C /* UIViewController+TouchGesture.swift in Sources */,
+				41A0148E2C0717F30046856B /* UserNameCollectionViewCell.swift in Sources */,
 				418CB1FE2BF74D16001DA795 /* SettingsCoordinator+SettingsViewControllerCoordinator.swift in Sources */,
 				4190F8E42BF4E91000FCC0A3 /* AppCoordinator.swift in Sources */,
+				41DC1A232C077E540035ED4C /* SelectBirthViewController.swift in Sources */,
 				41BB4BF32BFB2E0F00D26A5D /* HomeViewController.swift in Sources */,
+				41D0F7352C09AC4500488C18 /* CertificationCodeCollectionViewCell.swift in Sources */,
 				419CCE842C0466CA00D2E7F8 /* UIFont+TextStyle.swift in Sources */,
+				09F9F0172C0D8AB5009DE3A0 /* ReportDialogCoordinator+ReportDialogViewControllerCoordinator.swift in Sources */,
 				418CB1F22BF74138001DA795 /* AppLocalized.swift in Sources */,
 				418CB2092BF74EAC001DA795 /* TeenFactory.swift in Sources */,
 				4190F8C52BF4E6EF00FCC0A3 /* AppDelegate.swift in Sources */,
+				09F9F0132C0CE525009DE3A0 /* ReportDialogFactory.swift in Sources */,
 				41BB4BE32BFB1AE200D26A5D /* MyPostsFactory.swift in Sources */,
+				09F9F00D2C0CB7FA009DE3A0 /* ReportPopoverFactory.swift in Sources */,
 				735AC9232C005CCF004C3D21 /* UILabel+Constraints.swift in Sources */,
 				41735B4E2BFCEC0B00E4A339 /* NavigationImp+UINavigationControllerDelegate.swift in Sources */,
 				418CB1DA2BF726E7001DA795 /* MainTabController.swift in Sources */,
+				09F9EFF02C05C699009DE3A0 /* TermsOfUseViewController.swift in Sources */,
 				419CCE812C04611500D2E7F8 /* ViewValues.swift in Sources */,
+				09F9F0192C0D93A3009DE3A0 /* ReportCompleteDialogFactory.swift in Sources */,
 				735AC9152C005B9F004C3D21 /* CustomHeartButton.swift in Sources */,
 				418CB1F42BF743AE001DA795 /* SettingsCoordinator.swift in Sources */,
 				0444E82E2C05A81500FB96FD /* SearchSchoolViewController.swift in Sources */,
 				41735B4C2BFCE8E300E4A339 /* SettingsCoordinator+UserConfigurationCoordinatorDelegate.swift in Sources */,
 				41A515A62C022B3000EDAEA2 /* ProfileDetailBottomBar.swift in Sources */,
 				735AC9102C005B5D004C3D21 /* CustomQuestionTextView.swift in Sources */,
+				09F9F0022C09CF33009DE3A0 /* CustomUsedToReportViewButton.swift in Sources */,
 				41BB4C052BFBADDA00D26A5D /* ParentCoordinator.swift in Sources */,
 				417286D72BFF0D16004F88F9 /* ChatCoordinator.swift in Sources */,
 				73BB940E2C0480D700687A97 /* MainTabCoordinator+LogInCoordinatorDelegate.swift in Sources */,
@@ -1098,26 +1412,40 @@
 				41BB4C0D2BFBBA2300D26A5D /* UserConfigurationFactory.swift in Sources */,
 				417286E62BFF1FE7004F88F9 /* MainViewController.swift in Sources */,
 				417286D52BFF0D0D004F88F9 /* ChatFactory.swift in Sources */,
+				09F9F01B2C0D93AA009DE3A0 /* ReportCompleteDialogCoordinator.swift in Sources */,
+				09F9EFF42C0621B7009DE3A0 /* TermsOfUseCoordinator.swift in Sources */,
+				41DC1A242C077E540035ED4C /* CustomServiceButton.swift in Sources */,
+				09F9F00F2C0CBFF6009DE3A0 /* ReportPopoverCoordinator+ReportPopoverViewControllerCoordinator.swift in Sources */,
+				41DC1A192C076DC20035ED4C /* CustomShowDetailButton.swift in Sources */,
+				41D0F72D2C09A7A100488C18 /* PhoneNumberCoordinator+PhoneNumberViewControllerCoordinator.swift in Sources */,
 				41BB4BEC2BFB26AF00D26A5D /* MyPostsMediator.swift in Sources */,
 				417286DF2BFF1FB6004F88F9 /* RankingViewController.swift in Sources */,
 				418CB1E72BF73D1B001DA795 /* SettingsViewNavigation.swift in Sources */,
 				41BB4BF52BFB2EB400D26A5D /* HomeCoordinator.swift in Sources */,
+				09F9EFF22C062199009DE3A0 /* TermsOfUseFactory.swift in Sources */,
 				735AC9182C005BAD004C3D21 /* ProfileDetailViewController.swift in Sources */,
 				73F9B8282C021E7800684152 /* ProfileDetailViewModel.swift in Sources */,
 				735AC9032C005AB9004C3D21 /* AnotherTeenTableViewCell.swift in Sources */,
 				417286FB2BFF91D0004F88F9 /* LogInCoordinator+LogInViewControllerCoordinator.swift in Sources */,
+				09F9F0152C0CE52E009DE3A0 /* ReportDialogCoordinator.swift in Sources */,
 				41735B562BFCEE2200E4A339 /* PostDetailFactoryImp.swift in Sources */,
 				418CB1D52BF71DC8001DA795 /* LogInViewModel.swift in Sources */,
+				736D18DC2C0782F5003A2243 /* UserBirthCollectionViewCell.swift in Sources */,
 				41735B522BFCEC9700E4A339 /* NavigationImp.swift in Sources */,
 				41BB4BFC2BFB36EC00D26A5D /* PostDetailViewController.swift in Sources */,
 				418CB1F62BF743B8001DA795 /* SettingsFactory.swift in Sources */,
 				417286F92BFF915D004F88F9 /* MainTabCoordinator+SettingsCoordinatorDelegate.swift in Sources */,
+				41D0F7332C09AC3800488C18 /* PhoneNumberCollectionViewCell.swift in Sources */,
 				418CB1DC2BF7270A001DA795 /* MainTabFactory.swift in Sources */,
 				41BB4BF72BFB2ED900D26A5D /* HomeFactory.swift in Sources */,
 				418CB20B2BF74F77001DA795 /* TeenCoordinator.swift in Sources */,
+				09F9EFFA2C09A254009DE3A0 /* CustomConfirmDialogViewController.swift in Sources */,
+				09F9F01D2C0D9571009DE3A0 /* ReportCompleteDialogCoordinator+ReportCompleteDialogViewControllerCoordinator.swift in Sources */,
 				417286E42BFF1FDC004F88F9 /* RankingCoordinator.swift in Sources */,
 				418CB1D12BF71CAD001DA795 /* LogInCoordinator.swift in Sources */,
+				41DC1A1D2C077DE60035ED4C /* CustomBirthButton.swift in Sources */,
 				417286CC2BFF0B03004F88F9 /* ProfileFactory.swift in Sources */,
+				41A0148C2C0717E60046856B /* UserIdCollectionViewCell.swift in Sources */,
 				41BB4BE82BFB1B1E00D26A5D /* NewPostViewController.swift in Sources */,
 				735AC9062C005AB9004C3D21 /* HeaderTableViewCell.swift in Sources */,
 				735AC92C2C005D21004C3D21 /* Category.swift in Sources */,
@@ -1128,16 +1456,21 @@
 				419CCE862C04C88E00D2E7F8 /* TabTag.swift in Sources */,
 				4190F8C72BF4E6EF00FCC0A3 /* SceneDelegate.swift in Sources */,
 				73F9B82A2C02331400684152 /* MainCoordinator+ProfileCoordinatorDelegate.swift in Sources */,
+				09F9F0082C0C63C3009DE3A0 /* CustomPopoverButton.swift in Sources */,
 				735AC92B2C005D21004C3D21 /* TodayTeen.swift in Sources */,
+				09F9F0062C0C5FBC009DE3A0 /* ReportCompleteDialogViewController.swift in Sources */,
+				736D18DE2C0787AC003A2243 /* SignUpCoordinator+SignUpViewControllerCoordinator.swift in Sources */,
 				417286CE2BFF0B83004F88F9 /* ProfileCoordinator.swift in Sources */,
 				417286CA2BFF0AEA004F88F9 /* ProfileViewController.swift in Sources */,
 				41BB4C0B2BFBB8BE00D26A5D /* UserConfigurationViewController.swift in Sources */,
+				41A0147A2C070F220046856B /* SignUpViewController.swift in Sources */,
 				41BB4C0F2BFBBB1A00D26A5D /* UserConfigurationCoordinator.swift in Sources */,
 				41A515A82C02338B00EDAEA2 /* CustomVoteButton.swift in Sources */,
 				735AC9042C005AB9004C3D21 /* TodayTeenTableViewCell.swift in Sources */,
 				735AC9162C005B9F004C3D21 /* CustomProfileButton.swift in Sources */,
 				73BB940C2C047FDE00687A97 /* MainTabCoordinator+MainCoordinatorDelegate.swift in Sources */,
 				735AC9022C005AB9004C3D21 /* TournamentTableViewCell.swift in Sources */,
+				41DC1A1F2C077E420035ED4C /* CustomLineView.swift in Sources */,
 				4190F8E22BF4E8DA00FCC0A3 /* Coordinator.swift in Sources */,
 				4190F8E82BF4E98C00FCC0A3 /* AppFactory.swift in Sources */,
 				735AC92A2C005D21004C3D21 /* Question.swift in Sources */,
@@ -1146,14 +1479,23 @@
 				735AC93A2C0061B9004C3D21 /* MainViewModel.swift in Sources */,
 				41BB4BEA2BFB258500D26A5D /* MyPostsCoordinator.swift in Sources */,
 				4190F8EA2BF4E9D800FCC0A3 /* Auth.swift in Sources */,
+				736D18E02C078908003A2243 /* SelectBirthCoordinator.swift in Sources */,
 				735AC9012C005AB9004C3D21 /* CategoryTodayCollectionViewCell.swift in Sources */,
+				41D0F72B2C09A61600488C18 /* PhoneNumberCoordinator.swift in Sources */,
 				0922B4A22C022C1200375953 /* CustomImageLabelButton.swift in Sources */,
 				418CB2072BF74E88001DA795 /* TeenViewController.swift in Sources */,
+				09F9EFFD2C09A3DC009DE3A0 /* CustomLoginButton.swift in Sources */,
+				09F9F0042C0B0BD1009DE3A0 /* ReportPopoverViewController.swift in Sources */,
 				418CB1FC2BF74CD8001DA795 /* ExampleViewController.swift in Sources */,
+				41A0147C2C070F2C0046856B /* SignUpFactory.swift in Sources */,
 				418CB1DE2BF727C3001DA795 /* MainTabCoordinator.swift in Sources */,
 				418CB1C92BF71A4F001DA795 /* LogInFactory.swift in Sources */,
 				41BB4BFE2BFB38E900D26A5D /* PostDetailFactory.swift in Sources */,
+				09F9F00B2C0CB7EB009DE3A0 /* ReportPopoverCoordinator.swift in Sources */,
+				41DC1A272C077E6F0035ED4C /* LoginBirthViewModel.swift in Sources */,
+				736D18E62C078C18003A2243 /* SignUpCoordinator+SelectBirthCoordinatorDelegate.swift in Sources */,
 				418CB1E52BF73CE3001DA795 /* ItemSettingViewModel.swift in Sources */,
+				41A014802C0710D50046856B /* TermsOfUseCoordinator+TermsOfUseViewControllerCoordinator.swift in Sources */,
 				41A8F3BF2BFE52E30092CBFA /* CustomTabBarButton.swift in Sources */,
 				418CB1EF2BF740F6001DA795 /* Reusable.swift in Sources */,
 				417286EB2BFF2004004F88F9 /* MainCoordinator.swift in Sources */,
@@ -1161,15 +1503,25 @@
 				735AC90A2C005B52004C3D21 /* CustomNaviView.swift in Sources */,
 				41735B542BFCEDE000E4A339 /* PostDetailCoordinator+PostDetailViewControllerCoordinator.swift in Sources */,
 				4190F8ED2BF4EAAB00FCC0A3 /* AppContainer.swift in Sources */,
+				736D18E82C07968F003A2243 /* Notification+Name.swift in Sources */,
 				417286FD2BFF93A4004F88F9 /* ProfileCoordinator+ProfileViewControllerCoordinator.swift in Sources */,
 				417286E12BFF1FCA004F88F9 /* RankingFactory.swift in Sources */,
+				41D0F7222C099BA600488C18 /* TermsOfUseCoordinator+SignUpCoordinatorDelegate.swift in Sources */,
+				41D0F7272C09A46B00488C18 /* PhoneNumberViewController.swift in Sources */,
+				736D18E22C078914003A2243 /* SelectBirthFactory.swift in Sources */,
 				735AC9002C005AB9004C3D21 /* TodayTeenCollectionViewCell.swift in Sources */,
 				735AC9052C005AB9004C3D21 /* AboutATeenTableViewCell.swift in Sources */,
+				41D0F7372C09BEC600488C18 /* PhoneNumberCoordinator+TermsOfUseCoordinatorDelegate.swift in Sources */,
 				41BB4C002BFB39FA00D26A5D /* PostDetailCoordinator.swift in Sources */,
+				41D0F7292C09A60E00488C18 /* PhoneNumberFactory.swift in Sources */,
 				418CB1EB2BF73E6F001DA795 /* SettingsViewController.swift in Sources */,
 				0444E83C2C06FD4400FB96FD /* SearchSchoolResultTableViewCell.swift in Sources */,
 				73F9B8262C02182C00684152 /* ProfileDetailCoordinator.swift in Sources */,
+				41D0F72F2C09AAB200488C18 /* LogInCoordinator+PhoneNumberCoordinatorDelegate.swift in Sources */,
 				735AC9352C005EB0004C3D21 /* MainCoordinator+MainViewControllerCoordinator.swift in Sources */,
+				09F9F0002C09B1E7009DE3A0 /* ReportDialogViewController.swift in Sources */,
+				736D18E42C078B00003A2243 /* SelectBirthCoordinator+SelectBirthViewControllerCoordinator.swift in Sources */,
+				41A0147E2C070F340046856B /* SignUpCoordinator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
