@@ -10,6 +10,7 @@ import SnapKit
 import UIKit
 
 protocol TermsOfUseViewControllerCoordinator: AnyObject {
+    func didFinish()
     func didSelectNextButton()
 }
 
@@ -18,6 +19,16 @@ final class TermsOfUseViewController: UIViewController {
     
     // MARK: - Private properties
     private weak var coordinator: TermsOfUseViewControllerCoordinator?
+    
+    // 뒤로 가기 버튼
+    private lazy var backButton: UIBarButtonItem = {
+        let button = UIBarButtonItem(image: UIImage(named: "leftArrowIcon"),
+                                     style: .plain,
+                                     target: self,
+                                     action: #selector(didSelectBackButton(_:)))
+        button.tintColor = .black
+        return button
+    }()
     
     private lazy var termsOfUseLabel: UILabel = {
         let label = UILabel()
@@ -104,6 +115,73 @@ final class TermsOfUseViewController: UIViewController {
         return button
     }()
     
+    // 모두 동의
+    private lazy var allCheckStack: UIStackView = {
+        let allCheckStack = UIStackView(
+            arrangedSubviews: [allCheckButton, allAgreeLabel])
+        allCheckStack.axis = .horizontal
+        allCheckStack.alignment = .top
+        allCheckStack.spacing = 10
+        return allCheckStack
+    }()
+    
+    // 서비스 약관 동의
+    private lazy var serviceTextStack: UIStackView = {
+        let serviceTextStack = UIStackView(
+            arrangedSubviews: [serviceTermsLabel, showServiceDetailButton])
+        serviceTextStack.axis = .vertical
+        serviceTextStack.alignment = .leading
+        serviceTextStack.spacing = 0
+        return serviceTextStack
+    }()
+    
+    private lazy var serviceStack: UIStackView = {
+        let serviceStack = UIStackView(
+            arrangedSubviews: [serviceCheckButton, serviceTextStack])
+        serviceStack.axis = .horizontal
+        serviceStack.alignment = .top
+        serviceStack.spacing = 10
+        return serviceStack
+    }()
+    
+    // 개인 정보 수집 동의
+    private lazy var informationTextStack: UIStackView = {
+        let informationTextStack = UIStackView(
+            arrangedSubviews: [informationAgreeLabel, showInformationDetailButton])
+        informationTextStack.axis = .vertical
+        informationTextStack.alignment = .leading
+        informationTextStack.spacing = 0
+        return informationTextStack
+    }()
+
+    private lazy var informationStack: UIStackView = {
+        let informationStack = UIStackView(
+            arrangedSubviews: [informationCheckButton, informationTextStack])
+        informationStack.axis = .horizontal
+        informationStack.alignment = .top
+        informationStack.spacing = 10
+        return informationStack
+    }()
+    // 알림 수신 동의
+    
+    private lazy var alarmTextStack: UIStackView = {
+        let alarmTextStack = UIStackView(
+            arrangedSubviews: [alarmAgreeLabel, alarmAgreeExplanationLabel])
+        alarmTextStack.axis = .vertical
+        alarmTextStack.alignment = .leading
+        alarmTextStack.spacing = 10
+        return alarmTextStack
+    }()
+    
+    private lazy var alarmStack: UIStackView = {
+        let alarmStack = UIStackView(
+            arrangedSubviews: [alarmCheckButton, alarmTextStack])
+        alarmStack.axis = .horizontal
+        alarmStack.alignment = .top
+        alarmStack.spacing = 10
+        return alarmStack
+    }()
+    
     // MARK: - Life Cycle
     init(coordinator: TermsOfUseViewControllerCoordinator?) {
         self.coordinator = coordinator
@@ -117,58 +195,14 @@ final class TermsOfUseViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configUserInterface()
+        configLayout()
         setupActions()
     }
     
     // MARK: - Helpers
     private func configUserInterface() {
         view.backgroundColor = .systemBackground
-        
-        // 모두 동의
-        let allCheckStack = UIStackView(
-            arrangedSubviews: [allCheckButton, allAgreeLabel])
-        allCheckStack.axis = .horizontal
-        allCheckStack.alignment = .top
-        allCheckStack.spacing = 10
-        
-        // 서비스 약관 동의
-        let serviceTextStack = UIStackView(
-            arrangedSubviews: [serviceTermsLabel, showServiceDetailButton])
-        serviceTextStack.axis = .vertical
-        serviceTextStack.alignment = .leading
-        serviceTextStack.spacing = 0
-        
-        let serviceStack = UIStackView(
-            arrangedSubviews: [serviceCheckButton, serviceTextStack])
-        serviceStack.axis = .horizontal
-        serviceStack.alignment = .top
-        serviceStack.spacing = 10
-        
-        // 개인 정보 수집 동의
-        let informationTextStack = UIStackView(
-            arrangedSubviews: [informationAgreeLabel, showInformationDetailButton])
-        informationTextStack.axis = .vertical
-        informationTextStack.alignment = .leading
-        informationTextStack.spacing = 0
-        
-        let informationStack = UIStackView(
-            arrangedSubviews: [informationCheckButton, informationTextStack])
-        informationStack.axis = .horizontal
-        informationStack.alignment = .top
-        informationStack.spacing = 10
-        
-        // 알림 수신 동의
-        let alarmTextStack = UIStackView(
-            arrangedSubviews: [alarmAgreeLabel, alarmAgreeExplanationLabel])
-        alarmTextStack.axis = .vertical
-        alarmTextStack.alignment = .leading
-        alarmTextStack.spacing = 10
-        
-        let alarmStack = UIStackView(
-            arrangedSubviews: [alarmCheckButton, alarmTextStack])
-        alarmStack.axis = .horizontal
-        alarmStack.alignment = .top
-        alarmStack.spacing = 10
+        navigationItem.leftBarButtonItem = backButton
         
         view.addSubview(termsOfUseLabel)
         view.addSubview(nextButton)
@@ -176,10 +210,11 @@ final class TermsOfUseViewController: UIViewController {
         view.addSubview(serviceStack)
         view.addSubview(informationStack)
         view.addSubview(alarmStack)
-        
+    }
+    
+    private func configLayout() {
         termsOfUseLabel.snp.makeConstraints { make in
-            // 상단 네비 생기면, make.top.equalTo(네비.snp.bottom).offset(13)
-            make.top.equalToSuperview().offset(93)
+            make.top.equalTo(self.view.safeAreaLayoutGuide.snp.top).offset(ViewValues.defaultPadding)
             make.leading.equalToSuperview().offset(ViewValues.defaultPadding)
         }
         
@@ -271,6 +306,11 @@ final class TermsOfUseViewController: UIViewController {
     @objc private func didSelectNextButton(_ sender: UIButton) {
         coordinator?.didSelectNextButton()
     }
+    
+    @objc private func didSelectBackButton(_ sender: UIBarButtonItem) {
+        coordinator?.didFinish()
+    }
+
 }
 
 // MARK: - Extension + CustomCheckButton 관련 메서드
