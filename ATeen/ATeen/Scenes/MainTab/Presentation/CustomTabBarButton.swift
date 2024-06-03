@@ -12,7 +12,9 @@ import UIKit
 final class CustomTabBarButton: CustomImageLabelButton {
     override init(
         imageName: String,
+        selectedImageName: String?,
         imageColor: UIColor?,
+        selectedImageColor: UIColor? = nil,
         textColor: UIColor,
         labelText: String,
         buttonBackgroundColor: UIColor,
@@ -21,7 +23,9 @@ final class CustomTabBarButton: CustomImageLabelButton {
     ) {
         super.init(
             imageName: imageName,
+            selectedImageName: selectedImageName,
             imageColor: imageColor,
+            selectedImageColor: selectedImageColor,
             textColor: textColor,
             labelText: labelText,
             buttonBackgroundColor: buttonBackgroundColor,

@@ -14,6 +14,7 @@ protocol MainViewControllerCoordinator: AnyObject {
         frame: CGRect,
         todayTeen: TodayTeen)
     func didSelectTodayTeenChattingButton()
+    func didSelectMenuButton(popoverPosition: CGRect)
     func didSelectAboutATeenCell(tag: TabTag)
     func didSelectTournamentImage(collectionView: UICollectionView, indexPath: IndexPath)
     func didSelectTournamentMoreButton()

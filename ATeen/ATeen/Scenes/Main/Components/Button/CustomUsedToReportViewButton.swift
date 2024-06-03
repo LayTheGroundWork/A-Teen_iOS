@@ -1,25 +1,25 @@
 //
-//  CustomHeartView.swift
-//  ATeenClone
+//  CustomUsedToReportViewButton.swift
+//  ATeen
 //
-//  Created by 노주영 on 5/16/24.
+//  Created by phang on 5/31/24.
 //
-
-import SnapKit
 
 import UIKit
 
-final class CustomHeartButton: CustomImageLabelButton {
+// MARK: - Custom Used To ReportView Button
+final class CustomUsedToReportViewButton: CustomImageLabelButton {
     override init(
         imageName: String,
-        selectedImageName: String? = nil,
+        selectedImageName: String?,
         imageColor: UIColor?,
         selectedImageColor: UIColor? = nil,
-        textColor: UIColor,
+        textColor: UIColor = .black,
         labelText: String,
-        buttonBackgroundColor: UIColor,
-        labelFont: UIFont,
-        frame: CGRect
+        buttonBackgroundColor: UIColor = .clear,
+        labelFont: UIFont = .customFont(forTextStyle: .footnote,
+                                        weight: .regular),
+        frame: CGRect = .zero
     ) {
         super.init(
             imageName: imageName,
@@ -39,22 +39,20 @@ final class CustomHeartButton: CustomImageLabelButton {
     }
 }
 
-// MARK: - Layout
-extension CustomHeartButton {
+// MARK: - Custom Used To ReportView Button Layout
+extension CustomUsedToReportViewButton {
     override func layoutSubviews() {
         super.layoutSubviews()
-        
+
         customImageView.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(13)
-            make.centerX.equalToSuperview()
-            make.width.height.equalTo(26)
+            make.leading.equalToSuperview()
+            make.centerY.equalToSuperview()
+            make.width.height.equalTo(22)
         }
         
         customLabel.snp.makeConstraints { make in
-            make.top.equalTo(self.customImageView.snp.bottom)
-            make.leading.equalToSuperview().offset(10)
-            make.trailing.equalToSuperview().offset(-10)
-            make.height.equalTo(24)
+            make.leading.equalTo(customImageView.snp.trailing).offset(8)
+            make.centerY.equalTo(customImageView.snp.centerY)
         }
     }
 }

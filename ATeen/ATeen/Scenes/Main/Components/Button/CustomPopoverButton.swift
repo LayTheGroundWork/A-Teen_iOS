@@ -1,25 +1,25 @@
 //
-//  CustomHeartView.swift
-//  ATeenClone
+//  CustomPopoverButton.swift
+//  ATeen
 //
-//  Created by 노주영 on 5/16/24.
+//  Created by phang on 6/2/24.
 //
-
-import SnapKit
 
 import UIKit
 
-final class CustomHeartButton: CustomImageLabelButton {
+// MARK: - CustomPopoverButton
+final class CustomPopoverButton: CustomImageLabelButton {
     override init(
         imageName: String,
         selectedImageName: String? = nil,
-        imageColor: UIColor?,
+        imageColor: UIColor? = .main,
         selectedImageColor: UIColor? = nil,
-        textColor: UIColor,
+        textColor: UIColor = .black,
         labelText: String,
-        buttonBackgroundColor: UIColor,
-        labelFont: UIFont,
-        frame: CGRect
+        buttonBackgroundColor: UIColor = .clear,
+        labelFont: UIFont = .customFont(forTextStyle: .footnote,
+                                        weight: .regular),
+        frame: CGRect = .zero
     ) {
         super.init(
             imageName: imageName,
@@ -40,21 +40,19 @@ final class CustomHeartButton: CustomImageLabelButton {
 }
 
 // MARK: - Layout
-extension CustomHeartButton {
+extension CustomPopoverButton {
     override func layoutSubviews() {
         super.layoutSubviews()
         
         customImageView.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(13)
-            make.centerX.equalToSuperview()
-            make.width.height.equalTo(26)
+            make.top.equalToSuperview().offset(8)
+            make.leading.equalToSuperview().offset(23)
+            make.width.height.equalTo(24)
         }
         
         customLabel.snp.makeConstraints { make in
-            make.top.equalTo(self.customImageView.snp.bottom)
-            make.leading.equalToSuperview().offset(10)
-            make.trailing.equalToSuperview().offset(-10)
-            make.height.equalTo(24)
+            make.leading.equalTo(customImageView.snp.trailing).offset(9)
+            make.centerY.equalTo(customImageView.snp.centerY)
         }
     }
 }

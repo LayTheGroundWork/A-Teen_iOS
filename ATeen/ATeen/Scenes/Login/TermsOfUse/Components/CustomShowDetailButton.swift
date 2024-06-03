@@ -10,7 +10,9 @@ import UIKit
 final class CustomShowDetailButton: CustomImageLabelButton {
     override init(
         imageName: String = "chevron.right",
+        selectedImageName: String? = nil,
         imageColor: UIColor? = .gray01,
+        selectedImageColor: UIColor? = nil,
         textColor: UIColor = .gray01,
         labelText: String = AppLocalized.showDetailsButton,
         buttonBackgroundColor: UIColor = .clear,
@@ -20,7 +22,9 @@ final class CustomShowDetailButton: CustomImageLabelButton {
     ) {
         super.init(
             imageName: imageName,
+            selectedImageName: selectedImageName,
             imageColor: imageColor,
+            selectedImageColor: selectedImageColor,
             textColor: textColor,
             labelText: labelText,
             buttonBackgroundColor: buttonBackgroundColor,

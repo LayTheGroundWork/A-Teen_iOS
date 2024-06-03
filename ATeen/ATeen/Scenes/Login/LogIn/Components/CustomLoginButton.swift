@@ -1,25 +1,25 @@
 //
-//  CustomServiceButton.swift
+//  CustomLoginButton.swift
 //  ATeen
 //
-//  Created by 노주영 on 5/28/24.
+//  Created by phang on 5/31/24.
 //
-
-import SnapKit
 
 import UIKit
 
-final class CustomServiceButton: CustomImageLabelButton {
+// MARK: - Custom Login Button
+final class CustomLoginButton: CustomImageLabelButton {
     override init(
-        imageName: String,
+        imageName: String = "chevron.right",
         selectedImageName: String? = nil,
-        imageColor: UIColor?,
+        imageColor: UIColor? = .main,
         selectedImageColor: UIColor? = nil,
-        textColor: UIColor,
-        labelText: String,
-        buttonBackgroundColor: UIColor,
-        labelFont: UIFont,
-        frame: CGRect
+        textColor: UIColor = .main,
+        labelText: String = AppLocalized.loginButton,
+        buttonBackgroundColor: UIColor = .clear,
+        labelFont: UIFont = UIFont.customFont(forTextStyle: .callout,
+                                              weight: .regular),
+        frame: CGRect = .zero
     ) {
         super.init(
             imageName: imageName,
@@ -39,23 +39,19 @@ final class CustomServiceButton: CustomImageLabelButton {
     }
 }
 
-// MARK: - Layout
-extension CustomServiceButton {
+// MARK: - Custom Login Button Layout
+extension CustomLoginButton {
     override func layoutSubviews() {
         super.layoutSubviews()
         
         customLabel.snp.makeConstraints { make in
-            make.leading.top.bottom.equalToSuperview()
+            make.centerY.equalToSuperview()
+            make.leading.equalToSuperview()
         }
         
         customImageView.snp.makeConstraints { make in
-            make.top.equalToSuperview()
-            make.leading.equalTo(self.customLabel.snp.trailing).offset(5)
-            make.width.height.equalTo(ViewValues.defaultButtonSize)
+            make.centerY.equalToSuperview()
+            make.leading.equalTo(customLabel.snp.trailing).offset(3)
         }
     }
 }
-
-
-
-
