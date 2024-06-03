@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		0444E82E2C05A81500FB96FD /* SearchSchoolViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0444E82D2C05A81500FB96FD /* SearchSchoolViewController.swift */; };
-		0444E83A2C06F80E00FB96FD /* SearchSchoolResultTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0444E8392C06F80E00FB96FD /* SearchSchoolResultTableViewController.swift */; };
 		0444E83C2C06FD4400FB96FD /* SearchSchoolResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0444E83B2C06FD4400FB96FD /* SearchSchoolResultTableViewCell.swift */; };
 		0444E8552C075A9200FB96FD /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 0444E8542C075A9200FB96FD /* SnapKit */; };
 		0444E85C2C075DE700FB96FD /* SnapKit-Dynamic in Embed Frameworks */ = {isa = PBXBuildFile; productRef = 0444E8592C075DE700FB96FD /* SnapKit-Dynamic */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
@@ -112,6 +111,7 @@
 		735AC93A2C0061B9004C3D21 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 735AC9392C0061B9004C3D21 /* MainViewModel.swift */; };
 		73BB940C2C047FDE00687A97 /* MainTabCoordinator+MainCoordinatorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73BB940B2C047FDE00687A97 /* MainTabCoordinator+MainCoordinatorDelegate.swift */; };
 		73BB940E2C0480D700687A97 /* MainTabCoordinator+LogInCoordinatorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73BB940D2C0480D600687A97 /* MainTabCoordinator+LogInCoordinatorDelegate.swift */; };
+		73F831412C09AEDE00CB4E89 /* SearchSchoolResultViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73F831402C09AEDE00CB4E89 /* SearchSchoolResultViewModel.swift */; };
 		73F9B8242C02182200684152 /* ProfileDetailFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73F9B8232C02182200684152 /* ProfileDetailFactory.swift */; };
 		73F9B8262C02182C00684152 /* ProfileDetailCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73F9B8252C02182C00684152 /* ProfileDetailCoordinator.swift */; };
 		73F9B8282C021E7800684152 /* ProfileDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73F9B8272C021E7800684152 /* ProfileDetailViewModel.swift */; };
@@ -134,7 +134,6 @@
 
 /* Begin PBXFileReference section */
 		0444E82D2C05A81500FB96FD /* SearchSchoolViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchSchoolViewController.swift; sourceTree = "<group>"; };
-		0444E8392C06F80E00FB96FD /* SearchSchoolResultTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchSchoolResultTableViewController.swift; sourceTree = "<group>"; };
 		0444E83B2C06FD4400FB96FD /* SearchSchoolResultTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchSchoolResultTableViewCell.swift; sourceTree = "<group>"; };
 		0922B4A12C022C1200375953 /* CustomImageLabelButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomImageLabelButton.swift; sourceTree = "<group>"; };
 		417286C92BFF0AEA004F88F9 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
@@ -237,6 +236,7 @@
 		735AC9392C0061B9004C3D21 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		73BB940B2C047FDE00687A97 /* MainTabCoordinator+MainCoordinatorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainTabCoordinator+MainCoordinatorDelegate.swift"; sourceTree = "<group>"; };
 		73BB940D2C0480D600687A97 /* MainTabCoordinator+LogInCoordinatorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainTabCoordinator+LogInCoordinatorDelegate.swift"; sourceTree = "<group>"; };
+		73F831402C09AEDE00CB4E89 /* SearchSchoolResultViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchSchoolResultViewModel.swift; sourceTree = "<group>"; };
 		73F9B8232C02182200684152 /* ProfileDetailFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDetailFactory.swift; sourceTree = "<group>"; };
 		73F9B8252C02182C00684152 /* ProfileDetailCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDetailCoordinator.swift; sourceTree = "<group>"; };
 		73F9B8272C021E7800684152 /* ProfileDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDetailViewModel.swift; sourceTree = "<group>"; };
@@ -415,8 +415,8 @@
 			children = (
 				418CB1CB2BF71AE7001DA795 /* LogInViewController.swift */,
 				0444E82D2C05A81500FB96FD /* SearchSchoolViewController.swift */,
-				0444E8392C06F80E00FB96FD /* SearchSchoolResultTableViewController.swift */,
 				0444E83B2C06FD4400FB96FD /* SearchSchoolResultTableViewCell.swift */,
+				73F831402C09AEDE00CB4E89 /* SearchSchoolResultViewModel.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1067,6 +1067,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				735AC90E2C005B5D004C3D21 /* CustomQuestionView.swift in Sources */,
+				73F831412C09AEDE00CB4E89 /* SearchSchoolResultViewModel.swift in Sources */,
 				41735B582BFCEEC300E4A339 /* HomeCoordinator+HomeViewControllerCoordinator.swift in Sources */,
 				41BB4BE12BFB179D00D26A5D /* MyPostsViewController.swift in Sources */,
 				735AC90F2C005B5D004C3D21 /* CustomAboutATeenView.swift in Sources */,
@@ -1146,7 +1147,6 @@
 				41BB4BEA2BFB258500D26A5D /* MyPostsCoordinator.swift in Sources */,
 				4190F8EA2BF4E9D800FCC0A3 /* Auth.swift in Sources */,
 				735AC9012C005AB9004C3D21 /* CategoryTodayCollectionViewCell.swift in Sources */,
-				0444E83A2C06F80E00FB96FD /* SearchSchoolResultTableViewController.swift in Sources */,
 				0922B4A22C022C1200375953 /* CustomImageLabelButton.swift in Sources */,
 				418CB2072BF74E88001DA795 /* TeenViewController.swift in Sources */,
 				418CB1FC2BF74CD8001DA795 /* ExampleViewController.swift in Sources */,
