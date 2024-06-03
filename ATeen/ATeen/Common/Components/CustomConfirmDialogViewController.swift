@@ -99,9 +99,18 @@ class CustomConfirmDialogViewController: UIViewController {
     
     // MARK: - Helpers
     private func configUserInterface() {
-        view.backgroundColor = .black.withAlphaComponent(0.5)
+        view.backgroundColor = .black.withAlphaComponent(0.3)
+
+        // 블러 효과 추가
+        let blurEffect = UIBlurEffect(style: .dark)
+        let blurEffectView = UIVisualEffectView(effect: blurEffect)
+        blurEffectView.frame = view.bounds
+        blurEffectView.alpha = 0.82
+        blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        blurEffectView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+        view.addSubview(blurEffectView)
+
         view.addSubview(dialogView)
-//        dialogView.addSubview(xmarkButton)
         dialogView.addSubview(titleLabel)
         dialogView.addSubview(messageLabel)
         dialogView.addSubview(confirmButton)
@@ -130,6 +139,7 @@ class CustomConfirmDialogViewController: UIViewController {
             make.leading.equalToSuperview().offset(ViewValues.defaultPadding)
             make.trailing.equalToSuperview().offset(-ViewValues.defaultPadding)
             make.bottom.equalToSuperview().offset(-20)
+            make.height.equalTo(50)
         }
     }
     
@@ -140,7 +150,7 @@ class CustomConfirmDialogViewController: UIViewController {
     }
     
     // MARK: - Actions
-    @objc private func clickConfirmButton(_ sender: UIButton) {
-        // TODO: - 다이얼로그 닫기
+    @objc func clickConfirmButton(_ sender: UIButton) {
+        // 다이얼로그 닫기 - overriding 해서 사용
     }
 }

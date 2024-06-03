@@ -9,6 +9,7 @@ import UIKit
 
 protocol ReportDialogCoordinatorDelegate: AnyObject {
     func didFinish(childCoordinator: Coordinator)
+    func didReport(childCoordinator: Coordinator)
 }
 
 final class ReportDialogCoordinator: Coordinator {

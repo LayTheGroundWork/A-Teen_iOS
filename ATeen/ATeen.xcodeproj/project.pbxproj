@@ -24,6 +24,9 @@
 		09F9F0132C0CE525009DE3A0 /* ReportDialogFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F9F0122C0CE525009DE3A0 /* ReportDialogFactory.swift */; };
 		09F9F0152C0CE52E009DE3A0 /* ReportDialogCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F9F0142C0CE52E009DE3A0 /* ReportDialogCoordinator.swift */; };
 		09F9F0172C0D8AB5009DE3A0 /* ReportDialogCoordinator+ReportDialogViewControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F9F0162C0D8AB4009DE3A0 /* ReportDialogCoordinator+ReportDialogViewControllerCoordinator.swift */; };
+		09F9F0192C0D93A3009DE3A0 /* ReportCompleteDialogFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F9F0182C0D93A3009DE3A0 /* ReportCompleteDialogFactory.swift */; };
+		09F9F01B2C0D93AA009DE3A0 /* ReportCompleteDialogCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F9F01A2C0D93AA009DE3A0 /* ReportCompleteDialogCoordinator.swift */; };
+		09F9F01D2C0D9571009DE3A0 /* ReportCompleteDialogCoordinator+ReportCompleteDialogViewControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F9F01C2C0D9571009DE3A0 /* ReportCompleteDialogCoordinator+ReportCompleteDialogViewControllerCoordinator.swift */; };
 		417286CA2BFF0AEA004F88F9 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 417286C92BFF0AEA004F88F9 /* ProfileViewController.swift */; };
 		417286CC2BFF0B03004F88F9 /* ProfileFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 417286CB2BFF0B03004F88F9 /* ProfileFactory.swift */; };
 		417286CE2BFF0B83004F88F9 /* ProfileCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 417286CD2BFF0B83004F88F9 /* ProfileCoordinator.swift */; };
@@ -170,6 +173,9 @@
 		09F9F0122C0CE525009DE3A0 /* ReportDialogFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportDialogFactory.swift; sourceTree = "<group>"; };
 		09F9F0142C0CE52E009DE3A0 /* ReportDialogCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportDialogCoordinator.swift; sourceTree = "<group>"; };
 		09F9F0162C0D8AB4009DE3A0 /* ReportDialogCoordinator+ReportDialogViewControllerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ReportDialogCoordinator+ReportDialogViewControllerCoordinator.swift"; sourceTree = "<group>"; };
+		09F9F0182C0D93A3009DE3A0 /* ReportCompleteDialogFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportCompleteDialogFactory.swift; sourceTree = "<group>"; };
+		09F9F01A2C0D93AA009DE3A0 /* ReportCompleteDialogCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportCompleteDialogCoordinator.swift; sourceTree = "<group>"; };
+		09F9F01C2C0D9571009DE3A0 /* ReportCompleteDialogCoordinator+ReportCompleteDialogViewControllerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ReportCompleteDialogCoordinator+ReportCompleteDialogViewControllerCoordinator.swift"; sourceTree = "<group>"; };
 		417286C92BFF0AEA004F88F9 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		417286CB2BFF0B03004F88F9 /* ProfileFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileFactory.swift; sourceTree = "<group>"; };
 		417286CD2BFF0B83004F88F9 /* ProfileCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCoordinator.swift; sourceTree = "<group>"; };
@@ -433,6 +439,9 @@
 				09F9F0122C0CE525009DE3A0 /* ReportDialogFactory.swift */,
 				09F9F0142C0CE52E009DE3A0 /* ReportDialogCoordinator.swift */,
 				09F9F0162C0D8AB4009DE3A0 /* ReportDialogCoordinator+ReportDialogViewControllerCoordinator.swift */,
+				09F9F0182C0D93A3009DE3A0 /* ReportCompleteDialogFactory.swift */,
+				09F9F01A2C0D93AA009DE3A0 /* ReportCompleteDialogCoordinator.swift */,
+				09F9F01C2C0D9571009DE3A0 /* ReportCompleteDialogCoordinator+ReportCompleteDialogViewControllerCoordinator.swift */,
 			);
 			path = Composition;
 			sourceTree = "<group>";
@@ -1292,6 +1301,7 @@
 				418CB1DA2BF726E7001DA795 /* MainTabController.swift in Sources */,
 				09F9EFF02C05C699009DE3A0 /* TermsOfUseViewController.swift in Sources */,
 				419CCE812C04611500D2E7F8 /* ViewValues.swift in Sources */,
+				09F9F0192C0D93A3009DE3A0 /* ReportCompleteDialogFactory.swift in Sources */,
 				735AC9152C005B9F004C3D21 /* CustomHeartButton.swift in Sources */,
 				418CB1F42BF743AE001DA795 /* SettingsCoordinator.swift in Sources */,
 				41735B4C2BFCE8E300E4A339 /* SettingsCoordinator+UserConfigurationCoordinatorDelegate.swift in Sources */,
@@ -1307,6 +1317,7 @@
 				41BB4C0D2BFBBA2300D26A5D /* UserConfigurationFactory.swift in Sources */,
 				417286E62BFF1FE7004F88F9 /* MainViewController.swift in Sources */,
 				417286D52BFF0D0D004F88F9 /* ChatFactory.swift in Sources */,
+				09F9F01B2C0D93AA009DE3A0 /* ReportCompleteDialogCoordinator.swift in Sources */,
 				09F9EFF42C0621B7009DE3A0 /* TermsOfUseCoordinator.swift in Sources */,
 				41DC1A242C077E540035ED4C /* CustomServiceButton.swift in Sources */,
 				09F9F00F2C0CBFF6009DE3A0 /* ReportPopoverCoordinator+ReportPopoverViewControllerCoordinator.swift in Sources */,
@@ -1333,6 +1344,7 @@
 				418CB20B2BF74F77001DA795 /* TeenCoordinator.swift in Sources */,
 				41B61AF72C08463000E8B4AB /* TermsOfUseCollectionViewCell.swift in Sources */,
 				09F9EFFA2C09A254009DE3A0 /* CustomConfirmDialogViewController.swift in Sources */,
+				09F9F01D2C0D9571009DE3A0 /* ReportCompleteDialogCoordinator+ReportCompleteDialogViewControllerCoordinator.swift in Sources */,
 				417286E42BFF1FDC004F88F9 /* RankingCoordinator.swift in Sources */,
 				418CB1D12BF71CAD001DA795 /* LogInCoordinator.swift in Sources */,
 				41DC1A1D2C077DE60035ED4C /* CustomBirthButton.swift in Sources */,

@@ -11,6 +11,7 @@ import UIKit
 
 protocol ReportDialogViewControllerCoordinator: AnyObject {
     func didFinish()
+    func didReport()
 }
 
 // TODO: - 기타 버튼 클릭 시, textField 에 내용 필수
@@ -144,7 +145,7 @@ final class ReportDialogViewController: UIViewController {
     
     // MARK: - Helpers
     private func configUserInterface() {
-        view.backgroundColor = .black.withAlphaComponent(0.2)
+        view.backgroundColor = .black.withAlphaComponent(0.3)
 
         // 블러 효과 추가
         let blurEffect = UIBlurEffect(style: .dark)
@@ -277,6 +278,8 @@ final class ReportDialogViewController: UIViewController {
     
     @objc private func clickReportButton(_ sender: UIButton) {
         // TODO: - 신고
+        // 현재는 화면 이동만 진행
+        coordinator?.didReport()
     }
 }
 
