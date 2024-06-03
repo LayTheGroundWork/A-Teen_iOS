@@ -128,7 +128,7 @@ final class SelectBirthViewController: UIViewController {
     
     private func configUserInterface() {
         //메인 뷰
-        view.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5)
+        view.backgroundColor = .black.withAlphaComponent(0.5)
         
         view.addSubview(alertView)
         
@@ -176,10 +176,11 @@ final class SelectBirthViewController: UIViewController {
         }
         
         if viewModel.month.isEmpty || viewModel.day.isEmpty {
-            let changeString = String(Int(todayArr[1])!)
+            let changeMonthString = String(Int(todayArr[1]) ?? 1)
+            let changeDayString = String(Int(todayArr[2]) ?? 1)
             
-            guard let monthIndex = monthList.firstIndex(of: changeString) else { return }
-            guard let dayIndex = dayList.firstIndex(of: todayArr[2]) else { return }
+            guard let monthIndex = monthList.firstIndex(of: changeMonthString) else { return }
+            guard let dayIndex = dayList.firstIndex(of: changeDayString) else { return }
             
             viewModel.year = yearList[0]
             viewModel.month = String(monthIndex + 1)

@@ -159,16 +159,7 @@ final class ReportDialogViewController: UIViewController {
     
     // MARK: - Helpers
     private func configUserInterface() {
-        view.backgroundColor = .black.withAlphaComponent(0.3)
-
-        // 블러 효과 추가
-        let blurEffect = UIBlurEffect(style: .dark)
-        let blurEffectView = UIVisualEffectView(effect: blurEffect)
-        blurEffectView.frame = view.bounds
-        blurEffectView.alpha = 0.82
-        blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        blurEffectView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
-        view.addSubview(blurEffectView)
+        view.backgroundColor = .black.withAlphaComponent(0.5)
         
         // 키보드 내리기
         let tapGesture = UITapGestureRecognizer(

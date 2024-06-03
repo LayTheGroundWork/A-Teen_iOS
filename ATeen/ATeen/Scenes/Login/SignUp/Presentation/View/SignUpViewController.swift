@@ -54,6 +54,7 @@ final class SignUpViewController: UIViewController {
         collectionView.register(UserIdCollectionViewCell.self, forCellWithReuseIdentifier: UserIdCollectionViewCell.reuseIdentifier)
         collectionView.register(UserNameCollectionViewCell.self, forCellWithReuseIdentifier: UserNameCollectionViewCell.reuseIdentifier)
         collectionView.register(UserBirthCollectionViewCell.self, forCellWithReuseIdentifier: UserBirthCollectionViewCell.reuseIdentifier)
+        collectionView.register(SearchSchoolCollectionViewCell.self, forCellWithReuseIdentifier: SearchSchoolCollectionViewCell.reuseIdentifier)
        
         return collectionView
     }()
@@ -160,7 +161,7 @@ extension SignUpViewController: UICollectionViewDataSource {
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        3
+        4
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -198,6 +199,19 @@ extension SignUpViewController: UICollectionViewDataSource {
             
             guard let coordinator = coordinator else { return UICollectionViewCell() }
             cell.setProperties(viewModel: viewModel, coordinator: coordinator)
+            
+            return cell
+            
+        case 3:
+            guard
+                let cell = collectionView.dequeueReusableCell(
+                withReuseIdentifier: SearchSchoolCollectionViewCell.reuseIdentifier,
+                for: indexPath) as? SearchSchoolCollectionViewCell
+            else {
+                return UICollectionViewCell()
+            }
+            
+            cell.setProperties(viewModel: viewModel)
             
             return cell
 
