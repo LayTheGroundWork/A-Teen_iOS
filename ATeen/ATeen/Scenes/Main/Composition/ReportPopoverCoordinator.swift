@@ -9,6 +9,7 @@ import UIKit
 
 protocol ReportPopoverCoordinatorDelegate: AnyObject {
     func didFinish(childCoordinator: Coordinator)
+    func didSelectReportButton(childCoordinator: Coordinator)
 }
 
 final class ReportPopoverCoordinator: Coordinator {

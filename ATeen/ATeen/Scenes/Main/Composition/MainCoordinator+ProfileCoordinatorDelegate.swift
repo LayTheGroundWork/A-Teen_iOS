@@ -6,10 +6,19 @@
 //
 
 extension MainCoordinator: ProfileDetailCoordinatorDelegate,
-                           ReportPopoverCoordinatorDelegate {
+                           ReportPopoverCoordinatorDelegate,
+                           ReportDialogCoordinatorDelegate {
     func didFinish(childCoordinator: Coordinator) {
         childCoordinator.navigation.dismissNavigation = nil
         removeChildCoordinator(childCoordinator)
         navigation.dismiss(animated: false)
+    }
+    
+    func didSelectReportButton(childCoordinator: Coordinator) {
+        didFinish(childCoordinator: childCoordinator)
+        let reportDialogCoordinator = factory.makeReportDialogCoordinator(
+            navigation: navigation,
+            delegate: self)
+        addChildCoordinatorStart(reportDialogCoordinator)
     }
 }

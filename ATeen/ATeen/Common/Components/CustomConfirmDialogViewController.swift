@@ -29,12 +29,6 @@ class CustomConfirmDialogViewController: UIViewController {
         return view
     }()
     
-//    private lazy var xmarkButton: UIButton = {
-//        let button = UIButton()
-//        button.setImage(UIImage(named: "xMarkIcon"), for: .normal)
-//        return button
-//    }()
-    
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.text = dialogTitle
@@ -119,12 +113,6 @@ class CustomConfirmDialogViewController: UIViewController {
             make.trailing.equalToSuperview().offset(-ViewValues.defaultPadding)
             make.center.equalToSuperview()
         }
-        
-//        xmarkButton.snp.makeConstraints { make in
-//            make.top.equalToSuperview().offset(20)
-//            make.trailing.equalToSuperview().offset(-20)
-//            make.width.height.equalTo(24)
-//        }
         
         titleLabel.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(50)

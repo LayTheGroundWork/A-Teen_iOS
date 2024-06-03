@@ -11,4 +11,8 @@ extension ReportPopoverCoordinator: ReportPopoverViewControllerCoordinator {
     func didFinish() {
         delegate?.didFinish(childCoordinator: self)
     }
+    
+    func didSelectReportButton() {
+        delegate?.didSelectReportButton(childCoordinator: self)
+    }
 }

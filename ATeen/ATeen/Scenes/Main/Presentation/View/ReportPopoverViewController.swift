@@ -11,6 +11,7 @@ import UIKit
 
 protocol ReportPopoverViewControllerCoordinator: AnyObject {
     func didFinish()
+    func didSelectReportButton()
 }
 
 final class ReportPopoverViewController: UIViewController {
@@ -115,7 +116,7 @@ final class ReportPopoverViewController: UIViewController {
     
     // MARK: - Actions
     @objc private func clickReportButton(_ sender: UIButton) {
-        
+        coordinator?.didSelectReportButton()
     }
     
     @objc private func clickBlockButton(_ sender: UIButton) {

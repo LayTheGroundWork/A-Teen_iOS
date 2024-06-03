@@ -21,6 +21,9 @@
 		09F9F00B2C0CB7EB009DE3A0 /* ReportPopoverCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F9F00A2C0CB7EB009DE3A0 /* ReportPopoverCoordinator.swift */; };
 		09F9F00D2C0CB7FA009DE3A0 /* ReportPopoverFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F9F00C2C0CB7FA009DE3A0 /* ReportPopoverFactory.swift */; };
 		09F9F00F2C0CBFF6009DE3A0 /* ReportPopoverCoordinator+ReportPopoverViewControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F9F00E2C0CBFF6009DE3A0 /* ReportPopoverCoordinator+ReportPopoverViewControllerCoordinator.swift */; };
+		09F9F0132C0CE525009DE3A0 /* ReportDialogFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F9F0122C0CE525009DE3A0 /* ReportDialogFactory.swift */; };
+		09F9F0152C0CE52E009DE3A0 /* ReportDialogCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F9F0142C0CE52E009DE3A0 /* ReportDialogCoordinator.swift */; };
+		09F9F0172C0D8AB5009DE3A0 /* ReportDialogCoordinator+ReportDialogViewControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F9F0162C0D8AB4009DE3A0 /* ReportDialogCoordinator+ReportDialogViewControllerCoordinator.swift */; };
 		417286CA2BFF0AEA004F88F9 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 417286C92BFF0AEA004F88F9 /* ProfileViewController.swift */; };
 		417286CC2BFF0B03004F88F9 /* ProfileFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 417286CB2BFF0B03004F88F9 /* ProfileFactory.swift */; };
 		417286CE2BFF0B83004F88F9 /* ProfileCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 417286CD2BFF0B83004F88F9 /* ProfileCoordinator.swift */; };
@@ -164,6 +167,9 @@
 		09F9F00A2C0CB7EB009DE3A0 /* ReportPopoverCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportPopoverCoordinator.swift; sourceTree = "<group>"; };
 		09F9F00C2C0CB7FA009DE3A0 /* ReportPopoverFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportPopoverFactory.swift; sourceTree = "<group>"; };
 		09F9F00E2C0CBFF6009DE3A0 /* ReportPopoverCoordinator+ReportPopoverViewControllerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ReportPopoverCoordinator+ReportPopoverViewControllerCoordinator.swift"; sourceTree = "<group>"; };
+		09F9F0122C0CE525009DE3A0 /* ReportDialogFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportDialogFactory.swift; sourceTree = "<group>"; };
+		09F9F0142C0CE52E009DE3A0 /* ReportDialogCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportDialogCoordinator.swift; sourceTree = "<group>"; };
+		09F9F0162C0D8AB4009DE3A0 /* ReportDialogCoordinator+ReportDialogViewControllerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ReportDialogCoordinator+ReportDialogViewControllerCoordinator.swift"; sourceTree = "<group>"; };
 		417286C92BFF0AEA004F88F9 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		417286CB2BFF0B03004F88F9 /* ProfileFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileFactory.swift; sourceTree = "<group>"; };
 		417286CD2BFF0B83004F88F9 /* ProfileCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCoordinator.swift; sourceTree = "<group>"; };
@@ -424,6 +430,9 @@
 				09F9F00C2C0CB7FA009DE3A0 /* ReportPopoverFactory.swift */,
 				09F9F00A2C0CB7EB009DE3A0 /* ReportPopoverCoordinator.swift */,
 				09F9F00E2C0CBFF6009DE3A0 /* ReportPopoverCoordinator+ReportPopoverViewControllerCoordinator.swift */,
+				09F9F0122C0CE525009DE3A0 /* ReportDialogFactory.swift */,
+				09F9F0142C0CE52E009DE3A0 /* ReportDialogCoordinator.swift */,
+				09F9F0162C0D8AB4009DE3A0 /* ReportDialogCoordinator+ReportDialogViewControllerCoordinator.swift */,
 			);
 			path = Composition;
 			sourceTree = "<group>";
@@ -1271,9 +1280,11 @@
 				41DC1A232C077E540035ED4C /* SelectBirthViewController.swift in Sources */,
 				41BB4BF32BFB2E0F00D26A5D /* HomeViewController.swift in Sources */,
 				419CCE842C0466CA00D2E7F8 /* UIFont+TextStyle.swift in Sources */,
+				09F9F0172C0D8AB5009DE3A0 /* ReportDialogCoordinator+ReportDialogViewControllerCoordinator.swift in Sources */,
 				418CB1F22BF74138001DA795 /* AppLocalized.swift in Sources */,
 				418CB2092BF74EAC001DA795 /* TeenFactory.swift in Sources */,
 				4190F8C52BF4E6EF00FCC0A3 /* AppDelegate.swift in Sources */,
+				09F9F0132C0CE525009DE3A0 /* ReportDialogFactory.swift in Sources */,
 				41BB4BE32BFB1AE200D26A5D /* MyPostsFactory.swift in Sources */,
 				09F9F00D2C0CB7FA009DE3A0 /* ReportPopoverFactory.swift in Sources */,
 				735AC9232C005CCF004C3D21 /* UILabel+Constraints.swift in Sources */,
@@ -1309,6 +1320,7 @@
 				73F9B8282C021E7800684152 /* ProfileDetailViewModel.swift in Sources */,
 				735AC9032C005AB9004C3D21 /* AnotherTeenTableViewCell.swift in Sources */,
 				417286FB2BFF91D0004F88F9 /* LogInCoordinator+LogInViewControllerCoordinator.swift in Sources */,
+				09F9F0152C0CE52E009DE3A0 /* ReportDialogCoordinator.swift in Sources */,
 				41735B562BFCEE2200E4A339 /* PostDetailFactoryImp.swift in Sources */,
 				418CB1D52BF71DC8001DA795 /* LogInViewModel.swift in Sources */,
 				736D18DC2C0782F5003A2243 /* UserBirthCollectionViewCell.swift in Sources */,
