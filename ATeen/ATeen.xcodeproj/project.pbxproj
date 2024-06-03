@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0444E82E2C05A81500FB96FD /* SearchSchoolViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0444E82D2C05A81500FB96FD /* SearchSchoolViewController.swift */; };
-		0444E83C2C06FD4400FB96FD /* SearchSchoolResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0444E83B2C06FD4400FB96FD /* SearchSchoolResultTableViewCell.swift */; };
 		0444E8552C075A9200FB96FD /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 0444E8542C075A9200FB96FD /* SnapKit */; };
 		0444E85C2C075DE700FB96FD /* SnapKit-Dynamic in Embed Frameworks */ = {isa = PBXBuildFile; productRef = 0444E8592C075DE700FB96FD /* SnapKit-Dynamic */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		0444E85D2C0760EE00FB96FD /* SnapKit-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = 0444E8592C075DE700FB96FD /* SnapKit-Dynamic */; };
@@ -159,7 +157,8 @@
 		736D18E82C07968F003A2243 /* Notification+Name.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736D18E72C07968F003A2243 /* Notification+Name.swift */; };
 		73BB940C2C047FDE00687A97 /* MainTabCoordinator+MainCoordinatorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73BB940B2C047FDE00687A97 /* MainTabCoordinator+MainCoordinatorDelegate.swift */; };
 		73BB940E2C0480D700687A97 /* MainTabCoordinator+LogInCoordinatorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73BB940D2C0480D600687A97 /* MainTabCoordinator+LogInCoordinatorDelegate.swift */; };
-		73F831412C09AEDE00CB4E89 /* SearchSchoolResultViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73F831402C09AEDE00CB4E89 /* SearchSchoolResultViewModel.swift */; };
+		73BE23202C0DFD5D009A8FC6 /* SearchSchoolResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73BE231D2C0DFD5D009A8FC6 /* SearchSchoolResultTableViewCell.swift */; };
+		73BE23232C0DFDF9009A8FC6 /* SearchSchoolCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73BE23222C0DFDF9009A8FC6 /* SearchSchoolCollectionViewCell.swift */; };
 		73F9B8242C02182200684152 /* ProfileDetailFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73F9B8232C02182200684152 /* ProfileDetailFactory.swift */; };
 		73F9B8262C02182C00684152 /* ProfileDetailCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73F9B8252C02182C00684152 /* ProfileDetailCoordinator.swift */; };
 		73F9B8282C021E7800684152 /* ProfileDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73F9B8272C021E7800684152 /* ProfileDetailViewModel.swift */; };
@@ -181,8 +180,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		0444E82D2C05A81500FB96FD /* SearchSchoolViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchSchoolViewController.swift; sourceTree = "<group>"; };
-		0444E83B2C06FD4400FB96FD /* SearchSchoolResultTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchSchoolResultTableViewCell.swift; sourceTree = "<group>"; };
 		0922B4A12C022C1200375953 /* CustomImageLabelButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomImageLabelButton.swift; sourceTree = "<group>"; };
 		09F9EFEF2C05C699009DE3A0 /* TermsOfUseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsOfUseViewController.swift; sourceTree = "<group>"; };
 		09F9EFF12C062199009DE3A0 /* TermsOfUseFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsOfUseFactory.swift; sourceTree = "<group>"; };
@@ -332,8 +329,8 @@
 		736D18E72C07968F003A2243 /* Notification+Name.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification+Name.swift"; sourceTree = "<group>"; };
 		73BB940B2C047FDE00687A97 /* MainTabCoordinator+MainCoordinatorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainTabCoordinator+MainCoordinatorDelegate.swift"; sourceTree = "<group>"; };
 		73BB940D2C0480D600687A97 /* MainTabCoordinator+LogInCoordinatorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainTabCoordinator+LogInCoordinatorDelegate.swift"; sourceTree = "<group>"; };
-		73F831402C09AEDE00CB4E89 /* SearchSchoolResultViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchSchoolResultViewModel.swift; sourceTree = "<group>"; };
-		73EC85072C06F9D200ABE16A /* LoginBirthViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginBirthViewModel.swift; sourceTree = "<group>"; };
+		73BE231D2C0DFD5D009A8FC6 /* SearchSchoolResultTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchSchoolResultTableViewCell.swift; sourceTree = "<group>"; };
+		73BE23222C0DFDF9009A8FC6 /* SearchSchoolCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SearchSchoolCollectionViewCell.swift; path = ATeen/Scenes/Login/SignUp/Presentation/Cell/SearchSchoolCollectionViewCell.swift; sourceTree = SOURCE_ROOT; };
 		73F9B8232C02182200684152 /* ProfileDetailFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDetailFactory.swift; sourceTree = "<group>"; };
 		73F9B8252C02182C00684152 /* ProfileDetailCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDetailCoordinator.swift; sourceTree = "<group>"; };
 		73F9B8272C021E7800684152 /* ProfileDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDetailViewModel.swift; sourceTree = "<group>"; };
@@ -353,13 +350,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0444E8582C075DE700FB96FD /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		0922B4A02C022B8100375953 /* Components */ = {
 			isa = PBXGroup;
 			children = (
@@ -535,9 +525,6 @@
 		418CB1D22BF71DB8001DA795 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				0444E82D2C05A81500FB96FD /* SearchSchoolViewController.swift */,
-				0444E83B2C06FD4400FB96FD /* SearchSchoolResultTableViewCell.swift */,
-				73F831402C09AEDE00CB4E89 /* SearchSchoolResultViewModel.swift */,
 				41A014792C070F220046856B /* SignUpViewController.swift */,
 				41DC1A202C077E540035ED4C /* SelectBirthViewController.swift */,
 			);
@@ -930,6 +917,8 @@
 				41A0148B2C0717E60046856B /* UserIdCollectionViewCell.swift */,
 				41A0148D2C0717F30046856B /* UserNameCollectionViewCell.swift */,
 				736D18DB2C0782F5003A2243 /* UserBirthCollectionViewCell.swift */,
+				73BE23222C0DFDF9009A8FC6 /* SearchSchoolCollectionViewCell.swift */,
+				73BE231D2C0DFD5D009A8FC6 /* SearchSchoolResultTableViewCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -1152,14 +1141,6 @@
 			path = Components;
 			sourceTree = "<group>";
 		};
-		41DC1A1A2C077C620035ED4C /* Recovered References */ = {
-			isa = PBXGroup;
-			children = (
-				73EC85072C06F9D200ABE16A /* LoginBirthViewModel.swift */,
-			);
-			name = "Recovered References";
-			sourceTree = "<group>";
-		};
 		41DC1A1B2C077DDB0035ED4C /* Components */ = {
 			isa = PBXGroup;
 			children = (
@@ -1371,7 +1352,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				735AC90E2C005B5D004C3D21 /* CustomQuestionView.swift in Sources */,
-				73F831412C09AEDE00CB4E89 /* SearchSchoolResultViewModel.swift in Sources */,
 				41735B582BFCEEC300E4A339 /* HomeCoordinator+HomeViewControllerCoordinator.swift in Sources */,
 				41BB4BE12BFB179D00D26A5D /* MyPostsViewController.swift in Sources */,
 				735AC90F2C005B5D004C3D21 /* CustomAboutATeenView.swift in Sources */,
@@ -1398,7 +1378,6 @@
 				09F9F0192C0D93A3009DE3A0 /* ReportCompleteDialogFactory.swift in Sources */,
 				735AC9152C005B9F004C3D21 /* CustomHeartButton.swift in Sources */,
 				418CB1F42BF743AE001DA795 /* SettingsCoordinator.swift in Sources */,
-				0444E82E2C05A81500FB96FD /* SearchSchoolViewController.swift in Sources */,
 				41735B4C2BFCE8E300E4A339 /* SettingsCoordinator+UserConfigurationCoordinatorDelegate.swift in Sources */,
 				41A515A62C022B3000EDAEA2 /* ProfileDetailBottomBar.swift in Sources */,
 				735AC9102C005B5D004C3D21 /* CustomQuestionTextView.swift in Sources */,
@@ -1423,6 +1402,7 @@
 				418CB1E72BF73D1B001DA795 /* SettingsViewNavigation.swift in Sources */,
 				41BB4BF52BFB2EB400D26A5D /* HomeCoordinator.swift in Sources */,
 				09F9EFF22C062199009DE3A0 /* TermsOfUseFactory.swift in Sources */,
+				73BE23232C0DFDF9009A8FC6 /* SearchSchoolCollectionViewCell.swift in Sources */,
 				735AC9182C005BAD004C3D21 /* ProfileDetailViewController.swift in Sources */,
 				73F9B8282C021E7800684152 /* ProfileDetailViewModel.swift in Sources */,
 				735AC9032C005AB9004C3D21 /* AnotherTeenTableViewCell.swift in Sources */,
@@ -1459,6 +1439,7 @@
 				09F9F0082C0C63C3009DE3A0 /* CustomPopoverButton.swift in Sources */,
 				735AC92B2C005D21004C3D21 /* TodayTeen.swift in Sources */,
 				09F9F0062C0C5FBC009DE3A0 /* ReportCompleteDialogViewController.swift in Sources */,
+				73BE23202C0DFD5D009A8FC6 /* SearchSchoolResultTableViewCell.swift in Sources */,
 				736D18DE2C0787AC003A2243 /* SignUpCoordinator+SignUpViewControllerCoordinator.swift in Sources */,
 				417286CE2BFF0B83004F88F9 /* ProfileCoordinator.swift in Sources */,
 				417286CA2BFF0AEA004F88F9 /* ProfileViewController.swift in Sources */,
@@ -1515,7 +1496,6 @@
 				41BB4C002BFB39FA00D26A5D /* PostDetailCoordinator.swift in Sources */,
 				41D0F7292C09A60E00488C18 /* PhoneNumberFactory.swift in Sources */,
 				418CB1EB2BF73E6F001DA795 /* SettingsViewController.swift in Sources */,
-				0444E83C2C06FD4400FB96FD /* SearchSchoolResultTableViewCell.swift in Sources */,
 				73F9B8262C02182C00684152 /* ProfileDetailCoordinator.swift in Sources */,
 				41D0F72F2C09AAB200488C18 /* LogInCoordinator+PhoneNumberCoordinatorDelegate.swift in Sources */,
 				735AC9352C005EB0004C3D21 /* MainCoordinator+MainViewControllerCoordinator.swift in Sources */,

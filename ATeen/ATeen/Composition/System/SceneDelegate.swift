@@ -17,15 +17,16 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         willConnectTo session: UISceneSession,
         options connectionOptions: UIScene.ConnectionOptions
     ) {
-        guard let windowScene = ( scene as? UIWindowScene ) else { return }
-        
-        window = UIWindow(windowScene: windowScene)
-        
-        let navigationController = UINavigationController(rootViewController: SearchSchoolViewController())
-        
-        window?.rootViewController = navigationController
-        window?.makeKeyAndVisible()
-        window?.windowScene = windowScene
+        guard let scene = (scene as? UIWindowScene) else { return }
+        guard let data = UIApplication.shared.delegate as? AppDelegate else { return }
+        window = UIWindow(windowScene: scene)
+        appContainer = data.appContainer
+        appFactory = AppFactory(appContainer: appContainer)
+        appCoordinator = AppCoordinator(
+            navigation: NavigationImp(rootViewController: UINavigationController()),
+            window: window,
+            factory: appFactory)
+        appCoordinator?.start()
     }
     
     func sceneDidDisconnect(_ scene: UIScene) {
