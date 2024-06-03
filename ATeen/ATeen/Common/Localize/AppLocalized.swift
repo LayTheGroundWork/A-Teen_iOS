@@ -67,4 +67,14 @@ enum AppLocalized {
     static let nameInstructionText = "이름 혹은 닉네임을 알려주세요"
     static let nameCountText = "3/8"
     static let nameGuideText = "특수문자를 제외한 한글/영어/숫자 (2~8자리)\n* 추후 언제든 수정 가능합니다."
+    
+    // MARK: - PhoneNumberCollectionViewCell
+    static let inputPhoneNumberText = "번호를 입력해주세요"
+    static let receiveCertificationCodeButton = "인증코드 받기"
+    
+    // MARK: - CertificationCodeCollectionViewCell
+    static let inputCodeText = "6자리 코드 입력"
+    static let resendText = "코드를 받지 못하셨나요? 다시 전송해보세요!"
+    static let resendButtonText = "다시 전송하기"
+    
 }

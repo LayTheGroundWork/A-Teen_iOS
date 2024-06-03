@@ -1,26 +1,26 @@
 //
-//  TermsOfUseCoordinator.swift
+//  PhoneNumberCoordinator.swift
 //  ATeen
 //
-//  Created by phang on 5/28/24.
+//  Created by 최동호 on 5/31/24.
 //
 
 import Foundation
 
-protocol TermsOfUseCoordinatorDelegate: AnyObject {
+protocol PhoneNumberCoordinatorDelegate: AnyObject {
     func didFinish(childCoordinator: Coordinator)
 }
 
-final class TermsOfUseCoordinator: Coordinator {
+final class PhoneNumberCoordinator: Coordinator {
     var navigation: Navigation
-    var factory: TermsOfUseFactory
+    var factory: PhoneNumberFactory
     var childCoordinators: [Coordinator]
-    weak var delegate: TermsOfUseCoordinatorDelegate?
+    weak var delegate: PhoneNumberCoordinatorDelegate?
     
     init(navigation: Navigation,
-         factory: TermsOfUseFactory,
+         factory: PhoneNumberFactory,
          childCoordinators: [Coordinator],
-         delegate: TermsOfUseCoordinatorDelegate
+         delegate: PhoneNumberCoordinatorDelegate
     ) {
         self.navigation = navigation
         self.factory = factory
@@ -29,9 +29,9 @@ final class TermsOfUseCoordinator: Coordinator {
     }
     
     func start() {
-        let controller = factory.makeTermsOfUseViewController(coordinator: self)
+        let controller = factory.makePhoneNumberViewController(coordinator: self)
         navigation.pushViewController(controller, animated: true)
     }
 }
 
-extension TermsOfUseCoordinator: ParentCoordinator { }
+extension PhoneNumberCoordinator: ParentCoordinator { }

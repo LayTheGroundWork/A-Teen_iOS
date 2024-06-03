@@ -84,7 +84,6 @@ final class SignUpViewController: UIViewController {
     // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.leftBarButtonItem = backButton
         configUserInterface()
         configLayout()
         setupActions()
@@ -93,6 +92,7 @@ final class SignUpViewController: UIViewController {
     // MARK: - Helpers
     private func configUserInterface() {
         view.backgroundColor = .systemBackground
+        navigationItem.leftBarButtonItem = backButton
         self.view.addSubview(progressView)
         self.view.addSubview(collectionView)
         self.view.addSubview(nextButton)

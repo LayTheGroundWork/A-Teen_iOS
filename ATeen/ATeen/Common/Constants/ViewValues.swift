@@ -18,6 +18,7 @@ struct ViewValues {
     static let width = UIScreen.main.bounds.width
     static let height = UIScreen.main.bounds.height
     static let halfHeight = height / 2
+    static let phoneNumberCollectionViewHeight = height * 0.8
     
     static let todayTeenImageWidth = width - 50
     static let todayTeenImageHeight = todayTeenImageWidth * 1.16

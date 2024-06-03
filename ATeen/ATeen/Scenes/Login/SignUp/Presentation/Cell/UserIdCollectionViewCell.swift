@@ -22,7 +22,7 @@ final class UserIdCollectionViewCell: UICollectionViewCell {
     }()
     
     // 안내 메시지 레이블
-    private lazy var  instructionLabel: UILabel = {
+    private lazy var instructionLabel: UILabel = {
         let label = UILabel()
         label.text = AppLocalized.idInstructionText
         label.font = UIFont.customFont(forTextStyle: .title3,
@@ -32,7 +32,7 @@ final class UserIdCollectionViewCell: UICollectionViewCell {
     }()
     
     // 텍스트 필드
-    private lazy var  textField: UITextField = {
+    private lazy var textField: UITextField = {
         let textField = UITextField()
         textField.borderStyle = .roundedRect
         textField.layer.borderWidth = 2.0
@@ -45,7 +45,7 @@ final class UserIdCollectionViewCell: UICollectionViewCell {
     }()
     
     // 문자 길이 표시 레이블
-    private lazy var  charCountLabel: UILabel = {
+    private lazy var charCountLabel: UILabel = {
         let label = UILabel()
         label.text = AppLocalized.idCountText
         label.font = UIFont.customFont(forTextStyle: .footnote,
@@ -56,7 +56,7 @@ final class UserIdCollectionViewCell: UICollectionViewCell {
     }()
     
     // 안내 문구 레이블
-    private lazy var  guideLabel: UILabel = {
+    private lazy var guideLabel: UILabel = {
         let label = UILabel()
         label.text = AppLocalized.idGuideText
         label.font = UIFont.customFont(forTextStyle: .footnote,

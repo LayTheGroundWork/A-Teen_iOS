@@ -6,6 +6,10 @@
 //
 
 extension TermsOfUseCoordinator: TermsOfUseViewControllerCoordinator {
+    func didFinish() {
+        delegate?.didFinish(childCoordinator: self)
+    }
+    
     func didSelectNextButton() {
         let coordinator = factory.makeSignUpCoordinator(
             navigation: navigation,
