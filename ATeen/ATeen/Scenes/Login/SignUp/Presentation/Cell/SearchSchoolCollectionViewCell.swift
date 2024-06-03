@@ -70,12 +70,11 @@ final class SearchSchoolCollectionViewCell: UICollectionViewCell {
     
     private lazy var tableView: UITableView = {
         let tableView = UITableView()
-        tableView.layer.cornerRadius = ViewValues.defaultRadius
         tableView.showsVerticalScrollIndicator = false
         tableView.separatorStyle = .none
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.register(SearchSchoolResultTableViewCell.self, forCellReuseIdentifier: "SchoolCell")
+        tableView.register(SearchSchoolResultTableViewCell.self, forCellReuseIdentifier: SearchSchoolResultTableViewCell.reuseIdentifier)
         return tableView
     }()
     
@@ -110,8 +109,6 @@ final class SearchSchoolCollectionViewCell: UICollectionViewCell {
     
     // MARK: - Helpers
     private func configUserInterface() {
-        contentView.backgroundColor = UIColor(named: "backgroundColor")
-        
         contentView.addSubview(titleLabel)
         contentView.addSubview(schoolTextField)
         contentView.addSubview(tableBackgroundView)
@@ -163,6 +160,10 @@ final class SearchSchoolCollectionViewCell: UICollectionViewCell {
     }
 
     // MARK: - Actions
+    func setProperties(viewModel: LoginBirthViewModel) {
+        self.viewModel = viewModel
+    }
+    
     @objc private func textFieldDidChange(_ textField: UITextField) {
         guard let text = textField.text else { return }
         viewModel.filterSchools(text: text)
@@ -279,7 +280,11 @@ extension SearchSchoolCollectionViewCell: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "SchoolCell", for: indexPath) as? SearchSchoolResultTableViewCell else {
+        guard
+            let cell = tableView.dequeueReusableCell(
+            withIdentifier: SearchSchoolResultTableViewCell.reuseIdentifier,
+            for: indexPath) as? SearchSchoolResultTableViewCell
+        else {
             return UITableViewCell()
         }
         cell.fontChange(

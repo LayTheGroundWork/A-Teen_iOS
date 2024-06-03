@@ -65,3 +65,5 @@ class SearchSchoolResultTableViewCell: UITableViewCell {
         }
     }
 }
+
+extension SearchSchoolResultTableViewCell: Reusable { }
