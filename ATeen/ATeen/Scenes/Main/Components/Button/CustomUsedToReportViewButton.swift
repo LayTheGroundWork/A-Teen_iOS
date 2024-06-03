@@ -11,7 +11,9 @@ import UIKit
 final class CustomUsedToReportViewButton: CustomImageLabelButton {
     override init(
         imageName: String,
+        selectedImageName: String?,
         imageColor: UIColor?,
+        selectedImageColor: UIColor? = nil,
         textColor: UIColor = .black,
         labelText: String,
         buttonBackgroundColor: UIColor = .clear,
@@ -21,7 +23,9 @@ final class CustomUsedToReportViewButton: CustomImageLabelButton {
     ) {
         super.init(
             imageName: imageName,
+            selectedImageName: selectedImageName,
             imageColor: imageColor,
+            selectedImageColor: selectedImageColor,
             textColor: textColor,
             labelText: labelText,
             buttonBackgroundColor: buttonBackgroundColor,
@@ -39,15 +43,15 @@ final class CustomUsedToReportViewButton: CustomImageLabelButton {
 extension CustomUsedToReportViewButton {
     override func layoutSubviews() {
         super.layoutSubviews()
-        
+
         customImageView.snp.makeConstraints { make in
             make.leading.equalToSuperview()
             make.centerY.equalToSuperview()
-            make.width.height.equalTo(24)
+            make.width.height.equalTo(22)
         }
         
         customLabel.snp.makeConstraints { make in
-            make.leading.equalTo(customImageView.snp.trailing).offset(5)
+            make.leading.equalTo(customImageView.snp.trailing).offset(8)
             make.centerY.equalTo(customImageView.snp.centerY)
         }
     }

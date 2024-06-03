@@ -11,7 +11,9 @@ import UIKit
 final class CustomLoginButton: CustomImageLabelButton {
     override init(
         imageName: String = "chevron.right",
+        selectedImageName: String? = nil,
         imageColor: UIColor? = .main,
+        selectedImageColor: UIColor? = nil,
         textColor: UIColor = .main,
         labelText: String = AppLocalized.loginButton,
         buttonBackgroundColor: UIColor = .clear,
@@ -21,7 +23,9 @@ final class CustomLoginButton: CustomImageLabelButton {
     ) {
         super.init(
             imageName: imageName,
+            selectedImageName: selectedImageName,
             imageColor: imageColor,
+            selectedImageColor: selectedImageColor,
             textColor: textColor,
             labelText: labelText,
             buttonBackgroundColor: buttonBackgroundColor,

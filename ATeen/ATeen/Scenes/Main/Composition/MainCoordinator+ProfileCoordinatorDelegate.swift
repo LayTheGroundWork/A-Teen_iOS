@@ -8,7 +8,7 @@
 extension MainCoordinator: ProfileDetailCoordinatorDelegate,
                            ReportPopoverCoordinatorDelegate,
                            ReportDialogCoordinatorDelegate,
-                           ReportCompleteDialogCoordinatorDelegate{
+                           ReportCompleteDialogCoordinatorDelegate {
     func didFinish(childCoordinator: Coordinator) {
         childCoordinator.navigation.dismissNavigation = nil
         removeChildCoordinator(childCoordinator)

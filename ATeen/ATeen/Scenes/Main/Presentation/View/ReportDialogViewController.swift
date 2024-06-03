@@ -15,14 +15,11 @@ protocol ReportDialogViewControllerCoordinator: AnyObject {
 }
 
 // TODO: - 기타 버튼 클릭 시, textField 에 내용 필수
-// + 이유 없이 신고하기 버튼 클릭 disable 처리
 // 신고 사유 정리되면 사유 텍스트 수정 필요
-// 버튼 액션 처리
-// 버튼 클릭 시, 버튼 이미지 변경 로직 필요
 final class ReportDialogViewController: UIViewController {
     // MARK: - Private properties
     private weak var coordinator: ReportDialogViewControllerCoordinator?
-
+    
     private lazy var dialogView: UIView = {
         let view = UIView()
         view.backgroundColor = .white
@@ -46,59 +43,75 @@ final class ReportDialogViewController: UIViewController {
         return label
     }()
     
-    private lazy var reportReasonButton1: UIButton = {
+    private lazy var reportReasonButton1: CustomUsedToReportViewButton = {
         let button = CustomUsedToReportViewButton(
             imageName: "circleButton",
+            selectedImageName: "clickedCircleButton",
             imageColor: .gray03,
             labelText: "따돌림 또는 괴롭힘")
-        button.isSelected = false
         button.tag = 1
+        button.isSelected = false
         return button
     }()
     
-    private lazy var reportReasonButton2: UIButton = {
+    private lazy var reportReasonButton2: CustomUsedToReportViewButton = { 
         let button = CustomUsedToReportViewButton(
             imageName: "circleButton",
+            selectedImageName: "clickedCircleButton",
             imageColor: .gray03,
             labelText: "불법적인 게시물")
-        button.isSelected = false
         button.tag = 2
+        button.isSelected = false
         return button
     }()
     
-    private lazy var reportReasonButton3: UIButton = {
+    private lazy var reportReasonButton3: CustomUsedToReportViewButton = {
         let button = CustomUsedToReportViewButton(
             imageName: "circleButton",
+            selectedImageName: "clickedCircleButton",
             imageColor: .gray03,
             labelText: "혐오 발언 또는 상징")
-        button.isSelected = false
         button.tag = 3
+        button.isSelected = false
         return button
     }()
     
-    private lazy var reportReasonButton4: UIButton = {
+    private lazy var reportReasonButton4: CustomUsedToReportViewButton = {
         let button = CustomUsedToReportViewButton(
             imageName: "circleButton",
+            selectedImageName: "clickedCircleButton",
             imageColor: .gray03,
             labelText: "기타")
-        button.isSelected = false
         button.tag = 4
+        button.isSelected = false
         return button
     }()
     
-    // TODO: - delegate 사용해서 디벨롭 수정 필요
-    private lazy var textField: UITextField = {
-        let textField = UITextField()
-//        textField.delegate = self
-        textField.layer.cornerRadius = 10
-        textField.layer.borderWidth = 2
-        textField.layer.borderColor = UIColor.gray03.cgColor
-        return textField
+    private lazy var textView: UITextView = {
+        let textView = UITextView()
+        textView.delegate = self
+        textView.backgroundColor = .white
+        textView.text = "신고 사유를 작성해주세요."
+        textView.textColor = .gray01
+        textView.autocapitalizationType = .none
+        textView.autocorrectionType = .no
+        textView.returnKeyType = .done
+        textView.layer.masksToBounds = true
+        textView.layer.cornerRadius = 10
+        textView.layer.borderWidth = 2
+        textView.layer.borderColor = UIColor.gray03.cgColor
+        textView.font = .customFont(forTextStyle: .footnote,
+                                    weight: .regular)
+        textView.textAlignment = .left
+        textView.isEditable = true
+        textView.isScrollEnabled = true
+        return textView
     }()
     
-    private lazy var blockButton: UIButton = {
+    private lazy var blockButton: CustomUsedToReportViewButton = {
         let button = CustomUsedToReportViewButton(
             imageName: "grayCheckButton",
+            selectedImageName: "mainCheckButton",
             imageColor: .gray03,
             labelText: "해당 프로필 다시는 보지 않기")
         button.isSelected = false
@@ -121,8 +134,9 @@ final class ReportDialogViewController: UIViewController {
                                                     weight: .regular)
         button.setTitle("신고하기", for: .normal)
         button.setTitleColor(.white, for: .normal)
-        button.backgroundColor = .main
+        button.backgroundColor = .gray01
         button.layer.cornerRadius = ViewValues.defaultRadius
+        button.isEnabled = false
         return button
     }()
     
@@ -155,6 +169,12 @@ final class ReportDialogViewController: UIViewController {
         blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         blurEffectView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         view.addSubview(blurEffectView)
+        
+        // 키보드 내리기
+        let tapGesture = UITapGestureRecognizer(
+            target: view,
+            action: #selector(view.endEditing))
+        view.addGestureRecognizer(tapGesture)
     
         view.addSubview(dialogView)
         dialogView.addSubview(xmarkButton)
@@ -163,7 +183,7 @@ final class ReportDialogViewController: UIViewController {
         dialogView.addSubview(reportReasonButton2)
         dialogView.addSubview(reportReasonButton3)
         dialogView.addSubview(reportReasonButton4)
-        dialogView.addSubview(textField)
+        dialogView.addSubview(textView)
         dialogView.addSubview(blockButton)
         dialogView.addSubview(explainMessageLabel)
         dialogView.addSubview(reportButton)
@@ -190,24 +210,44 @@ final class ReportDialogViewController: UIViewController {
         reportReasonButton1.snp.makeConstraints { make in
             make.top.equalTo(titleLabel.snp.bottom).offset(30)
             make.leading.equalToSuperview().offset(20)
+            make.width.equalTo(getTextSize(
+                text: reportReasonButton1.labelText,
+                font: .customFont(
+                    forTextStyle: .footnote,
+                    weight: .regular)).width + 30)
         }
         
         reportReasonButton2.snp.makeConstraints { make in
             make.top.equalTo(reportReasonButton1.snp.bottom).offset(ViewValues.defaultPadding)
             make.leading.equalToSuperview().offset(20)
+            make.width.equalTo(getTextSize(
+                text: reportReasonButton2.labelText,
+                font: .customFont(
+                    forTextStyle: .footnote,
+                    weight: .regular)).width + 30)
         }
         
         reportReasonButton3.snp.makeConstraints { make in
             make.top.equalTo(reportReasonButton2.snp.bottom).offset(ViewValues.defaultPadding)
             make.leading.equalToSuperview().offset(20)
+            make.width.equalTo(getTextSize(
+                text: reportReasonButton3.labelText,
+                font: .customFont(
+                    forTextStyle: .footnote,
+                    weight: .regular)).width + 30)
         }
         
         reportReasonButton4.snp.makeConstraints { make in
             make.top.equalTo(reportReasonButton3.snp.bottom).offset(ViewValues.defaultPadding)
             make.leading.equalToSuperview().offset(20)
+            make.width.equalTo(getTextSize(
+                text: reportReasonButton4.labelText,
+                font: .customFont(
+                    forTextStyle: .footnote,
+                    weight: .regular)).width + 30)
         }
         
-        textField.snp.makeConstraints { make in
+        textView.snp.makeConstraints { make in
             make.top.equalTo(reportReasonButton4.snp.bottom).offset(ViewValues.defaultPadding)
             make.centerX.equalToSuperview()
             make.leading.equalToSuperview().offset(20)
@@ -216,8 +256,13 @@ final class ReportDialogViewController: UIViewController {
         }
         
         blockButton.snp.makeConstraints { make in
-            make.top.equalTo(textField.snp.bottom).offset(ViewValues.defaultPadding)
+            make.top.equalTo(textView.snp.bottom).offset(ViewValues.defaultPadding)
             make.leading.equalToSuperview().offset(20)
+            make.width.equalTo(getTextSize(
+                text: blockButton.labelText,
+                font: .customFont(
+                    forTextStyle: .footnote,
+                    weight: .regular)).width + 30)
         }
         
         explainMessageLabel.snp.makeConstraints { make in
@@ -248,6 +293,9 @@ final class ReportDialogViewController: UIViewController {
         reportReasonButton4.addTarget(self,
                                       action: #selector(clickReasonButton(_:)),
                                       for: .touchUpInside)
+        blockButton.addTarget(self,
+                              action: #selector(clickBlockCheckButton(_:)),
+                              for: .touchUpInside)
         xmarkButton.addTarget(self,
                               action: #selector(clickCloseButton(_:)),
                               for: .touchUpInside)
@@ -255,25 +303,36 @@ final class ReportDialogViewController: UIViewController {
                                 action: #selector(clickReportButton(_:)),
                                 for: .touchUpInside)
     }
+
+    private func getTextSize(text: String, font: UIFont) -> CGSize {
+        let attributes: [NSAttributedString.Key: UIFont] = [.font: font]
+        let textSize = (text as NSString).size(withAttributes: attributes)
+        return textSize
+    }
     
     // MARK: - Actions
     @objc private func clickCloseButton(_ sender: UIButton) {
         coordinator?.didFinish()
     }
     
-    @objc private func clickReasonButton(_ sender: UIButton) {
+    @objc private func clickReasonButton(_ sender: CustomUsedToReportViewButton) {
         switch sender.tag {
         case 1:
-            didSelectReasonButton(reportReasonButton1)
+            didSelectCheckButton(reportReasonButton1)
         case 2:
-            didSelectReasonButton(reportReasonButton2)
+            didSelectCheckButton(reportReasonButton2)
         case 3:
-            didSelectReasonButton(reportReasonButton3)
+            didSelectCheckButton(reportReasonButton3)
         case 4:
-            didSelectReasonButton(reportReasonButton4)
+            didSelectCheckButton(reportReasonButton4)
         default:
             break
         }
+        updateReportButton()
+    }
+    
+    @objc private func clickBlockCheckButton(_ sender: CustomUsedToReportViewButton) {
+        didSelectCheckButton(sender)
     }
     
     @objc private func clickReportButton(_ sender: UIButton) {
@@ -285,19 +344,53 @@ final class ReportDialogViewController: UIViewController {
 
 // MARK: - Extension + Actions 관련 메서드
 extension ReportDialogViewController {
-    private func didSelectReasonButton(_ button: UIButton) {
+    private func didSelectCheckButton(_ button: CustomUsedToReportViewButton) {
         if button.isSelected {
-            updateSelectButton(button)
-        } else {
             updateNotSelectButton(button)
+        } else {
+            updateSelectButton(button)
         }
     }
     
-    private func updateSelectButton(_ button: UIButton) {
+    private func updateSelectButton(_ button: CustomUsedToReportViewButton) {
+        button.updateImage(for: .selected)
         button.isSelected = true
     }
     
-    private func updateNotSelectButton(_ button: UIButton) {
+    private func updateNotSelectButton(_ button: CustomUsedToReportViewButton) {
+        button.updateImage(for: .normal)
         button.isSelected = false
+    }
+    
+    private func checkReportButtonEnable() -> Bool {
+        return [reportReasonButton1, reportReasonButton2,
+                reportReasonButton3, reportReasonButton4]
+            .contains { $0.isSelected == true }
+    }
+    
+    private func updateReportButton() {
+        if checkReportButtonEnable() {
+            reportButton.isEnabled = true
+            reportButton.backgroundColor = .main
+        } else {
+            reportButton.isEnabled = false
+            reportButton.backgroundColor = .gray01
+        }
+    }
+}
+
+// MARK: - Extension + TextView
+extension ReportDialogViewController: UITextViewDelegate {
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        guard textView.textColor == .gray01 else { return }
+        textView.text = ""
+        textView.textColor = .black
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if (textView.text == "") {
+            textView.text = "신고 사유를 작성해주세요."
+            textView.textColor = .gray01
+        }
     }
 }

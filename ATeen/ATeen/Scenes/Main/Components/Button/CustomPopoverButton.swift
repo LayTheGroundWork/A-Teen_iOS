@@ -11,7 +11,9 @@ import UIKit
 final class CustomPopoverButton: CustomImageLabelButton {
     override init(
         imageName: String,
+        selectedImageName: String? = nil,
         imageColor: UIColor? = .main,
+        selectedImageColor: UIColor? = nil,
         textColor: UIColor = .black,
         labelText: String,
         buttonBackgroundColor: UIColor = .clear,
@@ -21,7 +23,9 @@ final class CustomPopoverButton: CustomImageLabelButton {
     ) {
         super.init(
             imageName: imageName,
+            selectedImageName: selectedImageName,
             imageColor: imageColor,
+            selectedImageColor: selectedImageColor,
             textColor: textColor,
             labelText: labelText,
             buttonBackgroundColor: buttonBackgroundColor,

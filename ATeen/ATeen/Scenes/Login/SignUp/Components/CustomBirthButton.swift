@@ -15,7 +15,9 @@ final class CustomBirthButton: CustomImageLabelButton {
     
     override init(
         imageName: String,
+        selectedImageName: String? = nil,
         imageColor: UIColor?,
+        selectedImageColor: UIColor? = nil,
         textColor: UIColor,
         labelText: String,
         buttonBackgroundColor: UIColor,
@@ -24,7 +26,9 @@ final class CustomBirthButton: CustomImageLabelButton {
     ) {
         super.init(
             imageName: imageName,
+            selectedImageName: selectedImageName,
             imageColor: imageColor,
+            selectedImageColor: selectedImageColor,
             textColor: textColor,
             labelText: labelText,
             buttonBackgroundColor: buttonBackgroundColor,
