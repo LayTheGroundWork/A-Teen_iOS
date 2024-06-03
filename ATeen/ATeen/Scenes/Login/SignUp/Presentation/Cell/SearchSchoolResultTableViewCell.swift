@@ -17,7 +17,7 @@ class SearchSchoolResultTableViewCell: UITableViewCell {
     
     private lazy var lineView: UIView = {
         let view = UIView()
-        view.backgroundColor = UIColor(named: "grayQuestionCellColor")
+        view.backgroundColor = UIColor(named: "gray03")
         return view
     }()
     

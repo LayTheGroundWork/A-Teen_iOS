@@ -80,7 +80,7 @@ final class SearchSchoolCollectionViewCell: UICollectionViewCell {
     
     private lazy var customIndicatorBackgroudView: UIView = {
         let view = UIView()
-        view.backgroundColor = UIColor(named: "grayQuestionCellColor")
+        view.backgroundColor = UIColor(named: "gray03")
         view.layer.cornerRadius = 2.5
         return view
     }()
