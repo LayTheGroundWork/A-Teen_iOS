@@ -90,7 +90,7 @@ final class CertificationCodeCollectionViewCell: UICollectionViewCell {
         self.contentView.addSubview(nextButton)
         
         for i in 0..<6 {
-            let textField = UITextField()
+            let textField = CustomTextField()
             textField.textAlignment = .center
             textField.font = UIFont.customFont(forTextStyle: .largeTitle, weight: .bold)
             textField.textColor = .black
@@ -200,6 +200,25 @@ final class CertificationCodeCollectionViewCell: UICollectionViewCell {
 
 // UITextFieldDelegate
 extension CertificationCodeCollectionViewCell: UITextFieldDelegate {
+    final class CustomTextField: UITextField {
+        override public func deleteBackward() {
+            if let text = text, text.isEmpty {
+                moveToPreviousTextField()
+            }
+            super.deleteBackward()
+        }
+        
+        private func moveToPreviousTextField() {
+            dump(self)
+            if tag > 1 {
+                // 이전 텍스트 필드로 이동
+                if let previousTextField = superview?.viewWithTag(tag - 1) as? UITextField {
+                    previousTextField.becomeFirstResponder()
+                }
+            }
+        }
+    }
+
     func textFieldDidBeginEditing(_ textField: UITextField) {
         updateBottomLineColors()
     }
@@ -209,19 +228,27 @@ extension CertificationCodeCollectionViewCell: UITextFieldDelegate {
         updateNextButtonState()
     }
     
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        guard let text = textField.text, let textRange = Range(range, in: text) else { return false }
+    func textField(
+        _ textField: UITextField,
+        shouldChangeCharactersIn range: NSRange,
+        replacementString string: String
+    ) -> Bool {
+        guard let text = textField.text,
+              let textRange = Range(range, in: text) 
+        else {
+            return false
+        }
         
         // 텍스트가 숫자인지 확인
-        guard string.isEmpty || (string.rangeOfCharacter(from: CharacterSet.decimalDigits) != nil) else {
+        guard string.isEmpty ||
+                (string.rangeOfCharacter(from: CharacterSet.decimalDigits) != nil)
+        else {
             return false
         }
 
         let updatedText = text.replacingCharacters(in: textRange, with: string)
         
-        /// 입력이 비어 있는 경우 이전 텍스트 필드로 이동
-        /// **현재 입력이 비어있어도 이전 텍스트 필드로 이동을 못하는 버그가 있음**
-        if string.isEmpty {
+        if updatedText.isEmpty {
             textField.text = ""
             if textField.tag > 1 {
                 let previousTextField = textFields[textField.tag - 2]
