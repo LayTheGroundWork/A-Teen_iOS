@@ -24,6 +24,8 @@ final class ReportPopoverViewController: UIViewController {
         let view = UIView()
         view.backgroundColor = .white
         view.layer.cornerRadius = 10
+        view.layer.borderWidth = 1.0
+        view.layer.borderColor = UIColor.gray03.cgColor
         return view
     }()
     
