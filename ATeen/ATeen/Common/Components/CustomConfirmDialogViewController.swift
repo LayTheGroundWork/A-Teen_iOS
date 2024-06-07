@@ -120,7 +120,11 @@ class CustomConfirmDialogViewController: UIViewController {
         }
         
         messageLabel.snp.makeConstraints { make in
-            make.top.equalTo(titleLabel.snp.bottom).offset(10)
+            if dialogTitle == nil {
+                make.top.equalToSuperview().offset(50)
+            } else {
+                make.top.equalTo(titleLabel.snp.bottom).offset(10)
+            }
             make.centerX.equalToSuperview()
         }
         
