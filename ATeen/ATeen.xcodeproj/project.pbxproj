@@ -11,6 +11,8 @@
 		0444E85C2C075DE700FB96FD /* SnapKit-Dynamic in Embed Frameworks */ = {isa = PBXBuildFile; productRef = 0444E8592C075DE700FB96FD /* SnapKit-Dynamic */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		0444E85D2C0760EE00FB96FD /* SnapKit-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = 0444E8592C075DE700FB96FD /* SnapKit-Dynamic */; };
 		0922B4A22C022C1200375953 /* CustomImageLabelButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0922B4A12C022C1200375953 /* CustomImageLabelButton.swift */; };
+		094F94FB2C12F9900033ED93 /* VerificationCompleteDialogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094F94FA2C12F9900033ED93 /* VerificationCompleteDialogViewController.swift */; };
+		094F94FD2C12FFD70033ED93 /* CustomTwoButtonDialogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094F94FC2C12FFD70033ED93 /* CustomTwoButtonDialogViewController.swift */; };
 		09F9EFF02C05C699009DE3A0 /* TermsOfUseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F9EFEF2C05C699009DE3A0 /* TermsOfUseViewController.swift */; };
 		09F9EFF22C062199009DE3A0 /* TermsOfUseFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F9EFF12C062199009DE3A0 /* TermsOfUseFactory.swift */; };
 		09F9EFF42C0621B7009DE3A0 /* TermsOfUseCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F9EFF32C0621B7009DE3A0 /* TermsOfUseCoordinator.swift */; };
@@ -181,6 +183,8 @@
 
 /* Begin PBXFileReference section */
 		0922B4A12C022C1200375953 /* CustomImageLabelButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomImageLabelButton.swift; sourceTree = "<group>"; };
+		094F94FA2C12F9900033ED93 /* VerificationCompleteDialogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationCompleteDialogViewController.swift; sourceTree = "<group>"; };
+		094F94FC2C12FFD70033ED93 /* CustomTwoButtonDialogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTwoButtonDialogViewController.swift; sourceTree = "<group>"; };
 		09F9EFEF2C05C699009DE3A0 /* TermsOfUseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsOfUseViewController.swift; sourceTree = "<group>"; };
 		09F9EFF12C062199009DE3A0 /* TermsOfUseFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsOfUseFactory.swift; sourceTree = "<group>"; };
 		09F9EFF32C0621B7009DE3A0 /* TermsOfUseCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsOfUseCoordinator.swift; sourceTree = "<group>"; };
@@ -355,6 +359,7 @@
 			children = (
 				0922B4A12C022C1200375953 /* CustomImageLabelButton.swift */,
 				09F9EFF92C09A254009DE3A0 /* CustomConfirmDialogViewController.swift */,
+				094F94FC2C12FFD70033ED93 /* CustomTwoButtonDialogViewController.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -527,6 +532,7 @@
 			children = (
 				41A014792C070F220046856B /* SignUpViewController.swift */,
 				41DC1A202C077E540035ED4C /* SelectBirthViewController.swift */,
+				094F94FA2C12F9900033ED93 /* VerificationCompleteDialogViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1379,6 +1385,7 @@
 				735AC9152C005B9F004C3D21 /* CustomHeartButton.swift in Sources */,
 				418CB1F42BF743AE001DA795 /* SettingsCoordinator.swift in Sources */,
 				41735B4C2BFCE8E300E4A339 /* SettingsCoordinator+UserConfigurationCoordinatorDelegate.swift in Sources */,
+				094F94FB2C12F9900033ED93 /* VerificationCompleteDialogViewController.swift in Sources */,
 				41A515A62C022B3000EDAEA2 /* ProfileDetailBottomBar.swift in Sources */,
 				735AC9102C005B5D004C3D21 /* CustomQuestionTextView.swift in Sources */,
 				09F9F0022C09CF33009DE3A0 /* CustomUsedToReportViewButton.swift in Sources */,
@@ -1442,6 +1449,7 @@
 				73BE23202C0DFD5D009A8FC6 /* SearchSchoolResultTableViewCell.swift in Sources */,
 				736D18DE2C0787AC003A2243 /* SignUpCoordinator+SignUpViewControllerCoordinator.swift in Sources */,
 				417286CE2BFF0B83004F88F9 /* ProfileCoordinator.swift in Sources */,
+				094F94FD2C12FFD70033ED93 /* CustomTwoButtonDialogViewController.swift in Sources */,
 				417286CA2BFF0AEA004F88F9 /* ProfileViewController.swift in Sources */,
 				41BB4C0B2BFBB8BE00D26A5D /* UserConfigurationViewController.swift in Sources */,
 				41A0147A2C070F220046856B /* SignUpViewController.swift in Sources */,
