@@ -140,7 +140,7 @@ class CustomTwoButtonDialogViewController: UIViewController {
         dialogView.addSubview(titleLabel)
         dialogView.addSubview(messageLabel)
         dialogView.addSubview(leftButton)
-        dialogView.addSubview(rightButton)
+        dialogView.addSubview(buttonStackView)
     }
     
     private func configLayout() {
@@ -156,12 +156,16 @@ class CustomTwoButtonDialogViewController: UIViewController {
         }
         
         messageLabel.snp.makeConstraints { make in
-            make.top.equalTo(titleLabel.snp.bottom).offset(10)
+            if dialogTitle == nil {
+                make.top.equalToSuperview().offset(50)
+            } else {
+                make.top.equalTo(titleLabel.snp.bottom).offset(10)
+            }
             make.centerX.equalToSuperview()
         }
         
         leftButton.snp.makeConstraints { make in
-            make.width.equalTo(ViewValues.width - 32 - 32 * 0.44)
+            make.width.equalTo((ViewValues.width - 32 - 32 - 16) * 0.44)
         }
         
         buttonStackView.snp.makeConstraints { make in
