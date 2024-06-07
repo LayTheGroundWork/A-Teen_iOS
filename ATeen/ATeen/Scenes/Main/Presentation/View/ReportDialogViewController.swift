@@ -35,7 +35,7 @@ final class ReportDialogViewController: UIViewController {
     
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
-        label.text = "신고사유"
+        label.text = AppLocalized.reportDialogTitle
         label.textColor = .black
         label.textAlignment = .center
         label.font = UIFont.customFont(forTextStyle: .callout,
@@ -48,7 +48,7 @@ final class ReportDialogViewController: UIViewController {
             imageName: "circleButton",
             selectedImageName: "clickedCircleButton",
             imageColor: .gray03,
-            labelText: "따돌림 또는 괴롭힘")
+            labelText: AppLocalized.reportDialogViolenceReason)
         button.tag = 1
         button.isSelected = false
         return button
@@ -59,7 +59,7 @@ final class ReportDialogViewController: UIViewController {
             imageName: "circleButton",
             selectedImageName: "clickedCircleButton",
             imageColor: .gray03,
-            labelText: "불법적인 게시물")
+            labelText: AppLocalized.reportDialogAdReason)
         button.tag = 2
         button.isSelected = false
         return button
@@ -70,7 +70,7 @@ final class ReportDialogViewController: UIViewController {
             imageName: "circleButton",
             selectedImageName: "clickedCircleButton",
             imageColor: .gray03,
-            labelText: "혐오 발언 또는 상징")
+            labelText: AppLocalized.reportDialogImpersonationReason)
         button.tag = 3
         button.isSelected = false
         return button
@@ -81,7 +81,7 @@ final class ReportDialogViewController: UIViewController {
             imageName: "circleButton",
             selectedImageName: "clickedCircleButton",
             imageColor: .gray03,
-            labelText: "기타")
+            labelText: AppLocalized.reportDialogETCReason)
         button.tag = 4
         button.isSelected = false
         return button
@@ -91,7 +91,7 @@ final class ReportDialogViewController: UIViewController {
         let textView = UITextView()
         textView.delegate = self
         textView.backgroundColor = .white
-        textView.text = "신고 사유를 작성해주세요."
+        textView.text = AppLocalized.reportDialogPlaceholderText
         textView.textColor = .gray01
         textView.autocapitalizationType = .none
         textView.autocorrectionType = .no
@@ -113,14 +113,14 @@ final class ReportDialogViewController: UIViewController {
             imageName: "grayCheckButton",
             selectedImageName: "mainCheckButton",
             imageColor: .gray03,
-            labelText: "해당 프로필 다시는 보지 않기")
+            labelText: AppLocalized.reportDialogBlockButtonText)
         button.isSelected = false
         return button
     }()
     
     private lazy var explainMessageLabel: UILabel = {
         let label = UILabel()
-        label.text = "신고는 반대 의견을 표시하는 기능이 아닙니다."
+        label.text = AppLocalized.reportDialogExplainText
         label.textColor = .gray01
         label.textAlignment = .center
         label.font = UIFont.customFont(forTextStyle: .footnote,
@@ -132,7 +132,7 @@ final class ReportDialogViewController: UIViewController {
         let button = UIButton()
         button.titleLabel?.font = UIFont.customFont(forTextStyle: .callout,
                                                     weight: .regular)
-        button.setTitle("신고하기", for: .normal)
+        button.setTitle(AppLocalized.reportButton, for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.backgroundColor = .gray01
         button.layer.cornerRadius = ViewValues.defaultRadius
@@ -380,7 +380,7 @@ extension ReportDialogViewController: UITextViewDelegate {
     
     func textViewDidEndEditing(_ textView: UITextView) {
         if (textView.text == "") {
-            textView.text = "신고 사유를 작성해주세요."
+            textView.text = AppLocalized.reportDialogPlaceholderText
             textView.textColor = .gray01
         }
     }
