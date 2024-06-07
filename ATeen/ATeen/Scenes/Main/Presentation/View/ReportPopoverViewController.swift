@@ -31,13 +31,13 @@ final class ReportPopoverViewController: UIViewController {
     
     private lazy var reportButton: UIButton = {
         let button = CustomPopoverButton(imageName: "reportIcon",
-                                         labelText: "신고하기")
+                                         labelText: AppLocalized.reportButton)
         return button
     }()
     
     private lazy var blockButton: UIButton = {
         let button = CustomPopoverButton(imageName: "blockIcon",
-                                         labelText: "차단하기")
+                                         labelText: AppLocalized.blockButton)
         return button
     }()
     

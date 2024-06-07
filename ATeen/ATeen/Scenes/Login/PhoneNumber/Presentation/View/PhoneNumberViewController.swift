@@ -11,7 +11,7 @@ import UIKit
 
 protocol PhoneNumberViewControllerCoordinator: AnyObject {
     func didFinish()
-    func didSelectNextButton()
+    func didSelectNextButton(registrationStatus: RegistrationStatus)
     func didSelectResendCode()
 }
 
@@ -154,8 +154,8 @@ extension PhoneNumberViewController: PhoneNumberCollectionViewCellDelegate {
 }
 
 extension PhoneNumberViewController: CertificationCodeCollectionViewCellDelegate {
-    func didSelectNextButton() {
-        coordinator?.didSelectNextButton()
+    func didSelectNextButton(registrationStatus: RegistrationStatus) {
+        coordinator?.didSelectNextButton(registrationStatus: registrationStatus)
     }
     
     func didSelectResendCode() {
