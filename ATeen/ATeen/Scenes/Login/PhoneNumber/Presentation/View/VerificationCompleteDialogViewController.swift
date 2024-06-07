@@ -16,18 +16,15 @@ final class VerificationCompleteDialogViewController: CustomConfirmDialogViewCon
     
     init(
         coordinator: VerificationCompleteDialogViewControllerCoordinator,
-        dialogTitle: String? = "인증이 완료되었어요!",
+        dialogTitle: String? = AppLocalized.verificationCompleteDialogTitle,
         titleColor: UIColor = .black,
         titleNumberOfLine: Int = 1,
         titleFont: UIFont = .customFont(forTextStyle: .callout, weight: .bold),
-        dialogMessage: String = """
-                                A-TEEN에 정보를 입력하여
-                                가입을 마저 완료해보세요.
-                                """,
+        dialogMessage: String = AppLocalized.verificationCompleteDialogMessage,
         messageColor: UIColor = .gray02,
         messageNumberOfLine: Int = 2,
         messageFont: UIFont = .customFont(forTextStyle: .footnote, weight: .regular),
-        buttonText: String = "좋아요!",
+        buttonText: String = AppLocalized.okGoodButton,
         buttonColor: UIColor = .black
     ) {
         self.coordinator = coordinator

@@ -49,7 +49,6 @@ struct SignUpFactoryImp: SignUpFactory {
             delegate: delegate)
     }
     
-    
     func makeSelectBirthCoordinator(
         delegate: ProfileDetailCoordinatorDelegate,
         frame: CGRect,

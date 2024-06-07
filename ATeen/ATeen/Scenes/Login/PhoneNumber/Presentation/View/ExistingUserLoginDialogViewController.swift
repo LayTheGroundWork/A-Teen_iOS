@@ -17,17 +17,17 @@ final class ExistingUserLoginDialogViewController: CustomTwoButtonDialogViewCont
     init(
         coordinator: ExistingUserLoginDialogViewControllerCoordinator,
         dialogImage: UIImage? = nil,
-        dialogTitle: String? = "이미 가입된 사용자에요!",
+        dialogTitle: String? = AppLocalized.existingUserDialogTitle,
         titleColor: UIColor = .black,
         titleNumberOfLine: Int = 1,
         titleFont: UIFont = .customFont(forTextStyle: .callout, weight: .bold),
-        dialogMessage: String = "바로 로그인 할까요?",
+        dialogMessage: String = AppLocalized.existingUserDialogMessage,
         messageColor: UIColor = .gray02,
         messageNumberOfLine: Int = 1,
         messageFont: UIFont = .customFont(forTextStyle: .footnote, weight: .regular),
-        leftButtonText: String = "아니요",
+        leftButtonText: String = AppLocalized.noButton,
         leftButtonColor: UIColor = .gray01,
-        rightButtonText: String = "좋아요!",
+        rightButtonText: String = AppLocalized.okGoodButton,
         rightButtonColor: UIColor = .main
     ) {
         self.coordinator = coordinator

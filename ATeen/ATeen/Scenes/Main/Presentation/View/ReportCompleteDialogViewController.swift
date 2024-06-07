@@ -17,18 +17,18 @@ final class ReportCompleteDialogViewController: CustomConfirmDialogViewControlle
     // MARK: - Life Cycle
     init(
         coordinator: ReportCompleteDialogViewControllerCoordinator,
-        dialogTitle: String? = "신고가 완료되었습니다.",
+        dialogTitle: String? = AppLocalized.reportCompleteDialogTitle,
         titleColor: UIColor = .black,
         titleNumberOfLine: Int = 1,
         titleFont: UIFont = .customFont(forTextStyle: .callout, weight: .bold),
-        dialogMessage: String =  """
+        dialogMessage: String = """
                                 해당 프로필은 oo님에게
                                 더이상 표시되지 않아요
                                 """,
         messageColor: UIColor = .gray02,
         messageNumberOfLine: Int = 2,
         messageFont: UIFont = .customFont(forTextStyle: .footnote, weight: .regular),
-        buttonText: String = "알겠어요!",
+        buttonText: String = AppLocalized.okButton,
         buttonColor: UIColor = .main
     ) {
         self.coordinator = coordinator
