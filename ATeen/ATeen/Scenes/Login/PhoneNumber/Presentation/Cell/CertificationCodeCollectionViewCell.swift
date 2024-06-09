@@ -172,9 +172,11 @@ final class CertificationCodeCollectionViewCell: UICollectionViewCell {
         // TODO: - 다음으로 이동할때, 가입된 사용자인지 검증 후 보내주기
         let isNotSignedUpUser = true
         if isNotSignedUpUser {      // 가입 가능
-            delegate?.didSelectNextButton(registrationStatus: .signedUp)
-        } else {                    // 이미 가입된 사용자
+            print("가입 가능")
             delegate?.didSelectNextButton(registrationStatus: .notSignedUp)
+        } else {                    // 이미 가입된 사용자
+            print("이미 가입된 사용자")
+            delegate?.didSelectNextButton(registrationStatus: .signedUp)
         }
     }
     

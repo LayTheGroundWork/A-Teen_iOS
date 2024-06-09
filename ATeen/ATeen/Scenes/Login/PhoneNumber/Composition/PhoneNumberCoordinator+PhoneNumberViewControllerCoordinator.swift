@@ -13,4 +13,18 @@ extension PhoneNumberCoordinator: PhoneNumberViewControllerCoordinator {
     func didSelectResendCode() {
         // TODO: 코드 재전송
     }
+    
+    func openVerificationCompleteDialog() {
+        let coordinator = factory.makeVerificationCompleteDialogCoordinator(
+            navigation: navigation,
+            delegate: self)
+        addChildCoordinatorStart(coordinator)
+    }
+    
+    func openExistingUserLoginDialog() {
+        let coordinator = factory.makeExistingUserLoginDialogCoordinator(
+            navigation: navigation,
+            delegate: self)
+        addChildCoordinatorStart(coordinator)
+    }
 }

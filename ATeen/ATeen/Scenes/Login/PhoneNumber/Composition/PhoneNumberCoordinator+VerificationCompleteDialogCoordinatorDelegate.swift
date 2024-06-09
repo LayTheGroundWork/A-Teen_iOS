@@ -5,23 +5,7 @@
 //  Created by phang on 6/8/24.
 //
 
-extension PhoneNumberCoordinator: VerificationCompleteDialogCoordinatorDelegate,
-                                  ExistingUserLoginDialogCoordinatorDelegate {
-    func didSelectNextButton(registrationStatus: RegistrationStatus) {
-        if registrationStatus == .notSignedUp {
-            let coordinator = factory.makeVerificationCompleteDialogCoordinator(
-                navigation: navigation,
-                delegate: self)
-            addChildCoordinatorStart(coordinator)
-        } else {
-            let coordinator = factory.makeExistingUserLoginDialogCoordinator(
-                navigation: navigation,
-                delegate: self)
-            addChildCoordinatorStart(coordinator)
-        }
-    }
-    
-    func didSelectOKButton(childCoordinator: Coordinator) {
+extension PhoneNumberCoordinator: VerificationCompleteDialogCoordinatorDelegate {    func didSelectOKButton(childCoordinator: Coordinator) {
         // 현재 Dialog 닫기
         childCoordinator.navigation.dismissNavigation = nil
         removeChildCoordinator(childCoordinator)

@@ -7,7 +7,7 @@
 
 extension LogInCoordinator: LogInViewControllerCoordinator {
     func didFinish() {
-        delegate?.didFinishLogin()
+        delegate?.didFinishLogin(childCoordinator: self)
     }
     
     func didSelectSignUpButton() {

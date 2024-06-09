@@ -8,7 +8,7 @@
 import UIKit
 
 protocol ExistingUserLoginDialogCoordinatorDelegate: AnyObject {
-    //
+    func navigateToMainViewController(childCoordinator: Coordinator)
 }
 
 final class ExistingUserLoginDialogCoordinator: Coordinator {

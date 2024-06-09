@@ -8,5 +8,7 @@
 import Foundation
 
 extension ExistingUserLoginDialogCoordinator: ExistingUserLoginDialogViewControllerCoordinator {
-    //
+    func navigateToMainViewController() {
+        delegate?.navigateToMainViewController(childCoordinator: self)
+    }
 }

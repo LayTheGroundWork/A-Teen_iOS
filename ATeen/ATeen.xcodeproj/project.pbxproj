@@ -21,6 +21,7 @@
 		094F95092C13731B0033ED93 /* ExistingUserLoginDialogFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094F95082C13731B0033ED93 /* ExistingUserLoginDialogFactory.swift */; };
 		094F950B2C1373220033ED93 /* ExistingUserLoginDialogCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094F950A2C1373220033ED93 /* ExistingUserLoginDialogCoordinator.swift */; };
 		094F950D2C1374AD0033ED93 /* ExistingUserLoginDialogCoordinator+ExistingUserLoginDialogViewControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094F950C2C1374AD0033ED93 /* ExistingUserLoginDialogCoordinator+ExistingUserLoginDialogViewControllerCoordinator.swift */; };
+		094F950F2C14B82F0033ED93 /* PhoneNumberCoordinator+ExistingUserLoginDialogCoordinatorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094F950E2C14B82F0033ED93 /* PhoneNumberCoordinator+ExistingUserLoginDialogCoordinatorDelegate.swift */; };
 		09F9EFF02C05C699009DE3A0 /* TermsOfUseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F9EFEF2C05C699009DE3A0 /* TermsOfUseViewController.swift */; };
 		09F9EFF22C062199009DE3A0 /* TermsOfUseFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F9EFF12C062199009DE3A0 /* TermsOfUseFactory.swift */; };
 		09F9EFF42C0621B7009DE3A0 /* TermsOfUseCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F9EFF32C0621B7009DE3A0 /* TermsOfUseCoordinator.swift */; };
@@ -201,6 +202,7 @@
 		094F95082C13731B0033ED93 /* ExistingUserLoginDialogFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExistingUserLoginDialogFactory.swift; sourceTree = "<group>"; };
 		094F950A2C1373220033ED93 /* ExistingUserLoginDialogCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExistingUserLoginDialogCoordinator.swift; sourceTree = "<group>"; };
 		094F950C2C1374AD0033ED93 /* ExistingUserLoginDialogCoordinator+ExistingUserLoginDialogViewControllerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ExistingUserLoginDialogCoordinator+ExistingUserLoginDialogViewControllerCoordinator.swift"; sourceTree = "<group>"; };
+		094F950E2C14B82F0033ED93 /* PhoneNumberCoordinator+ExistingUserLoginDialogCoordinatorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PhoneNumberCoordinator+ExistingUserLoginDialogCoordinatorDelegate.swift"; sourceTree = "<group>"; };
 		09F9EFEF2C05C699009DE3A0 /* TermsOfUseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsOfUseViewController.swift; sourceTree = "<group>"; };
 		09F9EFF12C062199009DE3A0 /* TermsOfUseFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsOfUseFactory.swift; sourceTree = "<group>"; };
 		09F9EFF32C0621B7009DE3A0 /* TermsOfUseCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsOfUseCoordinator.swift; sourceTree = "<group>"; };
@@ -1126,6 +1128,7 @@
 				41D0F72C2C09A7A100488C18 /* PhoneNumberCoordinator+PhoneNumberViewControllerCoordinator.swift */,
 				41D0F7362C09BEC600488C18 /* PhoneNumberCoordinator+TermsOfUseCoordinatorDelegate.swift */,
 				094F95062C136EE90033ED93 /* PhoneNumberCoordinator+VerificationCompleteDialogCoordinatorDelegate.swift */,
+				094F950E2C14B82F0033ED93 /* PhoneNumberCoordinator+ExistingUserLoginDialogCoordinatorDelegate.swift */,
 				094F95002C1367360033ED93 /* VerificationCompleteDialogFactory.swift */,
 				094F95022C13673E0033ED93 /* VerificationCompleteDialogCoordinator.swift */,
 				094F95042C1367E00033ED93 /* VerificationCompleteDialogCoordinator+VerificationCompleteDialogViewControllerCoordinator.swift */,
@@ -1501,6 +1504,7 @@
 				735AC9012C005AB9004C3D21 /* CategoryTodayCollectionViewCell.swift in Sources */,
 				41D0F72B2C09A61600488C18 /* PhoneNumberCoordinator.swift in Sources */,
 				0922B4A22C022C1200375953 /* CustomImageLabelButton.swift in Sources */,
+				094F950F2C14B82F0033ED93 /* PhoneNumberCoordinator+ExistingUserLoginDialogCoordinatorDelegate.swift in Sources */,
 				418CB2072BF74E88001DA795 /* TeenViewController.swift in Sources */,
 				09F9EFFD2C09A3DC009DE3A0 /* CustomLoginButton.swift in Sources */,
 				09F9F0042C0B0BD1009DE3A0 /* ReportPopoverViewController.swift in Sources */,

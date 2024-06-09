@@ -8,7 +8,7 @@
 import UIKit
 
 protocol ExistingUserLoginDialogViewControllerCoordinator: AnyObject {
-    // TODO: - 로그인 + 메인 이동 or 로그인 X + 메인 이동
+    func navigateToMainViewController()
 }
 
 final class ExistingUserLoginDialogViewController: CustomTwoButtonDialogViewController {
@@ -50,13 +50,15 @@ final class ExistingUserLoginDialogViewController: CustomTwoButtonDialogViewCont
     // MARK: - Actions
     override func clickLeftButton(_ sender: UIButton) {
         super.clickLeftButton(sender)
-        //
-        print("왼쪽 버튼 클릭")
+        // TODO: 로그인 안된 상태로 메인화면 이동
+        print("로그인 X")
+        coordinator?.navigateToMainViewController()
     }
     
     override func clickRightButton(_ sender: UIButton) {
         super.clickRightButton(sender)
-        //
-        print("오른쪽 버튼 클릭")
+        // TODO: 로그인 상태로 메인화면 이동
+        print("로그인 O")
+        coordinator?.navigateToMainViewController()
     }
 }

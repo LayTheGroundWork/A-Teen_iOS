@@ -11,7 +11,8 @@ import UIKit
 
 protocol PhoneNumberViewControllerCoordinator: AnyObject {
     func didFinish()
-    func didSelectNextButton(registrationStatus: RegistrationStatus)
+    func openVerificationCompleteDialog()
+    func openExistingUserLoginDialog()
     func didSelectResendCode()
 }
 
@@ -155,7 +156,11 @@ extension PhoneNumberViewController: PhoneNumberCollectionViewCellDelegate {
 
 extension PhoneNumberViewController: CertificationCodeCollectionViewCellDelegate {
     func didSelectNextButton(registrationStatus: RegistrationStatus) {
-        coordinator?.didSelectNextButton(registrationStatus: registrationStatus)
+        if registrationStatus == .notSignedUp {
+            coordinator?.openVerificationCompleteDialog()
+        } else {
+            coordinator?.openExistingUserLoginDialog()
+        }
     }
     
     func didSelectResendCode() {

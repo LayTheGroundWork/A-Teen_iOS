@@ -187,7 +187,8 @@ final class LogInViewController: UIViewController {
     private func configAction() {
         let loginAction = UIAction { [weak self] _ in
             self?.viewModel.login()
-            self?.coordinator?.didFinish()
+            print("로그인")
+//            self?.coordinator?.didFinish()
         }
         loginButton.addAction(loginAction, for: .touchUpInside)
     }
