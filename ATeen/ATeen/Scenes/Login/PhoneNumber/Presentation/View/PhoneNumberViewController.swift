@@ -21,7 +21,7 @@ final class PhoneNumberViewController: UIViewController {
     
     // MARK: - Private properties
     private weak var coordinator: PhoneNumberViewControllerCoordinator?
-
+    private var currentSection: Int = 0
     // 뒤로 가기 버튼
     private lazy var backButton: UIBarButtonItem = {
         let button = UIBarButtonItem(image: UIImage(named: "leftArrowIcon"),
@@ -47,7 +47,7 @@ final class PhoneNumberViewController: UIViewController {
         
         return collectionView
     }()
-
+    
     
     // MARK: - Life Cycle
     init(coordinator: PhoneNumberViewControllerCoordinator) {
@@ -96,8 +96,16 @@ final class PhoneNumberViewController: UIViewController {
         
     }
     
-    @objc private func didSelectBackButton(_ sender: UIBarButtonItem) {
-        coordinator?.didFinish()
+    @objc private func didSelectBackButton(_ sender: UIButton) {
+        if currentSection == 1 {
+            collectionView.scrollToItem(
+                at: IndexPath(item: 0, section: 0),
+                at: .centeredHorizontally,
+                animated: true
+            )
+        } else {
+            coordinator?.didFinish()
+        }
     }
 }
 
@@ -120,23 +128,25 @@ extension PhoneNumberViewController: UICollectionViewDataSource {
         case 0:
             guard
                 let cell = collectionView.dequeueReusableCell(
-                withReuseIdentifier: PhoneNumberCollectionViewCell.reuseIdentifier,
-                for: indexPath) as? PhoneNumberCollectionViewCell
-           
+                    withReuseIdentifier: PhoneNumberCollectionViewCell.reuseIdentifier,
+                    for: indexPath) as? PhoneNumberCollectionViewCell
+                    
             else {
                 return UICollectionViewCell()
             }
             cell.setDelegate(delegate: self)
+            currentSection = 0
             return cell
         case 1:
             guard
                 let cell = collectionView.dequeueReusableCell(
-                withReuseIdentifier: CertificationCodeCollectionViewCell.reuseIdentifier,
-                for: indexPath) as? CertificationCodeCollectionViewCell
+                    withReuseIdentifier: CertificationCodeCollectionViewCell.reuseIdentifier,
+                    for: indexPath) as? CertificationCodeCollectionViewCell
             else {
                 return UICollectionViewCell()
             }
             cell.setDelegate(delegate: self)
+            currentSection = 1
             return cell
         default:
             return UICollectionViewCell()
