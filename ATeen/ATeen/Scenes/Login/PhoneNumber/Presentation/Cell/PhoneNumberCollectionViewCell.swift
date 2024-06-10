@@ -28,15 +28,26 @@ final class PhoneNumberCollectionViewCell: UICollectionViewCell {
     
     // 텍스트 필드
     private lazy var textField: UITextField = {
-        let textField = UITextField()
+        let textField = CustomClearXmarkTextField()
+        textField.delegate = self
         textField.borderStyle = .roundedRect
+        textField.keyboardType = .numberPad
+        textField.clearButtonMode = .never
+        textField.rightView = clearTextButton
+        textField.rightViewMode = .whileEditing
         textField.layer.borderWidth = 2.0
         textField.layer.cornerRadius = 10
         textField.layer.borderColor = UIColor.main.cgColor
-        textField.backgroundColor = UIColor.white
+        textField.backgroundColor = .white
         textField.textColor = .black
         textField.tintColor = .gray01
         return textField
+    }()
+    
+    private lazy var clearTextButton: UIButton = {
+        let button = UIButton()
+        button.setImage(UIImage(named: "clearButton"), for: .normal)
+        return button
     }()
     
     private lazy var certificateButton: UIButton = {
@@ -45,7 +56,9 @@ final class PhoneNumberCollectionViewCell: UICollectionViewCell {
                                                     weight: .regular)
         button.setTitle(AppLocalized.receiveCertificationCodeButton, for: .normal)
         button.setTitleColor(.white, for: .normal)
-        button.backgroundColor = .main
+        button.setTitleColor(.gray02, for: .disabled)
+        button.isEnabled = false
+        button.backgroundColor = .gray03
         button.layer.cornerRadius = ViewValues.defaultRadius
         return button
     }()
@@ -96,6 +109,9 @@ final class PhoneNumberCollectionViewCell: UICollectionViewCell {
         certificateButton.addTarget(self,
                              action: #selector(didSelectCertificateButton(_: )),
                              for: .touchUpInside)
+        clearTextButton.addTarget(self,
+                                  action: #selector(didSelectClearTextButton(_:)),
+                                  for: .touchUpInside)
     }
     
     func setDelegate(delegate: PhoneNumberCollectionViewCellDelegate) {
@@ -106,12 +122,77 @@ final class PhoneNumberCollectionViewCell: UICollectionViewCell {
     @objc private func didSelectCertificateButton(_ sender: UIButton) {
         delegate?.didSelectCertificateButton()
     }
-    // MARK: - Extensions here
     
+    @objc private func didSelectClearTextButton(_ sender: UIButton) {
+        textField.text?.removeAll()
+        textField.rightViewMode = .never
+    }
+    
+    // MARK: - Extensions here
 }
 
 extension PhoneNumberCollectionViewCell: UITextFieldDelegate {
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        if let text = textField.text,
+           text.isEmpty {
+            textField.rightViewMode = .never
+        }
+    }
+
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        if let text = textField.text,
+           !text.isEmpty {
+            textField.rightViewMode = .always
+        } else {
+            textField.rightViewMode = .never
+        }
+    }
     
+    func textFieldDidChangeSelection(_ textField: UITextField) {
+        if let text = textField.text,
+           text.count >= 11 {
+            certificateButton.backgroundColor = .main
+            certificateButton.isEnabled = true
+        } else {
+            certificateButton.backgroundColor = .gray03
+            certificateButton.isEnabled = false
+        }
+    }
+    
+    func textField(
+        _ textField: UITextField,
+        shouldChangeCharactersIn range: NSRange,
+        replacementString string: String
+    ) -> Bool {
+        let newText = string.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard let text = textField.text, let predictRange = Range(range, in: text) else { return true }
+        let predictedText = text.replacingCharacters(in: predictRange, with: newText)
+            .trimmingCharacters(in: .whitespacesAndNewlines)
+        if predictedText.isEmpty {
+            textField.rightViewMode = .never
+        } else {
+            textField.rightViewMode = .whileEditing
+        }
+        return true
+    }
 }
 
 extension PhoneNumberCollectionViewCell: Reusable { }
+
+// MARK: - 커스텀 텍스트 필드
+final class CustomClearXmarkTextField: UITextField {
+    // rightView 에 clear 버튼 사용 시, 패딩 14 를 주기 위함
+    override func rightViewRect(forBounds bounds: CGRect) -> CGRect {
+        var padding = super.rightViewRect(forBounds: bounds)
+        padding.origin.x -= 14
+        return padding
+    }
+    
+    // 복사해서 붙여넣기 방지
+    override func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {
+        if action == #selector(UIResponderStandardEditActions.paste(_:)) {
+            return false
+        }
+        return super.canPerformAction(action, withSender: sender)
+    }
+}
