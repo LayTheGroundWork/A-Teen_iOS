@@ -154,9 +154,7 @@ final class SignUpViewController: UIViewController {
 }
 
 // MARK: - Extensions here
-extension SignUpViewController: UICollectionViewDelegate {
-    
-}
+extension SignUpViewController: UICollectionViewDelegate { }
 
 extension SignUpViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -178,7 +176,7 @@ extension SignUpViewController: UICollectionViewDataSource {
             else {
                 return UICollectionViewCell()
             }
-            
+            cell.setProperties(delegate: self)
             return cell
         case 1:
             guard
@@ -221,5 +219,12 @@ extension SignUpViewController: UICollectionViewDataSource {
         default:
             return UICollectionViewCell()
         }
+    }
+}
+
+extension SignUpViewController: UserIdCollectionViewCellDelegate {
+    func updateNextButtonState(_ state: Bool) {
+        nextButton.isEnabled = state
+        nextButton.backgroundColor = if state { UIColor.black } else { UIColor.gray03 }
     }
 }
