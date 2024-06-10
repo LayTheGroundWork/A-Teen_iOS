@@ -70,7 +70,7 @@ enum AppLocalized {
     // MARK: - UserNameViewController
     static let secondWelcomeText = "A-TEEN에서 쓰일"
     static let nameInstructionText = "이름 혹은 닉네임을 알려주세요"
-    static let nameCountText = "3/8"
+    static let nameCountText = "0/8"
     static let nameGuideText = "특수문자를 제외한 한글/영어/숫자 (2~8자리)\n* 추후 언제든 수정 가능합니다."
     
     // MARK: - PhoneNumberCollectionViewCell

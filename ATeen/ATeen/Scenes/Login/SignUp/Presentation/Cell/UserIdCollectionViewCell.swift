@@ -10,6 +10,7 @@ import SnapKit
 import UIKit
 
 protocol UserIdCollectionViewCellDelegate: AnyObject {
+    func didTapNextButtonInKeyboard()
     func updateNextButtonState(_ state: Bool)
 }
 
@@ -39,7 +40,7 @@ final class UserIdCollectionViewCell: UICollectionViewCell {
     }()
     
     // 텍스트 필드
-    private lazy var textField: UITextField = {
+    lazy var textField: UITextField = {
         let textField = UITextField()
         textField.borderStyle = .roundedRect
         textField.layer.borderWidth = 2.0
@@ -50,6 +51,7 @@ final class UserIdCollectionViewCell: UICollectionViewCell {
         textField.tintColor = .gray01
         textField.autocapitalizationType = .none
         textField.autocorrectionType = .no
+        textField.returnKeyType = .next
         return textField
     }()
     
@@ -185,6 +187,15 @@ extension UserIdCollectionViewCell: UITextFieldDelegate {
             return false
         }
         guard containsLowcaseAndNumber(string) else { return false }
+        return true
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        guard let text = textField.text,
+              containsLowcaseAndNumberInString(text) else {
+            return false
+        }
+        delegate?.didTapNextButtonInKeyboard()
         return true
     }
     

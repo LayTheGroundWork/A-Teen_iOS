@@ -22,6 +22,7 @@ final class PhoneNumberViewController: UIViewController {
     // MARK: - Private properties
     private weak var coordinator: PhoneNumberViewControllerCoordinator?
     private var currentSection: Int = 0
+    
     // 뒤로 가기 버튼
     private lazy var backButton: UIBarButtonItem = {
         let button = UIBarButtonItem(image: UIImage(named: "leftArrowIcon"),

@@ -138,18 +138,45 @@ final class SignUpViewController: UIViewController {
         guard currentIndexPath.section < collectionView.numberOfSections - 1 else { return }
         
         currentIndexPath.section += 1
-        
         progressView.setProgress(progressView.progress + ViewValues.signUpProgress, animated: true)
-        
         collectionView.scrollToItem(
             at: currentIndexPath,
             at: .centeredHorizontally,
             animated: true
         )
+        nextButton.isEnabled = false
+        nextButton.backgroundColor = .gray03
+        view.endEditing(true)
     }
     
     @objc private func didSelectBackButton(_ sender: UIBarButtonItem) {
-        coordinator?.didFinish()
+        guard currentIndexPath.section != 0 else {
+            coordinator?.didFinish()
+            return
+        }
+        switch currentIndexPath.section {
+        case 1:
+            let cell = collectionView.cellForItem(at: currentIndexPath) as? UserNameCollectionViewCell
+            cell?.textField.text = ""
+            cell?.contentView.endEditing(true)
+        case 2:
+            // TODO: -
+            break
+        case 3:
+            // TODO: -
+            break
+        default:
+            break
+        }
+        currentIndexPath.section -= 1
+        progressView.setProgress(progressView.progress - ViewValues.signUpProgress, animated: true)
+        collectionView.scrollToItem(
+            at: currentIndexPath,
+            at: .centeredHorizontally,
+            animated: true
+        )
+        nextButton.isEnabled = true
+        nextButton.backgroundColor = .black
     }
 }
 
@@ -186,7 +213,7 @@ extension SignUpViewController: UICollectionViewDataSource {
             else {
                 return UICollectionViewCell()
             }
-            
+            cell.setProperties(delegate: self)
             return cell
             
         case 2:
@@ -222,9 +249,14 @@ extension SignUpViewController: UICollectionViewDataSource {
     }
 }
 
-extension SignUpViewController: UserIdCollectionViewCellDelegate {
+extension SignUpViewController: UserIdCollectionViewCellDelegate,
+                                UserNameCollectionViewCellDelegate {
     func updateNextButtonState(_ state: Bool) {
         nextButton.isEnabled = state
         nextButton.backgroundColor = if state { UIColor.black } else { UIColor.gray03 }
+    }
+    
+    func didTapNextButtonInKeyboard() {
+        didSelectNextButton(nextButton)
     }
 }
