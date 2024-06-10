@@ -39,11 +39,11 @@ final class CertificationCodeCollectionViewCell: UICollectionViewCell {
         let button = UIButton()
         button.titleLabel?.font = UIFont.customFont(forTextStyle: .callout, weight: .regular)
         button.setTitle(AppLocalized.nextButton, for: .normal)
+        button.setTitleColor(.gray02, for: .disabled)
         button.setTitleColor(.white, for: .normal)
-        button.backgroundColor = .black
+        button.backgroundColor = .gray03
         button.layer.cornerRadius = ViewValues.defaultRadius
         button.isEnabled = false
-        button.alpha = 0.5
         return button
     }()
     
@@ -75,6 +75,7 @@ final class CertificationCodeCollectionViewCell: UICollectionViewCell {
     private lazy var timerLabel: UILabel = {
         let label = UILabel()
         label.text = ""
+        label.font = UIFont.customFont(forTextStyle: .footnote, weight: .regular)
         label.textColor = .black
         return label
     }()
@@ -200,7 +201,13 @@ final class CertificationCodeCollectionViewCell: UICollectionViewCell {
     private func updateNextButtonState() {
         let allFieldsFilled = textFields.allSatisfy { $0.text?.count == 1 }
         nextButton.isEnabled = allFieldsFilled
-        nextButton.alpha = allFieldsFilled ? 1.0 : 0.5
+        
+        if allFieldsFilled {
+            nextButton.backgroundColor = .main
+        } else {
+            nextButton.backgroundColor = .gray03
+        }
+//        nextButton.alpha = allFieldsFilled ? 1.0 : 0.5
     }
     
     // 텍스트 필드가 채워질 때 마다 라인 색 변경
