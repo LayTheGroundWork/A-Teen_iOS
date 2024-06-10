@@ -164,10 +164,13 @@ extension PhoneNumberCollectionViewCell: UITextFieldDelegate {
         shouldChangeCharactersIn range: NSRange,
         replacementString string: String
     ) -> Bool {
-        let newText = string.trimmingCharacters(in: .whitespacesAndNewlines)
+        let regex = "^[0-9]*$"
+        guard string.range(of: regex, options: .regularExpression) != nil else { return false }
+
         guard let text = textField.text, let predictRange = Range(range, in: text) else { return true }
-        let predictedText = text.replacingCharacters(in: predictRange, with: newText)
+        let predictedText = text.replacingCharacters(in: predictRange, with: string)
             .trimmingCharacters(in: .whitespacesAndNewlines)
+        
         if predictedText.isEmpty {
             textField.rightViewMode = .never
         } else {
