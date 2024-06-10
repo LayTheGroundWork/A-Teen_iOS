@@ -130,7 +130,6 @@ extension PhoneNumberViewController: UICollectionViewDataSource {
                 let cell = collectionView.dequeueReusableCell(
                     withReuseIdentifier: PhoneNumberCollectionViewCell.reuseIdentifier,
                     for: indexPath) as? PhoneNumberCollectionViewCell
-                    
             else {
                 return UICollectionViewCell()
             }

@@ -197,6 +197,16 @@ final class CertificationCodeCollectionViewCell: UICollectionViewCell {
         resetTimer()
     }
     
+    @objc private func updateTimer() {
+        if totalTime > 0 {
+            totalTime -= 1
+            timerLabel.text = formatTime(totalTime)
+        } else {
+            timer?.invalidate() // 타이머 중지
+            timerLabel.text = "00:00"
+        }
+    }
+    
     // 모든 텍스트 필드가 채워졌는지 확인하고 **다음으로** 버튼을 활성화 또는 비활성화
     private func updateNextButtonState() {
         let allFieldsFilled = textFields.allSatisfy { $0.text?.count == 1 }
@@ -235,16 +245,6 @@ final class CertificationCodeCollectionViewCell: UICollectionViewCell {
     // 타이머 초기화
     func startCountdown() {
         timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
-    }
-    
-    @objc func updateTimer() {
-        if totalTime > 0 {
-            totalTime -= 1
-            timerLabel.text = formatTime(totalTime)
-        } else {
-            timer?.invalidate() // 타이머 중지
-            timerLabel.text = "00:00"
-        }
     }
     
     func formatTime(_ totalSeconds: Int) -> String {
