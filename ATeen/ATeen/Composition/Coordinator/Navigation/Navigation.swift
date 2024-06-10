@@ -16,9 +16,9 @@ protocol Navigation {
         animated: Bool,
         completion: (() -> Void)?)
     func pushViewController(
-    _ viewControllerToPresent: UIViewController,
-    animated: Bool,
-    backCompletion: (() -> Void)?
+        _ viewControllerToPresent: UIViewController,
+        animated: Bool,
+        backCompletion: (() -> Void)?
     )
     func dismiss(animated: Bool)
     func popViewController(animated: Bool)

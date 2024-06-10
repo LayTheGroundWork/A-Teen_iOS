@@ -18,6 +18,11 @@ enum AppLocalized {
     static let voteButton = "투표하기"
     static let loginButton = "로그인"
     static let nextButton = "다음으로"
+    static let reportButton = "신고하기"
+    static let blockButton = "차단하기"
+    static let okButton = "알겠어요!"
+    static let okGoodButton = "좋아요!"
+    static let noButton = "아니요"
     
     // MARK: - AboutATeenTableViewCell
     static let teenTitle = "Teen"
@@ -77,4 +82,23 @@ enum AppLocalized {
     static let resendText = "코드를 받지 못하셨나요? 다시 전송해보세요!"
     static let resendButtonText = "다시 전송하기"
     
+    // MARK: - Login / PhoneNumber / Dialogs
+    static let verificationCompleteDialogTitle = "인증이 완료되었어요!"
+    static let verificationCompleteDialogMessage = """
+                                                A-TEEN에 정보를 입력하여
+                                                가입을 마저 완료해보세요.
+                                                """
+    static let existingUserDialogTitle = "이미 가입된 사용자에요!"
+    static let existingUserDialogMessage = "바로 로그인 할까요?"
+
+    // MARK: - MainView / Report
+    static let reportDialogTitle = "신고 사유"
+    static let reportDialogViolenceReason = "폭력성 또는 선정적인 프로필"
+    static let reportDialogAdReason = "광고 게시물 또는 프로필"
+    static let reportDialogImpersonationReason = "타인을 사칭한 프로필"
+    static let reportDialogETCReason = "기타"
+    static let reportDialogPlaceholderText = "신고 사유를 작성해주세요."
+    static let reportDialogBlockButtonText = "해당 프로필 다시는 보지 않기"
+    static let reportDialogExplainText = "신고는 반대 의견을 표시하는 기능이 아닙니다."
+    static let reportCompleteDialogTitle = "신고가 완료되었습니다."
 }

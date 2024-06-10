@@ -8,7 +8,7 @@
 import UIKit
 
 protocol LogInCoordinatorDelegate: AnyObject {
-    func didFinishLogin()
+    func didFinishLogin(childCoordinator: Coordinator)
 }
 
 final class LogInCoordinator: Coordinator {

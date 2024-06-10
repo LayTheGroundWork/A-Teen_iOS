@@ -9,16 +9,22 @@ extension PhoneNumberCoordinator: PhoneNumberViewControllerCoordinator {
     func didFinish() {
         delegate?.didFinish(childCoordinator: self)
     }
-
-    func didSelectNextButton() {
-        let coordinator = factory.makeTermsOfUseCoordinator(
+    
+    func didSelectResendCode() {
+        // TODO: 코드 재전송
+    }
+    
+    func openVerificationCompleteDialog() {
+        let coordinator = factory.makeVerificationCompleteDialogCoordinator(
             navigation: navigation,
-            childCoordinators: childCoordinators,
             delegate: self)
         addChildCoordinatorStart(coordinator)
     }
     
-    func didSelectResendCode() {
-        // TODO: 코드 재전송
+    func openExistingUserLoginDialog() {
+        let coordinator = factory.makeExistingUserLoginDialogCoordinator(
+            navigation: navigation,
+            delegate: self)
+        addChildCoordinatorStart(coordinator)
     }
 }

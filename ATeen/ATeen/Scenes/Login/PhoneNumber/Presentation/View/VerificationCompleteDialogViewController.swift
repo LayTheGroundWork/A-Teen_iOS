@@ -1,35 +1,31 @@
 //
-//  ReportCompleteDialogViewController.swift
+//  VerificationCompleteDialogViewController.swift
 //  ATeen
 //
-//  Created by phang on 6/2/24.
+//  Created by phang on 6/7/24.
 //
 
 import UIKit
 
-protocol ReportCompleteDialogViewControllerCoordinator: AnyObject {
-    func didFinish()
+protocol VerificationCompleteDialogViewControllerCoordinator: AnyObject {
+    func didSelectOKButton()
 }
 
-final class ReportCompleteDialogViewController: CustomConfirmDialogViewController {
-    private weak var coordinator: ReportCompleteDialogViewControllerCoordinator?
+final class VerificationCompleteDialogViewController: CustomConfirmDialogViewController {
+    private weak var coordinator: VerificationCompleteDialogViewControllerCoordinator?
     
-    // MARK: - Life Cycle
     init(
-        coordinator: ReportCompleteDialogViewControllerCoordinator,
-        dialogTitle: String? = AppLocalized.reportCompleteDialogTitle,
+        coordinator: VerificationCompleteDialogViewControllerCoordinator,
+        dialogTitle: String? = AppLocalized.verificationCompleteDialogTitle,
         titleColor: UIColor = .black,
         titleNumberOfLine: Int = 1,
         titleFont: UIFont = .customFont(forTextStyle: .callout, weight: .bold),
-        dialogMessage: String = """
-                                해당 프로필은 oo님에게
-                                더이상 표시되지 않아요
-                                """,
+        dialogMessage: String = AppLocalized.verificationCompleteDialogMessage,
         messageColor: UIColor = .gray02,
         messageNumberOfLine: Int = 2,
         messageFont: UIFont = .customFont(forTextStyle: .footnote, weight: .regular),
-        buttonText: String = AppLocalized.okButton,
-        buttonColor: UIColor = .main
+        buttonText: String = AppLocalized.okGoodButton,
+        buttonColor: UIColor = .black
     ) {
         self.coordinator = coordinator
         super.init(
@@ -48,6 +44,6 @@ final class ReportCompleteDialogViewController: CustomConfirmDialogViewControlle
     // MARK: - Actions
     override func clickConfirmButton(_ sender: UIButton) {
         super.clickConfirmButton(sender)
-        coordinator?.didFinish()
+        coordinator?.didSelectOKButton()
     }
 }

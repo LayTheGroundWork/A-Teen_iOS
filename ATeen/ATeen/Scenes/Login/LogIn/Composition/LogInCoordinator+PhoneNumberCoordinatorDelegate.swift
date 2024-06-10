@@ -11,4 +11,9 @@ extension LogInCoordinator: PhoneNumberCoordinatorDelegate {
         removeChildCoordinator(childCoordinator)
         navigation.popViewController(animated: true)
     }
+    
+    func navigateToMainViewController() {
+        // login coordinator 지우기
+        delegate?.didFinishLogin(childCoordinator: self)
+    }
 }

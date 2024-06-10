@@ -11,6 +11,17 @@
 		0444E85C2C075DE700FB96FD /* SnapKit-Dynamic in Embed Frameworks */ = {isa = PBXBuildFile; productRef = 0444E8592C075DE700FB96FD /* SnapKit-Dynamic */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		0444E85D2C0760EE00FB96FD /* SnapKit-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = 0444E8592C075DE700FB96FD /* SnapKit-Dynamic */; };
 		0922B4A22C022C1200375953 /* CustomImageLabelButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0922B4A12C022C1200375953 /* CustomImageLabelButton.swift */; };
+		094F94FB2C12F9900033ED93 /* VerificationCompleteDialogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094F94FA2C12F9900033ED93 /* VerificationCompleteDialogViewController.swift */; };
+		094F94FD2C12FFD70033ED93 /* CustomTwoButtonDialogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094F94FC2C12FFD70033ED93 /* CustomTwoButtonDialogViewController.swift */; };
+		094F94FF2C130DC80033ED93 /* ExistingUserLoginDialogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094F94FE2C130DC80033ED93 /* ExistingUserLoginDialogViewController.swift */; };
+		094F95012C1367360033ED93 /* VerificationCompleteDialogFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094F95002C1367360033ED93 /* VerificationCompleteDialogFactory.swift */; };
+		094F95032C13673E0033ED93 /* VerificationCompleteDialogCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094F95022C13673E0033ED93 /* VerificationCompleteDialogCoordinator.swift */; };
+		094F95052C1367E00033ED93 /* VerificationCompleteDialogCoordinator+VerificationCompleteDialogViewControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094F95042C1367E00033ED93 /* VerificationCompleteDialogCoordinator+VerificationCompleteDialogViewControllerCoordinator.swift */; };
+		094F95072C136EE90033ED93 /* PhoneNumberCoordinator+VerificationCompleteDialogCoordinatorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094F95062C136EE90033ED93 /* PhoneNumberCoordinator+VerificationCompleteDialogCoordinatorDelegate.swift */; };
+		094F95092C13731B0033ED93 /* ExistingUserLoginDialogFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094F95082C13731B0033ED93 /* ExistingUserLoginDialogFactory.swift */; };
+		094F950B2C1373220033ED93 /* ExistingUserLoginDialogCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094F950A2C1373220033ED93 /* ExistingUserLoginDialogCoordinator.swift */; };
+		094F950D2C1374AD0033ED93 /* ExistingUserLoginDialogCoordinator+ExistingUserLoginDialogViewControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094F950C2C1374AD0033ED93 /* ExistingUserLoginDialogCoordinator+ExistingUserLoginDialogViewControllerCoordinator.swift */; };
+		094F950F2C14B82F0033ED93 /* PhoneNumberCoordinator+ExistingUserLoginDialogCoordinatorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094F950E2C14B82F0033ED93 /* PhoneNumberCoordinator+ExistingUserLoginDialogCoordinatorDelegate.swift */; };
 		09F9EFF02C05C699009DE3A0 /* TermsOfUseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F9EFEF2C05C699009DE3A0 /* TermsOfUseViewController.swift */; };
 		09F9EFF22C062199009DE3A0 /* TermsOfUseFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F9EFF12C062199009DE3A0 /* TermsOfUseFactory.swift */; };
 		09F9EFF42C0621B7009DE3A0 /* TermsOfUseCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F9EFF32C0621B7009DE3A0 /* TermsOfUseCoordinator.swift */; };
@@ -181,6 +192,17 @@
 
 /* Begin PBXFileReference section */
 		0922B4A12C022C1200375953 /* CustomImageLabelButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomImageLabelButton.swift; sourceTree = "<group>"; };
+		094F94FA2C12F9900033ED93 /* VerificationCompleteDialogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationCompleteDialogViewController.swift; sourceTree = "<group>"; };
+		094F94FC2C12FFD70033ED93 /* CustomTwoButtonDialogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTwoButtonDialogViewController.swift; sourceTree = "<group>"; };
+		094F94FE2C130DC80033ED93 /* ExistingUserLoginDialogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExistingUserLoginDialogViewController.swift; sourceTree = "<group>"; };
+		094F95002C1367360033ED93 /* VerificationCompleteDialogFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationCompleteDialogFactory.swift; sourceTree = "<group>"; };
+		094F95022C13673E0033ED93 /* VerificationCompleteDialogCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationCompleteDialogCoordinator.swift; sourceTree = "<group>"; };
+		094F95042C1367E00033ED93 /* VerificationCompleteDialogCoordinator+VerificationCompleteDialogViewControllerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VerificationCompleteDialogCoordinator+VerificationCompleteDialogViewControllerCoordinator.swift"; sourceTree = "<group>"; };
+		094F95062C136EE90033ED93 /* PhoneNumberCoordinator+VerificationCompleteDialogCoordinatorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PhoneNumberCoordinator+VerificationCompleteDialogCoordinatorDelegate.swift"; sourceTree = "<group>"; };
+		094F95082C13731B0033ED93 /* ExistingUserLoginDialogFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExistingUserLoginDialogFactory.swift; sourceTree = "<group>"; };
+		094F950A2C1373220033ED93 /* ExistingUserLoginDialogCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExistingUserLoginDialogCoordinator.swift; sourceTree = "<group>"; };
+		094F950C2C1374AD0033ED93 /* ExistingUserLoginDialogCoordinator+ExistingUserLoginDialogViewControllerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ExistingUserLoginDialogCoordinator+ExistingUserLoginDialogViewControllerCoordinator.swift"; sourceTree = "<group>"; };
+		094F950E2C14B82F0033ED93 /* PhoneNumberCoordinator+ExistingUserLoginDialogCoordinatorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PhoneNumberCoordinator+ExistingUserLoginDialogCoordinatorDelegate.swift"; sourceTree = "<group>"; };
 		09F9EFEF2C05C699009DE3A0 /* TermsOfUseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsOfUseViewController.swift; sourceTree = "<group>"; };
 		09F9EFF12C062199009DE3A0 /* TermsOfUseFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsOfUseFactory.swift; sourceTree = "<group>"; };
 		09F9EFF32C0621B7009DE3A0 /* TermsOfUseCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsOfUseCoordinator.swift; sourceTree = "<group>"; };
@@ -355,6 +377,7 @@
 			children = (
 				0922B4A12C022C1200375953 /* CustomImageLabelButton.swift */,
 				09F9EFF92C09A254009DE3A0 /* CustomConfirmDialogViewController.swift */,
+				094F94FC2C12FFD70033ED93 /* CustomTwoButtonDialogViewController.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -1104,6 +1127,14 @@
 				41D0F72A2C09A61600488C18 /* PhoneNumberCoordinator.swift */,
 				41D0F72C2C09A7A100488C18 /* PhoneNumberCoordinator+PhoneNumberViewControllerCoordinator.swift */,
 				41D0F7362C09BEC600488C18 /* PhoneNumberCoordinator+TermsOfUseCoordinatorDelegate.swift */,
+				094F95062C136EE90033ED93 /* PhoneNumberCoordinator+VerificationCompleteDialogCoordinatorDelegate.swift */,
+				094F950E2C14B82F0033ED93 /* PhoneNumberCoordinator+ExistingUserLoginDialogCoordinatorDelegate.swift */,
+				094F95002C1367360033ED93 /* VerificationCompleteDialogFactory.swift */,
+				094F95022C13673E0033ED93 /* VerificationCompleteDialogCoordinator.swift */,
+				094F95042C1367E00033ED93 /* VerificationCompleteDialogCoordinator+VerificationCompleteDialogViewControllerCoordinator.swift */,
+				094F95082C13731B0033ED93 /* ExistingUserLoginDialogFactory.swift */,
+				094F950A2C1373220033ED93 /* ExistingUserLoginDialogCoordinator.swift */,
+				094F950C2C1374AD0033ED93 /* ExistingUserLoginDialogCoordinator+ExistingUserLoginDialogViewControllerCoordinator.swift */,
 			);
 			path = Composition;
 			sourceTree = "<group>";
@@ -1112,6 +1143,8 @@
 			isa = PBXGroup;
 			children = (
 				41D0F7262C09A46B00488C18 /* PhoneNumberViewController.swift */,
+				094F94FA2C12F9900033ED93 /* VerificationCompleteDialogViewController.swift */,
+				094F94FE2C130DC80033ED93 /* ExistingUserLoginDialogViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1379,10 +1412,12 @@
 				735AC9152C005B9F004C3D21 /* CustomHeartButton.swift in Sources */,
 				418CB1F42BF743AE001DA795 /* SettingsCoordinator.swift in Sources */,
 				41735B4C2BFCE8E300E4A339 /* SettingsCoordinator+UserConfigurationCoordinatorDelegate.swift in Sources */,
+				094F94FB2C12F9900033ED93 /* VerificationCompleteDialogViewController.swift in Sources */,
 				41A515A62C022B3000EDAEA2 /* ProfileDetailBottomBar.swift in Sources */,
 				735AC9102C005B5D004C3D21 /* CustomQuestionTextView.swift in Sources */,
 				09F9F0022C09CF33009DE3A0 /* CustomUsedToReportViewButton.swift in Sources */,
 				41BB4C052BFBADDA00D26A5D /* ParentCoordinator.swift in Sources */,
+				094F950D2C1374AD0033ED93 /* ExistingUserLoginDialogCoordinator+ExistingUserLoginDialogViewControllerCoordinator.swift in Sources */,
 				417286D72BFF0D16004F88F9 /* ChatCoordinator.swift in Sources */,
 				73BB940E2C0480D700687A97 /* MainTabCoordinator+LogInCoordinatorDelegate.swift in Sources */,
 				41735B502BFCEC4A00E4A339 /* NavigationImp+UIAdaptivePresentationControllerDelegate.swift in Sources */,
@@ -1404,6 +1439,7 @@
 				09F9EFF22C062199009DE3A0 /* TermsOfUseFactory.swift in Sources */,
 				73BE23232C0DFDF9009A8FC6 /* SearchSchoolCollectionViewCell.swift in Sources */,
 				735AC9182C005BAD004C3D21 /* ProfileDetailViewController.swift in Sources */,
+				094F95032C13673E0033ED93 /* VerificationCompleteDialogCoordinator.swift in Sources */,
 				73F9B8282C021E7800684152 /* ProfileDetailViewModel.swift in Sources */,
 				735AC9032C005AB9004C3D21 /* AnotherTeenTableViewCell.swift in Sources */,
 				417286FB2BFF91D0004F88F9 /* LogInCoordinator+LogInViewControllerCoordinator.swift in Sources */,
@@ -1422,6 +1458,7 @@
 				09F9EFFA2C09A254009DE3A0 /* CustomConfirmDialogViewController.swift in Sources */,
 				09F9F01D2C0D9571009DE3A0 /* ReportCompleteDialogCoordinator+ReportCompleteDialogViewControllerCoordinator.swift in Sources */,
 				417286E42BFF1FDC004F88F9 /* RankingCoordinator.swift in Sources */,
+				094F94FF2C130DC80033ED93 /* ExistingUserLoginDialogViewController.swift in Sources */,
 				418CB1D12BF71CAD001DA795 /* LogInCoordinator.swift in Sources */,
 				41DC1A1D2C077DE60035ED4C /* CustomBirthButton.swift in Sources */,
 				417286CC2BFF0B03004F88F9 /* ProfileFactory.swift in Sources */,
@@ -1433,15 +1470,18 @@
 				417286D32BFF0CE4004F88F9 /* ChatViewContoller.swift in Sources */,
 				418CB1E92BF73E4C001DA795 /* SettingsViewModel.swift in Sources */,
 				735AC8FF2C005AB9004C3D21 /* CategoryTournamentCollectionViewCell.swift in Sources */,
+				094F95012C1367360033ED93 /* VerificationCompleteDialogFactory.swift in Sources */,
 				419CCE862C04C88E00D2E7F8 /* TabTag.swift in Sources */,
 				4190F8C72BF4E6EF00FCC0A3 /* SceneDelegate.swift in Sources */,
 				73F9B82A2C02331400684152 /* MainCoordinator+ProfileCoordinatorDelegate.swift in Sources */,
+				094F95052C1367E00033ED93 /* VerificationCompleteDialogCoordinator+VerificationCompleteDialogViewControllerCoordinator.swift in Sources */,
 				09F9F0082C0C63C3009DE3A0 /* CustomPopoverButton.swift in Sources */,
 				735AC92B2C005D21004C3D21 /* TodayTeen.swift in Sources */,
 				09F9F0062C0C5FBC009DE3A0 /* ReportCompleteDialogViewController.swift in Sources */,
 				73BE23202C0DFD5D009A8FC6 /* SearchSchoolResultTableViewCell.swift in Sources */,
 				736D18DE2C0787AC003A2243 /* SignUpCoordinator+SignUpViewControllerCoordinator.swift in Sources */,
 				417286CE2BFF0B83004F88F9 /* ProfileCoordinator.swift in Sources */,
+				094F94FD2C12FFD70033ED93 /* CustomTwoButtonDialogViewController.swift in Sources */,
 				417286CA2BFF0AEA004F88F9 /* ProfileViewController.swift in Sources */,
 				41BB4C0B2BFBB8BE00D26A5D /* UserConfigurationViewController.swift in Sources */,
 				41A0147A2C070F220046856B /* SignUpViewController.swift in Sources */,
@@ -1464,6 +1504,7 @@
 				735AC9012C005AB9004C3D21 /* CategoryTodayCollectionViewCell.swift in Sources */,
 				41D0F72B2C09A61600488C18 /* PhoneNumberCoordinator.swift in Sources */,
 				0922B4A22C022C1200375953 /* CustomImageLabelButton.swift in Sources */,
+				094F950F2C14B82F0033ED93 /* PhoneNumberCoordinator+ExistingUserLoginDialogCoordinatorDelegate.swift in Sources */,
 				418CB2072BF74E88001DA795 /* TeenViewController.swift in Sources */,
 				09F9EFFD2C09A3DC009DE3A0 /* CustomLoginButton.swift in Sources */,
 				09F9F0042C0B0BD1009DE3A0 /* ReportPopoverViewController.swift in Sources */,
@@ -1477,6 +1518,7 @@
 				736D18E62C078C18003A2243 /* SignUpCoordinator+SelectBirthCoordinatorDelegate.swift in Sources */,
 				418CB1E52BF73CE3001DA795 /* ItemSettingViewModel.swift in Sources */,
 				41A014802C0710D50046856B /* TermsOfUseCoordinator+TermsOfUseViewControllerCoordinator.swift in Sources */,
+				094F95072C136EE90033ED93 /* PhoneNumberCoordinator+VerificationCompleteDialogCoordinatorDelegate.swift in Sources */,
 				41A8F3BF2BFE52E30092CBFA /* CustomTabBarButton.swift in Sources */,
 				418CB1EF2BF740F6001DA795 /* Reusable.swift in Sources */,
 				417286EB2BFF2004004F88F9 /* MainCoordinator.swift in Sources */,
@@ -1487,6 +1529,7 @@
 				736D18E82C07968F003A2243 /* Notification+Name.swift in Sources */,
 				417286FD2BFF93A4004F88F9 /* ProfileCoordinator+ProfileViewControllerCoordinator.swift in Sources */,
 				417286E12BFF1FCA004F88F9 /* RankingFactory.swift in Sources */,
+				094F95092C13731B0033ED93 /* ExistingUserLoginDialogFactory.swift in Sources */,
 				41D0F7222C099BA600488C18 /* TermsOfUseCoordinator+SignUpCoordinatorDelegate.swift in Sources */,
 				41D0F7272C09A46B00488C18 /* PhoneNumberViewController.swift in Sources */,
 				736D18E22C078914003A2243 /* SelectBirthFactory.swift in Sources */,
@@ -1497,6 +1540,7 @@
 				41D0F7292C09A60E00488C18 /* PhoneNumberFactory.swift in Sources */,
 				418CB1EB2BF73E6F001DA795 /* SettingsViewController.swift in Sources */,
 				73F9B8262C02182C00684152 /* ProfileDetailCoordinator.swift in Sources */,
+				094F950B2C1373220033ED93 /* ExistingUserLoginDialogCoordinator.swift in Sources */,
 				41D0F72F2C09AAB200488C18 /* LogInCoordinator+PhoneNumberCoordinatorDelegate.swift in Sources */,
 				735AC9352C005EB0004C3D21 /* MainCoordinator+MainViewControllerCoordinator.swift in Sources */,
 				09F9F0002C09B1E7009DE3A0 /* ReportDialogViewController.swift in Sources */,

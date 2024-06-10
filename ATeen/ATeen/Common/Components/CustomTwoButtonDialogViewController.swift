@@ -1,15 +1,16 @@
 //
-//  CustomConfirmDialogViewController.swift
+//  CustomTwoButtonDialogViewController.swift
 //  ATeen
 //
-//  Created by phang on 5/31/24.
+//  Created by phang on 6/7/24.
 //
 
 import SnapKit
 
 import UIKit
 
-class CustomConfirmDialogViewController: UIViewController {
+class CustomTwoButtonDialogViewController: UIViewController {
+    var dialogImage: UIImage?
     var dialogTitle: String?
     var titleColor: UIColor
     var titleNumberOfLine: Int
@@ -18,8 +19,10 @@ class CustomConfirmDialogViewController: UIViewController {
     var messageColor: UIColor
     var messageNumberOfLine: Int
     var messageFont: UIFont
-    var buttonText: String
-    var buttonColor: UIColor
+    var leftButtonText: String
+    var leftButtonColor: UIColor
+    var rightButtonText: String
+    var rightButtonColor: UIColor
     
     // MARK: - Private properties
     private lazy var dialogView: UIView = {
@@ -27,6 +30,12 @@ class CustomConfirmDialogViewController: UIViewController {
         view.backgroundColor = .white
         view.layer.cornerRadius = ViewValues.defaultRadius
         return view
+    }()
+    
+    private lazy var dialogImageView: UIImageView = {
+        let imageView = UIImageView()
+        // TODO: -
+        return imageView
     }()
     
     private lazy var titleLabel: UILabel = {
@@ -49,30 +58,53 @@ class CustomConfirmDialogViewController: UIViewController {
         return label
     }()
     
-    private lazy var confirmButton: UIButton = {
+    private lazy var leftButton: UIButton = {
         let button = UIButton()
         button.titleLabel?.font = UIFont.customFont(forTextStyle: .callout,
                                                     weight: .regular)
-        button.setTitle(buttonText, for: .normal)
+        button.setTitle(leftButtonText, for: .normal)
         button.setTitleColor(.white, for: .normal)
-        button.backgroundColor = buttonColor
+        button.backgroundColor = leftButtonColor
         button.layer.cornerRadius = ViewValues.defaultRadius
         return button
     }()
     
+    private lazy var rightButton: UIButton = {
+        let button = UIButton()
+        button.titleLabel?.font = UIFont.customFont(forTextStyle: .callout,
+                                                    weight: .bold)
+        button.setTitle(rightButtonText, for: .normal)
+        button.setTitleColor(.white, for: .normal)
+        button.backgroundColor = rightButtonColor
+        button.layer.cornerRadius = ViewValues.defaultRadius
+        return button
+    }()
+    
+    private lazy var buttonStackView: UIStackView = {
+        let stack = UIStackView(arrangedSubviews: [leftButton, rightButton])
+        stack.axis = .horizontal
+        stack.distribution = .fill
+        stack.spacing = ViewValues.defaultSpacing
+        return stack
+    }()
+    
     // MARK: - Life Cycle
     init(
+        dialogImage: UIImage? = nil,
         dialogTitle: String? = nil,
         titleColor: UIColor = .black,
-        titleNumberOfLine: Int = 1,
+        titleNumberOfLine: Int,
         titleFont: UIFont = .customFont(forTextStyle: .callout, weight: .bold),
         dialogMessage: String,
         messageColor: UIColor = .gray02,
         messageNumberOfLine: Int,
         messageFont: UIFont = .customFont(forTextStyle: .footnote, weight: .regular),
-        buttonText: String,
-        buttonColor: UIColor
+        leftButtonText: String,
+        leftButtonColor: UIColor,
+        rightButtonText: String,
+        rightButtonColor: UIColor
     ) {
+        self.dialogImage = dialogImage
         self.dialogTitle = dialogTitle
         self.titleColor = titleColor
         self.titleNumberOfLine = titleNumberOfLine
@@ -81,8 +113,10 @@ class CustomConfirmDialogViewController: UIViewController {
         self.messageColor = messageColor
         self.messageNumberOfLine = messageNumberOfLine
         self.messageFont = messageFont
-        self.buttonText = buttonText
-        self.buttonColor = buttonColor
+        self.leftButtonText = leftButtonText
+        self.leftButtonColor = leftButtonColor
+        self.rightButtonText = rightButtonText
+        self.rightButtonColor = rightButtonColor
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -102,9 +136,11 @@ class CustomConfirmDialogViewController: UIViewController {
         view.backgroundColor = .black.withAlphaComponent(0.5)
 
         view.addSubview(dialogView)
+//        dialogView.addSubview(dialogImageView)
         dialogView.addSubview(titleLabel)
         dialogView.addSubview(messageLabel)
-        dialogView.addSubview(confirmButton)
+        dialogView.addSubview(leftButton)
+        dialogView.addSubview(buttonStackView)
     }
     
     private func configLayout() {
@@ -128,24 +164,35 @@ class CustomConfirmDialogViewController: UIViewController {
             make.centerX.equalToSuperview()
         }
         
-        confirmButton.snp.makeConstraints { make in
+        leftButton.snp.makeConstraints { make in
+            make.width.equalTo((ViewValues.width - 32 - 32 - 16) * 0.44)
+        }
+        
+        buttonStackView.snp.makeConstraints { make in
             make.top.equalTo(messageLabel.snp.bottom).offset(25)
-            make.centerX.equalToSuperview()
             make.leading.equalToSuperview().offset(ViewValues.defaultPadding)
             make.trailing.equalToSuperview().offset(-ViewValues.defaultPadding)
+            make.centerX.equalToSuperview()
             make.bottom.equalToSuperview().offset(-20)
             make.height.equalTo(50)
         }
     }
     
     private func setupActions() {
-        confirmButton.addTarget(self,
-                                action: #selector(clickConfirmButton(_:)),
+        leftButton.addTarget(self,
+                                action: #selector(clickLeftButton(_:)),
+                                for: .touchUpInside)
+        rightButton.addTarget(self,
+                                action: #selector(clickRightButton(_:)),
                                 for: .touchUpInside)
     }
     
     // MARK: - Actions
-    @objc func clickConfirmButton(_ sender: UIButton) {
-        // 다이얼로그 닫기 - overriding 해서 사용
+    @objc func clickLeftButton(_ sender: UIButton) {
+        // overriding 해서 사용
+    }
+    
+    @objc func clickRightButton(_ sender: UIButton) {
+        // overriding 해서 사용
     }
 }

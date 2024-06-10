@@ -9,8 +9,13 @@ import SnapKit
 
 import UIKit
 
+enum RegistrationStatus {
+    case signedUp
+    case notSignedUp
+}
+
 protocol CertificationCodeCollectionViewCellDelegate: AnyObject {
-    func didSelectNextButton()
+    func didSelectNextButton(registrationStatus: RegistrationStatus)
     func didSelectResendCode()
 }
 
@@ -164,7 +169,15 @@ final class CertificationCodeCollectionViewCell: UICollectionViewCell {
     
     // MARK: - Actions
     @objc private func didSelectNextButton(_ sender: UIButton) {
-        delegate?.didSelectNextButton()
+        // TODO: - 다음으로 이동할때, 가입된 사용자인지 검증 후 보내주기
+        let isNotSignedUpUser = true
+        if isNotSignedUpUser {      // 가입 가능
+            print("가입 가능")
+            delegate?.didSelectNextButton(registrationStatus: .notSignedUp)
+        } else {                    // 이미 가입된 사용자
+            print("이미 가입된 사용자")
+            delegate?.didSelectNextButton(registrationStatus: .signedUp)
+        }
     }
     
     @objc private func didSelectResendButton(_ sender: UIButton) {

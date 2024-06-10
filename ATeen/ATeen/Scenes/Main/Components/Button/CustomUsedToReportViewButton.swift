@@ -47,11 +47,11 @@ extension CustomUsedToReportViewButton {
         customImageView.snp.makeConstraints { make in
             make.leading.equalToSuperview()
             make.centerY.equalToSuperview()
-            make.width.height.equalTo(22)
+            make.width.height.equalTo(20)
         }
         
         customLabel.snp.makeConstraints { make in
-            make.leading.equalTo(customImageView.snp.trailing).offset(8)
+            make.leading.equalTo(customImageView.snp.trailing).offset(10)
             make.centerY.equalTo(customImageView.snp.centerY)
         }
     }

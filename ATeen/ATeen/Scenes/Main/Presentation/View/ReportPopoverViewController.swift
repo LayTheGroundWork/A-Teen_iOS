@@ -23,19 +23,21 @@ final class ReportPopoverViewController: UIViewController {
     private lazy var popoverView: UIView = {
         let view = UIView()
         view.backgroundColor = .white
-        view.layer.cornerRadius = 10
+        view.layer.cornerRadius = ViewValues.defaultRadius
+        view.layer.borderWidth = 1.0
+        view.layer.borderColor = UIColor.gray03.cgColor
         return view
     }()
     
     private lazy var reportButton: UIButton = {
         let button = CustomPopoverButton(imageName: "reportIcon",
-                                         labelText: "신고하기")
+                                         labelText: AppLocalized.reportButton)
         return button
     }()
     
     private lazy var blockButton: UIButton = {
         let button = CustomPopoverButton(imageName: "blockIcon",
-                                         labelText: "차단하기")
+                                         labelText: AppLocalized.blockButton)
         return button
     }()
     

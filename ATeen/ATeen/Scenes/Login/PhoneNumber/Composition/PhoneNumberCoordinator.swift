@@ -9,6 +9,7 @@ import Foundation
 
 protocol PhoneNumberCoordinatorDelegate: AnyObject {
     func didFinish(childCoordinator: Coordinator)
+    func navigateToMainViewController()
 }
 
 final class PhoneNumberCoordinator: Coordinator {
@@ -17,10 +18,11 @@ final class PhoneNumberCoordinator: Coordinator {
     var childCoordinators: [Coordinator]
     weak var delegate: PhoneNumberCoordinatorDelegate?
     
-    init(navigation: Navigation,
-         factory: PhoneNumberFactory,
-         childCoordinators: [Coordinator],
-         delegate: PhoneNumberCoordinatorDelegate
+    init(
+        navigation: Navigation,
+        factory: PhoneNumberFactory,
+        childCoordinators: [Coordinator],
+        delegate: PhoneNumberCoordinatorDelegate
     ) {
         self.navigation = navigation
         self.factory = factory
