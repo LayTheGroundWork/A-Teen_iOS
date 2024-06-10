@@ -213,11 +213,10 @@ final class CertificationCodeCollectionViewCell: UICollectionViewCell {
         nextButton.isEnabled = allFieldsFilled
         
         if allFieldsFilled {
-            nextButton.backgroundColor = .main
+            nextButton.backgroundColor = .black
         } else {
             nextButton.backgroundColor = .gray03
         }
-//        nextButton.alpha = allFieldsFilled ? 1.0 : 0.5
     }
     
     // 텍스트 필드가 채워질 때 마다 라인 색 변경

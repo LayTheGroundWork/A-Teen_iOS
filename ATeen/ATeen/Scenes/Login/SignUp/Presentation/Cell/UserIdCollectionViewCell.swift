@@ -131,6 +131,7 @@ extension UserIdCollectionViewCell: UITextFieldDelegate {
             textField.layer.borderColor = UIColor.red.cgColor
         } else {
             textField.layer.borderColor = UIColor.main.cgColor
+            
         }
         
         charCountLabel.text = "\(updatedText.count)/11"

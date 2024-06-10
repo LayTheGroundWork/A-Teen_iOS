@@ -64,9 +64,12 @@ final class SignUpViewController: UIViewController {
         button.titleLabel?.font = UIFont.customFont(forTextStyle: .callout,
                                                     weight: .regular)
         button.setTitle(AppLocalized.nextButton, for: .normal)
+        button.setTitle(AppLocalized.nextButton, for: .disabled)
         button.setTitleColor(.white, for: .normal)
-        button.backgroundColor = .black
+        button.setTitleColor(.gray02, for: .disabled)
+        button.backgroundColor = .gray03
         button.layer.cornerRadius = ViewValues.defaultRadius
+        button.isEnabled = false
         return button
     }()
     
