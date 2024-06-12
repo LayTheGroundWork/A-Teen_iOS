@@ -9,12 +9,17 @@ import SnapKit
 
 import UIKit
 
+protocol UserBirthCollectionViewCellDelegate: AnyObject {
+    func updateNextButtonState(_ state: Bool)
+}
+
 final class UserBirthCollectionViewCell: UICollectionViewCell {
     // MARK: - Public properties
     
     // MARK: - Private properties
     private var viewModel: LoginBirthViewModel?
     private weak var coordinator: SignUpViewControllerCoordinator?
+    private weak var delegate: UserBirthCollectionViewCellDelegate?
     
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
@@ -26,7 +31,7 @@ final class UserBirthCollectionViewCell: UICollectionViewCell {
         return label
     }()
     
-    private lazy var birthButton: CustomBirthButton = {
+    lazy var birthButton: CustomBirthButton = {
         let button = CustomBirthButton(
             imageName: "arrowDownIcon",
             imageColor: .white,
@@ -102,9 +107,14 @@ final class UserBirthCollectionViewCell: UICollectionViewCell {
     }
     
     // MARK: - Actions
-    func setProperties(viewModel: LoginBirthViewModel, coordinator: SignUpViewControllerCoordinator) {
+    func setProperties(
+        viewModel: LoginBirthViewModel,
+        coordinator: SignUpViewControllerCoordinator,
+        delegate: UserBirthCollectionViewCellDelegate
+    ) {
         self.viewModel = viewModel
         self.coordinator = coordinator
+        self.delegate = delegate
     }
     
     @objc func didSelectBirth(_ sender: UIButton) {
@@ -121,10 +131,10 @@ final class UserBirthCollectionViewCell: UICollectionViewCell {
             year: viewModel.year,
             month: viewModel.month,
             day: viewModel.day)
+        delegate?.updateNextButtonState(true)
     }
-    
-    // MARK: - Extensions here
-    
 }
+
+// MARK: - Extensions here
 
 extension UserBirthCollectionViewCell: Reusable { }

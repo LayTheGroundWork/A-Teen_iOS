@@ -160,7 +160,9 @@ final class SignUpViewController: UIViewController {
             cell?.textField.text = ""
             cell?.contentView.endEditing(true)
         case 2:
-            // TODO: -
+            let cell = collectionView.cellForItem(at: currentIndexPath) as? UserBirthCollectionViewCell
+            cell?.birthButton.customLabel.attributedText = nil
+            cell?.birthButton.customLabel.text = "태어난 날을 선택해주세요"
             break
         case 3:
             // TODO: -
@@ -192,7 +194,10 @@ extension SignUpViewController: UICollectionViewDataSource {
         4
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    func collectionView(
+        _ collectionView: UICollectionView,
+        cellForItemAt indexPath: IndexPath
+    ) -> UICollectionViewCell {
         switch indexPath.section {
 
         case 0:
@@ -205,6 +210,7 @@ extension SignUpViewController: UICollectionViewDataSource {
             }
             cell.setProperties(delegate: self)
             return cell
+            
         case 1:
             guard
                 let cell = collectionView.dequeueReusableCell(
@@ -226,7 +232,9 @@ extension SignUpViewController: UICollectionViewDataSource {
             }
             
             guard let coordinator = coordinator else { return UICollectionViewCell() }
-            cell.setProperties(viewModel: viewModel, coordinator: coordinator)
+            cell.setProperties(viewModel: viewModel,
+                               coordinator: coordinator,
+                               delegate: self)
             
             return cell
             
@@ -250,7 +258,8 @@ extension SignUpViewController: UICollectionViewDataSource {
 }
 
 extension SignUpViewController: UserIdCollectionViewCellDelegate,
-                                UserNameCollectionViewCellDelegate {
+                                UserNameCollectionViewCellDelegate,
+                                UserBirthCollectionViewCellDelegate {
     func updateNextButtonState(_ state: Bool) {
         nextButton.isEnabled = state
         nextButton.backgroundColor = if state { UIColor.black } else { UIColor.gray03 }
