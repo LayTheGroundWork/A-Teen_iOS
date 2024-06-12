@@ -51,6 +51,7 @@ final class UserIdCollectionViewCell: UICollectionViewCell {
         textField.tintColor = .gray01
         textField.autocapitalizationType = .none
         textField.autocorrectionType = .no
+        textField.spellCheckingType = .no
         textField.returnKeyType = .next
         return textField
     }()

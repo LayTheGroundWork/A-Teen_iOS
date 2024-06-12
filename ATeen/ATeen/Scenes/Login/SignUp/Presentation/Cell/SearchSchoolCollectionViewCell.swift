@@ -32,15 +32,17 @@ final class SearchSchoolCollectionViewCell: UICollectionViewCell {
         return label
     }()
     
-    private lazy var schoolTextField: UITextField = {
+    lazy var schoolTextField: UITextField = {
         let textField = UITextField()
         textField.tintColor = .gray
         textField.layer.borderWidth = 2
         textField.layer.cornerRadius = 12
-        textField.layer.borderColor = UIColor(named: "mainColor")?.cgColor
+        textField.layer.borderColor = UIColor.main.cgColor
         textField.layer.sublayerTransform = CATransform3DMakeTranslation(15, 0, 0) // 텍스트필드 앞에 공백 넣어주기
+        textField.autocapitalizationType = .none
         textField.autocorrectionType = .no
         textField.spellCheckingType = .no
+        textField.returnKeyType = .done
         textField.addTarget(
             self,
             action: #selector(textFieldDidChange(_:)),
@@ -51,12 +53,12 @@ final class SearchSchoolCollectionViewCell: UICollectionViewCell {
     private lazy var searchImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(systemName: "magnifyingglass")
-        imageView.tintColor = UIColor(named: "mainColor")
+        imageView.tintColor = .main
         imageView.frame = CGRect(x: 0, y: 0, width: 24, height: 24)
         return imageView
     }()
     
-    private lazy var tableBackgroundView: UIView = {
+    lazy var tableBackgroundView: UIView = {
         let view = UIView()
         view.backgroundColor = .white
         view.layer.cornerRadius = ViewValues.defaultRadius
@@ -74,20 +76,21 @@ final class SearchSchoolCollectionViewCell: UICollectionViewCell {
         tableView.separatorStyle = .none
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.register(SearchSchoolResultTableViewCell.self, forCellReuseIdentifier: SearchSchoolResultTableViewCell.reuseIdentifier)
+        tableView.register(SearchSchoolResultTableViewCell.self,
+                           forCellReuseIdentifier: SearchSchoolResultTableViewCell.reuseIdentifier)
         return tableView
     }()
     
     private lazy var customIndicatorBackgroudView: UIView = {
         let view = UIView()
-        view.backgroundColor = UIColor(named: "gray03")
+        view.backgroundColor = .gray03
         view.layer.cornerRadius = 2.5
         return view
     }()
     
     private lazy var customIndicatorView: UIView = {
         let view = UIView()
-        view.backgroundColor = UIColor(named: "mainColor")
+        view.backgroundColor = .main
         view.layer.cornerRadius = 2.5
         let panGestureRecognizer = UIPanGestureRecognizer(
             target: self,
@@ -172,6 +175,13 @@ final class SearchSchoolCollectionViewCell: UICollectionViewCell {
             tableBackgroundView.isHidden = true
         } else {
             tableBackgroundView.isHidden = false
+            
+            if let selectIndexPath = viewModel.selectIndexPath {
+                let selectedCell = tableView.cellForRow(at: selectIndexPath) as? SearchSchoolResultTableViewCell
+                selectedCell?.fontChange(with: viewModel.filteredSchools[selectIndexPath.row],
+                                         isBold: false)
+                viewModel.selectIndexPath = nil
+            }
             
             if viewModel.filteredSchools.count < 6 {
                 tableBackgroundViewHeightAnchor?.update(offset: viewModel.filteredSchools.count * 45)

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SearchSchoolResultTableViewCell: UITableViewCell {
+final class SearchSchoolResultTableViewCell: UITableViewCell {
     private lazy var schoolNameLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .left
@@ -17,7 +17,7 @@ class SearchSchoolResultTableViewCell: UITableViewCell {
     
     private lazy var lineView: UIView = {
         let view = UIView()
-        view.backgroundColor = UIColor(named: "gray03")
+        view.backgroundColor = .gray03
         return view
     }()
     
@@ -52,6 +52,7 @@ class SearchSchoolResultTableViewCell: UITableViewCell {
     
     override func prepareForReuse() {
         lineView.isHidden = false
+        schoolNameLabel.font = UIFont.customFont(forTextStyle: .callout, weight: .regular)
     }
     
     func fontChange(with schoolName: String, isBold: Bool) {

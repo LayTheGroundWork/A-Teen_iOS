@@ -155,17 +155,23 @@ final class SignUpViewController: UIViewController {
             return
         }
         switch currentIndexPath.section {
+        // 유저 아이디
         case 1:
             let cell = collectionView.cellForItem(at: currentIndexPath) as? UserNameCollectionViewCell
             cell?.textField.text = ""
             cell?.contentView.endEditing(true)
+        // 생년월일
         case 2:
             let cell = collectionView.cellForItem(at: currentIndexPath) as? UserBirthCollectionViewCell
             cell?.birthButton.customLabel.attributedText = nil
             cell?.birthButton.customLabel.text = "태어난 날을 선택해주세요"
             break
+        // 학교 선택
         case 3:
-            // TODO: -
+            let cell = collectionView.cellForItem(at: currentIndexPath) as? SearchSchoolCollectionViewCell
+            cell?.schoolTextField.text = ""
+            cell?.tableBackgroundView.isHidden = true
+            cell?.contentView.endEditing(true)
             break
         default:
             break
