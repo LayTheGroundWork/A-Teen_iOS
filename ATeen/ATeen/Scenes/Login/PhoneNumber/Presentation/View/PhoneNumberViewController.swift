@@ -21,8 +21,8 @@ final class PhoneNumberViewController: UIViewController {
     
     // MARK: - Private properties
     private weak var coordinator: PhoneNumberViewControllerCoordinator?
-    private var currentSection: Int = 0
-    
+    private var currentIndexPath = IndexPath(item: 0, section: 0)
+
     // 뒤로 가기 버튼
     private lazy var backButton: UIBarButtonItem = {
         let button = UIBarButtonItem(image: UIImage(named: "leftArrowIcon"),
@@ -93,17 +93,15 @@ final class PhoneNumberViewController: UIViewController {
     }
     
     // MARK: - Actions
-    @objc private func didSelectNextButton(_ sender: UIButton) {
-        
-    }
-    
     @objc private func didSelectBackButton(_ sender: UIButton) {
-        if currentSection == 1 {
+        if currentIndexPath.section == 1 {
+            currentIndexPath.section -= 1
             collectionView.scrollToItem(
-                at: IndexPath(item: 0, section: 0),
+                at: currentIndexPath,
                 at: .centeredHorizontally,
                 animated: true
             )
+            view.endEditing(true)
         } else {
             coordinator?.didFinish()
         }
@@ -111,9 +109,7 @@ final class PhoneNumberViewController: UIViewController {
 }
 
 // MARK: - Extensions here
-extension PhoneNumberViewController: UICollectionViewDelegate {
-    
-}
+extension PhoneNumberViewController: UICollectionViewDelegate { }
 
 extension PhoneNumberViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -135,7 +131,6 @@ extension PhoneNumberViewController: UICollectionViewDataSource {
                 return UICollectionViewCell()
             }
             cell.setDelegate(delegate: self)
-            currentSection = 0
             return cell
         case 1:
             guard
@@ -146,7 +141,6 @@ extension PhoneNumberViewController: UICollectionViewDataSource {
                 return UICollectionViewCell()
             }
             cell.setDelegate(delegate: self)
-            currentSection = 1
             return cell
         default:
             return UICollectionViewCell()
@@ -156,11 +150,13 @@ extension PhoneNumberViewController: UICollectionViewDataSource {
 
 extension PhoneNumberViewController: PhoneNumberCollectionViewCellDelegate {
     func didSelectCertificateButton() {
+        currentIndexPath.section += 1
         collectionView.scrollToItem(
-            at: IndexPath(item: 0, section: 1),
+            at: currentIndexPath,
             at: .centeredHorizontally,
             animated: true
         )
+        view.endEditing(true)
     }
 }
 
@@ -177,4 +173,3 @@ extension PhoneNumberViewController: CertificationCodeCollectionViewCellDelegate
         coordinator?.didSelectResendCode()
     }
 }
-

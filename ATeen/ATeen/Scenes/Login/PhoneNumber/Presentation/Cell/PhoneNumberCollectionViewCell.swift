@@ -126,11 +126,25 @@ final class PhoneNumberCollectionViewCell: UICollectionViewCell {
     @objc private func didSelectClearTextButton(_ sender: UIButton) {
         textField.text?.removeAll()
         textField.rightViewMode = .never
+        updateCertificateButtonState(false)
     }
-    
-    // MARK: - Extensions here
 }
 
+// MARK: - Extensions here
+extension PhoneNumberCollectionViewCell {
+    private func updateCertificateButtonState(_ state: Bool) {
+        if state {
+            certificateButton.backgroundColor = .main
+            certificateButton.isEnabled = true
+        } else {
+            certificateButton.backgroundColor = .gray03
+            certificateButton.isEnabled = false
+        }
+    }
+}
+
+
+// MARK: - UITextFieldDelegate
 extension PhoneNumberCollectionViewCell: UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
         if let text = textField.text,
@@ -151,11 +165,9 @@ extension PhoneNumberCollectionViewCell: UITextFieldDelegate {
     func textFieldDidChangeSelection(_ textField: UITextField) {
         if let text = textField.text,
            text.count >= 11 {
-            certificateButton.backgroundColor = .main
-            certificateButton.isEnabled = true
+            updateCertificateButtonState(true)
         } else {
-            certificateButton.backgroundColor = .gray03
-            certificateButton.isEnabled = false
+            updateCertificateButtonState(false)
         }
     }
     
