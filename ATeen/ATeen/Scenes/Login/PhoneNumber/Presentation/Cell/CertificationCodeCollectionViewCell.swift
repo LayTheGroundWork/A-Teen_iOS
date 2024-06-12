@@ -24,8 +24,8 @@ final class CertificationCodeCollectionViewCell: UICollectionViewCell {
     
     // MARK: - Private properties
     private weak var delegate: CertificationCodeCollectionViewCellDelegate?
+    private weak var timer: Timer?
     private var totalTime = 180
-    private var timer: Timer?
     
     private lazy var inputCodeLabel: UILabel = {
         let label = UILabel()
@@ -74,7 +74,7 @@ final class CertificationCodeCollectionViewCell: UICollectionViewCell {
     
     private lazy var timerLabel: UILabel = {
         let label = UILabel()
-        label.text = ""
+        label.text = formatTime(totalTime)
         label.font = UIFont.customFont(forTextStyle: .footnote, weight: .regular)
         label.textColor = .black
         return label
@@ -89,7 +89,7 @@ final class CertificationCodeCollectionViewCell: UICollectionViewCell {
         configUserInterface()
         configLayout()
         setupActions()
-        startCountdown()
+        startTimer()
     }
     
     required init?(coder: NSCoder) {
@@ -181,6 +181,7 @@ final class CertificationCodeCollectionViewCell: UICollectionViewCell {
     
     // MARK: - Actions
     @objc private func didSelectNextButton(_ sender: UIButton) {
+        stopTimer()
         // TODO: - 다음으로 이동할때, 가입된 사용자인지 검증 후 보내주기
         let isNotSignedUpUser = true
         if isNotSignedUpUser {      // 가입 가능
@@ -202,8 +203,9 @@ final class CertificationCodeCollectionViewCell: UICollectionViewCell {
             totalTime -= 1
             timerLabel.text = formatTime(totalTime)
         } else {
-            timer?.invalidate() // 타이머 중지
+            stopTimer()
             timerLabel.text = "00:00"
+            // TODO: - 시간 다 되었을 때, 상황에 맞춰 로직 추가 필요
         }
     }
     
@@ -242,7 +244,7 @@ final class CertificationCodeCollectionViewCell: UICollectionViewCell {
     }
     
     // 타이머 초기화
-    func startCountdown() {
+    func startTimer() {
         timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
     }
     
@@ -254,12 +256,20 @@ final class CertificationCodeCollectionViewCell: UICollectionViewCell {
     
     func resetTimer() {
         totalTime = 180
+        timerLabel.text = formatTime(totalTime)
+        if timer?.isValid == nil {
+            startTimer()
+        }
     }
     
-    // MARK: - Extensions here
+    func stopTimer() {
+        timer?.invalidate()
+    }
 }
 
-// UITextFieldDelegate
+// MARK: - Extensions here
+
+// MARK: - UITextFieldDelegate
 extension CertificationCodeCollectionViewCell: UITextFieldDelegate {
     final class CustomTextField: UITextField {
         override public func deleteBackward() {
@@ -270,7 +280,6 @@ extension CertificationCodeCollectionViewCell: UITextFieldDelegate {
         }
         
         private func moveToPreviousTextField() {
-            dump(self)
             if tag > 1 {
                 // 이전 텍스트 필드로 이동
                 if let previousTextField = superview?.viewWithTag(tag - 1) as? UITextField {
@@ -321,10 +330,10 @@ extension CertificationCodeCollectionViewCell: UITextFieldDelegate {
             if textField.tag < textFields.count {
                 let nextTextField = textFields[textField.tag]
                 if nextTextField.text?.isEmpty == false {
-                    nextTextField.text = "" // 이미 값이 있을 경우 지우기
-                    nextTextField.becomeFirstResponder() // 그리고 포커스 이동
+                    nextTextField.text = ""                 // 이미 값이 있을 경우 지우기
+                    nextTextField.becomeFirstResponder()    // 그리고 포커스 이동
                 } else {
-                    nextTextField.becomeFirstResponder() // 빈 경우 바로 포커스 이동
+                    nextTextField.becomeFirstResponder()    // 빈 경우 바로 포커스 이동
                 }
             } else {
                 textField.resignFirstResponder()

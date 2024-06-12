@@ -74,6 +74,12 @@ final class PhoneNumberViewController: UIViewController {
                 cell.clearTextFields()
             }
         }
+        currentIndexPath.section = 0
+        collectionView.scrollToItem(
+            at: currentIndexPath,
+            at: .centeredHorizontally,
+            animated: false
+        )
     }
     
     // MARK: - Helpers
@@ -102,6 +108,11 @@ final class PhoneNumberViewController: UIViewController {
                 animated: true
             )
             view.endEditing(true)
+            if let visibleCells = collectionView.visibleCells as? [CertificationCodeCollectionViewCell] {
+                for cell in visibleCells {
+                    cell.clearTextFields()
+                }
+            }
         } else {
             coordinator?.didFinish()
         }
@@ -111,8 +122,25 @@ final class PhoneNumberViewController: UIViewController {
 // MARK: - Extensions here
 extension PhoneNumberViewController: UICollectionViewDelegate { }
 
+extension PhoneNumberViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(
+        _ collectionView: UICollectionView,
+        willDisplay cell: UICollectionViewCell,
+        forItemAt indexPath: IndexPath
+    ) {
+        if indexPath.section == 1 {
+            if let cell = cell as? CertificationCodeCollectionViewCell {
+                cell.resetTimer()
+            }
+        }
+    }
+}
+
 extension PhoneNumberViewController: UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(
+        _ collectionView: UICollectionView,
+        numberOfItemsInSection section: Int
+    ) -> Int {
         1
     }
     
@@ -120,7 +148,10 @@ extension PhoneNumberViewController: UICollectionViewDataSource {
         2
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    func collectionView(
+        _ collectionView: UICollectionView,
+        cellForItemAt indexPath: IndexPath
+    ) -> UICollectionViewCell {
         switch indexPath.section {
         case 0:
             guard
