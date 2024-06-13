@@ -254,7 +254,7 @@ extension SignUpViewController: UICollectionViewDataSource {
             }
             
             cell.setProperties(viewModel: viewModel)
-            
+            cell.setProperties(delegate: self)
             return cell
 
         default:
@@ -265,7 +265,8 @@ extension SignUpViewController: UICollectionViewDataSource {
 
 extension SignUpViewController: UserIdCollectionViewCellDelegate,
                                 UserNameCollectionViewCellDelegate,
-                                UserBirthCollectionViewCellDelegate {
+                                UserBirthCollectionViewCellDelegate,
+                                SearchSchoolCollectionViewCellDelegate {
     func updateNextButtonState(_ state: Bool) {
         nextButton.isEnabled = state
         nextButton.backgroundColor = if state { UIColor.black } else { UIColor.gray03 }

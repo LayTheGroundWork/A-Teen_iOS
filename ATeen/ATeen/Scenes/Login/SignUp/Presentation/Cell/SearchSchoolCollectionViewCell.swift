@@ -9,11 +9,16 @@ import SnapKit
 
 import UIKit
 
+protocol SearchSchoolCollectionViewCellDelegate: AnyObject {
+    func updateNextButtonState(_ state: Bool)
+}
+
 final class SearchSchoolCollectionViewCell: UICollectionViewCell {
     // MARK: - Public properties
     
     // MARK: - Private properties
     private var viewModel = LoginBirthViewModel()
+    private weak var delegate: SearchSchoolCollectionViewCellDelegate?
     
     var customIndicatorViewTopAnchor: Constraint?
     var customIndicatorViewBottomAnchor: Constraint?
@@ -104,6 +109,7 @@ final class SearchSchoolCollectionViewCell: UICollectionViewCell {
         super.init(frame: frame)
         configUserInterface()
         configLayout()
+        addDismissTapGesture()
     }
     
     required init?(coder: NSCoder) {
@@ -161,8 +167,25 @@ final class SearchSchoolCollectionViewCell: UICollectionViewCell {
             make.trailing.equalTo(self.customIndicatorView.snp.leading).offset(-22)
         }
     }
-
+    
     // MARK: - Actions
+    func setProperties(delegate: SearchSchoolCollectionViewCellDelegate) {
+        self.delegate = delegate
+    }
+    
+    private func addDismissTapGesture() { // VC영역 터치 시 안내려감
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleBackgroundTap))
+        tapGesture.cancelsTouchesInView = false
+        contentView.addGestureRecognizer(tapGesture)
+    }
+    
+    @objc private func handleBackgroundTap(_ sender: UITapGestureRecognizer) {
+        let location = sender.location(in: contentView)
+        if !tableBackgroundView.frame.contains(location) {
+            tableBackgroundView.isHidden = true
+        }
+    }
+    
     func setProperties(viewModel: LoginBirthViewModel) {
         self.viewModel = viewModel
     }
@@ -170,18 +193,20 @@ final class SearchSchoolCollectionViewCell: UICollectionViewCell {
     @objc private func textFieldDidChange(_ textField: UITextField) {
         guard let text = textField.text else { return }
         viewModel.filterSchools(text: text)
+        viewModel.selectIndexPath = nil
+        delegate?.updateNextButtonState(false)
         
         if viewModel.filteredSchools.isEmpty {
             tableBackgroundView.isHidden = true
         } else {
             tableBackgroundView.isHidden = false
             
-            if let selectIndexPath = viewModel.selectIndexPath {
-                let selectedCell = tableView.cellForRow(at: selectIndexPath) as? SearchSchoolResultTableViewCell
-                selectedCell?.fontChange(with: viewModel.filteredSchools[selectIndexPath.row],
-                                         isBold: false)
-                viewModel.selectIndexPath = nil
-            }
+            //            if let selectIndexPath = viewModel.selectIndexPath {
+            //                let selectedCell = tableView.cellForRow(at: selectIndexPath) as? SearchSchoolResultTableViewCell
+            //                selectedCell?.fontChange(with: viewModel.filteredSchools[selectIndexPath.row],
+            //                                         isBold: false)
+            //                viewModel.selectIndexPath = nil
+            //            }
             
             if viewModel.filteredSchools.count < 6 {
                 tableBackgroundViewHeightAnchor?.update(offset: viewModel.filteredSchools.count * 45)
@@ -292,8 +317,8 @@ extension SearchSchoolCollectionViewCell: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard
             let cell = tableView.dequeueReusableCell(
-            withIdentifier: SearchSchoolResultTableViewCell.reuseIdentifier,
-            for: indexPath) as? SearchSchoolResultTableViewCell
+                withIdentifier: SearchSchoolResultTableViewCell.reuseIdentifier,
+                for: indexPath) as? SearchSchoolResultTableViewCell
         else {
             return UITableViewCell()
         }
@@ -329,6 +354,7 @@ extension SearchSchoolCollectionViewCell: UITableViewDelegate {
             
             viewModel.selectIndexPath = indexPath
             schoolTextField.text = viewModel.filteredSchools[indexPath.row]
+            delegate?.updateNextButtonState(true)
         }
     }
     

@@ -93,7 +93,8 @@ final class UserNameCollectionViewCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.contentView.backgroundColor = .white
-        setupLayout()
+        configUserInterface()
+        configLayout()
         textField.delegate = self
     }
     
@@ -102,14 +103,16 @@ final class UserNameCollectionViewCell: UICollectionViewCell {
     }
     
     // MARK: - Helpers
-    private func setupLayout() {
+    private func configUserInterface() {
         self.contentView.addSubview(welcomeLabel)
         self.contentView.addSubview(instructionLabel)
         self.contentView.addSubview(textField)
         self.contentView.addSubview(errorMessageLabel)
         self.contentView.addSubview(charCountLabel)
         self.contentView.addSubview(guideLabel)
-        
+    }
+    
+    private func configLayout() {
         welcomeLabel.snp.makeConstraints { make in
             make.top.equalToSuperview()
             make.leading.equalToSuperview().offset(ViewValues.defaultPadding)
@@ -143,7 +146,10 @@ final class UserNameCollectionViewCell: UICollectionViewCell {
             make.top.equalTo(errorMessageLabel.snp.bottom).offset(10)
             make.leading.equalTo(textField)
         }
+
     }
+        
+            
     
     // MARK: - Actions
     func setProperties(delegate: UserNameCollectionViewCellDelegate) {

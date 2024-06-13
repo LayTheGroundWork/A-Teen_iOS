@@ -67,6 +67,7 @@ final class UserBirthCollectionViewCell: UICollectionViewCell {
             name: .selectBirth,
             object: nil)
         configUserInterface()
+        configLayout()
     }
     
     required init?(coder: NSCoder) {
@@ -80,8 +81,6 @@ final class UserBirthCollectionViewCell: UICollectionViewCell {
         contentView.addSubview(titleLabel)
         contentView.addSubview(birthButton)
         contentView.addSubview(serviceButton)
-        
-        configLayout()
     }
     
     private func configLayout() {
