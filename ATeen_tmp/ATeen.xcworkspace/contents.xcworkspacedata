@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <Group
+      location = "group:Projects"
+      name = "Projects">
+      <FileRef
+         location = "group:App/App.xcodeproj">
+      </FileRef>
+      <FileRef
+         location = "group:Common/Common.xcodeproj">
+      </FileRef>
+      <FileRef
+         location = "group:Core/Core.xcodeproj">
+      </FileRef>
+      <FileRef
+         location = "group:DesignSystem/DesignSystem.xcodeproj">
+      </FileRef>
+      <FileRef
+         location = "group:FeatureDependency/FeatureDependency.xcodeproj">
+      </FileRef>
+      <FileRef
+         location = "group:MainTabFeature/MainTabFeature.xcodeproj">
+      </FileRef>
+      <Group
+         location = "group:Feature"
+         name = "Feature">
+         <FileRef
+            location = "group:ChatFeature/ChatFeature.xcodeproj">
+         </FileRef>
+         <FileRef
+            location = "group:LoginFeature/LoginFeature.xcodeproj">
+         </FileRef>
+         <FileRef
+            location = "group:MainFeature/MainFeature.xcodeproj">
+         </FileRef>
+         <FileRef
+            location = "group:ProfileFeature/ProfileFeature.xcodeproj">
+         </FileRef>
+         <FileRef
+            location = "group:RankingFeature/RankingFeature.xcodeproj">
+         </FileRef>
+         <FileRef
+            location = "group:SettingsFeature/SettingsFeature.xcodeproj">
+         </FileRef>
+         <FileRef
+            location = "group:TeenFeature/TeenFeature.xcodeproj">
+         </FileRef>
+      </Group>
+   </Group>
+   <Group
+      location = "container:"
+      name = "Dependencies">
+      <FileRef
+         location = "group:Tuist/.build/tuist-derived/SnapKit/SnapKit.xcodeproj">
+      </FileRef>
+   </Group>
+</Workspace>
