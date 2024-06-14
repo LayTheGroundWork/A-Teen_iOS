@@ -11,6 +11,7 @@
 		0444E85C2C075DE700FB96FD /* SnapKit-Dynamic in Embed Frameworks */ = {isa = PBXBuildFile; productRef = 0444E8592C075DE700FB96FD /* SnapKit-Dynamic */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		0444E85D2C0760EE00FB96FD /* SnapKit-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = 0444E8592C075DE700FB96FD /* SnapKit-Dynamic */; };
 		0922B4A22C022C1200375953 /* CustomImageLabelButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0922B4A12C022C1200375953 /* CustomImageLabelButton.swift */; };
+		09254C722C195AB3005E0039 /* CustomClearXmarkTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09254C712C195AB3005E0039 /* CustomClearXmarkTextField.swift */; };
 		094F94FB2C12F9900033ED93 /* VerificationCompleteDialogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094F94FA2C12F9900033ED93 /* VerificationCompleteDialogViewController.swift */; };
 		094F94FD2C12FFD70033ED93 /* CustomTwoButtonDialogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094F94FC2C12FFD70033ED93 /* CustomTwoButtonDialogViewController.swift */; };
 		094F94FF2C130DC80033ED93 /* ExistingUserLoginDialogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094F94FE2C130DC80033ED93 /* ExistingUserLoginDialogViewController.swift */; };
@@ -178,6 +179,7 @@
 
 /* Begin PBXFileReference section */
 		0922B4A12C022C1200375953 /* CustomImageLabelButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomImageLabelButton.swift; sourceTree = "<group>"; };
+		09254C712C195AB3005E0039 /* CustomClearXmarkTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomClearXmarkTextField.swift; sourceTree = "<group>"; };
 		094F94FA2C12F9900033ED93 /* VerificationCompleteDialogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationCompleteDialogViewController.swift; sourceTree = "<group>"; };
 		094F94FC2C12FFD70033ED93 /* CustomTwoButtonDialogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTwoButtonDialogViewController.swift; sourceTree = "<group>"; };
 		094F94FE2C130DC80033ED93 /* ExistingUserLoginDialogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExistingUserLoginDialogViewController.swift; sourceTree = "<group>"; };
@@ -350,6 +352,14 @@
 				0922B4A12C022C1200375953 /* CustomImageLabelButton.swift */,
 				09F9EFF92C09A254009DE3A0 /* CustomConfirmDialogViewController.swift */,
 				094F94FC2C12FFD70033ED93 /* CustomTwoButtonDialogViewController.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		09254C702C195AA0005E0039 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				09254C712C195AB3005E0039 /* CustomClearXmarkTextField.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -978,6 +988,7 @@
 			children = (
 				41D0F7302C09AC1F00488C18 /* View */,
 				41D0F7312C09AC2A00488C18 /* Cell */,
+				09254C702C195AA0005E0039 /* Components */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -1306,6 +1317,7 @@
 				418CB1F62BF743B8001DA795 /* SettingsFactory.swift in Sources */,
 				417286F92BFF915D004F88F9 /* MainTabCoordinator+SettingsCoordinatorDelegate.swift in Sources */,
 				41D0F7332C09AC3800488C18 /* PhoneNumberCollectionViewCell.swift in Sources */,
+				09254C722C195AB3005E0039 /* CustomClearXmarkTextField.swift in Sources */,
 				418CB1DC2BF7270A001DA795 /* MainTabFactory.swift in Sources */,
 				41884B842C16D5A60023D76B /* ExampleViewController.swift in Sources */,
 				418CB20B2BF74F77001DA795 /* TeenCoordinator.swift in Sources */,

@@ -109,9 +109,12 @@ final class TermsOfUseViewController: UIViewController {
         button.titleLabel?.font = UIFont.customFont(forTextStyle: .callout,
                                                     weight: .regular)
         button.setTitle(AppLocalized.nextButton, for: .normal)
+        button.setTitle(AppLocalized.nextButton, for: .disabled)
         button.setTitleColor(.white, for: .normal)
-        button.backgroundColor = .black
+        button.setTitleColor(.gray02, for: .disabled)
+        button.backgroundColor = .gray03
         button.layer.cornerRadius = ViewValues.defaultRadius
+        button.isEnabled = false
         return button
     }()
     
@@ -300,6 +303,14 @@ final class TermsOfUseViewController: UIViewController {
             didSelectCheckButton(sender)
         default:
             break
+        }
+        
+        if serviceCheckButton.isSelected && informationCheckButton.isSelected {
+            nextButton.isEnabled = true
+            nextButton.backgroundColor = .black
+        } else {
+            nextButton.isEnabled = false
+            nextButton.backgroundColor = .gray03
         }
     }
     

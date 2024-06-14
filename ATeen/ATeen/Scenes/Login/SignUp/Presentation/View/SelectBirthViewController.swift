@@ -39,7 +39,7 @@ final class SelectBirthViewController: UIViewController {
     
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
-        label.text = "태어난 날을 선택해주세요"
+        label.text = AppLocalized.userBirthSelectButton
         label.textAlignment = .center
         label.font = UIFont.customFont(forTextStyle: .callout, weight: .bold)
         return label
@@ -69,7 +69,7 @@ final class SelectBirthViewController: UIViewController {
     
     private lazy var okButton: UIButton = {
         let button = UIButton()
-        button.setTitle("확인", for: .normal)
+        button.setTitle(AppLocalized.checkButton, for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.backgroundColor = .black
         button.titleLabel?.font = UIFont.customFont(forTextStyle: .callout, weight: .regular)

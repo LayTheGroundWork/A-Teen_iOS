@@ -64,9 +64,12 @@ final class SignUpViewController: UIViewController {
         button.titleLabel?.font = UIFont.customFont(forTextStyle: .callout,
                                                     weight: .regular)
         button.setTitle(AppLocalized.nextButton, for: .normal)
+        button.setTitle(AppLocalized.nextButton, for: .disabled)
         button.setTitleColor(.white, for: .normal)
-        button.backgroundColor = .black
+        button.setTitleColor(.gray02, for: .disabled)
+        button.backgroundColor = .gray03
         button.layer.cornerRadius = ViewValues.defaultRadius
+        button.isEnabled = false
         return button
     }()
     
@@ -135,25 +138,58 @@ final class SignUpViewController: UIViewController {
         guard currentIndexPath.section < collectionView.numberOfSections - 1 else { return }
         
         currentIndexPath.section += 1
-        
         progressView.setProgress(progressView.progress + ViewValues.signUpProgress, animated: true)
-        
         collectionView.scrollToItem(
             at: currentIndexPath,
             at: .centeredHorizontally,
             animated: true
         )
+        nextButton.isEnabled = false
+        nextButton.backgroundColor = .gray03
+        view.endEditing(true)
     }
     
     @objc private func didSelectBackButton(_ sender: UIBarButtonItem) {
-        coordinator?.didFinish()
+        guard currentIndexPath.section != 0 else {
+            coordinator?.didFinish()
+            return
+        }
+        switch currentIndexPath.section {
+        // 유저 아이디
+        case 1:
+            let cell = collectionView.cellForItem(at: currentIndexPath) as? UserNameCollectionViewCell
+            cell?.textField.text = ""
+            cell?.contentView.endEditing(true)
+        // 생년월일
+        case 2:
+            let cell = collectionView.cellForItem(at: currentIndexPath) as? UserBirthCollectionViewCell
+            cell?.birthButton.customLabel.attributedText = nil
+            cell?.birthButton.customLabel.text = AppLocalized.userBirthSelectButton
+            break
+        // 학교 선택
+        case 3:
+            let cell = collectionView.cellForItem(at: currentIndexPath) as? SearchSchoolCollectionViewCell
+            cell?.schoolTextField.text = ""
+            cell?.tableBackgroundView.isHidden = true
+            cell?.contentView.endEditing(true)
+            break
+        default:
+            break
+        }
+        currentIndexPath.section -= 1
+        progressView.setProgress(progressView.progress - ViewValues.signUpProgress, animated: true)
+        collectionView.scrollToItem(
+            at: currentIndexPath,
+            at: .centeredHorizontally,
+            animated: true
+        )
+        nextButton.isEnabled = true
+        nextButton.backgroundColor = .black
     }
 }
 
 // MARK: - Extensions here
-extension SignUpViewController: UICollectionViewDelegate {
-    
-}
+extension SignUpViewController: UICollectionViewDelegate { }
 
 extension SignUpViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -164,7 +200,10 @@ extension SignUpViewController: UICollectionViewDataSource {
         4
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    func collectionView(
+        _ collectionView: UICollectionView,
+        cellForItemAt indexPath: IndexPath
+    ) -> UICollectionViewCell {
         switch indexPath.section {
 
         case 0:
@@ -175,8 +214,9 @@ extension SignUpViewController: UICollectionViewDataSource {
             else {
                 return UICollectionViewCell()
             }
-            
+            cell.setProperties(delegate: self)
             return cell
+            
         case 1:
             guard
                 let cell = collectionView.dequeueReusableCell(
@@ -185,7 +225,7 @@ extension SignUpViewController: UICollectionViewDataSource {
             else {
                 return UICollectionViewCell()
             }
-            
+            cell.setProperties(delegate: self)
             return cell
             
         case 2:
@@ -198,7 +238,9 @@ extension SignUpViewController: UICollectionViewDataSource {
             }
             
             guard let coordinator = coordinator else { return UICollectionViewCell() }
-            cell.setProperties(viewModel: viewModel, coordinator: coordinator)
+            cell.setProperties(viewModel: viewModel,
+                               coordinator: coordinator,
+                               delegate: self)
             
             return cell
             
@@ -211,12 +253,25 @@ extension SignUpViewController: UICollectionViewDataSource {
                 return UICollectionViewCell()
             }
             
-            cell.setProperties(viewModel: viewModel)
-            
+            cell.setProperties(delegate: self, viewModel: viewModel)
             return cell
 
         default:
             return UICollectionViewCell()
         }
+    }
+}
+
+extension SignUpViewController: UserIdCollectionViewCellDelegate,
+                                UserNameCollectionViewCellDelegate,
+                                UserBirthCollectionViewCellDelegate,
+                                SearchSchoolCollectionViewCellDelegate {
+    func updateNextButtonState(_ state: Bool) {
+        nextButton.isEnabled = state
+        nextButton.backgroundColor = if state { UIColor.black } else { UIColor.gray03 }
+    }
+    
+    func didTapNextButtonInKeyboard() {
+        didSelectNextButton(nextButton)
     }
 }

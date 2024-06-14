@@ -21,6 +21,7 @@ final class PhoneNumberViewController: UIViewController {
     
     // MARK: - Private properties
     private weak var coordinator: PhoneNumberViewControllerCoordinator?
+    private var currentIndexPath = IndexPath(item: 0, section: 0)
 
     // 뒤로 가기 버튼
     private lazy var backButton: UIBarButtonItem = {
@@ -47,7 +48,7 @@ final class PhoneNumberViewController: UIViewController {
         
         return collectionView
     }()
-
+    
     
     // MARK: - Life Cycle
     init(coordinator: PhoneNumberViewControllerCoordinator) {
@@ -73,6 +74,12 @@ final class PhoneNumberViewController: UIViewController {
                 cell.clearTextFields()
             }
         }
+        currentIndexPath.section = 0
+        collectionView.scrollToItem(
+            at: currentIndexPath,
+            at: .centeredHorizontally,
+            animated: false
+        )
     }
     
     // MARK: - Helpers
@@ -92,22 +99,48 @@ final class PhoneNumberViewController: UIViewController {
     }
     
     // MARK: - Actions
-    @objc private func didSelectNextButton(_ sender: UIButton) {
-        
-    }
-    
-    @objc private func didSelectBackButton(_ sender: UIBarButtonItem) {
-        coordinator?.didFinish()
+    @objc private func didSelectBackButton(_ sender: UIButton) {
+        if currentIndexPath.section == 1 {
+            currentIndexPath.section -= 1
+            collectionView.scrollToItem(
+                at: currentIndexPath,
+                at: .centeredHorizontally,
+                animated: true
+            )
+            view.endEditing(true)
+            if let visibleCells = collectionView.visibleCells as? [CertificationCodeCollectionViewCell] {
+                for cell in visibleCells {
+                    cell.clearTextFields()
+                }
+            }
+        } else {
+            coordinator?.didFinish()
+        }
     }
 }
 
 // MARK: - Extensions here
-extension PhoneNumberViewController: UICollectionViewDelegate {
-    
+extension PhoneNumberViewController: UICollectionViewDelegate { }
+
+extension PhoneNumberViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(
+        _ collectionView: UICollectionView,
+        willDisplay cell: UICollectionViewCell,
+        forItemAt indexPath: IndexPath
+    ) {
+        if indexPath.section == 1 {
+            if let cell = cell as? CertificationCodeCollectionViewCell {
+                cell.resetTimer()
+            }
+        }
+    }
 }
 
 extension PhoneNumberViewController: UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(
+        _ collectionView: UICollectionView,
+        numberOfItemsInSection section: Int
+    ) -> Int {
         1
     }
     
@@ -115,14 +148,16 @@ extension PhoneNumberViewController: UICollectionViewDataSource {
         2
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    func collectionView(
+        _ collectionView: UICollectionView,
+        cellForItemAt indexPath: IndexPath
+    ) -> UICollectionViewCell {
         switch indexPath.section {
         case 0:
             guard
                 let cell = collectionView.dequeueReusableCell(
-                withReuseIdentifier: PhoneNumberCollectionViewCell.reuseIdentifier,
-                for: indexPath) as? PhoneNumberCollectionViewCell
-           
+                    withReuseIdentifier: PhoneNumberCollectionViewCell.reuseIdentifier,
+                    for: indexPath) as? PhoneNumberCollectionViewCell
             else {
                 return UICollectionViewCell()
             }
@@ -131,8 +166,8 @@ extension PhoneNumberViewController: UICollectionViewDataSource {
         case 1:
             guard
                 let cell = collectionView.dequeueReusableCell(
-                withReuseIdentifier: CertificationCodeCollectionViewCell.reuseIdentifier,
-                for: indexPath) as? CertificationCodeCollectionViewCell
+                    withReuseIdentifier: CertificationCodeCollectionViewCell.reuseIdentifier,
+                    for: indexPath) as? CertificationCodeCollectionViewCell
             else {
                 return UICollectionViewCell()
             }
@@ -146,11 +181,13 @@ extension PhoneNumberViewController: UICollectionViewDataSource {
 
 extension PhoneNumberViewController: PhoneNumberCollectionViewCellDelegate {
     func didSelectCertificateButton() {
+        currentIndexPath.section += 1
         collectionView.scrollToItem(
-            at: IndexPath(item: 0, section: 1),
+            at: currentIndexPath,
             at: .centeredHorizontally,
             animated: true
         )
+        view.endEditing(true)
     }
 }
 
@@ -167,4 +204,3 @@ extension PhoneNumberViewController: CertificationCodeCollectionViewCellDelegate
         coordinator?.didSelectResendCode()
     }
 }
-

@@ -9,11 +9,16 @@ import SnapKit
 
 import UIKit
 
+protocol SearchSchoolCollectionViewCellDelegate: AnyObject {
+    func updateNextButtonState(_ state: Bool)
+}
+
 final class SearchSchoolCollectionViewCell: UICollectionViewCell {
     // MARK: - Public properties
     
     // MARK: - Private properties
     private var viewModel = LoginBirthViewModel()
+    private weak var delegate: SearchSchoolCollectionViewCellDelegate?
     
     var customIndicatorViewTopAnchor: Constraint?
     var customIndicatorViewBottomAnchor: Constraint?
@@ -25,38 +30,38 @@ final class SearchSchoolCollectionViewCell: UICollectionViewCell {
     
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 20, weight: .bold)
-        label.text = "다니고 있는\n학교를 알려주세요"
+        label.font = .customFont(forTextStyle: .title3, weight: .bold)
+        label.text = AppLocalized.searchSchoolTitle
         label.numberOfLines = 0
         label.setLineSpacing(spacing: 10)
         return label
     }()
     
-    private lazy var schoolTextField: UITextField = {
+    lazy var schoolTextField: UITextField = {
         let textField = UITextField()
-        textField.tintColor = .gray
+        textField.delegate = self
+        textField.tintColor = .gray01
+        textField.font = .customFont(forTextStyle: .callout, weight: .regular)
         textField.layer.borderWidth = 2
         textField.layer.cornerRadius = 12
-        textField.layer.borderColor = UIColor(named: "mainColor")?.cgColor
+        textField.layer.borderColor = UIColor.main.cgColor
         textField.layer.sublayerTransform = CATransform3DMakeTranslation(15, 0, 0) // 텍스트필드 앞에 공백 넣어주기
+        textField.autocapitalizationType = .none
         textField.autocorrectionType = .no
         textField.spellCheckingType = .no
-        textField.addTarget(
-            self,
-            action: #selector(textFieldDidChange(_:)),
-            for: .editingChanged)
+        textField.returnKeyType = .done
         return textField
     }()
     
     private lazy var searchImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(systemName: "magnifyingglass")
-        imageView.tintColor = UIColor(named: "mainColor")
+        imageView.tintColor = .main
         imageView.frame = CGRect(x: 0, y: 0, width: 24, height: 24)
         return imageView
     }()
     
-    private lazy var tableBackgroundView: UIView = {
+    lazy var tableBackgroundView: UIView = {
         let view = UIView()
         view.backgroundColor = .white
         view.layer.cornerRadius = ViewValues.defaultRadius
@@ -74,20 +79,21 @@ final class SearchSchoolCollectionViewCell: UICollectionViewCell {
         tableView.separatorStyle = .none
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.register(SearchSchoolResultTableViewCell.self, forCellReuseIdentifier: SearchSchoolResultTableViewCell.reuseIdentifier)
+        tableView.register(SearchSchoolResultTableViewCell.self,
+                           forCellReuseIdentifier: SearchSchoolResultTableViewCell.reuseIdentifier)
         return tableView
     }()
     
     private lazy var customIndicatorBackgroudView: UIView = {
         let view = UIView()
-        view.backgroundColor = UIColor(named: "gray03")
+        view.backgroundColor = .gray03
         view.layer.cornerRadius = 2.5
         return view
     }()
     
     private lazy var customIndicatorView: UIView = {
         let view = UIView()
-        view.backgroundColor = UIColor(named: "mainColor")
+        view.backgroundColor = .main
         view.layer.cornerRadius = 2.5
         let panGestureRecognizer = UIPanGestureRecognizer(
             target: self,
@@ -158,39 +164,14 @@ final class SearchSchoolCollectionViewCell: UICollectionViewCell {
             make.trailing.equalTo(self.customIndicatorView.snp.leading).offset(-22)
         }
     }
-
-    // MARK: - Actions
-    func setProperties(viewModel: LoginBirthViewModel) {
-        self.viewModel = viewModel
-    }
     
-    @objc private func textFieldDidChange(_ textField: UITextField) {
-        guard let text = textField.text else { return }
-        viewModel.filterSchools(text: text)
-        
-        if viewModel.filteredSchools.isEmpty {
-            tableBackgroundView.isHidden = true
-        } else {
-            tableBackgroundView.isHidden = false
-            
-            if viewModel.filteredSchools.count < 6 {
-                tableBackgroundViewHeightAnchor?.update(offset: viewModel.filteredSchools.count * 45)
-                tableView.reloadData()
-                tableView.isScrollEnabled = false
-                
-                customIndicatorBackgroudView.isHidden = true
-                customIndicatorViewTopAnchor?.update(offset: 22)
-                customIndicatorViewHeightAnchor?.update(offset: 0)
-            } else {
-                customIndicatorBackgroudView.isHidden = false
-                tableBackgroundViewHeightAnchor?.update(offset: 240)
-                
-                tableView.reloadData()
-                tableView.isScrollEnabled = true
-                
-                updateCustomIndicator()
-            }
-        }
+    // MARK: - Actions
+    func setProperties(
+        delegate: SearchSchoolCollectionViewCellDelegate,
+        viewModel: LoginBirthViewModel
+    ) {
+        self.delegate = delegate
+        self.viewModel = viewModel
     }
     
     @objc func handlePanGesture(_ gestureRecognizer: UIPanGestureRecognizer) {
@@ -236,7 +217,33 @@ final class SearchSchoolCollectionViewCell: UICollectionViewCell {
         }
     }
     
-    func updateCustomIndicator() {
+    private func openSearchScoolTableView() {
+        tableBackgroundView.isHidden = false
+
+        if viewModel.filteredSchools.count < 6 {
+            tableBackgroundViewHeightAnchor?.update(offset: viewModel.filteredSchools.count * 45)
+            tableView.reloadData()
+            tableView.isScrollEnabled = false
+            
+            customIndicatorBackgroudView.isHidden = true
+            customIndicatorViewTopAnchor?.update(offset: 22)
+            customIndicatorViewHeightAnchor?.update(offset: 0)
+        } else {
+            customIndicatorBackgroudView.isHidden = false
+            tableBackgroundViewHeightAnchor?.update(offset: 240)
+            
+            tableView.reloadData()
+            tableView.isScrollEnabled = true
+            
+            updateCustomIndicator()
+        }
+    }
+    
+    private func closeSearchScoolTableView() {
+        tableBackgroundView.isHidden = true
+    }
+    
+    private func updateCustomIndicator() {
         self.layoutIfNeeded()
         
         let contentHeight = tableView.contentSize.height
@@ -282,8 +289,8 @@ extension SearchSchoolCollectionViewCell: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard
             let cell = tableView.dequeueReusableCell(
-            withIdentifier: SearchSchoolResultTableViewCell.reuseIdentifier,
-            for: indexPath) as? SearchSchoolResultTableViewCell
+                withIdentifier: SearchSchoolResultTableViewCell.reuseIdentifier,
+                for: indexPath) as? SearchSchoolResultTableViewCell
         else {
             return UITableViewCell()
         }
@@ -319,6 +326,15 @@ extension SearchSchoolCollectionViewCell: UITableViewDelegate {
             
             viewModel.selectIndexPath = indexPath
             schoolTextField.text = viewModel.filteredSchools[indexPath.row]
+            // '다음으로' 버튼 활성화
+            delegate?.updateNextButtonState(true)
+            // 키보드 닫기
+            contentView.endEditing(true)
+            // 검색어 테이블뷰 닫기
+            closeSearchScoolTableView()
+            // 학교 선택 시, bold 처리
+            schoolTextField.font = .customFont(forTextStyle: .callout, weight: .bold)
+            layoutIfNeeded()
         }
     }
     
@@ -326,6 +342,32 @@ extension SearchSchoolCollectionViewCell: UITableViewDelegate {
         if viewModel.filteredSchools.count >= 6 {
             updateCustomIndicator()
         }
+    }
+}
+
+// MARK: - UITextFieldDelegate
+extension SearchSchoolCollectionViewCell: UITextFieldDelegate {
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        openSearchScoolTableView()
+    }
+    
+    func textFieldDidChangeSelection(_ textField: UITextField) {
+        schoolTextField.font = .customFont(forTextStyle: .callout, weight: .regular)
+        guard let text = textField.text else { return }
+        viewModel.filterSchools(text: text)
+        viewModel.selectIndexPath = nil
+        delegate?.updateNextButtonState(false)
+        
+        if viewModel.filteredSchools.isEmpty {
+            closeSearchScoolTableView()
+        } else {
+            openSearchScoolTableView()
+        }
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        contentView.endEditing(true)
+        return true
     }
 }
 

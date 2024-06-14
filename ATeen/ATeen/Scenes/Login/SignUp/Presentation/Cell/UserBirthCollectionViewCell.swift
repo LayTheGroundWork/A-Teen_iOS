@@ -9,16 +9,21 @@ import SnapKit
 
 import UIKit
 
+protocol UserBirthCollectionViewCellDelegate: AnyObject {
+    func updateNextButtonState(_ state: Bool)
+}
+
 final class UserBirthCollectionViewCell: UICollectionViewCell {
     // MARK: - Public properties
     
     // MARK: - Private properties
     private var viewModel: LoginBirthViewModel?
     private weak var coordinator: SignUpViewControllerCoordinator?
+    private weak var delegate: UserBirthCollectionViewCellDelegate?
     
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
-        label.text = "당신의\n생년월일을 알려주세요!"
+        label.text = AppLocalized.userBirthTitle
         label.textAlignment = .left
         label.textColor = .black
         label.numberOfLines = 0
@@ -26,12 +31,12 @@ final class UserBirthCollectionViewCell: UICollectionViewCell {
         return label
     }()
     
-    private lazy var birthButton: CustomBirthButton = {
+    lazy var birthButton: CustomBirthButton = {
         let button = CustomBirthButton(
             imageName: "arrowDownIcon",
             imageColor: .white,
             textColor: .black,
-            labelText: "태어난 날을 선택해주세요",
+            labelText: AppLocalized.userBirthSelectButton,
             buttonBackgroundColor: .white,
             labelFont: UIFont.customFont(forTextStyle: .callout, weight: .regular),
             frame: .zero)
@@ -43,8 +48,8 @@ final class UserBirthCollectionViewCell: UICollectionViewCell {
         let button = CustomServiceButton(
             imageName: "arrowRightSmallIcon",
             imageColor: .white,
-            textColor: UIColor(named: "graySchoolColor") ?? .gray,
-            labelText: "서비스 약관 바로 보기",
+            textColor: .gray01,
+            labelText: AppLocalized.userBirthServiceTermsButton,
             buttonBackgroundColor: .white,
             labelFont: UIFont.customFont(forTextStyle: .footnote, weight: .regular),
             frame: .zero)
@@ -62,6 +67,7 @@ final class UserBirthCollectionViewCell: UICollectionViewCell {
             name: .selectBirth,
             object: nil)
         configUserInterface()
+        configLayout()
     }
     
     required init?(coder: NSCoder) {
@@ -75,8 +81,6 @@ final class UserBirthCollectionViewCell: UICollectionViewCell {
         contentView.addSubview(titleLabel)
         contentView.addSubview(birthButton)
         contentView.addSubview(serviceButton)
-        
-        configLayout()
     }
     
     private func configLayout() {
@@ -102,9 +106,14 @@ final class UserBirthCollectionViewCell: UICollectionViewCell {
     }
     
     // MARK: - Actions
-    func setProperties(viewModel: LoginBirthViewModel, coordinator: SignUpViewControllerCoordinator) {
+    func setProperties(
+        viewModel: LoginBirthViewModel,
+        coordinator: SignUpViewControllerCoordinator,
+        delegate: UserBirthCollectionViewCellDelegate
+    ) {
         self.viewModel = viewModel
         self.coordinator = coordinator
+        self.delegate = delegate
     }
     
     @objc func didSelectBirth(_ sender: UIButton) {
@@ -121,10 +130,10 @@ final class UserBirthCollectionViewCell: UICollectionViewCell {
             year: viewModel.year,
             month: viewModel.month,
             day: viewModel.day)
+        delegate?.updateNextButtonState(true)
     }
-    
-    // MARK: - Extensions here
-    
 }
+
+// MARK: - Extensions here
 
 extension UserBirthCollectionViewCell: Reusable { }

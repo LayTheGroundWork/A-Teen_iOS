@@ -24,6 +24,8 @@ final class CertificationCodeCollectionViewCell: UICollectionViewCell {
     
     // MARK: - Private properties
     private weak var delegate: CertificationCodeCollectionViewCellDelegate?
+    private weak var timer: Timer?
+    private var totalTime = 180
     
     private lazy var inputCodeLabel: UILabel = {
         let label = UILabel()
@@ -37,11 +39,11 @@ final class CertificationCodeCollectionViewCell: UICollectionViewCell {
         let button = UIButton()
         button.titleLabel?.font = UIFont.customFont(forTextStyle: .callout, weight: .regular)
         button.setTitle(AppLocalized.nextButton, for: .normal)
+        button.setTitleColor(.gray02, for: .disabled)
         button.setTitleColor(.white, for: .normal)
-        button.backgroundColor = .black
+        button.backgroundColor = .gray03
         button.layer.cornerRadius = ViewValues.defaultRadius
         button.isEnabled = false
-        button.alpha = 0.5
         return button
     }()
     
@@ -69,7 +71,15 @@ final class CertificationCodeCollectionViewCell: UICollectionViewCell {
         stackView.spacing = 10
         return stackView
     }()
-        
+    
+    private lazy var timerLabel: UILabel = {
+        let label = UILabel()
+        label.text = formatTime(totalTime)
+        label.font = UIFont.customFont(forTextStyle: .footnote, weight: .regular)
+        label.textColor = .black
+        return label
+    }()
+    
     private var textFields = [UITextField]()
     private var bottomLines = [UIView]()
     
@@ -79,6 +89,7 @@ final class CertificationCodeCollectionViewCell: UICollectionViewCell {
         configUserInterface()
         configLayout()
         setupActions()
+        startTimer()
     }
     
     required init?(coder: NSCoder) {
@@ -93,6 +104,7 @@ final class CertificationCodeCollectionViewCell: UICollectionViewCell {
         self.contentView.addSubview(resendLabel)
         self.contentView.addSubview(resendButton)
         self.contentView.addSubview(nextButton)
+        self.contentView.addSubview(timerLabel)
         
         for i in 0..<6 {
             let textField = CustomTextField()
@@ -150,6 +162,11 @@ final class CertificationCodeCollectionViewCell: UICollectionViewCell {
             make.width.equalTo(ViewValues.signUpNextButtonWidth)
             make.height.equalTo(ViewValues.signUpNextButtonHeight)
         }
+        
+        timerLabel.snp.makeConstraints { make in
+            make.top.equalTo(stackView.snp.bottom).offset(ViewValues.defaultPadding * 2)
+            make.trailing.equalToSuperview().offset(-ViewValues.defaultPadding)
+        }
     }
     
     private func setupActions() {
@@ -164,6 +181,7 @@ final class CertificationCodeCollectionViewCell: UICollectionViewCell {
     
     // MARK: - Actions
     @objc private func didSelectNextButton(_ sender: UIButton) {
+        stopTimer()
         // TODO: - 다음으로 이동할때, 가입된 사용자인지 검증 후 보내주기
         let isNotSignedUpUser = true
         if isNotSignedUpUser {      // 가입 가능
@@ -177,13 +195,30 @@ final class CertificationCodeCollectionViewCell: UICollectionViewCell {
     
     @objc private func didSelectResendButton(_ sender: UIButton) {
         delegate?.didSelectResendCode()
+        resetTimer()
+    }
+    
+    @objc private func updateTimer() {
+        if totalTime > 0 {
+            totalTime -= 1
+            timerLabel.text = formatTime(totalTime)
+        } else {
+            stopTimer()
+            timerLabel.text = "00:00"
+            // TODO: - 시간 다 되었을 때, 상황에 맞춰 로직 추가 필요
+        }
     }
     
     // 모든 텍스트 필드가 채워졌는지 확인하고 **다음으로** 버튼을 활성화 또는 비활성화
     private func updateNextButtonState() {
         let allFieldsFilled = textFields.allSatisfy { $0.text?.count == 1 }
         nextButton.isEnabled = allFieldsFilled
-        nextButton.alpha = allFieldsFilled ? 1.0 : 0.5
+        
+        if allFieldsFilled {
+            nextButton.backgroundColor = .black
+        } else {
+            nextButton.backgroundColor = .gray03
+        }
     }
     
     // 텍스트 필드가 채워질 때 마다 라인 색 변경
@@ -208,10 +243,33 @@ final class CertificationCodeCollectionViewCell: UICollectionViewCell {
         updateNextButtonState()
     }
     
-    // MARK: - Extensions here
+    // 타이머 초기화
+    func startTimer() {
+        timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
+    }
+    
+    func formatTime(_ totalSeconds: Int) -> String {
+        let minutes = totalSeconds / 60
+        let seconds = totalSeconds % 60
+        return String(format: "%02d:%02d", minutes, seconds)
+    }
+    
+    func resetTimer() {
+        totalTime = 180
+        timerLabel.text = formatTime(totalTime)
+        if timer?.isValid == nil {
+            startTimer()
+        }
+    }
+    
+    func stopTimer() {
+        timer?.invalidate()
+    }
 }
 
-// UITextFieldDelegate
+// MARK: - Extensions here
+
+// MARK: - UITextFieldDelegate
 extension CertificationCodeCollectionViewCell: UITextFieldDelegate {
     final class CustomTextField: UITextField {
         override public func deleteBackward() {
@@ -222,7 +280,6 @@ extension CertificationCodeCollectionViewCell: UITextFieldDelegate {
         }
         
         private func moveToPreviousTextField() {
-            dump(self)
             if tag > 1 {
                 // 이전 텍스트 필드로 이동
                 if let previousTextField = superview?.viewWithTag(tag - 1) as? UITextField {
@@ -231,7 +288,7 @@ extension CertificationCodeCollectionViewCell: UITextFieldDelegate {
             }
         }
     }
-
+    
     func textFieldDidBeginEditing(_ textField: UITextField) {
         updateBottomLineColors()
     }
@@ -247,7 +304,7 @@ extension CertificationCodeCollectionViewCell: UITextFieldDelegate {
         replacementString string: String
     ) -> Bool {
         guard let text = textField.text,
-              let textRange = Range(range, in: text) 
+              let textRange = Range(range, in: text)
         else {
             return false
         }
@@ -258,7 +315,7 @@ extension CertificationCodeCollectionViewCell: UITextFieldDelegate {
         else {
             return false
         }
-
+        
         let updatedText = text.replacingCharacters(in: textRange, with: string)
         
         if updatedText.isEmpty {
@@ -273,10 +330,10 @@ extension CertificationCodeCollectionViewCell: UITextFieldDelegate {
             if textField.tag < textFields.count {
                 let nextTextField = textFields[textField.tag]
                 if nextTextField.text?.isEmpty == false {
-                    nextTextField.text = "" // 이미 값이 있을 경우 지우기
-                    nextTextField.becomeFirstResponder() // 그리고 포커스 이동
+                    nextTextField.text = ""                 // 이미 값이 있을 경우 지우기
+                    nextTextField.becomeFirstResponder()    // 그리고 포커스 이동
                 } else {
-                    nextTextField.becomeFirstResponder() // 빈 경우 바로 포커스 이동
+                    nextTextField.becomeFirstResponder()    // 빈 경우 바로 포커스 이동
                 }
             } else {
                 textField.resignFirstResponder()
