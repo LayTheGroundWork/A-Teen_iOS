@@ -253,8 +253,7 @@ extension SignUpViewController: UICollectionViewDataSource {
                 return UICollectionViewCell()
             }
             
-            cell.setProperties(viewModel: viewModel)
-            cell.setProperties(delegate: self)
+            cell.setProperties(delegate: self, viewModel: viewModel)
             return cell
 
         default:

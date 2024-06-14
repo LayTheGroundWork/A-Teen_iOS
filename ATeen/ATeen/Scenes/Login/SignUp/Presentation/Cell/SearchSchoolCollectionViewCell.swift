@@ -30,7 +30,7 @@ final class SearchSchoolCollectionViewCell: UICollectionViewCell {
     
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 20, weight: .bold)
+        label.font = .customFont(forTextStyle: .title3, weight: .bold)
         label.text = "다니고 있는\n학교를 알려주세요"
         label.numberOfLines = 0
         label.setLineSpacing(spacing: 10)
@@ -39,7 +39,9 @@ final class SearchSchoolCollectionViewCell: UICollectionViewCell {
     
     lazy var schoolTextField: UITextField = {
         let textField = UITextField()
+        textField.delegate = self
         textField.tintColor = .gray
+        textField.font = .customFont(forTextStyle: .callout, weight: .regular)
         textField.layer.borderWidth = 2
         textField.layer.cornerRadius = 12
         textField.layer.borderColor = UIColor.main.cgColor
@@ -48,10 +50,6 @@ final class SearchSchoolCollectionViewCell: UICollectionViewCell {
         textField.autocorrectionType = .no
         textField.spellCheckingType = .no
         textField.returnKeyType = .done
-        textField.addTarget(
-            self,
-            action: #selector(textFieldDidChange(_:)),
-            for: .editingChanged)
         return textField
     }()
     
@@ -109,7 +107,6 @@ final class SearchSchoolCollectionViewCell: UICollectionViewCell {
         super.init(frame: frame)
         configUserInterface()
         configLayout()
-        addDismissTapGesture()
     }
     
     required init?(coder: NSCoder) {
@@ -169,63 +166,12 @@ final class SearchSchoolCollectionViewCell: UICollectionViewCell {
     }
     
     // MARK: - Actions
-    func setProperties(delegate: SearchSchoolCollectionViewCellDelegate) {
+    func setProperties(
+        delegate: SearchSchoolCollectionViewCellDelegate,
+        viewModel: LoginBirthViewModel
+    ) {
         self.delegate = delegate
-    }
-    
-    private func addDismissTapGesture() { // VC영역 터치 시 안내려감
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleBackgroundTap))
-        tapGesture.cancelsTouchesInView = false
-        contentView.addGestureRecognizer(tapGesture)
-    }
-    
-    @objc private func handleBackgroundTap(_ sender: UITapGestureRecognizer) {
-        let location = sender.location(in: contentView)
-        if !tableBackgroundView.frame.contains(location) {
-            tableBackgroundView.isHidden = true
-        }
-    }
-    
-    func setProperties(viewModel: LoginBirthViewModel) {
         self.viewModel = viewModel
-    }
-    
-    @objc private func textFieldDidChange(_ textField: UITextField) {
-        guard let text = textField.text else { return }
-        viewModel.filterSchools(text: text)
-        viewModel.selectIndexPath = nil
-        delegate?.updateNextButtonState(false)
-        
-        if viewModel.filteredSchools.isEmpty {
-            tableBackgroundView.isHidden = true
-        } else {
-            tableBackgroundView.isHidden = false
-            
-            //            if let selectIndexPath = viewModel.selectIndexPath {
-            //                let selectedCell = tableView.cellForRow(at: selectIndexPath) as? SearchSchoolResultTableViewCell
-            //                selectedCell?.fontChange(with: viewModel.filteredSchools[selectIndexPath.row],
-            //                                         isBold: false)
-            //                viewModel.selectIndexPath = nil
-            //            }
-            
-            if viewModel.filteredSchools.count < 6 {
-                tableBackgroundViewHeightAnchor?.update(offset: viewModel.filteredSchools.count * 45)
-                tableView.reloadData()
-                tableView.isScrollEnabled = false
-                
-                customIndicatorBackgroudView.isHidden = true
-                customIndicatorViewTopAnchor?.update(offset: 22)
-                customIndicatorViewHeightAnchor?.update(offset: 0)
-            } else {
-                customIndicatorBackgroudView.isHidden = false
-                tableBackgroundViewHeightAnchor?.update(offset: 240)
-                
-                tableView.reloadData()
-                tableView.isScrollEnabled = true
-                
-                updateCustomIndicator()
-            }
-        }
     }
     
     @objc func handlePanGesture(_ gestureRecognizer: UIPanGestureRecognizer) {
@@ -271,7 +217,33 @@ final class SearchSchoolCollectionViewCell: UICollectionViewCell {
         }
     }
     
-    func updateCustomIndicator() {
+    private func openSearchScoolTableView() {
+        tableBackgroundView.isHidden = false
+
+        if viewModel.filteredSchools.count < 6 {
+            tableBackgroundViewHeightAnchor?.update(offset: viewModel.filteredSchools.count * 45)
+            tableView.reloadData()
+            tableView.isScrollEnabled = false
+            
+            customIndicatorBackgroudView.isHidden = true
+            customIndicatorViewTopAnchor?.update(offset: 22)
+            customIndicatorViewHeightAnchor?.update(offset: 0)
+        } else {
+            customIndicatorBackgroudView.isHidden = false
+            tableBackgroundViewHeightAnchor?.update(offset: 240)
+            
+            tableView.reloadData()
+            tableView.isScrollEnabled = true
+            
+            updateCustomIndicator()
+        }
+    }
+    
+    private func closeSearchScoolTableView() {
+        tableBackgroundView.isHidden = true
+    }
+    
+    private func updateCustomIndicator() {
         self.layoutIfNeeded()
         
         let contentHeight = tableView.contentSize.height
@@ -354,7 +326,15 @@ extension SearchSchoolCollectionViewCell: UITableViewDelegate {
             
             viewModel.selectIndexPath = indexPath
             schoolTextField.text = viewModel.filteredSchools[indexPath.row]
+            // '다음으로' 버튼 활성화
             delegate?.updateNextButtonState(true)
+            // 키보드 닫기
+            contentView.endEditing(true)
+            // 검색어 테이블뷰 닫기
+            closeSearchScoolTableView()
+            // 학교 선택 시, bold 처리
+            schoolTextField.font = .customFont(forTextStyle: .callout, weight: .bold)
+            layoutIfNeeded()
         }
     }
     
@@ -362,6 +342,32 @@ extension SearchSchoolCollectionViewCell: UITableViewDelegate {
         if viewModel.filteredSchools.count >= 6 {
             updateCustomIndicator()
         }
+    }
+}
+
+// MARK: - UITextFieldDelegate
+extension SearchSchoolCollectionViewCell: UITextFieldDelegate {
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        openSearchScoolTableView()
+    }
+    
+    func textFieldDidChangeSelection(_ textField: UITextField) {
+        schoolTextField.font = .customFont(forTextStyle: .callout, weight: .regular)
+        guard let text = textField.text else { return }
+        viewModel.filterSchools(text: text)
+        viewModel.selectIndexPath = nil
+        delegate?.updateNextButtonState(false)
+        
+        if viewModel.filteredSchools.isEmpty {
+            closeSearchScoolTableView()
+        } else {
+            openSearchScoolTableView()
+        }
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        contentView.endEditing(true)
+        return true
     }
 }
 

@@ -11,7 +11,7 @@ final class SearchSchoolResultTableViewCell: UITableViewCell {
     private lazy var schoolNameLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .left
-        label.font = UIFont.customFont(forTextStyle: .callout, weight: .regular)
+        label.font = .customFont(forTextStyle: .callout, weight: .regular)
         return label
     }()
     
