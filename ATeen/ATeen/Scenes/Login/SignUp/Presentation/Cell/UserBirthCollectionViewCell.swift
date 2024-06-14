@@ -23,7 +23,7 @@ final class UserBirthCollectionViewCell: UICollectionViewCell {
     
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
-        label.text = "당신의\n생년월일을 알려주세요!"
+        label.text = AppLocalized.userBirthTitle
         label.textAlignment = .left
         label.textColor = .black
         label.numberOfLines = 0
@@ -36,7 +36,7 @@ final class UserBirthCollectionViewCell: UICollectionViewCell {
             imageName: "arrowDownIcon",
             imageColor: .white,
             textColor: .black,
-            labelText: "태어난 날을 선택해주세요",
+            labelText: AppLocalized.userBirthSelectButton,
             buttonBackgroundColor: .white,
             labelFont: UIFont.customFont(forTextStyle: .callout, weight: .regular),
             frame: .zero)
@@ -48,8 +48,8 @@ final class UserBirthCollectionViewCell: UICollectionViewCell {
         let button = CustomServiceButton(
             imageName: "arrowRightSmallIcon",
             imageColor: .white,
-            textColor: UIColor(named: "graySchoolColor") ?? .gray,
-            labelText: "서비스 약관 바로 보기",
+            textColor: .gray01,
+            labelText: AppLocalized.userBirthServiceTermsButton,
             buttonBackgroundColor: .white,
             labelFont: UIFont.customFont(forTextStyle: .footnote, weight: .regular),
             frame: .zero)

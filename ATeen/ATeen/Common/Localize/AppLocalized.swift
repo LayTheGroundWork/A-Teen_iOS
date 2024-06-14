@@ -23,6 +23,7 @@ enum AppLocalized {
     static let okButton = "알겠어요!"
     static let okGoodButton = "좋아요!"
     static let noButton = "아니요"
+    static let checkButton = "확인"
     
     // MARK: - AboutATeenTableViewCell
     static let teenTitle = "Teen"
@@ -101,4 +102,28 @@ enum AppLocalized {
     static let reportDialogBlockButtonText = "해당 프로필 다시는 보지 않기"
     static let reportDialogExplainText = "신고는 반대 의견을 표시하는 기능이 아닙니다."
     static let reportCompleteDialogTitle = "신고가 완료되었습니다."
+    
+    // MARK: - Login / SignUp
+    static let userIDNumberOfCharactersErrrorMessage = "4자 이상 입력해주세요."
+    static let userIDNumberErrrorMessage = "숫자를 추가해주세요."
+    static let userIDLowercaseLetterErrrorMessage = "영어 소문자를 추가해주세요."
+    static let userIDCount = "/11"
+    static let userNameNumberErrrorMessage = "2자 이상 입력해주세요."
+    static let userNameIncorrectKoreanErrorMessage = "한글을 바르게 입력해주세요."
+    static let userNameCount = "/8"
+    static let userBirthTitle = "당신의\n생년월일을 알려주세요!"
+    static let userBirthSelectButton = "태어난 날을 선택해주세요"
+    static let userBirthServiceTermsButton = "서비스 약관 바로 보기"
+    static let searchSchoolTitle = "다니고 있는\n학교를 알려주세요"
+
+}
+
+// MARK: - Regex 모음
+enum ATeenRegex {
+    static let lowercaseAndNumber = "^[a-z0-9]"
+    static let lowercase = "^[a-z]"
+    static let lowercaseAndNumberFourToElevenCharacters = "^(?=.*[a-z])(?=.*[0-9]).{4,11}$"
+    static let characterAndNumber = "^[a-zA-Z0-9ㄱ-ㅎㅏ-ㅣ가-힣]"
+    static let completeKorean = "^[가-힣]*$"
+    static let incompleteKorean = "[ㄱ-ㅎㅏ-ㅣ]"
 }

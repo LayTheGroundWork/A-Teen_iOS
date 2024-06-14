@@ -183,13 +183,13 @@ extension UserNameCollectionViewCell: UITextFieldDelegate {
             textField.layer.borderColor = UIColor.red.cgColor
             delegate?.updateNextButtonState(false)
             if text.count < 2 {
-                errorMessageLabel.text = "2자 이상 입력해주세요."
+                errorMessageLabel.text = AppLocalized.userNameNumberErrrorMessage
             } else {
-                errorMessageLabel.text = "한글을 바르게 입력해주세요."
+                errorMessageLabel.text = AppLocalized.userNameIncorrectKoreanErrorMessage
             }
             errorMessageLabelHeight?.update(offset: 16)
         }
-        charCountLabel.text = "\(text.count)/8"
+        charCountLabel.text = "\(text.count)\(AppLocalized.userNameCount)"
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
@@ -216,9 +216,9 @@ extension UserNameCollectionViewCell: UITextFieldDelegate {
     
     // 영어 & 한글 & 숫자
     private func checkRegex(_ text: String) -> Bool {
-        let specialCharacterRegex = "^[a-zA-Z0-9ㄱ-ㅎㅏ-ㅣ가-힣]"
+        let characterRegex = ATeenRegex.characterAndNumber
         let range = NSRange(location: 0, length: text.utf16.count)
-        let regex = try! NSRegularExpression(pattern: specialCharacterRegex)
+        let regex = try! NSRegularExpression(pattern: characterRegex)
         let result = regex.firstMatch(in: text, options: [], range: range) != nil
         return result
     }
@@ -226,8 +226,8 @@ extension UserNameCollectionViewCell: UITextFieldDelegate {
     /// 불완전한 한글 단어 확인
     /// ex. ㅅㅏ, ㄹㅏㅇ, ㅐㅎ
     private func isIncompleteKoreanWord(_ text: String) -> Bool {
-        let completeKoreanRegex = "^[가-힣]*$"
-        let incompleteKoreanRegex = "[ㄱ-ㅎㅏ-ㅣ]"
+        let completeKoreanRegex = ATeenRegex.completeKorean
+        let incompleteKoreanRegex = ATeenRegex.incompleteKorean
         
         let completeRegex = try! NSRegularExpression(pattern: completeKoreanRegex)
         let incompleteRegex = try! NSRegularExpression(pattern: incompleteKoreanRegex)

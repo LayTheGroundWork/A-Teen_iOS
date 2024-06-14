@@ -31,7 +31,7 @@ final class SearchSchoolCollectionViewCell: UICollectionViewCell {
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.font = .customFont(forTextStyle: .title3, weight: .bold)
-        label.text = "다니고 있는\n학교를 알려주세요"
+        label.text = AppLocalized.searchSchoolTitle
         label.numberOfLines = 0
         label.setLineSpacing(spacing: 10)
         return label
@@ -40,7 +40,7 @@ final class SearchSchoolCollectionViewCell: UICollectionViewCell {
     lazy var schoolTextField: UITextField = {
         let textField = UITextField()
         textField.delegate = self
-        textField.tintColor = .gray
+        textField.tintColor = .gray01
         textField.font = .customFont(forTextStyle: .callout, weight: .regular)
         textField.layer.borderWidth = 2
         textField.layer.cornerRadius = 12

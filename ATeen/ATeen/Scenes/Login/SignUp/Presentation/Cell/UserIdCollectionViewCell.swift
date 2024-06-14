@@ -169,15 +169,15 @@ extension UserIdCollectionViewCell: UITextFieldDelegate {
             textField.layer.borderColor = UIColor.red.cgColor
             delegate?.updateNextButtonState(false)
             if text.count < 4 {
-                errorMessageLabel.text = "4자 이상 입력해주세요."
+                errorMessageLabel.text = AppLocalized.userIDNumberOfCharactersErrrorMessage
             } else if containsLowcaseInString(text) {
-                errorMessageLabel.text = "숫자를 추가해주세요."
+                errorMessageLabel.text = AppLocalized.userIDNumberErrrorMessage
             } else {
-                errorMessageLabel.text = "영어 소문자를 추가해주세요."
+                errorMessageLabel.text = AppLocalized.userIDLowercaseLetterErrrorMessage
             }
             errorMessageLabelHeight?.update(offset: 16)
         }
-        charCountLabel.text = "\(text.count)/11"
+        charCountLabel.text = "\(text.count)\(AppLocalized.userIDCount)"
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
@@ -202,7 +202,7 @@ extension UserIdCollectionViewCell: UITextFieldDelegate {
     
     // 영어 소문자 & 숫자 - character 확인
     private func containsLowcaseAndNumber(_ text: String) -> Bool {
-        let containsLowcaseAndNumberRegex = "^[a-z0-9]"
+        let containsLowcaseAndNumberRegex = ATeenRegex.lowercaseAndNumber
         let regex = try! NSRegularExpression(pattern: containsLowcaseAndNumberRegex)
         let range = NSRange(location: 0, length: text.utf16.count)
         let result = regex.firstMatch(in: text, options: [], range: range) != nil
@@ -211,7 +211,7 @@ extension UserIdCollectionViewCell: UITextFieldDelegate {
     
     // 영어 소문자 & 숫자 & 4자 이상 11자 이하 - string 전체 확인
     private func containsLowcaseAndNumberInString(_ text: String) -> Bool {
-        let containsLowcaseAndNumberRegex = "^(?=.*[a-z])(?=.*[0-9]).{4,11}$"
+        let containsLowcaseAndNumberRegex = ATeenRegex.lowercaseAndNumberFourToElevenCharacters
         let regex = try! NSRegularExpression(pattern: containsLowcaseAndNumberRegex)
         let range = NSRange(location: 0, length: text.utf16.count)
         let result = regex.firstMatch(in: text, options: [], range: range) != nil
@@ -220,7 +220,7 @@ extension UserIdCollectionViewCell: UITextFieldDelegate {
     
     // 영어 소문자 포함 여부 확인
     private func containsLowcaseInString(_ text: String) -> Bool {
-        let containsLowcaseRegex = "^[a-z]"
+        let containsLowcaseRegex = ATeenRegex.lowercase
         let regex = try! NSRegularExpression(pattern: containsLowcaseRegex)
         let range = NSRange(location: 0, length: text.utf16.count)
         return regex.firstMatch(in: text, options: [], range: range) != nil
