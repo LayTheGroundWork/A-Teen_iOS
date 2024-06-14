@@ -9,7 +9,10 @@ import UIKit
 
 protocol MainTabFactory {
     func makeMainTabController() -> UITabBarController
-    func makeChildCoordinators(delegate: SettingsCoordinatorDelegate) -> [Coordinator]
+    func makeLoginCoordinator(
+        delegate: LogInCoordinatorDelegate
+    ) -> Coordinator
+    func makeChildCoordinators(delegate: SettingsCoordinatorDelegate, mainDelegate: MainCoordinatorDelegate) -> [Coordinator]
 }
 
 struct MainTabFactoryImp: MainTabFactory {
@@ -18,12 +21,22 @@ struct MainTabFactoryImp: MainTabFactory {
     func makeMainTabController() -> UITabBarController {
         let mainTabController = MainTabController()
         mainTabController.viewControllers = []
-        mainTabController.title = "Main"
         return mainTabController
     }
     
-    func makeChildCoordinators(delegate: SettingsCoordinatorDelegate) -> [Coordinator] {
-        let mainCoordinator = makeMainCoordinator()
+    func makeLoginCoordinator(delegate: LogInCoordinatorDelegate) -> Coordinator {
+        let factory = LogInFactoryImp(appContainer: appContainer)
+        let navigationController = UINavigationController()
+        let navigation = NavigationImp(rootViewController: navigationController)
+        
+        return LogInCoordinator(
+            navigation: navigation,
+            factory: factory,
+            delegate: delegate)
+    }
+    
+    func makeChildCoordinators(delegate: SettingsCoordinatorDelegate, mainDelegate: MainCoordinatorDelegate) -> [Coordinator] {
+        let mainCoordinator = makeMainCoordinator(delegate: mainDelegate)
         let rankingCoordinator = makeRankingCoordinator()
         let teenCoordinator = makeTeenCoordinator()
         let chatCoordinator = makeChatCoordinator()
@@ -36,12 +49,13 @@ struct MainTabFactoryImp: MainTabFactory {
                 profileCoordinator]
     }
     
-    private func makeMainCoordinator() -> Coordinator {
+    private func makeMainCoordinator(delegate: MainCoordinatorDelegate) -> Coordinator {
         let navigation = NavigationImp(rootViewController: UINavigationController())
-        let factory = MainFactoryImp()
+        let factory = MainFactoryImp(appContainer: appContainer)
         return MainCoordinator(
             navigation: navigation,
-            factory: factory)
+            factory: factory,
+            delegate: delegate)
     }
     
     private func makeRankingCoordinator() -> Coordinator {

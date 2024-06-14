@@ -34,19 +34,6 @@ final class AppCoordinator: Coordinator {
         window?.makeKeyAndVisible()
     }
 
-//    private func startSomeCoordinator() {
-//        guard let auth = auth else { return }
-//        auth.isSessionActive ? startMainTabCoordinator() : startLoginCoordinator()
-//        
-//    }
-//
-//    private func startLoginCoordinator() {
-//        let loginCoordinator = factory?.makeLogInCoordinator(
-//            navigation: navigation,
-//            delegate: self)
-//        addChildCoordinatorStart(loginCoordinator)
-//    }
-
     private func startMainTabCoordinator() {
         let mainTabCoordinator = factory?.makeMainTabCoordinator(
             navigation: navigation,
@@ -59,13 +46,6 @@ final class AppCoordinator: Coordinator {
         navigation.viewControllers = []
         clearAllChildsCoordinator()
         startMainTabCoordinator()
-    }
-}
-
-// MARK: - LogInCoordinatorDelegate
-extension AppCoordinator: LogInCoordinatorDelegate {
-    func didFinishLogin() {
-        clearCoordinatorsAndStart()
     }
 }
 

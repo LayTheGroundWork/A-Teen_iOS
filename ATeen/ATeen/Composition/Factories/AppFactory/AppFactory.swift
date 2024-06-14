@@ -11,9 +11,7 @@ import UIKit
 struct AppFactory {
     let appContainer: AppContainer?
     
-    func makeLogInCoordinator(
-        navigation: Navigation,
-        delegate: LogInCoordinatorDelegate
+    func makeLogInCoordinator(navigation: Navigation,delegate: LogInCoordinatorDelegate
     ) -> Coordinator {
         let logInFactory = LogInFactoryImp(appContainer: appContainer)
         return LogInCoordinator(

@@ -12,11 +12,17 @@ final class MainTabController: UITabBarController {
     // MARK: - Public properties
     lazy var mainButton: CustomTabBarButton = {
         let button = CustomTabBarButton(
-            imageName: "mainIconSelected",
+            imageName: "mainIcon",
+            selectedImageName: "mainIconSelected",
+            imageColor: nil,
             textColor: .main,
             labelText: "Main",
+            buttonBackgroundColor: .clear,
+            labelFont: UIFont.preferredFont(
+                forTextStyle: .footnote),
             frame: .zero)
         button.tag = 0
+        button.isSelected = true
         button.addTarget(self, action: #selector(clickButton(_:)), for: .touchUpInside)
         return button
     }()
@@ -24,10 +30,16 @@ final class MainTabController: UITabBarController {
     lazy var rankingButton: CustomTabBarButton = {
         let button = CustomTabBarButton(
             imageName: "rankingIcon",
+            selectedImageName: "rankingIconSelected",
+            imageColor: nil,
             textColor: .white,
             labelText: "Ranking",
+            buttonBackgroundColor: .clear,
+            labelFont: UIFont.preferredFont(
+                forTextStyle: .footnote),
             frame: .zero)
         button.tag = 1
+        button.isSelected = false
         button.addTarget(self, action: #selector(clickButton(_:)), for: .touchUpInside)
         return button
     }()
@@ -35,10 +47,16 @@ final class MainTabController: UITabBarController {
     lazy var teenButton: CustomTabBarButton = {
         let button = CustomTabBarButton(
             imageName: "teenIcon",
+            selectedImageName: "teenIconSelected",
+            imageColor: nil,
             textColor: .white,
             labelText: "Teen",
+            buttonBackgroundColor: .clear,
+            labelFont: UIFont.preferredFont(
+                forTextStyle: .footnote),
             frame: .zero)
         button.tag = 2
+        button.isSelected = false
         button.addTarget(self, action: #selector(clickButton(_:)), for: .touchUpInside)
         return button
     }()
@@ -46,10 +64,16 @@ final class MainTabController: UITabBarController {
     lazy var chatButton: CustomTabBarButton = {
         let button = CustomTabBarButton(
             imageName: "chatIcon",
+            selectedImageName: "chatIconSelected",
+            imageColor: nil,
             textColor: .white,
             labelText: "Chat",
+            buttonBackgroundColor: .clear,
+            labelFont: UIFont.preferredFont(
+                forTextStyle: .footnote),
             frame: .zero)
         button.tag = 3
+        button.isSelected = false
         button.addTarget(self, action: #selector(clickButton(_:)), for: .touchUpInside)
         return button
     }()
@@ -57,10 +81,16 @@ final class MainTabController: UITabBarController {
     lazy var profileButton: CustomTabBarButton = {
         let button = CustomTabBarButton(
             imageName: "profile",
+            selectedImageName: nil,
+            imageColor: nil,
             textColor: .white,
             labelText: "My",
+            buttonBackgroundColor: .clear,
+            labelFont: UIFont.preferredFont(
+                forTextStyle: .footnote),
             frame: .zero)
         button.tag = 4
+        button.isSelected = false
         button.layer.masksToBounds = true
         button.layer.cornerRadius = 14
         button.addTarget(self, action: #selector(clickButton(_:)), for: .touchUpInside)
@@ -101,7 +131,8 @@ final class MainTabController: UITabBarController {
         self.tabBar.isHidden = true
         
         view.addSubview(tabBarView)
-     
+        self.clickButton(mainButton)
+        
         tabBarView.setConstraints(
             right: view.rightAnchor,
             bottom: view.bottomAnchor,
@@ -158,38 +189,24 @@ extension MainTabController {
     }
     
     private func changeBeforeButtonState(button: CustomTabBarButton) {
-        switch button.tag {
-        case 0:
-            button.customImageView.image = UIImage(named: "mainIcon")
-        case 1:
-            button.customImageView.image = UIImage(named: "rankingIcon")
-        case 2:
-            button.customImageView.image = UIImage(named: "teenIcon")
-        case 3:
-            button.customImageView.image = UIImage(named: "chatIcon")
-        default:
-            break
-        }
+        updateNotSelectButton(button)
         button.customLabel.textColor = .white
         button.isSelected = false
     }
     
     private func selectButtonState(button: CustomTabBarButton) {
-        switch button.tag {
-        case 0:
-            button.customImageView.image = UIImage(named: "mainIconSelected")
-        case 1:
-            button.customImageView.image = UIImage(named: "rankingIconSelected")
-        case 2:
-            button.customImageView.image = UIImage(named: "teenIconSelected")
-        case 3:
-            button.customImageView.image = UIImage(named: "chatIconSelected")
-        default:
-            break
-        }
-        button.customLabel.textColor = UIColor(named: "mainColor")
+        updateSelectButton(button)
+        button.customLabel.textColor = .main
         button.isSelected = true
         
         self.selectedIndex = button.tag
+    }
+    
+    private func updateSelectButton(_ button: CustomTabBarButton) {
+        button.updateImage(for: .selected)
+    }
+    
+    private func updateNotSelectButton(_ button: CustomTabBarButton) {
+        button.updateImage(for: .normal)
     }
 }

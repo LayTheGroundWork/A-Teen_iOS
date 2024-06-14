@@ -34,13 +34,17 @@ extension NavigationImp: Navigation {
     var navigationBar: UINavigationBar {
         rootViewController.navigationBar
     }
-    
-    func present(_ viewControllerToPresent: UIViewController, animated: Bool) {
+
+    func present(_ viewControllerToPresent: UIViewController, animated: Bool, completion: (() -> Void)? = nil) {
         rootViewController.present(viewControllerToPresent, animated: animated)
     }
     
     func dismiss(animated: Bool) {
         rootViewController.dismiss(animated: animated)
+    }
+    
+    func popViewController(animated: Bool) {
+        rootViewController.popViewController(animated: animated)
     }
     
     func pushViewController(
@@ -53,5 +57,4 @@ extension NavigationImp: Navigation {
         }
         rootViewController.pushViewController(viewControllerToPresent, animated: animated)
     }
-    
 }
