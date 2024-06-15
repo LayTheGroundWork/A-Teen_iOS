@@ -108,7 +108,11 @@ final class ProfileDetailBottomBar: UIView {
         button.layer.masksToBounds = false
         
         let imageView = UIImageView()
-        imageView.image = DesignSystemImages.Image(named: imageName)
+        if imageName == "blackChattingIcon" {
+            imageView.image = DesignSystemAsset.blackChattingIcon.image
+        } else {
+            imageView.image = DesignSystemAsset.instaIcon.image
+        }
         button.addSubview(imageView)
         
         imageView.snp.makeConstraints { make in

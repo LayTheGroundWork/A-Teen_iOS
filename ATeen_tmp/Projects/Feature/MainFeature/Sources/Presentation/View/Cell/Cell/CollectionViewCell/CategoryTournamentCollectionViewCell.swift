@@ -55,14 +55,16 @@ class CategoryTournamentCollectionViewCell: UICollectionViewCell {
     
     func setUI(category: TournamentCategory) {
         titleLabel.text = category.title
-        categoryImageView.image = DesignSystemImages.Image(named: category.image)
         
         switch category.title {
         case "운동":
             categoryImageView.backgroundColor = DesignSystemAsset.mainColor.color
+            categoryImageView.image = DesignSystemAsset.exercise.image
             
         case "스터디":
             categoryImageView.backgroundColor = DesignSystemAsset.mainOrangeColor.color
+            categoryImageView.image = DesignSystemAsset.study.image
+
             
         default:
             categoryImageView.backgroundColor = UIColor.systemGray4
