@@ -14,6 +14,7 @@ public protocol RankingFactory {
 public struct RankingFactoryImp: RankingFactory {
     
     public init() { }
+    
     public func makeRankingViewController() -> UIViewController {
         let controller = RankingViewController()
         controller.navigationItem.title = "Ranking"

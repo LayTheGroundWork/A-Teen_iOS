@@ -64,7 +64,7 @@ final class MainTabController: UITabBarController {
     
     lazy var chatButton: CustomTabBarButton = {
         let button = CustomTabBarButton(
-            imageName: DesignSystemAsset.chatIcon.name,
+            imageName: "chatIcon",
             selectedImageName: DesignSystemAsset.chatIconSelected.name,
             imageColor: nil,
             textColor: UIColor.white,

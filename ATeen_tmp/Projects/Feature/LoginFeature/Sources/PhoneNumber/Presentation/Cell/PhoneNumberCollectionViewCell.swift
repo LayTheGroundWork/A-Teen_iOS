@@ -48,7 +48,7 @@ final class PhoneNumberCollectionViewCell: UICollectionViewCell {
     
     private lazy var clearTextButton: UIButton = {
         let button = UIButton()
-        button.setImage(UIImage(named: "clearButton"), for: .normal)
+        button.setImage(DesignSystemAsset.clearButton.image, for: .normal)
         return button
     }()
     

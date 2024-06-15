@@ -24,7 +24,7 @@ final class ReportPopoverViewController: UIViewController {
 
     private lazy var popoverView: UIView = {
         let view = UIView()
-        view.backgroundColor = .white
+        view.backgroundColor = UIColor.white
         view.layer.cornerRadius = ViewValues.defaultRadius
         view.layer.borderWidth = 1.0
         view.layer.borderColor = DesignSystemAsset.gray03.color.cgColor
@@ -67,7 +67,7 @@ final class ReportPopoverViewController: UIViewController {
     
     // MARK: - Helpers
     private func configUserInterface() {
-        view.backgroundColor = .clear
+        view.backgroundColor = UIColor.clear
         view.addSubview(popoverView)
         popoverView.addSubview(reportButton)
         popoverView.addSubview(blockButton)

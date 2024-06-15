@@ -8,6 +8,7 @@
 import SnapKit
 
 import Common
+import DesignSystem
 import FeatureDependency
 import UIKit
 
@@ -25,7 +26,7 @@ class TodayTeenTableViewCell: UITableViewCell {
         layout.sectionInset = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
         layout.itemSize = CGSize(width: width, height: 47)
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.backgroundColor = .white
+        collectionView.backgroundColor = UIColor.white
         collectionView.showsHorizontalScrollIndicator = false
         return collectionView
     }()
@@ -46,14 +47,14 @@ class TodayTeenTableViewCell: UITableViewCell {
         layout.sectionInset = UIEdgeInsets(top: 0, left: 25, bottom: 0, right: 25)
         layout.itemSize = CGSize(width: ViewValues.todayTeenImageWidth, height: ViewValues.todayTeenImageHeight)
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.backgroundColor = .white
+        collectionView.backgroundColor = UIColor.white
         collectionView.showsHorizontalScrollIndicator = false
         return collectionView
     }()
     
     lazy var grayLine: UIView = {
         let view = UIView()
-        view.backgroundColor = UIColor(named: "grayLineColor")
+        view.backgroundColor = DesignSystemAsset.grayLineColor.color
         return view
     }()
     

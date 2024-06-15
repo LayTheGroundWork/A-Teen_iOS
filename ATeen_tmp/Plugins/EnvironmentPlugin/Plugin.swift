@@ -1,6 +1,6 @@
 //
 //  Plugin.swift
-//  tuist-ExampleManifests
+//  ATeenManifests
 //
 //  Created by 최동호 on 6/5/24.
 //

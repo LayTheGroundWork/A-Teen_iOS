@@ -8,7 +8,7 @@
 import FeatureDependency
 
 extension PhoneNumberCoordinator: VerificationCompleteDialogCoordinatorDelegate {
-    func didSelectOKButton(childCoordinator: Coordinator) {
+    public func didSelectOKButton(childCoordinator: Coordinator) {
         // 현재 Dialog 닫기
         childCoordinator.navigation.dismissNavigation = nil
         removeChildCoordinator(childCoordinator)

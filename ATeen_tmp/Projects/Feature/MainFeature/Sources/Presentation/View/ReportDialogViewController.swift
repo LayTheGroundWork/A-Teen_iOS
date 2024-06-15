@@ -24,14 +24,14 @@ final class ReportDialogViewController: UIViewController {
     
     private lazy var dialogView: UIView = {
         let view = UIView()
-        view.backgroundColor = .white
+        view.backgroundColor = UIColor.white
         view.layer.cornerRadius = ViewValues.defaultRadius
         return view
     }()
     
     private lazy var xmarkButton: UIButton = {
         let button = UIButton()
-        button.setImage(UIImage(named: "xMarkIcon"), for: .normal)
+        button.setImage(DesignSystemAsset.xMarkIcon.image, for: .normal)
         return button
     }()
     
@@ -92,7 +92,7 @@ final class ReportDialogViewController: UIViewController {
     private lazy var textView: UITextView = {
         let textView = UITextView()
         textView.delegate = self
-        textView.backgroundColor = .white
+        textView.backgroundColor = UIColor.white
         textView.text = AppLocalized.reportDialogPlaceholderText
         textView.textColor = DesignSystemAsset.gray01.color
         textView.autocapitalizationType = .none
@@ -161,7 +161,7 @@ final class ReportDialogViewController: UIViewController {
     
     // MARK: - Helpers
     private func configUserInterface() {
-        view.backgroundColor = .black.withAlphaComponent(0.5)
+        view.backgroundColor = UIColor.black.withAlphaComponent(0.5)
         
         // 키보드 내리기
         let tapGesture = UITapGestureRecognizer(

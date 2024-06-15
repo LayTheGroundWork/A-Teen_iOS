@@ -56,7 +56,7 @@ public struct MainFactoryImp: MainFactory {
         let factory = ProfileDetailFactoryImp(frame: frame, todayTeen: todayTeen)
         let navigationController = UINavigationController()
         navigationController.modalPresentationStyle = .overFullScreen
-        navigationController.view.backgroundColor = .clear
+        navigationController.view.backgroundColor = UIColor.clear
         let navigation = NavigationImp(rootViewController: navigationController)
         
         return ProfileDetailCoordinator(

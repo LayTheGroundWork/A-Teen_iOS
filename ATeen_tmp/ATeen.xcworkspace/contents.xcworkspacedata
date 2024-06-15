@@ -41,9 +41,6 @@
             location = "group:RankingFeature/RankingFeature.xcodeproj">
          </FileRef>
          <FileRef
-            location = "group:SettingsFeature/SettingsFeature.xcodeproj">
-         </FileRef>
-         <FileRef
             location = "group:TeenFeature/TeenFeature.xcodeproj">
          </FileRef>
       </Group>

@@ -7,6 +7,7 @@
 
 import Core
 import Common
+import DesignSystem
 import UIKit
 
 class MainViewModel {
@@ -22,11 +23,11 @@ class MainViewModel {
     ]
     
     var todayTeenList: [TodayTeen] = [
-        TodayTeen(name: "검은 애", image: UIImage(named: "blackGlass")!),
-        TodayTeen(name: "드레스 입은 애", image: UIImage(named: "dressGlass")!),
-        TodayTeen(name: "밤에 찍은 애", image: UIImage(named: "nightGlass")!),
-        TodayTeen(name: "파란 애", image: UIImage(named: "skyGlass")!),
-        TodayTeen(name: "하얀 애", image: UIImage(named: "whiteGlass")!),
+        TodayTeen(name: "검은 애", image: DesignSystemAsset.blackGlass.image),
+        TodayTeen(name: "드레스 입은 애", image: DesignSystemAsset.dressGlass.image),
+        TodayTeen(name: "밤에 찍은 애", image: DesignSystemAsset.nightGlass.image),
+        TodayTeen(name: "파란 애", image: DesignSystemAsset.skyGlass.image),
+        TodayTeen(name: "하얀 애", image: DesignSystemAsset.whiteGlass.image),
     ]
     
     func getCategoryItemMainViewModel(row: Int) -> ProfileCategory {

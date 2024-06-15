@@ -8,7 +8,7 @@
 import Foundation
 
 extension VerificationCompleteDialogCoordinator: VerificationCompleteDialogViewControllerCoordinator {
-    func didSelectOKButton() {
+    public func didSelectOKButton() {
         delegate?.didSelectOKButton(childCoordinator: self)
     }
 }

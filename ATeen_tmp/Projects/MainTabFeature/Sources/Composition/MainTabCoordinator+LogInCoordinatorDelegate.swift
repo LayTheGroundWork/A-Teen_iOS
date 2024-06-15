@@ -5,8 +5,8 @@
 //  Created by 노주영 on 5/27/24.
 //
 
-import LoginFeature
 import FeatureDependency
+import LoginFeature
 import UIKit
 
 extension MainTabCoordinator: LogInCoordinatorDelegate {

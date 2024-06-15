@@ -7,7 +7,6 @@
 
 import Core
 import FeatureDependency
-import SettingsFeature
 import UIKit
 
 public protocol ProfileFactory {

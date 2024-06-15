@@ -99,7 +99,7 @@ final class ProfileDetailBottomBar: UIView {
     private func makeSmallButton(imageName: String) -> UIButton {
         let button = UIButton()
         button.layer.cornerRadius = ViewValues.defaultRadius
-        button.backgroundColor = .white
+        button.backgroundColor = UIColor.white
         // 그림자 설정
         button.layer.shadowColor = UIColor.black.cgColor
         button.layer.shadowOpacity = 0.15
@@ -108,7 +108,7 @@ final class ProfileDetailBottomBar: UIView {
         button.layer.masksToBounds = false
         
         let imageView = UIImageView()
-        imageView.image = UIImage(named: imageName)
+        imageView.image = DesignSystemImages.Image(named: imageName)
         button.addSubview(imageView)
         
         imageView.snp.makeConstraints { make in

@@ -71,7 +71,7 @@ public final class MainViewController: UIViewController {
     
     // MARK: - Helpers
     private func configUserInterface() {
-        view.backgroundColor = .systemBackground
+        view.backgroundColor = UIColor.systemBackground
 
         //테이블 뷰
         self.view.addSubview(tableView)

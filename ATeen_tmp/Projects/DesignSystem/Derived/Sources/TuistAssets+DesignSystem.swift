@@ -49,7 +49,6 @@ public enum DesignSystemAsset {
   public static let exercise = DesignSystemImages(name: "exercise")
   public static let study = DesignSystemImages(name: "study")
   public static let mainLogo = DesignSystemImages(name: "mainLogo")
-  public static let splashLogo = DesignSystemImages(name: "splashLogo")
   public static let grayButtonColor = DesignSystemColors(name: "grayButtonColor")
   public static let grayLineColor = DesignSystemColors(name: "grayLineColor")
   public static let grayMbtiCellColor = DesignSystemColors(name: "grayMbtiCellColor")

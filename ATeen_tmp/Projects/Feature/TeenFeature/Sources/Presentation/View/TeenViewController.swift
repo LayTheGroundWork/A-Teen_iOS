@@ -20,7 +20,7 @@ final class TeenViewController: UIViewController {
     
     // MARK: - Helpers
     private func configUserInterface() {
-        view.backgroundColor = .systemBackground
+        view.backgroundColor = UIColor.systemBackground
     }
     
     // MARK: - Actions

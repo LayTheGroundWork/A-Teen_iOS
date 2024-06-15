@@ -7,7 +7,6 @@
 
 import Core
 import FeatureDependency
-import SettingsFeature
 import ChatFeature
 import ProfileFeature
 import MainFeature
@@ -26,6 +25,10 @@ public protocol MainTabFactory {
 
 public struct MainTabFactoryImp: MainTabFactory {
     let appContainer: AppContainer?
+    
+    public init(appContainer: AppContainer?) {
+        self.appContainer = appContainer
+    }
     
     public func makeMainTabController() -> UITabBarController {
         let mainTabController = MainTabController()

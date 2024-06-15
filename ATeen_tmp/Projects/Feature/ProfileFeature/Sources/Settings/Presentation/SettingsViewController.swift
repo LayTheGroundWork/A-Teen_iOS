@@ -40,12 +40,12 @@ final class SettingsViewController: UITableViewController {
     
     // MARK: - Helpers
     private func configUserInterface() {
-        view.backgroundColor = .systemBackground
+        view.backgroundColor = UIColor.systemBackground
     }
     
     private func configTableView() {
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "id")
-        tableView.backgroundColor = .systemGroupedBackground
+        tableView.backgroundColor = UIColor.systemGroupedBackground
     }
     
     // MARK: - Actions

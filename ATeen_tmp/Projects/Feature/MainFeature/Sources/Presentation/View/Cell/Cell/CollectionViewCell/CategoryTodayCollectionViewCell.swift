@@ -13,10 +13,10 @@ import UIKit
 class CategoryTodayCollectionViewCell: UICollectionViewCell {
     lazy var categoryLabel: UILabel = {
         let label = UILabel()
-        label.textColor = .black
+        label.textColor = UIColor.black
         label.textAlignment = .center
-        label.tintColor = .black
-        label.backgroundColor = .white
+        label.tintColor = UIColor.black
+        label.backgroundColor = UIColor.white
         label.layer.masksToBounds = true
         label.layer.borderWidth = 1
         label.layer.borderColor = CGColor(red: 0, green: 0, blue: 0, alpha: 1)

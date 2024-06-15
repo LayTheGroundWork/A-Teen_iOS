@@ -6,7 +6,6 @@
 //
 
 import FeatureDependency
-import SettingsFeature
 import UIKit
 
 public final class ProfileCoordinator: Coordinator {

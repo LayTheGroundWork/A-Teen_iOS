@@ -5,7 +5,7 @@
 //  Created by 최동호 on 5/23/24.
 //
 
-import SettingsFeature
+import ProfileFeature
 import UIKit
 
 extension MainTabCoordinator: SettingsCoordinatorDelegate {

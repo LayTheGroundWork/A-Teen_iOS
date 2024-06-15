@@ -44,7 +44,7 @@ public final class ProfileViewController: UIViewController {
     
     // MARK: - Helpers
     private func configUserInterface() {
-        view.backgroundColor = .systemBackground
+        view.backgroundColor = UIColor.systemBackground
         
         view.addSubview(settingButton)
         

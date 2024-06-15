@@ -8,7 +8,7 @@
 import FeatureDependency
 
 extension PhoneNumberCoordinator: ExistingUserLoginDialogCoordinatorDelegate {
-    func navigateToMainViewController(childCoordinator: Coordinator) {
+    public func navigateToMainViewController(childCoordinator: Coordinator) {
         // 다이얼로그 닫기
         closeDialog(childCoordinator: childCoordinator)
         // 인증 화면 -> 로그인 : 뒤로가기

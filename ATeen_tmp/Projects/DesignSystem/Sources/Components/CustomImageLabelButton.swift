@@ -21,7 +21,7 @@ open class CustomImageLabelButton: UIButton {
     
     public lazy var customImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = DesignSystemImages.Image(named: imageName) ?? DesignSystemImages.Image(systemName: imageName)
+        imageView.image = DesignSystemImages.Image(named: imageName) ?? UIImage(systemName: imageName)
         if let imageColor = imageColor {
             imageView.tintColor = imageColor
         }
@@ -79,13 +79,13 @@ open class CustomImageLabelButton: UIButton {
         switch state {
         case .selected:
             if let selectedImageName = selectedImageName {
-                customImageView.image = UIImage(named: selectedImageName) ?? UIImage(systemName: selectedImageName)
+                customImageView.image = DesignSystemImages.Image(named: selectedImageName) ?? UIImage(systemName: selectedImageName)
             }
             if let selectedImageColor = selectedImageColor {
                 customImageView.tintColor = selectedImageColor
             }
         case .normal:
-            customImageView.image = UIImage(named: imageName) ?? UIImage(systemName: imageName)
+            customImageView.image = DesignSystemImages.Image(named: imageName) ?? UIImage(systemName: imageName)
             if let imageColor = imageColor {
                 customImageView.tintColor = imageColor
             }

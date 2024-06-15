@@ -8,7 +8,7 @@
 import FeatureDependency
 
 extension ProfileCoordinator: ProfileViewControllerCoordinator {
-    func didTabSettingButton() {
+    public func didTabSettingButton() {
         guard let delegate = delegate else { return }
         let coordinator = factory.makeSettingCoordinator(
             navigation: navigation,

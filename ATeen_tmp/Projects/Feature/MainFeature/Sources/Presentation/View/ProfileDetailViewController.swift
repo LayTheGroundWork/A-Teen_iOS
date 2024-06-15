@@ -104,7 +104,7 @@ public class ProfileDetailViewController: UIViewController {
     
     lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
-        scrollView.backgroundColor = .systemBackground
+        scrollView.backgroundColor = UIColor.systemBackground
         scrollView.contentInsetAdjustmentBehavior = .never
         scrollView.showsVerticalScrollIndicator = false
         scrollView.clipsToBounds = true
@@ -231,7 +231,7 @@ public class ProfileDetailViewController: UIViewController {
         label.textColor = DesignSystemAsset.gray02.color
         label.textAlignment = .center
         label.font = UIFont.customFont(forTextStyle: .footnote, weight: .regular)
-        label.backgroundColor = UIColor(named: "grayMbtiCellColor")
+        label.backgroundColor = DesignSystemAsset.grayMbtiCellColor.color
         label.layer.masksToBounds = true
         label.layer.cornerRadius = 10
         return label
@@ -251,7 +251,7 @@ public class ProfileDetailViewController: UIViewController {
     
     lazy var questionView: UIView = {
         let view = UIView()
-        view.backgroundColor = .systemBackground
+        view.backgroundColor = UIColor.systemBackground
         return view
     }()
     
@@ -279,7 +279,7 @@ public class ProfileDetailViewController: UIViewController {
     
     lazy var moreImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "moreIcon")
+        imageView.image = DesignSystemAsset.moreIcon.image
         imageView.contentMode = .scaleAspectFill
         return imageView
     }()
@@ -375,7 +375,7 @@ extension ProfileDetailViewController {
 extension ProfileDetailViewController {
     private func setUI(){
         guard let frame = self.frame else { return }
-        view.backgroundColor = .clear
+        view.backgroundColor = UIColor.clear
         
         addScrollView(frame: frame)
         

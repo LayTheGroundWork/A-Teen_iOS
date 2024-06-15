@@ -50,12 +50,12 @@ class CategoryTournamentCollectionViewCell: UICollectionViewCell {
     override func prepareForReuse() {
         titleLabel.text = ""
         categoryImageView.image = nil
-        categoryImageView.backgroundColor = .systemGray4
+        categoryImageView.backgroundColor = UIColor.systemGray4
     }
     
     func setUI(category: TournamentCategory) {
         titleLabel.text = category.title
-        categoryImageView.image = UIImage(named: category.image)
+        categoryImageView.image = DesignSystemImages.Image(named: category.image)
         
         switch category.title {
         case "운동":
@@ -65,7 +65,7 @@ class CategoryTournamentCollectionViewCell: UICollectionViewCell {
             categoryImageView.backgroundColor = DesignSystemAsset.mainOrangeColor.color
             
         default:
-            categoryImageView.backgroundColor = .systemGray4
+            categoryImageView.backgroundColor = UIColor.systemGray4
         }
     }
 }

@@ -35,7 +35,7 @@ final class SignUpViewController: UIViewController {
     
     // 뒤로 가기 버튼
     private lazy var backButton: UIBarButtonItem = {
-        let button = UIBarButtonItem(image: UIImage(named: "leftArrowIcon"),
+        let button = UIBarButtonItem(image: DesignSystemAsset.leftArrowIcon.image,
                                      style: .plain,
                                      target: self,
                                      action: #selector(didSelectBackButton(_:)))
@@ -49,7 +49,7 @@ final class SignUpViewController: UIViewController {
         layout.scrollDirection = .horizontal
         layout.itemSize = CGSize(width: ViewValues.width, height: ViewValues.halfHeight)
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.backgroundColor = .white
+        collectionView.backgroundColor = UIColor.white
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.isScrollEnabled = false
         

@@ -7,11 +7,23 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1185F8B6030BC13DCF21676B /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 263197FC4D0B887BB28C3500 /* ProfileViewController.swift */; };
+		1F762BEAE0A8DCADDEC6752A /* SettingsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428AC16B0DAA590A7EA27E8B /* SettingsCoordinator.swift */; };
+		284D51879AF449916F079E4C /* UserConfigurationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5BAA6DC551FF33E47145B85 /* UserConfigurationViewController.swift */; };
+		41523A26B10BB2C4434F4C1A /* SettingsCoordinator+UserConfigurationCoordinatorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB5085B17788405A7EF33ADF /* SettingsCoordinator+UserConfigurationCoordinatorDelegate.swift */; };
 		5BB80EFC84503C494DD440F1 /* FeatureDependency.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 641BBD2F2133A809547B278F /* FeatureDependency.framework */; };
-		69492F91E62F1C2F0EF0B2CD /* ProfileCoordinator+ProfileViewControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FD73E1B07E2DDED08690042 /* ProfileCoordinator+ProfileViewControllerCoordinator.swift */; };
-		7C784B3E3B730B17D808C537 /* ProfileCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E34E202DD55848BC2822A087 /* ProfileCoordinator.swift */; };
-		ED38458FADFA26960F643E6E /* ProfileFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F2B0D37D764E36E8518EDA /* ProfileFactory.swift */; };
-		EDA3AE19B17A45FD2EE44078 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 584F7E8FCFFA0C243FCF348C /* ProfileViewController.swift */; };
+		62AC4871E98B3886B9DF4DDC /* SettingsCoordinator+SettingsViewControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CFD4F4DD348E8C7CE045D91 /* SettingsCoordinator+SettingsViewControllerCoordinator.swift */; };
+		65EE5A13D567A72BFB9D67C7 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC6CE948D824F1282F2072C /* SettingsViewModel.swift */; };
+		8CCE66D54C0D36D717A1884B /* UserConfigurationFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6E5DF9E5055500C188FC3CB /* UserConfigurationFactory.swift */; };
+		A5D3B2D112A9A676FC58A6C5 /* SettingsViewNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49755DEF80575D3BAC07B06F /* SettingsViewNavigation.swift */; };
+		A5D6F71FA714E296BE0C266E /* ItemSettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775DF00DC28BEAAFE7A53B45 /* ItemSettingViewModel.swift */; };
+		C2A87FEAC54A3B99E63DB817 /* ProfileCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3441A2CD70C4802BB06608C3 /* ProfileCoordinator.swift */; };
+		DE2AE67FDD69334F3F1F5051 /* UserConfigurationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD32130F8D4072A9FADBE12 /* UserConfigurationCoordinator.swift */; };
+		E862C7459385165254B85B47 /* SettingsFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77E0F53CDDB79E89F421141E /* SettingsFactory.swift */; };
+		EB4CDD951E2FB2A7F20B2192 /* ProfileFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1D889A2FB2244033060C6D4 /* ProfileFactory.swift */; };
+		F7476EA9C8E1E5B962BEB5DB /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8EFD49AD1CA22CA203A5D6C /* SettingsViewController.swift */; };
+		FC3205877C44FCF45F11158A /* ProfileCoordinator+ProfileViewControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 731A11DA88A7ABACFE37E26C /* ProfileCoordinator+ProfileViewControllerCoordinator.swift */; };
+		FD698BB471B9D265CC8E8C5E /* ExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64C286E0BDAD8C54D6F8E7C5 /* ExampleViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -28,15 +40,27 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		40F2B0D37D764E36E8518EDA /* ProfileFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileFactory.swift; sourceTree = "<group>"; };
+		263197FC4D0B887BB28C3500 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		3441A2CD70C4802BB06608C3 /* ProfileCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCoordinator.swift; sourceTree = "<group>"; };
+		3CFD4F4DD348E8C7CE045D91 /* SettingsCoordinator+SettingsViewControllerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SettingsCoordinator+SettingsViewControllerCoordinator.swift"; sourceTree = "<group>"; };
+		428AC16B0DAA590A7EA27E8B /* SettingsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCoordinator.swift; sourceTree = "<group>"; };
 		47A6CE17EA77D71FB5B6272E /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
-		4FD73E1B07E2DDED08690042 /* ProfileCoordinator+ProfileViewControllerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProfileCoordinator+ProfileViewControllerCoordinator.swift"; sourceTree = "<group>"; };
-		584F7E8FCFFA0C243FCF348C /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		49755DEF80575D3BAC07B06F /* SettingsViewNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewNavigation.swift; sourceTree = "<group>"; };
+		5BC6CE948D824F1282F2072C /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		641BBD2F2133A809547B278F /* FeatureDependency.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FeatureDependency.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		64C286E0BDAD8C54D6F8E7C5 /* ExampleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleViewController.swift; sourceTree = "<group>"; };
+		731A11DA88A7ABACFE37E26C /* ProfileCoordinator+ProfileViewControllerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProfileCoordinator+ProfileViewControllerCoordinator.swift"; sourceTree = "<group>"; };
+		775DF00DC28BEAAFE7A53B45 /* ItemSettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemSettingViewModel.swift; sourceTree = "<group>"; };
+		77E0F53CDDB79E89F421141E /* SettingsFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsFactory.swift; sourceTree = "<group>"; };
 		7D75411655BD7C1F2248A03D /* ProfileFeature.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ProfileFeature.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9ACE8CAF734090465D7B89D5 /* Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
+		AB5085B17788405A7EF33ADF /* SettingsCoordinator+UserConfigurationCoordinatorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SettingsCoordinator+UserConfigurationCoordinatorDelegate.swift"; sourceTree = "<group>"; };
 		B0913E9F158A7764CA30B252 /* ProfileFeature-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "ProfileFeature-Info.plist"; sourceTree = "<group>"; };
-		E34E202DD55848BC2822A087 /* ProfileCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCoordinator.swift; sourceTree = "<group>"; };
+		B1D889A2FB2244033060C6D4 /* ProfileFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileFactory.swift; sourceTree = "<group>"; };
+		C5BAA6DC551FF33E47145B85 /* UserConfigurationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserConfigurationViewController.swift; sourceTree = "<group>"; };
+		CAD32130F8D4072A9FADBE12 /* UserConfigurationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserConfigurationCoordinator.swift; sourceTree = "<group>"; };
+		D6E5DF9E5055500C188FC3CB /* UserConfigurationFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserConfigurationFactory.swift; sourceTree = "<group>"; };
+		D8EFD49AD1CA22CA203A5D6C /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,12 +75,66 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		18FFA6429B3A0C54F85C89E2 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				2830116AFEC227D5B23017BE /* Composition */,
+				739B1FA0E9CE4591A0BD21BA /* Presentation */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		256136AF93F3465451FBB0C5 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				293D663ABD970FA1D2476A23 /* Composition */,
+				4517AB7F3B83F7F10DFC5725 /* Presentation */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		2830116AFEC227D5B23017BE /* Composition */ = {
+			isa = PBXGroup;
+			children = (
+				3441A2CD70C4802BB06608C3 /* ProfileCoordinator.swift */,
+				731A11DA88A7ABACFE37E26C /* ProfileCoordinator+ProfileViewControllerCoordinator.swift */,
+				B1D889A2FB2244033060C6D4 /* ProfileFactory.swift */,
+			);
+			path = Composition;
+			sourceTree = "<group>";
+		};
+		293D663ABD970FA1D2476A23 /* Composition */ = {
+			isa = PBXGroup;
+			children = (
+				428AC16B0DAA590A7EA27E8B /* SettingsCoordinator.swift */,
+				3CFD4F4DD348E8C7CE045D91 /* SettingsCoordinator+SettingsViewControllerCoordinator.swift */,
+				AB5085B17788405A7EF33ADF /* SettingsCoordinator+UserConfigurationCoordinatorDelegate.swift */,
+				77E0F53CDDB79E89F421141E /* SettingsFactory.swift */,
+				CAD32130F8D4072A9FADBE12 /* UserConfigurationCoordinator.swift */,
+				D6E5DF9E5055500C188FC3CB /* UserConfigurationFactory.swift */,
+			);
+			path = Composition;
+			sourceTree = "<group>";
+		};
 		3E3DDEF650C4FA7B3317E486 = {
 			isa = PBXGroup;
 			children = (
 				46CD4FFB106A01D9912F0624 /* Project */,
 				96117D3B0D8686EC41FAFAAF /* Products */,
 			);
+			sourceTree = "<group>";
+		};
+		4517AB7F3B83F7F10DFC5725 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				64C286E0BDAD8C54D6F8E7C5 /* ExampleViewController.swift */,
+				775DF00DC28BEAAFE7A53B45 /* ItemSettingViewModel.swift */,
+				D8EFD49AD1CA22CA203A5D6C /* SettingsViewController.swift */,
+				5BC6CE948D824F1282F2072C /* SettingsViewModel.swift */,
+				49755DEF80575D3BAC07B06F /* SettingsViewNavigation.swift */,
+				C5BAA6DC551FF33E47145B85 /* UserConfigurationViewController.swift */,
+			);
+			path = Presentation;
 			sourceTree = "<group>";
 		};
 		46CD4FFB106A01D9912F0624 /* Project */ = {
@@ -67,14 +145,6 @@
 				90666643827C8F0AB521673E /* Sources */,
 			);
 			name = Project;
-			sourceTree = "<group>";
-		};
-		603FFCEC45FB13F5B1A5922D /* Presentation */ = {
-			isa = PBXGroup;
-			children = (
-				584F7E8FCFFA0C243FCF348C /* ProfileViewController.swift */,
-			);
-			path = Presentation;
 			sourceTree = "<group>";
 		};
 		6184C217E37EB701C2FF95DD /* Derived */ = {
@@ -93,23 +163,21 @@
 			path = InfoPlists;
 			sourceTree = "<group>";
 		};
+		739B1FA0E9CE4591A0BD21BA /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				263197FC4D0B887BB28C3500 /* ProfileViewController.swift */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
 		90666643827C8F0AB521673E /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				93B29026A7FA6D0C936CF55F /* Composition */,
-				603FFCEC45FB13F5B1A5922D /* Presentation */,
+				18FFA6429B3A0C54F85C89E2 /* Profile */,
+				256136AF93F3465451FBB0C5 /* Settings */,
 			);
 			path = Sources;
-			sourceTree = "<group>";
-		};
-		93B29026A7FA6D0C936CF55F /* Composition */ = {
-			isa = PBXGroup;
-			children = (
-				E34E202DD55848BC2822A087 /* ProfileCoordinator.swift */,
-				4FD73E1B07E2DDED08690042 /* ProfileCoordinator+ProfileViewControllerCoordinator.swift */,
-				40F2B0D37D764E36E8518EDA /* ProfileFactory.swift */,
-			);
-			path = Composition;
 			sourceTree = "<group>";
 		};
 		96117D3B0D8686EC41FAFAAF /* Products */ = {
@@ -196,10 +264,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				69492F91E62F1C2F0EF0B2CD /* ProfileCoordinator+ProfileViewControllerCoordinator.swift in Sources */,
-				7C784B3E3B730B17D808C537 /* ProfileCoordinator.swift in Sources */,
-				ED38458FADFA26960F643E6E /* ProfileFactory.swift in Sources */,
-				EDA3AE19B17A45FD2EE44078 /* ProfileViewController.swift in Sources */,
+				FC3205877C44FCF45F11158A /* ProfileCoordinator+ProfileViewControllerCoordinator.swift in Sources */,
+				C2A87FEAC54A3B99E63DB817 /* ProfileCoordinator.swift in Sources */,
+				EB4CDD951E2FB2A7F20B2192 /* ProfileFactory.swift in Sources */,
+				1185F8B6030BC13DCF21676B /* ProfileViewController.swift in Sources */,
+				62AC4871E98B3886B9DF4DDC /* SettingsCoordinator+SettingsViewControllerCoordinator.swift in Sources */,
+				41523A26B10BB2C4434F4C1A /* SettingsCoordinator+UserConfigurationCoordinatorDelegate.swift in Sources */,
+				1F762BEAE0A8DCADDEC6752A /* SettingsCoordinator.swift in Sources */,
+				E862C7459385165254B85B47 /* SettingsFactory.swift in Sources */,
+				DE2AE67FDD69334F3F1F5051 /* UserConfigurationCoordinator.swift in Sources */,
+				8CCE66D54C0D36D717A1884B /* UserConfigurationFactory.swift in Sources */,
+				FD698BB471B9D265CC8E8C5E /* ExampleViewController.swift in Sources */,
+				A5D6F71FA714E296BE0C266E /* ItemSettingViewModel.swift in Sources */,
+				F7476EA9C8E1E5B962BEB5DB /* SettingsViewController.swift in Sources */,
+				65EE5A13D567A72BFB9D67C7 /* SettingsViewModel.swift in Sources */,
+				A5D3B2D112A9A676FC58A6C5 /* SettingsViewNavigation.swift in Sources */,
+				284D51879AF449916F079E4C /* UserConfigurationViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

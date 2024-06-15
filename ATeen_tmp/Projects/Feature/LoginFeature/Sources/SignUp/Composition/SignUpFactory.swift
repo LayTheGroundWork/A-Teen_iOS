@@ -7,7 +7,6 @@
 
 import Common
 import FeatureDependency
-import MainFeature
 import UIKit
 
 public protocol SignUpFactory {
@@ -50,24 +49,6 @@ public struct SignUpFactoryImp: SignUpFactory {
             navigation: navigation,
             factory: factory,
             delegate: delegate)
-    }
-    
-    public func makeSelectBirthCoordinator(
-        delegate: ProfileDetailCoordinatorDelegate,
-        frame: CGRect,
-        todayTeen: TodayTeen
-    ) -> Coordinator {
-        let factory = ProfileDetailFactoryImp(frame: frame, todayTeen: todayTeen)
-        let navigationController = UINavigationController()
-        navigationController.modalPresentationStyle = .overFullScreen
-        navigationController.view.backgroundColor = .clear
-        let navigation = NavigationImp(rootViewController: navigationController)
-        
-        return ProfileDetailCoordinator(
-            navigation: navigation,
-            factory: factory,
-            delegate: delegate,
-            childCoordinators: [])
     }
 }
 

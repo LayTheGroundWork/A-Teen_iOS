@@ -35,7 +35,7 @@ public final class UserConfigurationViewController: UIViewController {
     
     // MARK: - Helpers
     private func configUserInterface() {
-        view.backgroundColor = .systemBackground
+        view.backgroundColor = UIColor.systemBackground
         
         let avatarButton = UIBarButtonItem(
             image: UIImage(systemName: "person"),

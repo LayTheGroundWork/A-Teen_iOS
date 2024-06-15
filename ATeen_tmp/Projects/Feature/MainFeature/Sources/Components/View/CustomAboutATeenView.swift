@@ -15,7 +15,7 @@ final class CustomAboutATeenView: UIView {
     
     lazy var customView: UIView = {
         let view = UIView()
-        view.backgroundColor = .white
+        view.backgroundColor = UIColor.white
         view.layer.borderWidth = 2
         view.layer.borderColor = DesignSystemAsset.mainPartBorderColor.color.cgColor
         view.layer.cornerRadius = ViewValues.defaultRadius

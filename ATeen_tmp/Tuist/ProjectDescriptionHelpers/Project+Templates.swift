@@ -46,6 +46,7 @@ extension Project {
         
         return Project(name: name,
                        organizationName: .organizationName,
+                       packages: packages,
                        targets: targets
                )
     }
