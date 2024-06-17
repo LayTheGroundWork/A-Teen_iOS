@@ -11,6 +11,8 @@ import Common
 import FeatureDependency
 import UIKit
 
+
+
 public protocol MainViewControllerCoordinator: AnyObject {
     func didSelectTodayTeenImage(
         frame: CGRect,

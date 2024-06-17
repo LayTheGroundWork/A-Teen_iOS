@@ -5,41 +5,47 @@
 //  Created by 노주영 on 5/25/24.
 //
 
+import Common
 import FeatureDependency
 import UIKit
 
-public protocol ProfileDetailCoordinatorDelegate: AnyObject {
-    func didFinish(childCoordinator: Coordinator)
-}
-
-public final class ProfileDetailCoordinator: Coordinator {
+public final class ProfileDetailCoordinatorImp: Coordinator {
     public var navigation: Navigation
-    let factory: ProfileDetailFactory
+    public let coordinatorProvider: CoordinatorProvider
     private weak var delegate: ProfileDetailCoordinatorDelegate?
     public var childCoordinators: [Coordinator]
+    public let frame: CGRect
+    public let todayTeen: TodayTeen
     
     public init(
         navigation: Navigation,
-        factory: ProfileDetailFactory,
+        coordinatorProvider: CoordinatorProvider,
         delegate: ProfileDetailCoordinatorDelegate,
-        childCoordinators: [Coordinator]
+        childCoordinators: [Coordinator],
+        frame: CGRect,
+        todayTeen: TodayTeen
     ) {
         self.navigation = navigation
-        self.factory = factory
+        self.coordinatorProvider = coordinatorProvider
         self.delegate = delegate
         self.childCoordinators = childCoordinators
+        self.frame = frame
+        self.todayTeen = todayTeen
     }
     
     public func start() {
-        let controller = factory.makeProfileDetailViewController(coordinator: self)
+        let controller = coordinatorProvider.makeProfileDetailViewController(
+            coordinator: self,
+            frame: frame,
+            todayTeen: todayTeen)
         navigation.viewControllers = [controller]
     }
 }
 
-extension ProfileDetailCoordinator: ProfileDetailViewControllerCoordinator {
+extension ProfileDetailCoordinatorImp: ProfileDetailViewControllerCoordinator {
     public func didFinishFlow() {
         delegate?.didFinish(childCoordinator: self)
     }
 }
 
-extension ProfileDetailCoordinator: ParentCoordinator { }
+extension ProfileDetailCoordinatorImp: ParentCoordinator { }

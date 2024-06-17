@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 55;
+	objectVersion = 56;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -11,6 +11,9 @@
 		14F1780EAAE718E8D1753EEF /* Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB983D791EF444CC0D5743FB /* Navigation.swift */; };
 		1F40C285259449366B062F3A /* DesignSystem.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85F2AEFD97774332C0860EDA /* DesignSystem.framework */; };
 		237E51A31BE4EEEC256D1ACF /* ParentCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECE18CE2A8FAE3CB29284865 /* ParentCoordinator.swift */; };
+		736B0E812C202797005EB2A1 /* CoordinatorProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736B0E802C202797005EB2A1 /* CoordinatorProvider.swift */; };
+		736B0E852C202985005EB2A1 /* ProfileDetailCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736B0E842C202985005EB2A1 /* ProfileDetailCoordinator.swift */; };
+		736B0E872C202A05005EB2A1 /* FactoryProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736B0E862C202A05005EB2A1 /* FactoryProvider.swift */; };
 		76E24D656AC4D1200E53A511 /* NavigationImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88129F417957DB056A1EDD0D /* NavigationImp.swift */; };
 		84B6E881712AD554F8DADFF3 /* Core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 504DE6E0F1051F413F6B185B /* Core.framework */; };
 		DA093DEC550B1ABE40E59ABD /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8A97B948C4FCB50C6D4C232 /* Coordinator.swift */; };
@@ -37,6 +40,9 @@
 		4A89129054D3C68F35AD3285 /* NavigationImp+UIAdaptivePresentationControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NavigationImp+UIAdaptivePresentationControllerDelegate.swift"; sourceTree = "<group>"; };
 		504DE6E0F1051F413F6B185B /* Core.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Core.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7165894E1415D1FDA533C4AF /* FeatureDependency.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FeatureDependency.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		736B0E802C202797005EB2A1 /* CoordinatorProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorProvider.swift; sourceTree = "<group>"; };
+		736B0E842C202985005EB2A1 /* ProfileDetailCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDetailCoordinator.swift; sourceTree = "<group>"; };
+		736B0E862C202A05005EB2A1 /* FactoryProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactoryProvider.swift; sourceTree = "<group>"; };
 		85F2AEFD97774332C0860EDA /* DesignSystem.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DesignSystem.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		88129F417957DB056A1EDD0D /* NavigationImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationImp.swift; sourceTree = "<group>"; };
 		B6B0127E16B0B94B695FADC2 /* FeatureDependency-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "FeatureDependency-Info.plist"; sourceTree = "<group>"; };
@@ -85,6 +91,9 @@
 			children = (
 				F8A97B948C4FCB50C6D4C232 /* Coordinator.swift */,
 				ECE18CE2A8FAE3CB29284865 /* ParentCoordinator.swift */,
+				736B0E802C202797005EB2A1 /* CoordinatorProvider.swift */,
+				736B0E862C202A05005EB2A1 /* FactoryProvider.swift */,
+				736B0E842C202985005EB2A1 /* ProfileDetailCoordinator.swift */,
 			);
 			path = Coordinator;
 			sourceTree = "<group>";
@@ -174,8 +183,6 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
 				ORGANIZATIONNAME = ATeen;
-				TargetAttributes = {
-				};
 			};
 			buildConfigurationList = B9F782DE1471950F319A2EED /* Build configuration list for PBXProject "FeatureDependency" */;
 			compatibilityVersion = "Xcode 14.0";
@@ -211,7 +218,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				DA093DEC550B1ABE40E59ABD /* Coordinator.swift in Sources */,
+				736B0E872C202A05005EB2A1 /* FactoryProvider.swift in Sources */,
+				736B0E852C202985005EB2A1 /* ProfileDetailCoordinator.swift in Sources */,
 				237E51A31BE4EEEC256D1ACF /* ParentCoordinator.swift in Sources */,
+				736B0E812C202797005EB2A1 /* CoordinatorProvider.swift in Sources */,
 				14F1780EAAE718E8D1753EEF /* Navigation.swift in Sources */,
 				E2D34EAA81253F1CF67EDB25 /* NavigationImp+UIAdaptivePresentationControllerDelegate.swift in Sources */,
 				13340263B0A30997878E0DE2 /* NavigationImp+UINavigationControllerDelegate.swift in Sources */,
@@ -354,7 +364,10 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				OTHER_LDFLAGS = "$(inherited) -ObjC";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ATeen.ATeen.FeatureDependency;
 				PRODUCT_NAME = FeatureDependency;
 				SDKROOT = iphoneos;
@@ -391,7 +404,10 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				OTHER_LDFLAGS = "$(inherited) -ObjC";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ATeen.ATeen.FeatureDependency;
 				PRODUCT_NAME = FeatureDependency;
 				SDKROOT = iphoneos;
@@ -399,10 +415,7 @@
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = (
-					"$(inherited)",
-					DEBUG,
-				);
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG";
 				SWIFT_COMPILATION_MODE = singlefile;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;

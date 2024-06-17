@@ -18,6 +18,7 @@ public final class MainTabCoordinator: Coordinator {
     weak var delegate: MainTabCoordinatorDelegate?
     
     let factory: MainTabFactory
+    public let coordinatorProvider: CoordinatorProvider
 
     lazy var navigationTab: UITabBarController = {
         var navigationTab = UITabBarController()
@@ -28,18 +29,24 @@ public final class MainTabCoordinator: Coordinator {
     public init(
         navigation: Navigation,
         delegate: MainTabCoordinatorDelegate,
-        factory: MainTabFactory
+        factory: MainTabFactory,
+        coordinatorProvider: CoordinatorProvider
     ) {
         self.navigation = navigation
         self.delegate = delegate
         self.factory = factory
+        self.coordinatorProvider = coordinatorProvider
     }
     
     public func start() {
         navigation.pushViewController(navigationTab, animated: false)
         navigation.navigationBar.isHidden = true
         
-        childCoordinators = factory.makeChildCoordinators(delegate: self, mainDelegate: self)
+        childCoordinators = factory.makeChildCoordinators(
+            delegate: self,
+            mainDelegate: self,
+            coordinatorProvider: coordinatorProvider
+        )
         let childNavigation = childCoordinators.map { $0.navigation.rootViewController }
         childCoordinators.forEach { $0.start() }
         navigationTab.viewControllers = childNavigation

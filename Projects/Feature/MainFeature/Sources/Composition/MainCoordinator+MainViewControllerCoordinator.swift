@@ -14,7 +14,7 @@ extension MainCoordinator: MainViewControllerCoordinator {
         frame: CGRect,
         todayTeen: TodayTeen
     ) {
-        let profileDetailCoordinator = factory.makeProfileDetailCoordinator(
+        let profileDetailCoordinator = coordinatorProvider.moveToProfileDetailCoordinator(
             delegate: self,
             frame: frame,
             todayTeen: todayTeen)
@@ -58,7 +58,7 @@ extension MainCoordinator: MainViewControllerCoordinator {
         frame: CGRect,
         todayTeen: TodayTeen
     ) {
-        let profileDetailCoordinator = factory.makeProfileDetailCoordinator(
+        let profileDetailCoordinator = coordinatorProvider.moveToProfileDetailCoordinator(
             delegate: self,
             frame: frame,
             todayTeen: todayTeen)

@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 55;
+	objectVersion = 56;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -18,6 +18,8 @@
 		57A4C34D3B42E3AFDD8356D3 /* SnapKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0DE442BA1C87E9CF5D190ED8 /* SnapKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		6815E78E3CB81D6FD709874B /* RankingFeature.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = DB424A280C12994EE13C6934 /* RankingFeature.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		70F3CF0BB9F240B2A59853E0 /* DesignSystem.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E9369BFA2C65412102538303 /* DesignSystem.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		736B0E832C202809005EB2A1 /* DefaultCoordinatorProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736B0E822C202809005EB2A1 /* DefaultCoordinatorProvider.swift */; };
+		736B0E892C202AF5005EB2A1 /* DefaultFactoryProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736B0E882C202AF5005EB2A1 /* DefaultFactoryProvider.swift */; };
 		799B6674606E6C6344F253CC /* LoginFeature.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = DC1FED34715BFF8FB1DD176A /* LoginFeature.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7FDED014DA0FFA1521C17D67 /* AppFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = C18188B8ACFCCDD1AA3522A2 /* AppFactory.swift */; };
 		94F9DC49C89B28C614DC384E /* MainFeature.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6CB714690F6D4BEF6743DA1F /* MainFeature.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -70,6 +72,8 @@
 		571E08A9083FD4334E4B7D06 /* App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = App.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6CB714690F6D4BEF6743DA1F /* MainFeature.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MainFeature.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		721D9790A705419CC668666D /* MainTabFeature.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MainTabFeature.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		736B0E822C202809005EB2A1 /* DefaultCoordinatorProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultCoordinatorProvider.swift; sourceTree = "<group>"; };
+		736B0E882C202AF5005EB2A1 /* DefaultFactoryProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultFactoryProvider.swift; sourceTree = "<group>"; };
 		8F7F83A194E1D17030DCA033 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		95D529DAAF6A9D59C44D9D68 /* TuistAssets+App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TuistAssets+App.swift"; sourceTree = "<group>"; };
 		A9432DE0287E5923CB65DC49 /* FeatureDependency.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FeatureDependency.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -191,6 +195,8 @@
 			isa = PBXGroup;
 			children = (
 				0898F3FE27FD60EAFD4CEE5D /* AppCoordinator.swift */,
+				736B0E822C202809005EB2A1 /* DefaultCoordinatorProvider.swift */,
+				736B0E882C202AF5005EB2A1 /* DefaultFactoryProvider.swift */,
 			);
 			path = AppCoordinator;
 			sourceTree = "<group>";
@@ -252,8 +258,6 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
 				ORGANIZATIONNAME = ATeen;
-				TargetAttributes = {
-				};
 			};
 			buildConfigurationList = B3FD05C59F197F398A0B04AB /* Build configuration list for PBXProject "App" */;
 			compatibilityVersion = "Xcode 14.0";
@@ -296,6 +300,8 @@
 				7FDED014DA0FFA1521C17D67 /* AppFactory.swift in Sources */,
 				202C792BE366DD12A307F13D /* AppDelegate.swift in Sources */,
 				29A5B46B4ECE3CFF6AE497D5 /* SceneDelegate.swift in Sources */,
+				736B0E832C202809005EB2A1 /* DefaultCoordinatorProvider.swift in Sources */,
+				736B0E892C202AF5005EB2A1 /* DefaultFactoryProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -310,7 +316,7 @@
 				CLANG_ENABLE_MODULE_DEBUGGING = YES;
 				CODE_SIGN_IDENTITY = "$(CODE_SIGN_IDENTITY)";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 2024.06.15.18.56;
+				CURRENT_PROJECT_VERSION = 2024.06.17.16.41;
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				INFOPLIST_FILE = "Derived/InfoPlists/App-Info.plist";
@@ -320,17 +326,17 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0.0;
-				OTHER_LDFLAGS = "$(inherited) -ObjC";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ATeen.ATeen.App;
 				PRODUCT_NAME = App;
 				SDKROOT = iphoneos;
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = (
-					"$(inherited)",
-					DEBUG,
-				);
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG";
 				SWIFT_COMPILATION_MODE = singlefile;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -400,7 +406,7 @@
 				CLANG_ENABLE_MODULE_DEBUGGING = YES;
 				CODE_SIGN_IDENTITY = "$(CODE_SIGN_IDENTITY)";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 2024.06.15.18.56;
+				CURRENT_PROJECT_VERSION = 2024.06.17.16.41;
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				INFOPLIST_FILE = "Derived/InfoPlists/App-Info.plist";
@@ -410,7 +416,10 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0.0;
-				OTHER_LDFLAGS = "$(inherited) -ObjC";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ATeen.ATeen.App;
 				PRODUCT_NAME = App;
 				SDKROOT = iphoneos;

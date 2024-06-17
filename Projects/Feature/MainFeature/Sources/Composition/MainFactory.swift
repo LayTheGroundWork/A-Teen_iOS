@@ -12,11 +12,6 @@ import UIKit
 
 public protocol MainFactory {
     func makeMainViewController(coordinator: MainViewControllerCoordinator) -> UIViewController
-    func makeProfileDetailCoordinator(
-        delegate: ProfileDetailCoordinatorDelegate,
-        frame: CGRect,
-        todayTeen: TodayTeen
-    ) -> Coordinator
     func makeReportPopoverCoordinator(
         navigation: Navigation,
         popoverPosition: CGRect,
@@ -46,24 +41,6 @@ public struct MainFactoryImp: MainFactory {
             viewModel: viewModel,
             coordinator: coordinator)
         return controller
-    }
-    
-    public func makeProfileDetailCoordinator(
-        delegate: ProfileDetailCoordinatorDelegate,
-        frame: CGRect,
-        todayTeen: TodayTeen
-    ) -> Coordinator {
-        let factory = ProfileDetailFactoryImp(frame: frame, todayTeen: todayTeen)
-        let navigationController = UINavigationController()
-        navigationController.modalPresentationStyle = .overFullScreen
-        navigationController.view.backgroundColor = UIColor.clear
-        let navigation = NavigationImp(rootViewController: navigationController)
-        
-        return ProfileDetailCoordinator(
-            navigation: navigation,
-            factory: factory,
-            delegate: delegate,
-            childCoordinators: [])
     }
     
     public func makeReportPopoverCoordinator(

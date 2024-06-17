@@ -14,16 +14,16 @@ import UIKit
 struct AppFactory {
     let appContainer: AppContainer?
     
-
     func makeMainTabCoordinator(
         navigation: Navigation,
-        delegate: MainTabCoordinatorDelegate
+        delegate: MainTabCoordinatorDelegate,
+        coordinatorProvider: CoordinatorProvider
     ) -> Coordinator {
         let factory = MainTabFactoryImp(appContainer: appContainer)
         return MainTabCoordinator(
             navigation: navigation,
             delegate: delegate, 
-            factory: factory)
-
+            factory: factory,
+            coordinatorProvider: coordinatorProvider)
     }
 }

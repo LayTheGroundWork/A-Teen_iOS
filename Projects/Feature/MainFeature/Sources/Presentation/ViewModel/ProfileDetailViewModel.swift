@@ -8,5 +8,7 @@
 import Foundation
 
 public class ProfileDetailViewModel {
-    
+    public init() {
+        
+    }
 }
