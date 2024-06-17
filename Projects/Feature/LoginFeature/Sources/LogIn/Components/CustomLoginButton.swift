@@ -7,7 +7,6 @@
 
 import Common
 import DesignSystem
-import FeatureDependency
 import UIKit
 
 // MARK: - Custom Login Button

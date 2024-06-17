@@ -9,7 +9,7 @@ import ProjectDescription
 
 public extension Array<TargetDependency> {
     enum Presentation: String, CaseIterable {
-        case main, login, ranking, profile, chat, teen
+        case main, login, ranking, profile, chat, teen, profileDetail
         
         public var dependency: TargetDependency {
             var name = rawValue.map { $0 }

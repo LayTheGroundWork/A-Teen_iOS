@@ -8,7 +8,7 @@
 
 import Common
 import FeatureDependency
-import MainFeature
+import ProfileDetailFeature
 
 import UIKit
 
