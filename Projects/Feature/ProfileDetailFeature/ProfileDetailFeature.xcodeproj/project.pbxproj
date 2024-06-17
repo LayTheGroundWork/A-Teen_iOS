@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0E5FE9C557ACCD8B4AF5A3D5 /* ProfileDetailCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A2D4308E5691C845EDF1A4 /* ProfileDetailCoordinator.swift */; };
 		10436126115B03338D69A73B /* CustomQuestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8185112C00D152218214E3CF /* CustomQuestionView.swift */; };
 		1CF4AF9AAEE5DCAF480AD3EE /* FeatureDependency.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46298C4EFDC4672E09C3EDF3 /* FeatureDependency.framework */; };
 		2EB4557D901ECF9A12C834EE /* ProfileDetailFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A43EB6119562050FB155947 /* ProfileDetailFactory.swift */; };
@@ -16,6 +15,7 @@
 		8B9ADA99106D2357F17B7889 /* CustomHeartButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3C44FA71744D6F4F0817AC /* CustomHeartButton.swift */; };
 		E71E926FD6866151B500EB92 /* CustomVoteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8852B8B7CA23BC191935C3AC /* CustomVoteButton.swift */; };
 		E8FA98278D78200AC911AEB9 /* ProfileDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A62956AACF348719350390B /* ProfileDetailViewController.swift */; };
+		F475F8605C01B8F7398DFECB /* ProfileDetailCoordinatorImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A509B9F085C4A804E9A5CF /* ProfileDetailCoordinatorImp.swift */; };
 		FCB76CF995D35B798E8DC3F4 /* ProfileDetailBottomBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE408B2BCF2173C4643AB346 /* ProfileDetailBottomBar.swift */; };
 		FF09C008A3512D2463C9656C /* ProfileDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F6AE01DD4B6F0D1794206D1 /* ProfileDetailViewModel.swift */; };
 /* End PBXBuildFile section */
@@ -36,7 +36,7 @@
 /* Begin PBXFileReference section */
 		01174DEA02D1DDC348B0CCBC /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
 		46298C4EFDC4672E09C3EDF3 /* FeatureDependency.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FeatureDependency.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		49A2D4308E5691C845EDF1A4 /* ProfileDetailCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDetailCoordinator.swift; sourceTree = "<group>"; };
+		48A509B9F085C4A804E9A5CF /* ProfileDetailCoordinatorImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDetailCoordinatorImp.swift; sourceTree = "<group>"; };
 		4F6AE01DD4B6F0D1794206D1 /* ProfileDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDetailViewModel.swift; sourceTree = "<group>"; };
 		5A62956AACF348719350390B /* ProfileDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDetailViewController.swift; sourceTree = "<group>"; };
 		6CED2A6A8B3C54B2851F24BF /* CustomQuestionTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomQuestionTextView.swift; sourceTree = "<group>"; };
@@ -76,7 +76,7 @@
 		38D65CE5BEF073F6B4FAF18D /* Composition */ = {
 			isa = PBXGroup;
 			children = (
-				49A2D4308E5691C845EDF1A4 /* ProfileDetailCoordinator.swift */,
+				48A509B9F085C4A804E9A5CF /* ProfileDetailCoordinatorImp.swift */,
 				9A43EB6119562050FB155947 /* ProfileDetailFactory.swift */,
 			);
 			path = Composition;
@@ -260,7 +260,7 @@
 				807ACF4619C6C3323F626BF1 /* CustomQuestionTextView.swift in Sources */,
 				10436126115B03338D69A73B /* CustomQuestionView.swift in Sources */,
 				FCB76CF995D35B798E8DC3F4 /* ProfileDetailBottomBar.swift in Sources */,
-				0E5FE9C557ACCD8B4AF5A3D5 /* ProfileDetailCoordinator.swift in Sources */,
+				F475F8605C01B8F7398DFECB /* ProfileDetailCoordinatorImp.swift in Sources */,
 				2EB4557D901ECF9A12C834EE /* ProfileDetailFactory.swift in Sources */,
 				E8FA98278D78200AC911AEB9 /* ProfileDetailViewController.swift in Sources */,
 				FF09C008A3512D2463C9656C /* ProfileDetailViewModel.swift in Sources */,
