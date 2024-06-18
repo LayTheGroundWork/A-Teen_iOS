@@ -20,7 +20,11 @@ public protocol MainTabFactory {
     func makeLoginCoordinator(
         delegate: LogInCoordinatorDelegate
     ) -> Coordinator
-    func makeChildCoordinators(delegate: SettingsCoordinatorDelegate, mainDelegate: MainCoordinatorDelegate) -> [Coordinator]
+    func makeChildCoordinators(
+        delegate: SettingsCoordinatorDelegate,
+        mainDelegate: MainCoordinatorDelegate,
+        coordinatorProvider: CoordinatorProvider
+    ) -> [Coordinator]
 }
 
 public struct MainTabFactoryImp: MainTabFactory {
@@ -47,8 +51,12 @@ public struct MainTabFactoryImp: MainTabFactory {
             delegate: delegate)
     }
     
-    public func makeChildCoordinators(delegate: SettingsCoordinatorDelegate, mainDelegate: MainCoordinatorDelegate) -> [Coordinator] {
-        let mainCoordinator = makeMainCoordinator(delegate: mainDelegate)
+    public func makeChildCoordinators(
+        delegate: SettingsCoordinatorDelegate,
+        mainDelegate: MainCoordinatorDelegate,
+        coordinatorProvider: CoordinatorProvider
+    ) -> [Coordinator] {
+        let mainCoordinator = makeMainCoordinator(delegate: mainDelegate, coordinatorProvider: coordinatorProvider)
         let rankingCoordinator = makeRankingCoordinator()
         let teenCoordinator = makeTeenCoordinator()
         let chatCoordinator = makeChatCoordinator()
@@ -61,13 +69,14 @@ public struct MainTabFactoryImp: MainTabFactory {
                 profileCoordinator]
     }
     
-    private func makeMainCoordinator(delegate: MainCoordinatorDelegate) -> Coordinator {
+    private func makeMainCoordinator(delegate: MainCoordinatorDelegate, coordinatorProvider: CoordinatorProvider) -> Coordinator {
         let navigation = NavigationImp(rootViewController: UINavigationController())
         let factory = MainFactoryImp(appContainer: appContainer)
         return MainCoordinator(
             navigation: navigation,
             factory: factory,
-            delegate: delegate)
+            delegate: delegate,
+            coordinatorProvider: coordinatorProvider)
     }
     
     private func makeRankingCoordinator() -> Coordinator {

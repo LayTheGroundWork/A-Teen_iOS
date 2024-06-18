@@ -6,13 +6,10 @@
 //
 
 import Common
+import FeatureDependency
 import UIKit
 
-public protocol ProfileDetailFactory {
-    func makeProfileDetailViewController(coordinator: ProfileDetailCoordinator) -> UIViewController
-}
-
-public struct ProfileDetailFactoryImp: ProfileDetailFactory {
+public struct ProfileDetailFactoryImp {
     private(set) var frame: CGRect
     private(set) var todayTeen: TodayTeen
     
@@ -21,7 +18,7 @@ public struct ProfileDetailFactoryImp: ProfileDetailFactory {
         self.todayTeen = todayTeen
     }
     
-    public func makeProfileDetailViewController(coordinator: ProfileDetailCoordinator) -> UIViewController {
+    public func makeProfileDetailViewController(coordinator: ProfileDetailCoordinatorImp) -> UIViewController {
         let viewModel = ProfileDetailViewModel()
         let controller = ProfileDetailViewController(
             viewModel: viewModel,

@@ -8,7 +8,6 @@
 import SnapKit
 
 import Common
-import FeatureDependency
 import UIKit
 
 public protocol MainViewControllerCoordinator: AnyObject {

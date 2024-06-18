@@ -13,6 +13,9 @@
 		237E51A31BE4EEEC256D1ACF /* ParentCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECE18CE2A8FAE3CB29284865 /* ParentCoordinator.swift */; };
 		76E24D656AC4D1200E53A511 /* NavigationImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88129F417957DB056A1EDD0D /* NavigationImp.swift */; };
 		84B6E881712AD554F8DADFF3 /* Core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 504DE6E0F1051F413F6B185B /* Core.framework */; };
+		A5BBD8B6D50A72D68D68A99A /* ProfileDetailCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939F3779A22132EC7A7DB6BB /* ProfileDetailCoordinator.swift */; };
+		D0CF49E494006FFEFC16A9C9 /* FactoryProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27772529B4AF993ACCF03969 /* FactoryProvider.swift */; };
+		D9E476C84DD337B987665D6E /* CoordinatorProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE07CEEFFE78EB276DDD110 /* CoordinatorProvider.swift */; };
 		DA093DEC550B1ABE40E59ABD /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8A97B948C4FCB50C6D4C232 /* Coordinator.swift */; };
 		E2D34EAA81253F1CF67EDB25 /* NavigationImp+UIAdaptivePresentationControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A89129054D3C68F35AD3285 /* NavigationImp+UIAdaptivePresentationControllerDelegate.swift */; };
 		E3B5163B8FEB63D6E9D0A12C /* Common.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB638A5213C88B0A680A33B2 /* Common.framework */; };
@@ -33,16 +36,19 @@
 
 /* Begin PBXFileReference section */
 		1A8FE5294F624EDA89E97898 /* NavigationImp+UINavigationControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NavigationImp+UINavigationControllerDelegate.swift"; sourceTree = "<group>"; };
+		27772529B4AF993ACCF03969 /* FactoryProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactoryProvider.swift; sourceTree = "<group>"; };
 		28676409D4301666744F397E /* Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
 		4A89129054D3C68F35AD3285 /* NavigationImp+UIAdaptivePresentationControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NavigationImp+UIAdaptivePresentationControllerDelegate.swift"; sourceTree = "<group>"; };
 		504DE6E0F1051F413F6B185B /* Core.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Core.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7165894E1415D1FDA533C4AF /* FeatureDependency.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FeatureDependency.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		85F2AEFD97774332C0860EDA /* DesignSystem.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DesignSystem.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		88129F417957DB056A1EDD0D /* NavigationImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationImp.swift; sourceTree = "<group>"; };
+		939F3779A22132EC7A7DB6BB /* ProfileDetailCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDetailCoordinator.swift; sourceTree = "<group>"; };
 		B6B0127E16B0B94B695FADC2 /* FeatureDependency-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "FeatureDependency-Info.plist"; sourceTree = "<group>"; };
 		BB638A5213C88B0A680A33B2 /* Common.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Common.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB983D791EF444CC0D5743FB /* Navigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Navigation.swift; sourceTree = "<group>"; };
 		CCBDEAA694D3842787209B51 /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
+		DEE07CEEFFE78EB276DDD110 /* CoordinatorProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorProvider.swift; sourceTree = "<group>"; };
 		ECE18CE2A8FAE3CB29284865 /* ParentCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParentCoordinator.swift; sourceTree = "<group>"; };
 		F8A97B948C4FCB50C6D4C232 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -84,7 +90,10 @@
 			isa = PBXGroup;
 			children = (
 				F8A97B948C4FCB50C6D4C232 /* Coordinator.swift */,
+				DEE07CEEFFE78EB276DDD110 /* CoordinatorProvider.swift */,
+				27772529B4AF993ACCF03969 /* FactoryProvider.swift */,
 				ECE18CE2A8FAE3CB29284865 /* ParentCoordinator.swift */,
+				939F3779A22132EC7A7DB6BB /* ProfileDetailCoordinator.swift */,
 			);
 			path = Coordinator;
 			sourceTree = "<group>";
@@ -211,7 +220,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				DA093DEC550B1ABE40E59ABD /* Coordinator.swift in Sources */,
+				D9E476C84DD337B987665D6E /* CoordinatorProvider.swift in Sources */,
+				D0CF49E494006FFEFC16A9C9 /* FactoryProvider.swift in Sources */,
 				237E51A31BE4EEEC256D1ACF /* ParentCoordinator.swift in Sources */,
+				A5BBD8B6D50A72D68D68A99A /* ProfileDetailCoordinator.swift in Sources */,
 				14F1780EAAE718E8D1753EEF /* Navigation.swift in Sources */,
 				E2D34EAA81253F1CF67EDB25 /* NavigationImp+UIAdaptivePresentationControllerDelegate.swift in Sources */,
 				13340263B0A30997878E0DE2 /* NavigationImp+UINavigationControllerDelegate.swift in Sources */,

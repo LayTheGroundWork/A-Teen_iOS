@@ -8,12 +8,9 @@
 import SnapKit
 
 import Common
+import FeatureDependency
 import DesignSystem
 import UIKit
-
-public protocol ProfileDetailViewControllerCoordinator: AnyObject {
-    func didFinishFlow()
-}
 
 public class ProfileDetailViewController: UIViewController {
     let colors: [CGColor] = [

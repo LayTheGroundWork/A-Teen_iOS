@@ -9,7 +9,6 @@ import SnapKit
 
 import Common
 import DesignSystem
-import FeatureDependency
 import UIKit
 
 public protocol LogInViewControllerCoordinator: AnyObject {

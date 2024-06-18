@@ -13,8 +13,8 @@ final class AppCoordinator: Coordinator {
     var navigation: Navigation
     var window: UIWindow?
     var factory: AppFactory?
-    
     var childCoordinators: [Coordinator] = []
+    private let coordinatorProvider = DefaultCoordinatorProvider()
     
     init(
         navigation: Navigation,
@@ -39,7 +39,8 @@ final class AppCoordinator: Coordinator {
     private func startMainTabCoordinator() {
         let mainTabCoordinator = factory?.makeMainTabCoordinator(
             navigation: navigation,
-            delegate: self)
+            delegate: self, 
+            coordinatorProvider: coordinatorProvider)
         addChildCoordinatorStart(mainTabCoordinator)
     }
 

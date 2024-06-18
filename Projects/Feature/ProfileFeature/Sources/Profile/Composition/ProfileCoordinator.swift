@@ -23,7 +23,6 @@ public final class ProfileCoordinator: Coordinator {
         self.navigation = navigation
         self.factory = factory
         self.delegate = delegate
-
     }
     
     public func start() {

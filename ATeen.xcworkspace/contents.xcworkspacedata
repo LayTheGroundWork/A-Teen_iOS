@@ -35,6 +35,9 @@
             location = "group:MainFeature/MainFeature.xcodeproj">
          </FileRef>
          <FileRef
+            location = "group:ProfileDetailFeature/ProfileDetailFeature.xcodeproj">
+         </FileRef>
+         <FileRef
             location = "group:ProfileFeature/ProfileFeature.xcodeproj">
          </FileRef>
          <FileRef
