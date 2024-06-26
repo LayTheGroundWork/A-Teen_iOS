@@ -20,8 +20,8 @@ final class TournamentUserView: UIView {
         UIColor.black.withAlphaComponent(0.5).cgColor,
         UIColor.black.withAlphaComponent(0).cgColor
     ]
-    let width: Double
-    let height: Double
+    let width = ViewValues.height * 0.35
+    let height = ViewValues.height * 0.35 * 0.86
     var image: UIImage?
     weak var delegate: TournamentUserViewDelegate?
     
@@ -50,7 +50,7 @@ final class TournamentUserView: UIView {
     private lazy var plusButton: UIButton = {
         let button = UIButton()
         button.setImage(DesignSystemAsset.plusIcon.image, for: .normal)
-        button.backgroundColor = .white.withAlphaComponent(0.2)
+        button.backgroundColor = UIColor.white.withAlphaComponent(0.2)
         button.layer.cornerRadius = ViewValues.defaultRadius
         let blurEffectView = makeBlur(to: button)
         button.addSubview(blurEffectView)
@@ -60,8 +60,8 @@ final class TournamentUserView: UIView {
     private lazy var selectButton: UIButton = {
         let button = UIButton()
         button.setTitle("선택 하기", for: .normal)
-        button.setTitleColor(.white, for: .normal)
-        button.setTitleColor(.black.withAlphaComponent(0.2), for: .highlighted)
+        button.setTitleColor(UIColor.white, for: .normal)
+        button.setTitleColor(UIColor.black.withAlphaComponent(0.2), for: .highlighted)
         button.titleLabel?.font = .customFont(forTextStyle: .footnote, weight: .regular)
         button.backgroundColor = DesignSystemAsset.mainColor.color
         button.layer.cornerRadius = ViewValues.defaultRadius
@@ -71,13 +71,9 @@ final class TournamentUserView: UIView {
     // MARK: - Life Cycle
     init(
         frame: CGRect,
-        width: Double,
-        height: Double,
         image: UIImage,
         delegate: TournamentUserViewDelegate
     ) {
-        self.width = width
-        self.height = height
         self.image = image
         self.delegate = delegate
         super.init(frame: frame)
@@ -92,7 +88,7 @@ final class TournamentUserView: UIView {
     
     // MARK: - Helpers
     private func configUserInterface() {
-        self.backgroundColor = .white
+        self.backgroundColor = UIColor.white
         self.clipsToBounds = true
         self.layer.cornerRadius = ViewValues.defaultRadius
         

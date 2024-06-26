@@ -49,14 +49,14 @@ final class RankingResultViewController: UIViewController {
         // TODO: - 추후에 아이콘 수정 예정
         button.setImage(UIImage(systemName: "arrow.left"),
                         for: .normal)
-        button.tintColor = .white
+        button.tintColor = UIColor.white
         button.addTarget(self,
                          action: #selector(didSelectBackButton(_:)),
                          for: .touchUpInside)
 
         let label = UILabel()
         label.text = "이번 주 대결"
-        label.textColor = .white
+        label.textColor = UIColor.white
         label.font = .customFont(forTextStyle: .title3, weight: .bold)
         label.textAlignment = .center
         
@@ -74,7 +74,7 @@ final class RankingResultViewController: UIViewController {
         let label = UILabel()
         label.text = "\(sector) 부문 TEEN 순위"
         label.font = .customFont(forTextStyle: .footnote, weight: .regular)
-        label.textColor = .white
+        label.textColor = UIColor.white
         return label
     }()
     
@@ -111,7 +111,7 @@ final class RankingResultViewController: UIViewController {
         tableView.showsVerticalScrollIndicator = false
         tableView.separatorStyle = .none
         tableView.contentInset = UIEdgeInsets(top: 30, left: 0, bottom: 0, right: 0)
-        tableView.backgroundColor = .clear
+        tableView.backgroundColor = UIColor.clear
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(RankingResultTableViewCell.self,

@@ -21,7 +21,7 @@ final class QuitTournamentDialogViewController: CustomTwoButtonDialogViewControl
         delegate: QuitTournamentDialogViewControllerDelegate,
         dialogImage: UIImage? = nil,
         dialogTitle: String? = "정말로 그만 두시겠어요?",
-        titleColor: UIColor = .black,
+        titleColor: UIColor = UIColor.black,
         titleNumberOfLine: Int = 1,
         titleFont: UIFont = .customFont(forTextStyle: .callout, weight: .bold),
         dialogMessage: String = "여기서 그만 두면\n처음부터 투표를 다시 해야해요!",

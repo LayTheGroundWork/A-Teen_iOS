@@ -17,7 +17,7 @@ final class TournamentRoundCollectionViewCell: UICollectionViewCell {
     
     private lazy var roundLabel: UILabel = {
         let label = UILabel()
-        label.textColor = .white
+        label.textColor = UIColor.white
         label.textAlignment = .center
         label.font = .customFont(forTextStyle: .callout, weight: .regular)
         return label
@@ -37,7 +37,7 @@ final class TournamentRoundCollectionViewCell: UICollectionViewCell {
                                  height: (ViewValues.height * 0.35 * 2) + 10)
         let collectionView = UICollectionView(frame: .zero,
                                               collectionViewLayout: layout)
-        collectionView.backgroundColor = .black
+        collectionView.backgroundColor = UIColor.black
         collectionView.contentInsetAdjustmentBehavior = .never
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.isScrollEnabled = false
@@ -62,8 +62,7 @@ final class TournamentRoundCollectionViewCell: UICollectionViewCell {
     
     // MARK: - Helpers
     private func configUserInterface() {
-        contentView.backgroundColor = .systemBackground
-        contentView.backgroundColor = .black
+        contentView.backgroundColor = UIColor.black
         
         contentView.addSubview(roundLabel)
         contentView.addSubview(progressView)

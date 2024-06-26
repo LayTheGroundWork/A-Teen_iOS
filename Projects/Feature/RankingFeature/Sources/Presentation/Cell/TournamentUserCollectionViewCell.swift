@@ -11,19 +11,12 @@ import DesignSystem
 import UIKit
 
 final class TournamentUserCollectionViewCell: UICollectionViewCell {
-    let width = UIScreen.main.bounds.height * 0.35 * 0.86
-    let height = UIScreen.main.bounds.height * 0.35
-
     // MARK: - Private properties
     private lazy var AUserView = TournamentUserView(frame: .zero,
-                                                    width: width,
-                                                    height: height,
                                                     image: DesignSystemAsset.dressGlass.image,
                                                     delegate: self)
     
     private lazy var BUserView = TournamentUserView(frame: .zero,
-                                                    width: width,
-                                                    height: height,
                                                     image: DesignSystemAsset.skyGlass.image,
                                                     delegate: self)
     // MARK: - Life Cycle
@@ -49,15 +42,15 @@ final class TournamentUserCollectionViewCell: UICollectionViewCell {
         AUserView.snp.makeConstraints { make in
             make.top.equalToSuperview()
             make.leading.equalToSuperview().offset(ViewValues.defaultPadding)
-            make.width.equalTo(width)
-            make.height.equalTo(height)
+            make.height.equalTo(ViewValues.height * 0.35)
+            make.width.equalTo(BUserView.height).multipliedBy(0.86)
         }
         
         BUserView.snp.makeConstraints { make in
             make.top.equalTo(AUserView.snp.bottom).offset(10)
             make.trailing.equalToSuperview().offset(-ViewValues.defaultPadding)
-            make.width.equalTo(width)
-            make.height.equalTo(height)
+            make.height.equalTo(AUserView.height)
+            make.width.equalTo(AUserView.width)
         }
     }
     

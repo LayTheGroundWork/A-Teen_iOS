@@ -17,7 +17,7 @@ final class RankingResultTableViewCell: UITableViewCell {
     // MARK: - Private properties
     private lazy var background: UIView = {
         let view = UIView()
-        view.backgroundColor = .white
+        view.backgroundColor = UIColor.white
         view.layer.cornerRadius = ViewValues.defaultRadius
         view.layer.shadowColor = UIColor.black.cgColor
         view.layer.shadowOpacity = 0.1
@@ -51,7 +51,7 @@ final class RankingResultTableViewCell: UITableViewCell {
     
     private lazy var proportionLabel: UILabel = {
         let label = UILabel()
-        label.textColor = .black
+        label.textColor = UIColor.black
         label.font = .customFont(forTextStyle: .footnote, weight: .regular)
         return label
     }()

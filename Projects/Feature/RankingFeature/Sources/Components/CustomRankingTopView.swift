@@ -68,7 +68,7 @@ final class CustomRankingTopView: UIView {
     private lazy var nameLabel: UILabel = {
         let label = UILabel()
         label.text = userName
-        label.textColor = .white
+        label.textColor = UIColor.white
         label.font = .customFont(forTextStyle: .footnote, weight: .bold)
         return label
     }()
@@ -76,7 +76,7 @@ final class CustomRankingTopView: UIView {
     private lazy var proportionLabel: UILabel = {
         let label = UILabel()
         label.text = "\(proportion)%"
-        label.textColor = .white
+        label.textColor = UIColor.white
         label.font = .customFont(forTextStyle: .footnote, weight: .regular)
         return label
     }()
@@ -104,7 +104,7 @@ final class CustomRankingTopView: UIView {
     
     // MARK: - Helpers
     private func configUserInterface() {
-        self.backgroundColor = .clear
+        self.backgroundColor = UIColor.clear
         
         self.addSubview(imageBackgroundView)
         imageBackgroundView.addSubview(imageView)

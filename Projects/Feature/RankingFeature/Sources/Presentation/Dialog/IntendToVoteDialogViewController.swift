@@ -18,7 +18,7 @@ final class IntendToVoteDialogViewController: CustomTwoButtonDialogViewControlle
         dialogImage: UIImage? = nil,
 //        dialogImage: UIImage? = UIImage(named: "hrmi"),
         dialogTitle: String? = nil,
-        titleColor: UIColor = .black,
+        titleColor: UIColor = UIColor.black,
         titleNumberOfLine: Int = 1,
         titleFont: UIFont = .customFont(forTextStyle: .callout, weight: .bold),
         dialogMessage: String = "투표 설명이 들어갈 위치",

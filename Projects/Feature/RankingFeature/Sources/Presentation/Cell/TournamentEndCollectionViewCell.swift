@@ -29,14 +29,14 @@ final class TournamentEndCollectionViewCell: UICollectionViewCell {
     
     private lazy var borderCircle1: DashedBorderView = {
         let circle = DashedBorderView()
-        circle.backgroundColor = .clear
+        circle.backgroundColor = UIColor.clear
         circle.layer.cornerRadius = 22
         return circle
     }()
     
     private lazy var borderCircle2: DashedBorderView = {
         let circle = DashedBorderView()
-        circle.backgroundColor = .clear
+        circle.backgroundColor = UIColor.clear
         circle.layer.cornerRadius = 28
         return circle
     }()
@@ -44,7 +44,7 @@ final class TournamentEndCollectionViewCell: UICollectionViewCell {
     private lazy var mainText: UILabel = {
         let label = UILabel()
         label.text = "투표 완료!"
-        label.textColor = .white
+        label.textColor = UIColor.white
         label.font = .customFont(forTextStyle: .callout, weight: .bold)
         label.textAlignment = .center
         return label
@@ -53,7 +53,7 @@ final class TournamentEndCollectionViewCell: UICollectionViewCell {
     private lazy var subText: UILabel = {
         let label = UILabel()
         label.text = "이번 투표 결과는 이번 주\n토너먼트에 반영됩니다."
-        label.textColor = .white
+        label.textColor = UIColor.white
         label.font = .customFont(forTextStyle: .footnote, weight: .regular)
         label.numberOfLines = 2
         label.textAlignment = .center
@@ -86,7 +86,7 @@ final class TournamentEndCollectionViewCell: UICollectionViewCell {
     
     private lazy var userNameLabel: UILabel = {
         let label = UILabel()
-        label.textColor = .white
+        label.textColor = UIColor.white
         label.font = .customFont(forTextStyle: .title3, weight: .bold)
         return label
     }()
@@ -99,7 +99,7 @@ final class TournamentEndCollectionViewCell: UICollectionViewCell {
     
     private lazy var userInfo: UILabel = {
         let label = UILabel()
-        label.textColor = .white
+        label.textColor = UIColor.white
         label.font = .customFont(forTextStyle: .footnote, weight: .regular)
         return label
     }()
@@ -107,8 +107,8 @@ final class TournamentEndCollectionViewCell: UICollectionViewCell {
     private lazy var selectButton: UIButton = {
         let button = UIButton()
         button.setTitle("완료", for: .normal)
-        button.setTitleColor(.white, for: .normal)
-        button.setTitleColor(.black.withAlphaComponent(0.2), for: .highlighted)
+        button.setTitleColor(UIColor.white, for: .normal)
+        button.setTitleColor(UIColor.black.withAlphaComponent(0.2), for: .highlighted)
         button.titleLabel?.font = .customFont(forTextStyle: .callout, weight: .regular)
         button.backgroundColor = DesignSystemAsset.mainColor.color
         button.layer.cornerRadius = ViewValues.defaultRadius
@@ -129,8 +129,7 @@ final class TournamentEndCollectionViewCell: UICollectionViewCell {
     
     // MARK: - Helpers
     private func configUserInterface() {
-        contentView.backgroundColor = .systemBackground
-        contentView.backgroundColor = .black
+        contentView.backgroundColor = UIColor.black
         
         contentView.addSubview(infoMessageView)
         infoMessageView.addSubview(filledCircle)

@@ -59,14 +59,14 @@ final class TournamentViewController: UIViewController {
         let button = UIButton()
         button.setImage(DesignSystemAsset.xMarkIcon.image,
                         for: .normal)
-        button.tintColor = .white
+        button.tintColor = UIColor.white
         button.addTarget(self,
                          action: #selector(didSelectCloseButton(_:)),
                          for: .touchUpInside)
 
         let label = UILabel()
         label.text = sector
-        label.textColor = .white
+        label.textColor = UIColor.white
         label.font = .customFont(forTextStyle: .title3, weight: .bold)
         label.textAlignment = .center
         
@@ -86,7 +86,7 @@ final class TournamentViewController: UIViewController {
                                  height: ViewValues.height - 80)
         let collectionView = UICollectionView(frame: .zero,
                                               collectionViewLayout: layout)
-        collectionView.backgroundColor = .black
+        collectionView.backgroundColor = UIColor.black
         collectionView.contentInsetAdjustmentBehavior = .never
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.isScrollEnabled = false
@@ -118,7 +118,7 @@ final class TournamentViewController: UIViewController {
     
     // MARK: - Helpers
     private func configUserInterface() {
-        view.backgroundColor = .black
+        view.backgroundColor = UIColor.black
         
         navigationItem.leftBarButtonItem = closeButton
         
