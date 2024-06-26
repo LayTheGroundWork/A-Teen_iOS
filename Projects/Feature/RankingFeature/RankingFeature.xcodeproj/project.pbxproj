@@ -3,10 +3,12 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 55;
+	objectVersion = 56;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		044BC8EA2C2AA15700EEF26C /* RankingSectorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044BC8E92C2AA15700EEF26C /* RankingSectorTableViewCell.swift */; };
+		044BC8EE2C2BF17600EEF26C /* SectorCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044BC8ED2C2BF17600EEF26C /* SectorCollectionViewCell.swift */; };
 		08CFC4F575C1BA0A34C3CE45 /* RankingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B41778F12338F23475EE2765 /* RankingViewController.swift */; };
 		1D43BDB2D83BFE0E057D8054 /* RankingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51DB19559A0A49B1B4BC7733 /* RankingCoordinator.swift */; };
 		1DB10DC9464103701686D879 /* RankingFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA765C3240C07F6DF54CBA2 /* RankingFactory.swift */; };
@@ -27,6 +29,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		044BC8E92C2AA15700EEF26C /* RankingSectorTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingSectorTableViewCell.swift; sourceTree = "<group>"; };
+		044BC8ED2C2BF17600EEF26C /* SectorCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectorCollectionViewCell.swift; sourceTree = "<group>"; };
 		0EA765C3240C07F6DF54CBA2 /* RankingFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingFactory.swift; sourceTree = "<group>"; };
 		4DA469756E9E7924C93A0AE6 /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
 		51DB19559A0A49B1B4BC7733 /* RankingCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingCoordinator.swift; sourceTree = "<group>"; };
@@ -105,6 +109,8 @@
 			isa = PBXGroup;
 			children = (
 				B41778F12338F23475EE2765 /* RankingViewController.swift */,
+				044BC8E92C2AA15700EEF26C /* RankingSectorTableViewCell.swift */,
+				044BC8ED2C2BF17600EEF26C /* SectorCollectionViewCell.swift */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -157,8 +163,6 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
 				ORGANIZATIONNAME = ATeen;
-				TargetAttributes = {
-				};
 			};
 			buildConfigurationList = B342376EBCA2AFCF06DDAED1 /* Build configuration list for PBXProject "RankingFeature" */;
 			compatibilityVersion = "Xcode 14.0";
@@ -193,8 +197,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				044BC8EE2C2BF17600EEF26C /* SectorCollectionViewCell.swift in Sources */,
 				1D43BDB2D83BFE0E057D8054 /* RankingCoordinator.swift in Sources */,
 				1DB10DC9464103701686D879 /* RankingFactory.swift in Sources */,
+				044BC8EA2C2AA15700EEF26C /* RankingSectorTableViewCell.swift in Sources */,
 				08CFC4F575C1BA0A34C3CE45 /* RankingViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -275,7 +281,10 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				OTHER_LDFLAGS = "$(inherited) -ObjC";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ATeen.ATeen.RankingFeature;
 				PRODUCT_NAME = RankingFeature;
 				SDKROOT = iphoneos;
@@ -283,10 +292,7 @@
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = (
-					"$(inherited)",
-					DEBUG,
-				);
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG";
 				SWIFT_COMPILATION_MODE = singlefile;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -316,7 +322,10 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				OTHER_LDFLAGS = "$(inherited) -ObjC";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ATeen.ATeen.RankingFeature;
 				PRODUCT_NAME = RankingFeature;
 				SDKROOT = iphoneos;
