@@ -191,7 +191,7 @@ final class TournamentEndCollectionViewCell: UICollectionViewCell {
         userImage.snp.makeConstraints { make in
             make.top.leading.equalToSuperview().offset(10)
             make.trailing.equalToSuperview().offset(-10)
-            make.height.equalTo(UIScreen.main.bounds.height * 0.35)
+            make.height.equalTo(ViewValues.height * 0.35)
             make.width.equalTo(userImage.snp.height).multipliedBy(0.86)
         }
         
