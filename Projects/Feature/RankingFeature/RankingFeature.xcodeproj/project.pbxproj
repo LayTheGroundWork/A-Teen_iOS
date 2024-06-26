@@ -7,11 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		044BC8EA2C2AA15700EEF26C /* RankingSectorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044BC8E92C2AA15700EEF26C /* RankingSectorTableViewCell.swift */; };
-		044BC8EE2C2BF17600EEF26C /* SectorCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044BC8ED2C2BF17600EEF26C /* SectorCollectionViewCell.swift */; };
 		08CFC4F575C1BA0A34C3CE45 /* RankingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B41778F12338F23475EE2765 /* RankingViewController.swift */; };
+		09112CB92C2C1AEA00C1FA14 /* IntendToVoteDialogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09112CB82C2C1AEA00C1FA14 /* IntendToVoteDialogViewController.swift */; };
+		09112CBB2C2C1C1100C1FA14 /* QuitTournamentDialogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09112CBA2C2C1C1100C1FA14 /* QuitTournamentDialogViewController.swift */; };
+		177035ECB58C9BE1AB0B9A0C /* SectorCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F431A551439AA62CE7D0282 /* SectorCollectionViewCell.swift */; };
 		1D43BDB2D83BFE0E057D8054 /* RankingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51DB19559A0A49B1B4BC7733 /* RankingCoordinator.swift */; };
 		1DB10DC9464103701686D879 /* RankingFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA765C3240C07F6DF54CBA2 /* RankingFactory.swift */; };
+		254053184B3A66EFD5A48713 /* RankingSectorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A08D68BF096E5978B9B040D /* RankingSectorTableViewCell.swift */; };
 		5A74E957BE03D0FEB0118673 /* FeatureDependency.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B25C900F858DDF43F8CF34AB /* FeatureDependency.framework */; };
 /* End PBXBuildFile section */
 
@@ -29,9 +31,11 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		044BC8E92C2AA15700EEF26C /* RankingSectorTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingSectorTableViewCell.swift; sourceTree = "<group>"; };
-		044BC8ED2C2BF17600EEF26C /* SectorCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectorCollectionViewCell.swift; sourceTree = "<group>"; };
+		09112CB82C2C1AEA00C1FA14 /* IntendToVoteDialogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntendToVoteDialogViewController.swift; sourceTree = "<group>"; };
+		09112CBA2C2C1C1100C1FA14 /* QuitTournamentDialogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuitTournamentDialogViewController.swift; sourceTree = "<group>"; };
 		0EA765C3240C07F6DF54CBA2 /* RankingFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingFactory.swift; sourceTree = "<group>"; };
+		1F431A551439AA62CE7D0282 /* SectorCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectorCollectionViewCell.swift; sourceTree = "<group>"; };
+		4A08D68BF096E5978B9B040D /* RankingSectorTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingSectorTableViewCell.swift; sourceTree = "<group>"; };
 		4DA469756E9E7924C93A0AE6 /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
 		51DB19559A0A49B1B4BC7733 /* RankingCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingCoordinator.swift; sourceTree = "<group>"; };
 		9EB80507C330FC5368109A92 /* Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
@@ -59,6 +63,15 @@
 				F279AB3F30343A8BE008C637 /* Project */,
 				D3C04C7F2E6A03E103BB46C7 /* Products */,
 			);
+			sourceTree = "<group>";
+		};
+		09112CB72C2C1ADB00C1FA14 /* Dialogs */ = {
+			isa = PBXGroup;
+			children = (
+				09112CB82C2C1AEA00C1FA14 /* IntendToVoteDialogViewController.swift */,
+				09112CBA2C2C1C1100C1FA14 /* QuitTournamentDialogViewController.swift */,
+			);
+			path = Dialogs;
 			sourceTree = "<group>";
 		};
 		6EC929A7A8329F2FA2CC021B /* Derived */ = {
@@ -108,9 +121,10 @@
 		E895A38565171EBEBC02EDEF /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				4A08D68BF096E5978B9B040D /* RankingSectorTableViewCell.swift */,
 				B41778F12338F23475EE2765 /* RankingViewController.swift */,
-				044BC8E92C2AA15700EEF26C /* RankingSectorTableViewCell.swift */,
-				044BC8ED2C2BF17600EEF26C /* SectorCollectionViewCell.swift */,
+				1F431A551439AA62CE7D0282 /* SectorCollectionViewCell.swift */,
+				09112CB72C2C1ADB00C1FA14 /* Dialogs */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -197,11 +211,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				044BC8EE2C2BF17600EEF26C /* SectorCollectionViewCell.swift in Sources */,
 				1D43BDB2D83BFE0E057D8054 /* RankingCoordinator.swift in Sources */,
+				09112CBB2C2C1C1100C1FA14 /* QuitTournamentDialogViewController.swift in Sources */,
 				1DB10DC9464103701686D879 /* RankingFactory.swift in Sources */,
-				044BC8EA2C2AA15700EEF26C /* RankingSectorTableViewCell.swift in Sources */,
+				254053184B3A66EFD5A48713 /* RankingSectorTableViewCell.swift in Sources */,
+				09112CB92C2C1AEA00C1FA14 /* IntendToVoteDialogViewController.swift in Sources */,
 				08CFC4F575C1BA0A34C3CE45 /* RankingViewController.swift in Sources */,
+				177035ECB58C9BE1AB0B9A0C /* SectorCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
