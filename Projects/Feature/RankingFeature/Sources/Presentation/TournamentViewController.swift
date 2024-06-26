@@ -57,8 +57,7 @@ final class TournamentViewController: UIViewController {
     
     private lazy var closeButton: UIBarButtonItem = {
         let button = UIButton()
-        // TODO: - 이미지 추후에 DesignSystem Asset 적용
-        button.setImage(UIImage(systemName: "xmark"),
+        button.setImage(DesignSystemAsset.xMarkIcon.image,
                         for: .normal)
         button.tintColor = .white
         button.addTarget(self,
