@@ -10,44 +10,10 @@ import Common
 import DesignSystem
 import UIKit
 
-final class TournamentRoundCollectionViewCell: UICollectionViewCell {    
+final class TournamentRoundCollectionViewCell: UICollectionViewCell {
+    // MARK: - Public properties
+    
     // MARK: - Private properties
-    private var round: TournamentRound?
-    private var currentMatch: Int = 1
-    
-    private lazy var roundLabel: UILabel = {
-        let label = UILabel()
-        label.textColor = .white
-        label.textAlignment = .center
-        label.font = .customFont(forTextStyle: .callout, weight: .regular)
-        return label
-    }()
-    
-    private lazy var progressView: UIProgressView = {
-        let view = UIProgressView()
-        view.trackTintColor = DesignSystemAsset.gray03.color
-        view.progressTintColor = DesignSystemAsset.mainColor.color
-        return view
-    }()
-    
-    private lazy var collectionView: UICollectionView = {
-        let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .horizontal
-        layout.itemSize = CGSize(width: ViewValues.width,
-                                 height: (ViewValues.height * 0.35 * 2) + 10)
-        let collectionView = UICollectionView(frame: .zero,
-                                              collectionViewLayout: layout)
-        collectionView.backgroundColor = .black
-        collectionView.contentInsetAdjustmentBehavior = .never
-        collectionView.showsHorizontalScrollIndicator = false
-        collectionView.isScrollEnabled = false
-        collectionView.isPagingEnabled = true
-        collectionView.register(TournamentUserCollectionViewCell.self,
-                                forCellWithReuseIdentifier: TournamentUserCollectionViewCell.reuseIdentifier)
-        collectionView.delegate = self
-        collectionView.dataSource = self
-        return collectionView
-    }()
     
     // MARK: - Life Cycle
     override init(frame: CGRect) {
@@ -62,91 +28,16 @@ final class TournamentRoundCollectionViewCell: UICollectionViewCell {
     
     // MARK: - Helpers
     private func configUserInterface() {
-        contentView.backgroundColor = .black
-        
-        contentView.addSubview(roundLabel)
-        contentView.addSubview(progressView)
-        contentView.addSubview(collectionView)
+        contentView.backgroundColor = .systemBackground
     }
     
     private func configLayout() {
-        roundLabel.snp.makeConstraints { make in
-            make.top.equalTo(contentView.safeAreaLayoutGuide.snp.top).offset(6)
-            make.leading.trailing.equalToSuperview()
-        }
         
-        progressView.snp.makeConstraints { make in
-            make.top.equalTo(roundLabel.snp.bottom).offset(ViewValues.defaultPadding)
-            make.leading.equalToSuperview().offset(ViewValues.defaultPadding)
-            make.trailing.equalToSuperview().offset(-ViewValues.defaultPadding)
-        }
-        
-        collectionView.snp.makeConstraints { make in
-            make.top.equalTo(progressView.snp.bottom)
-            make.leading.trailing.equalToSuperview()
-            make.bottom.equalToSuperview()
-        }
     }
     
     // MARK: - Actions
-    private func scrollToPage(at index: Int, animated: Bool = true) {
-        let indexPath = IndexPath(item: 0, section: index - 1)
-        collectionView.scrollToItem(at: indexPath,
-                                    at: .centeredHorizontally,
-                                    animated: animated)
-    }
+    
 }
 
 // MARK: - Extensions here
-extension TournamentRoundCollectionViewCell: UICollectionViewDataSource {
-    func collectionView(
-        _ collectionView: UICollectionView,
-        numberOfItemsInSection section: Int
-    ) -> Int {
-        1
-    }
-    
-    func numberOfSections(
-        in collectionView: UICollectionView
-    ) -> Int {
-        round?.matches ?? 1
-    }
-    
-    func collectionView(
-        _ collectionView: UICollectionView,
-        cellForItemAt indexPath: IndexPath
-    ) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(
-            withReuseIdentifier: TournamentUserCollectionViewCell.reuseIdentifier,
-            for: indexPath) as? TournamentUserCollectionViewCell
-        else {
-            return UICollectionViewCell()
-        }
-//        cell.setProperties(delegate: self)
-        return cell
-    }
-}
-
-extension TournamentRoundCollectionViewCell: UICollectionViewDelegate { }
-
-//extension TournamentRoundCollectionViewCell: TournamentUserCollectionViewCellDelegate {
-//    func didTapSelectButton() {
-//        if currentMatch == round?.matches {
-//            currentMatch = 1
-//            scrollToPage(at: currentMatch, animated: false)
-//            delegate?.nextRound()
-//        } else {
-//            currentMatch += 1
-//            scrollToPage(at: currentMatch)
-//            progressView.setProgress(progressView.progress + (round?.progress ?? 0),
-//                                     animated: true)
-////            UIView.animate(withDuration: 0.25) { [self] in
-////                progressView.setProgress(progressView.progress + (self.round?.progress ?? 0),
-////                                         animated: true)
-////            }
-////            collectionView.reloadData()
-//        }
-//    }
-//}
-
 extension TournamentRoundCollectionViewCell: Reusable { }
