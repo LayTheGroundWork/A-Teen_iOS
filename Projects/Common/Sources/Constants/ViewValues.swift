@@ -8,6 +8,14 @@
 import UIKit
 
 public struct ViewValues {
+    // MARK: - 기종 별 사이즈 ( height )
+    public enum DeviceScreenSizes: CGFloat {
+        case modelSE = 568            // se
+        case model8 = 667             // 8, 7, 6, 6s
+        case model8Plus = 736         // iPhone 8 Plus / 7 Plus / 6s Plus / 6 Plus
+        case modelMini = 812          // iPhone X / XS / 11 Pro / 12 Mini / 13 Mini
+    }
+    
     // MARK: - Spacing
     public static let defaultSpacing: CGFloat = 16
     
