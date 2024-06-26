@@ -20,6 +20,7 @@
 		6815E78E3CB81D6FD709874B /* RankingFeature.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = DB424A280C12994EE13C6934 /* RankingFeature.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		70F3CF0BB9F240B2A59853E0 /* DesignSystem.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E9369BFA2C65412102538303 /* DesignSystem.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7835B5508DA2E7C313A22926 /* DefaultFactoryProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB11FC10965C1D0660983C1B /* DefaultFactoryProvider.swift */; };
+		791E438F57DB6775DD4A8170 /* Domain.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6BEB75E9463ACE494A73BD36 /* Domain.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		799B6674606E6C6344F253CC /* LoginFeature.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = DC1FED34715BFF8FB1DD176A /* LoginFeature.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7FDED014DA0FFA1521C17D67 /* AppFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = C18188B8ACFCCDD1AA3522A2 /* AppFactory.swift */; };
 		94F9DC49C89B28C614DC384E /* MainFeature.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6CB714690F6D4BEF6743DA1F /* MainFeature.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -45,6 +46,7 @@
 				2524C0F1238A3AB595D269F1 /* Common.framework in Embed Frameworks */,
 				AAB073F1221B89F1B9D0816C /* Core.framework in Embed Frameworks */,
 				70F3CF0BB9F240B2A59853E0 /* DesignSystem.framework in Embed Frameworks */,
+				791E438F57DB6775DD4A8170 /* Domain.framework in Embed Frameworks */,
 				BC253706FB28F093D091FFBC /* FeatureDependency.framework in Embed Frameworks */,
 				799B6674606E6C6344F253CC /* LoginFeature.framework in Embed Frameworks */,
 				94F9DC49C89B28C614DC384E /* MainFeature.framework in Embed Frameworks */,
@@ -72,6 +74,7 @@
 		514C6A786251DDEC6B3DFF77 /* Core.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Core.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		553992446A744F1AD8F96583 /* ChatFeature.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ChatFeature.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		571E08A9083FD4334E4B7D06 /* App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = App.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6BEB75E9463ACE494A73BD36 /* Domain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Domain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6CB714690F6D4BEF6743DA1F /* MainFeature.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MainFeature.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		721D9790A705419CC668666D /* MainTabFeature.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MainTabFeature.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8F7F83A194E1D17030DCA033 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -212,6 +215,7 @@
 				1E907779D8170AF0208B302A /* Common.framework */,
 				514C6A786251DDEC6B3DFF77 /* Core.framework */,
 				E9369BFA2C65412102538303 /* DesignSystem.framework */,
+				6BEB75E9463ACE494A73BD36 /* Domain.framework */,
 				A9432DE0287E5923CB65DC49 /* FeatureDependency.framework */,
 				DC1FED34715BFF8FB1DD176A /* LoginFeature.framework */,
 				6CB714690F6D4BEF6743DA1F /* MainFeature.framework */,

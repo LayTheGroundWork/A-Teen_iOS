@@ -84,6 +84,20 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
+               BlueprintIdentifier = "C538ACB2975E6B55AFA02B19"
+               BuildableName = "Domain.framework"
+               BlueprintName = "Domain"
+               ReferencedContainer = "container:Projects/Domain/Domain.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
                BlueprintIdentifier = "798080D1BB514502FA7DAE83"
                BuildableName = "FeatureDependency.framework"
                BlueprintName = "FeatureDependency"
@@ -130,6 +144,20 @@
                BuildableName = "MainTabFeature.framework"
                BlueprintName = "MainTabFeature"
                ReferencedContainer = "container:Projects/MainTabFeature/MainTabFeature.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "453323209A3FFF1E78EECE5D"
+               BuildableName = "NetworkService.framework"
+               BlueprintName = "NetworkService"
+               ReferencedContainer = "container:Projects/NetworkService/NetworkService.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry

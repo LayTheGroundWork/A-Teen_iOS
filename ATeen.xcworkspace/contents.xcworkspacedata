@@ -17,10 +17,16 @@
          location = "group:DesignSystem/DesignSystem.xcodeproj">
       </FileRef>
       <FileRef
+         location = "group:Domain/Domain.xcodeproj">
+      </FileRef>
+      <FileRef
          location = "group:FeatureDependency/FeatureDependency.xcodeproj">
       </FileRef>
       <FileRef
          location = "group:MainTabFeature/MainTabFeature.xcodeproj">
+      </FileRef>
+      <FileRef
+         location = "group:NetworkService/NetworkService.xcodeproj">
       </FileRef>
       <Group
          location = "group:Feature"

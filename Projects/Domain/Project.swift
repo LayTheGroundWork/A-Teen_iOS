@@ -1,19 +1,17 @@
 //
 //  Project.swift
-//  ProjectDescriptionHelpers
+//  CoreManifests
 //
-//  Created by 최동호 on 6/14/24.
+//  Created by 최동호 on 6/27/24.
 //
 
 import ProjectDescription
 import ProjectDescriptionHelpers
 
 let project = Project.makeProject(
-    name: "FeatureDependency",
+    name: "Domain",
     moduleType: .dynamicFramework,
     dependencies: [
-        .designSystem,
-        .common,
-        .domain
+        .core
     ]
 )
