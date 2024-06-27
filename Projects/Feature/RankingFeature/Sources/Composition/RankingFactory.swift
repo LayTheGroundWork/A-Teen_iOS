@@ -5,18 +5,48 @@
 //  Created by 최동호 on 5/23/24.
 //
 
+import Core
+import FeatureDependency
 import UIKit
 
 public protocol RankingFactory {
-    func makeRankingViewController() -> UIViewController
+    func makeRankingViewController(
+        coordinator: RankingViewControllerCoordinator
+    ) -> UIViewController
+    
+    func makeIntendToVoteDialogCoordinator(
+        navigation: Navigation,
+        delegate: IntendToVoteDialogCoordinatorDelegate,
+        sector: String
+    ) -> Coordinator
 }
 
 public struct RankingFactoryImp: RankingFactory {
+    let appContainer: AppContainer?
+
+    public init(appContainer: AppContainer?) {
+        self.appContainer = appContainer
+    }
     
-    public init() { }
-    
-    public func makeRankingViewController() -> UIViewController {
-        let controller = RankingViewController()
+    public func makeRankingViewController(
+        coordinator: RankingViewControllerCoordinator
+    ) -> UIViewController {
+        let controller = RankingViewController(
+            coordinator: coordinator)
         return controller
+    }
+    
+    public func makeIntendToVoteDialogCoordinator(
+        navigation: Navigation,
+        delegate: IntendToVoteDialogCoordinatorDelegate,
+        sector: String
+    ) -> Coordinator {
+        let factory = IntendToVoteDialogFactoryImp()
+        return IntendToVoteDialogCoordinator(
+            navigation: navigation,
+            factory: factory,
+            delegate: delegate,
+            sector: sector
+        )
     }
 }

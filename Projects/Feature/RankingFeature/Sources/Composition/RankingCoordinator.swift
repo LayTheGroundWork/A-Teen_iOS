@@ -10,7 +10,8 @@ import UIKit
 
 public final class RankingCoordinator: Coordinator {
     public var navigation: Navigation
-    let factory: RankingFactory
+    public let factory: RankingFactory
+    public var childCoordinators: [Coordinator] = []
     
     public init(
         navigation: Navigation,
@@ -21,9 +22,10 @@ public final class RankingCoordinator: Coordinator {
     }
     
     public func start() {
-        let controller = factory.makeRankingViewController()
-        navigation.navigationBar.prefersLargeTitles = true
+        let controller = factory.makeRankingViewController(coordinator: self)
+//        navigation.navigationBar.prefersLargeTitles = true
         navigation.pushViewController(controller, animated: true)
     }
 }
 
+extension RankingCoordinator: ParentCoordinator { }

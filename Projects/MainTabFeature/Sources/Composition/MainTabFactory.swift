@@ -81,7 +81,7 @@ public struct MainTabFactoryImp: MainTabFactory {
     
     private func makeRankingCoordinator() -> Coordinator {
         let navigation = NavigationImp(rootViewController: UINavigationController())
-        let factory = RankingFactoryImp()
+        let factory = RankingFactoryImp(appContainer: appContainer)
         return RankingCoordinator(
             navigation: navigation,
             factory: factory)

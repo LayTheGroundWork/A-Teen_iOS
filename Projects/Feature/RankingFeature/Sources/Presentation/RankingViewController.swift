@@ -9,10 +9,14 @@ import Common
 import DesignSystem
 import UIKit
 
-final class RankingViewController: UIViewController {
-    // MARK: - Public properties
-    
+public protocol RankingViewControllerCoordinator: AnyObject {
+    func didTapVoteButton(sector: String)
+}
+
+public final class RankingViewController: UIViewController {
     // MARK: - Private properties
+    private weak var coordinator: RankingViewControllerCoordinator?
+
     private let sectionTitles: [String] = ["전체", "뷰티", "운동", "요리", "춤", "노래"]
     
     private lazy var heroImageView: UIImageView = {
@@ -82,7 +86,18 @@ final class RankingViewController: UIViewController {
     private lazy var categoryButtons: [UIButton] = []
     
     // MARK: - Life Cycle
-    override func viewDidLoad() {
+    init(
+        coordinator: RankingViewControllerCoordinator
+    ) {
+        self.coordinator = coordinator
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    public override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
         
@@ -194,31 +209,33 @@ final class RankingViewController: UIViewController {
 
 // MARK: - Extensions here
 extension RankingViewController: UITableViewDelegate, UITableViewDataSource {
-    func numberOfSections(in tableView: UITableView) -> Int {
+    public func numberOfSections(in tableView: UITableView) -> Int {
         return sectionTitles.count
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: RankingSectorTableViewCell.reuseIdentifier, for: indexPath) as? RankingSectorTableViewCell else {
             return UITableViewCell()
         }
+        cell.delegate = coordinator
+        cell.sector = sectionTitles[indexPath.section]
         return cell
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 242
     }
     
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    public func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 60
     }
     
     // MARK: 폰트 설정
-    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+    public func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         guard let header = view as? UITableViewHeaderFooterView else { return }
         header.textLabel?.font = .systemFont(ofSize: 20, weight: .semibold)
         header.textLabel?.frame = CGRect(x: header.bounds.origin.x + 20, y: header.bounds.origin.y, width: 100, height: header.bounds.height)
@@ -226,7 +243,7 @@ extension RankingViewController: UITableViewDelegate, UITableViewDataSource {
         header.textLabel?.text = header.textLabel?.text?.lowercased()
     }
     
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    public func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return sectionTitles[section]
     }
 }

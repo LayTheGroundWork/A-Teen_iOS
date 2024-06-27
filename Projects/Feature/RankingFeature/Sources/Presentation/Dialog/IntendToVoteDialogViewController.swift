@@ -9,12 +9,21 @@
 import DesignSystem
 import UIKit
 
+protocol IntendToVoteDialogViewControllerCoordinator: AnyObject {
+    func quitDialog()
+    func didTapParticipateInVote()
+}
+
 final class IntendToVoteDialogViewController: CustomTwoButtonDialogViewController {
     let sector: String
+    
+    // MARK: - Private properties
+    private weak var coordinator: IntendToVoteDialogViewControllerCoordinator?
     
     // MARK: - Life Cycle
     public init(
         sector: String,
+        coordinator: IntendToVoteDialogViewControllerCoordinator,
         dialogImage: UIImage? = nil,
 //        dialogImage: UIImage? = UIImage(named: "hrmi"),
         dialogTitle: String? = nil,
@@ -33,6 +42,8 @@ final class IntendToVoteDialogViewController: CustomTwoButtonDialogViewControlle
         let dialogTitle = dialogTitle ?? "\(sector) 투표에 참여하시겠어요?"
         
         self.sector = sector
+        self.coordinator = coordinator
+        
         super.init(
             dialogImage: dialogImage,
             dialogTitle: dialogTitle,
@@ -53,12 +64,12 @@ final class IntendToVoteDialogViewController: CustomTwoButtonDialogViewControlle
     // MARK: - Actions
     public override func clickLeftButton(_ sender: UIButton) {
         super.clickLeftButton(sender)
-        // TODO: - 다이얼로그 닫기
-//        self.dismiss(animated: false)
+        coordinator?.quitDialog()
     }
     
     public override func clickRightButton(_ sender: UIButton) {
         super.clickRightButton(sender)
+        coordinator?.didTapParticipateInVote()
         // TODO: - 토너먼트 진행 화면 이동
 //        let tournamentVC = TournamentViewController(sector: "뷰티")
 //        
