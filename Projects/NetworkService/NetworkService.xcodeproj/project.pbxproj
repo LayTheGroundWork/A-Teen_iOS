@@ -3,13 +3,16 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 55;
+	objectVersion = 56;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		036B6550D85D013E9E45D716 /* ApiError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26DF9FED1221312C46C36A20 /* ApiError.swift */; };
 		0422C1E028807B6222269C0E /* HttpResponseStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = D14C05E4D710518F379088FD /* HttpResponseStatus.swift */; };
 		0B05AF560B14AA2D249AA7B5 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76DE8486B37F0452CD9A98A4 /* Endpoint.swift */; };
+		4197944F2C2DD5A6008CA2F3 /* ApiClientServiceImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4197944E2C2DD5A6008CA2F3 /* ApiClientServiceImp.swift */; };
+		419794522C2DD5D5008CA2F3 /* ApiClientService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419794512C2DD5D5008CA2F3 /* ApiClientService.swift */; };
+		4197945E2C2DDC21008CA2F3 /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4197945D2C2DDC21008CA2F3 /* HTTPMethod.swift */; };
 		6E603AA8BBD6517702881483 /* Domain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD5312BF635CBE4D99FAE162 /* Domain.framework */; };
 /* End PBXBuildFile section */
 
@@ -28,6 +31,9 @@
 
 /* Begin PBXFileReference section */
 		26DF9FED1221312C46C36A20 /* ApiError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiError.swift; sourceTree = "<group>"; };
+		4197944E2C2DD5A6008CA2F3 /* ApiClientServiceImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiClientServiceImp.swift; sourceTree = "<group>"; };
+		419794512C2DD5D5008CA2F3 /* ApiClientService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiClientService.swift; sourceTree = "<group>"; };
+		4197945D2C2DDC21008CA2F3 /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
 		423A93F1015E6C9CF4DB82B2 /* Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
 		564371F685EE5EF450EB138A /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
 		76DE8486B37F0452CD9A98A4 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
@@ -68,11 +74,30 @@
 		38525DA2689C825D960A837C /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				419794502C2DD5C9008CA2F3 /* ApiService */,
+				4197944D2C2DD598008CA2F3 /* Implementations */,
 				DCED9DDC8E63D40418AAA1BC /* EndPoint */,
 				ABE3E7BAEA8052D1EDBA9FA0 /* Errors */,
 				0D0E7ECA2FE1D2974B2941D6 /* StatusResponse */,
+				4197945D2C2DDC21008CA2F3 /* HTTPMethod.swift */,
 			);
 			path = Sources;
+			sourceTree = "<group>";
+		};
+		4197944D2C2DD598008CA2F3 /* Implementations */ = {
+			isa = PBXGroup;
+			children = (
+				4197944E2C2DD5A6008CA2F3 /* ApiClientServiceImp.swift */,
+			);
+			path = Implementations;
+			sourceTree = "<group>";
+		};
+		419794502C2DD5C9008CA2F3 /* ApiService */ = {
+			isa = PBXGroup;
+			children = (
+				419794512C2DD5D5008CA2F3 /* ApiClientService.swift */,
+			);
+			path = ApiService;
 			sourceTree = "<group>";
 		};
 		6B3ACE6537D507A5B556E7D6 /* Config */ = {
@@ -165,8 +190,6 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
 				ORGANIZATIONNAME = ATeen;
-				TargetAttributes = {
-				};
 			};
 			buildConfigurationList = FFC6118989876A9280B17F0F /* Build configuration list for PBXProject "NetworkService" */;
 			compatibilityVersion = "Xcode 14.0";
@@ -201,6 +224,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				419794522C2DD5D5008CA2F3 /* ApiClientService.swift in Sources */,
+				4197944F2C2DD5A6008CA2F3 /* ApiClientServiceImp.swift in Sources */,
+				4197945E2C2DDC21008CA2F3 /* HTTPMethod.swift in Sources */,
 				0B05AF560B14AA2D249AA7B5 /* Endpoint.swift in Sources */,
 				036B6550D85D013E9E45D716 /* ApiError.swift in Sources */,
 				0422C1E028807B6222269C0E /* HttpResponseStatus.swift in Sources */,
@@ -230,7 +256,10 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				OTHER_LDFLAGS = "$(inherited) -ObjC";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ATeen.ATeen.NetworkService;
 				PRODUCT_NAME = NetworkService;
 				SDKROOT = iphoneos;
@@ -267,7 +296,10 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				OTHER_LDFLAGS = "$(inherited) -ObjC";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ATeen.ATeen.NetworkService;
 				PRODUCT_NAME = NetworkService;
 				SDKROOT = iphoneos;
@@ -275,10 +307,7 @@
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = (
-					"$(inherited)",
-					DEBUG,
-				);
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG";
 				SWIFT_COMPILATION_MODE = singlefile;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;

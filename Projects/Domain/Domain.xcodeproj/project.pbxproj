@@ -3,11 +3,14 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 55;
+	objectVersion = 56;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		3397A266F379521733729379 /* Core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0950BE22FC63C7D2DCE33C5 /* Core.framework */; };
+		419794572C2DD743008CA2F3 /* LogInRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419794562C2DD743008CA2F3 /* LogInRequest.swift */; };
+		419794592C2DD85E008CA2F3 /* SignUpRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419794582C2DD85E008CA2F3 /* SignUpRequest.swift */; };
+		4197945C2C2DD955008CA2F3 /* LogInResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4197945B2C2DD955008CA2F3 /* LogInResponse.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,6 +28,9 @@
 
 /* Begin PBXFileReference section */
 		3A4620A0019C901EC7C993A2 /* Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
+		419794562C2DD743008CA2F3 /* LogInRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInRequest.swift; sourceTree = "<group>"; };
+		419794582C2DD85E008CA2F3 /* SignUpRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpRequest.swift; sourceTree = "<group>"; };
+		4197945B2C2DD955008CA2F3 /* LogInResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInResponse.swift; sourceTree = "<group>"; };
 		B55759C9EED1F9864F56739B /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
 		BD15A37E85BAE3A36B2CE72C /* Domain-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Domain-Info.plist"; sourceTree = "<group>"; };
 		D0950BE22FC63C7D2DCE33C5 /* Core.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Core.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -78,9 +84,44 @@
 			);
 			sourceTree = "<group>";
 		};
+		419794532C2DD68C008CA2F3 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				419794542C2DD694008CA2F3 /* Entity */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		419794542C2DD694008CA2F3 /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				4197945A2C2DD8EA008CA2F3 /* Response */,
+				419794552C2DD69C008CA2F3 /* Request */,
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
+		419794552C2DD69C008CA2F3 /* Request */ = {
+			isa = PBXGroup;
+			children = (
+				419794562C2DD743008CA2F3 /* LogInRequest.swift */,
+				419794582C2DD85E008CA2F3 /* SignUpRequest.swift */,
+			);
+			path = Request;
+			sourceTree = "<group>";
+		};
+		4197945A2C2DD8EA008CA2F3 /* Response */ = {
+			isa = PBXGroup;
+			children = (
+				4197945B2C2DD955008CA2F3 /* LogInResponse.swift */,
+			);
+			path = Response;
+			sourceTree = "<group>";
+		};
 		8BFA263778496DF044218BBB /* Project */ = {
 			isa = PBXGroup;
 			children = (
+				419794532C2DD68C008CA2F3 /* Sources */,
 				2C70B5A1308D52C27F06BA49 /* Config */,
 				0341B6BC3BB2B1CDE266CAF5 /* Derived */,
 			);
@@ -125,6 +166,9 @@
 				BuildIndependentTargetsInParallel = YES;
 				ORGANIZATIONNAME = ATeen;
 				TargetAttributes = {
+					C538ACB2975E6B55AFA02B19 = {
+						LastSwiftMigration = 1520;
+					};
 				};
 			};
 			buildConfigurationList = 5B17347D429F14C389327C78 /* Build configuration list for PBXProject "Domain" */;
@@ -160,6 +204,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4197945C2C2DD955008CA2F3 /* LogInResponse.swift in Sources */,
+				419794572C2DD743008CA2F3 /* LogInRequest.swift in Sources */,
+				419794592C2DD85E008CA2F3 /* SignUpRequest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -223,6 +270,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = B55759C9EED1F9864F56739B /* Release.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_MODULE_DEBUGGING = YES;
 				CODE_SIGN_IDENTITY = "";
 				CURRENT_PROJECT_VERSION = 1;
@@ -239,7 +287,10 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				OTHER_LDFLAGS = "$(inherited) -ObjC";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ATeen.ATeen.Domain;
 				PRODUCT_NAME = Domain;
 				SDKROOT = iphoneos;
@@ -319,6 +370,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 3A4620A0019C901EC7C993A2 /* Debug.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_MODULE_DEBUGGING = YES;
 				CODE_SIGN_IDENTITY = "";
 				CURRENT_PROJECT_VERSION = 1;
@@ -335,7 +387,10 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				OTHER_LDFLAGS = "$(inherited) -ObjC";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ATeen.ATeen.Domain;
 				PRODUCT_NAME = Domain;
 				SDKROOT = iphoneos;
@@ -343,10 +398,7 @@
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = (
-					"$(inherited)",
-					DEBUG,
-				);
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG";
 				SWIFT_COMPILATION_MODE = singlefile;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
