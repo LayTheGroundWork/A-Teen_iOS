@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		044BC8EA2C2AA15700EEF26C /* RankingSectorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044BC8E92C2AA15700EEF26C /* RankingSectorTableViewCell.swift */; };
 		044BC8EE2C2BF17600EEF26C /* SectorCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044BC8ED2C2BF17600EEF26C /* SectorCollectionViewCell.swift */; };
+		044BC8F32C2D499B00EEF26C /* CustomRankingNaviView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044BC8F22C2D499B00EEF26C /* CustomRankingNaviView.swift */; };
 		08CFC4F575C1BA0A34C3CE45 /* RankingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B41778F12338F23475EE2765 /* RankingViewController.swift */; };
 		1D43BDB2D83BFE0E057D8054 /* RankingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51DB19559A0A49B1B4BC7733 /* RankingCoordinator.swift */; };
 		1DB10DC9464103701686D879 /* RankingFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA765C3240C07F6DF54CBA2 /* RankingFactory.swift */; };
@@ -31,6 +32,7 @@
 /* Begin PBXFileReference section */
 		044BC8E92C2AA15700EEF26C /* RankingSectorTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingSectorTableViewCell.swift; sourceTree = "<group>"; };
 		044BC8ED2C2BF17600EEF26C /* SectorCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectorCollectionViewCell.swift; sourceTree = "<group>"; };
+		044BC8F22C2D499B00EEF26C /* CustomRankingNaviView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomRankingNaviView.swift; sourceTree = "<group>"; };
 		0EA765C3240C07F6DF54CBA2 /* RankingFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingFactory.swift; sourceTree = "<group>"; };
 		4DA469756E9E7924C93A0AE6 /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
 		51DB19559A0A49B1B4BC7733 /* RankingCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingCoordinator.swift; sourceTree = "<group>"; };
@@ -59,6 +61,31 @@
 				F279AB3F30343A8BE008C637 /* Project */,
 				D3C04C7F2E6A03E103BB46C7 /* Products */,
 			);
+			sourceTree = "<group>";
+		};
+		044BC8EF2C2D491D00EEF26C /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				044BC8F22C2D499B00EEF26C /* CustomRankingNaviView.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		044BC8F02C2D494000EEF26C /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				044BC8ED2C2BF17600EEF26C /* SectorCollectionViewCell.swift */,
+				044BC8E92C2AA15700EEF26C /* RankingSectorTableViewCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		044BC8F12C2D495100EEF26C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				B41778F12338F23475EE2765 /* RankingViewController.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		6EC929A7A8329F2FA2CC021B /* Derived */ = {
@@ -108,9 +135,8 @@
 		E895A38565171EBEBC02EDEF /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
-				B41778F12338F23475EE2765 /* RankingViewController.swift */,
-				044BC8E92C2AA15700EEF26C /* RankingSectorTableViewCell.swift */,
-				044BC8ED2C2BF17600EEF26C /* SectorCollectionViewCell.swift */,
+				044BC8F12C2D495100EEF26C /* View */,
+				044BC8F02C2D494000EEF26C /* Cell */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -128,6 +154,7 @@
 		F59830A9D8CA2BD366F57E32 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				044BC8EF2C2D491D00EEF26C /* Components */,
 				891E5983792BA87725E45A93 /* Composition */,
 				E895A38565171EBEBC02EDEF /* Presentation */,
 			);
@@ -201,6 +228,7 @@
 				1D43BDB2D83BFE0E057D8054 /* RankingCoordinator.swift in Sources */,
 				1DB10DC9464103701686D879 /* RankingFactory.swift in Sources */,
 				044BC8EA2C2AA15700EEF26C /* RankingSectorTableViewCell.swift in Sources */,
+				044BC8F32C2D499B00EEF26C /* CustomRankingNaviView.swift in Sources */,
 				08CFC4F575C1BA0A34C3CE45 /* RankingViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

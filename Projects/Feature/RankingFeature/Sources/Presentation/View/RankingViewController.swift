@@ -15,6 +15,20 @@ final class RankingViewController: UIViewController {
     // MARK: - Private properties
     private let sectionTitles: [String] = ["전체", "뷰티", "운동", "요리", "춤", "노래"]
     
+    private let headerView: UIView = {
+        let view = UIView()
+        view.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 303 + 60 + 40)
+        return view
+    }()
+    
+    private lazy var titleLabel: UILabel = {
+        let titleLabel = UILabel()
+        titleLabel.text = "Ranking"
+        titleLabel.textColor = .white
+        titleLabel.font = UIFont.boldSystemFont(ofSize: 20)
+        return titleLabel
+    }()
+    
     private lazy var heroImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
@@ -24,28 +38,6 @@ final class RankingViewController: UIViewController {
         imageView.clipsToBounds = true
         return imageView
     }()
-    
-    //    private lazy var titleLabel: UILabel = {
-    //        let titleLabel = UILabel()
-    //        titleLabel.text = "Ranking"
-    //        titleLabel.textColor = .white
-    //        titleLabel.font = UIFont.boldSystemFont(ofSize: 20)
-    //        return titleLabel
-    //    }()
-    //
-    //    private lazy var searchButton: UIButton = {
-    //        let searchButton = UIButton(type: .system)
-    //        searchButton.setImage(UIImage(systemName: "magnifyingglass"), for: .normal)
-    //        searchButton.tintColor = .white
-    //        return searchButton
-    //    }()
-    //
-    //    private lazy var bellButton: UIButton = {
-    //        let searchButton = UIButton(type: .system)
-    //        searchButton.setImage(UIImage(systemName: "bell.fill"), for: .normal)
-    //        searchButton.tintColor = .white
-    //        return searchButton
-    //    }()
     
     private lazy var textLabel: UILabel = {
         let label = UILabel()
@@ -76,6 +68,8 @@ final class RankingViewController: UIViewController {
         table.backgroundColor = .white
         table.separatorStyle = .none
         table.contentInsetAdjustmentBehavior = .never
+        table.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 60, right: 0)
+        table.tableHeaderView = headerView
         return table
     }()
     
@@ -85,62 +79,26 @@ final class RankingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
+        navigationController?.isNavigationBarHidden = true
         
         homeFeedTable.delegate = self
         homeFeedTable.dataSource = self
         
-        setupTableHeaderView()
+        configUserInterface()
+        configLayout()
         setupCategoryButtons()
-        
+    }
+    
+    private func configUserInterface() {
         view.addSubview(homeFeedTable)
-        
-        homeFeedTable.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
-        }
-    }
-    
-    public override func viewWillAppear(_ animated: Bool) {
-        self.navigationItem.titleView =  CustomRankingNaviView(frame: CGRect(x: 0, y: 0, width: ViewValues.width, height: 40))
-    }
-    
-    // MARK: - Helpers
-    private func setupTableHeaderView() {
-        let headerView = UIView()
         headerView.addSubview(heroImageView)
-        //        headerView.addSubview(titleLabel)
-        //        headerView.addSubview(searchButton)
-        //        headerView.addSubview(bellButton)
         headerView.addSubview(textLabel)
         headerView.addSubview(categoryScrollView)
         categoryScrollView.addSubview(categoryStackView)
-        
-        heroImageView.snp.makeConstraints { make in
-            make.top.leading.trailing.equalToSuperview()
-            make.height.equalTo(303)
-        }
-        
-        //        titleLabel.snp.makeConstraints { make in
-        //            make.top.equalTo(heroImageView.snp.top).offset(70)
-        //            make.leading.equalTo(heroImageView).offset(16)
-        //        }
-        //
-        //        searchButton.snp.makeConstraints { make in
-        //            make.top.equalTo(heroImageView.snp.top).offset(70)
-        //            make.trailing.equalTo(bellButton).offset(-40)
-        //            make.height.equalTo(24)
-        //        }
-        //
-        //        bellButton.snp.makeConstraints { make in
-        //            make.top.equalTo(heroImageView.snp.top).offset(70)
-        //            make.trailing.equalTo(heroImageView).offset(-16)
-        //            make.height.equalTo(24)
-        //        }
-        
-        textLabel.snp.makeConstraints { make in
-            make.leading.equalTo(heroImageView).offset(16)
-            make.top.equalTo(heroImageView.snp.bottom).offset(-69)
-        }
-        
+        headerView.addSubview(titleLabel)
+    }
+    
+    private func configLayout() {
         categoryScrollView.snp.makeConstraints { make in
             make.top.equalTo(heroImageView.snp.bottom).offset(40)
             make.leading.trailing.equalToSuperview()
@@ -152,9 +110,29 @@ final class RankingViewController: UIViewController {
             make.height.equalToSuperview()
         }
         
-        headerView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 303 + 60 + 40)
-        homeFeedTable.tableHeaderView = headerView
+        homeFeedTable.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
+        
+        heroImageView.snp.makeConstraints { make in
+            make.top.leading.trailing.equalToSuperview()
+            make.height.equalTo(303)
+        }
+        
+        textLabel.snp.makeConstraints { make in
+            make.leading.equalTo(heroImageView).offset(16)
+            make.top.equalTo(heroImageView.snp.bottom).offset(-69)
+        }
+        
+        titleLabel.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(60)
+            make.leading.equalToSuperview().offset(16)
+            make.height.equalTo(30)
+        }
     }
+    
+   
+    // MARK: - Helpers
     
     private func setupCategoryButtons() {
         for (index, category) in sectionTitles.enumerated() {
@@ -187,13 +165,10 @@ final class RankingViewController: UIViewController {
             }
         }
     }
-    
-    // MARK: - Actions
-    
 }
 
 // MARK: - Extensions here
-extension RankingViewController: UITableViewDelegate, UITableViewDataSource {
+extension RankingViewController: UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate {
     func numberOfSections(in tableView: UITableView) -> Int {
         return sectionTitles.count
     }
@@ -229,66 +204,13 @@ extension RankingViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return sectionTitles[section]
     }
-}
-
-class CustomRankingNaviView: UIView {
-    private lazy var titleLabel: UILabel = {
-        let titleLabel = UILabel()
-        titleLabel.text = "Ranking"
-        titleLabel.textColor = .white
-        titleLabel.font = UIFont.boldSystemFont(ofSize: 20)
-        return titleLabel
-    }()
     
-    private lazy var searchButton: UIButton = {
-        let searchButton = UIButton(type: .system)
-        searchButton.setImage(UIImage(systemName: "magnifyingglass"), for: .normal)
-        searchButton.tintColor = .white
-        return searchButton
-    }()
-    
-    private lazy var bellButton: UIButton = {
-        let searchButton = UIButton(type: .system)
-        searchButton.setImage(UIImage(systemName: "bell.fill"), for: .normal)
-        searchButton.tintColor = .white
-        return searchButton
-    }()
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    // 상단 스크롤 막기
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if scrollView.contentOffset.y < 0 {
+            scrollView.contentOffset.y = 0
+        }
     }
 }
 
-// MARK: - Layout
-extension CustomRankingNaviView {
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        
-        self.addSubview(titleLabel)
-        self.addSubview(searchButton)
-        self.addSubview(bellButton)
-        
-        self.titleLabel.snp.makeConstraints { make in
-            make.leading.equalToSuperview()
-            make.centerY.equalToSuperview()
-            make.height.equalTo(30)
-        }
-        
-        self.searchButton.snp.makeConstraints { make in
-            make.trailing.equalToSuperview()
-            make.centerY.equalToSuperview()
-            make.width.height.equalTo(24)
-        }
-        
-        self.bellButton.snp.makeConstraints { make in
-            make.trailing.equalTo(self.searchButton.snp.leading).offset(-20)
-            make.centerY.equalToSuperview()
-            make.width.height.equalTo(24)
-        }
-    }
-}
 
