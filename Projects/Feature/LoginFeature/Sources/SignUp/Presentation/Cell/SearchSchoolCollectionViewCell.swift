@@ -52,16 +52,21 @@ final class SearchSchoolCollectionViewCell: UICollectionViewCell {
         textField.autocorrectionType = .no
         textField.spellCheckingType = .no
         textField.returnKeyType = .done
+        
+        let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: 50, height: 24))
+        
+        let imageView = UIImageView(image: UIImage(systemName: "magnifyingglass"))
+        imageView.tintColor = DesignSystemAsset.mainColor.color
+        imageView.frame = CGRect(x: 0, y: 0, width: 24, height: 24)
+        
+        paddingView.addSubview(imageView)
+        
+        textField.rightView = paddingView
+        textField.rightViewMode = .always
+        
         return textField
     }()
     
-    private lazy var searchImageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.image = UIImage(systemName: "magnifyingglass")
-        imageView.tintColor = DesignSystemAsset.mainColor.color
-        imageView.frame = CGRect(x: 0, y: 0, width: 24, height: 24)
-        return imageView
-    }()
     
     lazy var tableBackgroundView: UIView = {
         let view = UIView()
