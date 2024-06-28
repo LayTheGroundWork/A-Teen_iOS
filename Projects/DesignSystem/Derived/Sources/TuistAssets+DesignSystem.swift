@@ -37,6 +37,7 @@ public enum DesignSystemAsset {
   public static let crownWhiteIcon = DesignSystemImages(name: "crownWhiteIcon")
   public static let heartIcon = DesignSystemImages(name: "heartIcon")
   public static let leftArrowIcon = DesignSystemImages(name: "leftArrowIcon")
+  public static let leftArrowWhiteIcon = DesignSystemImages(name: "leftArrowWhiteIcon")
   public static let menuIcon = DesignSystemImages(name: "menuIcon")
   public static let moreIcon = DesignSystemImages(name: "moreIcon")
   public static let plusIcon = DesignSystemImages(name: "plusIcon")
