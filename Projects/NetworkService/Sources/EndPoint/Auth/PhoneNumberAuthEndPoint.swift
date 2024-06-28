@@ -1,0 +1,37 @@
+//
+//  PhoneNumberAuthEndPoint.swift
+//  NetworkService
+//
+//  Created by 최동호 on 6/28/24.
+//  Copyright © 2024 ATeen. All rights reserved.
+//
+
+
+import Domain
+import Foundation
+
+public struct PhoneNumberAuthEndPoint: EndPoint {
+    private let request: PhoneNumberAuthRequest
+    
+    public var path: String = "/message/confirms"
+    
+    public var query: [String : String] = [:]
+    
+    public var header: [String : String] = [:]
+    
+    public var body: [String : Any] {
+        [
+            "phoneNumber": request.phoneNumber,
+            "verificationCode": request.verificationCode
+        ]
+    }
+    
+    public var method: HTTPMethod = .post
+    
+    public init(
+        request: PhoneNumberAuthRequest
+    ) {
+        self.request = request
+   
+    }
+}

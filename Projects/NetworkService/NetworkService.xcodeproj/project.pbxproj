@@ -3,17 +3,20 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 55;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		036B6550D85D013E9E45D716 /* ApiError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26DF9FED1221312C46C36A20 /* ApiError.swift */; };
 		0422C1E028807B6222269C0E /* HttpResponseStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = D14C05E4D710518F379088FD /* HttpResponseStatus.swift */; };
-		0B05AF560B14AA2D249AA7B5 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76DE8486B37F0452CD9A98A4 /* Endpoint.swift */; };
-		4197944F2C2DD5A6008CA2F3 /* ApiClientServiceImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4197944E2C2DD5A6008CA2F3 /* ApiClientServiceImp.swift */; };
-		419794522C2DD5D5008CA2F3 /* ApiClientService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419794512C2DD5D5008CA2F3 /* ApiClientService.swift */; };
-		4197945E2C2DDC21008CA2F3 /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4197945D2C2DDC21008CA2F3 /* HTTPMethod.swift */; };
+		4A25E8BE1156684357DAC52F /* LogInEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE9987B527C6D0232D055D1 /* LogInEndPoint.swift */; };
+		4E73CAAA79D1BE736AD3B7FA /* VerificationCodeEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BA75336359A120CBA17BA7D /* VerificationCodeEndPoint.swift */; };
+		5CD81B418DCC7667165005CA /* ApiClientServiceImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE374FAFF5AD8033061042B6 /* ApiClientServiceImp.swift */; };
 		6E603AA8BBD6517702881483 /* Domain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD5312BF635CBE4D99FAE162 /* Domain.framework */; };
+		759753D185FBA434CB7A41B8 /* ApiClientService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17754DA0A8AF217686219AFF /* ApiClientService.swift */; };
+		7A4C181A2942A2CA8F105272 /* PhoneNumberAuthEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226E662994065E6F77D84AA1 /* PhoneNumberAuthEndPoint.swift */; };
+		BF7B74B2497062943DAB0D72 /* EndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39E9564068243164AE0397F4 /* EndPoint.swift */; };
+		C2D528B369D066456ADFD047 /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30B8FE33444F24DC3915A82C /* HTTPMethod.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -30,17 +33,20 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0EE9987B527C6D0232D055D1 /* LogInEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInEndPoint.swift; sourceTree = "<group>"; };
+		17754DA0A8AF217686219AFF /* ApiClientService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiClientService.swift; sourceTree = "<group>"; };
+		226E662994065E6F77D84AA1 /* PhoneNumberAuthEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberAuthEndPoint.swift; sourceTree = "<group>"; };
 		26DF9FED1221312C46C36A20 /* ApiError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiError.swift; sourceTree = "<group>"; };
-		4197944E2C2DD5A6008CA2F3 /* ApiClientServiceImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiClientServiceImp.swift; sourceTree = "<group>"; };
-		419794512C2DD5D5008CA2F3 /* ApiClientService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiClientService.swift; sourceTree = "<group>"; };
-		4197945D2C2DDC21008CA2F3 /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
+		2BA75336359A120CBA17BA7D /* VerificationCodeEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationCodeEndPoint.swift; sourceTree = "<group>"; };
+		30B8FE33444F24DC3915A82C /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
+		39E9564068243164AE0397F4 /* EndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPoint.swift; sourceTree = "<group>"; };
 		423A93F1015E6C9CF4DB82B2 /* Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
 		564371F685EE5EF450EB138A /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
-		76DE8486B37F0452CD9A98A4 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 		ADC9183B12D666BFB5351F52 /* NetworkService.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = NetworkService.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD5312BF635CBE4D99FAE162 /* Domain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Domain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C463F8FAE8AE26DF76BDB73C /* NetworkService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "NetworkService-Info.plist"; sourceTree = "<group>"; };
 		D14C05E4D710518F379088FD /* HttpResponseStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpResponseStatus.swift; sourceTree = "<group>"; };
+		FE374FAFF5AD8033061042B6 /* ApiClientServiceImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiClientServiceImp.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,30 +80,24 @@
 		38525DA2689C825D960A837C /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				419794502C2DD5C9008CA2F3 /* ApiService */,
-				4197944D2C2DD598008CA2F3 /* Implementations */,
+				714617A0FA73BA59C67A790C /* ApiService */,
 				DCED9DDC8E63D40418AAA1BC /* EndPoint */,
 				ABE3E7BAEA8052D1EDBA9FA0 /* Errors */,
+				6DA280E2F36F19FC00B656B1 /* Implementations */,
 				0D0E7ECA2FE1D2974B2941D6 /* StatusResponse */,
-				4197945D2C2DDC21008CA2F3 /* HTTPMethod.swift */,
+				30B8FE33444F24DC3915A82C /* HTTPMethod.swift */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
 		};
-		4197944D2C2DD598008CA2F3 /* Implementations */ = {
+		6AB8D2B24361D1C2B97C7999 /* Auth */ = {
 			isa = PBXGroup;
 			children = (
-				4197944E2C2DD5A6008CA2F3 /* ApiClientServiceImp.swift */,
+				0EE9987B527C6D0232D055D1 /* LogInEndPoint.swift */,
+				226E662994065E6F77D84AA1 /* PhoneNumberAuthEndPoint.swift */,
+				2BA75336359A120CBA17BA7D /* VerificationCodeEndPoint.swift */,
 			);
-			path = Implementations;
-			sourceTree = "<group>";
-		};
-		419794502C2DD5C9008CA2F3 /* ApiService */ = {
-			isa = PBXGroup;
-			children = (
-				419794512C2DD5D5008CA2F3 /* ApiClientService.swift */,
-			);
-			path = ApiService;
+			path = Auth;
 			sourceTree = "<group>";
 		};
 		6B3ACE6537D507A5B556E7D6 /* Config */ = {
@@ -108,6 +108,22 @@
 			);
 			name = Config;
 			path = ../../Config;
+			sourceTree = "<group>";
+		};
+		6DA280E2F36F19FC00B656B1 /* Implementations */ = {
+			isa = PBXGroup;
+			children = (
+				FE374FAFF5AD8033061042B6 /* ApiClientServiceImp.swift */,
+			);
+			path = Implementations;
+			sourceTree = "<group>";
+		};
+		714617A0FA73BA59C67A790C /* ApiService */ = {
+			isa = PBXGroup;
+			children = (
+				17754DA0A8AF217686219AFF /* ApiClientService.swift */,
+			);
+			path = ApiService;
 			sourceTree = "<group>";
 		};
 		917E375D5D1EBF640B969937 = {
@@ -138,7 +154,8 @@
 		DCED9DDC8E63D40418AAA1BC /* EndPoint */ = {
 			isa = PBXGroup;
 			children = (
-				76DE8486B37F0452CD9A98A4 /* Endpoint.swift */,
+				6AB8D2B24361D1C2B97C7999 /* Auth */,
+				39E9564068243164AE0397F4 /* EndPoint.swift */,
 			);
 			path = EndPoint;
 			sourceTree = "<group>";
@@ -190,6 +207,8 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
 				ORGANIZATIONNAME = ATeen;
+				TargetAttributes = {
+				};
 			};
 			buildConfigurationList = FFC6118989876A9280B17F0F /* Build configuration list for PBXProject "NetworkService" */;
 			compatibilityVersion = "Xcode 14.0";
@@ -224,11 +243,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				419794522C2DD5D5008CA2F3 /* ApiClientService.swift in Sources */,
-				4197944F2C2DD5A6008CA2F3 /* ApiClientServiceImp.swift in Sources */,
-				4197945E2C2DDC21008CA2F3 /* HTTPMethod.swift in Sources */,
-				0B05AF560B14AA2D249AA7B5 /* Endpoint.swift in Sources */,
+				759753D185FBA434CB7A41B8 /* ApiClientService.swift in Sources */,
+				4A25E8BE1156684357DAC52F /* LogInEndPoint.swift in Sources */,
+				7A4C181A2942A2CA8F105272 /* PhoneNumberAuthEndPoint.swift in Sources */,
+				4E73CAAA79D1BE736AD3B7FA /* VerificationCodeEndPoint.swift in Sources */,
+				BF7B74B2497062943DAB0D72 /* EndPoint.swift in Sources */,
 				036B6550D85D013E9E45D716 /* ApiError.swift in Sources */,
+				C2D528B369D066456ADFD047 /* HTTPMethod.swift in Sources */,
+				5CD81B418DCC7667165005CA /* ApiClientServiceImp.swift in Sources */,
 				0422C1E028807B6222269C0E /* HttpResponseStatus.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -256,10 +278,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					"-ObjC",
-				);
+				OTHER_LDFLAGS = "$(inherited) -ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ATeen.ATeen.NetworkService;
 				PRODUCT_NAME = NetworkService;
 				SDKROOT = iphoneos;
@@ -296,10 +315,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					"-ObjC",
-				);
+				OTHER_LDFLAGS = "$(inherited) -ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ATeen.ATeen.NetworkService;
 				PRODUCT_NAME = NetworkService;
 				SDKROOT = iphoneos;
@@ -307,7 +323,10 @@
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = (
+					"$(inherited)",
+					DEBUG,
+				);
 				SWIFT_COMPILATION_MODE = singlefile;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;

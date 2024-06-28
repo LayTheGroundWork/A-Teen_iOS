@@ -141,3 +141,4 @@ GoogleService-Info.plist
 
 PADO/PADO/GoogleService-Info.plist
 PADO/fastlane/.env
+*.xcconfig

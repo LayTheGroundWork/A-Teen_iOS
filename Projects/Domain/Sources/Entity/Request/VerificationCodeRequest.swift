@@ -1,5 +1,5 @@
 //
-//  LogInRequest.swift
+//  VerificationCodeRequest.swift
 //  Domain
 //
 //  Created by 최동호 on 6/28/24.
@@ -8,15 +8,12 @@
 
 import Foundation
 
-public struct LogInRequest {
+public struct VerificationCodeRequest {
     public let phoneNumber: String
-    public let verificationCode: String
     
     public init(
-        phoneNumber: String,
-        verificationCode: String
+        phoneNumber: String
     ) {
         self.phoneNumber = phoneNumber
-        self.verificationCode = verificationCode
     }
 }

@@ -26,12 +26,16 @@
 		94F9DC49C89B28C614DC384E /* MainFeature.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6CB714690F6D4BEF6743DA1F /* MainFeature.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		AAB073F1221B89F1B9D0816C /* Core.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 514C6A786251DDEC6B3DFF77 /* Core.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		ACB85617600FDF45A2F8F44E /* TeenFeature.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BB2646C3DD29AA965863AA05 /* TeenFeature.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		B493D067AC897BE439C631AC /* Data.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8AF7E105F5FEC83A7A47F2E7 /* Data.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		BC253706FB28F093D091FFBC /* FeatureDependency.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A9432DE0287E5923CB65DC49 /* FeatureDependency.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		C49B2DF707EB376C480679EA /* NetworkService.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 792CA40B8758B40F19BCB0F0 /* NetworkService.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C4F08E0D93158654EB47944E /* DefaultCoordinatorProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C45117CE7E95CE46D6396BDE /* DefaultCoordinatorProvider.swift */; };
+		CD3D28CEB3C78065EA97AB47 /* AppDelegate+Register.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11D47AAA862A0C2842F76094 /* AppDelegate+Register.swift */; };
 		CE28A12AE11FBBC8B313B9BF /* MainTabFeature.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 721D9790A705419CC668666D /* MainTabFeature.framework */; };
 		CE85338A8D9299509DE34B35 /* MainTabFeature.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 721D9790A705419CC668666D /* MainTabFeature.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D6FAC05B05042F6995DE21BB /* ChatFeature.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 553992446A744F1AD8F96583 /* ChatFeature.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		DACC96F7C8C56C4289027444 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0898F3FE27FD60EAFD4CEE5D /* AppCoordinator.swift */; };
+		F343BFC34A1F6F392C331803 /* Data.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8AF7E105F5FEC83A7A47F2E7 /* Data.framework */; };
 		FE078F42728C23B77EE02A1B /* TuistBundle+App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 083CD4D343ECF7F321C1905D /* TuistBundle+App.swift */; };
 /* End PBXBuildFile section */
 
@@ -45,12 +49,14 @@
 				D6FAC05B05042F6995DE21BB /* ChatFeature.framework in Embed Frameworks */,
 				2524C0F1238A3AB595D269F1 /* Common.framework in Embed Frameworks */,
 				AAB073F1221B89F1B9D0816C /* Core.framework in Embed Frameworks */,
+				B493D067AC897BE439C631AC /* Data.framework in Embed Frameworks */,
 				70F3CF0BB9F240B2A59853E0 /* DesignSystem.framework in Embed Frameworks */,
 				791E438F57DB6775DD4A8170 /* Domain.framework in Embed Frameworks */,
 				BC253706FB28F093D091FFBC /* FeatureDependency.framework in Embed Frameworks */,
 				799B6674606E6C6344F253CC /* LoginFeature.framework in Embed Frameworks */,
 				94F9DC49C89B28C614DC384E /* MainFeature.framework in Embed Frameworks */,
 				CE85338A8D9299509DE34B35 /* MainTabFeature.framework in Embed Frameworks */,
+				C49B2DF707EB376C480679EA /* NetworkService.framework in Embed Frameworks */,
 				4357FFD555AA9BD021DCE8D2 /* ProfileDetailFeature.framework in Embed Frameworks */,
 				20B84694B8549753291DF657 /* ProfileFeature.framework in Embed Frameworks */,
 				6815E78E3CB81D6FD709874B /* RankingFeature.framework in Embed Frameworks */,
@@ -68,6 +74,7 @@
 		083CD4D343ECF7F321C1905D /* TuistBundle+App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TuistBundle+App.swift"; sourceTree = "<group>"; };
 		0898F3FE27FD60EAFD4CEE5D /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		0DE442BA1C87E9CF5D190ED8 /* SnapKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SnapKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		11D47AAA862A0C2842F76094 /* AppDelegate+Register.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+Register.swift"; sourceTree = "<group>"; };
 		1E907779D8170AF0208B302A /* Common.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Common.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		32444E34ED1E4ECE7658CDEC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		41B945885B2B783A1546D896 /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
@@ -77,6 +84,8 @@
 		6BEB75E9463ACE494A73BD36 /* Domain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Domain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6CB714690F6D4BEF6743DA1F /* MainFeature.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MainFeature.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		721D9790A705419CC668666D /* MainTabFeature.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MainTabFeature.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		792CA40B8758B40F19BCB0F0 /* NetworkService.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = NetworkService.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8AF7E105F5FEC83A7A47F2E7 /* Data.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Data.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8F7F83A194E1D17030DCA033 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		95D529DAAF6A9D59C44D9D68 /* TuistAssets+App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TuistAssets+App.swift"; sourceTree = "<group>"; };
 		A9432DE0287E5923CB65DC49 /* FeatureDependency.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FeatureDependency.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -99,6 +108,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0124B5187DA64DDD60250AD7 /* Core.framework in Frameworks */,
+				F343BFC34A1F6F392C331803 /* Data.framework in Frameworks */,
 				CE28A12AE11FBBC8B313B9BF /* MainTabFeature.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -192,6 +202,7 @@
 			isa = PBXGroup;
 			children = (
 				32444E34ED1E4ECE7658CDEC /* AppDelegate.swift */,
+				11D47AAA862A0C2842F76094 /* AppDelegate+Register.swift */,
 				FC5C38FF8DB703CE991ED923 /* SceneDelegate.swift */,
 			);
 			path = System;
@@ -214,12 +225,14 @@
 				553992446A744F1AD8F96583 /* ChatFeature.framework */,
 				1E907779D8170AF0208B302A /* Common.framework */,
 				514C6A786251DDEC6B3DFF77 /* Core.framework */,
+				8AF7E105F5FEC83A7A47F2E7 /* Data.framework */,
 				E9369BFA2C65412102538303 /* DesignSystem.framework */,
 				6BEB75E9463ACE494A73BD36 /* Domain.framework */,
 				A9432DE0287E5923CB65DC49 /* FeatureDependency.framework */,
 				DC1FED34715BFF8FB1DD176A /* LoginFeature.framework */,
 				6CB714690F6D4BEF6743DA1F /* MainFeature.framework */,
 				721D9790A705419CC668666D /* MainTabFeature.framework */,
+				792CA40B8758B40F19BCB0F0 /* NetworkService.framework */,
 				D98F53C9A2F686A9AA797AE0 /* ProfileDetailFeature.framework */,
 				F00BD019CA4377A0E197E3AB /* ProfileFeature.framework */,
 				DB424A280C12994EE13C6934 /* RankingFeature.framework */,
@@ -310,6 +323,7 @@
 				C4F08E0D93158654EB47944E /* DefaultCoordinatorProvider.swift in Sources */,
 				7835B5508DA2E7C313A22926 /* DefaultFactoryProvider.swift in Sources */,
 				7FDED014DA0FFA1521C17D67 /* AppFactory.swift in Sources */,
+				CD3D28CEB3C78065EA97AB47 /* AppDelegate+Register.swift in Sources */,
 				202C792BE366DD12A307F13D /* AppDelegate.swift in Sources */,
 				29A5B46B4ECE3CFF6AE497D5 /* SceneDelegate.swift in Sources */,
 			);
@@ -326,7 +340,7 @@
 				CLANG_ENABLE_MODULE_DEBUGGING = YES;
 				CODE_SIGN_IDENTITY = "$(CODE_SIGN_IDENTITY)";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 2024.06.18.01.25;
+				CURRENT_PROJECT_VERSION = 2024.06.28.16.53;
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				INFOPLIST_FILE = "Derived/InfoPlists/App-Info.plist";
@@ -416,7 +430,7 @@
 				CLANG_ENABLE_MODULE_DEBUGGING = YES;
 				CODE_SIGN_IDENTITY = "$(CODE_SIGN_IDENTITY)";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 2024.06.18.01.25;
+				CURRENT_PROJECT_VERSION = 2024.06.28.16.53;
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				INFOPLIST_FILE = "Derived/InfoPlists/App-Info.plist";

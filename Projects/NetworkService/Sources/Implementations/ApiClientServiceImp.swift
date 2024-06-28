@@ -8,14 +8,14 @@
 
 import Foundation
 
-struct ApiClientServiceImp: ApiClientService {
+public struct ApiClientServiceImp: ApiClientService {
     let session: URLSession
     
-    init(session: URLSession = URLSession.shared) {
+    public init(session: URLSession = URLSession.shared) {
         self.session = session
     }
     
-    func request<T: Decodable>(url: URL?, type: T.Type) async throws -> T where T : Decodable {
+    public func request<T: Decodable>(url: URL?, type: T.Type) async throws -> T where T : Decodable {
         guard let url = url else { throw ApiError.errorInUrl }
         return try await makeRequest(url: url)
     }

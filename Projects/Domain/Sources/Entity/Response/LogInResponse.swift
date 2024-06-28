@@ -7,3 +7,13 @@
 //
 
 import Foundation
+
+public struct LogInResponse {
+    public let authToken: String
+    
+    public init(
+        authToken: String
+    ) {
+        self.authToken = authToken
+    }
+}

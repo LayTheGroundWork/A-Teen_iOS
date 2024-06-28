@@ -8,6 +8,6 @@
 
 import Foundation
 
-protocol ApiClientService {
+public protocol ApiClientService {
     func request<T: Decodable>(url: URL?, type: T.Type) async throws -> T
 }

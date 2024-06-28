@@ -7,10 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		150D6995E52A32B29DBA855E /* LogInResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0466867E7CA24A7196EB9339 /* LogInResponse.swift */; };
+		337435614E3EF754DF8C5FCC /* VerificationCodeRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4220232C6D323CEE154173C8 /* VerificationCodeRequest.swift */; };
 		3397A266F379521733729379 /* Core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0950BE22FC63C7D2DCE33C5 /* Core.framework */; };
-		419794572C2DD743008CA2F3 /* LogInRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419794562C2DD743008CA2F3 /* LogInRequest.swift */; };
-		419794592C2DD85E008CA2F3 /* SignUpRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419794582C2DD85E008CA2F3 /* SignUpRequest.swift */; };
-		4197945C2C2DD955008CA2F3 /* LogInResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4197945B2C2DD955008CA2F3 /* LogInResponse.swift */; };
+		417A7E232C2EAC8F004C9D4C /* SignUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 417A7E222C2EAC8F004C9D4C /* SignUseCase.swift */; };
+		417A7E252C2EAD47004C9D4C /* SignUseCaseImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 417A7E242C2EAD47004C9D4C /* SignUseCaseImp.swift */; };
+		83315DB61E2BEAE20B3C84D1 /* LogInRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22DCAB38E8D379041D948C4 /* LogInRequest.swift */; };
+		9034909F680164DCD97B8693 /* PhoneNumberAuthRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE981DCC0E95880B9118AF74 /* PhoneNumberAuthRequest.swift */; };
+		C8094BE4D30D193A2265DD54 /* SignUpRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C45740FE1495C2E2F9F123BE /* SignUpRequest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -27,13 +31,17 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0466867E7CA24A7196EB9339 /* LogInResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInResponse.swift; sourceTree = "<group>"; };
 		3A4620A0019C901EC7C993A2 /* Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
-		419794562C2DD743008CA2F3 /* LogInRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInRequest.swift; sourceTree = "<group>"; };
-		419794582C2DD85E008CA2F3 /* SignUpRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpRequest.swift; sourceTree = "<group>"; };
-		4197945B2C2DD955008CA2F3 /* LogInResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInResponse.swift; sourceTree = "<group>"; };
+		417A7E222C2EAC8F004C9D4C /* SignUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUseCase.swift; sourceTree = "<group>"; };
+		417A7E242C2EAD47004C9D4C /* SignUseCaseImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUseCaseImp.swift; sourceTree = "<group>"; };
+		4220232C6D323CEE154173C8 /* VerificationCodeRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationCodeRequest.swift; sourceTree = "<group>"; };
 		B55759C9EED1F9864F56739B /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
 		BD15A37E85BAE3A36B2CE72C /* Domain-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Domain-Info.plist"; sourceTree = "<group>"; };
+		BE981DCC0E95880B9118AF74 /* PhoneNumberAuthRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberAuthRequest.swift; sourceTree = "<group>"; };
+		C45740FE1495C2E2F9F123BE /* SignUpRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpRequest.swift; sourceTree = "<group>"; };
 		D0950BE22FC63C7D2DCE33C5 /* Core.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Core.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E22DCAB38E8D379041D948C4 /* LogInRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInRequest.swift; sourceTree = "<group>"; };
 		FD49F277B86481D3D105FAC8 /* Domain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Domain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -57,6 +65,15 @@
 			path = Derived;
 			sourceTree = "<group>";
 		};
+		11B3611D1728B87E7C917C63 /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				9B01FFB670AE4FD4FB6C2819 /* Request */,
+				5F19E3F651E9BB799AF06CFF /* Response */,
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
 		23FB790DBB2E2B4343512188 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -64,6 +81,16 @@
 				FD49F277B86481D3D105FAC8 /* Domain.framework */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		28B694539E22431DAF52B883 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				417A7E212C2EAC61004C9D4C /* UseCaseImplementations */,
+				417A7E202C2EAC36004C9D4C /* UseCase */,
+				11B3611D1728B87E7C917C63 /* Entity */,
+			);
+			path = Sources;
 			sourceTree = "<group>";
 		};
 		2C70B5A1308D52C27F06BA49 /* Config */ = {
@@ -84,36 +111,26 @@
 			);
 			sourceTree = "<group>";
 		};
-		419794532C2DD68C008CA2F3 /* Sources */ = {
+		417A7E202C2EAC36004C9D4C /* UseCase */ = {
 			isa = PBXGroup;
 			children = (
-				419794542C2DD694008CA2F3 /* Entity */,
+				417A7E222C2EAC8F004C9D4C /* SignUseCase.swift */,
 			);
-			path = Sources;
+			path = UseCase;
 			sourceTree = "<group>";
 		};
-		419794542C2DD694008CA2F3 /* Entity */ = {
+		417A7E212C2EAC61004C9D4C /* UseCaseImplementations */ = {
 			isa = PBXGroup;
 			children = (
-				4197945A2C2DD8EA008CA2F3 /* Response */,
-				419794552C2DD69C008CA2F3 /* Request */,
+				417A7E242C2EAD47004C9D4C /* SignUseCaseImp.swift */,
 			);
-			path = Entity;
+			path = UseCaseImplementations;
 			sourceTree = "<group>";
 		};
-		419794552C2DD69C008CA2F3 /* Request */ = {
+		5F19E3F651E9BB799AF06CFF /* Response */ = {
 			isa = PBXGroup;
 			children = (
-				419794562C2DD743008CA2F3 /* LogInRequest.swift */,
-				419794582C2DD85E008CA2F3 /* SignUpRequest.swift */,
-			);
-			path = Request;
-			sourceTree = "<group>";
-		};
-		4197945A2C2DD8EA008CA2F3 /* Response */ = {
-			isa = PBXGroup;
-			children = (
-				4197945B2C2DD955008CA2F3 /* LogInResponse.swift */,
+				0466867E7CA24A7196EB9339 /* LogInResponse.swift */,
 			);
 			path = Response;
 			sourceTree = "<group>";
@@ -121,11 +138,22 @@
 		8BFA263778496DF044218BBB /* Project */ = {
 			isa = PBXGroup;
 			children = (
-				419794532C2DD68C008CA2F3 /* Sources */,
 				2C70B5A1308D52C27F06BA49 /* Config */,
 				0341B6BC3BB2B1CDE266CAF5 /* Derived */,
+				28B694539E22431DAF52B883 /* Sources */,
 			);
 			name = Project;
+			sourceTree = "<group>";
+		};
+		9B01FFB670AE4FD4FB6C2819 /* Request */ = {
+			isa = PBXGroup;
+			children = (
+				E22DCAB38E8D379041D948C4 /* LogInRequest.swift */,
+				BE981DCC0E95880B9118AF74 /* PhoneNumberAuthRequest.swift */,
+				C45740FE1495C2E2F9F123BE /* SignUpRequest.swift */,
+				4220232C6D323CEE154173C8 /* VerificationCodeRequest.swift */,
+			);
+			path = Request;
 			sourceTree = "<group>";
 		};
 		BFC9D7B14C1B3B0AB857D8F2 /* InfoPlists */ = {
@@ -165,11 +193,6 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
 				ORGANIZATIONNAME = ATeen;
-				TargetAttributes = {
-					C538ACB2975E6B55AFA02B19 = {
-						LastSwiftMigration = 1520;
-					};
-				};
 			};
 			buildConfigurationList = 5B17347D429F14C389327C78 /* Build configuration list for PBXProject "Domain" */;
 			compatibilityVersion = "Xcode 14.0";
@@ -204,9 +227,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4197945C2C2DD955008CA2F3 /* LogInResponse.swift in Sources */,
-				419794572C2DD743008CA2F3 /* LogInRequest.swift in Sources */,
-				419794592C2DD85E008CA2F3 /* SignUpRequest.swift in Sources */,
+				417A7E252C2EAD47004C9D4C /* SignUseCaseImp.swift in Sources */,
+				83315DB61E2BEAE20B3C84D1 /* LogInRequest.swift in Sources */,
+				9034909F680164DCD97B8693 /* PhoneNumberAuthRequest.swift in Sources */,
+				C8094BE4D30D193A2265DD54 /* SignUpRequest.swift in Sources */,
+				417A7E232C2EAC8F004C9D4C /* SignUseCase.swift in Sources */,
+				337435614E3EF754DF8C5FCC /* VerificationCodeRequest.swift in Sources */,
+				150D6995E52A32B29DBA855E /* LogInResponse.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -270,7 +297,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = B55759C9EED1F9864F56739B /* Release.xcconfig */;
 			buildSettings = {
-				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_MODULE_DEBUGGING = YES;
 				CODE_SIGN_IDENTITY = "";
 				CURRENT_PROJECT_VERSION = 1;
@@ -370,7 +396,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 3A4620A0019C901EC7C993A2 /* Debug.xcconfig */;
 			buildSettings = {
-				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_MODULE_DEBUGGING = YES;
 				CODE_SIGN_IDENTITY = "";
 				CURRENT_PROJECT_VERSION = 1;
