@@ -11,7 +11,7 @@ import UIKit
 
 public protocol IntendToVoteDialogCoordinatorDelegate: AnyObject {
     func quitDialog(childCoordinator: Coordinator)
-    func didTapParticipateInVote(childCoordinator: Coordinator)
+    func didTapParticipateInVote(childCoordinator: Coordinator, sector: String)
 }
 
 public final class IntendToVoteDialogCoordinator: Coordinator {

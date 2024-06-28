@@ -10,7 +10,14 @@ import Common
 import DesignSystem
 import UIKit
 
+protocol TournamentUserCollectionViewCellDelegate: AnyObject {
+    func didTapPlusButton()
+    func didTapSelectButton()
+}
+
 final class TournamentUserCollectionViewCell: UICollectionViewCell {
+    weak var delegate: TournamentUserCollectionViewCellDelegate?
+
     // MARK: - Private properties
     private lazy var AUserView = TournamentUserView(frame: .zero,
                                                     image: DesignSystemAsset.dressGlass.image,
@@ -53,26 +60,18 @@ final class TournamentUserCollectionViewCell: UICollectionViewCell {
             make.width.equalTo(AUserView.width)
         }
     }
-    
-//    public func setProperties(
-//        delegate: TournamentUserCollectionViewCellDelegate
-//    ) {
-//        self.delegate = delegate
-//    }
-    
-    // MARK: - Actions
-    
 }
 
 // MARK: - Extensions here
 extension TournamentUserCollectionViewCell: Reusable { }
 
-extension TournamentUserCollectionViewCell: TournamentUserViewDelegate {
+// MARK: - Extensions here
+extension TournamentUserCollectionViewCell: TournamentUserCollectionViewCellDelegate {
     func didTapPlusButton() {
-        // TODO: - 프로필로 이동
+        delegate?.didTapPlusButton()
     }
-    
+
     func didTapSelectButton() {
-//        delegate?.didTapSelectButton()
+        delegate?.didTapSelectButton()
     }
 }

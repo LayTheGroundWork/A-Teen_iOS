@@ -10,7 +10,14 @@ import Common
 import DesignSystem
 import UIKit
 
+protocol TournamentRoundCollectionViewCellDelegate: AnyObject {
+    func nextRound()
+}
+
 final class TournamentRoundCollectionViewCell: UICollectionViewCell {
+    weak var delegate: TournamentViewControllerCoordinator?
+    weak var roundDelegate: TournamentRoundCollectionViewCellDelegate?
+    
     // MARK: - Private properties
     private var round: TournamentRound?
     private var currentMatch: Int = 1
@@ -88,8 +95,14 @@ final class TournamentRoundCollectionViewCell: UICollectionViewCell {
         }
     }
     
-    // MARK: - Actions
+    public func setProperties(round: TournamentRound) {
+        self.round = round
+        
+        roundLabel.text = round.rawValue
+        progressView.progress = round.progress
+    }
     
+    // MARK: - Actions
     private func scrollToPage(at index: Int, animated: Bool = true) {
         let indexPath = IndexPath(item: 0, section: index - 1)
         collectionView.scrollToItem(at: indexPath,
@@ -123,31 +136,37 @@ extension TournamentRoundCollectionViewCell: UICollectionViewDataSource {
         else {
             return UICollectionViewCell()
         }
-//        cell.setProperties(delegate: self)
+        cell.delegate = self
         return cell
     }
 }
 
 extension TournamentRoundCollectionViewCell: UICollectionViewDelegate { }
 
-//extension TournamentRoundCollectionViewCell: TournamentUserCollectionViewCellDelegate {
-//    func didTapSelectButton() {
-//        if currentMatch == round?.matches {
-//            currentMatch = 1
-//            scrollToPage(at: currentMatch, animated: false)
-//            delegate?.nextRound()
-//        } else {
-//            currentMatch += 1
-//            scrollToPage(at: currentMatch)
+extension TournamentRoundCollectionViewCell: TournamentUserCollectionViewCellDelegate {
+    func didTapPlusButton() {
+        // TODO: - 프로필 이동
+        print("프로필로 이동")
+    }
+    
+    func didTapSelectButton() {
+        if currentMatch == round?.matches {
+            currentMatch = 1
+            scrollToPage(at: currentMatch, animated: false)
+            roundDelegate?.nextRound()
+        } else {
+            currentMatch += 1
+            scrollToPage(at: currentMatch)
 //            progressView.setProgress(progressView.progress + (round?.progress ?? 0),
 //                                     animated: true)
-////            UIView.animate(withDuration: 0.25) { [self] in
-////                progressView.setProgress(progressView.progress + (self.round?.progress ?? 0),
-////                                         animated: true)
-////            }
-////            collectionView.reloadData()
-//        }
-//    }
-//}
+            UIView.animate(withDuration: 0.25) { [self] in
+                progressView.setProgress(
+                    progressView.progress + (self.round?.progress ?? 0),
+                    animated: true)
+            }
+            collectionView.reloadData()
+        }
+    }
+}
 
 extension TournamentRoundCollectionViewCell: Reusable { }

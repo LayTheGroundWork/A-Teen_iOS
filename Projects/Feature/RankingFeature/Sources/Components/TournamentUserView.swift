@@ -10,11 +10,6 @@ import Common
 import DesignSystem
 import UIKit
 
-protocol TournamentUserViewDelegate: AnyObject {
-    func didTapPlusButton()
-    func didTapSelectButton()
-}
-
 final class TournamentUserView: UIView {
     let colors: [CGColor] = [
         UIColor.black.withAlphaComponent(0.5).cgColor,
@@ -23,7 +18,7 @@ final class TournamentUserView: UIView {
     let width = ViewValues.height * 0.35
     let height = ViewValues.height * 0.35 * 0.86
     var image: UIImage?
-    weak var delegate: TournamentUserViewDelegate?
+    weak var delegate: TournamentUserCollectionViewCellDelegate?
     
     // MARK: - Private properties
     private lazy var bottomGradientLayer: CAGradientLayer = {
@@ -72,7 +67,7 @@ final class TournamentUserView: UIView {
     init(
         frame: CGRect,
         image: UIImage,
-        delegate: TournamentUserViewDelegate
+        delegate: TournamentUserCollectionViewCellDelegate
     ) {
         self.image = image
         self.delegate = delegate

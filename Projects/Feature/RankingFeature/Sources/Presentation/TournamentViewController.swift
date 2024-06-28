@@ -16,7 +16,7 @@ enum TournamentRound: String, CaseIterable {
     case roundOf8 = "8강"
     case semifinals = "4강"
     case final = "결승전"
-    case end = "투표 완료!"
+    case end = ""
     
     var matches: Int {
         switch self {
@@ -49,15 +49,22 @@ enum TournamentRound: String, CaseIterable {
     }
 }
 
-final class TournamentViewController: UIViewController {
+public protocol TournamentViewControllerCoordinator: AnyObject { 
+    func quitTournament()
+    func openQuitDialog()
+}
+
+public final class TournamentViewController: UIViewController {
     let sector: String
     
     // MARK: - Private properties
+    private weak var coordinator: TournamentViewControllerCoordinator?
+
     private var currentRound: TournamentRound = TournamentRound.allCases.first ?? .roundOf16
     
     private lazy var closeButton: UIBarButtonItem = {
         let button = UIButton()
-        button.setImage(DesignSystemAsset.xMarkIcon.image,
+        button.setImage(DesignSystemAsset.xMarkWhiteIcon.image,
                         for: .normal)
         button.tintColor = UIColor.white
         button.addTarget(self,
@@ -101,13 +108,17 @@ final class TournamentViewController: UIViewController {
     }()
     
     // MARK: - Life Cycle
-    override func viewDidLoad() {
+    public override func viewDidLoad() {
         super.viewDidLoad()
         configUserInterface()
         configLayout()
     }
     
-    init(sector: String) {
+    init(
+        coordinator: TournamentViewControllerCoordinator,
+        sector: String
+    ) {
+        self.coordinator = coordinator
         self.sector = sector
         super.init(nibName: nil, bundle: nil)
     }
@@ -137,15 +148,11 @@ final class TournamentViewController: UIViewController {
     @objc private func didSelectCloseButton(_ sender: UIButton) {
         switch currentRound {
         case .roundOf16, .roundOf8, .semifinals, .final:
-            // TODO: - QuitTournamentDialog 띄우기
-            return
-//            let quitTournamentDialogVC = QuitTournamentDialogViewController(delegate: self)
-//            quitTournamentDialogVC.modalPresentationStyle = .overFullScreen
-//            navigationController?.present(quitTournamentDialogVC, animated: false)
+            // QuitTournamentDialog 띄우기
+            coordinator?.openQuitDialog()
         case .end:
-            // TODO: - 토너먼트 종료
-            return
-//            endTournament()
+            // 토너먼트 종료
+            coordinator?.quitTournament()
         }
     }
     
@@ -159,21 +166,21 @@ final class TournamentViewController: UIViewController {
 
 // MARK: - Extensions here
 extension TournamentViewController: UICollectionViewDataSource {
-    func collectionView(
+    public func collectionView(
         _ collectionView: UICollectionView,
         numberOfItemsInSection section: Int
     ) -> Int {
         1
     }
     
-    func numberOfSections(
+    public func numberOfSections(
         in collectionView: UICollectionView
     ) -> Int {
         // 16강, 8강, 4강, 결승 + 완료 페이지
         TournamentRound.allCases.count
     }
     
-    func collectionView(
+    public func collectionView(
         _ collectionView: UICollectionView,
         cellForItemAt indexPath: IndexPath
     ) -> UICollectionViewCell {
@@ -187,8 +194,9 @@ extension TournamentViewController: UICollectionViewDataSource {
             else {
                 return UICollectionViewCell()
             }
-//            cell.setProperties(round: currentRound,
-//                               delegate: self)
+            cell.setProperties(round: currentRound)
+            cell.delegate = coordinator
+            cell.roundDelegate = self
             return cell
         } else {
             guard let cell = collectionView.dequeueReusableCell(
@@ -197,11 +205,11 @@ extension TournamentViewController: UICollectionViewDataSource {
             else {
                 return UICollectionViewCell()
             }
-//            cell.setProperties(userName: "김 에스더",
-//                               school: "서울 중학교",
-//                               age: 16,
-//                               image: UIImage(named: "phang")!,
-//                               delegate: self)
+            cell.setProperties(userName: "김 에스더",
+                               school: "서울 중학교",
+                               age: 16,
+                               image: DesignSystemAsset.whiteGlass.image)
+            cell.delegate = coordinator
             return cell
         }
     }
@@ -209,31 +217,24 @@ extension TournamentViewController: UICollectionViewDataSource {
 
 extension TournamentViewController: UICollectionViewDelegate { }
 
-//extension TournamentViewController: TournamentRoundCollectionViewCellDelegate {
-//    func nextRound() {
-//        switch currentRound {
-//        case .roundOf16:
-//            currentRound = .roundOf8
-//            scrollToPage(at: 1)
-//        case .roundOf8:
-//            currentRound = .semifinals
-//            scrollToPage(at: 2)
-//        case .semifinals:
-//            currentRound = .final
-//            scrollToPage(at: 3)
-//        case .final:
-//            currentRound = .end
-//            scrollToPage(at: 4)
-//        case .end:
-//            break
-//        }
-//        collectionView.reloadData()
-//    }
-//}
-//
-//extension TournamentViewController: TournamentEndCollectionViewCellDelegate,
-//                                    QuitTournamentDialogViewControllerDelegate {
-//    func endTournament() {
-//        navigationController?.popViewController(animated: true)
-//    }
-//}
+extension TournamentViewController: TournamentRoundCollectionViewCellDelegate {
+    public func nextRound() {
+        switch currentRound {
+        case .roundOf16:
+            currentRound = .roundOf8
+            scrollToPage(at: 1)
+        case .roundOf8:
+            currentRound = .semifinals
+            scrollToPage(at: 2)
+        case .semifinals:
+            currentRound = .final
+            scrollToPage(at: 3)
+        case .final:
+            currentRound = .end
+            scrollToPage(at: 4)
+        case .end:
+            break
+        }
+        collectionView.reloadData()
+    }
+}

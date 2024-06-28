@@ -9,16 +9,17 @@
 import DesignSystem
 import UIKit
 
-protocol QuitTournamentDialogViewControllerDelegate: AnyObject {
+public protocol QuitTournamentDialogViewControllerCoordinator: AnyObject {
+    func quitDialog()
     func endTournament()
 }
 
 final class QuitTournamentDialogViewController: CustomTwoButtonDialogViewController {
-    weak var delegate: QuitTournamentDialogViewControllerDelegate?
+    weak var coordinator: QuitTournamentDialogViewControllerCoordinator?
     
     // MARK: - Life Cycle
     public init(
-        delegate: QuitTournamentDialogViewControllerDelegate,
+        coordinator: QuitTournamentDialogViewControllerCoordinator,
         dialogImage: UIImage? = nil,
         dialogTitle: String? = "정말로 그만 두시겠어요?",
         titleColor: UIColor = UIColor.black,
@@ -33,7 +34,7 @@ final class QuitTournamentDialogViewController: CustomTwoButtonDialogViewControl
         rightButtonText: String = "마저 할게요!",
         rightButtonColor: UIColor = DesignSystemAsset.mainColor.color
     ) {
-        self.delegate = delegate
+        self.coordinator = coordinator
         super.init(
             dialogTitle: dialogTitle,
             titleNumberOfLine: titleNumberOfLine,
@@ -53,14 +54,13 @@ final class QuitTournamentDialogViewController: CustomTwoButtonDialogViewControl
     // MARK: - Actions
     public override func clickLeftButton(_ sender: UIButton) {
         super.clickLeftButton(sender)
-        // TODO: - 다이얼로그 닫기 & 토너먼트 닫기
-//        self.dismiss(animated: false)
-//        delegate?.endTournament()
+        // 다이얼로그 닫기 & 토너먼트 닫기
+        coordinator?.endTournament()
     }
     
     public override func clickRightButton(_ sender: UIButton) {
         super.clickRightButton(sender)
-        // TODO: - 다이얼로그 닫기
-//        self.dismiss(animated: false)
+        // 다이얼로그 닫기
+        coordinator?.quitDialog()
     }
 }

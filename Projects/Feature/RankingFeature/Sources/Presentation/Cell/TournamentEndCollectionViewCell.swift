@@ -11,6 +11,8 @@ import DesignSystem
 import UIKit
 
 final class TournamentEndCollectionViewCell: UICollectionViewCell {
+    weak var delegate: TournamentViewControllerCoordinator?
+
     // MARK: - Private properties
     private lazy var infoMessageView: UIView = {
         let view = UIView()
@@ -23,7 +25,7 @@ final class TournamentEndCollectionViewCell: UICollectionViewCell {
     private lazy var filledCircle: UIView = {
         let circle = UIView()
         circle.backgroundColor = DesignSystemAsset.mainColor.color
-        circle.layer.cornerRadius = ViewValues.defaultRadius
+        circle.layer.cornerRadius = 60
         return circle
     }()
     
@@ -229,23 +231,21 @@ final class TournamentEndCollectionViewCell: UICollectionViewCell {
                                for: .touchUpInside)
     }
     
-//    public func setProperties(
-//        userName: String,
-//        school: String,
-//        age: Int,
-//        image: UIImage,
-//        delegate: TournamentEndCollectionViewCellDelegate
-//    ) {
-//        self.userImage.image = image
-//        self.userNameLabel.text = userName
-//        self.userInfo.text = "\(school), \(age)세"
-//        self.delegate = delegate
-//    }
+    public func setProperties(
+        userName: String,
+        school: String,
+        age: Int,
+        image: UIImage
+    ) {
+        self.userImage.image = image
+        self.userNameLabel.text = userName
+        self.userInfo.text = "\(school), \(age)세"
+    }
     
     // MARK: - Actions
     @objc private func didTapSelectButton(_ sender: UIButton) {
-        // TODO: - 토너먼트 종료
-//        delegate?.endTournament()
+        // 토너먼트 종료
+        delegate?.quitTournament()
     }
 }
 

@@ -16,9 +16,15 @@ extension RankingCoordinator: IntendToVoteDialogCoordinatorDelegate {
         navigation.dismiss(animated: false)
     }
     
-    public func didTapParticipateInVote(childCoordinator: Coordinator) {
+    public func didTapParticipateInVote(
+        childCoordinator: Coordinator,
+        sector: String
+    ) {
         quitDialog(childCoordinator: childCoordinator)
-        // TODO: - 화면 이동
-        
+        let tournamentCoordinator = factory.makeTournamentCoordinator(
+            navigation: navigation,
+            delegate: self,
+            sector: sector)
+        addChildCoordinatorStart(tournamentCoordinator)
     }
 }

@@ -19,6 +19,12 @@ public protocol RankingFactory {
         delegate: IntendToVoteDialogCoordinatorDelegate,
         sector: String
     ) -> Coordinator
+    
+    func makeTournamentCoordinator(
+        navigation: Navigation,
+        delegate: TournamentCoordinatorDelegate,
+        sector: String
+    ) -> Coordinator
 }
 
 public struct RankingFactoryImp: RankingFactory {
@@ -43,6 +49,20 @@ public struct RankingFactoryImp: RankingFactory {
     ) -> Coordinator {
         let factory = IntendToVoteDialogFactoryImp()
         return IntendToVoteDialogCoordinator(
+            navigation: navigation,
+            factory: factory,
+            delegate: delegate,
+            sector: sector
+        )
+    }
+    
+    public func makeTournamentCoordinator(
+        navigation: Navigation,
+        delegate: TournamentCoordinatorDelegate,
+        sector: String
+    ) -> Coordinator {
+        let factory = TournamentFactoryImp(appContainer: appContainer)
+        return TournamentCoordinator(
             navigation: navigation,
             factory: factory,
             delegate: delegate,

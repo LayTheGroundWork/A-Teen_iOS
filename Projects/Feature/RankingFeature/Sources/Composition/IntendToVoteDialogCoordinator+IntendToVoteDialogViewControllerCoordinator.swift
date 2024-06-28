@@ -6,14 +6,12 @@
 //  Copyright © 2024 ATeen. All rights reserved.
 //
 
-import Foundation
-
 extension IntendToVoteDialogCoordinator: IntendToVoteDialogViewControllerCoordinator {
     func quitDialog() {
         delegate?.quitDialog(childCoordinator: self)
     }
     
-    func didTapParticipateInVote() {
-        delegate?.didTapParticipateInVote(childCoordinator: self)
+    func didTapParticipateInVote(sector: String) {
+        delegate?.didTapParticipateInVote(childCoordinator: self, sector: sector)
     }
 }

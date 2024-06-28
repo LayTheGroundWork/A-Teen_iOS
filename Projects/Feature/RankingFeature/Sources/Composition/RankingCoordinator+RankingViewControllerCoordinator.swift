@@ -7,7 +7,6 @@
 //
 
 import FeatureDependency
-import UIKit
 
 extension RankingCoordinator: RankingViewControllerCoordinator {
     public func didTapVoteButton(sector: String) {

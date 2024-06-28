@@ -11,7 +11,7 @@ import UIKit
 
 protocol IntendToVoteDialogViewControllerCoordinator: AnyObject {
     func quitDialog()
-    func didTapParticipateInVote()
+    func didTapParticipateInVote(sector: String)
 }
 
 final class IntendToVoteDialogViewController: CustomTwoButtonDialogViewController {
@@ -69,19 +69,6 @@ final class IntendToVoteDialogViewController: CustomTwoButtonDialogViewControlle
     
     public override func clickRightButton(_ sender: UIButton) {
         super.clickRightButton(sender)
-        coordinator?.didTapParticipateInVote()
-        // TODO: - 토너먼트 진행 화면 이동
-//        let tournamentVC = TournamentViewController(sector: "뷰티")
-//        
-//        if let presentingVC = self.presentingViewController {
-//            self.dismiss(animated: false) {
-//                if let navigationController = presentingVC as? UINavigationController {
-//                    navigationController.pushViewController(tournamentVC, animated: true)
-//                } else {
-//                    let navController = UINavigationController(rootViewController: tournamentVC)
-//                    self.presentingViewController?.present(navController, animated: true)
-//                }
-//            }
-//        }
+        coordinator?.didTapParticipateInVote(sector: sector)
     }
 }
