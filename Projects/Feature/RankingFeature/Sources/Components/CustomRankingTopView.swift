@@ -17,7 +17,7 @@ enum RankPlace: String {
 }
 
 final class CustomRankingTopView: UIView {
-    let imageName: String
+    let image: UIImage
     let rank: RankPlace
     let userName: String
     let proportion: Double
@@ -28,7 +28,7 @@ final class CustomRankingTopView: UIView {
     private lazy var imageView: UIImageView = {
         let imageView = UIImageView()
         // TODO: - 이미지 체크 필요
-        imageView.image = DesignSystemImages.Image(named: imageName)
+        imageView.image = image
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
         imageView.layer.cornerRadius = ViewValues.defaultRadius
@@ -84,12 +84,12 @@ final class CustomRankingTopView: UIView {
     // MARK: - Life Cycle
     init(
         frame: CGRect = .zero,
-        imageName: String,
+        image: UIImage,
         rank: RankPlace,
         userName: String,
         proportion: Double
     ) {
-        self.imageName = imageName
+        self.image = image
         self.rank = rank
         self.userName = userName
         self.proportion = proportion

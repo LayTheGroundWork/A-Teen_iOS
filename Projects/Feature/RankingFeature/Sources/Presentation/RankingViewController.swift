@@ -11,6 +11,7 @@ import UIKit
 
 public protocol RankingViewControllerCoordinator: AnyObject {
     func didTapVoteButton(sector: String)
+    func didTapRankingCollectionViewCell(sector: String)
 }
 
 public final class RankingViewController: UIViewController {

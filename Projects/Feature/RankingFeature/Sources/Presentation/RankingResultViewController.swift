@@ -10,7 +10,12 @@ import Common
 import DesignSystem
 import UIKit
 
-final class RankingResultViewController: UIViewController {
+public protocol RankingResultViewControllerCoordinator: AnyObject {
+    func didTapBackButton()
+}
+
+public final class RankingResultViewController: UIViewController {
+    private weak var coordinator: RankingResultViewControllerCoordinator?
     let sector: String
     
     // Sample data with 16 items, proportions summing to 90
@@ -46,8 +51,7 @@ final class RankingResultViewController: UIViewController {
     
     private lazy var backButton: UIBarButtonItem = {
         let button = UIButton()
-        // TODO: - 추후에 아이콘 수정 예정
-        button.setImage(UIImage(systemName: "arrow.left"),
+        button.setImage(DesignSystemAsset.leftArrowWhiteIcon.image,
                         for: .normal)
         button.tintColor = UIColor.white
         button.addTarget(self,
@@ -79,19 +83,19 @@ final class RankingResultViewController: UIViewController {
     }()
     
     private lazy var firstBox: UIView = CustomRankingTopView(
-        imageName: "phang",
+        image: DesignSystemAsset.dressGlass.image,
         rank: .first,
         userName: "XXX",
         proportion: 20.0)
     
     private lazy var secondBox: UIView = CustomRankingTopView(
-        imageName: "hrmi",
+        image: DesignSystemAsset.blackGlass.image,
         rank: .second,
         userName: "흐르미",
         proportion: 18.7)
     
     private lazy var thirdBox: UIView = CustomRankingTopView(
-        imageName: "hrmi",
+        image: DesignSystemAsset.whiteGlass.image,
         rank: .third,
         userName: "XXX",
         proportion: 12.3)
@@ -120,15 +124,17 @@ final class RankingResultViewController: UIViewController {
     }()
     
     // MARK: - Life Cycle
-    override func viewDidLoad() {
+    public override func viewDidLoad() {
         super.viewDidLoad()
         configUserInterface()
         configLayout()
     }
     
     init(
+        coordinator: RankingResultViewControllerCoordinator,
         sector: String
     ) {
+        self.coordinator = coordinator
         self.sector = sector
         super.init(nibName: nil, bundle: nil)
     }
@@ -177,13 +183,13 @@ final class RankingResultViewController: UIViewController {
     
     // MARK: - Actions
     @objc private func didSelectBackButton(_ sender: UIButton) {
-        navigationController?.popViewController(animated: true)
+        coordinator?.didTapBackButton()
     }
 }
 
 // MARK: - Extensions here
 extension RankingResultViewController: UITableViewDelegate {
-    func tableView(
+    public func tableView(
         _ tableView: UITableView,
         heightForRowAt indexPath: IndexPath
     ) -> CGFloat {
@@ -192,7 +198,7 @@ extension RankingResultViewController: UITableViewDelegate {
         return cellHeight + topPadding
     }
     
-    func tableView(
+    public func tableView(
         _ tableView: UITableView,
         didSelectRowAt indexPath: IndexPath
     ) {
@@ -202,7 +208,7 @@ extension RankingResultViewController: UITableViewDelegate {
 }
 
 extension RankingResultViewController: UITableViewDataSource {
-    func tableView(
+    public func tableView(
         _ tableView: UITableView,
         numberOfRowsInSection section: Int
     ) -> Int {
@@ -210,7 +216,7 @@ extension RankingResultViewController: UITableViewDataSource {
         rankings.count - 3
     }
     
-    func tableView(
+    public func tableView(
         _ tableView: UITableView,
         cellForRowAt indexPath: IndexPath
     ) -> UITableViewCell {

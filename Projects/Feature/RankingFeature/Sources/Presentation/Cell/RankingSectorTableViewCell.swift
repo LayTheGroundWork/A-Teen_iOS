@@ -57,7 +57,7 @@ public final class RankingSectorTableViewCell: UITableViewCell {
     }
 }
 
-extension RankingSectorTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource {
+extension RankingSectorTableViewCell: UICollectionViewDataSource {
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SectorCollectionViewCell.reuseIdentifier, for: indexPath) as? SectorCollectionViewCell else { return UICollectionViewCell() }
         
@@ -77,6 +77,18 @@ extension RankingSectorTableViewCell: UICollectionViewDelegate, UICollectionView
     
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 3
+    }
+}
+
+extension RankingSectorTableViewCell: UICollectionViewDelegate {
+    public func collectionView(
+        _ collectionView: UICollectionView,
+        didSelectItemAt indexPath: IndexPath
+    ) {
+        // 첫번째 셀은 일러스트 + 투표하기 버튼 : 통과
+        guard indexPath.item != 0 else { return }
+        // 나머지 셀
+        delegate?.didTapRankingCollectionViewCell(sector: sector ?? "")
     }
 }
 

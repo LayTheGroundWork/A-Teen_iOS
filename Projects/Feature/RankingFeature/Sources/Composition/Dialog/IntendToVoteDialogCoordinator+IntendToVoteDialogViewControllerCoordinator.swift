@@ -7,11 +7,11 @@
 //
 
 extension IntendToVoteDialogCoordinator: IntendToVoteDialogViewControllerCoordinator {
-    func quitDialog() {
+    public func quitDialog() {
         delegate?.quitDialog(childCoordinator: self)
     }
     
-    func didTapParticipateInVote(sector: String) {
+    public func didTapParticipateInVote(sector: String) {
         delegate?.didTapParticipateInVote(childCoordinator: self, sector: sector)
     }
 }
