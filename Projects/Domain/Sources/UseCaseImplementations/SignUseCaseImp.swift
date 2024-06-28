@@ -9,20 +9,40 @@
 import Foundation
 
 public struct SignUseCaseImp: SignUseCase {
+
+    private let repository: SignRepository
     
-    public func signIn() {
-        
+    public init(repository: SignRepository) {
+        self.repository = repository
     }
     
-    public func signUp() {
-        
+    public func signIn(
+        request: LogInRequest,
+        completion: @escaping (Result<LogInResponse, Error>) -> Void
+    ) {
+        repository.signIn(request: request, completion: completion)
     }
     
-    public func requestCode() {
-        
+    public func signUp(
+        request: SignUpRequest,
+        completion: @escaping (Result<LogInResponse, Error>) -> Void
+    ) {
+        repository.signUp(request: request, completion: completion)
     }
     
-    public func verificateCode() {
-        
+    public func requestCode(
+        request: VerificationCodeRequest,
+        completion: @escaping (Result<Void, Error>) -> Void
+    ) {
+        repository.requestCode(request: request, completion: completion)
     }
+    
+    public func verificateCode(
+        request: PhoneNumberAuthRequest,
+        completion: @escaping (Result<Void, Error>) -> Void
+    ) {
+        repository.verificateCode(request: request, completion: completion)
+
+    }
+   
 }

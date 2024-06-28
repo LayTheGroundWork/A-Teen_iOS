@@ -3,11 +3,12 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 55;
+	objectVersion = 56;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		0DBCAF3ECEE41D1C03C9E875 /* NetworkService.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAC8A24EF2DA38A8911C0332 /* NetworkService.framework */; };
+		41A3A8FE2C2F444E00889498 /* DefaultSignRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A3A8FD2C2F444E00889498 /* DefaultSignRepository.swift */; };
 		811E132B6F39024EB106B257 /* LogInDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = F236624AC5E8597B137B48CF /* LogInDTO.swift */; };
 /* End PBXBuildFile section */
 
@@ -26,6 +27,7 @@
 
 /* Begin PBXFileReference section */
 		033B57EACF093CA22F91EAB9 /* Data-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Data-Info.plist"; sourceTree = "<group>"; };
+		41A3A8FD2C2F444E00889498 /* DefaultSignRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultSignRepository.swift; sourceTree = "<group>"; };
 		4E75197C294DE74F5162FAA7 /* Data.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Data.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B284CD75BAD317D668DD797D /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
 		E1457F5C26408BE9EBAC27CA /* Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
@@ -52,6 +54,14 @@
 				FAC8A24EF2DA38A8911C0332 /* NetworkService.framework */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		41A3A8FC2C2F443800889498 /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				41A3A8FD2C2F444E00889498 /* DefaultSignRepository.swift */,
+			);
+			path = Repository;
 			sourceTree = "<group>";
 		};
 		647255CD65221C9CD4A43DED /* DTO */ = {
@@ -99,6 +109,7 @@
 		C590795A2658F92D49B27E8D /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				41A3A8FC2C2F443800889498 /* Repository */,
 				647255CD65221C9CD4A43DED /* DTO */,
 			);
 			path = Sources;
@@ -143,8 +154,6 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
 				ORGANIZATIONNAME = ATeen;
-				TargetAttributes = {
-				};
 			};
 			buildConfigurationList = BDB112DA78B2B42275EC3A62 /* Build configuration list for PBXProject "Data" */;
 			compatibilityVersion = "Xcode 14.0";
@@ -179,6 +188,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				41A3A8FE2C2F444E00889498 /* DefaultSignRepository.swift in Sources */,
 				811E132B6F39024EB106B257 /* LogInDTO.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -206,7 +216,10 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				OTHER_LDFLAGS = "$(inherited) -ObjC";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ATeen.ATeen.Data;
 				PRODUCT_NAME = Data;
 				SDKROOT = iphoneos;
@@ -214,10 +227,7 @@
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = (
-					"$(inherited)",
-					DEBUG,
-				);
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG";
 				SWIFT_COMPILATION_MODE = singlefile;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -247,7 +257,10 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				OTHER_LDFLAGS = "$(inherited) -ObjC";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ATeen.ATeen.Data;
 				PRODUCT_NAME = Data;
 				SDKROOT = iphoneos;

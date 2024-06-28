@@ -10,7 +10,7 @@ import Foundation
 
 public struct VerificationCodeRequest {
     public let phoneNumber: String
-    
+
     public init(
         phoneNumber: String
     ) {

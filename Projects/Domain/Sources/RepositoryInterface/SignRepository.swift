@@ -1,14 +1,14 @@
 //
-//  SignUseCase.swift
+//  SignRepository.swift
 //  Domain
 //
-//  Created by 최동호 on 6/28/24.
+//  Created by 최동호 on 6/29/24.
 //  Copyright © 2024 ATeen. All rights reserved.
 //
 
 import Foundation
 
-public protocol SignUseCase {
+public protocol SignRepository {
     func signIn(
         request: LogInRequest,
         completion: @escaping (Result<LogInResponse, Error>) -> Void
@@ -26,4 +26,3 @@ public protocol SignUseCase {
         completion: @escaping (Result<Void, Error>) -> Void
     )
 }
-
