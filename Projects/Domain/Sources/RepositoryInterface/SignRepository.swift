@@ -17,12 +17,4 @@ public protocol SignRepository {
         request: SignUpRequest,
         completion: @escaping (Result<LogInResponse, Error>) -> Void
     )
-    func requestCode(
-        request: VerificationCodeRequest,
-        completion: @escaping (Result<Void, Error>) -> Void
-    )
-    func verificateCode(
-        request: PhoneNumberAuthRequest,
-        completion: @escaping (Result<Void, Error>) -> Void
-    )
 }

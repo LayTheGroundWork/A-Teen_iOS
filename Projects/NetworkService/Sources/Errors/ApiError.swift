@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum ApiError: Error {
+public enum ApiError: Error {
     case clientError
     case serverError
     case unknownError

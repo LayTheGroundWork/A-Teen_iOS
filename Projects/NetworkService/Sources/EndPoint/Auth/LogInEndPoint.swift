@@ -31,6 +31,5 @@ public struct LogInEndPoint: EndPoint {
         request: LogInRequest
     ) {
         self.request = request
-   
     }
 }

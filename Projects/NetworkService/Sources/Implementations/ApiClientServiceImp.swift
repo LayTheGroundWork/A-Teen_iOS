@@ -15,25 +15,38 @@ public struct ApiClientServiceImp: ApiClientService {
         self.session = session
     }
     
-    public func request<T: Decodable>(url: URL?, type: T.Type) async throws -> T where T : Decodable {
-        guard let url = url else { throw ApiError.errorInUrl }
-        return try await makeRequest(url: url)
-    }
-    
-    private func makeRequest<T: Decodable>(url: URL) async throws -> T {
-        let request = try await session.data(from: url)
-        return try validateResponse(request: request)
-    }
-    
-    private func validateResponse<T: Decodable>(
-        request: (data: Data, httpResponse: URLResponse)
-    ) throws -> T {
-        guard let httpResponse = request.httpResponse as? HTTPURLResponse else {
+    public func request(request: URLRequest) async throws {
+        let (_, response) = try await session.data(for: request)
+        guard let httpResponse = response as? HTTPURLResponse else {
             throw ApiError.unknownError
         }
         switch httpResponse.statusCode {
         case HttpResponseStatus.ok:
-            return try decodeModel(data: request.data)
+            return
+        case HttpResponseStatus.clientError:
+            throw ApiError.clientError
+        case HttpResponseStatus.serverError:
+            throw ApiError.serverError
+        default:
+            throw ApiError.unknownError
+        }
+    }
+    
+    public func request<T: Decodable>(request: URLRequest) async throws -> T where T : Decodable {
+        let (data, response) = try await session.data(for: request)
+        return try validateResponse(data: data, response: response)
+    }
+    
+    private func validateResponse<T: Decodable>(
+        data: Data,
+        response: URLResponse
+    ) throws -> T {
+        guard let httpResponse = response as? HTTPURLResponse else {
+            throw ApiError.unknownError
+        }
+        switch httpResponse.statusCode {
+        case HttpResponseStatus.ok:
+            return try decodeModel(data: data)
         case HttpResponseStatus.clientError:
             throw ApiError.clientError
         case HttpResponseStatus.serverError:

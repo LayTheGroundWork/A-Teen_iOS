@@ -11,9 +11,14 @@ import Foundation
 public struct SignUseCaseImp: SignUseCase {
 
     private let repository: SignRepository
-    
-    public init(repository: SignRepository) {
+    public let service: VerificateService
+ 
+    public init(
+        repository: SignRepository,
+        service: VerificateService
+    ) {
         self.repository = repository
+        self.service = service
     }
     
     public func signIn(
@@ -34,15 +39,14 @@ public struct SignUseCaseImp: SignUseCase {
         request: VerificationCodeRequest,
         completion: @escaping (Result<Void, Error>) -> Void
     ) {
-        repository.requestCode(request: request, completion: completion)
+        service.requestCode(request: request, completion: completion)
     }
     
     public func verificateCode(
         request: PhoneNumberAuthRequest,
         completion: @escaping (Result<Void, Error>) -> Void
     ) {
-        repository.verificateCode(request: request, completion: completion)
-
+        service.verificateCode(request: request, completion: completion)
     }
    
 }
