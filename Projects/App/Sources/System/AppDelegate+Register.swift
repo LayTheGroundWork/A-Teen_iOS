@@ -16,6 +16,16 @@ extension AppDelegate {
     
     func registerDependencies() {
         let apiClientService: ApiClientService = ApiClientServiceImp()
+        let signRepository: SignRepository = SignRepositoryImp(apiClientService: apiClientService)
+        let verificateService: VerificateService = VerificateServiceImp(apiClientService: apiClientService)
+        
+        let signUseCase: SignUseCase = SignUseCaseImp(
+            repository: signRepository,
+            service: verificateService)
+        
+        AppContainer.register(
+            type: SignUseCase.self,
+            signUseCase)
     }
     
 }

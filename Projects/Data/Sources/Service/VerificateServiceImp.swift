@@ -21,7 +21,7 @@ final public class VerificateServiceImp: NSObject, VerificateService {
     
     public func requestCode(
         request: VerificationCodeRequest,
-        completion: @escaping (Result<Void, Error>) -> Void
+        completion: @escaping () -> Void
     ) {
         Task {
             do {
@@ -30,16 +30,16 @@ final public class VerificateServiceImp: NSObject, VerificateService {
                     throw ApiError.errorInUrl
                 }
                 try await apiClientService.request(request: urlRequest)
-                completion(.success(()))
+                completion()
             } catch {
-                completion(.failure(error))
+                print("인증코드 요청 오류", error.localizedDescription)
             }
         }
     }
     
     public func verificateCode(
         request: PhoneNumberAuthRequest,
-        completion: @escaping (Result<Void, Error>) -> Void
+        completion: @escaping () -> Void
     ) {
         Task {
             do {
@@ -48,9 +48,9 @@ final public class VerificateServiceImp: NSObject, VerificateService {
                     throw ApiError.errorInUrl
                 }
                 try await apiClientService.request(request: urlRequest)
-                completion(.success(()))
+                completion()
             } catch {
-                completion(.failure(error))
+                print("인증코드 인증 오류", error.localizedDescription)
             }
         }
 
