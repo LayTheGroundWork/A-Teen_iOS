@@ -32,7 +32,7 @@ public struct ApiClientServiceImp: ApiClientService {
         }
     }
     
-    public func request<T: Decodable>(request: URLRequest) async throws -> T where T : Decodable {
+    public func request<T: Decodable>(request: URLRequest, type: T.Type) async throws -> T where T : Decodable {
         let (data, response) = try await session.data(for: request)
         return try validateResponse(data: data, response: response)
     }

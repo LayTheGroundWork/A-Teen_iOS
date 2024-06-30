@@ -8,7 +8,6 @@
 
 import Domain
 import NetworkService
-
 import Foundation
 
 public final class SignRepositoryImp: NSObject, SignRepository {
@@ -21,7 +20,7 @@ public final class SignRepositoryImp: NSObject, SignRepository {
     }
     
     public func signIn(
-        request: Domain.LogInRequest,
+        request: LogInRequest,
         completion: @escaping (Result<Domain.LogInResponse, Error>) -> Void
     ) {
         Task {
@@ -30,7 +29,7 @@ public final class SignRepositoryImp: NSObject, SignRepository {
                 guard let urlRequest = endPoint.toURLRequest else {
                     throw ApiError.errorInUrl
                 }
-                let response: LogInResponse = try await apiClientService.request(request: urlRequest)
+                let response: LogInResponse = try await apiClientService.request(request: urlRequest, type: LogInDTO.self).toDomain()
                 completion(.success(response))
             } catch {
                 completion(.failure(error))
@@ -39,7 +38,7 @@ public final class SignRepositoryImp: NSObject, SignRepository {
     }
     
     public func signUp(
-        request: Domain.SignUpRequest,
+        request: SignUpRequest,
         completion: @escaping (Result<Domain.LogInResponse, Error>) -> Void
     ) {
         Task {
@@ -48,13 +47,11 @@ public final class SignRepositoryImp: NSObject, SignRepository {
                 guard let urlRequest = endPoint.toURLRequest else {
                     throw ApiError.errorInUrl
                 }
-                let response: Domain.LogInResponse = try await apiClientService.request(request: urlRequest)
+                let response: Domain.LogInResponse = try await apiClientService.request(request: urlRequest, type: LogInDTO.self).toDomain()
                 completion(.success(response))
             } catch {
                 completion(.failure(error))
             }
         }
     }
-    
-    
 }

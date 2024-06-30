@@ -20,7 +20,7 @@ final public class VerificateServiceImp: NSObject, VerificateService {
     }
     
     public func requestCode(
-        request: Domain.VerificationCodeRequest,
+        request: VerificationCodeRequest,
         completion: @escaping (Result<Void, Error>) -> Void
     ) {
         Task {
@@ -38,7 +38,7 @@ final public class VerificateServiceImp: NSObject, VerificateService {
     }
     
     public func verificateCode(
-        request: Domain.PhoneNumberAuthRequest,
+        request: PhoneNumberAuthRequest,
         completion: @escaping (Result<Void, Error>) -> Void
     ) {
         Task {

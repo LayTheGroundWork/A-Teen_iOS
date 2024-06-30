@@ -12,7 +12,7 @@ import Foundation
 public struct LogInEndPoint: EndPoint {
     private let request: LogInRequest
     
-    public var path: String = "/user/sign-in"
+    public var path: String = "/v1/api/user/sign-in"
     
     public var query: [String : String] = [:]
     

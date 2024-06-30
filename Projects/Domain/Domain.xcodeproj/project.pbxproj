@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 55;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -11,11 +11,11 @@
 		337435614E3EF754DF8C5FCC /* VerificationCodeRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4220232C6D323CEE154173C8 /* VerificationCodeRequest.swift */; };
 		3397A266F379521733729379 /* Core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0950BE22FC63C7D2DCE33C5 /* Core.framework */; };
 		67B020A5ED1B6DE1F1FD34EA /* SignRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ACB320B7ABCFA6BA58774D5 /* SignRepository.swift */; };
-		8323AECB90EFE773F20B7248 /* VerificateService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710F7C147A43E62A5D8CDFB6 /* VerificateService.swift */; };
 		83315DB61E2BEAE20B3C84D1 /* LogInRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22DCAB38E8D379041D948C4 /* LogInRequest.swift */; };
 		8F82A8BB68E309F441F21D31 /* SignUseCaseImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC9D0548A4DB530E9B7F3EE0 /* SignUseCaseImp.swift */; };
 		9034909F680164DCD97B8693 /* PhoneNumberAuthRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE981DCC0E95880B9118AF74 /* PhoneNumberAuthRequest.swift */; };
 		968DA3475B63B63D4443BD7A /* SignUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97F7B0D49B77A55DE5D9C86 /* SignUseCase.swift */; };
+		A8028D84E0D0F2854CF15466 /* VerificateService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56E8CD602282F300A04747E2 /* VerificateService.swift */; };
 		C8094BE4D30D193A2265DD54 /* SignUpRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C45740FE1495C2E2F9F123BE /* SignUpRequest.swift */; };
 /* End PBXBuildFile section */
 
@@ -36,8 +36,8 @@
 		0466867E7CA24A7196EB9339 /* LogInResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInResponse.swift; sourceTree = "<group>"; };
 		3A4620A0019C901EC7C993A2 /* Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
 		4220232C6D323CEE154173C8 /* VerificationCodeRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationCodeRequest.swift; sourceTree = "<group>"; };
+		56E8CD602282F300A04747E2 /* VerificateService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificateService.swift; sourceTree = "<group>"; };
 		6ACB320B7ABCFA6BA58774D5 /* SignRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignRepository.swift; sourceTree = "<group>"; };
-		710F7C147A43E62A5D8CDFB6 /* VerificateService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificateService.swift; sourceTree = "<group>"; };
 		A97F7B0D49B77A55DE5D9C86 /* SignUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUseCase.swift; sourceTree = "<group>"; };
 		B55759C9EED1F9864F56739B /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
 		BD15A37E85BAE3A36B2CE72C /* Domain-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Domain-Info.plist"; sourceTree = "<group>"; };
@@ -144,7 +144,7 @@
 		679765B2495BA9696862366E /* Service */ = {
 			isa = PBXGroup;
 			children = (
-				710F7C147A43E62A5D8CDFB6 /* VerificateService.swift */,
+				56E8CD602282F300A04747E2 /* VerificateService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -215,6 +215,8 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
 				ORGANIZATIONNAME = ATeen;
+				TargetAttributes = {
+				};
 			};
 			buildConfigurationList = 5B17347D429F14C389327C78 /* Build configuration list for PBXProject "Domain" */;
 			compatibilityVersion = "Xcode 14.0";
@@ -255,7 +257,7 @@
 				337435614E3EF754DF8C5FCC /* VerificationCodeRequest.swift in Sources */,
 				150D6995E52A32B29DBA855E /* LogInResponse.swift in Sources */,
 				67B020A5ED1B6DE1F1FD34EA /* SignRepository.swift in Sources */,
-				8323AECB90EFE773F20B7248 /* VerificateService.swift in Sources */,
+				A8028D84E0D0F2854CF15466 /* VerificateService.swift in Sources */,
 				968DA3475B63B63D4443BD7A /* SignUseCase.swift in Sources */,
 				8F82A8BB68E309F441F21D31 /* SignUseCaseImp.swift in Sources */,
 			);
@@ -337,10 +339,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					"-ObjC",
-				);
+				OTHER_LDFLAGS = "$(inherited) -ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ATeen.ATeen.Domain;
 				PRODUCT_NAME = Domain;
 				SDKROOT = iphoneos;
@@ -436,10 +435,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					"-ObjC",
-				);
+				OTHER_LDFLAGS = "$(inherited) -ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ATeen.ATeen.Domain;
 				PRODUCT_NAME = Domain;
 				SDKROOT = iphoneos;
@@ -447,7 +443,10 @@
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = (
+					"$(inherited)",
+					DEBUG,
+				);
 				SWIFT_COMPILATION_MODE = singlefile;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;

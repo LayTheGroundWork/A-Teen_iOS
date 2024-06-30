@@ -12,7 +12,7 @@ import Foundation
 public struct VerificationCodeEndPoint: EndPoint {
     private let request: VerificationCodeRequest
     
-    public var path: String = "/message/send"
+    public var path: String = "/v1/api/message/send"
     
     public var query: [String : String] = [:]
     

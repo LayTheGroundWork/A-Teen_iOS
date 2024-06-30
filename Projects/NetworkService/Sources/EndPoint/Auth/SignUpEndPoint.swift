@@ -12,7 +12,7 @@ import Foundation
 public struct SignUpEndPoint: EndPoint {
     private let request: SignUpRequest
     
-    public var path: String = "/user/sign-up"
+    public var path: String = "/v1/api/user/sign-up"
     
     public var query: [String: String] = [:]
     
