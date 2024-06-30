@@ -9,9 +9,8 @@
 import FeatureDependency
 import UIKit
 
-public protocol RankingResultCoordinatorDelegate: AnyObject {
+public protocol RankingResultCoordinatorDelegate: RankingConfigTabbarStateDelegate {
     func didFinish(childCoordinator: Coordinator)
-    func configTabbarStateInRankingResult(view: RankingFeatureViewNames)
 }
 
 public final class RankingResultCoordinator: Coordinator {

@@ -9,9 +9,8 @@
 import FeatureDependency
 import UIKit
 
-public protocol TournamentCoordinatorDelegate: AnyObject {
+public protocol TournamentCoordinatorDelegate: RankingConfigTabbarStateDelegate {
     func quitTournament(childCoordinator: Coordinator)
-    func configTabbarStateInTournament(view: RankingFeatureViewNames)
 }
 
 public final class TournamentCoordinator: Coordinator {

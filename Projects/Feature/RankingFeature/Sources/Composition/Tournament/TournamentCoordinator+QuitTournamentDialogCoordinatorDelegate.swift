@@ -22,6 +22,6 @@ extension TournamentCoordinator: QuitTournamentDialogCoordinatorDelegate {
     }
     
     public func configTabbarState(view: RankingFeatureViewNames) {
-        delegate?.configTabbarStateInTournament(view: view)
+        delegate?.configTabbarState(view: view)
     }
 }

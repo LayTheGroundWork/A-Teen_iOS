@@ -12,6 +12,7 @@
 		0707EDFDF314E51591DE7995 /* QuitTournamentDialogFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCBA41443BD1E6C1124C6F76 /* QuitTournamentDialogFactory.swift */; };
 		08CFC4F575C1BA0A34C3CE45 /* RankingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B41778F12338F23475EE2765 /* RankingViewController.swift */; };
 		08F2D5197440572503AFFB64 /* TournamentRoundCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3963D325305A7084BBC2C402 /* TournamentRoundCollectionViewCell.swift */; };
+		0970B39D2C31D24000FA6913 /* RankingCoordinator+RankingConfigTabbarStateDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0970B39C2C31D24000FA6913 /* RankingCoordinator+RankingConfigTabbarStateDelegate.swift */; };
 		2761642EC3AA6193EFB7BA74 /* RankingCoordinator+TournamentCoordiantorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEBFB70C0756575A713D492E /* RankingCoordinator+TournamentCoordiantorDelegate.swift */; };
 		279A4873A2F1398079F1C64F /* RankingCoordinator+RankingResultCoordinatorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E83EEE751A1E2BB07A0070E4 /* RankingCoordinator+RankingResultCoordinatorDelegate.swift */; };
 		285C1D8F0A5E6D740CDDB996 /* RankingFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33823F9794E067BB652D02CD /* RankingFactory.swift */; };
@@ -60,6 +61,7 @@
 		01187BD6A56E56548CF0096E /* TournamentEndCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TournamentEndCollectionViewCell.swift; sourceTree = "<group>"; };
 		05B2387E68DE726B0CD78286 /* IntendToVoteDialogCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntendToVoteDialogCoordinator.swift; sourceTree = "<group>"; };
 		06B7C4CCE346089D4B969B3D /* RankingCoordinator+RankingViewControllerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RankingCoordinator+RankingViewControllerCoordinator.swift"; sourceTree = "<group>"; };
+		0970B39C2C31D24000FA6913 /* RankingCoordinator+RankingConfigTabbarStateDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RankingCoordinator+RankingConfigTabbarStateDelegate.swift"; sourceTree = "<group>"; };
 		2272E2288608AF350CCD3B4C /* IntendToVoteDialogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntendToVoteDialogViewController.swift; sourceTree = "<group>"; };
 		22CAF4869F79BE74ABC6E364 /* RankingResultCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingResultCoordinator.swift; sourceTree = "<group>"; };
 		25C509003B425986512D10D2 /* IntendToVoteDialogCoordinator+IntendToVoteDialogViewControllerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "IntendToVoteDialogCoordinator+IntendToVoteDialogViewControllerCoordinator.swift"; sourceTree = "<group>"; };
@@ -233,6 +235,7 @@
 			isa = PBXGroup;
 			children = (
 				B386D68CC70A9A69734B0E08 /* RankingCoordinator.swift */,
+				0970B39C2C31D24000FA6913 /* RankingCoordinator+RankingConfigTabbarStateDelegate.swift */,
 				C2235907CF1F02AFC5881E13 /* RankingCoordinator+IntendToVoteDialogCoordinatorDelegate.swift */,
 				E83EEE751A1E2BB07A0070E4 /* RankingCoordinator+RankingResultCoordinatorDelegate.swift */,
 				06B7C4CCE346089D4B969B3D /* RankingCoordinator+RankingViewControllerCoordinator.swift */,
@@ -360,6 +363,7 @@
 				549D6FB98A7E9B30728C625E /* TournamentCoordinator.swift in Sources */,
 				B878873C911459BA121C8188 /* TournamentFactory.swift in Sources */,
 				B5338677A16E8F89F350935B /* RankingResultTableViewCell.swift in Sources */,
+				0970B39D2C31D24000FA6913 /* RankingCoordinator+RankingConfigTabbarStateDelegate.swift in Sources */,
 				8C6FCEC9BD87FF3D1B6A8721 /* RankingSectorTableViewCell.swift in Sources */,
 				0528352AD2F27155FBE17D94 /* SectorCollectionViewCell.swift in Sources */,
 				7507003B372B673482EB7BC6 /* TournamentEndCollectionViewCell.swift in Sources */,

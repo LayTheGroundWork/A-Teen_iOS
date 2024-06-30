@@ -14,8 +14,4 @@ extension RankingCoordinator: TournamentCoordinatorDelegate {
         removeChildCoordinator(childCoordinator)
         navigation.popViewController(animated: true)
     }
-    
-    public func configTabbarStateInTournament(view: RankingFeatureViewNames) {
-        configTabbarState(view: view)
-    }
 }

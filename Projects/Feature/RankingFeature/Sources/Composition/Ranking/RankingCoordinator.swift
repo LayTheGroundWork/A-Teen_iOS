@@ -14,9 +14,11 @@ public enum RankingFeatureViewNames {
     case rankingResult
 }
 
-public protocol RankingCoordinatorDelegate: AnyObject {
+public protocol RankingConfigTabbarStateDelegate: AnyObject {
     func configTabbarState(view: RankingFeatureViewNames)
 }
+
+public protocol RankingCoordinatorDelegate: RankingConfigTabbarStateDelegate { }
 
 public final class RankingCoordinator: Coordinator {
     public var navigation: Navigation

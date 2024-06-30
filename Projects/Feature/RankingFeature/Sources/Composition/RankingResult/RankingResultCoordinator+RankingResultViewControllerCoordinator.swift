@@ -12,6 +12,6 @@ extension RankingResultCoordinator: RankingResultViewControllerCoordinator {
     }
     
     public func configTabbarState(view: RankingFeatureViewNames) {
-        delegate?.configTabbarStateInRankingResult(view: view)
+        delegate?.configTabbarState(view: view)
     }
 }
