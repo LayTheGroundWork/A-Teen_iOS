@@ -12,6 +12,7 @@ import UIKit
 public protocol RankingViewControllerCoordinator: AnyObject {
     func didTapVoteButton(sector: String)
     func didTapRankingCollectionViewCell(sector: String)
+    func configTabbarState(view: RankingFeatureViewNames)
 }
 
 public final class RankingViewController: UIViewController {
@@ -114,8 +115,10 @@ public final class RankingViewController: UIViewController {
             make.edges.equalToSuperview()
         }
     }
-    
+        
     public override func viewWillAppear(_ animated: Bool) {
+        coordinator?.configTabbarState(view: .ranking)
+
         self.navigationItem.titleView =  CustomRankingNaviView(frame: CGRect(x: 0, y: 0, width: ViewValues.width, height: 40))
     }
     

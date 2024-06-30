@@ -49,14 +49,14 @@ final class TournamentUserCollectionViewCell: UICollectionViewCell {
             make.top.equalToSuperview()
             make.leading.equalToSuperview().offset(ViewValues.defaultPadding)
             make.height.equalTo(ViewValues.height * 0.35)
-            make.width.equalTo(BUserView.height).multipliedBy(0.86)
+            make.width.equalTo(AUserView.snp.height).multipliedBy(0.86)
         }
         
         BUserView.snp.makeConstraints { make in
             make.top.equalTo(AUserView.snp.bottom).offset(10)
             make.trailing.equalToSuperview().offset(-ViewValues.defaultPadding)
-            make.height.equalTo(AUserView.height)
-            make.width.equalTo(AUserView.width)
+            make.height.equalTo(AUserView.snp.height)
+            make.width.equalTo(AUserView.snp.width)
         }
     }
 }

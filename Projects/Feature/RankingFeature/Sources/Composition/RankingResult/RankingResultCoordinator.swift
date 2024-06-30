@@ -11,6 +11,7 @@ import UIKit
 
 public protocol RankingResultCoordinatorDelegate: AnyObject {
     func didFinish(childCoordinator: Coordinator)
+    func configTabbarStateInRankingResult(view: RankingFeatureViewNames)
 }
 
 public final class RankingResultCoordinator: Coordinator {

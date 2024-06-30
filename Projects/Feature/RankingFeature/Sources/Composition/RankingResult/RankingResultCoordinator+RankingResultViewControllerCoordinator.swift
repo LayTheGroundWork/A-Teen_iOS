@@ -10,4 +10,8 @@ extension RankingResultCoordinator: RankingResultViewControllerCoordinator {
     public func didTapBackButton() {
         delegate?.didFinish(childCoordinator: self)
     }
+    
+    public func configTabbarState(view: RankingFeatureViewNames) {
+        delegate?.configTabbarStateInRankingResult(view: view)
+    }
 }

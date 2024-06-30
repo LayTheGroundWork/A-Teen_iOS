@@ -11,6 +11,7 @@ import UIKit
 
 public protocol TournamentCoordinatorDelegate: AnyObject {
     func quitTournament(childCoordinator: Coordinator)
+    func configTabbarStateInTournament(view: RankingFeatureViewNames)
 }
 
 public final class TournamentCoordinator: Coordinator {

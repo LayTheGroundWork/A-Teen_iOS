@@ -85,9 +85,9 @@ extension RankingSectorTableViewCell: UICollectionViewDelegate {
         _ collectionView: UICollectionView,
         didSelectItemAt indexPath: IndexPath
     ) {
-        // 첫번째 셀은 일러스트 + 투표하기 버튼 : 통과
+        // 첫번째 셀은 투표하기 버튼 외에는 화면 이동 X
         guard indexPath.item != 0 else { return }
-        // 나머지 셀
+        // 나머지 셀 : RankingResult 이동
         delegate?.didTapRankingCollectionViewCell(sector: sector ?? "")
     }
 }

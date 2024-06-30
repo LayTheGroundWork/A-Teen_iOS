@@ -12,6 +12,7 @@ import UIKit
 
 public protocol RankingResultViewControllerCoordinator: AnyObject {
     func didTapBackButton()
+    func configTabbarState(view: RankingFeatureViewNames)
 }
 
 public final class RankingResultViewController: UIViewController {
@@ -130,6 +131,10 @@ public final class RankingResultViewController: UIViewController {
         configLayout()
     }
     
+    public override func viewWillAppear(_ animated: Bool) {
+        coordinator?.configTabbarState(view: .rankingResult)
+    }
+        
     init(
         coordinator: RankingResultViewControllerCoordinator,
         sector: String

@@ -52,6 +52,7 @@ enum TournamentRound: String, CaseIterable {
 public protocol TournamentViewControllerCoordinator: AnyObject { 
     func quitTournament()
     func openQuitDialog()
+    func configTabbarState(view: RankingFeatureViewNames)
 }
 
 public final class TournamentViewController: UIViewController {
@@ -112,6 +113,10 @@ public final class TournamentViewController: UIViewController {
         super.viewDidLoad()
         configUserInterface()
         configLayout()
+    }
+    
+    public override func viewWillAppear(_ animated: Bool) {
+        coordinator?.configTabbarState(view: .tournament)
     }
     
     init(

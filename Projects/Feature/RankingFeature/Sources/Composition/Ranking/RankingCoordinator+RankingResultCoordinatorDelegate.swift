@@ -14,4 +14,8 @@ extension RankingCoordinator: RankingResultCoordinatorDelegate {
         removeChildCoordinator(childCoordinator)
         navigation.popViewController(animated: true)
     }
+    
+    public func configTabbarStateInRankingResult(view: RankingFeatureViewNames) {
+        configTabbarState(view: view)
+    }
 }

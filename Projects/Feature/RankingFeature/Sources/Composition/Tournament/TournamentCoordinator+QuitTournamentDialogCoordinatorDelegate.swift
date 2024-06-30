@@ -20,4 +20,8 @@ extension TournamentCoordinator: QuitTournamentDialogCoordinatorDelegate {
         quitDialog(childCoordinator: childCoordinator)
         delegate?.quitTournament(childCoordinator: self)
     }
+    
+    public func configTabbarState(view: RankingFeatureViewNames) {
+        delegate?.configTabbarStateInTournament(view: view)
+    }
 }

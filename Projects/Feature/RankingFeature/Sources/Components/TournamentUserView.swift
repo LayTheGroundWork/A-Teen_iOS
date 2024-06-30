@@ -15,8 +15,8 @@ final class TournamentUserView: UIView {
         UIColor.black.withAlphaComponent(0.5).cgColor,
         UIColor.black.withAlphaComponent(0).cgColor
     ]
-    let width = ViewValues.height * 0.35
-    let height = ViewValues.height * 0.35 * 0.86
+    let width = ViewValues.height * 0.35 * 0.86
+    let height = ViewValues.height * 0.35
     var image: UIImage?
     weak var delegate: TournamentUserCollectionViewCellDelegate?
     
@@ -95,14 +95,6 @@ final class TournamentUserView: UIView {
         selectButton.addTarget(self,
                                action: #selector(didTapSelectButton(_: )),
                                for: .touchUpInside)
-    }
-    
-    private func makeBlur<T: UIView>(to view: T) -> UIVisualEffectView {
-        let blurEffect = UIBlurEffect(style: .regular)
-        let blurEffectView = UIVisualEffectView(effect: blurEffect)
-        blurEffectView.frame = view.bounds
-        blurEffectView.alpha = 0.8
-        return blurEffectView
     }
     
     // MARK: - Actions    

@@ -24,4 +24,8 @@ extension RankingCoordinator: RankingViewControllerCoordinator {
             sector: sector)
         addChildCoordinatorStart(rankingResultCoordinator)
     }
+    
+    public func configTabbarState(view: RankingFeatureViewNames) {
+        delegate?.configTabbarState(view: view)
+    }
 }
