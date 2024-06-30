@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2AE2442457DCECCC55C49611 /* UIView+Layer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9347F19E7CA63054E643E5C /* UIView+Layer.swift */; };
 		32E85901F7A04A4096C803EB /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9005F43599E3AE2CCB247B4F /* SnapKit.framework */; };
 		4288F5B555587A91E8DACF93 /* UIFont+TextStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62C700FB34E2E83D970827F /* UIFont+TextStyle.swift */; };
 		4ED1FAC9639BF5C44001C110 /* UIViewController+TouchGesture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91A68140F7B39D12A54351B0 /* UIViewController+TouchGesture.swift */; };
@@ -15,7 +16,6 @@
 		ABB14811E13F7B1ECCF8B086 /* TuistAssets+DesignSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5263BC75B281154AC0B5A7B /* TuistAssets+DesignSystem.swift */; };
 		CD3530D96EC2AAEF759D0831 /* CustomImageLabelButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A5DD84C76B66DD85EF180B /* CustomImageLabelButton.swift */; };
 		D2E21543F5B3B63472BE98A1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F6AF114A38FDBD9663A6B1B /* Assets.xcassets */; };
-		DB5A8002ECF4D24EED2374A6 /* UIView+CALayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39231B4484B8D591913AE463 /* UIView+CALayer.swift */; };
 		E7427A1ADE455252D771EBCE /* UIView+Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = A85CAE797083F72B19BA5031 /* UIView+Constraints.swift */; };
 		F161FE102834E18739642B92 /* UILabel+Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85684A958F484BEE98C8D726 /* UILabel+Constraints.swift */; };
 		F6018B5F7748E322214C52D6 /* TuistBundle+DesignSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE4AD9735556ECA8C8008FEC /* TuistBundle+DesignSystem.swift */; };
@@ -35,7 +35,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		39231B4484B8D591913AE463 /* UIView+CALayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+CALayer.swift"; sourceTree = "<group>"; };
 		4F6AF114A38FDBD9663A6B1B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		69B7BBEAD5472C7195924AC8 /* DesignSystem.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DesignSystem.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7516C9F8F52188417896B438 /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
@@ -45,6 +44,7 @@
 		91A68140F7B39D12A54351B0 /* UIViewController+TouchGesture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+TouchGesture.swift"; sourceTree = "<group>"; };
 		A5263BC75B281154AC0B5A7B /* TuistAssets+DesignSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TuistAssets+DesignSystem.swift"; sourceTree = "<group>"; };
 		A85CAE797083F72B19BA5031 /* UIView+Constraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Constraints.swift"; sourceTree = "<group>"; };
+		B9347F19E7CA63054E643E5C /* UIView+Layer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Layer.swift"; sourceTree = "<group>"; };
 		BE4AD9735556ECA8C8008FEC /* TuistBundle+DesignSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TuistBundle+DesignSystem.swift"; sourceTree = "<group>"; };
 		C62C700FB34E2E83D970827F /* UIFont+TextStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+TextStyle.swift"; sourceTree = "<group>"; };
 		CAC5E6E4B6E844018363F33B /* CustomConfirmDialogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomConfirmDialogViewController.swift; sourceTree = "<group>"; };
@@ -135,8 +135,8 @@
 			children = (
 				C62C700FB34E2E83D970827F /* UIFont+TextStyle.swift */,
 				85684A958F484BEE98C8D726 /* UILabel+Constraints.swift */,
-				39231B4484B8D591913AE463 /* UIView+CALayer.swift */,
 				A85CAE797083F72B19BA5031 /* UIView+Constraints.swift */,
+				B9347F19E7CA63054E643E5C /* UIView+Layer.swift */,
 				91A68140F7B39D12A54351B0 /* UIViewController+TouchGesture.swift */,
 			);
 			path = Extension;
@@ -241,8 +241,8 @@
 				741EC2A477A9414E12BEDBA9 /* CustomTwoButtonDialogViewController.swift in Sources */,
 				4288F5B555587A91E8DACF93 /* UIFont+TextStyle.swift in Sources */,
 				F161FE102834E18739642B92 /* UILabel+Constraints.swift in Sources */,
-				DB5A8002ECF4D24EED2374A6 /* UIView+CALayer.swift in Sources */,
 				E7427A1ADE455252D771EBCE /* UIView+Constraints.swift in Sources */,
+				2AE2442457DCECCC55C49611 /* UIView+Layer.swift in Sources */,
 				4ED1FAC9639BF5C44001C110 /* UIViewController+TouchGesture.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

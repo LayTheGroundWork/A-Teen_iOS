@@ -141,14 +141,16 @@ extension TournamentRoundCollectionViewCell: UICollectionViewDataSource {
     }
 }
 
-extension TournamentRoundCollectionViewCell: UICollectionViewDelegate { }
+extension TournamentRoundCollectionViewCell: UICollectionViewDelegate {
+    func collectionView(
+        _ collectionView: UICollectionView,
+        didSelectItemAt indexPath: IndexPath
+    ) {
+        // TODO: - 유저 cell 선택 시, 동작
+    }
+}
 
 extension TournamentRoundCollectionViewCell: TournamentUserCollectionViewCellDelegate {
-    func didTapPlusButton() {
-        // TODO: - 프로필 이동
-        print("프로필로 이동")
-    }
-    
     func didTapSelectButton() {
         if currentMatch == round?.matches {
             currentMatch = 1
@@ -157,8 +159,6 @@ extension TournamentRoundCollectionViewCell: TournamentUserCollectionViewCellDel
         } else {
             currentMatch += 1
             scrollToPage(at: currentMatch)
-//            progressView.setProgress(progressView.progress + (round?.progress ?? 0),
-//                                     animated: true)
             UIView.animate(withDuration: 0.25) { [self] in
                 progressView.setProgress(
                     progressView.progress + (self.round?.progress ?? 0),

@@ -11,7 +11,6 @@ import DesignSystem
 import UIKit
 
 protocol TournamentUserCollectionViewCellDelegate: AnyObject {
-    func didTapPlusButton()
     func didTapSelectButton()
 }
 
@@ -67,10 +66,6 @@ extension TournamentUserCollectionViewCell: Reusable { }
 
 // MARK: - Extensions here
 extension TournamentUserCollectionViewCell: TournamentUserCollectionViewCellDelegate {
-    func didTapPlusButton() {
-        delegate?.didTapPlusButton()
-    }
-
     func didTapSelectButton() {
         delegate?.didTapSelectButton()
     }

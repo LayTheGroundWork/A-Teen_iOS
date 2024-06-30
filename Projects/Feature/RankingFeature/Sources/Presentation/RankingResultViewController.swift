@@ -202,7 +202,7 @@ extension RankingResultViewController: UITableViewDelegate {
         _ tableView: UITableView,
         didSelectRowAt indexPath: IndexPath
     ) {
-        //
+        // TODO: - 해당 프로필 이동
         print("\(rankings[indexPath.row + 3].rank) 위 cell 클릭")
     }
 }
@@ -228,9 +228,9 @@ extension RankingResultViewController: UITableViewDataSource {
         }
         // top 3 이후로 table view 에 보여주기 때문에, indexPath.row + 3
         let ranking = rankings[indexPath.row + 3]
-        cell.setData(rank: ranking.rank,
-                     userName: ranking.userName,
-                     proportion: ranking.proportion)
+        cell.setProperties(rank: ranking.rank,
+                           userName: ranking.userName,
+                           proportion: ranking.proportion)
         return cell
     }
 }

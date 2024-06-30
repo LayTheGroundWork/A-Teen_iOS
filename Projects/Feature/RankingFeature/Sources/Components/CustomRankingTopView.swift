@@ -27,7 +27,6 @@ final class CustomRankingTopView: UIView {
     // MARK: - Private properties
     private lazy var imageView: UIImageView = {
         let imageView = UIImageView()
-        // TODO: - 이미지 체크 필요
         imageView.image = image
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
@@ -141,6 +140,16 @@ extension CustomRankingTopView {
             }
             make.width.equalTo(imageWidth)
             make.height.equalTo(imageHeight)
+        }
+        
+        proportionLabel.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.bottom.equalToSuperview().offset(-7)
+        }
+        
+        nameLabel.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.bottom.equalTo(proportionLabel.snp.top).offset(-4)
         }
         
         rankCircle.snp.makeConstraints { make in

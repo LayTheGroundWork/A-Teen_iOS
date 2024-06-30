@@ -19,10 +19,6 @@ final class RankingResultTableViewCell: UITableViewCell {
         let view = UIView()
         view.backgroundColor = UIColor.white
         view.layer.cornerRadius = ViewValues.defaultRadius
-        view.layer.shadowColor = UIColor.black.cgColor
-        view.layer.shadowOpacity = 0.1
-        view.layer.shadowRadius = 6
-        view.layer.shadowOffset = CGSize(width: 3, height: 3)
         return view
     }()
     
@@ -71,6 +67,7 @@ final class RankingResultTableViewCell: UITableViewCell {
                    reuseIdentifier: reuseIdentifier)
         configUserInterface()
         configLayout()
+        configShadow()
     }
     
     required init?(coder: NSCoder) {
@@ -90,10 +87,20 @@ final class RankingResultTableViewCell: UITableViewCell {
         background.addSubview(chevronImage)
     }
     
+    private func configShadow() {
+        background.addDropYShadow(width: ViewValues.width - 32,
+                                  height: 95,
+                                  color: UIColor.black,
+                                  opacity: 0.1,
+                                  radius: 6,
+                                  offset: CGSize(width: 3, height: 3))
+    }
+    
     private func configLayout() {
         background.snp.makeConstraints { make in
             make.leading.equalToSuperview().offset(ViewValues.defaultPadding)
             make.trailing.equalToSuperview().offset(-ViewValues.defaultPadding)
+            make.top.bottom.equalToSuperview()
             make.height.equalToSuperview().inset(5)
         }
         
@@ -125,7 +132,7 @@ final class RankingResultTableViewCell: UITableViewCell {
         }
     }
     
-    func setData(
+    func setProperties(
         rank: Int,
         userName: String,
         proportion: Double
