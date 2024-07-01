@@ -21,7 +21,7 @@ public final class SignRepositoryImp: NSObject, SignRepository {
     
     public func signIn(
         request: LogInRequest,
-        completion: @escaping (Result<Domain.LogInResponse, Error>) -> Void
+        completion: @escaping (Result<LogInResponse, Error>) -> Void
     ) {
         Task {
             do {
@@ -39,7 +39,7 @@ public final class SignRepositoryImp: NSObject, SignRepository {
     
     public func signUp(
         request: SignUpRequest,
-        completion: @escaping (Result<Domain.LogInResponse, Error>) -> Void
+        completion: @escaping (Result<LogInResponse, Error>) -> Void
     ) {
         Task {
             do {

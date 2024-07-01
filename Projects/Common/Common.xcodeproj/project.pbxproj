@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0078C7A7E769769FB8DEBDDD /* Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AD12D17FEFCE8C52B86D2A4 /* Reusable.swift */; };
 		24F5061ECC00125F3693E096 /* ViewValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4906F43F6A038295B5589D3 /* ViewValues.swift */; };
+		280707E54AEFA2A7DA2650EB /* String+Contraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEE98649F065A0BDE45EED71 /* String+Contraints.swift */; };
 		2AB0F9ED51BBDC9373BDDFF2 /* AppLocalized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 170170CE0C43F0B37C75808F /* AppLocalized.swift */; };
 		4043066FDA1D66C0826483A6 /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E981128731E287F70D41FC5 /* Question.swift */; };
 		51DF4E18342ED9EC34A9EBE8 /* TodayTeen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712D368CA33D5EB13A4BBDBA /* TodayTeen.swift */; };
@@ -41,6 +42,7 @@
 		6A81A2C9A17ACE100D4CEDE1 /* TabTag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabTag.swift; sourceTree = "<group>"; };
 		712D368CA33D5EB13A4BBDBA /* TodayTeen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayTeen.swift; sourceTree = "<group>"; };
 		AFCDE72C33C19AADE9F4B8B5 /* Notification+Name.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification+Name.swift"; sourceTree = "<group>"; };
+		BEE98649F065A0BDE45EED71 /* String+Contraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Contraints.swift"; sourceTree = "<group>"; };
 		CB1744A0E6D22DAAF822DBEA /* ProfileCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCategory.swift; sourceTree = "<group>"; };
 		E4906F43F6A038295B5589D3 /* ViewValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewValues.swift; sourceTree = "<group>"; };
 		F3BE6050A0C10BC33871F757 /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
@@ -124,6 +126,7 @@
 			isa = PBXGroup;
 			children = (
 				AFCDE72C33C19AADE9F4B8B5 /* Notification+Name.swift */,
+				BEE98649F065A0BDE45EED71 /* String+Contraints.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -249,6 +252,7 @@
 			files = (
 				24F5061ECC00125F3693E096 /* ViewValues.swift in Sources */,
 				FE6E2ACADAA4EC0C24B63F00 /* Notification+Name.swift in Sources */,
+				280707E54AEFA2A7DA2650EB /* String+Contraints.swift in Sources */,
 				72CE949BD5BACD4D0F7D1B68 /* ProfileCategory.swift in Sources */,
 				4043066FDA1D66C0826483A6 /* Question.swift in Sources */,
 				51DF4E18342ED9EC34A9EBE8 /* TodayTeen.swift in Sources */,

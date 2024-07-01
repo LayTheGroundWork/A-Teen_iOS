@@ -15,21 +15,34 @@ public struct SignUpRequest {
     public let userId: String
     public let userName: String
     public let birthDate: String
-    public let schoolName: String
+    public let schoolData: SchoolData
     
     public init(
         phoneNumber: String,
         userId: String,
         userName: String,
         birthDate: String,
-        schoolName: String
+        schoolData: SchoolData
     ) {
         self.phoneNumber = phoneNumber
         self.userId = userId
         self.userName = userName
         self.birthDate = birthDate
-        self.schoolName = schoolName
+        self.schoolData = schoolData
     }
 }
 
+
+public struct SchoolData {
+    public let schoolName: String
+    public let schoolLocation: String
+    
+    public init(
+        schoolName: String,
+        schoolLocation: String
+    ) {
+        self.schoolName = schoolName
+        self.schoolLocation = schoolLocation
+    }
+}
 // Date 변환하는 로직 core에 추가 후 여기서 처리 필요

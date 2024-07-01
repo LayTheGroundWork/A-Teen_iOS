@@ -20,11 +20,11 @@ public protocol SignUseCase {
     )
     func requestCode(
         request: VerificationCodeRequest,
-        completion: @escaping (Result<Void, Error>) -> Void
+        completion: @escaping () -> Void
     )
     func verificateCode(
         request: PhoneNumberAuthRequest,
-        completion: @escaping (Result<Void, Error>) -> Void
+        completion: @escaping () -> Void
     )
 }
 

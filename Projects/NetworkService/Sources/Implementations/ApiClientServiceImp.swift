@@ -15,6 +15,16 @@ public struct ApiClientServiceImp: ApiClientService {
         self.session = session
     }
     
+    public func request(url: URL?) async -> Data? {
+        guard let url = url else { return nil }
+        do {
+            let (data: data, request: request) = try await session.data(from: url)
+            return (data: data, request: request).data
+        } catch {
+            return nil
+        }
+    }
+    
     public func request(request: URLRequest) async throws {
         let (_, response) = try await session.data(for: request)
         guard let httpResponse = response as? HTTPURLResponse else {

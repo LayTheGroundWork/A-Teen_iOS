@@ -9,6 +9,7 @@
 import Foundation
 
 public protocol ApiClientService {
+    func request(url: URL?) async -> Data?
     func request(request: URLRequest) async throws -> Void
     func request<T: Decodable>(request: URLRequest, type: T.Type) async throws -> T
 }

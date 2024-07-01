@@ -6,6 +6,7 @@
 //
 
 import Data
+import Domain
 import NetworkService
 import Core
 import UIKit
@@ -19,6 +20,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         appContainer = AppContainer()
+        registerDependencies()
+
+        //        let signUsecase = appContainer?.resolve(type: SignUseCase.self)
+        
         guard
             let auth = auth
         else {
@@ -26,6 +31,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             return true
         }
 
+        // 토큰값 유효 검사 -> 자동로그인
+        
         auth.isSessionActive ? loadAllData() : loadHomeDate()
         return true
     }

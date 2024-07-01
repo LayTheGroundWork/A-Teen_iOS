@@ -23,9 +23,21 @@ extension AppDelegate {
             repository: signRepository,
             service: verificateService)
         
-        AppContainer.register(
+        let remoteDataService: RemoteImageDataService = RemoteImageDataServiceImp(apiClientService: apiClientService)
+        let localDataCache: LocalDataImageService = LocalDataImageServiceImp()
+        
+        let imageDataRepository: ImageDataRepository = ImageDataRepositoryImp(
+            remoteDataService: remoteDataService,
+            localDataCache: localDataCache)
+        let imageDataUseCase: ImageDataUseCase = ImageDataUseCaseImp(imageDataRepository: imageDataRepository)
+        
+        appContainer?.register(
             type: SignUseCase.self,
             signUseCase)
+        
+        appContainer?.register(
+            type: ImageDataUseCase.self,
+            imageDataUseCase
+        )
     }
-    
 }
