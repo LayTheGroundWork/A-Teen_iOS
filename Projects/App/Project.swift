@@ -13,6 +13,7 @@ let project = Project.makeProject(
     moduleType: .app,
     dependencies: [
         .mainTabFeature,
+        .data,
         .core
     ]
 )

@@ -18,7 +18,6 @@ public protocol LogOutAuth {
 
 public final class Auth {
     private var session = false
-
 }
 
 extension Auth: SessionCheckAuth {

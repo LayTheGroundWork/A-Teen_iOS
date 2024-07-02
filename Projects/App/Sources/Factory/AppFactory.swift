@@ -10,8 +10,15 @@ import MainTabFeature
 import FeatureDependency
 import UIKit
 
-//TODO: - Use a protocol instead a concrete type
-struct AppFactory {
+protocol AppFactory {
+    func makeMainTabCoordinator(
+        navigation: Navigation,
+        delegate: MainTabCoordinatorDelegate,
+        coordinatorProvider: CoordinatorProvider
+    ) -> Coordinator
+}
+
+struct AppFactoryImp: AppFactory {
     let appContainer: AppContainer?
     
     func makeMainTabCoordinator(

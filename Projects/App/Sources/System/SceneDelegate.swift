@@ -24,7 +24,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let data = UIApplication.shared.delegate as? AppDelegate else { return }
         window = UIWindow(windowScene: scene)
         appContainer = data.appContainer
-        appFactory = AppFactory(appContainer: appContainer)
+        appFactory = AppFactoryImp(appContainer: appContainer)
         appCoordinator = AppCoordinator(
             navigation: NavigationImp(rootViewController: UINavigationController()),
             window: window,
