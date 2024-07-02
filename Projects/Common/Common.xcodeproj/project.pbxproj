@@ -3,14 +3,18 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 55;
+	objectVersion = 56;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		0078C7A7E769769FB8DEBDDD /* Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AD12D17FEFCE8C52B86D2A4 /* Reusable.swift */; };
 		24F5061ECC00125F3693E096 /* ViewValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4906F43F6A038295B5589D3 /* ViewValues.swift */; };
+		280707E54AEFA2A7DA2650EB /* String+Contraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEE98649F065A0BDE45EED71 /* String+Contraints.swift */; };
 		2AB0F9ED51BBDC9373BDDFF2 /* AppLocalized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 170170CE0C43F0B37C75808F /* AppLocalized.swift */; };
 		4043066FDA1D66C0826483A6 /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E981128731E287F70D41FC5 /* Question.swift */; };
+		41979A402C32FD3A000454D8 /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41979A3F2C32FD3A000454D8 /* BaseViewModel.swift */; };
+		41979A432C32FD5C000454D8 /* StateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41979A422C32FD5C000454D8 /* StateController.swift */; };
+		41979A472C330186000454D8 /* UIImageView+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41979A462C330186000454D8 /* UIImageView+Utils.swift */; };
 		51DF4E18342ED9EC34A9EBE8 /* TodayTeen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712D368CA33D5EB13A4BBDBA /* TodayTeen.swift */; };
 		5DECC8AD550D2C24C26DAC57 /* TabTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A81A2C9A17ACE100D4CEDE1 /* TabTag.swift */; };
 		72CE949BD5BACD4D0F7D1B68 /* ProfileCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB1744A0E6D22DAAF822DBEA /* ProfileCategory.swift */; };
@@ -38,9 +42,13 @@
 		2E981128731E287F70D41FC5 /* Question.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
 		3354DE7E2B4F1877FECB508B /* Common-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Common-Info.plist"; sourceTree = "<group>"; };
 		3DA77FB5518DC2177F7CDB4F /* Common.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Common.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		41979A3F2C32FD3A000454D8 /* BaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
+		41979A422C32FD5C000454D8 /* StateController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateController.swift; sourceTree = "<group>"; };
+		41979A462C330186000454D8 /* UIImageView+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Utils.swift"; sourceTree = "<group>"; };
 		6A81A2C9A17ACE100D4CEDE1 /* TabTag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabTag.swift; sourceTree = "<group>"; };
 		712D368CA33D5EB13A4BBDBA /* TodayTeen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayTeen.swift; sourceTree = "<group>"; };
 		AFCDE72C33C19AADE9F4B8B5 /* Notification+Name.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification+Name.swift"; sourceTree = "<group>"; };
+		BEE98649F065A0BDE45EED71 /* String+Contraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Contraints.swift"; sourceTree = "<group>"; };
 		CB1744A0E6D22DAAF822DBEA /* ProfileCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCategory.swift; sourceTree = "<group>"; };
 		E4906F43F6A038295B5589D3 /* ViewValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewValues.swift; sourceTree = "<group>"; };
 		F3BE6050A0C10BC33871F757 /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
@@ -80,6 +88,31 @@
 			path = Sources;
 			sourceTree = "<group>";
 		};
+		41979A3D2C32FD29000454D8 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				41979A412C32FD4B000454D8 /* Components */,
+				41979A3E2C32FD2F000454D8 /* ViewModel */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		41979A3E2C32FD2F000454D8 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				41979A3F2C32FD3A000454D8 /* BaseViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		41979A412C32FD4B000454D8 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				41979A422C32FD5C000454D8 /* StateController.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
 		46B7570B57064E55A860C478 /* InfoPlists */ = {
 			isa = PBXGroup;
 			children = (
@@ -91,6 +124,7 @@
 		753635C20DEB3F1C58D5CF79 /* Layer */ = {
 			isa = PBXGroup;
 			children = (
+				41979A3D2C32FD29000454D8 /* Presentation */,
 				F796DEED68B691958013D89A /* Domain */,
 			);
 			path = Layer;
@@ -124,6 +158,8 @@
 			isa = PBXGroup;
 			children = (
 				AFCDE72C33C19AADE9F4B8B5 /* Notification+Name.swift */,
+				BEE98649F065A0BDE45EED71 /* String+Contraints.swift */,
+				41979A462C330186000454D8 /* UIImageView+Utils.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -211,8 +247,6 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
 				ORGANIZATIONNAME = ATeen;
-				TargetAttributes = {
-				};
 			};
 			buildConfigurationList = 7A960902591CDB4F68854742 /* Build configuration list for PBXProject "Common" */;
 			compatibilityVersion = "Xcode 14.0";
@@ -248,7 +282,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				24F5061ECC00125F3693E096 /* ViewValues.swift in Sources */,
+				41979A432C32FD5C000454D8 /* StateController.swift in Sources */,
+				41979A402C32FD3A000454D8 /* BaseViewModel.swift in Sources */,
 				FE6E2ACADAA4EC0C24B63F00 /* Notification+Name.swift in Sources */,
+				280707E54AEFA2A7DA2650EB /* String+Contraints.swift in Sources */,
 				72CE949BD5BACD4D0F7D1B68 /* ProfileCategory.swift in Sources */,
 				4043066FDA1D66C0826483A6 /* Question.swift in Sources */,
 				51DF4E18342ED9EC34A9EBE8 /* TodayTeen.swift in Sources */,
@@ -256,6 +293,7 @@
 				2AB0F9ED51BBDC9373BDDFF2 /* AppLocalized.swift in Sources */,
 				5DECC8AD550D2C24C26DAC57 /* TabTag.swift in Sources */,
 				0078C7A7E769769FB8DEBDDD /* Reusable.swift in Sources */,
+				41979A472C330186000454D8 /* UIImageView+Utils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -282,7 +320,10 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				OTHER_LDFLAGS = "$(inherited) -ObjC";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ATeen.ATeen.Common;
 				PRODUCT_NAME = Common;
 				SDKROOT = iphoneos;
@@ -378,7 +419,10 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				OTHER_LDFLAGS = "$(inherited) -ObjC";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ATeen.ATeen.Common;
 				PRODUCT_NAME = Common;
 				SDKROOT = iphoneos;
@@ -386,10 +430,7 @@
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = (
-					"$(inherited)",
-					DEBUG,
-				);
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG";
 				SWIFT_COMPILATION_MODE = singlefile;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;

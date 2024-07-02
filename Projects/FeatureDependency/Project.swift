@@ -14,6 +14,6 @@ let project = Project.makeProject(
     dependencies: [
         .designSystem,
         .common,
-        .core,
+        .domain
     ]
 )
