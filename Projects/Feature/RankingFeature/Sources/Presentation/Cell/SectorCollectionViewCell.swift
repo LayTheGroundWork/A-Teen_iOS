@@ -10,7 +10,10 @@ import Common
 import DesignSystem
 import UIKit
 
-class SectorCollectionViewCell: UICollectionViewCell {
+final class SectorCollectionViewCell: UICollectionViewCell {
+    var sector: String?
+    weak var delegate: RankingViewControllerCoordinator?
+
     private lazy var containerView: UIView = {
         let view = UIView()
         view.layer.cornerRadius = ViewValues.defaultRadius
@@ -27,49 +30,46 @@ class SectorCollectionViewCell: UICollectionViewCell {
         return imageView
     }()
     
-     lazy var voteButton: UIButton = {
+    lazy var voteButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("투표 참여하기", for: .normal)
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 20, weight: .regular)
-        button.backgroundColor = .black.withAlphaComponent(0.3)
-        button.tintColor = .white
-        button.layer.cornerRadius = 20
-        button.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
+        button.titleLabel?.font = .customFont(forTextStyle: .title3, weight: .regular)
+        button.backgroundColor = UIColor.black.withAlphaComponent(0.3)
+        button.tintColor = UIColor.white
+        button.layer.cornerRadius = ViewValues.defaultRadius
+        button.addTarget(self,
+                         action: #selector(didTapVoteButton),
+                         for: .touchUpInside)
         return button
     }()
     
-     lazy var winnerBackgroundView: UIView = {
+    lazy var winnerBackgroundView: UIView = {
         let view = UIView()
         view.clipsToBounds = true
-        view.backgroundColor = .black.withAlphaComponent(0.3)
+        view.backgroundColor = UIColor.black.withAlphaComponent(0.3)
         view.layer.cornerRadius = 15
         
         return view
     }()
     
-     lazy var winnerLabel: UILabel = {
+    lazy var winnerLabel: UILabel = {
         let label = UILabel()
-        label.textColor = .white
+        label.textColor = UIColor.white
         label.textAlignment = .center
-        label.font = UIFont.systemFont(ofSize: 16, weight: .regular)
-        
-        if let crownImage = UIImage(systemName: "crown.fill") {
-            let attachment = NSTextAttachment()
-            attachment.image = crownImage.withTintColor(.white)
-            attachment.bounds = CGRect(x: 0, y: -3, width: 20, height: 20)
-            
-            let attachmentString = NSAttributedString(attachment: attachment)
-            let textString = NSAttributedString(string: " 1회 우승자")
-            
-            let completeText = NSMutableAttributedString()
-            completeText.append(attachmentString)
-            completeText.append(textString)
-            
-            label.attributedText = completeText
-        } else {
-            label.text = "1회 우승자"
-        }
-        
+        label.font = .customFont(forTextStyle: .callout, weight: .regular)
+        let crownImage = DesignSystemAsset.crownWhiteIcon.image
+        let attachment = NSTextAttachment()
+        attachment.image = crownImage.withTintColor(UIColor.white)
+        attachment.bounds = CGRect(x: 0,
+                                   y: -3,
+                                   width: ViewValues.defaultPadding,
+                                   height: ViewValues.defaultPadding)
+        let attachmentString = NSAttributedString(attachment: attachment)
+        let textString = NSAttributedString(string: " 1회 우승자")
+        let completeText = NSMutableAttributedString()
+        completeText.append(attachmentString)
+        completeText.append(textString)
+        label.attributedText = completeText
         return label
     }()
     
@@ -102,7 +102,7 @@ class SectorCollectionViewCell: UICollectionViewCell {
         }
         
         voteButton.snp.makeConstraints { make in
-            make.bottom.equalToSuperview().offset(-16)
+            make.bottom.equalToSuperview().offset(-ViewValues.defaultPadding)
             make.leading.equalToSuperview().offset(22)
             make.trailing.equalToSuperview().offset(-22)
             make.height.equalTo(50)
@@ -121,11 +121,10 @@ class SectorCollectionViewCell: UICollectionViewCell {
         }
     }
     
-    @objc private func buttonTapped() {
-        print("Button tapped")
+    @objc private func didTapVoteButton() {
+        guard let sector = sector else { return }
+        delegate?.didTapVoteButton(sector: sector)
     }
 }
 
 extension SectorCollectionViewCell: Reusable { }
-
-

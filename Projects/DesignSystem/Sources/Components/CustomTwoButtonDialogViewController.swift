@@ -64,7 +64,8 @@ open class CustomTwoButtonDialogViewController: UIViewController {
         button.titleLabel?.font = UIFont.customFont(forTextStyle: .callout,
                                                     weight: .regular)
         button.setTitle(leftButtonText, for: .normal)
-        button.setTitleColor(.white, for: .normal)
+        button.setTitleColor(UIColor.white, for: .normal)
+        button.setTitleColor(UIColor.black.withAlphaComponent(0.2), for: .highlighted)
         button.backgroundColor = leftButtonColor
         button.layer.cornerRadius = ViewValues.defaultRadius
         return button
@@ -75,7 +76,8 @@ open class CustomTwoButtonDialogViewController: UIViewController {
         button.titleLabel?.font = UIFont.customFont(forTextStyle: .callout,
                                                     weight: .bold)
         button.setTitle(rightButtonText, for: .normal)
-        button.setTitleColor(.white, for: .normal)
+        button.setTitleColor(UIColor.white, for: .normal)
+        button.setTitleColor(UIColor.black.withAlphaComponent(0.2), for: .highlighted)
         button.backgroundColor = rightButtonColor
         button.layer.cornerRadius = ViewValues.defaultRadius
         return button

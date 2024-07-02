@@ -45,6 +45,7 @@ public final class MainTabCoordinator: Coordinator {
         childCoordinators = factory.makeChildCoordinators(
             delegate: self,
             mainDelegate: self,
+            rankingDelegate: self,
             coordinatorProvider: coordinatorProvider
         )
         let childNavigation = childCoordinators.map { $0.navigation.rootViewController }

@@ -210,4 +210,12 @@ extension MainTabController {
     private func updateNotSelectButton(_ button: CustomTabBarButton) {
         button.updateImage(for: .normal)
     }
+    
+    func showTabbar() {
+        tabBarView.isHidden = false
+    }
+    
+    func hideTabbar() {
+        tabBarView.isHidden = true
+    }
 }
