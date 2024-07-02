@@ -14,6 +14,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var appCoordinator: Coordinator?
     var appFactory: AppFactory?
     var appContainer: AppContainer?
+    
     func scene(
         _ scene: UIScene,
         willConnectTo session: UISceneSession,

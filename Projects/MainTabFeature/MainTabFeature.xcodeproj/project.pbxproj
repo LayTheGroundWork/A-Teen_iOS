@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		012B904FFCFD7D4204F28289 /* MainTabCoordinator+RankingCoordinatorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B4125C653D73B4C64122026 /* MainTabCoordinator+RankingCoordinatorDelegate.swift */; };
 		22B771E22A2C1639383D2A54 /* MainTabCoordinator+SettingsCoordinatorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC351BE39E1D990A74A8A873 /* MainTabCoordinator+SettingsCoordinatorDelegate.swift */; };
 		4B0B05C2E03C232E04A4D4B2 /* LoginFeature.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D811A0994ED45CD4EBE43333 /* LoginFeature.framework */; };
 		53F6F0B749B747EBD9E10C4C /* MainTabCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0705AA04C1BF5986F8FA618 /* MainTabCoordinator.swift */; };
@@ -44,6 +45,7 @@
 		372C93AEDE2C496EA5D210FF /* MainFeature.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MainFeature.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A81669B81656FFB90F95C0C /* MainTabFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabFactory.swift; sourceTree = "<group>"; };
 		46B9091B7A05386A74935ABC /* ProfileDetailFeature.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ProfileDetailFeature.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4B4125C653D73B4C64122026 /* MainTabCoordinator+RankingCoordinatorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainTabCoordinator+RankingCoordinatorDelegate.swift"; sourceTree = "<group>"; };
 		67CE8373CF19BD00DBDDDCB3 /* ChatFeature.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ChatFeature.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		74477E3F61BF8B9592B607DD /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
 		8F565F922CB5DBE1EF3DFA39 /* TeenFeature.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TeenFeature.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -141,6 +143,7 @@
 				C0705AA04C1BF5986F8FA618 /* MainTabCoordinator.swift */,
 				12142B2D3D8BAFD40142F53E /* MainTabCoordinator+LogInCoordinatorDelegate.swift */,
 				990677C393F69FA2F7EBBEAE /* MainTabCoordinator+MainCoordinatorDelegate.swift */,
+				4B4125C653D73B4C64122026 /* MainTabCoordinator+RankingCoordinatorDelegate.swift */,
 				EC351BE39E1D990A74A8A873 /* MainTabCoordinator+SettingsCoordinatorDelegate.swift */,
 				3A81669B81656FFB90F95C0C /* MainTabFactory.swift */,
 			);
@@ -231,6 +234,7 @@
 			files = (
 				B5972FC1989156F964D620C8 /* MainTabCoordinator+LogInCoordinatorDelegate.swift in Sources */,
 				FEE1C5501AB91E19FD2ACE6F /* MainTabCoordinator+MainCoordinatorDelegate.swift in Sources */,
+				012B904FFCFD7D4204F28289 /* MainTabCoordinator+RankingCoordinatorDelegate.swift in Sources */,
 				22B771E22A2C1639383D2A54 /* MainTabCoordinator+SettingsCoordinatorDelegate.swift in Sources */,
 				53F6F0B749B747EBD9E10C4C /* MainTabCoordinator.swift in Sources */,
 				71E9068BEC27B3E779860540 /* MainTabFactory.swift in Sources */,
