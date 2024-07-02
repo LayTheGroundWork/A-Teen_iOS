@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 55;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -12,7 +12,6 @@
 		0707EDFDF314E51591DE7995 /* QuitTournamentDialogFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCBA41443BD1E6C1124C6F76 /* QuitTournamentDialogFactory.swift */; };
 		08CFC4F575C1BA0A34C3CE45 /* RankingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B41778F12338F23475EE2765 /* RankingViewController.swift */; };
 		08F2D5197440572503AFFB64 /* TournamentRoundCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3963D325305A7084BBC2C402 /* TournamentRoundCollectionViewCell.swift */; };
-		0970B39D2C31D24000FA6913 /* RankingCoordinator+RankingConfigTabbarStateDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0970B39C2C31D24000FA6913 /* RankingCoordinator+RankingConfigTabbarStateDelegate.swift */; };
 		2761642EC3AA6193EFB7BA74 /* RankingCoordinator+TournamentCoordiantorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEBFB70C0756575A713D492E /* RankingCoordinator+TournamentCoordiantorDelegate.swift */; };
 		279A4873A2F1398079F1C64F /* RankingCoordinator+RankingResultCoordinatorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E83EEE751A1E2BB07A0070E4 /* RankingCoordinator+RankingResultCoordinatorDelegate.swift */; };
 		285C1D8F0A5E6D740CDDB996 /* RankingFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33823F9794E067BB652D02CD /* RankingFactory.swift */; };
@@ -27,6 +26,7 @@
 		6F7E4F8B0AF62C4AC3F5D3B2 /* DashedBorderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A02FC49D1002F3B1D94A4E7 /* DashedBorderView.swift */; };
 		72C5E48246E1EA17E96829FF /* IntendToVoteDialogCoordinator+IntendToVoteDialogViewControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C509003B425986512D10D2 /* IntendToVoteDialogCoordinator+IntendToVoteDialogViewControllerCoordinator.swift */; };
 		739CD2D0E0C9C5CCFBE901F4 /* QuitTournamentDialogCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33013916407E0850AD261A2A /* QuitTournamentDialogCoordinator.swift */; };
+		74D180E4AF5C27DAF5E90D52 /* RankingCoordinator+RankingConfigTabbarStateDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ACC88DC37DF3160AE81C2AA /* RankingCoordinator+RankingConfigTabbarStateDelegate.swift */; };
 		7507003B372B673482EB7BC6 /* TournamentEndCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01187BD6A56E56548CF0096E /* TournamentEndCollectionViewCell.swift */; };
 		806C3BFED45A009C6FD308E4 /* TournamentUserCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD58DEA719A1E2CF0558DE9F /* TournamentUserCollectionViewCell.swift */; };
 		8C6FCEC9BD87FF3D1B6A8721 /* RankingSectorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDAF6CDF6C2A968F44AC6B4A /* RankingSectorTableViewCell.swift */; };
@@ -61,7 +61,6 @@
 		01187BD6A56E56548CF0096E /* TournamentEndCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TournamentEndCollectionViewCell.swift; sourceTree = "<group>"; };
 		05B2387E68DE726B0CD78286 /* IntendToVoteDialogCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntendToVoteDialogCoordinator.swift; sourceTree = "<group>"; };
 		06B7C4CCE346089D4B969B3D /* RankingCoordinator+RankingViewControllerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RankingCoordinator+RankingViewControllerCoordinator.swift"; sourceTree = "<group>"; };
-		0970B39C2C31D24000FA6913 /* RankingCoordinator+RankingConfigTabbarStateDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RankingCoordinator+RankingConfigTabbarStateDelegate.swift"; sourceTree = "<group>"; };
 		2272E2288608AF350CCD3B4C /* IntendToVoteDialogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntendToVoteDialogViewController.swift; sourceTree = "<group>"; };
 		22CAF4869F79BE74ABC6E364 /* RankingResultCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingResultCoordinator.swift; sourceTree = "<group>"; };
 		25C509003B425986512D10D2 /* IntendToVoteDialogCoordinator+IntendToVoteDialogViewControllerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "IntendToVoteDialogCoordinator+IntendToVoteDialogViewControllerCoordinator.swift"; sourceTree = "<group>"; };
@@ -69,6 +68,7 @@
 		33013916407E0850AD261A2A /* QuitTournamentDialogCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuitTournamentDialogCoordinator.swift; sourceTree = "<group>"; };
 		33823F9794E067BB652D02CD /* RankingFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingFactory.swift; sourceTree = "<group>"; };
 		3963D325305A7084BBC2C402 /* TournamentRoundCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TournamentRoundCollectionViewCell.swift; sourceTree = "<group>"; };
+		3ACC88DC37DF3160AE81C2AA /* RankingCoordinator+RankingConfigTabbarStateDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RankingCoordinator+RankingConfigTabbarStateDelegate.swift"; sourceTree = "<group>"; };
 		49E9277BE720A9EFACA047BE /* RankingResultFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingResultFactory.swift; sourceTree = "<group>"; };
 		4DA469756E9E7924C93A0AE6 /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
 		5761FB77EA2BCD471E90D73A /* TournamentCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TournamentCoordinator.swift; sourceTree = "<group>"; };
@@ -235,8 +235,8 @@
 			isa = PBXGroup;
 			children = (
 				B386D68CC70A9A69734B0E08 /* RankingCoordinator.swift */,
-				0970B39C2C31D24000FA6913 /* RankingCoordinator+RankingConfigTabbarStateDelegate.swift */,
 				C2235907CF1F02AFC5881E13 /* RankingCoordinator+IntendToVoteDialogCoordinatorDelegate.swift */,
+				3ACC88DC37DF3160AE81C2AA /* RankingCoordinator+RankingConfigTabbarStateDelegate.swift */,
 				E83EEE751A1E2BB07A0070E4 /* RankingCoordinator+RankingResultCoordinatorDelegate.swift */,
 				06B7C4CCE346089D4B969B3D /* RankingCoordinator+RankingViewControllerCoordinator.swift */,
 				DEBFB70C0756575A713D492E /* RankingCoordinator+TournamentCoordiantorDelegate.swift */,
@@ -306,6 +306,8 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
 				ORGANIZATIONNAME = ATeen;
+				TargetAttributes = {
+				};
 			};
 			buildConfigurationList = B342376EBCA2AFCF06DDAED1 /* Build configuration list for PBXProject "RankingFeature" */;
 			compatibilityVersion = "Xcode 14.0";
@@ -350,6 +352,7 @@
 				739CD2D0E0C9C5CCFBE901F4 /* QuitTournamentDialogCoordinator.swift in Sources */,
 				0707EDFDF314E51591DE7995 /* QuitTournamentDialogFactory.swift in Sources */,
 				B7BE522836381288E5204098 /* RankingCoordinator+IntendToVoteDialogCoordinatorDelegate.swift in Sources */,
+				74D180E4AF5C27DAF5E90D52 /* RankingCoordinator+RankingConfigTabbarStateDelegate.swift in Sources */,
 				279A4873A2F1398079F1C64F /* RankingCoordinator+RankingResultCoordinatorDelegate.swift in Sources */,
 				401869244406100412A97E0C /* RankingCoordinator+RankingViewControllerCoordinator.swift in Sources */,
 				2761642EC3AA6193EFB7BA74 /* RankingCoordinator+TournamentCoordiantorDelegate.swift in Sources */,
@@ -363,7 +366,6 @@
 				549D6FB98A7E9B30728C625E /* TournamentCoordinator.swift in Sources */,
 				B878873C911459BA121C8188 /* TournamentFactory.swift in Sources */,
 				B5338677A16E8F89F350935B /* RankingResultTableViewCell.swift in Sources */,
-				0970B39D2C31D24000FA6913 /* RankingCoordinator+RankingConfigTabbarStateDelegate.swift in Sources */,
 				8C6FCEC9BD87FF3D1B6A8721 /* RankingSectorTableViewCell.swift in Sources */,
 				0528352AD2F27155FBE17D94 /* SectorCollectionViewCell.swift in Sources */,
 				7507003B372B673482EB7BC6 /* TournamentEndCollectionViewCell.swift in Sources */,
@@ -453,10 +455,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					"-ObjC",
-				);
+				OTHER_LDFLAGS = "$(inherited) -ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ATeen.ATeen.RankingFeature;
 				PRODUCT_NAME = RankingFeature;
 				SDKROOT = iphoneos;
@@ -464,7 +463,10 @@
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = (
+					"$(inherited)",
+					DEBUG,
+				);
 				SWIFT_COMPILATION_MODE = singlefile;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -494,10 +496,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					"-ObjC",
-				);
+				OTHER_LDFLAGS = "$(inherited) -ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ATeen.ATeen.RankingFeature;
 				PRODUCT_NAME = RankingFeature;
 				SDKROOT = iphoneos;
