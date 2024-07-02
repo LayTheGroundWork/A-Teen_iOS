@@ -12,12 +12,18 @@ import Common
 import DesignSystem
 import UIKit
 
+public protocol CropImageViewControllerCoordinator: AnyObject {
+    func didSelectCheckButton(selectImage: UIImage)
+    func didFinish()
+}
+
 final class CropImageViewController: UIViewController, UIScrollViewDelegate {
     // MARK: - Private properties
     let selectImage: UIImage
     var originSpaceX: Double = 0.0
     var originSpaceY: Double = 0.0
     var originCropViewY: Double = 0.0
+    private weak var coordinator: CropImageViewControllerCoordinator?
     
     lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
@@ -33,7 +39,7 @@ final class CropImageViewController: UIViewController, UIScrollViewDelegate {
     private lazy var cancelButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(systemName: "arrow.left"), for: .normal)
-        button.tintColor = .white
+        button.tintColor = UIColor.white
         button.addTarget(self, action: #selector(didSelectCancelButton(_:)), for: .touchUpInside)
         return button
     }()
@@ -41,7 +47,7 @@ final class CropImageViewController: UIViewController, UIScrollViewDelegate {
     private lazy var checkButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(systemName: "checkmark"), for: .normal)
-        button.tintColor = .white
+        button.tintColor = UIColor.white
         button.addTarget(self, action: #selector(didSelectCheckButton(_:)), for: .touchUpInside)
         return button
     }()
@@ -64,8 +70,12 @@ final class CropImageViewController: UIViewController, UIScrollViewDelegate {
     }()
     
     // MARK: - Life Cycle
-    init(selectImage: UIImage) {
+    init(
+        selectImage: UIImage,
+        coordinator: CropImageViewControllerCoordinator
+    ) {
         self.selectImage = selectImage
+        self.coordinator = coordinator
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -150,7 +160,7 @@ final class CropImageViewController: UIViewController, UIScrollViewDelegate {
     
     // MARK: - Actions
     @objc func didSelectCancelButton(_ sender: UIButton) {
-        self.navigationController?.popViewController(animated: false)
+        coordinator?.didFinish()
     }
     
     @objc func didSelectCheckButton(_ sender: UIButton) {

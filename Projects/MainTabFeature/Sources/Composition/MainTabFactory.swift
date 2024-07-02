@@ -29,12 +29,16 @@ public protocol MainTabFactory {
 }
 
 public struct MainTabFactoryImp: MainTabFactory {
+    public let coordinatorProvider: CoordinatorProvider
     let appContainer: AppContainer?
     
-    public init(appContainer: AppContainer?) {
+    public init(
+        coordinatorProvider: CoordinatorProvider,
+        appContainer: AppContainer?
+    ) {
+        self.coordinatorProvider = coordinatorProvider
         self.appContainer = appContainer
     }
-    
     public func makeMainTabController() -> UITabBarController {
         let mainTabController = MainTabController()
         mainTabController.viewControllers = []
@@ -42,7 +46,7 @@ public struct MainTabFactoryImp: MainTabFactory {
     }
     
     public func makeLoginCoordinator(delegate: LogInCoordinatorDelegate) -> Coordinator {
-        let factory = LogInFactoryImp(appContainer: appContainer)
+        let factory = LogInFactoryImp(coordinatorProvider: coordinatorProvider, appContainer: appContainer)
         let navigationController = UINavigationController()
         let navigation = NavigationImp(rootViewController: navigationController)
         

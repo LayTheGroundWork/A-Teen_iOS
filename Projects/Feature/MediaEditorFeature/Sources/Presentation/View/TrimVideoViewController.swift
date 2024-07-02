@@ -13,12 +13,17 @@ import Common
 import DesignSystem
 import UIKit
 
+public protocol TrimVideoViewControllerCoordinator: AnyObject {
+    func didSelectChecButton(asset: AVAsset)
+    func didFinish()
+}
+
 final class TrimVideoControlViewController: UIViewController {
     // MARK: - Private properties
     private let asset: AVAsset?
     private var soundButtonToggleValue: Bool = true
-    
     private var timeObserverToken: Any?
+    private weak var coordinator: TrimVideoViewControllerCoordinator?
     
     private lazy var cancelButton: UIButton = {
         let button = UIButton()
@@ -104,8 +109,12 @@ final class TrimVideoControlViewController: UIViewController {
     }()
     
     // MARK: - Life Cycle
-    init(asset: AVAsset) {
+    init(
+        asset: AVAsset,
+        coordinator: TrimVideoViewControllerCoordinator
+    ) {
         self.asset = asset
+        self.coordinator = coordinator
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -335,7 +344,7 @@ final class TrimVideoControlViewController: UIViewController {
     }
     
     @objc func didSelectCancelButton(_ sender: UIButton) {
-        self.navigationController?.popViewController(animated: false)
+        coordinator?.didFinish()
     }
     
     @objc func didSelectSoundButton(_ sender: UIButton) {

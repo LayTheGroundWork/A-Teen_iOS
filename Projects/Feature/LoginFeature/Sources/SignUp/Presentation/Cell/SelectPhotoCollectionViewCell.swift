@@ -19,7 +19,7 @@ final class SelectPhotoCollectionViewCell: UICollectionViewCell {
     
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
-        label.text = "TEEN에서 자랑할\n사진이나 동영상을 추가해보세요"
+        label.text = AppLocalized.insertMediaText
         label.textAlignment = .left
         label.numberOfLines = 0
         label.font = UIFont.customFont(forTextStyle: .title3, weight: .bold)
@@ -28,7 +28,7 @@ final class SelectPhotoCollectionViewCell: UICollectionViewCell {
     
     private lazy var subTitleLabel: UILabel = {
         let label = UILabel()
-        label.text = "*최대 10개을 등록할 수 있어요"
+        label.text = AppLocalized.maxInsertMediaCountText
         label.textAlignment = .left
         label.textColor = DesignSystemAsset.gray01.color
         label.font = UIFont.customFont(forTextStyle: .footnote, weight: .regular)

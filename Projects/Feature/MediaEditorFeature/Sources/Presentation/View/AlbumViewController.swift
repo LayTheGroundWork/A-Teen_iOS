@@ -16,29 +16,29 @@ import UIKit
 
 final class AlbumViewController: UIViewController {
     // MARK: - Private properties
-    private let viewModel = CropViewModel()
+    private let viewModel = AlbumViewModel()
     private weak var coordinator: AlbumViewControllerCoordinator?
     
     private lazy var cancelButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(systemName: "xmark"), for: .normal)
-        button.tintColor = .white
+        button.tintColor = UIColor.white
         button.addTarget(self, action: #selector(didSelectCancelButton(_:)), for: .touchUpInside)
         return button
     }()
     
     private lazy var explanationLabel: UILabel = {
         let label = UILabel()
-        label.text = "A - TEEN은 사용자가 선택한 사진만 엑세스할 수 있습니다."
+        label.text = AppLocalized.accessMediaText
         label.textAlignment = .center
-        label.textColor = .white
+        label.textColor = UIColor.white
         label.font = UIFont.customFont(forTextStyle: .caption2, weight: .regular)
         return label
     }()
     
     private lazy var photoButton: UIButton = {
         let button = UIButton()
-        button.setTitle("사진", for: .normal)
+        button.setTitle(AppLocalized.photo, for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.backgroundColor = DesignSystemAsset.mainColor.color
         button.titleLabel?.font = UIFont.customFont(forTextStyle: .footnote, weight: .regular)
@@ -50,7 +50,7 @@ final class AlbumViewController: UIViewController {
     
     private lazy var videoButton: UIButton = {
         let button = UIButton()
-        button.setTitle("동영상", for: .normal)
+        button.setTitle(AppLocalized.video, for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.backgroundColor = .gray
         button.titleLabel?.font = UIFont.customFont(forTextStyle: .footnote, weight: .regular)
@@ -231,9 +231,8 @@ extension AlbumViewController: UICollectionViewDelegate {
             ) { asset, _ in
                 DispatchQueue.main.async {
                     guard let asset = asset else { return }
-                    let controller = TrimVideoControlViewController(asset: asset)
                     self.hideSpinner()
-                    self.navigationController?.pushViewController(controller, animated: true)
+                    self.coordinator?.didSelectVideo(asset: asset)
                 }
             }
         } else {
@@ -244,9 +243,8 @@ extension AlbumViewController: UICollectionViewDelegate {
                 version: .current
             ) { _, image in
                 DispatchQueue.main.async {
-                    let controller = CropImageViewController(selectImage: image)
                     self.hideSpinner()
-                    self.navigationController?.pushViewController(controller, animated: true)
+                    self.coordinator?.didSelectPhoto(selectImage: image)
                 }
             }
         }

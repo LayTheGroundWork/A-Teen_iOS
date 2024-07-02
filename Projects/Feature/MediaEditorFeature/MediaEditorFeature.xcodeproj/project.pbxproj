@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 55;
+	objectVersion = 56;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -11,6 +11,14 @@
 		0AAEE4625DAB2204F40C1B58 /* CropImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC647165BF7734B6B6EF772E /* CropImageViewController.swift */; };
 		2A8374B03B6080234372C0EC /* ConvertToMediaService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F8394B3A84570DB8FE6D70 /* ConvertToMediaService.swift */; };
 		3C6D524FE41AD8F120FD2281 /* VideoTrimmerThumb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E3A88A30597CB09CF4C2243 /* VideoTrimmerThumb.swift */; };
+		41A8BA542C345E4900DDB0B7 /* CropImageCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A8BA532C345E4900DDB0B7 /* CropImageCoordinator.swift */; };
+		41A8BA562C345E5500DDB0B7 /* TrimVideoCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A8BA552C345E5500DDB0B7 /* TrimVideoCoordinator.swift */; };
+		41A8BA582C345E5E00DDB0B7 /* CropImageFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A8BA572C345E5E00DDB0B7 /* CropImageFactory.swift */; };
+		41A8BA5A2C345E6700DDB0B7 /* TrimVideoFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A8BA592C345E6700DDB0B7 /* TrimVideoFactory.swift */; };
+		41A8BA5C2C34631900DDB0B7 /* AlbumCoordinatorImp+CropImageCoordinatorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A8BA5B2C34631900DDB0B7 /* AlbumCoordinatorImp+CropImageCoordinatorDelegate.swift */; };
+		41A8BA5E2C3463E800DDB0B7 /* CropImageCoordinator+CropImageViewControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A8BA5D2C3463E800DDB0B7 /* CropImageCoordinator+CropImageViewControllerCoordinator.swift */; };
+		41A8BA602C3465FB00DDB0B7 /* AlbumCoordinatorImp+AlbumViewControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A8BA5F2C3465FB00DDB0B7 /* AlbumCoordinatorImp+AlbumViewControllerCoordinator.swift */; };
+		41A8BA622C34695000DDB0B7 /* TrimVideoCoordinator+TrimVideoViewControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A8BA612C34695000DDB0B7 /* TrimVideoCoordinator+TrimVideoViewControllerCoordinator.swift */; };
 		49D4614D1046FB5B3B28867F /* FeatureDependency.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16D3C780C62396FE2D105EC9 /* FeatureDependency.framework */; };
 		55C869454C8D373F2082745B /* AlbumCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 199C7289ADA6F3A4D2EA0A9A /* AlbumCollectionViewCell.swift */; };
 		5B56C2D14156851ECFC6C099 /* AlbumFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B719DD31722B13F90907467 /* AlbumFactory.swift */; };
@@ -23,7 +31,7 @@
 		A76462B8DC077971A15EC2A2 /* SelectCategoryVideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F4623969970F91EE6BB2832 /* SelectCategoryVideoViewController.swift */; };
 		AE51F018C64B34F617F31B5B /* AssetInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5010F84FD3F93AE84B91D82C /* AssetInfo.swift */; };
 		B799350C756CA0E5C4ADD17F /* CustomCropView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2D47AE927FBC00236158D1D /* CustomCropView.swift */; };
-		F8B313E258E8F59C5835C9CA /* CropViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE3782C35E59D2FDE225417 /* CropViewModel.swift */; };
+		F8B313E258E8F59C5835C9CA /* AlbumViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE3782C35E59D2FDE225417 /* AlbumViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -45,8 +53,16 @@
 		199C7289ADA6F3A4D2EA0A9A /* AlbumCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumCollectionViewCell.swift; sourceTree = "<group>"; };
 		21A46EBC82171159EA1AC990 /* AlbumService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumService.swift; sourceTree = "<group>"; };
 		242E9658D8F91F08012F3BEA /* MediaEditorFeature.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MediaEditorFeature.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		2FE3782C35E59D2FDE225417 /* CropViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CropViewModel.swift; sourceTree = "<group>"; };
+		2FE3782C35E59D2FDE225417 /* AlbumViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumViewModel.swift; sourceTree = "<group>"; };
 		3806785DB70238113CF5ECC1 /* Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
+		41A8BA532C345E4900DDB0B7 /* CropImageCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CropImageCoordinator.swift; sourceTree = "<group>"; };
+		41A8BA552C345E5500DDB0B7 /* TrimVideoCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrimVideoCoordinator.swift; sourceTree = "<group>"; };
+		41A8BA572C345E5E00DDB0B7 /* CropImageFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CropImageFactory.swift; sourceTree = "<group>"; };
+		41A8BA592C345E6700DDB0B7 /* TrimVideoFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrimVideoFactory.swift; sourceTree = "<group>"; };
+		41A8BA5B2C34631900DDB0B7 /* AlbumCoordinatorImp+CropImageCoordinatorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AlbumCoordinatorImp+CropImageCoordinatorDelegate.swift"; sourceTree = "<group>"; };
+		41A8BA5D2C3463E800DDB0B7 /* CropImageCoordinator+CropImageViewControllerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CropImageCoordinator+CropImageViewControllerCoordinator.swift"; sourceTree = "<group>"; };
+		41A8BA5F2C3465FB00DDB0B7 /* AlbumCoordinatorImp+AlbumViewControllerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AlbumCoordinatorImp+AlbumViewControllerCoordinator.swift"; sourceTree = "<group>"; };
+		41A8BA612C34695000DDB0B7 /* TrimVideoCoordinator+TrimVideoViewControllerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TrimVideoCoordinator+TrimVideoViewControllerCoordinator.swift"; sourceTree = "<group>"; };
 		5010F84FD3F93AE84B91D82C /* AssetInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetInfo.swift; sourceTree = "<group>"; };
 		5F4623969970F91EE6BB2832 /* SelectCategoryVideoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCategoryVideoViewController.swift; sourceTree = "<group>"; };
 		66A8994654409088760D8863 /* AlbumViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumViewController.swift; sourceTree = "<group>"; };
@@ -124,6 +140,14 @@
 			children = (
 				C3BAEBC37212CB241AE08FBA /* AlbumCoordinatorImp.swift */,
 				0B719DD31722B13F90907467 /* AlbumFactory.swift */,
+				41A8BA532C345E4900DDB0B7 /* CropImageCoordinator.swift */,
+				41A8BA552C345E5500DDB0B7 /* TrimVideoCoordinator.swift */,
+				41A8BA572C345E5E00DDB0B7 /* CropImageFactory.swift */,
+				41A8BA592C345E6700DDB0B7 /* TrimVideoFactory.swift */,
+				41A8BA5B2C34631900DDB0B7 /* AlbumCoordinatorImp+CropImageCoordinatorDelegate.swift */,
+				41A8BA5D2C3463E800DDB0B7 /* CropImageCoordinator+CropImageViewControllerCoordinator.swift */,
+				41A8BA5F2C3465FB00DDB0B7 /* AlbumCoordinatorImp+AlbumViewControllerCoordinator.swift */,
+				41A8BA612C34695000DDB0B7 /* TrimVideoCoordinator+TrimVideoViewControllerCoordinator.swift */,
 			);
 			path = Composition;
 			sourceTree = "<group>";
@@ -170,7 +194,7 @@
 		B2D54928A06EB5A544B0BEB7 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				2FE3782C35E59D2FDE225417 /* CropViewModel.swift */,
+				2FE3782C35E59D2FDE225417 /* AlbumViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -244,8 +268,6 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
 				ORGANIZATIONNAME = ATeen;
-				TargetAttributes = {
-				};
 			};
 			buildConfigurationList = ECDC9D69D4A6975B88A34BCB /* Build configuration list for PBXProject "MediaEditorFeature" */;
 			compatibilityVersion = "Xcode 14.0";
@@ -284,18 +306,26 @@
 				063D3D607BB1B5D6D90C0960 /* VideoTrimmer.swift in Sources */,
 				3C6D524FE41AD8F120FD2281 /* VideoTrimmerThumb.swift in Sources */,
 				71A0B19E32CC72AE8E1107D4 /* AlbumCoordinatorImp.swift in Sources */,
+				41A8BA562C345E5500DDB0B7 /* TrimVideoCoordinator.swift in Sources */,
+				41A8BA5C2C34631900DDB0B7 /* AlbumCoordinatorImp+CropImageCoordinatorDelegate.swift in Sources */,
+				41A8BA5E2C3463E800DDB0B7 /* CropImageCoordinator+CropImageViewControllerCoordinator.swift in Sources */,
 				5B56C2D14156851ECFC6C099 /* AlbumFactory.swift in Sources */,
 				9A5894303A2315BB274322ED /* Album.swift in Sources */,
+				41A8BA542C345E4900DDB0B7 /* CropImageCoordinator.swift in Sources */,
 				AE51F018C64B34F617F31B5B /* AssetInfo.swift in Sources */,
 				55C869454C8D373F2082745B /* AlbumCollectionViewCell.swift in Sources */,
+				41A8BA582C345E5E00DDB0B7 /* CropImageFactory.swift in Sources */,
 				84E29E159EBE4830C2D208EA /* AlbumViewController.swift in Sources */,
+				41A8BA5A2C345E6700DDB0B7 /* TrimVideoFactory.swift in Sources */,
 				0AAEE4625DAB2204F40C1B58 /* CropImageViewController.swift in Sources */,
 				9783D45738D57157779DA200 /* SelectCategoryPhotoViewController.swift in Sources */,
 				A76462B8DC077971A15EC2A2 /* SelectCategoryVideoViewController.swift in Sources */,
 				804B300875012E8BFFD7F40C /* TrimVideoViewController.swift in Sources */,
-				F8B313E258E8F59C5835C9CA /* CropViewModel.swift in Sources */,
+				41A8BA622C34695000DDB0B7 /* TrimVideoCoordinator+TrimVideoViewControllerCoordinator.swift in Sources */,
+				F8B313E258E8F59C5835C9CA /* AlbumViewModel.swift in Sources */,
 				7F6B6F36911075095E790B99 /* AlbumService.swift in Sources */,
 				2A8374B03B6080234372C0EC /* ConvertToMediaService.swift in Sources */,
+				41A8BA602C3465FB00DDB0B7 /* AlbumCoordinatorImp+AlbumViewControllerCoordinator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -322,7 +352,10 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				OTHER_LDFLAGS = "$(inherited) -ObjC";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ATeen.ATeen.MediaEditorFeature;
 				PRODUCT_NAME = MediaEditorFeature;
 				SDKROOT = iphoneos;
@@ -471,7 +504,10 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				OTHER_LDFLAGS = "$(inherited) -ObjC";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ATeen.ATeen.MediaEditorFeature;
 				PRODUCT_NAME = MediaEditorFeature;
 				SDKROOT = iphoneos;
@@ -479,10 +515,7 @@
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = (
-					"$(inherited)",
-					DEBUG,
-				);
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG";
 				SWIFT_COMPILATION_MODE = singlefile;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;

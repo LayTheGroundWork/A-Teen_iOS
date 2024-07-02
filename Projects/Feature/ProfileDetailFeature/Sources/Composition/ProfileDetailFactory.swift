@@ -9,7 +9,11 @@ import Common
 import FeatureDependency
 import UIKit
 
-public struct ProfileDetailFactoryImp {
+public protocol ProfileDetailFactory {
+     func makeProfileDetailViewController(coordinator: ProfileDetailViewControllerCoordinator) -> UIViewController
+}
+
+public struct ProfileDetailFactoryImp: ProfileDetailFactory {
     private(set) var frame: CGRect
     private(set) var todayTeen: TodayTeen
     
@@ -17,15 +21,15 @@ public struct ProfileDetailFactoryImp {
         self.frame = frame
         self.todayTeen = todayTeen
     }
-    
-    public func makeProfileDetailViewController(coordinator: ProfileDetailCoordinatorImp) -> UIViewController {
+//    
+    public func makeProfileDetailViewController(coordinator: ProfileDetailViewControllerCoordinator) -> UIViewController {
         let viewModel = ProfileDetailViewModel()
         let controller = ProfileDetailViewController(
             viewModel: viewModel,
             coordinator: coordinator,
             frame: frame,
             todayTeen: todayTeen)
-        
+    
         controller.modalPresentationStyle = .overFullScreen
         
         return controller

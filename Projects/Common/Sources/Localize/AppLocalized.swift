@@ -24,6 +24,8 @@ public enum AppLocalized {
     public static let okGoodButton = "좋아요!"
     public static let noButton = "아니요"
     public static let checkButton = "확인"
+    public static let photo = "사진"
+    public static let video = "동영상"
     
     // MARK: - AboutATeenTableViewCell
     public static let teenTitle = "Teen"
@@ -115,6 +117,15 @@ public enum AppLocalized {
     public static let userBirthSelectButton = "태어난 날을 선택해주세요"
     public static let userBirthServiceTermsButton = "서비스 약관 바로 보기"
     public static let searchSchoolTitle = "다니고 있는\n학교를 알려주세요"
+    
+    // MARK: - Login / SelectPhoto
+    public static let insertMediaText = "TEEN에서 자랑할\n사진이나 동영상을 추가해보세요"
+    public static let maxInsertMediaCountText = "*최대 10개을 등록할 수 있어요"
+    
+    // MARK: - MediaEditor
+    public static let accessMediaText = "A - TEEN은 사용자가 선택한 사진만 엑세스할 수 있습니다."
+    public static let selectPhotoCategoryText = "자랑할 사진의 카테고리를 선택해보세요!"
+    public static let selectVideoCategoryText = "자랑할 영상의 카테고리를 선택해보세요!"
     
 }
 

@@ -10,10 +10,10 @@ import FeatureDependency
 import UIKit
 
 public protocol SignUpFactory {
-    func makeSignUpViewController(viewModel: LoginBirthViewModel, coordinator: SignUpCoordinator) -> UIViewController
+    func makeSignUpViewController(viewModel: SignUpViewModel, coordinator: SignUpCoordinator) -> UIViewController
     func makeSelectBirthCoordinator(
         delegate: SelectBirthCoordinatorDelegate,
-        viewModel: LoginBirthViewModel,
+        viewModel: SignUpViewModel,
         beforeYear: String,
         beforeMonth: String,
         beforeDay: String) -> Coordinator
@@ -21,7 +21,7 @@ public protocol SignUpFactory {
 
 public struct SignUpFactoryImp: SignUpFactory {
     public func makeSignUpViewController(
-        viewModel: LoginBirthViewModel,
+        viewModel: SignUpViewModel,
         coordinator: SignUpCoordinator
     ) -> UIViewController {
         let controller = SignUpViewController(viewModel: viewModel, coordinator: coordinator)
@@ -30,7 +30,7 @@ public struct SignUpFactoryImp: SignUpFactory {
     
     public func makeSelectBirthCoordinator(
         delegate: SelectBirthCoordinatorDelegate,
-        viewModel: LoginBirthViewModel,
+        viewModel: SignUpViewModel,
         beforeYear: String,
         beforeMonth: String,
         beforeDay: String

@@ -1,5 +1,5 @@
 //
-//  CropViewModel.swift
+//  AlbumViewModel.swift
 //  MediaEditorFeature
 //
 //  Created by 노주영 on 7/2/24.
@@ -10,7 +10,7 @@ import Common
 import Photos
 import UIKit
 
-class CropViewModel {
+class AlbumViewModel {
     var albums: [PHFetchResult<PHAsset>] = []
     var photos: [AssetInfo] = []
     
@@ -20,7 +20,7 @@ class CropViewModel {
 }
 
 // MARK: - PhotoViewController
-extension CropViewModel {
+extension AlbumViewModel {
     func loadAlbums(
         mediaType: MediaType,
         completion: @escaping () -> Void

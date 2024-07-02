@@ -9,6 +9,7 @@ import FeatureDependency
 import Foundation
 
 extension SignUpCoordinator: SignUpViewControllerCoordinator {
+
     public func didFinish() {
         delegate?.didFinish(childCoordinator: self)
     }
@@ -35,4 +36,17 @@ extension SignUpCoordinator: SignUpViewControllerCoordinator {
     public func didSelectService() {
         print("123421412")
     }
+    
+    func didSelectCell(item: Int) {
+        let albumCoordinator = coordinatorProvider.makeAlbumCoordinator(delegate: self)
+        addChildCoordinatorStart(albumCoordinator)
+        navigation.present(
+            albumCoordinator.navigation.rootViewController,
+            animated: true)
+        albumCoordinator.navigation.dismissNavigation = { [weak self] in
+            self?.removeChildCoordinator(albumCoordinator)
+        }
+    }
+    
 }
+

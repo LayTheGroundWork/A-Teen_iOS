@@ -9,35 +9,34 @@ import Common
 import FeatureDependency
 import UIKit
 
-public final class ProfileDetailCoordinatorImp: Coordinator {
-    public var navigation: Navigation
-    public let coordinatorProvider: CoordinatorProvider
-    private weak var delegate: ProfileDetailCoordinatorDelegate?
-    public var childCoordinators: [Coordinator]
+public final class ProfileDetailCoordinatorImp: ProfileDetailCoordinator {
+    public let factory: ProfileDetailFactory
     public let frame: CGRect
     public let todayTeen: TodayTeen
+    public var navigation: Navigation
+    public var childCoordinators: [Coordinator]
+    
+    private weak var delegate: ProfileDetailCoordinatorDelegate?
     
     public init(
-        navigation: Navigation,
-        coordinatorProvider: CoordinatorProvider,
-        delegate: ProfileDetailCoordinatorDelegate,
-        childCoordinators: [Coordinator],
+        factory: ProfileDetailFactory,
         frame: CGRect,
-        todayTeen: TodayTeen
+        todayTeen: TodayTeen,
+        navigation: Navigation,
+        childCoordinators: [Coordinator],
+        delegate: ProfileDetailCoordinatorDelegate
     ) {
-        self.navigation = navigation
-        self.coordinatorProvider = coordinatorProvider
-        self.delegate = delegate
-        self.childCoordinators = childCoordinators
+        self.factory = factory
         self.frame = frame
         self.todayTeen = todayTeen
+        self.navigation = navigation
+        self.childCoordinators = childCoordinators
+        self.delegate = delegate
     }
     
     public func start() {
-        let controller = coordinatorProvider.makeProfileDetailViewController(
-            coordinator: self,
-            frame: frame,
-            todayTeen: todayTeen)
+        let controller = factory.makeProfileDetailViewController(
+            coordinator: self)
         navigation.viewControllers = [controller]
     }
 }

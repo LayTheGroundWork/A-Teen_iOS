@@ -56,15 +56,7 @@ final class SelectCategoryVideoViewController: UIViewController {
         let label = UILabel()
         label.textColor = UIColor.white
         label.font = .customFont(forTextStyle: .callout, weight: .regular)
-        label.text = "자랑할 영상의 카테고리를 선택해보세요!"
-        return label
-    }()
-    
-    private lazy var selectCategoryContentLabel: UILabel = {
-        let label = UILabel()
-        label.textColor = DesignSystemAsset.gray01.color
-        label.font = .customFont(forTextStyle: .footnote, weight: .regular)
-        label.text = "여러 개의 태그를 선택해도 좋아요!"
+        label.text = AppLocalized.selectVideoCategoryText
         return label
     }()
     
@@ -113,7 +105,6 @@ final class SelectCategoryVideoViewController: UIViewController {
         view.addSubview(checkButton)
         view.addSubview(videoBackgroundView)
         view.addSubview(selectCategoryTitleLabel)
-        view.addSubview(selectCategoryContentLabel)
         view.addSubview(verticalStackView)
     }
     
@@ -141,13 +132,8 @@ final class SelectCategoryVideoViewController: UIViewController {
             make.centerX.equalToSuperview()
         }
         
-        selectCategoryContentLabel.snp.makeConstraints { make in
-            make.top.equalTo(selectCategoryTitleLabel.snp.bottom).offset(4)
-            make.centerX.equalToSuperview()
-        }
-        
         verticalStackView.snp.makeConstraints { make in
-            make.top.equalTo(selectCategoryContentLabel.snp.bottom).offset(32)
+            make.top.equalTo(selectCategoryTitleLabel.snp.bottom).offset(50)
             make.centerX.equalToSuperview()
             make.width.equalTo(UIScreen.main.bounds.width * 0.65)
             make.height.equalTo(UIScreen.main.bounds.width * 0.65 * 0.39)
