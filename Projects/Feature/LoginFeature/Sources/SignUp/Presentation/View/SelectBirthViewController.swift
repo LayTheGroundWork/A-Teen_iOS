@@ -27,7 +27,7 @@ final class SelectBirthViewController: UIViewController {
     
     private var alertViewHeightAnchor: Constraint?
     
-    private var viewModel: LoginBirthViewModel
+    private var viewModel: SignUpViewModel
     private weak var coordinator: SelectBirthViewControllerCoordinator?
     
     private lazy var alertView: UIView = {
@@ -83,7 +83,7 @@ final class SelectBirthViewController: UIViewController {
     // MARK: - Life Cycle
     init(
         coordinator: SelectBirthViewControllerCoordinator,
-        viewModel: LoginBirthViewModel,
+        viewModel: SignUpViewModel,
         beforeYear: String,
         beforeMonth: String,
         beforeDay: String

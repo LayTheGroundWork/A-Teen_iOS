@@ -19,7 +19,7 @@ final class UserBirthCollectionViewCell: UICollectionViewCell {
     // MARK: - Public properties
     
     // MARK: - Private properties
-    private var viewModel: LoginBirthViewModel?
+    private var viewModel: SignUpViewModel?
     private weak var coordinator: SignUpViewControllerCoordinator?
     private weak var delegate: UserBirthCollectionViewCellDelegate?
     
@@ -109,7 +109,7 @@ final class UserBirthCollectionViewCell: UICollectionViewCell {
     
     // MARK: - Actions
     func setProperties(
-        viewModel: LoginBirthViewModel,
+        viewModel: SignUpViewModel,
         coordinator: SignUpViewControllerCoordinator,
         delegate: UserBirthCollectionViewCellDelegate
     ) {

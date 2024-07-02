@@ -19,7 +19,7 @@ final class SearchSchoolCollectionViewCell: UICollectionViewCell {
     // MARK: - Public properties
     
     // MARK: - Private properties
-    private var viewModel = LoginBirthViewModel()
+    private var viewModel = SignUpViewModel()
     private weak var delegate: SearchSchoolCollectionViewCellDelegate?
     
     var customIndicatorViewTopAnchor: Constraint?
@@ -170,7 +170,7 @@ final class SearchSchoolCollectionViewCell: UICollectionViewCell {
     // MARK: - Actions
     func setProperties(
         delegate: SearchSchoolCollectionViewCellDelegate,
-        viewModel: LoginBirthViewModel
+        viewModel: SignUpViewModel
     ) {
         self.delegate = delegate
         self.viewModel = viewModel

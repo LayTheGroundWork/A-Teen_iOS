@@ -44,6 +44,9 @@
             location = "group:MainFeature/MainFeature.xcodeproj">
          </FileRef>
          <FileRef
+            location = "group:MediaEditorFeature/MediaEditorFeature.xcodeproj">
+         </FileRef>
+         <FileRef
             location = "group:ProfileDetailFeature/ProfileDetailFeature.xcodeproj">
          </FileRef>
          <FileRef
