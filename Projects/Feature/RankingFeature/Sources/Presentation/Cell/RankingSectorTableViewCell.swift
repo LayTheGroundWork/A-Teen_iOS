@@ -71,20 +71,19 @@ extension RankingSectorTableViewCell: UICollectionViewDataSource {
         // 우승자 라벨 함수
         func winnerLabelText(index: Int) {
             let reversedIndex = collectionView.numberOfItems(inSection: indexPath.section) - (indexPath.item )
-            if let crownImage = UIImage(systemName: "crown.fill") {
-                let attachment = NSTextAttachment()
-                attachment.image = crownImage.withTintColor(.white)
-                attachment.bounds = CGRect(x: 0, y: -3, width: 20, height: 20)
-                
-                let attachmentString = NSAttributedString(attachment: attachment)
-                let textString = index == 1 ? NSAttributedString(string: " 이번주 우승자") : NSAttributedString(string: " \(reversedIndex)회 우승자")
-                
-                let completeText = NSMutableAttributedString()
-                completeText.append(attachmentString)
-                completeText.append(textString)
-                
-                cell.winnerLabel.attributedText = completeText
-            }
+            let crownImage = DesignSystemAsset.crownWhiteIcon.image
+            let attachment = NSTextAttachment()
+            attachment.image = crownImage.withTintColor(UIColor.white)
+            attachment.bounds = CGRect(x: 0,
+                                       y: -2,
+                                       width: ViewValues.defaultPadding,
+                                       height: ViewValues.defaultPadding)
+            let attachmentString = NSAttributedString(attachment: attachment)
+            let textString = index == 1 ? NSAttributedString(string: " 지난 주 우승자") : NSAttributedString(string: " \(reversedIndex)회 우승자")
+            let completeText = NSMutableAttributedString()
+            completeText.append(attachmentString)
+            completeText.append(textString)
+            cell.winnerLabel.attributedText = completeText
         }
         
         switch indexPath.item {
@@ -115,10 +114,22 @@ extension RankingSectorTableViewCell: UICollectionViewDelegate {
         _ collectionView: UICollectionView,
         didSelectItemAt indexPath: IndexPath
     ) {
+        var session: String
+        switch indexPath.item {
         // 첫번째 셀은 투표하기 버튼 외에는 화면 이동 X
-        guard indexPath.item != 0 else { return }
+        case 0:
+            return
         // 나머지 셀 : RankingResult 이동
-        delegate?.didTapRankingCollectionViewCell(sector: sector ?? "")
+        case 1:
+            session = "지난 주"
+        default:
+            let reversedIndex = collectionView.numberOfItems(inSection: indexPath.section) - indexPath.item
+            session = "\(reversedIndex)회차"
+        }
+        delegate?.didTapRankingCollectionViewCell(
+            sector: sector ?? "",
+            session: session
+        )
     }
 }
 

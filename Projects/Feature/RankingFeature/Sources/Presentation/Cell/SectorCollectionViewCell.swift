@@ -32,6 +32,7 @@ final class SectorCollectionViewCell: UICollectionViewCell {
     
     lazy var voteButton: UIButton = {
         let button = UIButton(type: .system)
+        // TODO: - 투표를 이미 했다면, "결과 확인하기" 로 버튼 Text 변경되도록 수정 필요
         button.setTitle("투표 참여하기", for: .normal)
         button.titleLabel?.font = .customFont(forTextStyle: .title3, weight: .regular)
         button.backgroundColor = UIColor.black.withAlphaComponent(0.3)
@@ -57,19 +58,6 @@ final class SectorCollectionViewCell: UICollectionViewCell {
         label.textColor = UIColor.white
         label.textAlignment = .center
         label.font = .customFont(forTextStyle: .callout, weight: .regular)
-        let crownImage = DesignSystemAsset.crownWhiteIcon.image
-        let attachment = NSTextAttachment()
-        attachment.image = crownImage.withTintColor(UIColor.white)
-        attachment.bounds = CGRect(x: 0,
-                                   y: -3,
-                                   width: ViewValues.defaultPadding,
-                                   height: ViewValues.defaultPadding)
-        let attachmentString = NSAttributedString(attachment: attachment)
-        let textString = NSAttributedString(string: " 1회 우승자")
-        let completeText = NSMutableAttributedString()
-        completeText.append(attachmentString)
-        completeText.append(textString)
-        label.attributedText = completeText
         return label
     }()
     
@@ -122,6 +110,10 @@ final class SectorCollectionViewCell: UICollectionViewCell {
     }
     
     @objc private func didTapVoteButton() {
+        // TODO: - 투표를 이미 했다면, 현재 진행중인 투표 현황을 볼 수 있도록 RankingResult 로 이동
+        // ...
+        
+        // 투표 안했을 경우, 아래 로직 수행
         guard let sector = sector else { return }
         delegate?.didTapVoteButton(sector: sector)
     }

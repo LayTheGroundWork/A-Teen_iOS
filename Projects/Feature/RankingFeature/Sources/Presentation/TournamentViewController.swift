@@ -51,6 +51,7 @@ enum TournamentRound: String, CaseIterable {
 
 public protocol TournamentViewControllerCoordinator: AnyObject { 
     func quitTournament()
+    func finishTournament(sector: String, session: String)
     func openQuitDialog()
     func configTabbarState(view: RankingFeatureViewNames)
 }
@@ -117,6 +118,7 @@ public final class TournamentViewController: UIViewController {
     
     public override func viewWillAppear(_ animated: Bool) {
         coordinator?.configTabbarState(view: .tournament)
+        navigationController?.isNavigationBarHidden = false
     }
     
     init(
@@ -214,6 +216,7 @@ extension TournamentViewController: UICollectionViewDataSource {
                                school: "서울 중학교",
                                age: 16,
                                image: DesignSystemAsset.whiteGlass.image)
+            cell.sector = sector
             cell.delegate = coordinator
             return cell
         }

@@ -23,7 +23,9 @@ public protocol RankingFactory {
     func makeRankingResultCoordinator(
         navigation: Navigation,
         delegate: RankingResultCoordinatorDelegate,
-        sector: String
+        withAnimation: Bool,
+        sector: String,
+        session: String
     ) -> Coordinator
     
     func makeTournamentCoordinator(
@@ -65,14 +67,19 @@ public struct RankingFactoryImp: RankingFactory {
     public func makeRankingResultCoordinator(
         navigation: Navigation,
         delegate: RankingResultCoordinatorDelegate,
-        sector: String
+        withAnimation: Bool,
+        sector: String,
+        session: String
     ) -> Coordinator {
         let factory = RankingResultFactoryImp(appContainer: appContainer)
         return RankingResultCoordinator(
             navigation: navigation,
             factory: factory,
             delegate: delegate,
-            sector: sector)
+            withAnimation: withAnimation,
+            sector: sector,
+            session: session
+        )
     }
     
     public func makeTournamentCoordinator(

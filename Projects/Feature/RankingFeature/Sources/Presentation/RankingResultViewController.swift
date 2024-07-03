@@ -18,6 +18,7 @@ public protocol RankingResultViewControllerCoordinator: AnyObject {
 public final class RankingResultViewController: UIViewController {
     private weak var coordinator: RankingResultViewControllerCoordinator?
     let sector: String
+    let session: String
     
     // Sample data with 16 items, proportions summing to 90
     private let rankings = [
@@ -60,7 +61,7 @@ public final class RankingResultViewController: UIViewController {
                          for: .touchUpInside)
 
         let label = UILabel()
-        label.text = "이번 주 대결"
+        label.text = "\(session) 대결"
         label.textColor = UIColor.white
         label.font = .customFont(forTextStyle: .title3, weight: .bold)
         label.textAlignment = .center
@@ -133,14 +134,17 @@ public final class RankingResultViewController: UIViewController {
     
     public override func viewWillAppear(_ animated: Bool) {
         coordinator?.configTabbarState(view: .rankingResult)
+        navigationController?.isNavigationBarHidden = false
     }
         
     init(
         coordinator: RankingResultViewControllerCoordinator,
-        sector: String
+        sector: String,
+        session: String
     ) {
         self.coordinator = coordinator
         self.sector = sector
+        self.session = session
         super.init(nibName: nil, bundle: nil)
     }
     

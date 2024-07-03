@@ -11,7 +11,7 @@ import UIKit
 
 public protocol RankingViewControllerCoordinator: AnyObject {
     func didTapVoteButton(sector: String)
-    func didTapRankingCollectionViewCell(sector: String)
+    func didTapRankingCollectionViewCell(sector: String, session: String)
     func configTabbarState(view: RankingFeatureViewNames)
 }
 
@@ -96,7 +96,6 @@ public final class RankingViewController: UIViewController {
     public override func viewDidLoad() {
           super.viewDidLoad()
           view.backgroundColor = .systemBackground
-          navigationController?.isNavigationBarHidden = true
           
           homeFeedTable.delegate = self
           homeFeedTable.dataSource = self
@@ -105,48 +104,52 @@ public final class RankingViewController: UIViewController {
           configLayout()
           setupCategoryButtons()
       }
-      
-      private func configUserInterface() {
-          view.addSubview(homeFeedTable)
-          headerView.addSubview(heroImageView)
-          headerView.addSubview(textLabel)
-          headerView.addSubview(categoryScrollView)
-          categoryScrollView.addSubview(categoryStackView)
-          headerView.addSubview(titleLabel)
-      }
-      
-      private func configLayout() {
-          categoryScrollView.snp.makeConstraints { make in
-              make.top.equalTo(heroImageView.snp.bottom).offset(40)
-              make.leading.trailing.equalToSuperview()
-              make.height.equalTo(40)
-          }
-          
-          categoryStackView.snp.makeConstraints { make in
-              make.edges.equalToSuperview()
-              make.height.equalToSuperview()
-          }
-          
-          homeFeedTable.snp.makeConstraints { make in
-              make.edges.equalToSuperview()
-          }
-          
-          heroImageView.snp.makeConstraints { make in
-              make.top.leading.trailing.equalToSuperview()
-              make.height.equalTo(303)
-          }
-          
-          textLabel.snp.makeConstraints { make in
-              make.leading.equalTo(heroImageView).offset(16)
-              make.top.equalTo(heroImageView.snp.bottom).offset(-69)
-          }
-          
-          titleLabel.snp.makeConstraints { make in
-              make.top.equalToSuperview().offset(60)
-              make.leading.equalToSuperview().offset(16)
-              make.height.equalTo(30)
-          }
-      }
+    
+    public override func viewWillAppear(_ animated: Bool) {
+        navigationController?.isNavigationBarHidden = true
+    }
+    
+    private func configUserInterface() {
+        view.addSubview(homeFeedTable)
+        headerView.addSubview(heroImageView)
+        headerView.addSubview(textLabel)
+        headerView.addSubview(categoryScrollView)
+        categoryScrollView.addSubview(categoryStackView)
+        headerView.addSubview(titleLabel)
+    }
+    
+    private func configLayout() {
+        categoryScrollView.snp.makeConstraints { make in
+            make.top.equalTo(heroImageView.snp.bottom).offset(40)
+            make.leading.trailing.equalToSuperview()
+            make.height.equalTo(40)
+        }
+        
+        categoryStackView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+            make.height.equalToSuperview()
+        }
+        
+        homeFeedTable.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
+        
+        heroImageView.snp.makeConstraints { make in
+            make.top.leading.trailing.equalToSuperview()
+            make.height.equalTo(303)
+        }
+        
+        textLabel.snp.makeConstraints { make in
+            make.leading.equalTo(heroImageView).offset(16)
+            make.top.equalTo(heroImageView.snp.bottom).offset(-69)
+        }
+        
+        titleLabel.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(60)
+            make.leading.equalToSuperview().offset(16)
+            make.height.equalTo(30)
+        }
+    }
     
     private func setupCategoryButtons() {
         for (index, category) in sectionTitles.enumerated() {
