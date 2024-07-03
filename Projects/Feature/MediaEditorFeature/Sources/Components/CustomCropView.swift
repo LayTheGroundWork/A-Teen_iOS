@@ -26,7 +26,7 @@ final class CustomCropView: UIView {
         self.imageSize = imageSize
         super.init(frame: frame)
         
-        self.linesChangeState(isCropping: true)
+        self.linesChangeState(isCropping: false)
         
         self.addSubview(firstLineView)
         self.addSubview(secondLineView)

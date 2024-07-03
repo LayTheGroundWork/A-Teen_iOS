@@ -52,6 +52,20 @@ final class CropImageViewController: UIViewController, UIScrollViewDelegate {
         return button
     }()
     
+    private lazy var topView: UIView = {
+        let view = UIView()
+        view.backgroundColor = UIColor.black.withAlphaComponent(0.5)
+        view.isUserInteractionEnabled = true
+        return view
+    }()
+    
+    private lazy var bottomView: UIView = {
+        let view = UIView()
+        view.backgroundColor = UIColor.black.withAlphaComponent(0.5)
+        view.isUserInteractionEnabled = true
+        return view
+    }()
+    
     private lazy var photoImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
@@ -102,6 +116,8 @@ final class CropImageViewController: UIViewController, UIScrollViewDelegate {
         view.addSubview(checkButton)
         scrollView.addSubview(photoImageView)
         scrollView.addSubview(cropView)
+        scrollView.addSubview(topView)
+        scrollView.addSubview(bottomView)
     }
     
     private func configLayout() {
@@ -139,20 +155,27 @@ final class CropImageViewController: UIViewController, UIScrollViewDelegate {
             make.height.equalTo(ViewValues.width * 1.16)
         }
         
+        topView.snp.makeConstraints { make in
+            make.leading.trailing.top.equalTo(self.view)
+            make.bottom.equalTo(cropView.snp.top)
+        }
+        
+        bottomView.snp.makeConstraints { make in
+            make.leading.trailing.bottom.equalTo(self.view)
+            make.top.equalTo(cropView.snp.bottom)
+        }
+        
         self.view.layoutIfNeeded()
         originCropViewY = cropView.frame.origin.y
         
+        scrollView.contentSize = CGSize(
+            width: ViewValues.width,
+            height: ViewValues.height)
+        
         if selectImage.size.height > ViewValues.width * 1.16 {
-            scrollView.contentSize = CGSize(
-                width: ViewValues.width,
-                height: ViewValues.height + (photoImageView.frame.height - selectImage.size.height))
-            
-            originSpaceY = (photoImageView.frame.height - selectImage.size.height) / 2
-            scrollView.contentInset = .init(top: originCropViewY + originSpaceY, left: 0, bottom: originCropViewY - originSpaceY, right: 0)
+            originSpaceY = (photoImageView.frame.height - cropView.frame.height) / 2
+            scrollView.contentInset = .init(top: originSpaceY, left: 0, bottom: originSpaceY, right: 0)
         } else {
-            scrollView.contentSize = CGSize(
-                width: ViewValues.width,
-                height: ViewValues.height)
             originSpaceX = (photoImageView.frame.width - selectImage.size.width) / 2
             scrollView.contentInset = .init(top: 0, left: originSpaceX, bottom: 0, right: originSpaceX)
         }
@@ -213,11 +236,27 @@ final class CropImageViewController: UIViewController, UIScrollViewDelegate {
         if selectImage.size.height > ViewValues.width * 1.16 {
             scrollView.contentSize = CGSize(
                 width: photoImageView.frame.width,
-                height: photoImageView.frame.height)
+                height: photoImageView.frame.height + (originCropViewY - originSpaceY) * 2)
         } else {
             scrollView.contentSize = CGSize(
                 width: photoImageView.frame.width - originSpaceX * 2,
                 height: photoImageView.frame.height + originCropViewY * 2)
         }
+    }
+    
+    func scrollViewWillBeginZooming(_ scrollView: UIScrollView, with view: UIView?) {
+        cropView.linesChangeState(isCropping: true)
+    }
+    
+    func scrollViewDidEndZooming(_ scrollView: UIScrollView, with view: UIView?, atScale scale: CGFloat) {
+        cropView.linesChangeState(isCropping: false)
+    }
+    
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        cropView.linesChangeState(isCropping: true)
+    }
+    
+    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        cropView.linesChangeState(isCropping: false)
     }
 }

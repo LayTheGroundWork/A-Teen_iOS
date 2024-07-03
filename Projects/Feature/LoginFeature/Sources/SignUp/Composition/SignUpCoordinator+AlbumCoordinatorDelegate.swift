@@ -13,6 +13,6 @@ extension SignUpCoordinator: AlbumCoordinatorDelegate {
     public func didFinish(childCoordinator: Coordinator) {
         childCoordinator.navigation.dismissNavigation = nil
         removeChildCoordinator(childCoordinator)
-        navigation.dismiss(animated: false)
+        navigation.dismiss(animated: true)
     }
 }
