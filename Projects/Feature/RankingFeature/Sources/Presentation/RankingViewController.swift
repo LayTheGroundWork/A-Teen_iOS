@@ -106,6 +106,7 @@ public final class RankingViewController: UIViewController {
       }
     
     public override func viewWillAppear(_ animated: Bool) {
+        coordinator?.configTabbarState(view: .ranking)
         navigationController?.isNavigationBarHidden = true
     }
     
