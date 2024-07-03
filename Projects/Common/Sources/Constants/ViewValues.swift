@@ -63,5 +63,4 @@ public struct ViewValues {
     public static let selectPhotoCellWidth = width * 0.69
     public static let cellWidth = (width - 48) / 2
     public static let cellHeight = selectPhotoCellWidth * 1.17
-    
 }

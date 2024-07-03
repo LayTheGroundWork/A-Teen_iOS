@@ -26,7 +26,7 @@ final class CustomCropView: UIView {
         self.imageSize = imageSize
         super.init(frame: frame)
         
-        self.linesChangeState(isCropping: false)
+        self.linesChangeState(isCropping: true)
         
         self.addSubview(firstLineView)
         self.addSubview(secondLineView)
@@ -68,56 +68,31 @@ extension CustomCropView {
     override func layoutSubviews() {
         super.layoutSubviews()
         
+        let width = self.bounds.size.width
+        let height = self.bounds.size.height
+        
         firstLineView.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview()
             make.height.equalTo(0.5)
-            
-            if imageSize.height < 500 {
-                make.top.equalToSuperview().offset(imageSize.height / 3)
-            } else {
-                make.top.equalToSuperview().offset(500 / 3)
-            }
+            make.top.equalToSuperview().offset(height / 3)
         }
         
         secondLineView.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview()
             make.height.equalTo(0.5)
-            
-            if imageSize.height < 500 {
-                make.top.equalTo(self.firstLineView.snp.centerY).offset(imageSize.height / 3)
-            } else {
-                make.top.equalTo(self.firstLineView.snp.centerY).offset(500 / 3)
-            }
+            make.top.equalTo(self.firstLineView.snp.centerY).offset(height / 3)
         }
         
         thirdLineView.snp.makeConstraints { make in
             make.top.bottom.equalToSuperview()
             make.width.equalTo(0.5)
-            
-            if imageSize.height < 500 {
-                make.leading.equalToSuperview().offset(imageSize.height / 1.16 / 3)
-            } else {
-                if imageSize.width < ViewValues.width {
-                    make.leading.equalToSuperview().offset(imageSize.width / 3)
-                } else {
-                    make.leading.equalToSuperview().offset(ViewValues.width / 3)
-                }
-            }
+            make.leading.equalToSuperview().offset(width / 3)
         }
         
         fourthLineView.snp.makeConstraints { make in
             make.top.bottom.equalToSuperview()
             make.width.equalTo(0.5)
-            
-            if imageSize.height < 500 {
-                make.trailing.equalToSuperview().offset(-imageSize.height / 1.16 / 3)
-            } else {
-                if imageSize.width < ViewValues.width {
-                    make.trailing.equalToSuperview().offset(-imageSize.width / 3)
-                } else {
-                    make.trailing.equalToSuperview().offset(-ViewValues.width / 3)
-                }
-            }
+            make.leading.equalTo(self.thirdLineView.snp.centerX).offset(width / 3)
         }
     }
 }
