@@ -10,6 +10,17 @@ import FeatureDependency
 import UIKit
 
 extension TournamentCoordinator: TournamentViewControllerCoordinator {
+    public func finishTournament(
+        sector: String,
+        session: String
+    ) {
+        delegate?.finishTournament(
+            childCoordinator: self,
+            sector: sector,
+            session: session
+        )
+    }
+    
     public func quitTournament() {
         delegate?.quitTournament(childCoordinator: self)
     }

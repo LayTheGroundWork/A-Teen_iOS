@@ -11,6 +11,11 @@ import UIKit
 
 public protocol TournamentCoordinatorDelegate: RankingConfigTabbarStateDelegate {
     func quitTournament(childCoordinator: Coordinator)
+    func finishTournament(
+        childCoordinator: Coordinator,
+        sector: String,
+        session: String
+    )
 }
 
 public final class TournamentCoordinator: Coordinator {

@@ -13,7 +13,7 @@ import DesignSystem
 public final class RankingSectorTableViewCell: UITableViewCell {
     var sector: String?
     weak var delegate: RankingViewControllerCoordinator?
-
+    
     private lazy var containerView: UIView = {
         let view = UIView()
         return view
@@ -61,22 +61,51 @@ extension RankingSectorTableViewCell: UICollectionViewDataSource {
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SectorCollectionViewCell.reuseIdentifier, for: indexPath) as? SectorCollectionViewCell else { return UICollectionViewCell() }
         
-        if indexPath.item == 0 {
-            cell.winnerBackgroundView.isHidden = true
-            cell.winnerLabel.isHidden = true
-            cell.voteButton.isHidden = false
-        } else {
-            cell.winnerBackgroundView.isHidden = false
-            cell.winnerLabel.isHidden = false
-            cell.voteButton.isHidden = true
+        // 투표하기 버튼, 우승자 라벨 가시성 함수
+        func configureVisibility(hideVoteButton: Bool, hideWinnerLabel: Bool) {
+            cell.voteButton.isHidden = hideVoteButton
+            cell.winnerBackgroundView.isHidden = hideWinnerLabel
+            cell.winnerLabel.isHidden = hideWinnerLabel
+        }
+        
+        // 우승자 라벨 함수
+        func winnerLabelText(index: Int) {
+            let reversedIndex = collectionView.numberOfItems(inSection: indexPath.section) - (indexPath.item )
+            let crownImage = DesignSystemAsset.crownWhiteIcon.image
+            let attachment = NSTextAttachment()
+            attachment.image = crownImage.withTintColor(UIColor.white)
+            attachment.bounds = CGRect(x: 0,
+                                       y: -2,
+                                       width: ViewValues.defaultPadding,
+                                       height: ViewValues.defaultPadding)
+            let attachmentString = NSAttributedString(attachment: attachment)
+            let textString = index == 1 ? NSAttributedString(string: " 지난 주 우승자") : NSAttributedString(string: " \(reversedIndex)회 우승자")
+            let completeText = NSMutableAttributedString()
+            completeText.append(attachmentString)
+            completeText.append(textString)
+            cell.winnerLabel.attributedText = completeText
+        }
+        
+        switch indexPath.item {
+        case 0:
+            configureVisibility(hideVoteButton: false, hideWinnerLabel: true)
+            winnerLabelText(index: indexPath.item)
+        case 1:
+            configureVisibility(hideVoteButton: true, hideWinnerLabel: false)
+            winnerLabelText(index: indexPath.item)
+            
+        default:
+            configureVisibility(hideVoteButton: true, hideWinnerLabel: false)
+            winnerLabelText(index: indexPath.item)
         }
         cell.delegate = delegate
         cell.sector = sector
-       return cell
+        
+        return cell
     }
     
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 3
+        return 10
     }
 }
 
@@ -85,10 +114,22 @@ extension RankingSectorTableViewCell: UICollectionViewDelegate {
         _ collectionView: UICollectionView,
         didSelectItemAt indexPath: IndexPath
     ) {
+        var session: String
+        switch indexPath.item {
         // 첫번째 셀은 투표하기 버튼 외에는 화면 이동 X
-        guard indexPath.item != 0 else { return }
+        case 0:
+            return
         // 나머지 셀 : RankingResult 이동
-        delegate?.didTapRankingCollectionViewCell(sector: sector ?? "")
+        case 1:
+            session = "지난 주"
+        default:
+            let reversedIndex = collectionView.numberOfItems(inSection: indexPath.section) - indexPath.item
+            session = "\(reversedIndex)회차"
+        }
+        delegate?.didTapRankingCollectionViewCell(
+            sector: sector ?? "",
+            session: session
+        )
     }
 }
 

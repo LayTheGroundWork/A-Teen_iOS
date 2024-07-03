@@ -13,7 +13,9 @@ import UIKit
 public protocol RankingResultFactory {
     func makeRankingResultViewController(
         coordinator: RankingResultViewControllerCoordinator,
-        sector: String
+        withAnimation: Bool,
+        sector: String,
+        session: String
     ) -> UIViewController
 }
 
@@ -26,11 +28,14 @@ public struct RankingResultFactoryImp: RankingResultFactory {
     
     public func makeRankingResultViewController(
         coordinator: RankingResultViewControllerCoordinator,
-        sector: String
+        withAnimation: Bool,
+        sector: String,
+        session: String
     ) -> UIViewController {
         let controller = RankingResultViewController(
             coordinator: coordinator,
-            sector: sector)
+            sector: sector,
+            session: session)
         return controller
     }
 }

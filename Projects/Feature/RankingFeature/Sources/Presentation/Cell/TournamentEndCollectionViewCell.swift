@@ -11,6 +11,7 @@ import DesignSystem
 import UIKit
 
 final class TournamentEndCollectionViewCell: UICollectionViewCell {
+    var sector: String?
     weak var delegate: TournamentViewControllerCoordinator?
 
     // MARK: - Private properties
@@ -108,7 +109,7 @@ final class TournamentEndCollectionViewCell: UICollectionViewCell {
     
     private lazy var selectButton: UIButton = {
         let button = UIButton()
-        button.setTitle("완료", for: .normal)
+        button.setTitle("결과 확인하기", for: .normal)
         button.setTitleColor(UIColor.white, for: .normal)
         button.setTitleColor(UIColor.black.withAlphaComponent(0.2), for: .highlighted)
         button.titleLabel?.font = .customFont(forTextStyle: .callout, weight: .regular)
@@ -244,8 +245,8 @@ final class TournamentEndCollectionViewCell: UICollectionViewCell {
     
     // MARK: - Actions
     @objc private func didTapSelectButton(_ sender: UIButton) {
-        // 토너먼트 종료
-        delegate?.quitTournament()
+        // 토너먼트 종료 후, sheet 닫고 Result 로 이동
+        delegate?.finishTournament(sector: sector ?? "", session: "이번 주")
     }
 }
 

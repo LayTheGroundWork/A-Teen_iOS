@@ -17,11 +17,16 @@ extension RankingCoordinator: RankingViewControllerCoordinator {
         addChildCoordinatorStart(intendToVorwDialogCoordinator)
     }
     
-    public func didTapRankingCollectionViewCell(sector: String) {
+    public func didTapRankingCollectionViewCell(
+        sector: String,
+        session: String
+    ) {
         let rankingResultCoordinator = factory.makeRankingResultCoordinator(
             navigation: navigation,
             delegate: self,
-            sector: sector)
+            withAnimation: true,
+            sector: sector,
+            session: session)
         addChildCoordinatorStart(rankingResultCoordinator)
     }
 }
