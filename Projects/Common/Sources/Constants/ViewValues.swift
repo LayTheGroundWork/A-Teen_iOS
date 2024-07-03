@@ -55,4 +55,12 @@ public struct ViewValues {
     // MARK: - Progress
     public static let signUpProgress: Float = 0.2
     
+    // MARK: - Spinner
+    public static let tagIdentifierSpinner = 123
+    public static let opacityContainerSpinner = 0.3
+    
+    // MARK: - Media
+    public static let selectPhotoCellWidth = width * 0.69
+    public static let cellWidth = (width - 48) / 2
+    public static let cellHeight = selectPhotoCellWidth * 1.17
 }

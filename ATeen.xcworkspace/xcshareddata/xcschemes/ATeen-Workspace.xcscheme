@@ -168,6 +168,20 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
+               BlueprintIdentifier = "CCE14ED75EDB098EAB846946"
+               BuildableName = "MediaEditorFeature.framework"
+               BlueprintName = "MediaEditorFeature"
+               ReferencedContainer = "container:Projects/Feature/MediaEditorFeature/MediaEditorFeature.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
                BlueprintIdentifier = "453323209A3FFF1E78EECE5D"
                BuildableName = "NetworkService.framework"
                BlueprintName = "NetworkService"

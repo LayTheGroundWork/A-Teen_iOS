@@ -37,7 +37,8 @@ public extension [String: Plist.Value] {
             ],
         "CFBundleShortVersionString": .shortVersion,
         "CFBundleVersion": .version,
-        "CFBundleDisplayName": "$(APP_DISPLAY_NAME)"
+        "CFBundleDisplayName": "$(APP_DISPLAY_NAME)",
+        "NSPhotoLibraryUsageDescription": "사진 라이브러리에 접근하여 이미지를 업로드합니다."
     ]
     
     static let framework: Self = [

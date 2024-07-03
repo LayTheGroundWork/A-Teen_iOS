@@ -12,12 +12,12 @@ public protocol SelectBirthFactory {
 }
 
 public struct SelectBirthFactoryImp: SelectBirthFactory {
-    private(set) var viewModel: LoginBirthViewModel
+    private(set) var viewModel: SignUpViewModel
     private(set) var beforeYear: String
     private(set) var beforeMonth: String
     private(set) var beforeDay: String
     
-    public init(viewModel: LoginBirthViewModel, beforeYear: String, beforeMonth: String, beforeDay: String) {
+    public init(viewModel: SignUpViewModel, beforeYear: String, beforeMonth: String, beforeDay: String) {
         self.viewModel = viewModel
         self.beforeYear = beforeYear
         self.beforeMonth = beforeMonth

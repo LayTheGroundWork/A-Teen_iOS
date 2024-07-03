@@ -19,9 +19,14 @@ public protocol LogInFactory {
 }
 
 public struct LogInFactoryImp: LogInFactory {
+    public let coordinatorProvider: CoordinatorProvider
     let appContainer: AppContainer?
-    
-    public init(appContainer: AppContainer?) {
+ 
+    public init(
+        coordinatorProvider: CoordinatorProvider,
+        appContainer: AppContainer?
+    ) {
+        self.coordinatorProvider = coordinatorProvider
         self.appContainer = appContainer
     }
     
@@ -37,7 +42,7 @@ public struct LogInFactoryImp: LogInFactory {
         childCoordinators: [Coordinator],
         delegate: PhoneNumberCoordinatorDelegate
     ) -> Coordinator {
-        let factory = PhoneNumberFactoryImp()
+        let factory = PhoneNumberFactoryImp(coordinatorProvider: coordinatorProvider)
         return PhoneNumberCoordinator(
             navigation: navigation,
             factory: factory,

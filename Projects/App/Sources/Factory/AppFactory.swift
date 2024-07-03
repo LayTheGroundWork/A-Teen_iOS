@@ -26,7 +26,11 @@ struct AppFactoryImp: AppFactory {
         delegate: MainTabCoordinatorDelegate,
         coordinatorProvider: CoordinatorProvider
     ) -> Coordinator {
-        let factory = MainTabFactoryImp(appContainer: appContainer)
+        let factory = MainTabFactoryImp(
+            coordinatorProvider: coordinatorProvider,
+            appContainer: appContainer
+        )
+        
         return MainTabCoordinator(
             navigation: navigation,
             delegate: delegate, 

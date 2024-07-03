@@ -7,19 +7,14 @@
 //
 
 import Common
-
 import UIKit
 
-public protocol FactoryProvider {    
-    func makeProfileDetailViewController(
-        coordinator: ProfileDetailViewControllerCoordinator,
-        frame: CGRect,
-        todayTeen: TodayTeen
-    ) -> UIViewController
+public protocol FactoryProvider {
     func makeProfileDetailCoordinator(
         delegate: ProfileDetailCoordinatorDelegate,
         frame: CGRect,
-        todayTeen: TodayTeen,
-        coordinatorProvider: CoordinatorProvider
+        todayTeen: TodayTeen
     ) -> Coordinator
+    
+    func makeAlbumCoordinator(delegate: AlbumCoordinatorDelegate) -> Coordinator
 }

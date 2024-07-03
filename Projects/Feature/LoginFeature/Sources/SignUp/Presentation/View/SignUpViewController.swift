@@ -15,6 +15,7 @@ protocol SignUpViewControllerCoordinator: AnyObject {
     func didFinish()
     func didSelectBirth()
     func didSelectService()
+    func didSelectCell(item: Int)
 }
 
 final class SignUpViewController: UIViewController {
@@ -22,7 +23,7 @@ final class SignUpViewController: UIViewController {
     // MARK: - Private properties
     private var currentIndexPath = IndexPath(item: 0, section: 0)
     
-    private var viewModel: LoginBirthViewModel
+    private var viewModel: SignUpViewModel
     private weak var coordinator: SignUpViewControllerCoordinator?
 
     private lazy var progressView: UIProgressView = {
@@ -57,6 +58,7 @@ final class SignUpViewController: UIViewController {
         collectionView.register(UserNameCollectionViewCell.self, forCellWithReuseIdentifier: UserNameCollectionViewCell.reuseIdentifier)
         collectionView.register(UserBirthCollectionViewCell.self, forCellWithReuseIdentifier: UserBirthCollectionViewCell.reuseIdentifier)
         collectionView.register(SearchSchoolCollectionViewCell.self, forCellWithReuseIdentifier: SearchSchoolCollectionViewCell.reuseIdentifier)
+        collectionView.register(SelectPhotoCollectionViewCell.self, forCellWithReuseIdentifier: SelectPhotoCollectionViewCell.reuseIdentifier)
        
         return collectionView
     }()
@@ -75,7 +77,7 @@ final class SignUpViewController: UIViewController {
         return button
     }()
     
-    init(viewModel: LoginBirthViewModel,
+    init(viewModel: SignUpViewModel,
          coordinator: SignUpViewControllerCoordinator
     ) {
         self.viewModel = viewModel
@@ -175,6 +177,11 @@ final class SignUpViewController: UIViewController {
             cell?.tableBackgroundView.isHidden = true
             cell?.contentView.endEditing(true)
             break
+        // 사진 선택
+        case 4:
+            let cell = collectionView.cellForItem(at: currentIndexPath) as? SelectPhotoCollectionViewCell
+            cell?.contentView.endEditing(true)
+            break
         default:
             break
         }
@@ -199,7 +206,7 @@ extension SignUpViewController: UICollectionViewDataSource {
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        4
+        5
     }
     
     func collectionView(
@@ -256,6 +263,18 @@ extension SignUpViewController: UICollectionViewDataSource {
             }
             
             cell.setProperties(delegate: self, viewModel: viewModel)
+            return cell
+
+        case 4:
+            guard
+                let cell = collectionView.dequeueReusableCell(
+                withReuseIdentifier: SelectPhotoCollectionViewCell.reuseIdentifier,
+                for: indexPath) as? SelectPhotoCollectionViewCell
+            else {
+                return UICollectionViewCell()
+            }
+            
+            cell.setProperties(coordinator: coordinator, viewModel: SignUpViewModel())
             return cell
 
         default:

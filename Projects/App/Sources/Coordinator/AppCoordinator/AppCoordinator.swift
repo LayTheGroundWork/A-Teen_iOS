@@ -14,7 +14,7 @@ final class AppCoordinator: Coordinator {
     var window: UIWindow?
     var factory: AppFactory?
     var childCoordinators: [Coordinator] = []
-    private let coordinatorProvider = DefaultCoordinatorProvider()
+    private let coordinatorProvider = CoordinatorProviderImp()
     
     init(
         navigation: Navigation,

@@ -10,19 +10,20 @@ import Common
 import UIKit
 
 public protocol CoordinatorProvider {
-    func makeProfileDetailViewController(
-        coordinator: ProfileDetailViewControllerCoordinator,
-        frame: CGRect,
-        todayTeen: TodayTeen
-    ) -> UIViewController
-    
-    func moveToProfileDetailCoordinator(
+    func makeProfileDetailCoordinator(
         delegate: ProfileDetailCoordinatorDelegate,
         frame: CGRect,
         todayTeen: TodayTeen
     ) -> Coordinator
+    
+    func makeAlbumCoordinator(delegate: AlbumCoordinatorDelegate) -> Coordinator
 }
 
 public protocol ProfileDetailCoordinatorDelegate: AnyObject {
     func didFinish(childCoordinator: Coordinator)
+}
+
+public protocol AlbumCoordinatorDelegate: AnyObject {
+    func didFinish(childCoordinator: Coordinator)
+
 }

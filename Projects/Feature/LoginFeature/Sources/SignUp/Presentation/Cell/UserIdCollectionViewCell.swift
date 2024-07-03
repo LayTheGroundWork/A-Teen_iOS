@@ -202,7 +202,7 @@ extension UserIdCollectionViewCell: UITextFieldDelegate {
         return true
     }
     
-    // 영어 소문자 & 숫자 - character 확인
+    // 영어 소문자 또는 숫자 - character 확인
     private func containsLowcaseAndNumber(_ text: String) -> Bool {
         let containsLowcaseAndNumberRegex = ATeenRegex.lowercaseAndNumber
         let regex = try! NSRegularExpression(pattern: containsLowcaseAndNumberRegex)

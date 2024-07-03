@@ -40,14 +40,6 @@ public extension SettingsDictionary {
         ]
     ]
     
-    func enableTestabilty() -> SettingsDictionary {
-        merging(
-            [
-                "ENABLE_TESTABILITY": .string("YES")
-            ]
-        )
-    }
-    
     func setVersion() -> SettingsDictionary {
         merging(
             [

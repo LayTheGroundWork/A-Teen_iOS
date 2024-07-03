@@ -8,8 +8,6 @@
 
 import Foundation
 
-import Core
-
 public struct SignUpRequest {
     public let phoneNumber: String
     public let userId: String

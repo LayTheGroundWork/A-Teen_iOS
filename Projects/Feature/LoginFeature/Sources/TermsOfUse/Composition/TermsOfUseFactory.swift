@@ -18,7 +18,12 @@ public protocol TermsOfUseFactory {
 }
 
 public struct TermsOfUseFactoryImp: TermsOfUseFactory {
-    public init() { }
+    public let coordinatorProvider: CoordinatorProvider
+    public init(
+        coordinatorProvider: CoordinatorProvider
+    ) {
+        self.coordinatorProvider = coordinatorProvider
+    }
     
     public func makeTermsOfUseViewController(coordinator: TermsOfUseViewControllerCoordinator) -> UIViewController {
         let controller = TermsOfUseViewController(coordinator: coordinator)
@@ -32,9 +37,10 @@ public struct TermsOfUseFactoryImp: TermsOfUseFactory {
     ) -> Coordinator {
         let factory = SignUpFactoryImp()
         return SignUpCoordinator(
+            coordinatorProvider: coordinatorProvider,
             navigation: navigation,
-            factory: factory,
             childCoordinators: childCoordinators,
+            factory: factory,
             delegate: delegate)
     }
 }

@@ -26,6 +26,14 @@ public protocol PhoneNumberFactory {
 }
 
 public struct PhoneNumberFactoryImp: PhoneNumberFactory {
+    
+    public let coordinatorProvider: CoordinatorProvider
+    
+    public init(
+        coordinatorProvider: CoordinatorProvider
+    ) {
+        self.coordinatorProvider = coordinatorProvider
+    }
     public func makePhoneNumberViewController(coordinator: PhoneNumberViewControllerCoordinator) -> UIViewController {
         let controller = PhoneNumberViewController(coordinator: coordinator)
         return controller
@@ -36,7 +44,9 @@ public struct PhoneNumberFactoryImp: PhoneNumberFactory {
         childCoordinators: [Coordinator],
         delegate: TermsOfUseCoordinatorDelegate
     ) -> Coordinator {
-        let factory = TermsOfUseFactoryImp()
+        let factory = TermsOfUseFactoryImp(
+            coordinatorProvider: coordinatorProvider
+        )
         return TermsOfUseCoordinator(
             navigation: navigation,
             factory: factory,

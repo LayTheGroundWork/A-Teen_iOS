@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		09F9D04D96D7D0911868E276 /* SpinnerDisplayable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 390F0F25C510E4E45DD91920 /* SpinnerDisplayable.swift */; };
 		2AE2442457DCECCC55C49611 /* UIView+Layer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9347F19E7CA63054E643E5C /* UIView+Layer.swift */; };
 		32E85901F7A04A4096C803EB /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9005F43599E3AE2CCB247B4F /* SnapKit.framework */; };
 		4288F5B555587A91E8DACF93 /* UIFont+TextStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62C700FB34E2E83D970827F /* UIFont+TextStyle.swift */; };
@@ -35,6 +36,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		390F0F25C510E4E45DD91920 /* SpinnerDisplayable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinnerDisplayable.swift; sourceTree = "<group>"; };
 		4F6AF114A38FDBD9663A6B1B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		69B7BBEAD5472C7195924AC8 /* DesignSystem.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DesignSystem.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7516C9F8F52188417896B438 /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
@@ -148,6 +150,7 @@
 				CAC5E6E4B6E844018363F33B /* CustomConfirmDialogViewController.swift */,
 				F3A5DD84C76B66DD85EF180B /* CustomImageLabelButton.swift */,
 				D509E743121F3234A462CCE2 /* CustomTwoButtonDialogViewController.swift */,
+				390F0F25C510E4E45DD91920 /* SpinnerDisplayable.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -239,6 +242,7 @@
 				912E0C98494F0652C151B5CD /* CustomConfirmDialogViewController.swift in Sources */,
 				CD3530D96EC2AAEF759D0831 /* CustomImageLabelButton.swift in Sources */,
 				741EC2A477A9414E12BEDBA9 /* CustomTwoButtonDialogViewController.swift in Sources */,
+				09F9D04D96D7D0911868E276 /* SpinnerDisplayable.swift in Sources */,
 				4288F5B555587A91E8DACF93 /* UIFont+TextStyle.swift in Sources */,
 				F161FE102834E18739642B92 /* UILabel+Constraints.swift in Sources */,
 				E7427A1ADE455252D771EBCE /* UIView+Constraints.swift in Sources */,

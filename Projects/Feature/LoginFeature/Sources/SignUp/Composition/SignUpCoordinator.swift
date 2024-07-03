@@ -13,20 +13,24 @@ public protocol SignUpCoordinatorDelegate: AnyObject {
 }
 
 public final class SignUpCoordinator: Coordinator {
+    public let coordinatorProvider: CoordinatorProvider
     public var navigation: Navigation
     public var childCoordinators: [Coordinator]
     var factory: SignUpFactory
-    var viewModel = LoginBirthViewModel()
+    var viewModel = SignUpViewModel()
     weak var delegate: SignUpCoordinatorDelegate?
     
-    public init(navigation: Navigation,
-         factory: SignUpFactory,
-         childCoordinators: [Coordinator],
-         delegate: SignUpCoordinatorDelegate
+    public init(
+        coordinatorProvider: CoordinatorProvider,
+        navigation: Navigation,
+        childCoordinators: [Coordinator],
+        factory: SignUpFactory,
+        delegate: SignUpCoordinatorDelegate
     ) {
+        self.coordinatorProvider = coordinatorProvider
         self.navigation = navigation
-        self.factory = factory
         self.childCoordinators = childCoordinators
+        self.factory = factory
         self.delegate = delegate
     }
     
