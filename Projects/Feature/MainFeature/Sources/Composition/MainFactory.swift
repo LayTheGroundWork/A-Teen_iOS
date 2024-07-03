@@ -29,13 +29,13 @@ public protocol MainFactory {
 
 public struct MainFactoryImp: MainFactory {
     let appContainer: AppContainer?
+    let viewModel = MainViewModel()
     
     public init(appContainer: AppContainer?) {
         self.appContainer = appContainer
     }
     
     public func makeMainViewController(coordinator: MainViewControllerCoordinator) -> UIViewController {
-        let viewModel = MainViewModel()
         viewModel.auth = appContainer?.auth
         let controller = MainViewController(
             viewModel: viewModel,

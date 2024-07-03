@@ -1,5 +1,5 @@
 //
-//  AlbumCoordinatorImp.swift
+//  AlbumCoordinator.swift
 //  MediaEditorFeature
 //
 //  Created by 최동호 on 7/2/24.
@@ -9,7 +9,7 @@
 import FeatureDependency
 import UIKit
 
-public final class AlbumCoordinatorImp: AlbumCoordinator {
+public final class AlbumCoordinator: Coordinator {
     public let factory: AlbumFactory
     public var navigation: Navigation
     public var childCoordinators: [Coordinator]
@@ -33,4 +33,4 @@ public final class AlbumCoordinatorImp: AlbumCoordinator {
     }
 }
 
-extension AlbumCoordinatorImp: ParentCoordinator { }
+extension AlbumCoordinator: ParentCoordinator { }

@@ -16,5 +16,13 @@ public protocol FactoryProvider {
         todayTeen: TodayTeen
     ) -> Coordinator
     
-    func makeAlbumCoordinator(delegate: AlbumCoordinatorDelegate) -> Coordinator
+    func makeAlbumCoordinator(
+        delegate: AlbumCoordinatorDelegate
+    ) -> Coordinator
+    
+    func makeAlertCoordinator(
+        dialogType: AlertDialogType,
+        delegate: AlertCoordinatorDelegate,
+        dialogData: CustomDialog
+    ) -> Coordinator
 }

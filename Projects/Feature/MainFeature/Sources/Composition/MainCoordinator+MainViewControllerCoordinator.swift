@@ -6,6 +6,7 @@
 //
 
 import Common
+import DesignSystem
 import FeatureDependency
 import UIKit
 
@@ -71,6 +72,43 @@ extension MainCoordinator: MainViewControllerCoordinator {
         
         profileDetailCoordinator.navigation.dismissNavigation = { [weak self] in
             self?.removeChildCoordinator(profileDetailCoordinator)
+        }
+    }
+    
+    public func alertTestViewOpen() {
+        let coordinator = coordinatorProvider.makeAlertCoordinator(
+            dialogType: AlertDialogType.twoButton,
+            delegate: self,
+            dialogData: CustomDialog(
+                dialogImage: UIImage(),
+                dialogTitle: "안녕",
+                titleColor: .black,
+                titleNumberOfLine: 1,
+                titleFont: .customFont(forTextStyle: .callout, weight: .regular),
+                dialogMessage: "ㅎㅇ",
+                messageColor: .black,
+                messageNumberOfLine: 1,
+                messageFont: .customFont(forTextStyle: .callout, weight: .regular),
+                buttonText: "취소",
+                buttonColor: .white,
+                secondButtonText: "확인",
+                secondButtonColor: DesignSystemAsset.mainColor.color))
+        addChildCoordinatorStart(coordinator)
+    }
+}
+
+extension MainCoordinator: AlertCoordinatorDelegate {
+    public func didFinish(selectIndex: Int) {
+        navigation.dismiss(animated: false)
+        switch selectIndex {
+        case 0:
+            print("no")
+        case 1:
+            print("hi")
+            let coordinator = factory.makeReportDialogCoordinator(navigation: navigation, delegate: self)
+            addChildCoordinatorStart(coordinator)
+        default:
+            break
         }
     }
 }

@@ -1,18 +1,24 @@
 //
 //  CustomConfirmDialogViewController.swift
-//  DesignSystem
+//  ATeen
 //
-//  Created by 최동호 on 7/3/24.
+//  Created by phang on 5/31/24.
 //  Copyright © 2024 ATeen. All rights reserved.
 //
 
 import SnapKit
 
 import Common
+import FeatureDependency
 import UIKit
 
+public protocol AlertViewControllerCoordinator: AnyObject {
+    func didSelectButton()
+    func didSelectSecondButton()
+}
+
 open class CustomConfirmDialogViewController: UIViewController {
-    var dialogTitle: String?
+    var dialogTitle: String
     var titleColor: UIColor
     var titleNumberOfLine: Int
     var titleFont: UIFont
@@ -22,6 +28,9 @@ open class CustomConfirmDialogViewController: UIViewController {
     var messageFont: UIFont
     var buttonText: String
     var buttonColor: UIColor
+
+    private weak var coordinator: AlertViewControllerCoordinator?
+
     
     // MARK: - Private properties
     private lazy var dialogView: UIView = {
@@ -64,16 +73,17 @@ open class CustomConfirmDialogViewController: UIViewController {
     
     // MARK: - Life Cycle
     public init(
-        dialogTitle: String? = nil,
-        titleColor: UIColor = .black,
-        titleNumberOfLine: Int = 1,
-        titleFont: UIFont = .customFont(forTextStyle: .callout, weight: .bold),
+        dialogTitle: String,
+        titleColor: UIColor,
+        titleNumberOfLine: Int ,
+        titleFont: UIFont,
         dialogMessage: String,
-        messageColor: UIColor = DesignSystemAsset.gray02.color,
+        messageColor: UIColor ,
         messageNumberOfLine: Int,
-        messageFont: UIFont = .customFont(forTextStyle: .footnote, weight: .regular),
+        messageFont: UIFont,
         buttonText: String,
-        buttonColor: UIColor
+        buttonColor: UIColor,
+        coordinator: AlertViewControllerCoordinator
     ) {
         self.dialogTitle = dialogTitle
         self.titleColor = titleColor
@@ -85,6 +95,7 @@ open class CustomConfirmDialogViewController: UIViewController {
         self.messageFont = messageFont
         self.buttonText = buttonText
         self.buttonColor = buttonColor
+        self.coordinator = coordinator
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -122,11 +133,7 @@ open class CustomConfirmDialogViewController: UIViewController {
         }
         
         messageLabel.snp.makeConstraints { make in
-            if dialogTitle == nil {
-                make.top.equalToSuperview().offset(50)
-            } else {
-                make.top.equalTo(titleLabel.snp.bottom).offset(10)
-            }
+            make.top.equalTo(titleLabel.snp.bottom).offset(10)
             make.centerX.equalToSuperview()
         }
         
@@ -149,5 +156,6 @@ open class CustomConfirmDialogViewController: UIViewController {
     // MARK: - Actions
     @objc open func clickConfirmButton(_ sender: UIButton) {
         // 다이얼로그 닫기 - overriding 해서 사용
+        coordinator?.didSelectButton()
     }
 }

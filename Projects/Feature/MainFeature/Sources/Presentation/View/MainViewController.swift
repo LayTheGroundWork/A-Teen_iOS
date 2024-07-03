@@ -22,6 +22,7 @@ public protocol MainViewControllerCoordinator: AnyObject {
     func didSelectAnotherTeenCell(
         frame: CGRect,
         todayTeen: TodayTeen)
+    func alertTestViewOpen()
 }
 
 public final class MainViewController: UIViewController {
@@ -66,6 +67,7 @@ public final class MainViewController: UIViewController {
     
     public override func viewWillAppear(_ animated: Bool) {
         self.navigationItem.titleView =  CustomNaviView(frame: CGRect(x: 0, y: 0, width: ViewValues.width, height: 40))
+        coordinator?.alertTestViewOpen()
     }
     
     // MARK: - Helpers

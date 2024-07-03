@@ -1,5 +1,5 @@
 //
-//  AlbumCoordinatorImp+AlbumViewControllerCoordinator.swift
+//  AlbumCoordinator+AlbumViewControllerCoordinator.swift
 //  MediaEditorFeature
 //
 //  Created by 최동호 on 7/3/24.
@@ -9,7 +9,7 @@
 import AVKit
 import FeatureDependency
 
-extension AlbumCoordinatorImp: AlbumViewControllerCoordinator {
+extension AlbumCoordinator: AlbumViewControllerCoordinator {
     public func didSelectPhoto(selectImage: UIImage) {
         let cropImageCoordinator = factory.makeCropImageCoordinator(
             selectImage: selectImage,

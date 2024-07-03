@@ -1,5 +1,5 @@
 //
-//  AlbumCoordinatorImp+CropImageCoordinatorDelegate.swift
+//  AlbumCoordinator+CropImageCoordinatorDelegate.swift
 //  MediaEditorFeature
 //
 //  Created by 최동호 on 7/3/24.
@@ -8,7 +8,7 @@
 
 import FeatureDependency
 
-extension AlbumCoordinatorImp: CropImageCoordinatorDelegate, TrimVideoCoordinatorDelegate {
+extension AlbumCoordinator: CropImageCoordinatorDelegate, TrimVideoCoordinatorDelegate {
     public func didFinish(childCoordinator: Coordinator) {
         childCoordinator.navigation.dismissNavigation = nil
         removeChildCoordinator(childCoordinator)

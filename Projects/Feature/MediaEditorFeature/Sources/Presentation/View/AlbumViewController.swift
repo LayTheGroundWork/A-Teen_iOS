@@ -14,6 +14,12 @@ import FeatureDependency
 import Photos
 import UIKit
 
+public protocol AlbumViewControllerCoordinator: AnyObject {
+    func didFinishFlow()
+    func didSelectPhoto(selectImage: UIImage)
+    func didSelectVideo(asset: AVAsset)
+}
+
 final class AlbumViewController: UIViewController {
     // MARK: - Private properties
     private let viewModel = AlbumViewModel()
