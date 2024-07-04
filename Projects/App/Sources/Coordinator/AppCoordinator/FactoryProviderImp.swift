@@ -54,6 +54,8 @@ final class FactoryProviderImp: FactoryProvider {
         dialogData: CustomDialog
     ) -> Coordinator {
         let navigationController = UINavigationController()
+        navigationController.modalPresentationStyle = .overFullScreen
+        navigationController.view.backgroundColor = UIColor.clear
         let navigation = NavigationImp(rootViewController: navigationController)
         let factory = AlertFactoryImp()
         return AlertCoordinator(

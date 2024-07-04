@@ -10,10 +10,10 @@ import FeatureDependency
 
 extension AlertCoordinator: AlertViewControllerCoordinator {
     public func didSelectButton() {
-        delegate?.didFinish(selectIndex: 0)
+        delegate?.didFinish(childCoordinator: self, selectIndex: 0)
     }
     
     public func didSelectSecondButton() {
-        delegate?.didFinish(selectIndex: 1)
+        delegate?.didFinish(childCoordinator: self, selectIndex: 1)
     }
 }

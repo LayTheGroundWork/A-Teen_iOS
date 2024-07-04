@@ -36,5 +36,5 @@ public protocol AlbumCoordinatorDelegate: AnyObject {
 }
 
 public protocol AlertCoordinatorDelegate: AnyObject {
-    func didFinish(selectIndex: Int) 
+    func didFinish(childCoordinator: Coordinator, selectIndex: Int) 
 }

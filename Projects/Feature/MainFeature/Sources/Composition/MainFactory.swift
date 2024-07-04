@@ -21,10 +21,6 @@ public protocol MainFactory {
         navigation: Navigation,
         delegate: ReportDialogCoordinatorDelegate
     ) -> Coordinator
-    func makeReportCompleteDialogCoordinator(
-        navigation: Navigation,
-        delegate: ReportCompleteDialogCoordinatorDelegate
-    ) -> Coordinator
 }
 
 public struct MainFactoryImp: MainFactory {
@@ -63,18 +59,6 @@ public struct MainFactoryImp: MainFactory {
     ) -> Coordinator {
         let factory = ReportDialogFactoryImp()
         return ReportDialogCoordinator(
-            navigation: navigation,
-            factory: factory,
-            delegate: delegate
-        )
-    }
-    
-    public func makeReportCompleteDialogCoordinator(        
-        navigation: Navigation,
-        delegate: ReportCompleteDialogCoordinatorDelegate
-    ) -> Coordinator {
-        let factory = ReportCompleteDialogFactoryImp()
-        return ReportCompleteDialogCoordinator(
             navigation: navigation,
             factory: factory,
             delegate: delegate

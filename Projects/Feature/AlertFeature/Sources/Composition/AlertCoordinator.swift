@@ -46,7 +46,6 @@ public final class AlertCoordinator: Coordinator {
                 coordinator: self
             )
             navigation.viewControllers = [controller]
-
         }
     }
 }

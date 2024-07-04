@@ -17,15 +17,18 @@ public final class LogInCoordinator: Coordinator {
     var factory: LogInFactory
     weak var delegate: LogInCoordinatorDelegate?
     public var childCoordinators: [Coordinator] = []
+    public let coordinatorProvider: CoordinatorProvider
     
     public init(
         navigation: Navigation,
         factory: LogInFactory,
-        delegate: LogInCoordinatorDelegate? = nil
+        delegate: LogInCoordinatorDelegate? = nil,
+        coordinatorProvider: CoordinatorProvider
     ) {
         self.navigation = navigation
         self.factory = factory
         self.delegate = delegate
+        self.coordinatorProvider = coordinatorProvider
     }
     public func start() {
         let controller = factory.makeLoginViewController(coordinator: self)

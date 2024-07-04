@@ -15,11 +15,6 @@ public protocol TournamentFactory {
         coordinator: TournamentViewControllerCoordinator,
         sector: String
     ) -> UIViewController
-    
-    func makeQuitTournamentDialogCoordinator(
-        navigation: Navigation,
-        delegate: QuitTournamentDialogCoordinatorDelegate
-    ) -> Coordinator
 }
 
 public struct TournamentFactoryImp: TournamentFactory {
@@ -37,17 +32,5 @@ public struct TournamentFactoryImp: TournamentFactory {
             coordinator: coordinator,
             sector: sector)
         return controller
-    }
-    
-    public func makeQuitTournamentDialogCoordinator(
-        navigation: Navigation,
-        delegate: QuitTournamentDialogCoordinatorDelegate
-    ) -> Coordinator {
-        let factory = QuitTournamentDialogFactoryImp()
-        return QuitTournamentDialogCoordinator(
-            navigation: navigation,
-            factory: factory,
-            delegate: delegate
-        )
     }
 }

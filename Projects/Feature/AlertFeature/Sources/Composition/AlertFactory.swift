@@ -30,7 +30,7 @@ public final class AlertFactoryImp: AlertFactory {
         dialogData: CustomDialog,
         coordinator: AlertViewControllerCoordinator
     ) -> UIViewController {
-        let controller = CustomConfirmDialogViewController(
+        return CustomConfirmDialogViewController(
             dialogTitle: dialogData.dialogTitle,
             titleColor: dialogData.titleColor,
             titleNumberOfLine: dialogData.titleNumberOfLine,
@@ -43,14 +43,13 @@ public final class AlertFactoryImp: AlertFactory {
             buttonColor: dialogData.buttonColor,
             coordinator: coordinator
         )
-        return controller
     }
     
     public func makeTwoButtonDialogViewController(
         dialogData: CustomDialog,
         coordinator: AlertViewControllerCoordinator
     ) -> UIViewController {
-        let controller = CustomTwoButtonDialogViewController(
+        return CustomTwoButtonDialogViewController(
             dialogImage: dialogData.dialogImage ?? UIImage(),
             dialogTitle: dialogData.dialogTitle,
             titleColor: dialogData.titleColor,
@@ -63,9 +62,8 @@ public final class AlertFactoryImp: AlertFactory {
             leftButtonText: dialogData.buttonText,
             leftButtonColor: dialogData.buttonColor,
             rightButtonText: dialogData.secondButtonText ?? "확인",
-            rightButtonColor: dialogData.secondButtonColor ?? DesignSystemAsset.mainColor.color, 
+            rightButtonColor: dialogData.secondButtonColor ?? DesignSystemAsset.mainColor.color,
             coordinator: coordinator
         )
-        return controller
     }
 }
