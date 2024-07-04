@@ -17,6 +17,7 @@ public protocol FactoryProvider {
     ) -> Coordinator
     
     func makeAlbumCoordinator(
+        coordinatorProvider: CoordinatorProvider,
         delegate: AlbumCoordinatorDelegate
     ) -> Coordinator
     

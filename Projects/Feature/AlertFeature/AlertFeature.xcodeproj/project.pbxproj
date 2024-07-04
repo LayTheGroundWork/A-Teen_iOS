@@ -7,11 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		62C21E24819779943E3531FA /* CustomConfirmDialogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47A18D787F7FA2936F718D26 /* CustomConfirmDialogViewController.swift */; };
 		7E5BA290C5142F7B5F433034 /* AlertFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EBD2A890BFCFE510C48E474 /* AlertFactory.swift */; };
 		8F55F9927BC0E72AE2BE5B8C /* FeatureDependency.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62609B727EA70B2991ECB47D /* FeatureDependency.framework */; };
+		AE333C6238E99E3ABA923781 /* TwoButtonDialogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CF8E636A349B15617A3FC77 /* TwoButtonDialogViewController.swift */; };
 		B761575182C17FB78ADCB16A /* AlertCoordinatorImp+AlertViewControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11416D03113B878A87F3561E /* AlertCoordinatorImp+AlertViewControllerCoordinator.swift */; };
-		E7FF8CBB8503218B512A3850 /* CustomTwoButtonDialogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6C3D1A3EBEF0D305097297 /* CustomTwoButtonDialogViewController.swift */; };
+		DC4468EB977338E4FF02DC70 /* OneButtonDialogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A4CB28D2F1F9B936CFAFB9B /* OneButtonDialogViewController.swift */; };
 		F5A880336C3880C08D4DA368 /* AlertCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 039E96B63EA50727DD507053 /* AlertCoordinator.swift */; };
 /* End PBXBuildFile section */
 
@@ -32,12 +32,12 @@
 		039E96B63EA50727DD507053 /* AlertCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertCoordinator.swift; sourceTree = "<group>"; };
 		0EBD2A890BFCFE510C48E474 /* AlertFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertFactory.swift; sourceTree = "<group>"; };
 		11416D03113B878A87F3561E /* AlertCoordinatorImp+AlertViewControllerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AlertCoordinatorImp+AlertViewControllerCoordinator.swift"; sourceTree = "<group>"; };
-		47A18D787F7FA2936F718D26 /* CustomConfirmDialogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomConfirmDialogViewController.swift; sourceTree = "<group>"; };
+		2CF8E636A349B15617A3FC77 /* TwoButtonDialogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoButtonDialogViewController.swift; sourceTree = "<group>"; };
 		60D8884D7A439BB86D6EFC46 /* Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
 		62609B727EA70B2991ECB47D /* FeatureDependency.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FeatureDependency.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6A4CB28D2F1F9B936CFAFB9B /* OneButtonDialogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneButtonDialogViewController.swift; sourceTree = "<group>"; };
 		7769AD199843236B9E70D917 /* AlertFeature-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "AlertFeature-Info.plist"; sourceTree = "<group>"; };
 		818E3851C140538B48187BEC /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
-		CC6C3D1A3EBEF0D305097297 /* CustomTwoButtonDialogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTwoButtonDialogViewController.swift; sourceTree = "<group>"; };
 		FBAB59EDB1A1F3A44E30B299 /* AlertFeature.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AlertFeature.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -65,8 +65,8 @@
 		5180FEAC57B3027FE7F9FE1A /* View */ = {
 			isa = PBXGroup;
 			children = (
-				47A18D787F7FA2936F718D26 /* CustomConfirmDialogViewController.swift */,
-				CC6C3D1A3EBEF0D305097297 /* CustomTwoButtonDialogViewController.swift */,
+				6A4CB28D2F1F9B936CFAFB9B /* OneButtonDialogViewController.swift */,
+				2CF8E636A349B15617A3FC77 /* TwoButtonDialogViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -210,8 +210,8 @@
 				F5A880336C3880C08D4DA368 /* AlertCoordinator.swift in Sources */,
 				B761575182C17FB78ADCB16A /* AlertCoordinatorImp+AlertViewControllerCoordinator.swift in Sources */,
 				7E5BA290C5142F7B5F433034 /* AlertFactory.swift in Sources */,
-				62C21E24819779943E3531FA /* CustomConfirmDialogViewController.swift in Sources */,
-				E7FF8CBB8503218B512A3850 /* CustomTwoButtonDialogViewController.swift in Sources */,
+				DC4468EB977338E4FF02DC70 /* OneButtonDialogViewController.swift in Sources */,
+				AE333C6238E99E3ABA923781 /* TwoButtonDialogViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

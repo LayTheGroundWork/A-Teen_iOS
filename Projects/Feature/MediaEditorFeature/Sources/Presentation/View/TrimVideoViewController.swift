@@ -14,7 +14,7 @@ import DesignSystem
 import UIKit
 
 public protocol TrimVideoViewControllerCoordinator: AnyObject {
-    func didSelectChecButton(asset: AVAsset)
+    func didSelectCheckButton(asset: AVAsset, isPossible: Bool)
     func didFinish()
 }
 
@@ -311,7 +311,13 @@ final class TrimVideoControlViewController: UIViewController {
             print("Error: \(error.localizedDescription)")
             return asset
         }
+    }
+    
+    private func checkVideoTime(startTime: CMTime, endTime: CMTime) -> Bool {
+        let timeRange = CMTimeRange(start: startTime, end: endTime)
+        let tenSeconds = CMTime(seconds: 10, preferredTimescale: timeRange.duration.timescale)
         
+        return timeRange.duration < tenSeconds
     }
     
     // MARK: - Action
@@ -328,7 +334,6 @@ final class TrimVideoControlViewController: UIViewController {
     @objc private func selectedRangeDidChanged(_ sender: VideoTrimmer) {
         playerLayer.player?.pause()
         updateTrimLabel()
-       
     }
     
     @objc private func didBeginScrubbing(_ sender: VideoTrimmer) {
@@ -361,10 +366,17 @@ final class TrimVideoControlViewController: UIViewController {
         }
     }
     
-    
     @objc func didSelectCheckButton(_ sender: UIButton) {
         playerLayer.player?.pause()
-        self.navigationController?.pushViewController(SelectCategoryVideoViewController(asset: trimVideoAsset()), animated: true)
+        
+        coordinator?.didSelectCheckButton(
+            asset: trimVideoAsset(),
+            isPossible: checkVideoTime(
+                startTime: trimmer.selectedRange.start,
+                endTime: trimmer.selectedRange.end
+            )
+        )
+//        self.navigationController?.pushViewController(SelectCategoryVideoViewController(asset: trimVideoAsset()), animated: true)
     }
     
 }

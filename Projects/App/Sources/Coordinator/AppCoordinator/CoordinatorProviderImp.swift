@@ -35,7 +35,10 @@ extension CoordinatorProviderImp {
     func makeAlbumCoordinator(
         delegate: AlbumCoordinatorDelegate
     ) -> Coordinator {
-        factoryProvider.makeAlbumCoordinator(delegate: delegate)
+        factoryProvider.makeAlbumCoordinator(
+            coordinatorProvider: self,
+            delegate: delegate
+        )
     }
 }
 

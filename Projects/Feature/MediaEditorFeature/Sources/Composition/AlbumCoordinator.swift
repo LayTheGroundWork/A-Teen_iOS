@@ -10,6 +10,7 @@ import FeatureDependency
 import UIKit
 
 public final class AlbumCoordinator: Coordinator {
+    public let coordinatorProvider: CoordinatorProvider
     public let factory: AlbumFactory
     public var navigation: Navigation
     public var childCoordinators: [Coordinator]
@@ -17,16 +18,18 @@ public final class AlbumCoordinator: Coordinator {
     weak var delegate: AlbumCoordinatorDelegate?
     
     public init(
+        coordinatorProvider: CoordinatorProvider,
         factory: AlbumFactory,
         navigation: Navigation,
         childCoordinators: [Coordinator],
         delegate: AlbumCoordinatorDelegate?) {
-        self.factory = factory
-        self.navigation = navigation
-        self.childCoordinators = childCoordinators
-        self.delegate = delegate
-    }
-
+            self.coordinatorProvider = coordinatorProvider
+            self.factory = factory
+            self.navigation = navigation
+            self.childCoordinators = childCoordinators
+            self.delegate = delegate
+        }
+    
     public func start() {
         let controller = factory.makeAlbumViewController(coordinator: self)
         navigation.viewControllers = [controller]

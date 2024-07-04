@@ -14,9 +14,9 @@ public struct CustomDialog {
     public var titleColor: UIColor
     public var titleNumberOfLine: Int
     public var titleFont: UIFont
-    public var dialogMessage: String
-    public var messageColor: UIColor
-    public var messageNumberOfLine: Int
+    public var dialogMessage: String?
+    public var messageColor: UIColor?
+    public var messageNumberOfLine: Int?
     public var messageFont: UIFont
     public var buttonText: String
     public var buttonColor: UIColor
@@ -29,9 +29,9 @@ public struct CustomDialog {
         titleColor: UIColor,
         titleNumberOfLine: Int,
         titleFont: UIFont,
-        dialogMessage: String,
-        messageColor: UIColor,
-        messageNumberOfLine: Int,
+        dialogMessage: String?,
+        messageColor: UIColor?,
+        messageNumberOfLine: Int?,
         messageFont: UIFont,
         buttonText: String,
         buttonColor: UIColor,

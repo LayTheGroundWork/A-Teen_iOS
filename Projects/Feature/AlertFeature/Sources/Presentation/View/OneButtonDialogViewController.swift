@@ -1,5 +1,5 @@
 //
-//  CustomConfirmDialogViewController.swift
+//  OneButtonDialogViewController.swift
 //  ATeen
 //
 //  Created by phang on 5/31/24.
@@ -17,14 +17,14 @@ public protocol AlertViewControllerCoordinator: AnyObject {
     func didSelectSecondButton()
 }
 
-open class CustomConfirmDialogViewController: UIViewController {
+open class OneButtonDialogViewController: UIViewController {
     var dialogTitle: String
     var titleColor: UIColor
     var titleNumberOfLine: Int
     var titleFont: UIFont
-    var dialogMessage: String
-    var messageColor: UIColor
-    var messageNumberOfLine: Int
+    var dialogMessage: String?
+    var messageColor: UIColor?
+    var messageNumberOfLine: Int?
     var messageFont: UIFont
     var buttonText: String
     var buttonColor: UIColor
@@ -55,7 +55,7 @@ open class CustomConfirmDialogViewController: UIViewController {
         label.text = dialogMessage
         label.textColor = messageColor
         label.textAlignment = .center
-        label.numberOfLines = messageNumberOfLine
+        label.numberOfLines = messageNumberOfLine ?? 0
         label.font = messageFont
         return label
     }()
@@ -77,9 +77,9 @@ open class CustomConfirmDialogViewController: UIViewController {
         titleColor: UIColor,
         titleNumberOfLine: Int ,
         titleFont: UIFont,
-        dialogMessage: String,
-        messageColor: UIColor ,
-        messageNumberOfLine: Int,
+        dialogMessage: String?,
+        messageColor: UIColor?,
+        messageNumberOfLine: Int?,
         messageFont: UIFont,
         buttonText: String,
         buttonColor: UIColor,

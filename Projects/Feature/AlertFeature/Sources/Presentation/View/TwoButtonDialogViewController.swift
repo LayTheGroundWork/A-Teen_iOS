@@ -1,5 +1,5 @@
 //
-//  CustomTwoButtonDialogViewController.swift
+//  TwoButtonDialogViewController.swift
 //  ATeen
 //
 //  Created by phang on 6/7/24.
@@ -13,15 +13,15 @@ import DesignSystem
 import FeatureDependency
 import UIKit
 
-open class CustomTwoButtonDialogViewController: UIViewController {
+open class TwoButtonDialogViewController: UIViewController {
     var dialogImage: UIImage?
     var dialogTitle: String?
     var titleColor: UIColor
     var titleNumberOfLine: Int
     var titleFont: UIFont
-    var dialogMessage: String
-    var messageColor: UIColor
-    var messageNumberOfLine: Int
+    var dialogMessage: String?
+    var messageColor: UIColor?
+    var messageNumberOfLine: Int?
     var messageFont: UIFont
     var leftButtonText: String
     var leftButtonColor: UIColor
@@ -59,7 +59,7 @@ open class CustomTwoButtonDialogViewController: UIViewController {
         label.text = dialogMessage
         label.textColor = messageColor
         label.textAlignment = .center
-        label.numberOfLines = messageNumberOfLine
+        label.numberOfLines = messageNumberOfLine ?? 0
         label.font = messageFont
         return label
     }()
@@ -98,14 +98,14 @@ open class CustomTwoButtonDialogViewController: UIViewController {
     
     // MARK: - Life Cycle
     public init(
-        dialogImage: UIImage,
+        dialogImage: UIImage? = nil,
         dialogTitle: String,
         titleColor: UIColor,
         titleNumberOfLine: Int,
         titleFont: UIFont,
-        dialogMessage: String,
-        messageColor: UIColor,
-        messageNumberOfLine: Int,
+        dialogMessage: String?,
+        messageColor: UIColor?,
+        messageNumberOfLine: Int? ,
         messageFont: UIFont,
         leftButtonText: String,
         leftButtonColor: UIColor,

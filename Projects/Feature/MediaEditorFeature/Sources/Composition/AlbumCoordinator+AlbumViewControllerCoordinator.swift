@@ -21,6 +21,7 @@ extension AlbumCoordinator: AlbumViewControllerCoordinator {
     
     public func didSelectVideo(asset: AVAsset) {
         let trimVideoCoordinator = factory.makeTrimVideoCoordinator(
+            coordinatorProvider: coordinatorProvider,
             navigation: navigation,
             childCoordinators: childCoordinators,
             asset: asset,

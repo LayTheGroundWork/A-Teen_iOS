@@ -34,6 +34,7 @@ final class FactoryProviderImp: FactoryProvider {
     }
 
     func makeAlbumCoordinator(
+        coordinatorProvider: CoordinatorProvider,
         delegate: AlbumCoordinatorDelegate
     ) -> Coordinator {
         let navigationController = UINavigationController()
@@ -42,6 +43,7 @@ final class FactoryProviderImp: FactoryProvider {
         let navigation = NavigationImp(rootViewController: navigationController)
         let factory = AlbumFactoryImp()
         return AlbumCoordinator(
+            coordinatorProvider: coordinatorProvider,
             factory: factory,
             navigation: navigation,
             childCoordinators: [],

@@ -14,6 +14,7 @@ public protocol TrimVideoCoordinatorDelegate: AnyObject {
 }
 
 public final class TrimVideoCoordinator: Coordinator {
+    public let coordinatorProvider: CoordinatorProvider
     public var navigation: Navigation
     public var childCoordinators: [Coordinator] = []
     var factory: TrimVideoFactory
@@ -21,12 +22,14 @@ public final class TrimVideoCoordinator: Coordinator {
     weak var delegate: TrimVideoCoordinatorDelegate?
     
     public init(
+        coordinatorProvider: CoordinatorProvider,
         navigation: Navigation,
         childCoordinators: [Coordinator],
         factory: TrimVideoFactory,
         asset: AVAsset,
         delegate: TrimVideoCoordinatorDelegate
     ) {
+        self.coordinatorProvider = coordinatorProvider
         self.navigation = navigation
         self.childCoordinators = childCoordinators
         self.factory = factory

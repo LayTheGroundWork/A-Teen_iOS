@@ -30,7 +30,7 @@ public final class AlertFactoryImp: AlertFactory {
         dialogData: CustomDialog,
         coordinator: AlertViewControllerCoordinator
     ) -> UIViewController {
-        return CustomConfirmDialogViewController(
+        return OneButtonDialogViewController(
             dialogTitle: dialogData.dialogTitle,
             titleColor: dialogData.titleColor,
             titleNumberOfLine: dialogData.titleNumberOfLine,
@@ -49,8 +49,8 @@ public final class AlertFactoryImp: AlertFactory {
         dialogData: CustomDialog,
         coordinator: AlertViewControllerCoordinator
     ) -> UIViewController {
-        return CustomTwoButtonDialogViewController(
-            dialogImage: dialogData.dialogImage ?? UIImage(),
+        return TwoButtonDialogViewController(
+            dialogImage: dialogData.dialogImage,
             dialogTitle: dialogData.dialogTitle,
             titleColor: dialogData.titleColor,
             titleNumberOfLine: dialogData.titleNumberOfLine,
