@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 55;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -20,6 +20,7 @@
 		51D09836C8B49B1CF6672BBC /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DFF7A23A43A0FB2157D63DC /* LogInViewController.swift */; };
 		55B2726C834A17D59ED33962 /* SignUpFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9489DDDE029FD676893F7E45 /* SignUpFactory.swift */; };
 		56B2D853CCDA75EAC726B207 /* CustomShowDetailButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E6FF0DAAD1C501D80987CE /* CustomShowDetailButton.swift */; };
+		5725F2D85212C0C58B614BF8 /* PhoneNumberCoordinator+AlertCoordinatorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F36624FEF71B27D7F3B345 /* PhoneNumberCoordinator+AlertCoordinatorDelegate.swift */; };
 		60DCC44F881D008069B63CAF /* SignUpCoordinator+SignUpViewControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4F29E0C2476AA80A6DACD2 /* SignUpCoordinator+SignUpViewControllerCoordinator.swift */; };
 		67202D52B8ECFED01CFD5197 /* SelectBirthFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F243057CDFD67868E4D2B7 /* SelectBirthFactory.swift */; };
 		6BB5A41B470F6D0A679A304E /* SignUpCoordinator+SelectBirthCoordinatorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FEEAA8345B95769A463E802 /* SignUpCoordinator+SelectBirthCoordinatorDelegate.swift */; };
@@ -31,7 +32,6 @@
 		793C65F03D6357E55A720535 /* LoginBirthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E6FEF20965C996B6CBC7542 /* LoginBirthViewModel.swift */; };
 		7F7C06B71FFC20CA5814EB8A /* LogInCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A9D342723C5B76FC39373B /* LogInCoordinator.swift */; };
 		86AAF232164B3FC82E8DD063 /* LogInCoordinator+LogInViewControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7215B932546B5897BE8FF7C /* LogInCoordinator+LogInViewControllerCoordinator.swift */; };
-		88140B9C95EFA1A4D9A85667 /* PhoneNumberCoordinator+AlertCoordinatorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D884E42417E4EB454788A4 /* PhoneNumberCoordinator+AlertCoordinatorDelegate.swift */; };
 		8E977FEA43F18A8A273635E6 /* CustomBirthButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34BCE74515E87E0D93F6CC3D /* CustomBirthButton.swift */; };
 		9AA0D642E1708AC43ECB3FD2 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA701135A68E2F9250CD6D6 /* SignUpViewController.swift */; };
 		9BD35FDF479CAEEB10111FA0 /* SelectBirthCoordinator+SelectBirthViewControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940F40FDF70C78A49F99530D /* SelectBirthCoordinator+SelectBirthViewControllerCoordinator.swift */; };
@@ -78,6 +78,7 @@
 		1CB44DB9D1459A1C18F9B388 /* SignUpCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpCoordinator.swift; sourceTree = "<group>"; };
 		1FEEAA8345B95769A463E802 /* SignUpCoordinator+SelectBirthCoordinatorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SignUpCoordinator+SelectBirthCoordinatorDelegate.swift"; sourceTree = "<group>"; };
 		240A7A39EFC38E63AEB46D18 /* TermsOfUseCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsOfUseCoordinator.swift; sourceTree = "<group>"; };
+		29F36624FEF71B27D7F3B345 /* PhoneNumberCoordinator+AlertCoordinatorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PhoneNumberCoordinator+AlertCoordinatorDelegate.swift"; sourceTree = "<group>"; };
 		34BCE74515E87E0D93F6CC3D /* CustomBirthButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomBirthButton.swift; sourceTree = "<group>"; };
 		34F77941C65FDD2BE5055BE6 /* UserBirthCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserBirthCollectionViewCell.swift; sourceTree = "<group>"; };
 		3720BC1FC97AF7CB3E44C428 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
@@ -98,7 +99,6 @@
 		952823C90056BADECCDE3FF5 /* PhoneNumberCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberCollectionViewCell.swift; sourceTree = "<group>"; };
 		984C70E8B1E14BB4C144EB9C /* CertificationCodeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CertificationCodeCollectionViewCell.swift; sourceTree = "<group>"; };
 		9DFF7A23A43A0FB2157D63DC /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
-		A0D884E42417E4EB454788A4 /* PhoneNumberCoordinator+AlertCoordinatorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PhoneNumberCoordinator+AlertCoordinatorDelegate.swift"; sourceTree = "<group>"; };
 		A34E03EEB828285E9D65A1B8 /* LoginFeature.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = LoginFeature.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A362F7E45E3D955366345900 /* TermsOfUseCoordinator+TermsOfUseViewControllerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TermsOfUseCoordinator+TermsOfUseViewControllerCoordinator.swift"; sourceTree = "<group>"; };
 		AB55C30FB6FBF87D12923FB3 /* LogInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewModel.swift; sourceTree = "<group>"; };
@@ -303,7 +303,7 @@
 			isa = PBXGroup;
 			children = (
 				494AB6AD1ED9003C81881396 /* PhoneNumberCoordinator.swift */,
-				A0D884E42417E4EB454788A4 /* PhoneNumberCoordinator+AlertCoordinatorDelegate.swift */,
+				29F36624FEF71B27D7F3B345 /* PhoneNumberCoordinator+AlertCoordinatorDelegate.swift */,
 				4BB9BE718E7B7F73BB64C145 /* PhoneNumberCoordinator+PhoneNumberViewControllerCoordinator.swift */,
 				19E20FBA0F3BEE4DEF18E3F1 /* PhoneNumberCoordinator+TermsOfUseCoordinatorDelegate.swift */,
 				E101F835260912FBFF740758 /* PhoneNumberFactory.swift */,
@@ -456,6 +456,8 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
 				ORGANIZATIONNAME = ATeen;
+				TargetAttributes = {
+				};
 			};
 			buildConfigurationList = 519D11A0875F41BC6D832807 /* Build configuration list for PBXProject "LoginFeature" */;
 			compatibilityVersion = "Xcode 14.0";
@@ -497,7 +499,7 @@
 				4FB725818C09B5917924D627 /* LogInFactory.swift in Sources */,
 				51D09836C8B49B1CF6672BBC /* LogInViewController.swift in Sources */,
 				CDA6755AF1524781B0C63884 /* LogInViewModel.swift in Sources */,
-				88140B9C95EFA1A4D9A85667 /* PhoneNumberCoordinator+AlertCoordinatorDelegate.swift in Sources */,
+				5725F2D85212C0C58B614BF8 /* PhoneNumberCoordinator+AlertCoordinatorDelegate.swift in Sources */,
 				F209D038464EB564A47E72D1 /* PhoneNumberCoordinator+PhoneNumberViewControllerCoordinator.swift in Sources */,
 				747D3AA643BD11E75F7C22CC /* PhoneNumberCoordinator+TermsOfUseCoordinatorDelegate.swift in Sources */,
 				4E309D480C3DB53E8D5E03F9 /* PhoneNumberCoordinator.swift in Sources */,
@@ -619,10 +621,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					"-ObjC",
-				);
+				OTHER_LDFLAGS = "$(inherited) -ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ATeen.ATeen.LoginFeature;
 				PRODUCT_NAME = LoginFeature;
 				SDKROOT = iphoneos;
@@ -659,10 +658,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					"-ObjC",
-				);
+				OTHER_LDFLAGS = "$(inherited) -ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ATeen.ATeen.LoginFeature;
 				PRODUCT_NAME = LoginFeature;
 				SDKROOT = iphoneos;
@@ -670,7 +666,10 @@
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = (
+					"$(inherited)",
+					DEBUG,
+				);
 				SWIFT_COMPILATION_MODE = singlefile;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
