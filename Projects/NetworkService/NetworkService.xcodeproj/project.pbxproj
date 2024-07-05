@@ -3,12 +3,13 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 55;
+	objectVersion = 56;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		036B6550D85D013E9E45D716 /* ApiError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26DF9FED1221312C46C36A20 /* ApiError.swift */; };
 		0422C1E028807B6222269C0E /* HttpResponseStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = D14C05E4D710518F379088FD /* HttpResponseStatus.swift */; };
+		41A2FAB02C37F0C60043AB10 /* SchoolDataEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A2FAAF2C37F0C60043AB10 /* SchoolDataEndPoint.swift */; };
 		4A25E8BE1156684357DAC52F /* LogInEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE9987B527C6D0232D055D1 /* LogInEndPoint.swift */; };
 		4E73CAAA79D1BE736AD3B7FA /* VerificationCodeEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BA75336359A120CBA17BA7D /* VerificationCodeEndPoint.swift */; };
 		5CD81B418DCC7667165005CA /* ApiClientServiceImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE374FAFF5AD8033061042B6 /* ApiClientServiceImp.swift */; };
@@ -41,6 +42,7 @@
 		2BA75336359A120CBA17BA7D /* VerificationCodeEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationCodeEndPoint.swift; sourceTree = "<group>"; };
 		30B8FE33444F24DC3915A82C /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
 		39E9564068243164AE0397F4 /* EndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPoint.swift; sourceTree = "<group>"; };
+		41A2FAAF2C37F0C60043AB10 /* SchoolDataEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolDataEndPoint.swift; sourceTree = "<group>"; };
 		423A93F1015E6C9CF4DB82B2 /* Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
 		564371F685EE5EF450EB138A /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
 		76A9F67BDB9E1485D6AEA416 /* SignUpEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpEndPoint.swift; sourceTree = "<group>"; };
@@ -90,6 +92,14 @@
 				30B8FE33444F24DC3915A82C /* HTTPMethod.swift */,
 			);
 			path = Sources;
+			sourceTree = "<group>";
+		};
+		41A2FAAE2C37F0BC0043AB10 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				41A2FAAF2C37F0C60043AB10 /* SchoolDataEndPoint.swift */,
+			);
+			path = Search;
 			sourceTree = "<group>";
 		};
 		6AB8D2B24361D1C2B97C7999 /* Auth */ = {
@@ -157,6 +167,7 @@
 		DCED9DDC8E63D40418AAA1BC /* EndPoint */ = {
 			isa = PBXGroup;
 			children = (
+				41A2FAAE2C37F0BC0043AB10 /* Search */,
 				6AB8D2B24361D1C2B97C7999 /* Auth */,
 				39E9564068243164AE0397F4 /* EndPoint.swift */,
 			);
@@ -210,8 +221,6 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
 				ORGANIZATIONNAME = ATeen;
-				TargetAttributes = {
-				};
 			};
 			buildConfigurationList = FFC6118989876A9280B17F0F /* Build configuration list for PBXProject "NetworkService" */;
 			compatibilityVersion = "Xcode 14.0";
@@ -248,6 +257,7 @@
 			files = (
 				759753D185FBA434CB7A41B8 /* ApiClientService.swift in Sources */,
 				4A25E8BE1156684357DAC52F /* LogInEndPoint.swift in Sources */,
+				41A2FAB02C37F0C60043AB10 /* SchoolDataEndPoint.swift in Sources */,
 				7A4C181A2942A2CA8F105272 /* PhoneNumberAuthEndPoint.swift in Sources */,
 				CD593DB7F1E285C350370335 /* SignUpEndPoint.swift in Sources */,
 				4E73CAAA79D1BE736AD3B7FA /* VerificationCodeEndPoint.swift in Sources */,
@@ -282,7 +292,10 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				OTHER_LDFLAGS = "$(inherited) -ObjC";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ATeen.ATeen.NetworkService;
 				PRODUCT_NAME = NetworkService;
 				SDKROOT = iphoneos;
@@ -319,7 +332,10 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				OTHER_LDFLAGS = "$(inherited) -ObjC";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ATeen.ATeen.NetworkService;
 				PRODUCT_NAME = NetworkService;
 				SDKROOT = iphoneos;
@@ -327,10 +343,7 @@
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = (
-					"$(inherited)",
-					DEBUG,
-				);
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG";
 				SWIFT_COMPILATION_MODE = singlefile;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;

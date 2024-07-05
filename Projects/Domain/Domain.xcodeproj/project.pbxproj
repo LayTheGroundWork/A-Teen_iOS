@@ -3,12 +3,17 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 55;
+	objectVersion = 56;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		150D6995E52A32B29DBA855E /* LogInResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0466867E7CA24A7196EB9339 /* LogInResponse.swift */; };
 		337435614E3EF754DF8C5FCC /* VerificationCodeRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4220232C6D323CEE154173C8 /* VerificationCodeRequest.swift */; };
+		41A2FAA32C37ECA10043AB10 /* SchoolDataResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A2FAA22C37ECA10043AB10 /* SchoolDataResponse.swift */; };
+		41A2FAA52C37ED170043AB10 /* SchoolDataRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A2FAA42C37ED170043AB10 /* SchoolDataRequest.swift */; };
+		41A2FAA72C37EEB20043AB10 /* SchoolDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A2FAA62C37EEB20043AB10 /* SchoolDataRepository.swift */; };
+		41A2FAA92C37EF760043AB10 /* SearchUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A2FAA82C37EF760043AB10 /* SearchUseCase.swift */; };
+		41A2FAAB2C37EFD30043AB10 /* SearchUseCaseImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A2FAAA2C37EFD30043AB10 /* SearchUseCaseImp.swift */; };
 		4412DD94E9BE92B437216169 /* ImageDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C9895B94482D7F1DCACB8C /* ImageDataRepository.swift */; };
 		67B020A5ED1B6DE1F1FD34EA /* SignRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ACB320B7ABCFA6BA58774D5 /* SignRepository.swift */; };
 		77EEC29764D1D277B000EE29 /* ImageDataUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451ACE222BE8C01F4B361381 /* ImageDataUseCase.swift */; };
@@ -40,6 +45,11 @@
 		0466867E7CA24A7196EB9339 /* LogInResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInResponse.swift; sourceTree = "<group>"; };
 		09C9895B94482D7F1DCACB8C /* ImageDataRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDataRepository.swift; sourceTree = "<group>"; };
 		3A4620A0019C901EC7C993A2 /* Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
+		41A2FAA22C37ECA10043AB10 /* SchoolDataResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolDataResponse.swift; sourceTree = "<group>"; };
+		41A2FAA42C37ED170043AB10 /* SchoolDataRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolDataRequest.swift; sourceTree = "<group>"; };
+		41A2FAA62C37EEB20043AB10 /* SchoolDataRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolDataRepository.swift; sourceTree = "<group>"; };
+		41A2FAA82C37EF760043AB10 /* SearchUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchUseCase.swift; sourceTree = "<group>"; };
+		41A2FAAA2C37EFD30043AB10 /* SearchUseCaseImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchUseCaseImp.swift; sourceTree = "<group>"; };
 		4220232C6D323CEE154173C8 /* VerificationCodeRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationCodeRequest.swift; sourceTree = "<group>"; };
 		451ACE222BE8C01F4B361381 /* ImageDataUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDataUseCase.swift; sourceTree = "<group>"; };
 		4E9CE89DF975B0D0D64ABC25 /* LocalDataImageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalDataImageService.swift; sourceTree = "<group>"; };
@@ -110,6 +120,7 @@
 			children = (
 				451ACE222BE8C01F4B361381 /* ImageDataUseCase.swift */,
 				A97F7B0D49B77A55DE5D9C86 /* SignUseCase.swift */,
+				41A2FAA82C37EF760043AB10 /* SearchUseCase.swift */,
 			);
 			path = UseCase;
 			sourceTree = "<group>";
@@ -137,6 +148,7 @@
 			children = (
 				09C9895B94482D7F1DCACB8C /* ImageDataRepository.swift */,
 				6ACB320B7ABCFA6BA58774D5 /* SignRepository.swift */,
+				41A2FAA62C37EEB20043AB10 /* SchoolDataRepository.swift */,
 			);
 			path = RepositoryInterface;
 			sourceTree = "<group>";
@@ -145,6 +157,7 @@
 			isa = PBXGroup;
 			children = (
 				0466867E7CA24A7196EB9339 /* LogInResponse.swift */,
+				41A2FAA22C37ECA10043AB10 /* SchoolDataResponse.swift */,
 			);
 			path = Response;
 			sourceTree = "<group>";
@@ -176,6 +189,7 @@
 				BE981DCC0E95880B9118AF74 /* PhoneNumberAuthRequest.swift */,
 				C45740FE1495C2E2F9F123BE /* SignUpRequest.swift */,
 				4220232C6D323CEE154173C8 /* VerificationCodeRequest.swift */,
+				41A2FAA42C37ED170043AB10 /* SchoolDataRequest.swift */,
 			);
 			path = Request;
 			sourceTree = "<group>";
@@ -185,6 +199,7 @@
 			children = (
 				7616981B4BB1B2D11994DCC8 /* ImageDataUseCaseImp.swift */,
 				EC9D0548A4DB530E9B7F3EE0 /* SignUseCaseImp.swift */,
+				41A2FAAA2C37EFD30043AB10 /* SearchUseCaseImp.swift */,
 			);
 			path = UseCaseImplementations;
 			sourceTree = "<group>";
@@ -226,8 +241,6 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
 				ORGANIZATIONNAME = ATeen;
-				TargetAttributes = {
-				};
 			};
 			buildConfigurationList = 5B17347D429F14C389327C78 /* Build configuration list for PBXProject "Domain" */;
 			compatibilityVersion = "Xcode 14.0";
@@ -265,8 +278,11 @@
 				83315DB61E2BEAE20B3C84D1 /* LogInRequest.swift in Sources */,
 				9034909F680164DCD97B8693 /* PhoneNumberAuthRequest.swift in Sources */,
 				C8094BE4D30D193A2265DD54 /* SignUpRequest.swift in Sources */,
+				41A2FAA72C37EEB20043AB10 /* SchoolDataRepository.swift in Sources */,
 				337435614E3EF754DF8C5FCC /* VerificationCodeRequest.swift in Sources */,
+				41A2FAAB2C37EFD30043AB10 /* SearchUseCaseImp.swift in Sources */,
 				150D6995E52A32B29DBA855E /* LogInResponse.swift in Sources */,
+				41A2FAA32C37ECA10043AB10 /* SchoolDataResponse.swift in Sources */,
 				4412DD94E9BE92B437216169 /* ImageDataRepository.swift in Sources */,
 				67B020A5ED1B6DE1F1FD34EA /* SignRepository.swift in Sources */,
 				B0C22C92EC8095B547DD462C /* LocalDataImageService.swift in Sources */,
@@ -274,8 +290,10 @@
 				A8028D84E0D0F2854CF15466 /* VerificateService.swift in Sources */,
 				77EEC29764D1D277B000EE29 /* ImageDataUseCase.swift in Sources */,
 				968DA3475B63B63D4443BD7A /* SignUseCase.swift in Sources */,
+				41A2FAA52C37ED170043AB10 /* SchoolDataRequest.swift in Sources */,
 				83D7B4EF66F988EE6F958100 /* ImageDataUseCaseImp.swift in Sources */,
 				8F82A8BB68E309F441F21D31 /* SignUseCaseImp.swift in Sources */,
+				41A2FAA92C37EF760043AB10 /* SearchUseCase.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -355,7 +373,10 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				OTHER_LDFLAGS = "$(inherited) -ObjC";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ATeen.ATeen.Domain;
 				PRODUCT_NAME = Domain;
 				SDKROOT = iphoneos;
@@ -451,7 +472,10 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				OTHER_LDFLAGS = "$(inherited) -ObjC";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ATeen.ATeen.Domain;
 				PRODUCT_NAME = Domain;
 				SDKROOT = iphoneos;
@@ -459,10 +483,7 @@
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = (
-					"$(inherited)",
-					DEBUG,
-				);
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG";
 				SWIFT_COMPILATION_MODE = singlefile;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;

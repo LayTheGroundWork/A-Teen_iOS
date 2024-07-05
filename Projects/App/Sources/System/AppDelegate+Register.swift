@@ -31,6 +31,10 @@ extension AppDelegate {
             localDataCache: localDataCache)
         let imageDataUseCase: ImageDataUseCase = ImageDataUseCaseImp(imageDataRepository: imageDataRepository)
         
+        
+        let schoolDataRepository: SchoolDataRepository = SchoolDataRepositoryImp(apiClientService: apiClientService)
+        let searchUseCase: SearchUseCase = SearchUseCaseImp(schoolDataRepository: schoolDataRepository)
+        
         appContainer?.register(
             type: SignUseCase.self,
             signUseCase)
@@ -39,5 +43,9 @@ extension AppDelegate {
             type: ImageDataUseCase.self,
             imageDataUseCase
         )
+        
+        appContainer?.register(
+            type: SearchUseCase.self,
+            searchUseCase)
     }
 }

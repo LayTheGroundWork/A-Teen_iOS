@@ -23,6 +23,9 @@ struct LogInData: Decodable {
 
 extension LogInDTO {
     func toDomain() -> LogInResponse {
-        .init(authToken: data.accessToken)
+        .init(
+            authToken: data.accessToken,
+            refreshToken: data.refreshToken
+        )
     }
 }
