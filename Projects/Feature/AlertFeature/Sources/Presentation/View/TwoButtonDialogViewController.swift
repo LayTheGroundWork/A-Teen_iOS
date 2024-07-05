@@ -15,7 +15,7 @@ import UIKit
 
 open class TwoButtonDialogViewController: UIViewController {
     var dialogImage: UIImage?
-    var dialogTitle: String?
+    var dialogTitle: String
     var titleColor: UIColor
     var titleNumberOfLine: Int
     var titleFont: UIFont
@@ -166,11 +166,7 @@ open class TwoButtonDialogViewController: UIViewController {
         }
         
         messageLabel.snp.makeConstraints { make in
-            if dialogTitle == nil {
-                make.top.equalToSuperview().offset(50)
-            } else {
-                make.top.equalTo(titleLabel.snp.bottom).offset(10)
-            }
+            make.top.equalTo(titleLabel.snp.bottom).offset(10)
             make.centerX.equalToSuperview()
         }
         
