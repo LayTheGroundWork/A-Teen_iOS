@@ -53,7 +53,9 @@ public struct MainTabFactoryImp: MainTabFactory {
         return LogInCoordinator(
             navigation: navigation,
             factory: factory,
-            delegate: delegate)
+            delegate: delegate,
+            coordinatorProvider: coordinatorProvider
+        )
     }
     
     public func makeChildCoordinators(
@@ -97,7 +99,9 @@ public struct MainTabFactoryImp: MainTabFactory {
         return RankingCoordinator(
             navigation: navigation,
             factory: factory,
-            delegate: delegate)
+            delegate: delegate,
+            coordinatorProvider: coordinatorProvider
+        )
     }
     
     private func makeTeenCoordinator() -> Coordinator {

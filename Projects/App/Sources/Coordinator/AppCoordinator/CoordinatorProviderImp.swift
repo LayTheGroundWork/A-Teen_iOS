@@ -30,10 +30,28 @@ extension CoordinatorProviderImp {
     }
 }
 
+// MARK: - MediaEditor
 extension CoordinatorProviderImp {
     func makeAlbumCoordinator(
         delegate: AlbumCoordinatorDelegate
     ) -> Coordinator {
-        factoryProvider.makeAlbumCoordinator(delegate: delegate)
+        factoryProvider.makeAlbumCoordinator(
+            coordinatorProvider: self,
+            delegate: delegate
+        )
+    }
+}
+
+// MARK: - Alert
+extension CoordinatorProviderImp {
+    func makeAlertCoordinator(
+        dialogType: AlertDialogType,
+        delegate: AlertCoordinatorDelegate,
+        dialogData: CustomDialog
+    ) -> Coordinator {
+        factoryProvider.makeAlertCoordinator(
+            dialogType: dialogType,
+            delegate: delegate,
+            dialogData: dialogData)
     }
 }

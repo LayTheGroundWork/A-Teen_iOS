@@ -21,6 +21,7 @@ public protocol AlbumFactory {
     ) -> Coordinator
     
     func makeTrimVideoCoordinator(
+        coordinatorProvider: CoordinatorProvider,
         navigation: Navigation,
         childCoordinators: [Coordinator],
         asset: AVAsset,
@@ -54,6 +55,7 @@ public struct AlbumFactoryImp: AlbumFactory {
     }
     
     public func makeTrimVideoCoordinator(
+        coordinatorProvider: CoordinatorProvider,
         navigation: Navigation,
         childCoordinators: [Coordinator],
         asset: AVAsset,
@@ -61,6 +63,7 @@ public struct AlbumFactoryImp: AlbumFactory {
     ) -> Coordinator {
         let factory = TrimVideoFactoryImp()
         return TrimVideoCoordinator(
+            coordinatorProvider: coordinatorProvider,
             navigation: navigation,
             childCoordinators: childCoordinators,
             factory: factory,

@@ -15,14 +15,6 @@ public protocol PhoneNumberFactory {
         childCoordinators: [Coordinator],
         delegate: TermsOfUseCoordinatorDelegate
     ) -> Coordinator
-    func makeVerificationCompleteDialogCoordinator(
-        navigation: Navigation,
-        delegate: VerificationCompleteDialogCoordinatorDelegate
-    ) -> Coordinator
-    func makeExistingUserLoginDialogCoordinator(
-        navigation: Navigation,
-        delegate: ExistingUserLoginDialogCoordinatorDelegate
-    ) -> Coordinator
 }
 
 public struct PhoneNumberFactoryImp: PhoneNumberFactory {
@@ -51,28 +43,6 @@ public struct PhoneNumberFactoryImp: PhoneNumberFactory {
             navigation: navigation,
             factory: factory,
             childCoordinators: childCoordinators,
-            delegate: delegate)
-    }
-    
-    public func makeVerificationCompleteDialogCoordinator(
-        navigation: Navigation,
-        delegate: VerificationCompleteDialogCoordinatorDelegate
-    ) -> Coordinator {
-        let factory = VerificationCompleteDialogFactoryImp()
-        return VerificationCompleteDialogCoordinator(
-            navigation: navigation,
-            factory: factory,
-            delegate: delegate)
-    }
-    
-    public func makeExistingUserLoginDialogCoordinator(
-        navigation: Navigation,
-        delegate: ExistingUserLoginDialogCoordinatorDelegate
-    ) -> Coordinator {
-        let factory = ExistingUserLoginDialogFactoryImp()
-        return ExistingUserLoginDialogCoordinator(
-            navigation: navigation,
-            factory: factory,
             delegate: delegate)
     }
 }

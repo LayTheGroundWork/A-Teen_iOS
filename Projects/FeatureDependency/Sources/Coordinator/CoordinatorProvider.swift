@@ -16,7 +16,15 @@ public protocol CoordinatorProvider {
         todayTeen: TodayTeen
     ) -> Coordinator
     
-    func makeAlbumCoordinator(delegate: AlbumCoordinatorDelegate) -> Coordinator
+    func makeAlbumCoordinator(
+        delegate: AlbumCoordinatorDelegate
+    ) -> Coordinator
+    
+    func makeAlertCoordinator(
+        dialogType: AlertDialogType,
+        delegate: AlertCoordinatorDelegate,
+        dialogData: CustomDialog
+    ) -> Coordinator
 }
 
 public protocol ProfileDetailCoordinatorDelegate: AnyObject {
@@ -25,5 +33,8 @@ public protocol ProfileDetailCoordinatorDelegate: AnyObject {
 
 public protocol AlbumCoordinatorDelegate: AnyObject {
     func didFinish(childCoordinator: Coordinator)
+}
 
+public protocol AlertCoordinatorDelegate: AnyObject {
+    func didFinish(childCoordinator: Coordinator, selectIndex: Int) 
 }

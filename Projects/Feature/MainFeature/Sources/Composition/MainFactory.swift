@@ -21,21 +21,17 @@ public protocol MainFactory {
         navigation: Navigation,
         delegate: ReportDialogCoordinatorDelegate
     ) -> Coordinator
-    func makeReportCompleteDialogCoordinator(
-        navigation: Navigation,
-        delegate: ReportCompleteDialogCoordinatorDelegate
-    ) -> Coordinator
 }
 
 public struct MainFactoryImp: MainFactory {
     let appContainer: AppContainer?
+    let viewModel = MainViewModel()
     
     public init(appContainer: AppContainer?) {
         self.appContainer = appContainer
     }
     
     public func makeMainViewController(coordinator: MainViewControllerCoordinator) -> UIViewController {
-        let viewModel = MainViewModel()
         viewModel.auth = appContainer?.auth
         let controller = MainViewController(
             viewModel: viewModel,
@@ -63,18 +59,6 @@ public struct MainFactoryImp: MainFactory {
     ) -> Coordinator {
         let factory = ReportDialogFactoryImp()
         return ReportDialogCoordinator(
-            navigation: navigation,
-            factory: factory,
-            delegate: delegate
-        )
-    }
-    
-    public func makeReportCompleteDialogCoordinator(        
-        navigation: Navigation,
-        delegate: ReportCompleteDialogCoordinatorDelegate
-    ) -> Coordinator {
-        let factory = ReportCompleteDialogFactoryImp()
-        return ReportCompleteDialogCoordinator(
             navigation: navigation,
             factory: factory,
             delegate: delegate

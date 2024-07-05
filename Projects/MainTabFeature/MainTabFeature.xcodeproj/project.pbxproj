@@ -9,7 +9,9 @@
 /* Begin PBXBuildFile section */
 		012B904FFCFD7D4204F28289 /* MainTabCoordinator+RankingCoordinatorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B4125C653D73B4C64122026 /* MainTabCoordinator+RankingCoordinatorDelegate.swift */; };
 		22B771E22A2C1639383D2A54 /* MainTabCoordinator+SettingsCoordinatorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC351BE39E1D990A74A8A873 /* MainTabCoordinator+SettingsCoordinatorDelegate.swift */; };
+		378F72306ADD0C7A67364684 /* MediaEditorFeature.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66B07D75B28CCDFDD8D67157 /* MediaEditorFeature.framework */; };
 		4B0B05C2E03C232E04A4D4B2 /* LoginFeature.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D811A0994ED45CD4EBE43333 /* LoginFeature.framework */; };
+		4DA8B5C15B52962A58C27412 /* AlertFeature.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5322AE6F9A728F48633C22E5 /* AlertFeature.framework */; };
 		53F6F0B749B747EBD9E10C4C /* MainTabCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0705AA04C1BF5986F8FA618 /* MainTabCoordinator.swift */; };
 		60B1253BB2BBE20604CC2599 /* ProfileDetailFeature.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46B9091B7A05386A74935ABC /* ProfileDetailFeature.framework */; };
 		661C2721F63D2E6E20E11A67 /* CustomTabBarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6ACB6B490AA319F179BF57 /* CustomTabBarButton.swift */; };
@@ -46,6 +48,8 @@
 		3A81669B81656FFB90F95C0C /* MainTabFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabFactory.swift; sourceTree = "<group>"; };
 		46B9091B7A05386A74935ABC /* ProfileDetailFeature.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ProfileDetailFeature.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4B4125C653D73B4C64122026 /* MainTabCoordinator+RankingCoordinatorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainTabCoordinator+RankingCoordinatorDelegate.swift"; sourceTree = "<group>"; };
+		5322AE6F9A728F48633C22E5 /* AlertFeature.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AlertFeature.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		66B07D75B28CCDFDD8D67157 /* MediaEditorFeature.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MediaEditorFeature.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		67CE8373CF19BD00DBDDDCB3 /* ChatFeature.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ChatFeature.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		74477E3F61BF8B9592B607DD /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
 		8F565F922CB5DBE1EF3DFA39 /* TeenFeature.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TeenFeature.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -64,9 +68,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4DA8B5C15B52962A58C27412 /* AlertFeature.framework in Frameworks */,
 				A6BD8911E4F7EC9925838A45 /* ChatFeature.framework in Frameworks */,
 				4B0B05C2E03C232E04A4D4B2 /* LoginFeature.framework in Frameworks */,
 				951AF69CB6A02607BEA18D3A /* MainFeature.framework in Frameworks */,
+				378F72306ADD0C7A67364684 /* MediaEditorFeature.framework in Frameworks */,
 				60B1253BB2BBE20604CC2599 /* ProfileDetailFeature.framework in Frameworks */,
 				D7762730317F025DCA287FCF /* ProfileFeature.framework in Frameworks */,
 				B93319F0076615A3D3DFAC87 /* RankingFeature.framework in Frameworks */,
@@ -89,10 +95,12 @@
 		339FB07533DCDCAFBBDEA70A /* Products */ = {
 			isa = PBXGroup;
 			children = (
+				5322AE6F9A728F48633C22E5 /* AlertFeature.framework */,
 				67CE8373CF19BD00DBDDDCB3 /* ChatFeature.framework */,
 				D811A0994ED45CD4EBE43333 /* LoginFeature.framework */,
 				372C93AEDE2C496EA5D210FF /* MainFeature.framework */,
 				EB80C9C6AC0C132632C258EE /* MainTabFeature.framework */,
+				66B07D75B28CCDFDD8D67157 /* MediaEditorFeature.framework */,
 				46B9091B7A05386A74935ABC /* ProfileDetailFeature.framework */,
 				9C34294A2398A0A8F407C438 /* ProfileFeature.framework */,
 				E6BDC1D9B6B51ABA66682855 /* RankingFeature.framework */,

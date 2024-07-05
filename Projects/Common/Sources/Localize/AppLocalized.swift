@@ -126,7 +126,7 @@ public enum AppLocalized {
     public static let accessMediaText = "A - TEEN은 사용자가 선택한 사진만 엑세스할 수 있습니다."
     public static let selectPhotoCategoryText = "자랑할 사진의 카테고리를 선택해보세요!"
     public static let selectVideoCategoryText = "자랑할 영상의 카테고리를 선택해보세요!"
-    
+    public static let maxVideoTimeText = "영상의 길이는 최대 10까지만 사용 가능해요"
 }
 
 // MARK: - Regex 모음

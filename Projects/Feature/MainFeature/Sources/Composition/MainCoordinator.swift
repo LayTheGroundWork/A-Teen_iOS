@@ -37,6 +37,7 @@ public final class MainCoordinator: Coordinator {
         let controller = factory.makeMainViewController(coordinator: self)
         navigation.pushViewController(controller, animated: true)
     }
+    
 }
 
 extension MainCoordinator: ParentCoordinator { }

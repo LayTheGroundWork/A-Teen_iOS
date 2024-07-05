@@ -13,13 +13,7 @@ public protocol RankingFactory {
     func makeRankingViewController(
         coordinator: RankingViewControllerCoordinator
     ) -> UIViewController
-    
-    func makeIntendToVoteDialogCoordinator(
-        navigation: Navigation,
-        delegate: IntendToVoteDialogCoordinatorDelegate,
-        sector: String
-    ) -> Coordinator
-    
+
     func makeRankingResultCoordinator(
         navigation: Navigation,
         delegate: RankingResultCoordinatorDelegate,
@@ -31,6 +25,7 @@ public protocol RankingFactory {
     func makeTournamentCoordinator(
         navigation: Navigation,
         delegate: TournamentCoordinatorDelegate,
+        coordinatorProvider: CoordinatorProvider,
         sector: String
     ) -> Coordinator
 }
@@ -48,20 +43,6 @@ public struct RankingFactoryImp: RankingFactory {
         let controller = RankingViewController(
             coordinator: coordinator)
         return controller
-    }
-    
-    public func makeIntendToVoteDialogCoordinator(
-        navigation: Navigation,
-        delegate: IntendToVoteDialogCoordinatorDelegate,
-        sector: String
-    ) -> Coordinator {
-        let factory = IntendToVoteDialogFactoryImp()
-        return IntendToVoteDialogCoordinator(
-            navigation: navigation,
-            factory: factory,
-            delegate: delegate,
-            sector: sector
-        )
     }
     
     public func makeRankingResultCoordinator(
@@ -85,6 +66,7 @@ public struct RankingFactoryImp: RankingFactory {
     public func makeTournamentCoordinator(
         navigation: Navigation,
         delegate: TournamentCoordinatorDelegate,
+        coordinatorProvider: CoordinatorProvider,
         sector: String
     ) -> Coordinator {
         let factory = TournamentFactoryImp(appContainer: appContainer)
@@ -92,6 +74,7 @@ public struct RankingFactoryImp: RankingFactory {
             navigation: navigation,
             factory: factory,
             delegate: delegate,
+            coordinatorProvider: coordinatorProvider,
             sector: sector
         )
     }

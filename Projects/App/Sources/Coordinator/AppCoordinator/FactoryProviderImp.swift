@@ -8,6 +8,7 @@
 
 import Common
 import FeatureDependency
+import AlertFeature
 import ProfileDetailFeature
 import MediaEditorFeature
 import UIKit
@@ -33,6 +34,7 @@ final class FactoryProviderImp: FactoryProvider {
     }
 
     func makeAlbumCoordinator(
+        coordinatorProvider: CoordinatorProvider,
         delegate: AlbumCoordinatorDelegate
     ) -> Coordinator {
         let navigationController = UINavigationController()
@@ -40,11 +42,29 @@ final class FactoryProviderImp: FactoryProvider {
         navigationController.view.backgroundColor = UIColor.clear
         let navigation = NavigationImp(rootViewController: navigationController)
         let factory = AlbumFactoryImp()
-        return AlbumCoordinatorImp(
+        return AlbumCoordinator(
+            coordinatorProvider: coordinatorProvider,
             factory: factory,
             navigation: navigation,
             childCoordinators: [],
             delegate: delegate)
     }
     
+    func makeAlertCoordinator(
+        dialogType: AlertDialogType,
+        delegate: AlertCoordinatorDelegate,
+        dialogData: CustomDialog
+    ) -> Coordinator {
+        let navigationController = UINavigationController()
+        navigationController.modalPresentationStyle = .overFullScreen
+        navigationController.view.backgroundColor = UIColor.clear
+        let navigation = NavigationImp(rootViewController: navigationController)
+        let factory = AlertFactoryImp()
+        return AlertCoordinator(
+            dialogType: dialogType,
+            navigation: navigation,
+            factory: factory,
+            dialogData: dialogData,
+            delegate: delegate)
+    }
 }

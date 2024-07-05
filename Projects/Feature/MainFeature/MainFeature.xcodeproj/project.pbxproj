@@ -14,10 +14,7 @@
 		2768C053B4D45EC826879E1D /* MainCoordinator+MainViewControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EDED329CDE504D0E71701F5 /* MainCoordinator+MainViewControllerCoordinator.swift */; };
 		2EA4676B687C65F38D0D5540 /* ReportDialogCoordinator+ReportDialogViewControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A2F5DAD78FB2BBBF63757B0 /* ReportDialogCoordinator+ReportDialogViewControllerCoordinator.swift */; };
 		31422E3DFBE651CA19AD4F55 /* ReportDialogFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C1509E4C8DA3F0B28FABC09 /* ReportDialogFactory.swift */; };
-		3958DD2EEF8C85A7E430C627 /* ReportCompleteDialogCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74029CE130A3079EDFA53D8 /* ReportCompleteDialogCoordinator.swift */; };
 		39E39D126248361A40A60B0C /* AnotherTeenTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210CB7365E088B19EC7CF59E /* AnotherTeenTableViewCell.swift */; };
-		4CFA70B40EE304371AC1DCB4 /* ReportCompleteDialogCoordinator+ReportCompleteDialogViewControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A87C004331813BE33A1E0AC /* ReportCompleteDialogCoordinator+ReportCompleteDialogViewControllerCoordinator.swift */; };
-		61797C3B901664277CA838D0 /* ReportCompleteDialogFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E76E59F969C8FBAEB68EEE /* ReportCompleteDialogFactory.swift */; };
 		746535D204B8F9319A8FEBC7 /* CustomUsedToReportViewButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AF3A4B6728E1D40BC548AE /* CustomUsedToReportViewButton.swift */; };
 		7AF6132EE1CA5DA4C371B7FF /* CategoryTournamentCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D8A3847BA63B1717071768F /* CategoryTournamentCollectionViewCell.swift */; };
 		8B0553CAA1F822E2ECC75E6E /* ReportDialogCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5615F9345679941ACCF4F1 /* ReportDialogCoordinator.swift */; };
@@ -25,7 +22,6 @@
 		A008A74C16400F4C352D614A /* FeatureDependency.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF59E537DED595ABC4723375 /* FeatureDependency.framework */; };
 		A5FBE828161CA2B9F24F0D55 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC68D160038C3AED5DD9DB7 /* MainViewController.swift */; };
 		A608078756842AE9BCF9081C /* TodayTeenTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F4163E7027769202F76FDA /* TodayTeenTableViewCell.swift */; };
-		AD93B38FE0579196963A8B80 /* ReportCompleteDialogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE554DE77AA54D941FF3099 /* ReportCompleteDialogViewController.swift */; };
 		AF09BCEA347F849A9858B8BB /* ReportPopoverFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0C939454A6D8CB5166C9933 /* ReportPopoverFactory.swift */; };
 		B5793E96A4A6935C33F6D1EC /* CustomPopoverButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E9E8E7818FF54CE445ACB2 /* CustomPopoverButton.swift */; };
 		BCDC94E66F39DABA0D3D570E /* ReportDialogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B18584A7AD79002D8E1E659 /* ReportDialogViewController.swift */; };
@@ -35,6 +31,7 @@
 		D2D9C3946CD25689E91DDDF7 /* TodayTeenCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F7EDDF944D10B61E131867A /* TodayTeenCollectionViewCell.swift */; };
 		DB6705AB97FBA9F5C0A28F3C /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B06DBC64C44174C188C4F64 /* MainCoordinator.swift */; };
 		DF6D21F3CA70087B8AD762AC /* ReportPopoverCoordinator+ReportPopoverViewControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A62B885A46A8F332F9A594CD /* ReportPopoverCoordinator+ReportPopoverViewControllerCoordinator.swift */; };
+		E400A43DDA1C453994E8FBEA /* MainCoordinator+AlertCoordinatorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EC22B4B964E3AB5D50C7CCE /* MainCoordinator+AlertCoordinatorDelegate.swift */; };
 		E9159249AEB8C88EA7259100 /* CategoryTodayCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EBD847E5057932B4F6A0C9 /* CategoryTodayCollectionViewCell.swift */; };
 		EE324355555A58427AF8BD8D /* ReportPopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92AB433FA37196720FE6929 /* ReportPopoverViewController.swift */; };
 		FDF6CD4366B0D4EDBF1999BC /* CustomNaviView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 563B5B673904807BF5DDE9A9 /* CustomNaviView.swift */; };
@@ -69,15 +66,13 @@
 		5BC68D160038C3AED5DD9DB7 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		5C1509E4C8DA3F0B28FABC09 /* ReportDialogFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportDialogFactory.swift; sourceTree = "<group>"; };
 		6A2F5DAD78FB2BBBF63757B0 /* ReportDialogCoordinator+ReportDialogViewControllerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ReportDialogCoordinator+ReportDialogViewControllerCoordinator.swift"; sourceTree = "<group>"; };
+		7EC22B4B964E3AB5D50C7CCE /* MainCoordinator+AlertCoordinatorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainCoordinator+AlertCoordinatorDelegate.swift"; sourceTree = "<group>"; };
 		88F4163E7027769202F76FDA /* TodayTeenTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayTeenTableViewCell.swift; sourceTree = "<group>"; };
 		8A5615F9345679941ACCF4F1 /* ReportDialogCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportDialogCoordinator.swift; sourceTree = "<group>"; };
-		8AE554DE77AA54D941FF3099 /* ReportCompleteDialogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportCompleteDialogViewController.swift; sourceTree = "<group>"; };
 		8B06DBC64C44174C188C4F64 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
-		9A87C004331813BE33A1E0AC /* ReportCompleteDialogCoordinator+ReportCompleteDialogViewControllerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ReportCompleteDialogCoordinator+ReportCompleteDialogViewControllerCoordinator.swift"; sourceTree = "<group>"; };
 		9CC17C8718F5E2ED9E6372B6 /* HeaderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderTableViewCell.swift; sourceTree = "<group>"; };
 		A0EBD847E5057932B4F6A0C9 /* CategoryTodayCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTodayCollectionViewCell.swift; sourceTree = "<group>"; };
 		A62B885A46A8F332F9A594CD /* ReportPopoverCoordinator+ReportPopoverViewControllerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ReportPopoverCoordinator+ReportPopoverViewControllerCoordinator.swift"; sourceTree = "<group>"; };
-		A74029CE130A3079EDFA53D8 /* ReportCompleteDialogCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportCompleteDialogCoordinator.swift; sourceTree = "<group>"; };
 		A9ABF5567451B40573D1C71F /* ReportPopoverCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportPopoverCoordinator.swift; sourceTree = "<group>"; };
 		AC9859CF2BE87D03E01A0EE5 /* AboutATeenTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutATeenTableViewCell.swift; sourceTree = "<group>"; };
 		B92AB433FA37196720FE6929 /* ReportPopoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportPopoverViewController.swift; sourceTree = "<group>"; };
@@ -86,7 +81,6 @@
 		E88239E3C16860C07494EEE2 /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
 		F1E9E8E7818FF54CE445ACB2 /* CustomPopoverButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPopoverButton.swift; sourceTree = "<group>"; };
 		F2A1F6804625C61BE6F801C8 /* TournamentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TournamentTableViewCell.swift; sourceTree = "<group>"; };
-		F4E76E59F969C8FBAEB68EEE /* ReportCompleteDialogFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportCompleteDialogFactory.swift; sourceTree = "<group>"; };
 		FF59E537DED595ABC4723375 /* FeatureDependency.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FeatureDependency.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFA0885F2D529811E9F26742 /* CustomAboutATeenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAboutATeenView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -125,7 +119,6 @@
 			children = (
 				A84DD29D312BB44083844161 /* Cell */,
 				5BC68D160038C3AED5DD9DB7 /* MainViewController.swift */,
-				8AE554DE77AA54D941FF3099 /* ReportCompleteDialogViewController.swift */,
 				5B18584A7AD79002D8E1E659 /* ReportDialogViewController.swift */,
 				B92AB433FA37196720FE6929 /* ReportPopoverViewController.swift */,
 			);
@@ -226,12 +219,10 @@
 			isa = PBXGroup;
 			children = (
 				8B06DBC64C44174C188C4F64 /* MainCoordinator.swift */,
+				7EC22B4B964E3AB5D50C7CCE /* MainCoordinator+AlertCoordinatorDelegate.swift */,
 				0EDED329CDE504D0E71701F5 /* MainCoordinator+MainViewControllerCoordinator.swift */,
 				D55063A7A79EE751BFDA6C75 /* MainCoordinator+ProfileCoordinatorDelegate.swift */,
 				188A0576F4849CC1D136980E /* MainFactory.swift */,
-				A74029CE130A3079EDFA53D8 /* ReportCompleteDialogCoordinator.swift */,
-				9A87C004331813BE33A1E0AC /* ReportCompleteDialogCoordinator+ReportCompleteDialogViewControllerCoordinator.swift */,
-				F4E76E59F969C8FBAEB68EEE /* ReportCompleteDialogFactory.swift */,
 				8A5615F9345679941ACCF4F1 /* ReportDialogCoordinator.swift */,
 				6A2F5DAD78FB2BBBF63757B0 /* ReportDialogCoordinator+ReportDialogViewControllerCoordinator.swift */,
 				5C1509E4C8DA3F0B28FABC09 /* ReportDialogFactory.swift */,
@@ -350,13 +341,11 @@
 				746535D204B8F9319A8FEBC7 /* CustomUsedToReportViewButton.swift in Sources */,
 				1FF73CB870D99E82EE70F28B /* CustomAboutATeenView.swift in Sources */,
 				FDF6CD4366B0D4EDBF1999BC /* CustomNaviView.swift in Sources */,
+				E400A43DDA1C453994E8FBEA /* MainCoordinator+AlertCoordinatorDelegate.swift in Sources */,
 				2768C053B4D45EC826879E1D /* MainCoordinator+MainViewControllerCoordinator.swift in Sources */,
 				261AB37F0994EF981A7F81BD /* MainCoordinator+ProfileCoordinatorDelegate.swift in Sources */,
 				DB6705AB97FBA9F5C0A28F3C /* MainCoordinator.swift in Sources */,
 				18DED3C9AB2572FF2E85ACCE /* MainFactory.swift in Sources */,
-				4CFA70B40EE304371AC1DCB4 /* ReportCompleteDialogCoordinator+ReportCompleteDialogViewControllerCoordinator.swift in Sources */,
-				3958DD2EEF8C85A7E430C627 /* ReportCompleteDialogCoordinator.swift in Sources */,
-				61797C3B901664277CA838D0 /* ReportCompleteDialogFactory.swift in Sources */,
 				2EA4676B687C65F38D0D5540 /* ReportDialogCoordinator+ReportDialogViewControllerCoordinator.swift in Sources */,
 				8B0553CAA1F822E2ECC75E6E /* ReportDialogCoordinator.swift in Sources */,
 				31422E3DFBE651CA19AD4F55 /* ReportDialogFactory.swift in Sources */,
@@ -372,7 +361,6 @@
 				A608078756842AE9BCF9081C /* TodayTeenTableViewCell.swift in Sources */,
 				163660A1FEF834572F479953 /* TournamentTableViewCell.swift in Sources */,
 				A5FBE828161CA2B9F24F0D55 /* MainViewController.swift in Sources */,
-				AD93B38FE0579196963A8B80 /* ReportCompleteDialogViewController.swift in Sources */,
 				BCDC94E66F39DABA0D3D570E /* ReportDialogViewController.swift in Sources */,
 				EE324355555A58427AF8BD8D /* ReportPopoverViewController.swift in Sources */,
 				BE6C333354CB38471D704614 /* MainViewModel.swift in Sources */,

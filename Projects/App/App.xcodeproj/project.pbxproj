@@ -8,7 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		0124B5187DA64DDD60250AD7 /* Core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 514C6A786251DDEC6B3DFF77 /* Core.framework */; };
+		01B6DAF89476F9F1C96E12F1 /* MediaEditorFeature.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D33F14F4D91A524755254FCB /* MediaEditorFeature.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		0F3EBD548A92D7401B1FC633 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 057A3CD8D734F9C1B4948C18 /* LaunchScreen.storyboard */; };
+		1427AF42C73A5A6567295B5E /* AlertFeature.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 96A4317EA46CFE41AA8C2B44 /* AlertFeature.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		202C792BE366DD12A307F13D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32444E34ED1E4ECE7658CDEC /* AppDelegate.swift */; };
 		20B84694B8549753291DF657 /* ProfileFeature.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F00BD019CA4377A0E197E3AB /* ProfileFeature.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		2524C0F1238A3AB595D269F1 /* Common.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1E907779D8170AF0208B302A /* Common.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -46,6 +48,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				1427AF42C73A5A6567295B5E /* AlertFeature.framework in Embed Frameworks */,
 				D6FAC05B05042F6995DE21BB /* ChatFeature.framework in Embed Frameworks */,
 				2524C0F1238A3AB595D269F1 /* Common.framework in Embed Frameworks */,
 				AAB073F1221B89F1B9D0816C /* Core.framework in Embed Frameworks */,
@@ -56,6 +59,7 @@
 				799B6674606E6C6344F253CC /* LoginFeature.framework in Embed Frameworks */,
 				94F9DC49C89B28C614DC384E /* MainFeature.framework in Embed Frameworks */,
 				CE85338A8D9299509DE34B35 /* MainTabFeature.framework in Embed Frameworks */,
+				01B6DAF89476F9F1C96E12F1 /* MediaEditorFeature.framework in Embed Frameworks */,
 				C49B2DF707EB376C480679EA /* NetworkService.framework in Embed Frameworks */,
 				4357FFD555AA9BD021DCE8D2 /* ProfileDetailFeature.framework in Embed Frameworks */,
 				20B84694B8549753291DF657 /* ProfileFeature.framework in Embed Frameworks */,
@@ -90,10 +94,12 @@
 		8AF7E105F5FEC83A7A47F2E7 /* Data.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Data.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8F7F83A194E1D17030DCA033 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		95D529DAAF6A9D59C44D9D68 /* TuistAssets+App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TuistAssets+App.swift"; sourceTree = "<group>"; };
+		96A4317EA46CFE41AA8C2B44 /* AlertFeature.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AlertFeature.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A9432DE0287E5923CB65DC49 /* FeatureDependency.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FeatureDependency.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B9C41BF65550E887A8163688 /* Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
 		BB2646C3DD29AA965863AA05 /* TeenFeature.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TeenFeature.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C18188B8ACFCCDD1AA3522A2 /* AppFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFactory.swift; sourceTree = "<group>"; };
+		D33F14F4D91A524755254FCB /* MediaEditorFeature.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MediaEditorFeature.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D98F53C9A2F686A9AA797AE0 /* ProfileDetailFeature.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ProfileDetailFeature.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB424A280C12994EE13C6934 /* RankingFeature.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RankingFeature.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC1FED34715BFF8FB1DD176A /* LoginFeature.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = LoginFeature.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -221,6 +227,7 @@
 		E9C3DB3EC6D7655028A9C0D3 /* Products */ = {
 			isa = PBXGroup;
 			children = (
+				96A4317EA46CFE41AA8C2B44 /* AlertFeature.framework */,
 				571E08A9083FD4334E4B7D06 /* App.app */,
 				553992446A744F1AD8F96583 /* ChatFeature.framework */,
 				1E907779D8170AF0208B302A /* Common.framework */,
@@ -232,6 +239,7 @@
 				DC1FED34715BFF8FB1DD176A /* LoginFeature.framework */,
 				6CB714690F6D4BEF6743DA1F /* MainFeature.framework */,
 				721D9790A705419CC668666D /* MainTabFeature.framework */,
+				D33F14F4D91A524755254FCB /* MediaEditorFeature.framework */,
 				792CA40B8758B40F19BCB0F0 /* NetworkService.framework */,
 				D98F53C9A2F686A9AA797AE0 /* ProfileDetailFeature.framework */,
 				F00BD019CA4377A0E197E3AB /* ProfileFeature.framework */,
@@ -340,7 +348,7 @@
 				CLANG_ENABLE_MODULE_DEBUGGING = YES;
 				CODE_SIGN_IDENTITY = "$(CODE_SIGN_IDENTITY)";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 2024.07.03.16.58;
+				CURRENT_PROJECT_VERSION = 2024.07.05.00.53;
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				INFOPLIST_FILE = "Derived/InfoPlists/App-Info.plist";
@@ -430,7 +438,7 @@
 				CLANG_ENABLE_MODULE_DEBUGGING = YES;
 				CODE_SIGN_IDENTITY = "$(CODE_SIGN_IDENTITY)";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 2024.07.03.16.58;
+				CURRENT_PROJECT_VERSION = 2024.07.05.00.53;
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				INFOPLIST_FILE = "Derived/InfoPlists/App-Info.plist";

@@ -14,7 +14,6 @@
 		76E24D656AC4D1200E53A511 /* NavigationImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88129F417957DB056A1EDD0D /* NavigationImp.swift */; };
 		7BCD024C0C7BCA2BB4D7E2D8 /* Domain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8763176478CF17417DDB83C /* Domain.framework */; };
 		A5BBD8B6D50A72D68D68A99A /* ProfileDetailCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939F3779A22132EC7A7DB6BB /* ProfileDetailCoordinator.swift */; };
-		B7C60048AE38363DF4E2C636 /* AlbumCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0311BED7EDFDC173482A5FBD /* AlbumCoordinator.swift */; };
 		D0CF49E494006FFEFC16A9C9 /* FactoryProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27772529B4AF993ACCF03969 /* FactoryProvider.swift */; };
 		D9E476C84DD337B987665D6E /* CoordinatorProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE07CEEFFE78EB276DDD110 /* CoordinatorProvider.swift */; };
 		DA093DEC550B1ABE40E59ABD /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8A97B948C4FCB50C6D4C232 /* Coordinator.swift */; };
@@ -36,7 +35,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		0311BED7EDFDC173482A5FBD /* AlbumCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumCoordinator.swift; sourceTree = "<group>"; };
 		1A8FE5294F624EDA89E97898 /* NavigationImp+UINavigationControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NavigationImp+UINavigationControllerDelegate.swift"; sourceTree = "<group>"; };
 		27772529B4AF993ACCF03969 /* FactoryProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactoryProvider.swift; sourceTree = "<group>"; };
 		28676409D4301666744F397E /* Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
@@ -91,7 +89,6 @@
 		46F0FB5B3CCCC48ACB8CFB02 /* Coordinator */ = {
 			isa = PBXGroup;
 			children = (
-				0311BED7EDFDC173482A5FBD /* AlbumCoordinator.swift */,
 				F8A97B948C4FCB50C6D4C232 /* Coordinator.swift */,
 				DEE07CEEFFE78EB276DDD110 /* CoordinatorProvider.swift */,
 				27772529B4AF993ACCF03969 /* FactoryProvider.swift */,
@@ -222,7 +219,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B7C60048AE38363DF4E2C636 /* AlbumCoordinator.swift in Sources */,
 				DA093DEC550B1ABE40E59ABD /* Coordinator.swift in Sources */,
 				D9E476C84DD337B987665D6E /* CoordinatorProvider.swift in Sources */,
 				D0CF49E494006FFEFC16A9C9 /* FactoryProvider.swift in Sources */,

@@ -17,6 +17,8 @@
 	<key>CFBundleShortVersionString</key>
 	<string>1.0.0</string>
 	<key>CFBundleVersion</key>
-	<string>2024.07.03.16.58</string>
+	<string>2024.07.05.00.53</string>
+	<key>SERVER_URL</key>
+	<string>$(SERVER_URL)</string>
 </dict>
 </plist>

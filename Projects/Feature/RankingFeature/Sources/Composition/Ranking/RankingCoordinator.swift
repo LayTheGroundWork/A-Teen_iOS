@@ -25,15 +25,19 @@ public final class RankingCoordinator: Coordinator {
     public let factory: RankingFactory
     public var childCoordinators: [Coordinator] = []
     weak var delegate: RankingCoordinatorDelegate?
+    public let coordinatorProvider: CoordinatorProvider
+    var sector: String = ""
     
     public init(
         navigation: Navigation,
         factory: RankingFactory,
-        delegate: RankingCoordinatorDelegate
+        delegate: RankingCoordinatorDelegate,
+        coordinatorProvider: CoordinatorProvider
     ) {
         self.navigation = navigation
         self.factory = factory
         self.delegate = delegate
+        self.coordinatorProvider = coordinatorProvider
     }
     
     public func start() {

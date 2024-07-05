@@ -18,17 +18,20 @@ public final class PhoneNumberCoordinator: Coordinator {
     var factory: PhoneNumberFactory
     public var childCoordinators: [Coordinator]
     weak var delegate: PhoneNumberCoordinatorDelegate?
+    public let coordinatorProvider: CoordinatorProvider
     
     public init(
         navigation: Navigation,
         factory: PhoneNumberFactory,
         childCoordinators: [Coordinator],
-        delegate: PhoneNumberCoordinatorDelegate
+        delegate: PhoneNumberCoordinatorDelegate,
+        coordinatorProvider: CoordinatorProvider
     ) {
         self.navigation = navigation
         self.factory = factory
         self.childCoordinators = childCoordinators
         self.delegate = delegate
+        self.coordinatorProvider = coordinatorProvider
     }
     
     public func start() {

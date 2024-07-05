@@ -20,8 +20,9 @@ extension Project {
         packages: [Package] = [],
         dependencies: [TargetDependency]
     ) -> Self {
+        var schemes = [Scheme]()
         var targets = [Target]()
-
+        
         switch moduleType {
         case .app:
             let app = appTarget(
@@ -30,6 +31,7 @@ extension Project {
                 dependencies: dependencies
             )
             targets.append(app)
+            schemes.append(.moduleScheme(name: name))
             appExtensionTarget.forEach {
                            targets.append($0)
                        }
@@ -47,7 +49,8 @@ extension Project {
         return Project(name: name,
                        organizationName: .organizationName,
                        packages: packages,
-                       targets: targets
+                       targets: targets,
+                       schemes: schemes
                )
     }
     

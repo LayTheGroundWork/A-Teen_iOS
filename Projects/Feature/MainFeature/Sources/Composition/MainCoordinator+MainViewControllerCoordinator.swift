@@ -6,6 +6,7 @@
 //
 
 import Common
+import DesignSystem
 import FeatureDependency
 import UIKit
 

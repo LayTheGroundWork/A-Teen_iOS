@@ -47,6 +47,7 @@ public struct LogInFactoryImp: LogInFactory {
             navigation: navigation,
             factory: factory,
             childCoordinators: childCoordinators,
-            delegate: delegate)
+            delegate: delegate, 
+            coordinatorProvider: coordinatorProvider)
     }
 }
