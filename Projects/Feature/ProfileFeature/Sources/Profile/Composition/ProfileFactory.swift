@@ -26,9 +26,10 @@ public struct ProfileFactoryImp: ProfileFactory {
         self.appContainer = appContainer
     }
     
-    public func makeProfileViewController(coordinator: ProfileViewControllerCoordinator) -> UIViewController {
+    public func makeProfileViewController(
+        coordinator: ProfileViewControllerCoordinator
+    ) -> UIViewController {
         let controller = ProfileViewController(coordinator: coordinator)
-        controller.navigationItem.title = "Profile"
         return controller
     }
     

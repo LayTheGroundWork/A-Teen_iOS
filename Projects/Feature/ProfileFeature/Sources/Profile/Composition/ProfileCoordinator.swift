@@ -27,7 +27,6 @@ public final class ProfileCoordinator: Coordinator {
     
     public func start() {
         let controller = factory.makeProfileViewController(coordinator: self)
-        navigation.navigationBar.prefersLargeTitles = true
         navigation.pushViewController(controller, animated: true)
     }
 }

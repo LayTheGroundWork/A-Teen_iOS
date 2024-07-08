@@ -10,11 +10,13 @@
 		09F9D04D96D7D0911868E276 /* SpinnerDisplayable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 390F0F25C510E4E45DD91920 /* SpinnerDisplayable.swift */; };
 		2AE2442457DCECCC55C49611 /* UIView+Layer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9347F19E7CA63054E643E5C /* UIView+Layer.swift */; };
 		32E85901F7A04A4096C803EB /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9005F43599E3AE2CCB247B4F /* SnapKit.framework */; };
+		3461499F2128C3EC59CAD9A6 /* CustomProfileBadgeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6155ACADE951831825C7129 /* CustomProfileBadgeButton.swift */; };
 		4288F5B555587A91E8DACF93 /* UIFont+TextStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62C700FB34E2E83D970827F /* UIFont+TextStyle.swift */; };
 		4ED1FAC9639BF5C44001C110 /* UIViewController+TouchGesture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91A68140F7B39D12A54351B0 /* UIViewController+TouchGesture.swift */; };
 		ABB14811E13F7B1ECCF8B086 /* TuistAssets+DesignSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5263BC75B281154AC0B5A7B /* TuistAssets+DesignSystem.swift */; };
 		CD3530D96EC2AAEF759D0831 /* CustomImageLabelButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A5DD84C76B66DD85EF180B /* CustomImageLabelButton.swift */; };
 		D2E21543F5B3B63472BE98A1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F6AF114A38FDBD9663A6B1B /* Assets.xcassets */; };
+		E4D184F09D281654C1F8CBB8 /* CustomDivider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F416008BEA6BA3D455E3F43 /* CustomDivider.swift */; };
 		E7427A1ADE455252D771EBCE /* UIView+Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = A85CAE797083F72B19BA5031 /* UIView+Constraints.swift */; };
 		F161FE102834E18739642B92 /* UILabel+Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85684A958F484BEE98C8D726 /* UILabel+Constraints.swift */; };
 		F6018B5F7748E322214C52D6 /* TuistBundle+DesignSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE4AD9735556ECA8C8008FEC /* TuistBundle+DesignSystem.swift */; };
@@ -35,6 +37,7 @@
 
 /* Begin PBXFileReference section */
 		390F0F25C510E4E45DD91920 /* SpinnerDisplayable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinnerDisplayable.swift; sourceTree = "<group>"; };
+		3F416008BEA6BA3D455E3F43 /* CustomDivider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDivider.swift; sourceTree = "<group>"; };
 		4F6AF114A38FDBD9663A6B1B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		69B7BBEAD5472C7195924AC8 /* DesignSystem.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DesignSystem.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7516C9F8F52188417896B438 /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
@@ -48,6 +51,7 @@
 		BE4AD9735556ECA8C8008FEC /* TuistBundle+DesignSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TuistBundle+DesignSystem.swift"; sourceTree = "<group>"; };
 		C62C700FB34E2E83D970827F /* UIFont+TextStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+TextStyle.swift"; sourceTree = "<group>"; };
 		E28C4F1461F3FFE982430588 /* Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
+		E6155ACADE951831825C7129 /* CustomProfileBadgeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomProfileBadgeButton.swift; sourceTree = "<group>"; };
 		F3A5DD84C76B66DD85EF180B /* CustomImageLabelButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomImageLabelButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -143,7 +147,9 @@
 		E2B28E1D2C49DA21B26C5CAC /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				3F416008BEA6BA3D455E3F43 /* CustomDivider.swift */,
 				F3A5DD84C76B66DD85EF180B /* CustomImageLabelButton.swift */,
+				E6155ACADE951831825C7129 /* CustomProfileBadgeButton.swift */,
 				390F0F25C510E4E45DD91920 /* SpinnerDisplayable.swift */,
 			);
 			path = Components;
@@ -233,7 +239,9 @@
 			files = (
 				ABB14811E13F7B1ECCF8B086 /* TuistAssets+DesignSystem.swift in Sources */,
 				F6018B5F7748E322214C52D6 /* TuistBundle+DesignSystem.swift in Sources */,
+				E4D184F09D281654C1F8CBB8 /* CustomDivider.swift in Sources */,
 				CD3530D96EC2AAEF759D0831 /* CustomImageLabelButton.swift in Sources */,
+				3461499F2128C3EC59CAD9A6 /* CustomProfileBadgeButton.swift in Sources */,
 				09F9D04D96D7D0911868E276 /* SpinnerDisplayable.swift in Sources */,
 				4288F5B555587A91E8DACF93 /* UIFont+TextStyle.swift in Sources */,
 				F161FE102834E18739642B92 /* UILabel+Constraints.swift in Sources */,

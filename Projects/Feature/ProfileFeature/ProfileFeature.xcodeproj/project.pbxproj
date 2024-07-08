@@ -8,22 +8,23 @@
 
 /* Begin PBXBuildFile section */
 		1185F8B6030BC13DCF21676B /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 263197FC4D0B887BB28C3500 /* ProfileViewController.swift */; };
-		1F762BEAE0A8DCADDEC6752A /* SettingsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428AC16B0DAA590A7EA27E8B /* SettingsCoordinator.swift */; };
-		284D51879AF449916F079E4C /* UserConfigurationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5BAA6DC551FF33E47145B85 /* UserConfigurationViewController.swift */; };
-		41523A26B10BB2C4434F4C1A /* SettingsCoordinator+UserConfigurationCoordinatorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB5085B17788405A7EF33ADF /* SettingsCoordinator+UserConfigurationCoordinatorDelegate.swift */; };
+		1AF2769C08BB127855B1AAF0 /* SettingsViewNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1413DD890A39C746AB537CAD /* SettingsViewNavigation.swift */; };
+		50C7EBDFF11158934C9027D2 /* SettingsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2FF38E5388DAF2F177352A /* SettingsCoordinator.swift */; };
+		55FE9E485CF63075412F9235 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93A8444F9FE80E07A61F92F5 /* SettingsViewModel.swift */; };
 		5BB80EFC84503C494DD440F1 /* FeatureDependency.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 641BBD2F2133A809547B278F /* FeatureDependency.framework */; };
-		62AC4871E98B3886B9DF4DDC /* SettingsCoordinator+SettingsViewControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CFD4F4DD348E8C7CE045D91 /* SettingsCoordinator+SettingsViewControllerCoordinator.swift */; };
-		65EE5A13D567A72BFB9D67C7 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC6CE948D824F1282F2072C /* SettingsViewModel.swift */; };
-		8CCE66D54C0D36D717A1884B /* UserConfigurationFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6E5DF9E5055500C188FC3CB /* UserConfigurationFactory.swift */; };
-		A5D3B2D112A9A676FC58A6C5 /* SettingsViewNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49755DEF80575D3BAC07B06F /* SettingsViewNavigation.swift */; };
-		A5D6F71FA714E296BE0C266E /* ItemSettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775DF00DC28BEAAFE7A53B45 /* ItemSettingViewModel.swift */; };
+		651C0C41583A7362A1DA6298 /* UserConfigurationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DBA6AE9367F8E0930D17190 /* UserConfigurationCoordinator.swift */; };
+		755BE18E11E861FDDF150DEF /* CustomNaviView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E49EF055D5905E6493CCEF /* CustomNaviView.swift */; };
+		82D6398E5EA99B4CB2D33E13 /* UserConfigurationFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7A14D63C33266DECE68E15D /* UserConfigurationFactory.swift */; };
+		9A66A7C60A02BE8DC358B9F8 /* SettingsCoordinator+SettingsViewControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A021C9386BA2E61F34B01B1 /* SettingsCoordinator+SettingsViewControllerCoordinator.swift */; };
+		AB5925C31F9634BD20280D83 /* ExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D6BD7FF19595E3D572390D1 /* ExampleViewController.swift */; };
+		B878F46F5D147FA6A0C328A4 /* ItemSettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EEA74C36988904F75753C22 /* ItemSettingViewModel.swift */; };
+		C06241105876ED5A18CE8E3A /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0047357D2E6C44164FCE4A37 /* SettingsViewController.swift */; };
 		C2A87FEAC54A3B99E63DB817 /* ProfileCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3441A2CD70C4802BB06608C3 /* ProfileCoordinator.swift */; };
-		DE2AE67FDD69334F3F1F5051 /* UserConfigurationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD32130F8D4072A9FADBE12 /* UserConfigurationCoordinator.swift */; };
-		E862C7459385165254B85B47 /* SettingsFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77E0F53CDDB79E89F421141E /* SettingsFactory.swift */; };
 		EB4CDD951E2FB2A7F20B2192 /* ProfileFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1D889A2FB2244033060C6D4 /* ProfileFactory.swift */; };
-		F7476EA9C8E1E5B962BEB5DB /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8EFD49AD1CA22CA203A5D6C /* SettingsViewController.swift */; };
+		F921C7F56F471F3B4DF17FCC /* UserConfigurationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C01D72B7494D5394ADD666F /* UserConfigurationViewController.swift */; };
+		FBBDC5A8AF21B30E8F2ED784 /* SettingsCoordinator+UserConfigurationCoordinatorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C93CF9A2566ADD6453D07B /* SettingsCoordinator+UserConfigurationCoordinatorDelegate.swift */; };
 		FC3205877C44FCF45F11158A /* ProfileCoordinator+ProfileViewControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 731A11DA88A7ABACFE37E26C /* ProfileCoordinator+ProfileViewControllerCoordinator.swift */; };
-		FD698BB471B9D265CC8E8C5E /* ExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64C286E0BDAD8C54D6F8E7C5 /* ExampleViewController.swift */; };
+		FD3E2FA7C3E0DA9EEDA147B7 /* SettingsFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A132978DEDA4EA526FE0A4 /* SettingsFactory.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -40,27 +41,28 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0047357D2E6C44164FCE4A37 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		1413DD890A39C746AB537CAD /* SettingsViewNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewNavigation.swift; sourceTree = "<group>"; };
+		1DBA6AE9367F8E0930D17190 /* UserConfigurationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserConfigurationCoordinator.swift; sourceTree = "<group>"; };
 		263197FC4D0B887BB28C3500 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		3441A2CD70C4802BB06608C3 /* ProfileCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCoordinator.swift; sourceTree = "<group>"; };
-		3CFD4F4DD348E8C7CE045D91 /* SettingsCoordinator+SettingsViewControllerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SettingsCoordinator+SettingsViewControllerCoordinator.swift"; sourceTree = "<group>"; };
-		428AC16B0DAA590A7EA27E8B /* SettingsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCoordinator.swift; sourceTree = "<group>"; };
+		3A021C9386BA2E61F34B01B1 /* SettingsCoordinator+SettingsViewControllerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SettingsCoordinator+SettingsViewControllerCoordinator.swift"; sourceTree = "<group>"; };
+		3C01D72B7494D5394ADD666F /* UserConfigurationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserConfigurationViewController.swift; sourceTree = "<group>"; };
 		47A6CE17EA77D71FB5B6272E /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
-		49755DEF80575D3BAC07B06F /* SettingsViewNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewNavigation.swift; sourceTree = "<group>"; };
-		5BC6CE948D824F1282F2072C /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
+		4D6BD7FF19595E3D572390D1 /* ExampleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleViewController.swift; sourceTree = "<group>"; };
+		4EEA74C36988904F75753C22 /* ItemSettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemSettingViewModel.swift; sourceTree = "<group>"; };
+		5B2FF38E5388DAF2F177352A /* SettingsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCoordinator.swift; sourceTree = "<group>"; };
 		641BBD2F2133A809547B278F /* FeatureDependency.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FeatureDependency.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		64C286E0BDAD8C54D6F8E7C5 /* ExampleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleViewController.swift; sourceTree = "<group>"; };
 		731A11DA88A7ABACFE37E26C /* ProfileCoordinator+ProfileViewControllerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProfileCoordinator+ProfileViewControllerCoordinator.swift"; sourceTree = "<group>"; };
-		775DF00DC28BEAAFE7A53B45 /* ItemSettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemSettingViewModel.swift; sourceTree = "<group>"; };
-		77E0F53CDDB79E89F421141E /* SettingsFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsFactory.swift; sourceTree = "<group>"; };
 		7D75411655BD7C1F2248A03D /* ProfileFeature.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ProfileFeature.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		93A8444F9FE80E07A61F92F5 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		9ACE8CAF734090465D7B89D5 /* Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
-		AB5085B17788405A7EF33ADF /* SettingsCoordinator+UserConfigurationCoordinatorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SettingsCoordinator+UserConfigurationCoordinatorDelegate.swift"; sourceTree = "<group>"; };
+		A5E49EF055D5905E6493CCEF /* CustomNaviView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNaviView.swift; sourceTree = "<group>"; };
+		A7A14D63C33266DECE68E15D /* UserConfigurationFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserConfigurationFactory.swift; sourceTree = "<group>"; };
 		B0913E9F158A7764CA30B252 /* ProfileFeature-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "ProfileFeature-Info.plist"; sourceTree = "<group>"; };
 		B1D889A2FB2244033060C6D4 /* ProfileFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileFactory.swift; sourceTree = "<group>"; };
-		C5BAA6DC551FF33E47145B85 /* UserConfigurationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserConfigurationViewController.swift; sourceTree = "<group>"; };
-		CAD32130F8D4072A9FADBE12 /* UserConfigurationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserConfigurationCoordinator.swift; sourceTree = "<group>"; };
-		D6E5DF9E5055500C188FC3CB /* UserConfigurationFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserConfigurationFactory.swift; sourceTree = "<group>"; };
-		D8EFD49AD1CA22CA203A5D6C /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		D2C93CF9A2566ADD6453D07B /* SettingsCoordinator+UserConfigurationCoordinatorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SettingsCoordinator+UserConfigurationCoordinatorDelegate.swift"; sourceTree = "<group>"; };
+		D7A132978DEDA4EA526FE0A4 /* SettingsFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsFactory.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,19 +80,11 @@
 		18FFA6429B3A0C54F85C89E2 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				72F7BC80C489E3448FF9AFB7 /* Components */,
 				2830116AFEC227D5B23017BE /* Composition */,
 				739B1FA0E9CE4591A0BD21BA /* Presentation */,
 			);
 			path = Profile;
-			sourceTree = "<group>";
-		};
-		256136AF93F3465451FBB0C5 /* Settings */ = {
-			isa = PBXGroup;
-			children = (
-				293D663ABD970FA1D2476A23 /* Composition */,
-				4517AB7F3B83F7F10DFC5725 /* Presentation */,
-			);
-			path = Settings;
 			sourceTree = "<group>";
 		};
 		2830116AFEC227D5B23017BE /* Composition */ = {
@@ -103,38 +97,12 @@
 			path = Composition;
 			sourceTree = "<group>";
 		};
-		293D663ABD970FA1D2476A23 /* Composition */ = {
-			isa = PBXGroup;
-			children = (
-				428AC16B0DAA590A7EA27E8B /* SettingsCoordinator.swift */,
-				3CFD4F4DD348E8C7CE045D91 /* SettingsCoordinator+SettingsViewControllerCoordinator.swift */,
-				AB5085B17788405A7EF33ADF /* SettingsCoordinator+UserConfigurationCoordinatorDelegate.swift */,
-				77E0F53CDDB79E89F421141E /* SettingsFactory.swift */,
-				CAD32130F8D4072A9FADBE12 /* UserConfigurationCoordinator.swift */,
-				D6E5DF9E5055500C188FC3CB /* UserConfigurationFactory.swift */,
-			);
-			path = Composition;
-			sourceTree = "<group>";
-		};
 		3E3DDEF650C4FA7B3317E486 = {
 			isa = PBXGroup;
 			children = (
 				46CD4FFB106A01D9912F0624 /* Project */,
 				96117D3B0D8686EC41FAFAAF /* Products */,
 			);
-			sourceTree = "<group>";
-		};
-		4517AB7F3B83F7F10DFC5725 /* Presentation */ = {
-			isa = PBXGroup;
-			children = (
-				64C286E0BDAD8C54D6F8E7C5 /* ExampleViewController.swift */,
-				775DF00DC28BEAAFE7A53B45 /* ItemSettingViewModel.swift */,
-				D8EFD49AD1CA22CA203A5D6C /* SettingsViewController.swift */,
-				5BC6CE948D824F1282F2072C /* SettingsViewModel.swift */,
-				49755DEF80575D3BAC07B06F /* SettingsViewNavigation.swift */,
-				C5BAA6DC551FF33E47145B85 /* UserConfigurationViewController.swift */,
-			);
-			path = Presentation;
 			sourceTree = "<group>";
 		};
 		46CD4FFB106A01D9912F0624 /* Project */ = {
@@ -163,6 +131,14 @@
 			path = InfoPlists;
 			sourceTree = "<group>";
 		};
+		72F7BC80C489E3448FF9AFB7 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				A5E49EF055D5905E6493CCEF /* CustomNaviView.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
 		739B1FA0E9CE4591A0BD21BA /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
@@ -174,8 +150,8 @@
 		90666643827C8F0AB521673E /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				9B943516355A4506809BB088 /* NotUsedSettings */,
 				18FFA6429B3A0C54F85C89E2 /* Profile */,
-				256136AF93F3465451FBB0C5 /* Settings */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -187,6 +163,41 @@
 				7D75411655BD7C1F2248A03D /* ProfileFeature.framework */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		9B943516355A4506809BB088 /* NotUsedSettings */ = {
+			isa = PBXGroup;
+			children = (
+				A4DCEAB4005D0805DF7EB683 /* Composition */,
+				B29872BD3990E8449C024680 /* Presentation */,
+			);
+			path = NotUsedSettings;
+			sourceTree = "<group>";
+		};
+		A4DCEAB4005D0805DF7EB683 /* Composition */ = {
+			isa = PBXGroup;
+			children = (
+				5B2FF38E5388DAF2F177352A /* SettingsCoordinator.swift */,
+				3A021C9386BA2E61F34B01B1 /* SettingsCoordinator+SettingsViewControllerCoordinator.swift */,
+				D2C93CF9A2566ADD6453D07B /* SettingsCoordinator+UserConfigurationCoordinatorDelegate.swift */,
+				D7A132978DEDA4EA526FE0A4 /* SettingsFactory.swift */,
+				1DBA6AE9367F8E0930D17190 /* UserConfigurationCoordinator.swift */,
+				A7A14D63C33266DECE68E15D /* UserConfigurationFactory.swift */,
+			);
+			path = Composition;
+			sourceTree = "<group>";
+		};
+		B29872BD3990E8449C024680 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				4D6BD7FF19595E3D572390D1 /* ExampleViewController.swift */,
+				4EEA74C36988904F75753C22 /* ItemSettingViewModel.swift */,
+				0047357D2E6C44164FCE4A37 /* SettingsViewController.swift */,
+				93A8444F9FE80E07A61F92F5 /* SettingsViewModel.swift */,
+				1413DD890A39C746AB537CAD /* SettingsViewNavigation.swift */,
+				3C01D72B7494D5394ADD666F /* UserConfigurationViewController.swift */,
+			);
+			path = Presentation;
 			sourceTree = "<group>";
 		};
 		B45E90B62D5AFC3B88A14FA9 /* Config */ = {
@@ -264,22 +275,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9A66A7C60A02BE8DC358B9F8 /* SettingsCoordinator+SettingsViewControllerCoordinator.swift in Sources */,
+				FBBDC5A8AF21B30E8F2ED784 /* SettingsCoordinator+UserConfigurationCoordinatorDelegate.swift in Sources */,
+				50C7EBDFF11158934C9027D2 /* SettingsCoordinator.swift in Sources */,
+				FD3E2FA7C3E0DA9EEDA147B7 /* SettingsFactory.swift in Sources */,
+				651C0C41583A7362A1DA6298 /* UserConfigurationCoordinator.swift in Sources */,
+				82D6398E5EA99B4CB2D33E13 /* UserConfigurationFactory.swift in Sources */,
+				AB5925C31F9634BD20280D83 /* ExampleViewController.swift in Sources */,
+				B878F46F5D147FA6A0C328A4 /* ItemSettingViewModel.swift in Sources */,
+				C06241105876ED5A18CE8E3A /* SettingsViewController.swift in Sources */,
+				55FE9E485CF63075412F9235 /* SettingsViewModel.swift in Sources */,
+				1AF2769C08BB127855B1AAF0 /* SettingsViewNavigation.swift in Sources */,
+				F921C7F56F471F3B4DF17FCC /* UserConfigurationViewController.swift in Sources */,
+				755BE18E11E861FDDF150DEF /* CustomNaviView.swift in Sources */,
 				FC3205877C44FCF45F11158A /* ProfileCoordinator+ProfileViewControllerCoordinator.swift in Sources */,
 				C2A87FEAC54A3B99E63DB817 /* ProfileCoordinator.swift in Sources */,
 				EB4CDD951E2FB2A7F20B2192 /* ProfileFactory.swift in Sources */,
 				1185F8B6030BC13DCF21676B /* ProfileViewController.swift in Sources */,
-				62AC4871E98B3886B9DF4DDC /* SettingsCoordinator+SettingsViewControllerCoordinator.swift in Sources */,
-				41523A26B10BB2C4434F4C1A /* SettingsCoordinator+UserConfigurationCoordinatorDelegate.swift in Sources */,
-				1F762BEAE0A8DCADDEC6752A /* SettingsCoordinator.swift in Sources */,
-				E862C7459385165254B85B47 /* SettingsFactory.swift in Sources */,
-				DE2AE67FDD69334F3F1F5051 /* UserConfigurationCoordinator.swift in Sources */,
-				8CCE66D54C0D36D717A1884B /* UserConfigurationFactory.swift in Sources */,
-				FD698BB471B9D265CC8E8C5E /* ExampleViewController.swift in Sources */,
-				A5D6F71FA714E296BE0C266E /* ItemSettingViewModel.swift in Sources */,
-				F7476EA9C8E1E5B962BEB5DB /* SettingsViewController.swift in Sources */,
-				65EE5A13D567A72BFB9D67C7 /* SettingsViewModel.swift in Sources */,
-				A5D3B2D112A9A676FC58A6C5 /* SettingsViewNavigation.swift in Sources */,
-				284D51879AF449916F079E4C /* UserConfigurationViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

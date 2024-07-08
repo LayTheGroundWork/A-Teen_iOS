@@ -191,24 +191,26 @@ public class ProfileDetailViewController: UIViewController {
         return label
     }()
     
-    lazy var badgeButton: CustomProfileButton = {
-        let button = CustomProfileButton(
+    lazy var badgeButton: CustomProfileBadgeButton = {
+        let button = CustomProfileBadgeButton(
             frame: .zero,
             title: "뱃지",
             count: "10개",
-            imageString: "profileBadge")
-        button.layer.cornerRadius = 20
+            imageType: .badge)
+        button.layer.cornerRadius = ViewValues.defaultRadius
+        button.clipsToBounds = true
         button.addTarget(self, action: #selector(clickBadgeButton(_:)), for: .touchUpInside)
         return button
     }()
     
-    lazy var tournamentButton: CustomProfileButton = {
-        let button = CustomProfileButton(
+    lazy var tournamentButton: CustomProfileBadgeButton = {
+        let button = CustomProfileBadgeButton(
             frame: .zero,
             title: "Teen",
             count: "5월 2주차 우승",
-            imageString: "profileTournament")
-        button.layer.cornerRadius = 20
+            imageType: .tournament)
+        button.layer.cornerRadius = ViewValues.defaultRadius
+        button.clipsToBounds = true
         button.addTarget(self, action: #selector(clickTournamentButton(_:)), for: .touchUpInside)
         return button
     }()
