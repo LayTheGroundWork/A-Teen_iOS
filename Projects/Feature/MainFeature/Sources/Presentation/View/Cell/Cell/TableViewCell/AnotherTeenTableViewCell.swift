@@ -147,9 +147,9 @@ class AnotherTeenTableViewCell: UITableViewCell {
             width: contentView.frame.width,
             height: contentView.frame.height/2)
     }
-    
+
     func setUI(teen: TodayTeen) {
-        teenImageView.image = teen.image
+        teenImageView.image = teen.images[0]
         nameLabel.text = teen.name
         schoolLabel.text = "인덕원 고등학교"
     }

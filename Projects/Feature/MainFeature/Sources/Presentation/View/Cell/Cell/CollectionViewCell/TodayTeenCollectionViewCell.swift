@@ -164,7 +164,7 @@ class TodayTeenCollectionViewCell: UICollectionViewCell {
     }
     
     func setCell(teen: TodayTeen) {
-        titleImageView.image = teen.image
+        titleImageView.image = teen.images[0]
         nameLabel.text = teen.name
     }
 }

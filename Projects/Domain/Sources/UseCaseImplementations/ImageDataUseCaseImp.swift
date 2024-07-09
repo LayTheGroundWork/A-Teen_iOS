@@ -28,7 +28,7 @@ public struct ImageDataUseCaseImp: ImageDataUseCase {
     }
     
     private func convertToURL(url: String?) -> URL? {
-        let url = URL(string: url ?? .empty)
+        let url = URL(string: url ?? "")
         return url
     }
 }
