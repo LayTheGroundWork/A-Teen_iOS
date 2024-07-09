@@ -17,14 +17,11 @@ public protocol SettingsFactory {
 }
 
 public struct SettingsFactoryImp: SettingsFactory {
-    let appContainer: AppContainer?
     
-    public init(appContainer: AppContainer?) {
-        self.appContainer = appContainer
-    }
+    public init() { }
     
     public func makeSettingsCotroller(coordinator: SettingsViewControllerCoordinator) -> UIViewController {
-        let viewModel = SettingsViewModel(auth: appContainer?.auth)
+        let viewModel = SettingsViewModel()
         let controller = SettingsViewController(
             viewModel: viewModel,
             coordinator: coordinator)

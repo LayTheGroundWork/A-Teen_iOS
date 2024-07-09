@@ -19,23 +19,29 @@ public final class PhoneNumberCoordinator: Coordinator {
     public var childCoordinators: [Coordinator]
     weak var delegate: PhoneNumberCoordinatorDelegate?
     public let coordinatorProvider: CoordinatorProvider
+    public let viewModel: PhoneNumberViewModel
     
     public init(
         navigation: Navigation,
         factory: PhoneNumberFactory,
         childCoordinators: [Coordinator],
         delegate: PhoneNumberCoordinatorDelegate,
-        coordinatorProvider: CoordinatorProvider
+        coordinatorProvider: CoordinatorProvider,
+        viewModel: PhoneNumberViewModel
     ) {
         self.navigation = navigation
         self.factory = factory
         self.childCoordinators = childCoordinators
         self.delegate = delegate
         self.coordinatorProvider = coordinatorProvider
+        self.viewModel = viewModel
     }
     
     public func start() {
-        let controller = factory.makePhoneNumberViewController(coordinator: self)
+        let controller = factory.makePhoneNumberViewController(
+            coordinator: self,
+            viewModel: viewModel
+        )
         navigation.pushViewController(controller, animated: true)
     }
 }

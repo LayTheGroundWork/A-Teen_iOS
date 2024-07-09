@@ -13,20 +13,22 @@ public protocol SignUpCoordinatorDelegate: AnyObject {
 }
 
 public final class SignUpCoordinator: Coordinator {
+    public let phoneNumber: String
     public let coordinatorProvider: CoordinatorProvider
     public var navigation: Navigation
     public var childCoordinators: [Coordinator]
     var factory: SignUpFactory
-    var viewModel = SignUpViewModel()
     weak var delegate: SignUpCoordinatorDelegate?
     
     public init(
+        phoneNumber: String,
         coordinatorProvider: CoordinatorProvider,
         navigation: Navigation,
         childCoordinators: [Coordinator],
         factory: SignUpFactory,
         delegate: SignUpCoordinatorDelegate
     ) {
+        self.phoneNumber = phoneNumber
         self.coordinatorProvider = coordinatorProvider
         self.navigation = navigation
         self.childCoordinators = childCoordinators
@@ -35,7 +37,10 @@ public final class SignUpCoordinator: Coordinator {
     }
     
     public func start() {
-        let controller = factory.makeSignUpViewController(viewModel: viewModel, coordinator: self)
+        let controller = factory.makeSignUpViewController(
+            phoneNumber: phoneNumber,
+            coordinator: self
+        )
         navigation.pushViewController(controller, animated: true)
     }
 }

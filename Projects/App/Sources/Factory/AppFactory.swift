@@ -19,7 +19,6 @@ protocol AppFactory {
 }
 
 struct AppFactoryImp: AppFactory {
-    let appContainer: AppContainer?
     
     func makeMainTabCoordinator(
         navigation: Navigation,
@@ -27,8 +26,7 @@ struct AppFactoryImp: AppFactory {
         coordinatorProvider: CoordinatorProvider
     ) -> Coordinator {
         let factory = MainTabFactoryImp(
-            coordinatorProvider: coordinatorProvider,
-            appContainer: appContainer
+            coordinatorProvider: coordinatorProvider
         )
         
         return MainTabCoordinator(

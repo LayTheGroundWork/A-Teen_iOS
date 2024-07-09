@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 55;
+	objectVersion = 56;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -13,6 +13,7 @@
 		280707E54AEFA2A7DA2650EB /* String+Contraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEE98649F065A0BDE45EED71 /* String+Contraints.swift */; };
 		2AB0F9ED51BBDC9373BDDFF2 /* AppLocalized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 170170CE0C43F0B37C75808F /* AppLocalized.swift */; };
 		4043066FDA1D66C0826483A6 /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E981128731E287F70D41FC5 /* Question.swift */; };
+		4188C5FA2C3CFCF400D4C7E4 /* SignType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4188C5F92C3CFCF400D4C7E4 /* SignType.swift */; };
 		51DF4E18342ED9EC34A9EBE8 /* TodayTeen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712D368CA33D5EB13A4BBDBA /* TodayTeen.swift */; };
 		53BD92714B0C3B78781D3513 /* AlertDialogType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878FDF405C052006C4AA2688 /* AlertDialogType.swift */; };
 		53F06C00D26255EC07247A70 /* CustomDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = E81A216314320B2606E3AEC3 /* CustomDialog.swift */; };
@@ -52,6 +53,7 @@
 		2E981128731E287F70D41FC5 /* Question.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
 		3354DE7E2B4F1877FECB508B /* Common-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Common-Info.plist"; sourceTree = "<group>"; };
 		3DA77FB5518DC2177F7CDB4F /* Common.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Common.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4188C5F92C3CFCF400D4C7E4 /* SignType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignType.swift; sourceTree = "<group>"; };
 		636ED55C583CAE77274FECAE /* AVAsset+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AVAsset+Utils.swift"; sourceTree = "<group>"; };
 		6A81A2C9A17ACE100D4CEDE1 /* TabTag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabTag.swift; sourceTree = "<group>"; };
 		6AE1134CEE040274D4E1D68F /* AssetInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetInfo.swift; sourceTree = "<group>"; };
@@ -136,6 +138,7 @@
 				6AE1134CEE040274D4E1D68F /* AssetInfo.swift */,
 				B7E28589EB048B9F540E6C97 /* MediaType.swift */,
 				E5A27B319BAA53136B0907C5 /* StateController.swift */,
+				4188C5F92C3CFCF400D4C7E4 /* SignType.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -279,8 +282,6 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
 				ORGANIZATIONNAME = ATeen;
-				TargetAttributes = {
-				};
 			};
 			buildConfigurationList = 7A960902591CDB4F68854742 /* Build configuration list for PBXProject "Common" */;
 			compatibilityVersion = "Xcode 14.0";
@@ -319,6 +320,7 @@
 				E8809AB3BC4F8A508A69E652 /* AVAsset+Utils.swift in Sources */,
 				A2631D6EB461A07445E1C6E9 /* CMTime+Utils.swift in Sources */,
 				FE6E2ACADAA4EC0C24B63F00 /* Notification+Name.swift in Sources */,
+				4188C5FA2C3CFCF400D4C7E4 /* SignType.swift in Sources */,
 				280707E54AEFA2A7DA2650EB /* String+Contraints.swift in Sources */,
 				8230E047D5CE7D5E951017CE /* UIImage+Utils.swift in Sources */,
 				748E6F12BFA02A9B5E511B16 /* UIImageView+Utils.swift in Sources */,
@@ -362,7 +364,10 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				OTHER_LDFLAGS = "$(inherited) -ObjC";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ATeen.ATeen.Common;
 				PRODUCT_NAME = Common;
 				SDKROOT = iphoneos;
@@ -458,7 +463,10 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				OTHER_LDFLAGS = "$(inherited) -ObjC";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ATeen.ATeen.Common;
 				PRODUCT_NAME = Common;
 				SDKROOT = iphoneos;
@@ -466,10 +474,7 @@
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = (
-					"$(inherited)",
-					DEBUG,
-				);
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG";
 				SWIFT_COMPILATION_MODE = singlefile;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;

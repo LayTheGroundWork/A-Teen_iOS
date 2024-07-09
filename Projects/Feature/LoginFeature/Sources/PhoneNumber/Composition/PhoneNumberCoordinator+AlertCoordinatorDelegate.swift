@@ -17,6 +17,7 @@ extension PhoneNumberCoordinator: AlertCoordinatorDelegate {
             print("안 가는 거면 여기서 인증 완료 버튼일 때만 가도록 나누기")
             // 이후 화면 이동
             let coordinator = factory.makeTermsOfUseCoordinator(
+                phoneNumber: viewModel.phoneNumber,
                 navigation: navigation,
                 childCoordinators: childCoordinators,
                 delegate: self)

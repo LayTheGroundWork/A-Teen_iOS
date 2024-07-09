@@ -18,7 +18,7 @@ protocol PhoneNumberCollectionViewCellDelegate: AnyObject {
 final class PhoneNumberCollectionViewCell: UICollectionViewCell {
     // MARK: - Private properties
     private weak var delegate: PhoneNumberCollectionViewCellDelegate?
-    
+    private var viewModel: PhoneNumberViewModel?
     private lazy var inputNumberLabel: UILabel = {
         let label = UILabel()
         label.text = AppLocalized.inputPhoneNumberText
@@ -43,6 +43,7 @@ final class PhoneNumberCollectionViewCell: UICollectionViewCell {
         textField.backgroundColor = .white
         textField.textColor = .black
         textField.tintColor = DesignSystemAsset.gray01.color
+        textField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
         return textField
     }()
     
@@ -116,19 +117,31 @@ final class PhoneNumberCollectionViewCell: UICollectionViewCell {
                                   for: .touchUpInside)
     }
     
-    func setDelegate(delegate: PhoneNumberCollectionViewCellDelegate) {
+    func setProperty(
+        delegate: PhoneNumberCollectionViewCellDelegate,
+        viewModel: PhoneNumberViewModel
+    ) {
         self.delegate = delegate
+        self.viewModel = viewModel
     }
     
     // MARK: - Actions
     @objc private func didSelectCertificateButton(_ sender: UIButton) {
-        delegate?.didSelectCertificateButton()
+//        viewModel?.requestCode {
+//            self.delegate?.didSelectCertificateButton()
+//        }
+        
+        self.delegate?.didSelectCertificateButton()
     }
     
     @objc private func didSelectClearTextButton(_ sender: UIButton) {
         textField.text?.removeAll()
         textField.rightViewMode = .never
         updateCertificateButtonState(false)
+    }
+    
+    @objc func textFieldDidChange(_ sender: Any?) {
+        self.viewModel?.phoneNumber = self.textField.text ?? .empty
     }
 }
 

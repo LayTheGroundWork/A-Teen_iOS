@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 55;
+	objectVersion = 56;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -44,7 +44,7 @@
 		C906513A973B742B78B2463A /* TermsOfUseFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8650BEC5B1EC78B2610A9D7B /* TermsOfUseFactory.swift */; };
 		C94F93F83B5BCF9BE6001D9E /* SignUpCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CB44DB9D1459A1C18F9B388 /* SignUpCoordinator.swift */; };
 		C9D8784D07CA8B075E714A94 /* CustomServiceButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0635FB907648B99234ED111 /* CustomServiceButton.swift */; };
-		CDA6755AF1524781B0C63884 /* LogInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB55C30FB6FBF87D12923FB3 /* LogInViewModel.swift */; };
+		CDA6755AF1524781B0C63884 /* PhoneNumberViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB55C30FB6FBF87D12923FB3 /* PhoneNumberViewModel.swift */; };
 		CF3BA43D3422C6BED1281B5E /* TermsOfUseCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240A7A39EFC38E63AEB46D18 /* TermsOfUseCoordinator.swift */; };
 		DF01319474891E767834707C /* FeatureDependency.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC856D9CBCFC1A7BCB2C3150 /* FeatureDependency.framework */; };
 		E8D0DCDF3045B40C469C2CB7 /* SelectBirthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF99BF7EEB9C8D285FF18D2 /* SelectBirthViewController.swift */; };
@@ -101,7 +101,7 @@
 		9DFF7A23A43A0FB2157D63DC /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		A34E03EEB828285E9D65A1B8 /* LoginFeature.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = LoginFeature.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A362F7E45E3D955366345900 /* TermsOfUseCoordinator+TermsOfUseViewControllerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TermsOfUseCoordinator+TermsOfUseViewControllerCoordinator.swift"; sourceTree = "<group>"; };
-		AB55C30FB6FBF87D12923FB3 /* LogInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewModel.swift; sourceTree = "<group>"; };
+		AB55C30FB6FBF87D12923FB3 /* PhoneNumberViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberViewModel.swift; sourceTree = "<group>"; };
 		AEA701135A68E2F9250CD6D6 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		B00D5C715A60CA859EF1680C /* SearchSchoolResultTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchSchoolResultTableViewCell.swift; sourceTree = "<group>"; };
 		B67BE68D4D9159CC81144BAF /* Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
@@ -229,7 +229,7 @@
 		4CF40BBA6546DB50EF37513F /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				AB55C30FB6FBF87D12923FB3 /* LogInViewModel.swift */,
+				AB55C30FB6FBF87D12923FB3 /* PhoneNumberViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -456,8 +456,6 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
 				ORGANIZATIONNAME = ATeen;
-				TargetAttributes = {
-				};
 			};
 			buildConfigurationList = 519D11A0875F41BC6D832807 /* Build configuration list for PBXProject "LoginFeature" */;
 			compatibilityVersion = "Xcode 14.0";
@@ -498,7 +496,7 @@
 				7F7C06B71FFC20CA5814EB8A /* LogInCoordinator.swift in Sources */,
 				4FB725818C09B5917924D627 /* LogInFactory.swift in Sources */,
 				51D09836C8B49B1CF6672BBC /* LogInViewController.swift in Sources */,
-				CDA6755AF1524781B0C63884 /* LogInViewModel.swift in Sources */,
+				CDA6755AF1524781B0C63884 /* PhoneNumberViewModel.swift in Sources */,
 				5725F2D85212C0C58B614BF8 /* PhoneNumberCoordinator+AlertCoordinatorDelegate.swift in Sources */,
 				F209D038464EB564A47E72D1 /* PhoneNumberCoordinator+PhoneNumberViewControllerCoordinator.swift in Sources */,
 				747D3AA643BD11E75F7C22CC /* PhoneNumberCoordinator+TermsOfUseCoordinatorDelegate.swift in Sources */,
@@ -621,7 +619,10 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				OTHER_LDFLAGS = "$(inherited) -ObjC";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ATeen.ATeen.LoginFeature;
 				PRODUCT_NAME = LoginFeature;
 				SDKROOT = iphoneos;
@@ -658,7 +659,10 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				OTHER_LDFLAGS = "$(inherited) -ObjC";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ATeen.ATeen.LoginFeature;
 				PRODUCT_NAME = LoginFeature;
 				SDKROOT = iphoneos;
@@ -666,10 +670,7 @@
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = (
-					"$(inherited)",
-					DEBUG,
-				);
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG";
 				SWIFT_COMPILATION_MODE = singlefile;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;

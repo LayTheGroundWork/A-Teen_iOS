@@ -3,17 +3,17 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 55;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		0DBCAF3ECEE41D1C03C9E875 /* NetworkService.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAC8A24EF2DA38A8911C0332 /* NetworkService.framework */; };
-		41A2FAA12C37EC1C0043AB10 /* SchoolDataDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A2FAA02C37EC1C0043AB10 /* SchoolDataDTO.swift */; };
-		41A2FAAD2C37F06B0043AB10 /* SchoolDataRepositoryImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41A2FAAC2C37F06B0043AB10 /* SchoolDataRepositoryImp.swift */; };
 		51F0C835F74D2286CC0B55F7 /* RemoteImageDataServiceImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5907E87F4E28906AADE46420 /* RemoteImageDataServiceImp.swift */; };
 		5D1E91A654E9AEA1F5FD824B /* ImageDataRepositoryImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C60ED58678DE3E2AB8634E /* ImageDataRepositoryImp.swift */; };
 		811E132B6F39024EB106B257 /* LogInDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = F236624AC5E8597B137B48CF /* LogInDTO.swift */; };
 		B70F9D0D6E1620DF8AF43342 /* LocalDataImageServiceImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83BACFA88E8BAFE9714D4D0D /* LocalDataImageServiceImp.swift */; };
+		C95817D3823F9FA0F3B90647 /* SchoolDataRepositoryImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB672E162D8CD9924D89491D /* SchoolDataRepositoryImp.swift */; };
+		E15BCA1558059EB1705D9856 /* SchoolDataDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73A06AFE9B4DF92FD9348D91 /* SchoolDataDTO.swift */; };
 		E32EC055B135FD6F91CB4CA2 /* VerificateServiceImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA1D3FD19DC61745C15832F9 /* VerificateServiceImp.swift */; };
 		E3695D6B34FC3F09A6040ECF /* SignRepositoryImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1C37177A90CA77CA970C70 /* SignRepositoryImp.swift */; };
 /* End PBXBuildFile section */
@@ -34,10 +34,9 @@
 /* Begin PBXFileReference section */
 		00C60ED58678DE3E2AB8634E /* ImageDataRepositoryImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDataRepositoryImp.swift; sourceTree = "<group>"; };
 		033B57EACF093CA22F91EAB9 /* Data-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Data-Info.plist"; sourceTree = "<group>"; };
-		41A2FAA02C37EC1C0043AB10 /* SchoolDataDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolDataDTO.swift; sourceTree = "<group>"; };
-		41A2FAAC2C37F06B0043AB10 /* SchoolDataRepositoryImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolDataRepositoryImp.swift; sourceTree = "<group>"; };
 		4E75197C294DE74F5162FAA7 /* Data.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Data.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5907E87F4E28906AADE46420 /* RemoteImageDataServiceImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteImageDataServiceImp.swift; sourceTree = "<group>"; };
+		73A06AFE9B4DF92FD9348D91 /* SchoolDataDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolDataDTO.swift; sourceTree = "<group>"; };
 		83BACFA88E8BAFE9714D4D0D /* LocalDataImageServiceImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalDataImageServiceImp.swift; sourceTree = "<group>"; };
 		AA1D3FD19DC61745C15832F9 /* VerificateServiceImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificateServiceImp.swift; sourceTree = "<group>"; };
 		B284CD75BAD317D668DD797D /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
@@ -45,6 +44,7 @@
 		E1457F5C26408BE9EBAC27CA /* Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
 		F236624AC5E8597B137B48CF /* LogInDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInDTO.swift; sourceTree = "<group>"; };
 		FAC8A24EF2DA38A8911C0332 /* NetworkService.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = NetworkService.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FB672E162D8CD9924D89491D /* SchoolDataRepositoryImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolDataRepositoryImp.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,7 +72,7 @@
 			isa = PBXGroup;
 			children = (
 				F236624AC5E8597B137B48CF /* LogInDTO.swift */,
-				41A2FAA02C37EC1C0043AB10 /* SchoolDataDTO.swift */,
+				73A06AFE9B4DF92FD9348D91 /* SchoolDataDTO.swift */,
 			);
 			path = DTO;
 			sourceTree = "<group>";
@@ -81,8 +81,8 @@
 			isa = PBXGroup;
 			children = (
 				00C60ED58678DE3E2AB8634E /* ImageDataRepositoryImp.swift */,
+				FB672E162D8CD9924D89491D /* SchoolDataRepositoryImp.swift */,
 				BF1C37177A90CA77CA970C70 /* SignRepositoryImp.swift */,
-				41A2FAAC2C37F06B0043AB10 /* SchoolDataRepositoryImp.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -180,6 +180,8 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
 				ORGANIZATIONNAME = ATeen;
+				TargetAttributes = {
+				};
 			};
 			buildConfigurationList = BDB112DA78B2B42275EC3A62 /* Build configuration list for PBXProject "Data" */;
 			compatibilityVersion = "Xcode 14.0";
@@ -214,10 +216,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				41A2FAAD2C37F06B0043AB10 /* SchoolDataRepositoryImp.swift in Sources */,
-				41A2FAA12C37EC1C0043AB10 /* SchoolDataDTO.swift in Sources */,
 				811E132B6F39024EB106B257 /* LogInDTO.swift in Sources */,
+				E15BCA1558059EB1705D9856 /* SchoolDataDTO.swift in Sources */,
 				5D1E91A654E9AEA1F5FD824B /* ImageDataRepositoryImp.swift in Sources */,
+				C95817D3823F9FA0F3B90647 /* SchoolDataRepositoryImp.swift in Sources */,
 				E3695D6B34FC3F09A6040ECF /* SignRepositoryImp.swift in Sources */,
 				B70F9D0D6E1620DF8AF43342 /* LocalDataImageServiceImp.swift in Sources */,
 				51F0C835F74D2286CC0B55F7 /* RemoteImageDataServiceImp.swift in Sources */,
@@ -248,10 +250,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					"-ObjC",
-				);
+				OTHER_LDFLAGS = "$(inherited) -ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ATeen.ATeen.Data;
 				PRODUCT_NAME = Data;
 				SDKROOT = iphoneos;
@@ -259,7 +258,10 @@
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = (
+					"$(inherited)",
+					DEBUG,
+				);
 				SWIFT_COMPILATION_MODE = singlefile;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -289,10 +291,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					"-ObjC",
-				);
+				OTHER_LDFLAGS = "$(inherited) -ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ATeen.ATeen.Data;
 				PRODUCT_NAME = Data;
 				SDKROOT = iphoneos;

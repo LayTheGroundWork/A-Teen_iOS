@@ -20,11 +20,7 @@ public protocol RankingResultFactory {
 }
 
 public struct RankingResultFactoryImp: RankingResultFactory {
-    let appContainer: AppContainer?
-
-    public init(appContainer: AppContainer?) {
-        self.appContainer = appContainer
-    }
+    public init() { }
     
     public func makeRankingResultViewController(
         coordinator: RankingResultViewControllerCoordinator,

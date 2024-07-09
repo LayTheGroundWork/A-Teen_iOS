@@ -24,7 +24,7 @@ public final class PhoneNumberViewController: UIViewController {
     // MARK: - Private properties
     private weak var coordinator: PhoneNumberViewControllerCoordinator?
     private var currentIndexPath = IndexPath(item: 0, section: 0)
-
+    private let viewModel: PhoneNumberViewModel
     // 뒤로 가기 버튼
     private lazy var backButton: UIBarButtonItem = {
         let button = UIBarButtonItem(image: DesignSystemAsset.leftArrowIcon.image,
@@ -53,8 +53,12 @@ public final class PhoneNumberViewController: UIViewController {
     
     
     // MARK: - Life Cycle
-    init(coordinator: PhoneNumberViewControllerCoordinator) {
+    init(
+        coordinator: PhoneNumberViewControllerCoordinator,
+        viewModel: PhoneNumberViewModel
+    ) {
         self.coordinator = coordinator
+        self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -163,7 +167,11 @@ extension PhoneNumberViewController: UICollectionViewDataSource {
             else {
                 return UICollectionViewCell()
             }
-            cell.setDelegate(delegate: self)
+            
+            cell.setProperty(
+                delegate: self,
+                viewModel: viewModel
+            )
             return cell
         case 1:
             guard
@@ -196,10 +204,11 @@ extension PhoneNumberViewController: PhoneNumberCollectionViewCellDelegate {
 extension PhoneNumberViewController: CertificationCodeCollectionViewCellDelegate {
     public func didSelectNextButton(registrationStatus: RegistrationStatus) {
         if registrationStatus == .notSignedUp {
-            coordinator?.openVerificationCompleteDialog()
+            self.coordinator?.openVerificationCompleteDialog()
         } else {
-            coordinator?.openExistingUserLoginDialog()
+            self.coordinator?.openExistingUserLoginDialog()
         }
+        
     }
     
     public func didSelectResendCode() {

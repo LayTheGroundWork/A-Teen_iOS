@@ -6,11 +6,21 @@
 //  Copyright © 2024 ATeen. All rights reserved.
 //
 
+import Core
 import Common
+import Domain
 import Photos
 import UIKit
 
-public class SignUpViewModel {
+public final class SignUpViewModel {
+    @Injected(SignUseCase.self)
+    public var useCase: SignUseCase
+    
+    // phoneNumber
+    public var phoneNumber: String = ""
+    public var userId: String = ""
+    public var userName: String = ""
+    
     //UserBirth
     public var year: String = ""
     public var month: String = ""
@@ -25,15 +35,10 @@ public class SignUpViewModel {
     
     private let authService = MyPhotoAuthService()
     
-    func requestAuthorization(completion: @escaping (Result<Void, NSError>) -> Void) {
-        authService.requestAuthorization { result in
-            switch result {
-            case .success:
-                completion(.success(()))
-            case .failure:
-                completion(.failure(.init()))
-            }
-        }
+    func signUp() {
+        /*
+         useCase.signUp(request: <#T##SignUpRequest#>, completion: <#T##(Result<LogInResponse, Error>) -> Void#>)
+         */
     }
 }
 

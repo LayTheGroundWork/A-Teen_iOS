@@ -35,16 +35,16 @@ extension AppDelegate {
         let schoolDataRepository: SchoolDataRepository = SchoolDataRepositoryImp(apiClientService: apiClientService)
         let searchUseCase: SearchUseCase = SearchUseCaseImp(schoolDataRepository: schoolDataRepository)
         
-        appContainer?.register(
+        AppContainer.register(
             type: SignUseCase.self,
             signUseCase)
         
-        appContainer?.register(
+        AppContainer.register(
             type: ImageDataUseCase.self,
             imageDataUseCase
         )
         
-        appContainer?.register(
+        AppContainer.register(
             type: SearchUseCase.self,
             searchUseCase)
     }

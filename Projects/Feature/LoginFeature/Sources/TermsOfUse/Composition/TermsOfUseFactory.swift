@@ -11,6 +11,7 @@ import UIKit
 public protocol TermsOfUseFactory {
     func makeTermsOfUseViewController(coordinator: TermsOfUseViewControllerCoordinator) -> UIViewController
     func makeSignUpCoordinator(
+        phoneNumber: String,
         navigation: Navigation,
         childCoordinators: [Coordinator],
         delegate: SignUpCoordinatorDelegate
@@ -31,12 +32,14 @@ public struct TermsOfUseFactoryImp: TermsOfUseFactory {
     }
     
     public func makeSignUpCoordinator(
+        phoneNumber: String,
         navigation: Navigation,
         childCoordinators: [Coordinator],
         delegate: SignUpCoordinatorDelegate
     ) -> Coordinator {
         let factory = SignUpFactoryImp()
         return SignUpCoordinator(
+            phoneNumber: phoneNumber, 
             coordinatorProvider: coordinatorProvider,
             navigation: navigation,
             childCoordinators: childCoordinators,

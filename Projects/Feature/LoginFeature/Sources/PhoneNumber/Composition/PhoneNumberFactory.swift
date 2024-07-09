@@ -9,8 +9,12 @@ import FeatureDependency
 import UIKit
 
 public protocol PhoneNumberFactory {
-    func makePhoneNumberViewController(coordinator: PhoneNumberViewControllerCoordinator) -> UIViewController
+    func makePhoneNumberViewController(
+        coordinator: PhoneNumberViewControllerCoordinator,
+        viewModel: PhoneNumberViewModel
+    ) -> UIViewController
     func makeTermsOfUseCoordinator(
+        phoneNumber: String,
         navigation: Navigation,
         childCoordinators: [Coordinator],
         delegate: TermsOfUseCoordinatorDelegate
@@ -26,12 +30,19 @@ public struct PhoneNumberFactoryImp: PhoneNumberFactory {
     ) {
         self.coordinatorProvider = coordinatorProvider
     }
-    public func makePhoneNumberViewController(coordinator: PhoneNumberViewControllerCoordinator) -> UIViewController {
-        let controller = PhoneNumberViewController(coordinator: coordinator)
+    public func makePhoneNumberViewController(
+        coordinator: PhoneNumberViewControllerCoordinator,
+        viewModel: PhoneNumberViewModel
+    ) -> UIViewController {
+        let controller = PhoneNumberViewController(
+            coordinator: coordinator,
+            viewModel: viewModel
+        )
         return controller
     }
     
     public func makeTermsOfUseCoordinator(
+        phoneNumber: String,
         navigation: Navigation,
         childCoordinators: [Coordinator],
         delegate: TermsOfUseCoordinatorDelegate
@@ -40,6 +51,7 @@ public struct PhoneNumberFactoryImp: PhoneNumberFactory {
             coordinatorProvider: coordinatorProvider
         )
         return TermsOfUseCoordinator(
+            phoneNumber: phoneNumber,
             navigation: navigation,
             factory: factory,
             childCoordinators: childCoordinators,

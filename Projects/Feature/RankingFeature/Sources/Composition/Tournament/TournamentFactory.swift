@@ -18,11 +18,8 @@ public protocol TournamentFactory {
 }
 
 public struct TournamentFactoryImp: TournamentFactory {
-    let appContainer: AppContainer?
 
-    public init(appContainer: AppContainer?) {
-        self.appContainer = appContainer
-    }
+    public init() { }
     
     public func makeTournamentViewController(
         coordinator: TournamentViewControllerCoordinator,

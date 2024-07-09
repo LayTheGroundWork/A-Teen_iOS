@@ -15,14 +15,11 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var auth: SessionCheckAuth?
-    var appContainer: AppContainer?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        appContainer = AppContainer()
+        
         registerDependencies()
-
-        //        let signUsecase = appContainer?.resolve(type: SignUseCase.self)
         
         guard
             let auth = auth
