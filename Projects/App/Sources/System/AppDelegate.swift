@@ -15,11 +15,17 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var auth: SessionCheckAuth?
-
+    
+    public var host: String {
+        Bundle.main.object(forInfoDictionaryKey: "SERVER_URL") as? String ?? .empty
+    }
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
         registerDependencies()
+     
+        print(host)
         
         guard
             let auth = auth

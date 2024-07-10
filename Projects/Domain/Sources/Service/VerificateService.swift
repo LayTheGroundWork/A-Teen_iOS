@@ -15,6 +15,6 @@ public protocol VerificateService {
     )
     func verificateCode(
         request: PhoneNumberAuthRequest,
-        completion: @escaping () -> Void
+        completion: @escaping (Result<VerificationCodeResponse, Error>) -> Void
     )
 }

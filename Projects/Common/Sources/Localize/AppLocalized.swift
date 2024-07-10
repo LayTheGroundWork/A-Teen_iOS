@@ -93,6 +93,7 @@ public enum AppLocalized {
                                                 """
     public static let existingUserDialogTitle = "이미 가입된 사용자에요!"
     public static let existingUserDialogMessage = "바로 로그인 할까요?"
+    public static let invalidCodeNumberDialogTitle = "인증번호가 틀렸어요!"
     
     // MARK: - MainView / Report
     public static let reportDialogTitle = "신고 사유"

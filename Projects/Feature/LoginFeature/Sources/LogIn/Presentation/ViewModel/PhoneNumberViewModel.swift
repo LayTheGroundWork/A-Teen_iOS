@@ -15,9 +15,9 @@ public final class PhoneNumberViewModel {
     
     public var signType: SignType = .signUp
 
-    public var phoneNumber: String = ""
+    public var phoneNumber: String = .empty
     
-    public var verificationCode: String = ""
+    public var verificationCode: String = .empty
 
     func requestCode(completion: @escaping () -> Void) {
         useCase.requestCode(
@@ -27,11 +27,11 @@ public final class PhoneNumberViewModel {
         }
     }
     
-    func verificationCode(completion: @escaping () -> Void) {
+    func verificationCode(completion: @escaping (Result<VerificationCodeResponse, Error>) -> Void) {
         useCase.verificateCode(request: PhoneNumberAuthRequest(
             phoneNumber: phoneNumber,
-            verificationCode: verificationCode)) {
-            completion()
+            verificationCode: verificationCode)) { result in
+            completion(result)
         }
     }
     
@@ -51,5 +51,4 @@ public final class PhoneNumberViewModel {
             self.signType = .signUp
         }
     }
-    
 }

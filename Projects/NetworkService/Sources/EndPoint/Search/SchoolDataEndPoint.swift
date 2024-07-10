@@ -11,12 +11,17 @@ import Foundation
 
 public struct SchoolDataEndPoint: EndPoint {
     private let request: SchoolDataRequest
-    
+        
     public var path: String = "/v1/api/schools"
     
     public var query: [String : String] = [:]
     
-    public var header: [String : String] = [:]
+    public var header: [String : String] {
+        [
+            "Content-Type": "application/json",
+            "Accept": "application/json"
+        ]
+    }
     
     public var body: [String : Any] {
         [

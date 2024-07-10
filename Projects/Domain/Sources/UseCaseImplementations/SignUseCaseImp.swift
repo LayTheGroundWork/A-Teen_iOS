@@ -44,7 +44,7 @@ public struct SignUseCaseImp: SignUseCase {
     
     public func verificateCode(
         request: PhoneNumberAuthRequest,
-        completion: @escaping () -> Void
+        completion: @escaping (Result<VerificationCodeResponse, Error>) -> Void
     ) {
         service.verificateCode(request: request, completion: completion)
     }

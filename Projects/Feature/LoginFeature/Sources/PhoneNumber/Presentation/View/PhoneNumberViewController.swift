@@ -15,7 +15,7 @@ public protocol PhoneNumberViewControllerCoordinator: AnyObject {
     func didFinish()
     func openVerificationCompleteDialog()
     func openExistingUserLoginDialog()
-    func didSelectResendCode()
+    func openInValidCodeNumberDialog()
 }
 
 public final class PhoneNumberViewController: UIViewController {
@@ -181,7 +181,11 @@ extension PhoneNumberViewController: UICollectionViewDataSource {
             else {
                 return UICollectionViewCell()
             }
-            cell.setDelegate(delegate: self)
+            
+            cell.setProperty(
+                delegate: self,
+                viewModel: viewModel
+            )
             return cell
         default:
             return UICollectionViewCell()
@@ -190,28 +194,31 @@ extension PhoneNumberViewController: UICollectionViewDataSource {
 }
 
 extension PhoneNumberViewController: PhoneNumberCollectionViewCellDelegate {
+
     func didSelectCertificateButton() {
         currentIndexPath.section += 1
-        collectionView.scrollToItem(
-            at: currentIndexPath,
-            at: .centeredHorizontally,
-            animated: true
-        )
-        view.endEditing(true)
+        DispatchQueue.main.async {
+            self.collectionView.scrollToItem(
+                at: self.currentIndexPath,
+                at: .centeredHorizontally,
+                animated: true
+            )
+            self.view.endEditing(true)
+        }
     }
 }
 
 extension PhoneNumberViewController: CertificationCodeCollectionViewCellDelegate {
     public func didSelectNextButton(registrationStatus: RegistrationStatus) {
-        if registrationStatus == .notSignedUp {
-            self.coordinator?.openVerificationCompleteDialog()
-        } else {
+        switch registrationStatus {
+        case .signedUp:
             self.coordinator?.openExistingUserLoginDialog()
+
+        case .notSignedUp:
+            self.coordinator?.openVerificationCompleteDialog()
+
+        case .inValidCodeNumber:
+            self.coordinator?.openInValidCodeNumberDialog()
         }
-        
-    }
-    
-    public func didSelectResendCode() {
-        coordinator?.didSelectResendCode()
     }
 }

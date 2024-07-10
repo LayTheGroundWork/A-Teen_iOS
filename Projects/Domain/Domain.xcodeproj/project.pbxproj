@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 55;
+	objectVersion = 56;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -12,6 +12,7 @@
 		2405CEBB75D3A316A75D6994 /* SchoolDataResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D160BBBDBAADD18EC4B667FB /* SchoolDataResponse.swift */; };
 		337435614E3EF754DF8C5FCC /* VerificationCodeRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4220232C6D323CEE154173C8 /* VerificationCodeRequest.swift */; };
 		3CD20E63F5B08BA33A48403C /* SchoolDataRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432D1265802A2173DE408F5E /* SchoolDataRequest.swift */; };
+		41839B0C2C3E868A003EC3B6 /* VerificationCodeResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41839B0B2C3E868A003EC3B6 /* VerificationCodeResponse.swift */; };
 		4412DD94E9BE92B437216169 /* ImageDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C9895B94482D7F1DCACB8C /* ImageDataRepository.swift */; };
 		67B020A5ED1B6DE1F1FD34EA /* SignRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ACB320B7ABCFA6BA58774D5 /* SignRepository.swift */; };
 		77EEC29764D1D277B000EE29 /* ImageDataUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451ACE222BE8C01F4B361381 /* ImageDataUseCase.swift */; };
@@ -46,6 +47,7 @@
 		09C9895B94482D7F1DCACB8C /* ImageDataRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDataRepository.swift; sourceTree = "<group>"; };
 		2631E3BA481483BAEA9EF018 /* SearchUseCaseImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchUseCaseImp.swift; sourceTree = "<group>"; };
 		3A4620A0019C901EC7C993A2 /* Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
+		41839B0B2C3E868A003EC3B6 /* VerificationCodeResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationCodeResponse.swift; sourceTree = "<group>"; };
 		4220232C6D323CEE154173C8 /* VerificationCodeRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationCodeRequest.swift; sourceTree = "<group>"; };
 		432D1265802A2173DE408F5E /* SchoolDataRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolDataRequest.swift; sourceTree = "<group>"; };
 		451ACE222BE8C01F4B361381 /* ImageDataUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDataUseCase.swift; sourceTree = "<group>"; };
@@ -158,6 +160,7 @@
 			children = (
 				0466867E7CA24A7196EB9339 /* LogInResponse.swift */,
 				D160BBBDBAADD18EC4B667FB /* SchoolDataResponse.swift */,
+				41839B0B2C3E868A003EC3B6 /* VerificationCodeResponse.swift */,
 			);
 			path = Response;
 			sourceTree = "<group>";
@@ -241,8 +244,6 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
 				ORGANIZATIONNAME = ATeen;
-				TargetAttributes = {
-				};
 			};
 			buildConfigurationList = 5B17347D429F14C389327C78 /* Build configuration list for PBXProject "Domain" */;
 			compatibilityVersion = "Xcode 14.0";
@@ -279,6 +280,7 @@
 			files = (
 				83315DB61E2BEAE20B3C84D1 /* LogInRequest.swift in Sources */,
 				9034909F680164DCD97B8693 /* PhoneNumberAuthRequest.swift in Sources */,
+				41839B0C2C3E868A003EC3B6 /* VerificationCodeResponse.swift in Sources */,
 				3CD20E63F5B08BA33A48403C /* SchoolDataRequest.swift in Sources */,
 				C8094BE4D30D193A2265DD54 /* SignUpRequest.swift in Sources */,
 				337435614E3EF754DF8C5FCC /* VerificationCodeRequest.swift in Sources */,
@@ -375,7 +377,10 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				OTHER_LDFLAGS = "$(inherited) -ObjC";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ATeen.ATeen.Domain;
 				PRODUCT_NAME = Domain;
 				SDKROOT = iphoneos;
@@ -471,7 +476,10 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				OTHER_LDFLAGS = "$(inherited) -ObjC";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ATeen.ATeen.Domain;
 				PRODUCT_NAME = Domain;
 				SDKROOT = iphoneos;
@@ -479,10 +487,7 @@
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = (
-					"$(inherited)",
-					DEBUG,
-				);
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG";
 				SWIFT_COMPILATION_MODE = singlefile;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;

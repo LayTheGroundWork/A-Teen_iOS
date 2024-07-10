@@ -130,7 +130,6 @@ final class PhoneNumberCollectionViewCell: UICollectionViewCell {
 //        viewModel?.requestCode {
 //            self.delegate?.didSelectCertificateButton()
 //        }
-        
         self.delegate?.didSelectCertificateButton()
     }
     
@@ -141,7 +140,10 @@ final class PhoneNumberCollectionViewCell: UICollectionViewCell {
     }
     
     @objc func textFieldDidChange(_ sender: Any?) {
-        self.viewModel?.phoneNumber = self.textField.text ?? .empty
+        let text = self.textField.text ?? .empty
+        
+        textField.text = formatPhoneNumber(text)
+        self.viewModel?.phoneNumber = text.filter("0123456789".contains)
     }
 }
 
@@ -195,6 +197,8 @@ extension PhoneNumberCollectionViewCell: UITextFieldDelegate {
         guard string.range(of: regex, options: .regularExpression) != nil else { return false }
 
         guard let text = textField.text, let predictRange = Range(range, in: text) else { return true }
+        
+                 
         let predictedText = text.replacingCharacters(in: predictRange, with: string)
             .trimmingCharacters(in: .whitespacesAndNewlines)
         
@@ -203,7 +207,27 @@ extension PhoneNumberCollectionViewCell: UITextFieldDelegate {
         } else {
             textField.rightViewMode = .whileEditing
         }
+        
         return true
+    }
+    
+    private func formatPhoneNumber(_ number: String) -> String {
+        let cleanNumber = number.filter("0123456789".contains)
+        var result = ""
+        var index = cleanNumber.startIndex
+        
+        let mask = cleanNumber.count == 11 ? "XXX-XXXX-XXXX" : "XXX-XXX-XXXX"
+        
+        for ch in mask where index < cleanNumber.endIndex {
+            if ch == "X" {
+                result.append(cleanNumber[index])
+                index = cleanNumber.index(after: index)
+            } else {
+                result.append(ch)
+            }
+        }
+        
+        return result
     }
 }
 

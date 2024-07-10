@@ -15,10 +15,6 @@ extension PhoneNumberCoordinator: PhoneNumberViewControllerCoordinator {
         delegate?.didFinish(childCoordinator: self)
     }
     
-    public func didSelectResendCode() {
-        // TODO: 코드 재전송
-    }
-    
     public func openVerificationCompleteDialog() {
         let coordinator = coordinatorProvider.makeAlertCoordinator(
             dialogType: .oneButton,
@@ -62,6 +58,31 @@ extension PhoneNumberCoordinator: PhoneNumberViewControllerCoordinator {
                 buttonColor: DesignSystemAsset.gray01.color,
                 secondButtonText: AppLocalized.okGoodButton,
                 secondButtonColor: DesignSystemAsset.mainColor.color))
+        addChildCoordinatorStart(coordinator)
+        
+        navigation.present(
+            coordinator.navigation.rootViewController,
+            animated: false)
+    }
+    
+    public func openInValidCodeNumberDialog() {
+        let coordinator = coordinatorProvider.makeAlertCoordinator(
+            dialogType: .oneButton,
+            delegate: self,
+            dialogData: CustomDialog(
+                dialogImage: UIImage(),
+                dialogTitle: AppLocalized.invalidCodeNumberDialogTitle,
+                titleColor: .black,
+                titleNumberOfLine: 1,
+                titleFont: .customFont(forTextStyle: .callout, weight: .bold),
+                dialogMessage: .empty,
+                messageColor: DesignSystemAsset.gray02.color,
+                messageNumberOfLine: 2,
+                messageFont: .customFont(forTextStyle: .footnote, weight: .regular),
+                buttonText: AppLocalized.okButton,
+                buttonColor: .black,
+                secondButtonText: nil,
+                secondButtonColor: nil))
         addChildCoordinatorStart(coordinator)
         
         navigation.present(
