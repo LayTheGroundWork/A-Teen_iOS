@@ -298,7 +298,7 @@ public class ProfileDetailViewController: UIViewController {
         return view
     }()
     
-    lazy var addBackgroundView: UIView = {
+    lazy var moreBackgroundView: UIView = {
         let view = UIView()
         view.backgroundColor = DesignSystemAsset.gray03.color
         view.layer.cornerRadius = 20
@@ -590,7 +590,7 @@ extension ProfileDetailViewController {
         if self.questionList.count > 2 {
             self.questionViewHeightAnchor?.update(offset: questionTitleLabel.frame.height + questionTextView.frame.height + 210)
             
-            addAddBackgroundComponentView()
+            addMoreBackgroundViewComponentView()
         } else {
             self.questionViewHeightAnchor?.update(offset: questionTitleLabel.frame.height + questionTextView.frame.height + 130)
             
@@ -598,13 +598,13 @@ extension ProfileDetailViewController {
         }
     }
     
-    private func addAddBackgroundComponentView() {
-        questionView.addSubview(addBackgroundView)
+    private func addMoreBackgroundViewComponentView() {
+        questionView.addSubview(moreBackgroundView)
         
-        addBackgroundView.addSubview(moreImageView)
-        addBackgroundView.addSubview(moreButton)
+        moreBackgroundView.addSubview(moreImageView)
+        moreBackgroundView.addSubview(moreButton)
         
-        addBackgroundView.snp.makeConstraints { make in
+        moreBackgroundView.snp.makeConstraints { make in
             make.leading.equalToSuperview().offset(16)
             make.trailing.equalToSuperview().offset(-16)
             make.top.equalTo(self.questionTextView.snp.bottom)
