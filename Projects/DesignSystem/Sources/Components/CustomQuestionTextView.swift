@@ -1,18 +1,18 @@
 //
 //  CustomQuestionTextView.swift
-//  ATeenClone
+//  DesignSystem
 //
-//  Created by 노주영 on 5/16/24.
+//  Created by 노주영 on 7/10/24.
+//  Copyright © 2024 ATeen. All rights reserved.
 //
 
 import SnapKit
 
 import Common
-import DesignSystem
 import UIKit
 
-class CustomQuestionTextView: UIView {
-    lazy var titleLabel: UILabel = {
+public class CustomQuestionTextView: UIView {
+    public lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .left
         label.textColor = .black
@@ -20,7 +20,7 @@ class CustomQuestionTextView: UIView {
         return label
     }()
     
-    lazy var textLabel: UILabel = {
+    public lazy var textLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .left
         label.textColor = DesignSystemAsset.gray02.color
@@ -29,7 +29,7 @@ class CustomQuestionTextView: UIView {
         return label
     }()
     
-    init(frame: CGRect, index: Int, title: String, text: String) {
+    public init(frame: CGRect, index: Int, title: String, text: String) {
         super.init(frame: frame)
         self.titleLabel.text = "\(index). \(title)"
         self.textLabel.text = text
@@ -45,7 +45,7 @@ class CustomQuestionTextView: UIView {
 
 // MARK: - Layout
 extension CustomQuestionTextView {
-    override func layoutSubviews() {
+    public override func layoutSubviews() {
         super.layoutSubviews()
         titleLabel.snp.makeConstraints { make in
             make.leading.trailing.top.equalToSuperview()
@@ -75,3 +75,4 @@ extension CustomQuestionTextView {
         }
     }
 }
+

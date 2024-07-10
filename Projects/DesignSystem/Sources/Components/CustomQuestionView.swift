@@ -1,22 +1,22 @@
 //
 //  CustomQuestionView.swift
-//  ATeenClone
+//  DesignSystem
 //
-//  Created by 노주영 on 5/16/24.
+//  Created by 노주영 on 7/10/24.
+//  Copyright © 2024 ATeen. All rights reserved.
 //
 
 import SnapKit
 
 import Common
-import DesignSystem
 import UIKit
 
-class CustomQuestionView: UIView {
-    lazy var oneTitleLabel: UILabel = makeTitleLabel()
-    lazy var oneTextLabel: UILabel = makeTextLabel()
+public class CustomQuestionView: UIView {
+    public lazy var oneTitleLabel: UILabel = makeTitleLabel()
+    public lazy var oneTextLabel: UILabel = makeTextLabel()
     
-    lazy var twoTitleLabel: UILabel = makeTitleLabel()
-    lazy var twoTextLabel: UILabel = makeTextLabel()
+    public lazy var twoTitleLabel: UILabel = makeTitleLabel()
+    public lazy var twoTextLabel: UILabel = makeTextLabel()
     
     lazy var threeTitleLabel: UILabel = makeTitleLabel()
     lazy var threeTextLabel: UILabel = makeTextLabel()
@@ -43,7 +43,7 @@ class CustomQuestionView: UIView {
     lazy var tenTextLabel: UILabel = makeTextLabel()
 
     
-    init(frame: CGRect, questionList: [Question]) {
+    public init(frame: CGRect, questionList: [Question]) {
         super.init(frame: frame)
         configUserInterface(questionList: questionList)
     }

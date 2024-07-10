@@ -25,6 +25,11 @@ public class ProfileDetailViewController: UIViewController {
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
             """),
         .init(
+            title: "Lorem ipsum dolor sit amet?",
+            text: """
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            """),
+        .init(
             title: "Lorem ipsum dolor sit amet, Lorem ipsum dolor sit amet?",
             text: """
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
@@ -127,7 +132,7 @@ public class ProfileDetailViewController: UIViewController {
     
     lazy var backgroundView: UIView = {
         let view = UIView()
-        view.backgroundColor = DesignSystemAsset.grayLineColor.color
+        view.backgroundColor = UIColor.systemBackground
         view.clipsToBounds = true
         view.layer.cornerRadius = 20
         return view
@@ -271,6 +276,8 @@ public class ProfileDetailViewController: UIViewController {
         return label
     }()
     
+    lazy var divider = CustomDivider()
+    
     lazy var questionView: UIView = {
         let view = UIView()
         view.backgroundColor = UIColor.systemBackground
@@ -361,40 +368,7 @@ extension ProfileDetailViewController {
     }
     
     @objc func clickMoreButton(_ sender: UIButton) {
-        if sender.titleLabel?.text == "펼쳐서 보기" {
-            UIView.animate(withDuration: 0.3, delay: 0, options: .showHideTransitionViews) {
-                self.questionTextViewHeightAnchor?.update(offset: self.questionTextView.recursiveUnionInDepthFor(view: self.questionTextView).height + 15)
-                
-                self.view.layoutIfNeeded()
-                self.questionViewHeightAnchor?.update(offset: self.questionTitleLabel.frame.height + self.questionTextView.frame.height + 190)
-                
-                self.view.layoutIfNeeded()
-                self.backgroundViewHeightAnchor?.update(offset: self.teenCollectionView.frame.height + self.informationView.frame.height + self.questionView.frame.height + 7)
-                
-                self.view.layoutIfNeeded()
-                self.scrollView.contentSize = CGSize(width: self.view.frame.width, height: self.backgroundView.frame.height)
-                
-                sender.setTitle("접기", for: .normal)
-            }
-        } else {
-            UIView.animate(withDuration: 0.3, delay: 0, options: .showHideTransitionViews) {
-                self.view.layoutIfNeeded()
-                let originHeight = self.questionTextView.oneTitleLabel.frame.height + self.questionTextView.oneTextLabel.frame.height + self.questionTextView.twoTitleLabel.frame.height + self.questionTextView.twoTextLabel.frame.height + 45
-
-                self.questionTextViewHeightAnchor?.update(offset: originHeight)
-                
-                self.view.layoutIfNeeded()
-                self.questionViewHeightAnchor?.update(offset: self.questionTitleLabel.frame.height + self.questionTextView.frame.height + 190)
-                
-                self.view.layoutIfNeeded()
-                self.backgroundViewHeightAnchor?.update(offset: self.teenCollectionView.frame.height + self.informationView.frame.height + self.questionView.frame.height + 7)
-                
-                self.view.layoutIfNeeded()
-                self.scrollView.contentSize = CGSize(width: self.view.frame.width, height: self.backgroundView.frame.height)
-                
-                sender.setTitle("펼쳐서 보기", for: .normal)
-            }
-        }
+        moreButtonAnimation(sender)
     }
 }
 
@@ -444,6 +418,7 @@ extension ProfileDetailViewController {
         backgroundView.addSubview(teenCollectionView)
         backgroundView.addSubview(categoryLabel)
         backgroundView.addSubview(informationView)
+        backgroundView.addSubview(divider)
         backgroundView.addSubview(questionView)
         backgroundView.addSubview(heartButton)
         backgroundView.addSubview(pageControl)
@@ -467,9 +442,14 @@ extension ProfileDetailViewController {
             self.informationViewHeightAnchor = make.height.equalTo(0).constraint
         }
         
+        divider.snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview()
+            make.top.equalTo(self.informationView.snp.bottom)
+        }
+        
         questionView.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview()
-            make.top.equalTo(self.informationView.snp.bottom).offset(7)
+            make.top.equalTo(self.divider.snp.bottom)
             self.questionViewHeightAnchor = make.height.equalTo(0).constraint
         }
         
@@ -572,7 +552,9 @@ extension ProfileDetailViewController {
         
         self.view.layoutIfNeeded()
         
-        self.informationViewHeightAnchor?.update(offset: self.informationView.recursiveUnionInDepthFor(view: self.informationView).height + 40)
+        self.informationViewHeightAnchor?.update(
+            offset: nameLabel.frame.height + badgeButton.frame.height + aboutMeTitleLabel.frame.height + mbtiLabel.frame.height + aboutMeTextLabel.frame.height + 159
+        )
     }
     
     private func addQuestionComponentView() {
@@ -588,29 +570,29 @@ extension ProfileDetailViewController {
         
         self.view.layoutIfNeeded()
         
+        let height = questionTextView.oneTitleLabel.frame.height + questionTextView.oneTextLabel.frame.height + questionTextView.twoTitleLabel.frame.height + questionTextView.twoTextLabel.frame.height
+        
         questionTextView.snp.makeConstraints { make in
             make.leading.equalToSuperview().offset(16)
             make.trailing.equalToSuperview().offset(-16)
             make.top.equalTo(self.questionTitleLabel.snp.bottom).offset(22)
             if self.questionList.count > 2 {
-                self.questionTextViewHeightAnchor = make.height.equalTo(
-                    questionTextView.oneTitleLabel.frame.height + questionTextView.oneTextLabel.frame.height + questionTextView.twoTitleLabel.frame.height + questionTextView.twoTextLabel.frame.height + 45
-                ).constraint
+                self.questionTextViewHeightAnchor = make.height.equalTo(height + 44).constraint
+                // 15 + 15 + 7 + 7
             } else {
-                self.questionTextViewHeightAnchor = make.height.equalTo(
-                    questionTextView.oneTitleLabel.frame.height + questionTextView.oneTextLabel.frame.height + questionTextView.twoTitleLabel.frame.height + questionTextView.twoTextLabel.frame.height + 60
-                ).constraint
+                self.questionTextViewHeightAnchor = make.height.equalTo(height + 59).constraint
+                // 15 + 15 + 15 + 7 + 7
             }
         }
         
         self.view.layoutIfNeeded()
         
         if self.questionList.count > 2 {
-            self.questionViewHeightAnchor?.update(offset: questionTitleLabel.frame.height + questionTextView.frame.height + 190)
+            self.questionViewHeightAnchor?.update(offset: questionTitleLabel.frame.height + questionTextView.frame.height + 210)
             
             addAddBackgroundComponentView()
         } else {
-            self.questionViewHeightAnchor?.update(offset: questionTitleLabel.frame.height + questionTextView.frame.height + 125)
+            self.questionViewHeightAnchor?.update(offset: questionTitleLabel.frame.height + questionTextView.frame.height + 130)
             
             animateView()
         }
@@ -740,7 +722,7 @@ extension ProfileDetailViewController {
             
             self.view.layoutIfNeeded()
             
-            self.backgroundViewHeightAnchor?.update(offset: self.teenCollectionView.frame.height + self.informationView.frame.height + self.questionView.frame.height + 7)
+            self.backgroundViewHeightAnchor?.update(offset: self.teenCollectionView.frame.height + self.informationView.frame.height + self.divider.frame.height + self.questionView.frame.height)
             
             self.view.layoutIfNeeded()
             
@@ -780,6 +762,43 @@ extension ProfileDetailViewController {
             }
         } completion: { _ in
             self.coordinator?.didFinishFlow()
+        }
+    }
+    
+    func moreButtonAnimation(_ sender: UIButton) {
+        if sender.titleLabel?.text == "펼쳐서 보기" {
+            UIView.animate(withDuration: 0.3, delay: 0, options: .showHideTransitionViews) {
+                self.questionTextViewHeightAnchor?.update(offset: self.questionTextView.recursiveUnionInDepthFor(view: self.questionTextView).height + 15)
+                
+                self.view.layoutIfNeeded()
+                self.questionViewHeightAnchor?.update(offset: self.questionTitleLabel.frame.height + self.questionTextView.frame.height + 210)
+                
+                self.view.layoutIfNeeded()
+                self.backgroundViewHeightAnchor?.update(offset: self.teenCollectionView.frame.height + self.informationView.frame.height + self.divider.frame.height + self.questionView.frame.height)
+                
+                self.view.layoutIfNeeded()
+                self.scrollView.contentSize = CGSize(width: self.view.frame.width, height: self.backgroundView.frame.height)
+                
+                sender.setTitle("접기", for: .normal)
+            }
+        } else {
+            UIView.animate(withDuration: 0.3, delay: 0, options: .showHideTransitionViews) {
+                self.view.layoutIfNeeded()
+                let originHeight = self.questionTextView.oneTitleLabel.frame.height + self.questionTextView.oneTextLabel.frame.height + self.questionTextView.twoTitleLabel.frame.height + self.questionTextView.twoTextLabel.frame.height + 44
+
+                self.questionTextViewHeightAnchor?.update(offset: originHeight)
+                
+                self.view.layoutIfNeeded()
+                self.questionViewHeightAnchor?.update(offset: self.questionTitleLabel.frame.height + self.questionTextView.frame.height + 210)
+                
+                self.view.layoutIfNeeded()
+                self.backgroundViewHeightAnchor?.update(offset: self.teenCollectionView.frame.height + self.informationView.frame.height + self.divider.frame.height + self.questionView.frame.height)
+                
+                self.view.layoutIfNeeded()
+                self.scrollView.contentSize = CGSize(width: self.view.frame.width, height: self.backgroundView.frame.height)
+                
+                sender.setTitle("펼쳐서 보기", for: .normal)
+            }
         }
     }
 }
