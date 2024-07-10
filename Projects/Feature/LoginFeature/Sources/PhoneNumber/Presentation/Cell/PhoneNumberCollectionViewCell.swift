@@ -139,7 +139,7 @@ final class PhoneNumberCollectionViewCell: UICollectionViewCell {
         updateCertificateButtonState(false)
     }
     
-    @objc func textFieldDidChange(_ sender: Any?) {
+    @objc private func textFieldDidChange(_ sender: Any?) {
         let text = self.textField.text ?? .empty
         
         textField.text = formatPhoneNumber(text)

@@ -22,6 +22,7 @@ final class UserNameCollectionViewCell: UICollectionViewCell {
     // MARK: - Private properties
     private weak var delegate: UserNameCollectionViewCellDelegate?
     private var errorMessageLabelHeight: Constraint?
+    private var viewModel: SignUpViewModel?
     
     // 환영 메시지 레이블
     private let welcomeLabel: UILabel = {
@@ -57,6 +58,7 @@ final class UserNameCollectionViewCell: UICollectionViewCell {
         textField.autocorrectionType = .no
         textField.spellCheckingType = .no
         textField.returnKeyType = .next
+        textField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
         return textField
     }()
 
@@ -150,12 +152,18 @@ final class UserNameCollectionViewCell: UICollectionViewCell {
         }
 
     }
-        
-            
     
     // MARK: - Actions
-    func setProperties(delegate: UserNameCollectionViewCellDelegate) {
+    func setProperties(
+        delegate: UserNameCollectionViewCellDelegate,
+        viewModel: SignUpViewModel
+    ) {
         self.delegate = delegate
+        self.viewModel = viewModel
+    }
+    
+    @objc private func textFieldDidChange(_ sender: Any?) {
+        self.viewModel?.userName = textField.text ?? .empty
     }
 }
 

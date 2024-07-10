@@ -77,7 +77,8 @@ final class SignUpViewController: UIViewController {
         return button
     }()
     
-    init(viewModel: SignUpViewModel,
+    init(
+        viewModel: SignUpViewModel,
          coordinator: SignUpViewControllerCoordinator
     ) {
         self.viewModel = viewModel
@@ -223,7 +224,10 @@ extension SignUpViewController: UICollectionViewDataSource {
             else {
                 return UICollectionViewCell()
             }
-            cell.setProperties(delegate: self)
+            cell.setProperties(
+                delegate: self,
+                viewModel: viewModel
+            )
             return cell
             
         case 1:
@@ -234,7 +238,10 @@ extension SignUpViewController: UICollectionViewDataSource {
             else {
                 return UICollectionViewCell()
             }
-            cell.setProperties(delegate: self)
+            cell.setProperties(
+                delegate: self,
+                viewModel: viewModel
+            )
             return cell
             
         case 2:
@@ -247,9 +254,11 @@ extension SignUpViewController: UICollectionViewDataSource {
             }
             
             guard let coordinator = coordinator else { return UICollectionViewCell() }
-            cell.setProperties(viewModel: viewModel,
-                               coordinator: coordinator,
-                               delegate: self)
+            cell.setProperties(
+                coordinator: coordinator,
+                delegate: self,
+                viewModel: viewModel
+            )
             
             return cell
             
@@ -262,7 +271,10 @@ extension SignUpViewController: UICollectionViewDataSource {
                 return UICollectionViewCell()
             }
             
-            cell.setProperties(delegate: self, viewModel: viewModel)
+            cell.setProperties(
+                delegate: self,
+                viewModel: viewModel
+            )
             return cell
 
         case 4:
@@ -274,7 +286,10 @@ extension SignUpViewController: UICollectionViewDataSource {
                 return UICollectionViewCell()
             }
             
-            cell.setProperties(coordinator: coordinator, viewModel: SignUpViewModel())
+            cell.setProperties(
+                coordinator: coordinator,
+                viewModel: viewModel
+            )
             return cell
 
         default:

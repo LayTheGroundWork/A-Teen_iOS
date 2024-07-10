@@ -19,9 +19,9 @@ final class SearchSchoolCollectionViewCell: UICollectionViewCell {
     // MARK: - Public properties
     
     // MARK: - Private properties
-    private var viewModel = SignUpViewModel()
     private weak var delegate: SearchSchoolCollectionViewCellDelegate?
-    
+    private var viewModel: SignUpViewModel?
+
     var customIndicatorViewTopAnchor: Constraint?
     var customIndicatorViewBottomAnchor: Constraint?
     var customIndicatorViewHeightAnchor: Constraint?
@@ -209,7 +209,7 @@ final class SearchSchoolCollectionViewCell: UICollectionViewCell {
                     
                 } else if frame.origin.y + indicatorHeight > self.tableBackgroundView.frame.height - 12 {
                     self.tableView.scrollToRow(
-                        at: IndexPath(row: self.viewModel.filteredSchools.count - 1, section: 0),
+                        at: IndexPath(row: (self.viewModel?.filteredSchools.count ?? 0) - 1, section: 0),
                         at: .bottom,
                         animated: true)
                 }
@@ -222,8 +222,8 @@ final class SearchSchoolCollectionViewCell: UICollectionViewCell {
     private func openSearchScoolTableView() {
         tableBackgroundView.isHidden = false
 
-        if viewModel.filteredSchools.count < 6 {
-            tableBackgroundViewHeightAnchor?.update(offset: viewModel.filteredSchools.count * 45)
+        if viewModel?.filteredSchools.count ?? 0 < 6 {
+            tableBackgroundViewHeightAnchor?.update(offset: (viewModel?.filteredSchools.count ?? 0) * 45)
             tableView.reloadData()
             tableView.isScrollEnabled = false
             
@@ -285,7 +285,7 @@ final class SearchSchoolCollectionViewCell: UICollectionViewCell {
 // MARK: - UITableViewDataSource
 extension SearchSchoolCollectionViewCell: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        viewModel.filteredSchools.count
+        viewModel?.filteredSchools.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -297,10 +297,10 @@ extension SearchSchoolCollectionViewCell: UITableViewDataSource {
             return UITableViewCell()
         }
         cell.fontChange(
-            with: viewModel.filteredSchools[indexPath.row],
-            isBold: indexPath == viewModel.selectIndexPath)
+            with: viewModel?.filteredSchools[indexPath.row] ?? .empty,
+            isBold: indexPath == viewModel?.selectIndexPath)
         
-        cell.hiddenLineView(row: indexPath.row, lastIndex: viewModel.filteredSchools.count - 1)
+        cell.hiddenLineView(row: indexPath.row, lastIndex: (viewModel?.filteredSchools.count ?? 0) - 1)
         
         return cell
     }
@@ -313,21 +313,21 @@ extension SearchSchoolCollectionViewCell: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if let previousIndexPath = viewModel.selectIndexPath {
+        if let previousIndexPath = viewModel?.selectIndexPath {
             if let previousCell = tableView.cellForRow(at: previousIndexPath) as? SearchSchoolResultTableViewCell {
                 previousCell.fontChange(
-                    with: viewModel.filteredSchools[previousIndexPath.row],
+                    with: viewModel?.filteredSchools[previousIndexPath.row] ?? .empty,
                     isBold: false)
             }
         }
         
         if let selectedCell = tableView.cellForRow(at: indexPath) as? SearchSchoolResultTableViewCell {
             selectedCell.fontChange(
-                with: viewModel.filteredSchools[indexPath.row],
+                with: viewModel?.filteredSchools[indexPath.row] ?? .empty,
                 isBold: true)
             
-            viewModel.selectIndexPath = indexPath
-            schoolTextField.text = viewModel.filteredSchools[indexPath.row]
+            viewModel?.selectIndexPath = indexPath
+            schoolTextField.text = viewModel?.filteredSchools[indexPath.row]
             // '다음으로' 버튼 활성화
             delegate?.updateNextButtonState(true)
             // 키보드 닫기
@@ -341,7 +341,7 @@ extension SearchSchoolCollectionViewCell: UITableViewDelegate {
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        if viewModel.filteredSchools.count >= 6 {
+        if viewModel?.filteredSchools.count ?? 0 >= 6 {
             updateCustomIndicator()
         }
     }
@@ -356,11 +356,11 @@ extension SearchSchoolCollectionViewCell: UITextFieldDelegate {
     func textFieldDidChangeSelection(_ textField: UITextField) {
         schoolTextField.font = .customFont(forTextStyle: .callout, weight: .regular)
         guard let text = textField.text else { return }
-        viewModel.filterSchools(text: text)
-        viewModel.selectIndexPath = nil
+        viewModel?.filterSchools(text: text)
+        viewModel?.selectIndexPath = nil
         delegate?.updateNextButtonState(false)
         
-        if viewModel.filteredSchools.isEmpty {
+        if ((viewModel?.filteredSchools.isEmpty) != nil) {
             closeSearchScoolTableView()
         } else {
             openSearchScoolTableView()

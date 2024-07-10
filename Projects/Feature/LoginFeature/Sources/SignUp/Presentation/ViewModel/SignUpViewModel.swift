@@ -17,18 +17,20 @@ public final class SignUpViewModel {
     public var useCase: SignUseCase
     
     // phoneNumber
-    public var phoneNumber: String = ""
-    public var userId: String = ""
-    public var userName: String = ""
+    public var phoneNumber: String = .empty
+    public var userId: String = .empty
+    public var userName: String = .empty
     
     //UserBirth
-    public var year: String = ""
-    public var month: String = ""
-    public var day: String = ""
+    public var year: String = .empty
+    public var month: String = .empty
+    public var day: String = .empty
+    
+    public var schoolData: SchoolData = SchoolData(schoolName: .empty, schoolLocation: .empty)
     
     //SearchSchool
     public var filteredSchools: [String] = []
-    public var schools = ["seoul","seoul2", "busan", "busan2", "changwon", "anyang", "busan3", "busan4", "busan5", "busan6", "busan7", "busan8", "busan9", "busan10", "busan11","busan12"]
+    public var schools = ["seoul", "seoul2", "busan", "busan2", "changwon", "anyang", "busan3", "busan4", "busan5", "busan6", "busan7", "busan8", "busan9", "busan10", "busan11","busan12"]
     public var selectIndexPath: IndexPath?
     
     var selectPhotoAsset = Array(repeating: AssetInfo.self, count: 10)

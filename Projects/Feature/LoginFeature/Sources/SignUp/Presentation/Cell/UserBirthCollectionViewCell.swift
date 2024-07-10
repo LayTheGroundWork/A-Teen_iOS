@@ -19,10 +19,10 @@ final class UserBirthCollectionViewCell: UICollectionViewCell {
     // MARK: - Public properties
     
     // MARK: - Private properties
-    private var viewModel: SignUpViewModel?
     private weak var coordinator: SignUpViewControllerCoordinator?
     private weak var delegate: UserBirthCollectionViewCellDelegate?
-    
+    private var viewModel: SignUpViewModel?
+
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.text = AppLocalized.userBirthTitle
@@ -109,13 +109,13 @@ final class UserBirthCollectionViewCell: UICollectionViewCell {
     
     // MARK: - Actions
     func setProperties(
-        viewModel: SignUpViewModel,
         coordinator: SignUpViewControllerCoordinator,
-        delegate: UserBirthCollectionViewCellDelegate
+        delegate: UserBirthCollectionViewCellDelegate,
+        viewModel: SignUpViewModel
     ) {
-        self.viewModel = viewModel
         self.coordinator = coordinator
         self.delegate = delegate
+        self.viewModel = viewModel
     }
     
     @objc func didSelectBirth(_ sender: UIButton) {
@@ -132,6 +132,13 @@ final class UserBirthCollectionViewCell: UICollectionViewCell {
             year: viewModel.year,
             month: viewModel.month,
             day: viewModel.day)
+        
+        print(viewModel.phoneNumber)
+        print(viewModel.userId)
+        print(viewModel.userName)
+        print(viewModel.year)
+        print(viewModel.month)
+        print(viewModel.day)
         delegate?.updateNextButtonState(true)
     }
 }
