@@ -238,12 +238,8 @@ public final class ProfileViewController: UIViewController {
         return button
     }()
     
-    private lazy var linkView: UIView = {
-        let view = UIView()
-        view.backgroundColor = DesignSystemAsset.gray03.color
-        view.clipsToBounds = true
-        view.layer.cornerRadius = ViewValues.defaultRadius
-        // TODO: - 링크 개수에 맞게 버튼 만들어서 sub 에 넣어주기
+    private lazy var linkView: CustomLinkView = {
+        let view = CustomLinkView(frame: .zero, linkList: self.userLinks)
         return view
     }()
     
@@ -398,7 +394,7 @@ public final class ProfileViewController: UIViewController {
         userImage: UIImage = DesignSystemAsset.blackGlass.image,
         userSchoolName: String = "서울 중학교",
         userAge: Int = 17,
-        userLinks: [String] = ["instagram.link", "instagram.link"],
+        userLinks: [String] = ["instagram.link", "blog.link", "fackBook.link"],
         userMBTI: String = "INFJ",
         userIntroduce: String = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
         coordinator: ProfileViewControllerCoordinator
@@ -619,12 +615,21 @@ public final class ProfileViewController: UIViewController {
                 offset: linkTitleLabel.frame.height + linkEmptyTextLabel.frame.height + 88)
             
         } else {
+            self.view.layoutIfNeeded()
+            
+            let height = linkView.oneLinkImageView.frame.height + linkView.twoLinkImageView.frame.height + linkView.threeLinkImageView.frame.height
+
             linkView.snp.makeConstraints { make in
                 make.top.equalTo(linkTitleLabel.snp.bottom).offset(22)
                 make.leading.equalToSuperview().offset(ViewValues.defaultPadding)
                 make.trailing.equalToSuperview().offset(-ViewValues.defaultPadding)
-                // TODO: - 삭제 예정
-                make.height.equalTo(100)
+                if userLinks.count == 1 {
+                    make.height.equalTo(height + 36)
+                } else if userLinks.count == 2 {
+                    make.height.equalTo(height + 46)
+                } else {
+                    make.height.equalTo(height + 56)
+                }
             }
             
             self.view.layoutIfNeeded()
@@ -770,7 +775,11 @@ public final class ProfileViewController: UIViewController {
                 if self.questionList.count > 2 {
                     self.questionTextViewHeightAnchor = make.height.equalTo(height + 44).constraint
                 } else {
-                    self.questionTextViewHeightAnchor = make.height.equalTo(height + 59).constraint
+                    if self.questionList.count == 1 {
+                        self.questionTextViewHeightAnchor = make.height.equalTo(height + 59).constraint
+                    } else {
+                        self.questionTextViewHeightAnchor = make.height.equalTo(height + 66).constraint
+                    }
                 }
             }
             
