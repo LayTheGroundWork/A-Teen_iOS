@@ -17,10 +17,14 @@ public protocol ProfileFactory {
         delegate: SettingsCoordinatorDelegate,
         childCoordinators: [Coordinator]
     ) -> Coordinator
+    func makeLinksDialogCoordinator(
+        delegate: LinksDialogCoordinatorDelegate
+    ) -> Coordinator
 }
 
 public struct ProfileFactoryImp: ProfileFactory {
     let appContainer: AppContainer?
+    let viewModel = ProfileViewModel()
     
     public init(appContainer: AppContainer?) {
         self.appContainer = appContainer
@@ -29,7 +33,7 @@ public struct ProfileFactoryImp: ProfileFactory {
     public func makeProfileViewController(
         coordinator: ProfileViewControllerCoordinator
     ) -> UIViewController {
-        let controller = ProfileViewController(coordinator: coordinator)
+        let controller = ProfileViewController(viewModel: viewModel, coordinator: coordinator)
         return controller
     }
     
@@ -45,6 +49,20 @@ public struct ProfileFactoryImp: ProfileFactory {
             factory: factory,
             delegate: delegate,
             childCoordinators: childCoordinators)
+        return coordinator
+    }
+    
+    public func makeLinksDialogCoordinator(delegate: LinksDialogCoordinatorDelegate) -> Coordinator {
+        let navigationController = UINavigationController()
+        navigationController.modalPresentationStyle = .overFullScreen
+        navigationController.view.backgroundColor = UIColor.clear
+        let navigation = NavigationImp(rootViewController: navigationController)
+        let factory = LinksDialogFactoryImp(viewModel: viewModel)
+
+        let coordinator = LinksDialogCoordinator(
+            navigation: navigation,
+            factory: factory,
+            delegate: delegate)
         return coordinator
     }
 }

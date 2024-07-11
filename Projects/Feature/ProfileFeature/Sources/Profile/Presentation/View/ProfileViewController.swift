@@ -7,40 +7,18 @@
 
 import SnapKit
 
+import Combine
 import Common
 import DesignSystem
 import UIKit
 
 public protocol ProfileViewControllerCoordinator: AnyObject {
     func didTabSettingButton()
+    func didTabLinkButton()
 }
 
 public final class ProfileViewController: UIViewController {
     // MARK: - Private properties
-    private let userName: String
-    private let userImage: UIImage
-    private let userSchoolName: String
-    private let userAge: Int
-    private let userLinks: [String]
-    private let userMBTI: String
-    private let userIntroduce: String
-    
-    let questionList: [Question] = [
-
-        .init(
-            title: "Lorem ipsum dolor sit amet, Lorem ipsum dolor sit amet?",
-            text: """
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            """),
-    ]
-    
     var backgroundViewHeightAnchor: Constraint?
     var informationViewHeightAnchor: Constraint?
     var linkBackViewHeightAnchor: Constraint?
@@ -48,6 +26,9 @@ public final class ProfileViewController: UIViewController {
     var questionViewHeightAnchor: Constraint?
     var questionTextViewHeightAnchor: Constraint?
     
+    var disposalbleBag = Set<AnyCancellable>()
+    
+    private var viewModel: ProfileViewModel
     private weak var coordinator: ProfileViewControllerCoordinator?
 
     private lazy var scrollView: UIScrollView = {
@@ -75,7 +56,7 @@ public final class ProfileViewController: UIViewController {
     
     private lazy var userNameLabel: UILabel = {
         let label = UILabel()
-        label.text = "\(userName) 님\n오늘도 좋은 하루 보내세요!"
+        label.text = "\(viewModel.userName) 님\n오늘도 좋은 하루 보내세요!"
         label.textColor = UIColor.black
         label.font = .customFont(forTextStyle: .callout, weight: .bold)
         label.numberOfLines = 2
@@ -85,7 +66,7 @@ public final class ProfileViewController: UIViewController {
             attributeString.addAttribute(
                 .foregroundColor,
                 value: DesignSystemAsset.mainColor.color,
-                range: (text as NSString).range(of: "\(userName)"))
+                range: (text as NSString).range(of: "\(viewModel.userName)"))
             label.attributedText = attributeString
         }
         return label
@@ -115,7 +96,7 @@ public final class ProfileViewController: UIViewController {
     
     private lazy var userImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = userImage
+        imageView.image = viewModel.userImage
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
         imageView.layer.cornerRadius = 10
@@ -132,7 +113,7 @@ public final class ProfileViewController: UIViewController {
     
     private lazy var schoolLabel: UILabel = {
         let label = UILabel()
-        label.text = userSchoolName
+        label.text = viewModel.userSchoolName
         label.textColor = UIColor.black
         label.textAlignment = .left
         label.font = .customFont(forTextStyle: .callout, weight: .regular)
@@ -141,7 +122,7 @@ public final class ProfileViewController: UIViewController {
     
     private lazy var ageLabel: UILabel = {
         let label = UILabel()
-        label.text = "\(userAge)세"
+        label.text = "\(viewModel.userAge)세"
         label.textColor = DesignSystemAsset.gray01.color
         label.textAlignment = .left
         label.font = .customFont(forTextStyle: .footnote, weight: .regular)
@@ -235,7 +216,7 @@ public final class ProfileViewController: UIViewController {
     }()
     
     private lazy var linkView: CustomLinkView = {
-        let view = CustomLinkView(frame: .zero, linkList: self.userLinks)
+        let view = CustomLinkView(frame: .zero, linkList: viewModel.userLinks)
         return view
     }()
     
@@ -281,7 +262,7 @@ public final class ProfileViewController: UIViewController {
     
     private lazy var introduceMbtiLabel: UILabel = {
         let label = UILabel()
-        label.text = userMBTI
+        label.text = viewModel.userMBTI
         label.textColor = DesignSystemAsset.gray02.color
         label.textAlignment = .center
         label.font = .customFont(forTextStyle: .footnote, weight: .regular)
@@ -290,7 +271,7 @@ public final class ProfileViewController: UIViewController {
     
     private lazy var introduceTextLabel: UILabel = {
         let label = UILabel()
-        label.text = userIntroduce
+        label.text = viewModel.userIntroduce
         label.font = .customFont(forTextStyle: .footnote, weight: .regular)
         label.textColor = DesignSystemAsset.gray02.color
         label.numberOfLines = 0
@@ -330,7 +311,7 @@ public final class ProfileViewController: UIViewController {
     }()
     
     private lazy var questionTextView: CustomQuestionView = {
-        let view = CustomQuestionView(frame: .zero, questionList: self.questionList)
+        let view = CustomQuestionView(frame: .zero, questionList: viewModel.questionList)
         return view
     }()
     
@@ -370,6 +351,7 @@ public final class ProfileViewController: UIViewController {
         super.viewDidLoad()
         configUserInterfaceAndLayout()
         setupActions()
+        setBinding()
     }
     
     public override func viewWillAppear(_ animated: Bool) {
@@ -386,22 +368,10 @@ public final class ProfileViewController: UIViewController {
     }
     
     public init(
-        userName: String = "김 에스더",
-        userImage: UIImage = DesignSystemAsset.blackGlass.image,
-        userSchoolName: String = "서울 중학교",
-        userAge: Int = 17,
-        userLinks: [String] = ["instagram.link", "blog.link", "fackBook.link"],
-        userMBTI: String = "INFJ",
-        userIntroduce: String = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        viewModel: ProfileViewModel,
         coordinator: ProfileViewControllerCoordinator
     ) {
-        self.userName = userName
-        self.userImage = userImage
-        self.userSchoolName = userSchoolName
-        self.userAge = userAge
-        self.userLinks = userLinks
-        self.userMBTI = userMBTI
-        self.userIntroduce = userIntroduce
+        self.viewModel = viewModel
         self.coordinator = coordinator
         super.init(nibName: nil, bundle: nil)
     }
@@ -568,7 +538,7 @@ public final class ProfileViewController: UIViewController {
         linkBackView.addSubview(linkRightButton)
         linkBackView.addSubview(linkTitleLabel)
         
-        if userLinks.count == 0 {
+        if viewModel.userLinks.count == 0 {
             linkBackView.addSubview(linkEmptyTextLabel)
         } else {
             linkBackView.addSubview(linkView)
@@ -598,7 +568,15 @@ public final class ProfileViewController: UIViewController {
             make.height.equalTo(24)
         }
         
-        if userLinks.count == 0 {
+        addLinkView()
+    }
+    
+    private func addLinkView() {
+        if viewModel.userLinks.count == 0 {
+            if self.linkEmptyTextLabel.superview == nil {
+                self.view.addSubview(self.linkEmptyTextLabel)
+            }
+            
             linkEmptyTextLabel.snp.makeConstraints { make in
                 make.top.equalTo(linkTitleLabel.snp.bottom).offset(10)
                 make.leading.equalToSuperview().offset(ViewValues.defaultPadding)
@@ -609,22 +587,25 @@ public final class ProfileViewController: UIViewController {
             
             self.linkBackViewHeightAnchor?.update(
                 offset: linkTitleLabel.frame.height + linkEmptyTextLabel.frame.height + 88)
-            
         } else {
+            if self.linkView.superview == nil {
+                self.view.addSubview(self.linkView)
+            }
+            
             self.view.layoutIfNeeded()
             
-            let height = linkView.oneLinkImageView.frame.height + linkView.twoLinkImageView.frame.height + linkView.threeLinkImageView.frame.height
+            let height = self.linkView.oneLinkImageView.frame.height
 
-            linkView.snp.makeConstraints { make in
-                make.top.equalTo(linkTitleLabel.snp.bottom).offset(22)
+            self.linkView.snp.makeConstraints { make in
+                make.top.equalTo(self.linkTitleLabel.snp.bottom).offset(22)
                 make.leading.equalToSuperview().offset(ViewValues.defaultPadding)
                 make.trailing.equalToSuperview().offset(-ViewValues.defaultPadding)
-                if userLinks.count == 1 {
+                if viewModel.userLinks.count == 1 {
                     make.height.equalTo(height + 36)
-                } else if userLinks.count == 2 {
-                    make.height.equalTo(height + 46)
+                } else if viewModel.userLinks.count == 2 {
+                    make.height.equalTo(height * 2 + 46)
                 } else {
-                    make.height.equalTo(height + 56)
+                    make.height.equalTo(height * 3 + 56)
                 }
             }
             
@@ -643,7 +624,7 @@ public final class ProfileViewController: UIViewController {
         introduceView.addSubview(introduceTitleLabel)
         introduceView.addSubview(introduceMbtiView)
         
-        if userIntroduce == "" {
+        if viewModel.userIntroduce == "" {
             introduceView.addSubview(introduceEmptyTextLabel)
         } else {
             introduceView.addSubview(introduceTextLabel)
@@ -686,7 +667,7 @@ public final class ProfileViewController: UIViewController {
             make.edges.equalToSuperview()
         }
         
-        if userIntroduce == "" {
+        if viewModel.userIntroduce == "" {
             introduceEmptyTextLabel.snp.makeConstraints { make in
                 make.top.equalTo(introduceMbtiView.snp.bottom).offset(7)
                 make.leading.equalToSuperview().offset(ViewValues.defaultPadding)
@@ -718,7 +699,7 @@ public final class ProfileViewController: UIViewController {
         questionView.addSubview(questionRightButton)
         questionView.addSubview(questionTitleLabel)
         
-        if questionList.count == 0 {
+        if viewModel.questionList.count == 0 {
             questionView.addSubview(questionEmptyTextLabel)
         } else {
             questionView.addSubview(questionTextView)
@@ -749,7 +730,7 @@ public final class ProfileViewController: UIViewController {
             make.height.equalTo(24)
         }
 
-        if questionList.count == 0 {
+        if viewModel.questionList.count == 0 {
             questionEmptyTextLabel.snp.makeConstraints { make in
                 make.top.equalTo(questionTitleLabel.snp.bottom).offset(10)
                 make.leading.equalToSuperview().offset(ViewValues.defaultPadding)
@@ -768,10 +749,10 @@ public final class ProfileViewController: UIViewController {
                 make.leading.equalToSuperview().offset(ViewValues.defaultPadding)
                 make.trailing.equalToSuperview().offset(-ViewValues.defaultPadding)
                 make.top.equalTo(self.questionTitleLabel.snp.bottom).offset(22)
-                if self.questionList.count > 2 {
+                if self.viewModel.questionList.count > 2 {
                     self.questionTextViewHeightAnchor = make.height.equalTo(height + 44).constraint
                 } else {
-                    if self.questionList.count == 1 {
+                    if self.viewModel.questionList.count == 1 {
                         self.questionTextViewHeightAnchor = make.height.equalTo(height + 37).constraint
                     } else {
                         self.questionTextViewHeightAnchor = make.height.equalTo(height + 59).constraint
@@ -781,7 +762,7 @@ public final class ProfileViewController: UIViewController {
             
             self.view.layoutIfNeeded()
             
-            if self.questionList.count > 2 {
+            if viewModel.questionList.count > 2 {
                 self.questionViewHeightAnchor?.update(offset: questionTitleLabel.frame.height + questionTextView.frame.height + 210)
                 
                 addMoreBackgroundViewComponentView()
@@ -897,7 +878,7 @@ public final class ProfileViewController: UIViewController {
     }
     
     @objc private func clickMoreLinkButton(_ sender: UIButton) {
-        print("내 링크 > 버튼 클릭")
+        coordinator?.didTabLinkButton()
     }
     
     @objc private func clickMoreIntroduceButton(_ sender: UIButton) {
@@ -951,5 +932,38 @@ extension ProfileViewController {
                 sender.setTitle("펼쳐서 보기", for: .normal)
             }
         }
+    }
+}
+
+// MARK: - Binding
+extension ProfileViewController {
+    func setBinding(){
+        self.viewModel.$userLinks
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] (updatedLists: [String]) in
+                guard let self = self else { return }
+                
+                for subview in self.linkView.subviews {
+                    subview.removeFromSuperview()
+                }
+                
+                self.linkEmptyTextLabel.snp.removeConstraints()
+                self.linkView.snp.removeConstraints()
+                self.linkEmptyTextLabel.removeFromSuperview()
+                self.linkView.removeFromSuperview()
+                
+                self.linkView.configUserInterface(linkList: updatedLists)
+                
+                self.addLinkView()
+                
+                self.view.layoutIfNeeded()
+                
+                self.backgroundViewHeightAnchor?.update(offset: self.informationView.frame.height + self.linkBackView.frame.height + self.introduceView.frame.height + self.questionView.frame.height + 21)
+                
+                self.view.layoutIfNeeded()
+                
+                self.scrollView.contentSize = CGSize(width: self.view.frame.width, height: self.backgroundView.frame.height)
+            }
+            .store(in: &disposalbleBag)
     }
 }
