@@ -26,11 +26,7 @@ public final class ProfileViewController: UIViewController {
     private let userIntroduce: String
     
     let questionList: [Question] = [
-        .init(
-            title: "Lorem ipsum dolor sit amet?",
-            text: """
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            """),
+
         .init(
             title: "Lorem ipsum dolor sit amet, Lorem ipsum dolor sit amet?",
             text: """
@@ -776,9 +772,9 @@ public final class ProfileViewController: UIViewController {
                     self.questionTextViewHeightAnchor = make.height.equalTo(height + 44).constraint
                 } else {
                     if self.questionList.count == 1 {
-                        self.questionTextViewHeightAnchor = make.height.equalTo(height + 59).constraint
+                        self.questionTextViewHeightAnchor = make.height.equalTo(height + 37).constraint
                     } else {
-                        self.questionTextViewHeightAnchor = make.height.equalTo(height + 66).constraint
+                        self.questionTextViewHeightAnchor = make.height.equalTo(height + 59).constraint
                     }
                 }
             }

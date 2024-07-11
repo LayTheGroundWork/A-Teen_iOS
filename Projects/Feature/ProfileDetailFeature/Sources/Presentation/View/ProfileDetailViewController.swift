@@ -578,10 +578,12 @@ extension ProfileDetailViewController {
             make.top.equalTo(self.questionTitleLabel.snp.bottom).offset(22)
             if self.questionList.count > 2 {
                 self.questionTextViewHeightAnchor = make.height.equalTo(height + 44).constraint
-                // 15 + 15 + 7 + 7
             } else {
-                self.questionTextViewHeightAnchor = make.height.equalTo(height + 59).constraint
-                // 15 + 15 + 15 + 7 + 7
+                if self.questionList.count == 1 {
+                    self.questionTextViewHeightAnchor = make.height.equalTo(height + 37).constraint
+                } else {
+                    self.questionTextViewHeightAnchor = make.height.equalTo(height + 59).constraint
+                }
             }
         }
         
