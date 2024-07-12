@@ -17,6 +17,7 @@ protocol SearchSchoolCollectionViewCellDelegate: AnyObject {
 
 final class SearchSchoolCollectionViewCell: UICollectionViewCell {
     // MARK: - Private properties
+    private var searchTask: DispatchWorkItem?
     private weak var delegate: SearchSchoolCollectionViewCellDelegate?
     private var viewModel: SignUpViewModel?
 
@@ -369,20 +370,29 @@ extension SearchSchoolCollectionViewCell: UITextFieldDelegate {
     func textFieldDidChangeSelection(_ textField: UITextField) {
         schoolTextField.font = .customFont(forTextStyle: .callout, weight: .regular)
         
-        if viewModel?.searchSchoolText.isEmpty == false {
-            viewModel?.searchSchoolData()
-            
-            if viewModel?.filteredSchools.isEmpty == true {
-                closeSearchScoolTableView()
-            } else {
-                openSearchScoolTableView()
-            }
-        } else {
-            closeSearchScoolTableView()
-            viewModel?.selectIndexPath = nil
-            viewModel?.filteredSchools = []
-        }
+        searchTask?.cancel()
         
+        let task = DispatchWorkItem { [weak self] in
+            guard let self = self else { return }
+            if viewModel?.searchSchoolText.isEmpty == false {
+                viewModel?.searchSchoolData()
+                
+                if viewModel?.filteredSchools.isEmpty == true {
+                    closeSearchScoolTableView()
+                } else {
+                    openSearchScoolTableView()
+                }
+            } else {
+                closeSearchScoolTableView()
+                viewModel?.selectIndexPath = nil
+                viewModel?.filteredSchools = []
+            }
+        }
+        // 0.5초 후에 실행
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: task)
+          
+        // 현재 실행 중인 searchTask 업데이트
+        searchTask = task
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
