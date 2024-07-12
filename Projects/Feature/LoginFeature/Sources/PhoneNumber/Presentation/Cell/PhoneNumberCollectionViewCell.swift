@@ -40,10 +40,9 @@ final class PhoneNumberCollectionViewCell: UICollectionViewCell {
         textField.layer.borderWidth = 2.0
         textField.layer.cornerRadius = 10
         textField.layer.borderColor = DesignSystemAsset.mainColor.color.cgColor
-        textField.backgroundColor = .white
-        textField.textColor = .black
+        textField.backgroundColor = UIColor.white
+        textField.textColor = UIColor.black
         textField.tintColor = DesignSystemAsset.gray01.color
-        textField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
         return textField
     }()
     
@@ -109,6 +108,9 @@ final class PhoneNumberCollectionViewCell: UICollectionViewCell {
     }
     
     private func setupActions() {
+        textField.addTarget(self,
+                            action: #selector(textFieldDidChange),
+                            for: .editingChanged)
         certificateButton.addTarget(self,
                              action: #selector(didSelectCertificateButton(_: )),
                              for: .touchUpInside)
