@@ -14,7 +14,11 @@ public struct SchoolDataEndPoint: EndPoint {
         
     public var path: String = "/v1/api/schools"
     
-    public var query: [String : String] = [:]
+    public var query: [String : String] {
+        [
+            "schoolName": request.schoolName
+        ]
+    }
     
     public var header: [String : String] {
         [
@@ -23,12 +27,7 @@ public struct SchoolDataEndPoint: EndPoint {
         ]
     }
     
-    public var body: [String : Any] {
-        [
-            "schoolName": request.schoolName
-        ]
-    }
-    
+    public var body: [String : Any] = [:]
     public var method: HTTPMethod = .get
     
     public init(

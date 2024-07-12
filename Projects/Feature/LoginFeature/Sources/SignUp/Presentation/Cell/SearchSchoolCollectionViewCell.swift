@@ -16,8 +16,6 @@ protocol SearchSchoolCollectionViewCellDelegate: AnyObject {
 }
 
 final class SearchSchoolCollectionViewCell: UICollectionViewCell {
-    // MARK: - Public properties
-    
     // MARK: - Private properties
     private weak var delegate: SearchSchoolCollectionViewCellDelegate?
     private var viewModel: SignUpViewModel?
@@ -52,6 +50,7 @@ final class SearchSchoolCollectionViewCell: UICollectionViewCell {
         textField.autocorrectionType = .no
         textField.spellCheckingType = .no
         textField.returnKeyType = .done
+        textField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
         return textField
     }()
     
@@ -167,6 +166,10 @@ final class SearchSchoolCollectionViewCell: UICollectionViewCell {
         }
     }
     
+    public func reloadTableViewData() {
+        tableView.reloadData()
+    }
+    
     // MARK: - Actions
     func setProperties(
         delegate: SearchSchoolCollectionViewCellDelegate,
@@ -174,6 +177,12 @@ final class SearchSchoolCollectionViewCell: UICollectionViewCell {
     ) {
         self.delegate = delegate
         self.viewModel = viewModel
+    }
+    
+    @objc private func textFieldDidChange(_ sender: Any?) {
+        guard let text = schoolTextField.text else { return }
+        self.viewModel?.searchSchoolText = text
+        
     }
     
     @objc func handlePanGesture(_ gestureRecognizer: UIPanGestureRecognizer) {
@@ -292,10 +301,14 @@ extension SearchSchoolCollectionViewCell: UITableViewDataSource {
         guard
             let cell = tableView.dequeueReusableCell(
                 withIdentifier: SearchSchoolResultTableViewCell.reuseIdentifier,
-                for: indexPath) as? SearchSchoolResultTableViewCell
+                for: indexPath) as? SearchSchoolResultTableViewCell,
+            indexPath.row <= viewModel?.filteredSchools.count ?? 0
         else {
             return UITableViewCell()
         }
+    
+        print("count, ", viewModel?.filteredSchools.count ?? 0)
+        print("index, ", indexPath.row)
         cell.fontChange(
             with: viewModel?.filteredSchools[indexPath.row] ?? .empty,
             isBold: indexPath == viewModel?.selectIndexPath)
@@ -355,16 +368,21 @@ extension SearchSchoolCollectionViewCell: UITextFieldDelegate {
     
     func textFieldDidChangeSelection(_ textField: UITextField) {
         schoolTextField.font = .customFont(forTextStyle: .callout, weight: .regular)
-        guard let text = textField.text else { return }
-        viewModel?.filterSchools(text: text)
-        viewModel?.selectIndexPath = nil
-        delegate?.updateNextButtonState(false)
         
-        if ((viewModel?.filteredSchools.isEmpty) != nil) {
-            closeSearchScoolTableView()
+        if viewModel?.searchSchoolText.isEmpty == false {
+            viewModel?.searchSchoolData()
+            
+            if viewModel?.filteredSchools.isEmpty == true {
+                closeSearchScoolTableView()
+            } else {
+                openSearchScoolTableView()
+            }
         } else {
-            openSearchScoolTableView()
+            closeSearchScoolTableView()
+            viewModel?.selectIndexPath = nil
+            viewModel?.filteredSchools = []
         }
+        
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

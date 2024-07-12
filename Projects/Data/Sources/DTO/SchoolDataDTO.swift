@@ -11,13 +11,13 @@ import Foundation
 
 struct SchoolDataDTO: Decodable {
     public let status: String
-    public let data: SchoolData
+    public let data: [SchoolData]
     public let message: String
 }
 
 struct SchoolData: Decodable {
-    let schoolName: String
-    let schoolRegion: String
+    public let schoolName: String
+    public let schoolRegion: String
     
     enum CodingKeys: String, CodingKey {
         case schoolName = "SCHUL_NM"
@@ -26,10 +26,14 @@ struct SchoolData: Decodable {
 }
 
 extension SchoolDataDTO {
-    func toDomain() -> SchoolDataResponse {
-        .init(
-            name: data.schoolName,
-            address: data.schoolRegion
-        )
+    func toDomain() -> [SchoolDataResponse] {
+        var tmp: [SchoolDataResponse] = []
+        data.forEach { schoolData in
+            let name = schoolData.schoolName
+            let address = schoolData.schoolRegion
+            
+            tmp.append(.init(name: name, address: address))
+        }
+        return tmp
     }
 }

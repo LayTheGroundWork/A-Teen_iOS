@@ -11,6 +11,6 @@ import Foundation
 public protocol SearchUseCase {
     func searchSchool(
         request: SchoolDataRequest,
-        completion: @escaping (Result<SchoolDataResponse, Error>) -> Void
+        completion: @escaping (Result<[SchoolDataResponse], Error>) -> Void
     )
 }

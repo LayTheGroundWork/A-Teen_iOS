@@ -3,16 +3,16 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 55;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0B18DF21FFE477910B74B1B6 /* VerificationCodeResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 839C089244517B59E39817A4 /* VerificationCodeResponse.swift */; };
 		150D6995E52A32B29DBA855E /* LogInResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0466867E7CA24A7196EB9339 /* LogInResponse.swift */; };
 		23E6F0300D0F5577048F6B53 /* SchoolDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3D5166F9BAE202703C8ADDB /* SchoolDataRepository.swift */; };
 		2405CEBB75D3A316A75D6994 /* SchoolDataResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D160BBBDBAADD18EC4B667FB /* SchoolDataResponse.swift */; };
 		337435614E3EF754DF8C5FCC /* VerificationCodeRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4220232C6D323CEE154173C8 /* VerificationCodeRequest.swift */; };
 		3CD20E63F5B08BA33A48403C /* SchoolDataRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432D1265802A2173DE408F5E /* SchoolDataRequest.swift */; };
-		41839B0C2C3E868A003EC3B6 /* VerificationCodeResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41839B0B2C3E868A003EC3B6 /* VerificationCodeResponse.swift */; };
 		4412DD94E9BE92B437216169 /* ImageDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C9895B94482D7F1DCACB8C /* ImageDataRepository.swift */; };
 		67B020A5ED1B6DE1F1FD34EA /* SignRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ACB320B7ABCFA6BA58774D5 /* SignRepository.swift */; };
 		77EEC29764D1D277B000EE29 /* ImageDataUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451ACE222BE8C01F4B361381 /* ImageDataUseCase.swift */; };
@@ -47,7 +47,6 @@
 		09C9895B94482D7F1DCACB8C /* ImageDataRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDataRepository.swift; sourceTree = "<group>"; };
 		2631E3BA481483BAEA9EF018 /* SearchUseCaseImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchUseCaseImp.swift; sourceTree = "<group>"; };
 		3A4620A0019C901EC7C993A2 /* Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
-		41839B0B2C3E868A003EC3B6 /* VerificationCodeResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationCodeResponse.swift; sourceTree = "<group>"; };
 		4220232C6D323CEE154173C8 /* VerificationCodeRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationCodeRequest.swift; sourceTree = "<group>"; };
 		432D1265802A2173DE408F5E /* SchoolDataRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolDataRequest.swift; sourceTree = "<group>"; };
 		451ACE222BE8C01F4B361381 /* ImageDataUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDataUseCase.swift; sourceTree = "<group>"; };
@@ -57,6 +56,7 @@
 		6ACB320B7ABCFA6BA58774D5 /* SignRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignRepository.swift; sourceTree = "<group>"; };
 		7616981B4BB1B2D11994DCC8 /* ImageDataUseCaseImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDataUseCaseImp.swift; sourceTree = "<group>"; };
 		8065638094E74645B658ADB0 /* RemoteImageDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteImageDataService.swift; sourceTree = "<group>"; };
+		839C089244517B59E39817A4 /* VerificationCodeResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationCodeResponse.swift; sourceTree = "<group>"; };
 		A97F7B0D49B77A55DE5D9C86 /* SignUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUseCase.swift; sourceTree = "<group>"; };
 		B3D5166F9BAE202703C8ADDB /* SchoolDataRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolDataRepository.swift; sourceTree = "<group>"; };
 		B55759C9EED1F9864F56739B /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
@@ -160,7 +160,7 @@
 			children = (
 				0466867E7CA24A7196EB9339 /* LogInResponse.swift */,
 				D160BBBDBAADD18EC4B667FB /* SchoolDataResponse.swift */,
-				41839B0B2C3E868A003EC3B6 /* VerificationCodeResponse.swift */,
+				839C089244517B59E39817A4 /* VerificationCodeResponse.swift */,
 			);
 			path = Response;
 			sourceTree = "<group>";
@@ -244,6 +244,8 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
 				ORGANIZATIONNAME = ATeen;
+				TargetAttributes = {
+				};
 			};
 			buildConfigurationList = 5B17347D429F14C389327C78 /* Build configuration list for PBXProject "Domain" */;
 			compatibilityVersion = "Xcode 14.0";
@@ -280,12 +282,12 @@
 			files = (
 				83315DB61E2BEAE20B3C84D1 /* LogInRequest.swift in Sources */,
 				9034909F680164DCD97B8693 /* PhoneNumberAuthRequest.swift in Sources */,
-				41839B0C2C3E868A003EC3B6 /* VerificationCodeResponse.swift in Sources */,
 				3CD20E63F5B08BA33A48403C /* SchoolDataRequest.swift in Sources */,
 				C8094BE4D30D193A2265DD54 /* SignUpRequest.swift in Sources */,
 				337435614E3EF754DF8C5FCC /* VerificationCodeRequest.swift in Sources */,
 				150D6995E52A32B29DBA855E /* LogInResponse.swift in Sources */,
 				2405CEBB75D3A316A75D6994 /* SchoolDataResponse.swift in Sources */,
+				0B18DF21FFE477910B74B1B6 /* VerificationCodeResponse.swift in Sources */,
 				4412DD94E9BE92B437216169 /* ImageDataRepository.swift in Sources */,
 				23E6F0300D0F5577048F6B53 /* SchoolDataRepository.swift in Sources */,
 				67B020A5ED1B6DE1F1FD34EA /* SignRepository.swift in Sources */,
@@ -377,10 +379,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					"-ObjC",
-				);
+				OTHER_LDFLAGS = "$(inherited) -ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ATeen.ATeen.Domain;
 				PRODUCT_NAME = Domain;
 				SDKROOT = iphoneos;
@@ -476,10 +475,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					"-ObjC",
-				);
+				OTHER_LDFLAGS = "$(inherited) -ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ATeen.ATeen.Domain;
 				PRODUCT_NAME = Domain;
 				SDKROOT = iphoneos;
@@ -487,7 +483,10 @@
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = (
+					"$(inherited)",
+					DEBUG,
+				);
 				SWIFT_COMPILATION_MODE = singlefile;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;

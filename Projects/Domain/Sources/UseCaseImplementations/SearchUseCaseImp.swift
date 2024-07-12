@@ -17,7 +17,7 @@ public struct SearchUseCaseImp: SearchUseCase {
         self.schoolDataRepository = schoolDataRepository
     }
     
-    public func searchSchool(request: SchoolDataRequest, completion: @escaping (Result<SchoolDataResponse, Error>) -> Void) {
+    public func searchSchool(request: SchoolDataRequest, completion: @escaping (Result<[SchoolDataResponse], Error>) -> Void) {
         schoolDataRepository.searchSchool(request: request, completion: completion)
     }
 }
