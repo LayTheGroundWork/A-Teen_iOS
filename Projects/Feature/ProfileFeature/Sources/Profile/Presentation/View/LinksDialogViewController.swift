@@ -22,6 +22,7 @@ final class LinksDialogViewController: UIViewController {
     private weak var coordinator: LinksDialogViewControllerCoordinator?
     
     var dialogViewHeightAnchor: Constraint?
+    var linkTableViewHeightAnchor: Constraint?
     
     private lazy var dialogView: UIView = {
         let view = UIView()
@@ -50,6 +51,17 @@ final class LinksDialogViewController: UIViewController {
         let button = CustomLinkAddButton()
         button.addTarget(self, action: #selector(clickLinkAddButton(_:)), for: .touchUpInside)
         return button
+    }()
+    
+    private lazy var linkTableView: UITableView = {
+        let tableView = UITableView()
+        tableView.separatorStyle = .none
+        tableView.showsVerticalScrollIndicator = false
+        tableView.isScrollEnabled = false
+        tableView.dataSource = self
+        tableView.delegate = self
+        tableView.register(LinkTableViewCell.self, forCellReuseIdentifier: LinkTableViewCell.reuseIdentifier)
+        return tableView
     }()
 
     init(
@@ -81,6 +93,7 @@ final class LinksDialogViewController: UIViewController {
         dialogView.addSubview(xmarkButton)
         dialogView.addSubview(titleLabel)
         dialogView.addSubview(linkAddButton)
+        dialogView.addSubview(linkTableView)
     }
     
     private func configLayout() {
@@ -112,9 +125,29 @@ final class LinksDialogViewController: UIViewController {
             )
         }
         
+        linkTableView.snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview()
+            make.top.equalTo(linkAddButton.snp.bottom).offset(7)
+            self.linkTableViewHeightAnchor = make.height.equalTo(0).constraint
+        }
+        
+        changeViewHeight()
+    }
+    
+    func changeViewHeight() {
         self.view.layoutIfNeeded()
         
-        dialogViewHeightAnchor?.update(offset: linkAddButton.frame.height + 66 + 20)
+        self.linkTableViewHeightAnchor?.update(offset: self.viewModel.userLinks.count * 34)
+        
+        self.view.layoutIfNeeded()
+        
+        if viewModel.userLinks.isEmpty {
+            self.dialogViewHeightAnchor?.update(
+                offset: self.titleLabel.frame.height + self.linkAddButton.frame.height + self.linkTableView.frame.height + 62)
+        } else {
+            self.dialogViewHeightAnchor?.update(
+                offset: self.titleLabel.frame.height + self.linkAddButton.frame.height + self.linkTableView.frame.height + 69)
+        }
     }
     
     // MARK: - Actions
@@ -123,33 +156,56 @@ final class LinksDialogViewController: UIViewController {
     }
     
     @objc private func clickLinkAddButton(_ sender: UIButton) {
-        viewModel.userLinks.append("blog.link")
-        coordinator?.didFinish()
+        if viewModel.userLinks.count < 3 {
+            viewModel.userLinks.append("blog.link")
+            
+            linkTableView.reloadData()
+            
+            changeViewHeight()
+            
+            if viewModel.userLinks.count == 3 {
+                linkAddButton.plusImageView.image = DesignSystemAsset.plusGray03Icon.image
+                linkAddButton.customtextLabel.textColor = DesignSystemAsset.gray03.color
+            }
+        }
     }
-//
-//    @objc private func clickReasonButton(_ sender: CustomUsedToReportViewButton) {
-//        switch sender.tag {
-//        case 1:
-//            didSelectCheckButton(reportReasonButton1)
-//        case 2:
-//            didSelectCheckButton(reportReasonButton2)
-//        case 3:
-//            didSelectCheckButton(reportReasonButton3)
-//        case 4:
-//            didSelectCheckButton(reportReasonButton4)
-//        default:
-//            break
-//        }
-//        updateReportButton()
-//    }
-//    
-//    @objc private func clickBlockCheckButton(_ sender: CustomUsedToReportViewButton) {
-//        didSelectCheckButton(sender)
-//    }
-//    
-//    @objc private func clickReportButton(_ sender: UIButton) {
-//        // TODO: - 신고
-//        // 현재는 화면 이동만 진행
-//        coordinator?.didReport()
-//    }
+}
+
+// MARK: - UITableViewDataSource
+extension LinksDialogViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard
+            let cell = tableView.dequeueReusableCell(
+                withIdentifier: LinkTableViewCell.reuseIdentifier,
+                for: indexPath) as? LinkTableViewCell
+        else {
+            return UITableViewCell()
+        }
+        
+        cell.setLink(link: viewModel.userLinks[indexPath.row])
+        
+        cell.deleteButtonAction = { [self] in
+            self.viewModel.userLinks.remove(at: indexPath.row)
+            self.linkTableView.reloadData()
+            
+            self.changeViewHeight()
+            
+            if self.viewModel.userLinks.count < 3{
+                self.linkAddButton.plusImageView.image = DesignSystemAsset.plusGray01Icon.image
+                self.linkAddButton.customtextLabel.textColor = DesignSystemAsset.gray02.color
+            }
+        }
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        viewModel.userLinks.count
+    }
+}
+
+// MARK: - UITableViewDelegate
+extension LinksDialogViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        34
+    }
 }

@@ -13,11 +13,12 @@
 		50C7EBDFF11158934C9027D2 /* SettingsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2FF38E5388DAF2F177352A /* SettingsCoordinator.swift */; };
 		55FE9E485CF63075412F9235 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93A8444F9FE80E07A61F92F5 /* SettingsViewModel.swift */; };
 		5BB80EFC84503C494DD440F1 /* FeatureDependency.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 641BBD2F2133A809547B278F /* FeatureDependency.framework */; };
-		5CA98967F696288B06E400D7 /* CustomLinkAddButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 724F9ED4B91CD2B6043E088D /* CustomLinkAddButton.swift */; };
 		651C0C41583A7362A1DA6298 /* UserConfigurationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DBA6AE9367F8E0930D17190 /* UserConfigurationCoordinator.swift */; };
 		6753CE3620A26AD3322960E8 /* LinksDialogCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 004DE565F155364550DB4A46 /* LinksDialogCoordinator.swift */; };
+		73E945992C411F380019731D /* LinkTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73E945982C411F380019731D /* LinkTableViewCell.swift */; };
 		755BE18E11E861FDDF150DEF /* CustomNaviView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E49EF055D5905E6493CCEF /* CustomNaviView.swift */; };
 		82D6398E5EA99B4CB2D33E13 /* UserConfigurationFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7A14D63C33266DECE68E15D /* UserConfigurationFactory.swift */; };
+		8A98CED0067FEF0B0859573B /* CustomLinkAddButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D0F25CA220C48D63B514FE /* CustomLinkAddButton.swift */; };
 		8B346E18C8519296F391B661 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B8D902E7152C60B8C958FB /* ProfileViewController.swift */; };
 		9A66A7C60A02BE8DC358B9F8 /* SettingsCoordinator+SettingsViewControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A021C9386BA2E61F34B01B1 /* SettingsCoordinator+SettingsViewControllerCoordinator.swift */; };
 		AB5925C31F9634BD20280D83 /* ExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D6BD7FF19595E3D572390D1 /* ExampleViewController.swift */; };
@@ -54,6 +55,7 @@
 		05B8D902E7152C60B8C958FB /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		1413DD890A39C746AB537CAD /* SettingsViewNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewNavigation.swift; sourceTree = "<group>"; };
 		1DBA6AE9367F8E0930D17190 /* UserConfigurationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserConfigurationCoordinator.swift; sourceTree = "<group>"; };
+		30D0F25CA220C48D63B514FE /* CustomLinkAddButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLinkAddButton.swift; sourceTree = "<group>"; };
 		3441A2CD70C4802BB06608C3 /* ProfileCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCoordinator.swift; sourceTree = "<group>"; };
 		35AEF625E9EB80A53BF3D7F9 /* LinksDialogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinksDialogViewController.swift; sourceTree = "<group>"; };
 		3A021C9386BA2E61F34B01B1 /* SettingsCoordinator+SettingsViewControllerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SettingsCoordinator+SettingsViewControllerCoordinator.swift"; sourceTree = "<group>"; };
@@ -65,9 +67,9 @@
 		523B8D3545600E5D39B2D2B5 /* CustomLinkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLinkView.swift; sourceTree = "<group>"; };
 		5B2FF38E5388DAF2F177352A /* SettingsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCoordinator.swift; sourceTree = "<group>"; };
 		641BBD2F2133A809547B278F /* FeatureDependency.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FeatureDependency.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		724F9ED4B91CD2B6043E088D /* CustomLinkAddButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLinkAddButton.swift; sourceTree = "<group>"; };
 		729B89851D11E20937F47A6E /* LinksDialogFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinksDialogFactory.swift; sourceTree = "<group>"; };
 		731A11DA88A7ABACFE37E26C /* ProfileCoordinator+ProfileViewControllerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProfileCoordinator+ProfileViewControllerCoordinator.swift"; sourceTree = "<group>"; };
+		73E945982C411F380019731D /* LinkTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkTableViewCell.swift; sourceTree = "<group>"; };
 		7D75411655BD7C1F2248A03D /* ProfileFeature.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ProfileFeature.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		93A8444F9FE80E07A61F92F5 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		9ACE8CAF734090465D7B89D5 /* Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
@@ -171,7 +173,7 @@
 		72F7BC80C489E3448FF9AFB7 /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				724F9ED4B91CD2B6043E088D /* CustomLinkAddButton.swift */,
+				30D0F25CA220C48D63B514FE /* CustomLinkAddButton.swift */,
 				523B8D3545600E5D39B2D2B5 /* CustomLinkView.swift */,
 				A5E49EF055D5905E6493CCEF /* CustomNaviView.swift */,
 			);
@@ -181,10 +183,19 @@
 		739B1FA0E9CE4591A0BD21BA /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				73E945972C411EDC0019731D /* Cell */,
 				177308DFAC1834BC037DF8A3 /* View */,
 				669B2F4830F983396D5EF1F2 /* ViewModel */,
 			);
 			path = Presentation;
+			sourceTree = "<group>";
+		};
+		73E945972C411EDC0019731D /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				73E945982C411F380019731D /* LinkTableViewCell.swift */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		90666643827C8F0AB521673E /* Sources */ = {
@@ -322,10 +333,11 @@
 				AB5925C31F9634BD20280D83 /* ExampleViewController.swift in Sources */,
 				B878F46F5D147FA6A0C328A4 /* ItemSettingViewModel.swift in Sources */,
 				C06241105876ED5A18CE8E3A /* SettingsViewController.swift in Sources */,
+				73E945992C411F380019731D /* LinkTableViewCell.swift in Sources */,
 				55FE9E485CF63075412F9235 /* SettingsViewModel.swift in Sources */,
 				1AF2769C08BB127855B1AAF0 /* SettingsViewNavigation.swift in Sources */,
 				F921C7F56F471F3B4DF17FCC /* UserConfigurationViewController.swift in Sources */,
-				5CA98967F696288B06E400D7 /* CustomLinkAddButton.swift in Sources */,
+				8A98CED0067FEF0B0859573B /* CustomLinkAddButton.swift in Sources */,
 				BFADE4B2D1576800E307DAFE /* CustomLinkView.swift in Sources */,
 				755BE18E11E861FDDF150DEF /* CustomNaviView.swift in Sources */,
 				DEFF6D70F7D6DB2A67103B18 /* LinksDialogCoordinator+LinksDialogViewControllerCoordinator.swift in Sources */,

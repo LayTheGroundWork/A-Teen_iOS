@@ -13,7 +13,7 @@ import DesignSystem
 import UIKit
 
 class CustomLinkAddButton: UIButton {
-    private lazy var plusImageView: UIImageView = {
+    lazy var plusImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = DesignSystemAsset.plusGray01Icon.image
         imageView.tintColor = UIColor.white
