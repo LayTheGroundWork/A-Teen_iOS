@@ -167,10 +167,6 @@ final class SearchSchoolCollectionViewCell: UICollectionViewCell {
         }
     }
     
-    public func reloadTableViewData() {
-        tableView.reloadData()
-    }
-    
     // MARK: - Actions
     func setProperties(
         delegate: SearchSchoolCollectionViewCellDelegate,
@@ -226,6 +222,16 @@ final class SearchSchoolCollectionViewCell: UICollectionViewCell {
             }
             gestureRecognizer.setTranslation(.zero, in: customIndicatorView)
             initialCenter = CGPoint.zero
+        }
+    }
+    
+    public func reloadTableViewData() {
+        tableView.reloadData()
+        
+        if viewModel?.filteredSchools.isEmpty == true {
+            closeSearchScoolTableView()
+        } else {
+            openSearchScoolTableView()
         }
     }
     
@@ -376,12 +382,6 @@ extension SearchSchoolCollectionViewCell: UITextFieldDelegate {
             guard let self = self else { return }
             if viewModel?.searchSchoolText.isEmpty == false {
                 viewModel?.searchSchoolData()
-                
-                if viewModel?.filteredSchools.isEmpty == true {
-                    closeSearchScoolTableView()
-                } else {
-                    openSearchScoolTableView()
-                }
             } else {
                 closeSearchScoolTableView()
                 viewModel?.selectIndexPath = nil

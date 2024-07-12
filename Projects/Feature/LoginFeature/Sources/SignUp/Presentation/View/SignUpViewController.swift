@@ -148,7 +148,6 @@ final class SignUpViewController: UIViewController {
             .sink { [weak self] state in
                 switch state {
                 case .success:
-                    print(self?.viewModel.filteredSchools.count)
                     self?.reloadSearchSchoolCollectionViewCell()
                 case .loading:
                     print("로딩중")
