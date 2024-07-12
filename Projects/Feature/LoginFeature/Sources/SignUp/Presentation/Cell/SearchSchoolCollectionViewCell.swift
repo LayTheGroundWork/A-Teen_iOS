@@ -39,20 +39,34 @@ final class SearchSchoolCollectionViewCell: UICollectionViewCell {
     }()
     
     lazy var schoolTextField: UITextField = {
-        let textField = UITextField()
+        let textField = CustomClearXmarkTextField()
         textField.delegate = self
+        textField.borderStyle = .roundedRect
         textField.tintColor = DesignSystemAsset.gray01.color
         textField.font = .customFont(forTextStyle: .callout, weight: .regular)
-        textField.layer.borderWidth = 2
-        textField.layer.cornerRadius = 12
+        textField.clearButtonMode = .never
+        textField.rightView = clearTextButton
+        textField.rightViewMode = .whileEditing
+        textField.layer.borderWidth = 2.0
+        textField.layer.cornerRadius = 10
         textField.layer.borderColor = DesignSystemAsset.mainColor.color.cgColor
-        textField.layer.sublayerTransform = CATransform3DMakeTranslation(15, 0, 0) // 텍스트필드 앞에 공백 넣어주기
         textField.autocapitalizationType = .none
         textField.autocorrectionType = .no
         textField.spellCheckingType = .no
         textField.returnKeyType = .done
-        textField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
         return textField
+    }()
+    
+    private lazy var spinner: UIActivityIndicatorView = {
+        let spinner = UIActivityIndicatorView(style: .medium)
+        spinner.startAnimating()
+        return spinner
+    }()
+    
+    private lazy var clearTextButton: UIButton = {
+        let button = UIButton()
+        button.setImage(DesignSystemAsset.clearButton.image, for: .normal)
+        return button
     }()
     
     private lazy var searchImageView: UIImageView = {
@@ -109,6 +123,7 @@ final class SearchSchoolCollectionViewCell: UICollectionViewCell {
         super.init(frame: frame)
         configUserInterface()
         configLayout()
+        setupActions()
     }
     
     required init?(coder: NSCoder) {
@@ -167,7 +182,16 @@ final class SearchSchoolCollectionViewCell: UICollectionViewCell {
         }
     }
     
-    // MARK: - Actions
+    private func setupActions() {
+        schoolTextField.addTarget(self,
+                            action: #selector(textFieldDidChange),
+                            for: .editingChanged)
+        
+        clearTextButton.addTarget(self,
+                                  action: #selector(didSelectClearTextButton(_:)),
+                                  for: .touchUpInside)
+    }
+    
     func setProperties(
         delegate: SearchSchoolCollectionViewCellDelegate,
         viewModel: SignUpViewModel
@@ -176,10 +200,16 @@ final class SearchSchoolCollectionViewCell: UICollectionViewCell {
         self.viewModel = viewModel
     }
     
+    // MARK: - Actions
     @objc private func textFieldDidChange(_ sender: Any?) {
         guard let text = schoolTextField.text else { return }
         self.viewModel?.searchSchoolText = text
         
+    }
+    
+    @objc private func didSelectClearTextButton(_ sender: UIButton) {
+        schoolTextField.text?.removeAll()
+        schoolTextField.rightViewMode = .never
     }
     
     @objc func handlePanGesture(_ gestureRecognizer: UIPanGestureRecognizer) {
@@ -233,6 +263,16 @@ final class SearchSchoolCollectionViewCell: UICollectionViewCell {
         } else {
             openSearchScoolTableView()
         }
+    }
+    
+    public func showSpinnerSearchTextField() {
+        schoolTextField.rightView = spinner
+        schoolTextField.rightViewMode = .always
+    }
+    
+    public func hideSpinnerSearchTextField() {
+        schoolTextField.rightView = clearTextButton
+        schoolTextField.rightViewMode = .whileEditing
     }
     
     private func openSearchScoolTableView() {

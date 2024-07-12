@@ -150,21 +150,12 @@ final class SignUpViewController: UIViewController {
                 case .success:
                     self?.reloadSearchSchoolCollectionViewCell()
                 case .loading:
-                    print("로딩중")
+                    self?.showSpinnerSchoolCollectionViewCell()
                     break
                 case .fail(error: let error):
                     print("검색한 학교가 없습니다. \(error)")
                 }
             }.store(in: &cancellable)
-    }
-    
-    private func reloadSearchSchoolCollectionViewCell() {
-        for cell in collectionView.visibleCells {
-            if let searchSchoolCell = cell as? SearchSchoolCollectionViewCell {
-                searchSchoolCell.reloadTableViewData()
-                break
-            }
-        }
     }
     
     // MARK: - Actions
@@ -338,5 +329,36 @@ extension SignUpViewController: UserIdCollectionViewCellDelegate,
     
     func didTapNextButtonInKeyboard() {
         didSelectNextButton(nextButton)
+    }
+}
+
+// MARK: - SearchSchoolCollectionViewCell
+extension SignUpViewController {
+    private func reloadSearchSchoolCollectionViewCell() {
+        for cell in collectionView.visibleCells {
+            if let searchSchoolCell = cell as? SearchSchoolCollectionViewCell {
+                searchSchoolCell.reloadTableViewData()
+                hideSpinnerSchoolCollectionViewCell()
+                break
+            }
+        }
+    }
+    
+    private func showSpinnerSchoolCollectionViewCell() {
+        for cell in collectionView.visibleCells {
+            if let searchSchoolCell = cell as? SearchSchoolCollectionViewCell {
+                searchSchoolCell.showSpinnerSearchTextField()
+                break
+            }
+        }
+    }
+    
+    private func hideSpinnerSchoolCollectionViewCell() {
+        for cell in collectionView.visibleCells {
+            if let searchSchoolCell = cell as? SearchSchoolCollectionViewCell {
+                searchSchoolCell.hideSpinnerSearchTextField()
+                break
+            }
+        }
     }
 }
