@@ -188,13 +188,14 @@ public final class CertificationCodeCollectionViewCell: UICollectionViewCell {
     
     // MARK: - Actions
     @objc private func didSelectNextButton(_ sender: UIButton) {
-        stopTimer()
+        
         convertVerificationCode()
         
         // TODO: - 다음으로 이동할때, 가입된 사용자인지 검증 후 보내주기
         viewModel?.verificationCode { result in
             switch result {
             case .success(.availablePhoneNumber):
+                self.stopTimer()
                 DispatchQueue.main.async {
                     self.delegate?.didSelectNextButton(registrationStatus: .notSignedUp)
                 }

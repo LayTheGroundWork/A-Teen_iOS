@@ -210,6 +210,7 @@ final class SearchSchoolCollectionViewCell: UICollectionViewCell {
     @objc private func didSelectClearTextButton(_ sender: UIButton) {
         schoolTextField.text?.removeAll()
         schoolTextField.rightViewMode = .never
+        closeSearchScoolTableView()
     }
     
     @objc func handlePanGesture(_ gestureRecognizer: UIPanGestureRecognizer) {
@@ -299,6 +300,8 @@ final class SearchSchoolCollectionViewCell: UICollectionViewCell {
     
     private func closeSearchScoolTableView() {
         tableBackgroundView.isHidden = true
+        viewModel?.selectIndexPath = nil
+        viewModel?.filteredSchools = []
     }
     
     private func updateCustomIndicator() {
@@ -424,8 +427,6 @@ extension SearchSchoolCollectionViewCell: UITextFieldDelegate {
                 viewModel?.searchSchoolData()
             } else {
                 closeSearchScoolTableView()
-                viewModel?.selectIndexPath = nil
-                viewModel?.filteredSchools = []
             }
         }
         // 0.5초 후에 실행
