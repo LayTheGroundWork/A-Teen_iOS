@@ -38,6 +38,17 @@ extension PhoneNumberCoordinator: PhoneNumberViewControllerCoordinator {
         navigation.present(
             coordinator.navigation.rootViewController,
             animated: false)
+        
+        // 이후 화면 이동
+        coordinator.navigation.dismissNavigation = { [weak self] in
+            guard let self = self else { return }
+            let termsOfUseCoordinator = factory.makeTermsOfUseCoordinator(
+                phoneNumber: viewModel.phoneNumber,
+                navigation: navigation,
+                childCoordinators: childCoordinators,
+                delegate: self)
+            addChildCoordinatorStart(termsOfUseCoordinator)
+        }
     }
     
     public func openExistingUserLoginDialog() {

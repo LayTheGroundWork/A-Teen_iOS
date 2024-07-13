@@ -13,15 +13,7 @@ extension PhoneNumberCoordinator: AlertCoordinatorDelegate {
         switch selectIndex {
         case 0:
             closeDialog(childCoordinator: childCoordinator)
-            print("버튼 두개인 경우도 다음 화면 가는건가?")
-            print("안 가는 거면 여기서 인증 완료 버튼일 때만 가도록 나누기")
-            // 이후 화면 이동
-            let coordinator = factory.makeTermsOfUseCoordinator(
-                phoneNumber: viewModel.phoneNumber,
-                navigation: navigation,
-                childCoordinators: childCoordinators,
-                delegate: self)
-            addChildCoordinatorStart(coordinator)
+
         case 1:
             // 다이얼로그 닫기
             closeDialog(childCoordinator: childCoordinator)
