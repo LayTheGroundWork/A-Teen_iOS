@@ -347,7 +347,7 @@ extension SignUpViewController {
     private func showSpinnerSchoolCollectionViewCell() {
         for cell in collectionView.visibleCells {
             if let searchSchoolCell = cell as? SearchSchoolCollectionViewCell {
-                searchSchoolCell.showSpinnerSearchTextField()
+                searchSchoolCell.changeTextFieldRigthView(view: .spinner)
                 break
             }
         }
@@ -356,7 +356,7 @@ extension SignUpViewController {
     private func hideSpinnerSchoolCollectionViewCell() {
         for cell in collectionView.visibleCells {
             if let searchSchoolCell = cell as? SearchSchoolCollectionViewCell {
-                searchSchoolCell.hideSpinnerSearchTextField()
+                searchSchoolCell.changeTextFieldRigthView(view: .clearImage)
                 break
             }
         }

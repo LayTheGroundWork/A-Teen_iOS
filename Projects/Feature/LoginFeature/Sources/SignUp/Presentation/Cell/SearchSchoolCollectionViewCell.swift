@@ -203,18 +203,17 @@ final class SearchSchoolCollectionViewCell: UICollectionViewCell {
     // MARK: - Actions
     @objc private func textFieldDidChange(_ sender: Any?) {
         guard let text = schoolTextField.text else { return }
-        if !text.isEmpty {
-            schoolTextField.rightView = clearTextButton
-            schoolTextField.rightViewMode = .always
-        }
         self.viewModel?.searchSchoolText = text
+        if !text.isEmpty {
+            changeTextFieldRigthView(view: .clearImage)
+        }
         
     }
     
     @objc private func didSelectClearTextButton(_ sender: UIButton) {
         schoolTextField.text?.removeAll()
-        schoolTextField.rightView = searchImageView
-        schoolTextField.rightViewMode = .always
+        self.viewModel?.searchSchoolText = .empty
+        changeTextFieldRigthView(view: .searchImage)
         closeSearchScoolTableView()
     }
     
@@ -271,14 +270,15 @@ final class SearchSchoolCollectionViewCell: UICollectionViewCell {
         }
     }
     
-    public func showSpinnerSearchTextField() {
-        schoolTextField.rightView = spinner
-        schoolTextField.rightViewMode = .always
-    }
-    
-    public func hideSpinnerSearchTextField() {
-        schoolTextField.rightView = clearTextButton
-        schoolTextField.rightViewMode = .whileEditing
+    public func changeTextFieldRigthView(view: TextFieldRightViewType) {
+        switch view {
+        case .spinner:
+            schoolTextField.rightView = spinner
+        case .searchImage:
+            schoolTextField.rightView = searchImageView
+        case .clearImage:
+            schoolTextField.rightView = clearTextButton
+        }
     }
     
     private func openSearchScoolTableView() {
@@ -306,6 +306,8 @@ final class SearchSchoolCollectionViewCell: UICollectionViewCell {
     private func closeSearchScoolTableView() {
         tableBackgroundView.isHidden = true
         viewModel?.selectIndexPath = nil
+        viewModel?.schoolData = .init(schoolName: .empty,
+                                      schoolLocation: .empty)
         viewModel?.filteredSchools = []
     }
     
@@ -394,6 +396,7 @@ extension SearchSchoolCollectionViewCell: UITableViewDelegate {
                 schoolData: viewModel?.filteredSchools[indexPath.row],
                 isBold: true)
             
+            viewModel?.searchSchoolText = .empty
             viewModel?.selectIndexPath = indexPath
             viewModel?.schoolData = viewModel?.filteredSchools[indexPath.row] ?? .init(schoolName: .empty, schoolLocation: .empty)
             schoolTextField.text = viewModel?.filteredSchools[indexPath.row].schoolName
@@ -429,7 +432,7 @@ extension SearchSchoolCollectionViewCell: UITextFieldDelegate {
         
         let task = DispatchWorkItem { [weak self] in
             guard let self = self else { return }
-            if viewModel?.searchSchoolText.isEmpty == false {
+            if viewModel?.searchSchoolText.count != .zero {
                 viewModel?.searchSchoolData()
             } else {
                 closeSearchScoolTableView()
