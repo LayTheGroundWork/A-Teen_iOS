@@ -6,6 +6,7 @@
 //
 
 import Common
+import Domain
 import DesignSystem
 import UIKit
 
@@ -14,6 +15,14 @@ final class SearchSchoolResultTableViewCell: UITableViewCell {
         let label = UILabel()
         label.textAlignment = .left
         label.font = .customFont(forTextStyle: .callout, weight: .regular)
+        return label
+    }()
+    
+    private lazy var schoolAddressLabel: UILabel = {
+        let label = UILabel()
+        label.textAlignment = .left
+        label.font = .customFont(forTextStyle: .caption1, weight: .regular)
+        label.textColor = UIColor.gray
         return label
     }()
     
@@ -37,13 +46,19 @@ final class SearchSchoolResultTableViewCell: UITableViewCell {
         self.selectionStyle = .none
         
         contentView.addSubview(schoolNameLabel)
+        contentView.addSubview(schoolAddressLabel)
         contentView.addSubview(lineView)
     }
     
     private func configLayout() {
         schoolNameLabel.snp.makeConstraints { make in
-            make.leading.trailing.top.equalToSuperview()
-            make.height.equalTo(47)
+            make.leading.trailing.equalToSuperview()
+            make.top.equalToSuperview().offset(8)
+        }
+        
+        schoolAddressLabel.snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview()
+            make.top.equalTo(schoolNameLabel.snp.bottom).offset(2)
         }
         
         lineView.snp.makeConstraints { make in
@@ -57,9 +72,11 @@ final class SearchSchoolResultTableViewCell: UITableViewCell {
         schoolNameLabel.font = UIFont.customFont(forTextStyle: .callout, weight: .regular)
     }
     
-    func fontChange(with schoolName: String, isBold: Bool) {
-        schoolNameLabel.text = schoolName
+    func fontChange(schoolData: SchoolData?, isBold: Bool) {
+        guard let schoolData = schoolData else { return }
+        schoolNameLabel.text = schoolData.schoolName
         schoolNameLabel.font = isBold ? UIFont.customFont(forTextStyle: .callout, weight: .bold) : UIFont.customFont(forTextStyle: .callout, weight: .regular)
+        schoolAddressLabel.text = schoolData.schoolLocation
     }
     
     func hiddenLineView(row: Int, lastIndex: Int) {

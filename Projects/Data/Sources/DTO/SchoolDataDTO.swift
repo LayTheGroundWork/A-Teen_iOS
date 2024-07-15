@@ -9,13 +9,13 @@
 import Domain
 import Foundation
 
-struct SchoolDataDTO: Decodable {
+public struct SchoolDataDTO: Decodable {
     public let status: String
     public let data: [SchoolData]
     public let message: String
 }
 
-struct SchoolData: Decodable {
+public struct SchoolData: Decodable {
     public let schoolName: String
     public let schoolRegion: String
     

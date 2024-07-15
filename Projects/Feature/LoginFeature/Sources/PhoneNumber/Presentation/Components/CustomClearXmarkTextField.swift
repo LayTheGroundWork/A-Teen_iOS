@@ -17,10 +17,10 @@ final class CustomClearXmarkTextField: UITextField {
     }
     
     // 복사해서 붙여넣기 방지
-    override func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {
-        if action == #selector(UIResponderStandardEditActions.paste(_:)) {
-            return false
-        }
-        return super.canPerformAction(action, withSender: sender)
-    }
+//    override func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {
+//        if action == #selector(UIResponderStandardEditActions.paste(_:)) {
+//            return false
+//        }
+//        return super.canPerformAction(action, withSender: sender)
+//    }
 }

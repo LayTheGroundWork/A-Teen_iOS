@@ -36,8 +36,7 @@ public final class SignUpViewModel {
     public var schoolData: SchoolData = SchoolData(schoolName: .empty, schoolLocation: .empty)
     
     public var searchSchoolText: String = .empty
-    public var filteredSchools: [String] = []
-    public var schools = ["seoul", "seoul2", "busan", "busan2", "changwon", "anyang", "busan3", "busan4", "busan5", "busan6", "busan7", "busan8", "busan9", "busan10", "busan11","busan12"]
+    public var filteredSchools: [SchoolData] = []
     public var selectIndexPath: IndexPath?
     
     var selectPhotoAsset = Array(repeating: AssetInfo.self, count: 10)
@@ -50,7 +49,12 @@ public final class SignUpViewModel {
         searchUseCase.searchSchool(request: SchoolDataRequest(schoolName: searchSchoolText)) { result in
             switch result {
             case .success(let schoolDataResponses):
-                self.filteredSchools = schoolDataResponses.map { $0.name }
+                self.filteredSchools = schoolDataResponses.map {
+                    .init(
+                        schoolName: $0.name,
+                        schoolLocation: $0.address
+                    )
+                }
                 print(self.filteredSchools)
                 print(self.filteredSchools.count)
                 self.state.send(.success)

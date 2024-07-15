@@ -21,3 +21,4 @@ public struct SchoolDataResponse: Decodable {
     }
 }
 
+

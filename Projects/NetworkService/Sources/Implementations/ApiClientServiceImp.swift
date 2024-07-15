@@ -31,6 +31,11 @@ public struct ApiClientServiceImp: ApiClientService {
             throw ApiError.unknownError
         }
         
+        print(httpResponse)
+        
+        print(httpResponse.statusCode)
+        print(httpResponse.allHeaderFields)
+        
         switch httpResponse.statusCode {
         case HttpResponseStatus.ok:
             return
@@ -57,7 +62,7 @@ public struct ApiClientServiceImp: ApiClientService {
         guard let httpResponse = response as? HTTPURLResponse else {
             throw ApiError.unknownError
         }
-
+        
         switch httpResponse.statusCode {
         case HttpResponseStatus.ok:
             return try decodeModel(data: data)

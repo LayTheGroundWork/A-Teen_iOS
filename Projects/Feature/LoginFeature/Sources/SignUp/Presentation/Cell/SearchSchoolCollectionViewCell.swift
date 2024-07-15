@@ -45,8 +45,8 @@ final class SearchSchoolCollectionViewCell: UICollectionViewCell {
         textField.tintColor = DesignSystemAsset.gray01.color
         textField.font = .customFont(forTextStyle: .callout, weight: .regular)
         textField.clearButtonMode = .never
-        textField.rightView = clearTextButton
-        textField.rightViewMode = .whileEditing
+        textField.rightView = searchImageView
+        textField.rightViewMode = .always
         textField.layer.borderWidth = 2.0
         textField.layer.cornerRadius = 10
         textField.layer.borderColor = DesignSystemAsset.mainColor.color.cgColor
@@ -203,13 +203,18 @@ final class SearchSchoolCollectionViewCell: UICollectionViewCell {
     // MARK: - Actions
     @objc private func textFieldDidChange(_ sender: Any?) {
         guard let text = schoolTextField.text else { return }
+        if !text.isEmpty {
+            schoolTextField.rightView = clearTextButton
+            schoolTextField.rightViewMode = .always
+        }
         self.viewModel?.searchSchoolText = text
         
     }
     
     @objc private func didSelectClearTextButton(_ sender: UIButton) {
         schoolTextField.text?.removeAll()
-        schoolTextField.rightViewMode = .never
+        schoolTextField.rightView = searchImageView
+        schoolTextField.rightViewMode = .always
         closeSearchScoolTableView()
     }
     
@@ -360,7 +365,7 @@ extension SearchSchoolCollectionViewCell: UITableViewDataSource {
         print("count, ", viewModel?.filteredSchools.count ?? 0)
         print("index, ", indexPath.row)
         cell.fontChange(
-            with: viewModel?.filteredSchools[indexPath.row] ?? .empty,
+            schoolData: viewModel?.filteredSchools[indexPath.row],
             isBold: indexPath == viewModel?.selectIndexPath)
         
         cell.hiddenLineView(row: indexPath.row, lastIndex: (viewModel?.filteredSchools.count ?? 0) - 1)
@@ -379,18 +384,19 @@ extension SearchSchoolCollectionViewCell: UITableViewDelegate {
         if let previousIndexPath = viewModel?.selectIndexPath {
             if let previousCell = tableView.cellForRow(at: previousIndexPath) as? SearchSchoolResultTableViewCell {
                 previousCell.fontChange(
-                    with: viewModel?.filteredSchools[previousIndexPath.row] ?? .empty,
+                    schoolData: viewModel?.filteredSchools[previousIndexPath.row],
                     isBold: false)
             }
         }
         
         if let selectedCell = tableView.cellForRow(at: indexPath) as? SearchSchoolResultTableViewCell {
             selectedCell.fontChange(
-                with: viewModel?.filteredSchools[indexPath.row] ?? .empty,
+                schoolData: viewModel?.filteredSchools[indexPath.row],
                 isBold: true)
             
             viewModel?.selectIndexPath = indexPath
-            schoolTextField.text = viewModel?.filteredSchools[indexPath.row]
+            viewModel?.schoolData = viewModel?.filteredSchools[indexPath.row] ?? .init(schoolName: .empty, schoolLocation: .empty)
+            schoolTextField.text = viewModel?.filteredSchools[indexPath.row].schoolName
             // '다음으로' 버튼 활성화
             delegate?.updateNextButtonState(true)
             // 키보드 닫기
