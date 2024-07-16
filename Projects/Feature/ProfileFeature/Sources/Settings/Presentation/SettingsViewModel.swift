@@ -42,7 +42,7 @@ final class SettingsViewModel {
         itemSettingViewModel.count
     }
     
-    init(auth: LogOutAuth?) {
+    init(auth: LogOutAuth? = nil) {
         self.auth = auth
     }
     

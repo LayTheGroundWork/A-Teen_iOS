@@ -20,11 +20,8 @@ public protocol ProfileFactory {
 }
 
 public struct ProfileFactoryImp: ProfileFactory {
-    let appContainer: AppContainer?
     
-    public init(appContainer: AppContainer?) {
-        self.appContainer = appContainer
-    }
+    public init() { }
     
     public func makeProfileViewController(coordinator: ProfileViewControllerCoordinator) -> UIViewController {
         let controller = ProfileViewController(coordinator: coordinator)
@@ -38,7 +35,7 @@ public struct ProfileFactoryImp: ProfileFactory {
         delegate: SettingsCoordinatorDelegate,
         childCoordinators: [Coordinator]
     ) -> Coordinator {
-        let factory = SettingsFactoryImp(appContainer: appContainer)
+        let factory = SettingsFactoryImp()
         let coordinator = SettingsCoordinator(
             navigation: navigation,
             factory: factory,

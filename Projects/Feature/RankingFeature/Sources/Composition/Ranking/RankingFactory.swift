@@ -31,11 +31,8 @@ public protocol RankingFactory {
 }
 
 public struct RankingFactoryImp: RankingFactory {
-    let appContainer: AppContainer?
 
-    public init(appContainer: AppContainer?) {
-        self.appContainer = appContainer
-    }
+    public init() { }
     
     public func makeRankingViewController(
         coordinator: RankingViewControllerCoordinator
@@ -52,7 +49,7 @@ public struct RankingFactoryImp: RankingFactory {
         sector: String,
         session: String
     ) -> Coordinator {
-        let factory = RankingResultFactoryImp(appContainer: appContainer)
+        let factory = RankingResultFactoryImp()
         return RankingResultCoordinator(
             navigation: navigation,
             factory: factory,
@@ -69,7 +66,7 @@ public struct RankingFactoryImp: RankingFactory {
         coordinatorProvider: CoordinatorProvider,
         sector: String
     ) -> Coordinator {
-        let factory = TournamentFactoryImp(appContainer: appContainer)
+        let factory = TournamentFactoryImp()
         return TournamentCoordinator(
             navigation: navigation,
             factory: factory,

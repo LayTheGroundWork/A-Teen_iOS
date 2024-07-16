@@ -11,12 +11,17 @@ import Foundation
 
 public struct LogInEndPoint: EndPoint {
     private let request: LogInRequest
-    
+        
     public var path: String = "/v1/api/user/sign-in"
     
     public var query: [String : String] = [:]
     
-    public var header: [String : String] = [:]
+    public var header: [String : String] {
+        [
+            "Content-Type": "application/json",
+            "Accept": "application/json"
+        ]
+    }
     
     public var body: [String : Any] {
         [

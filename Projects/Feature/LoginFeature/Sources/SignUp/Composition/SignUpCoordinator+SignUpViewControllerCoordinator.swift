@@ -16,11 +16,8 @@ extension SignUpCoordinator: SignUpViewControllerCoordinator {
     
     public func didSelectBirth() {
         let selectBirthCoordinator = factory.makeSelectBirthCoordinator(
-            delegate: self,
-            viewModel: viewModel,
-            beforeYear: viewModel.year,
-            beforeMonth: viewModel.month,
-            beforeDay: viewModel.day)
+            delegate: self
+        )
         
         addChildCoordinatorStart(selectBirthCoordinator)
         

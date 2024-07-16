@@ -13,7 +13,7 @@ import UIKit
 
 public protocol LogInViewControllerCoordinator: AnyObject {
     func didFinish()
-    func didSelectSignUpButton()
+    func didSelectSignButton()
 }
 
 public final class LogInViewController: UIViewController {
@@ -21,7 +21,7 @@ public final class LogInViewController: UIViewController {
     
     // MARK: - Private properties
     private weak var coordinator: LogInViewControllerCoordinator?
-    private let viewModel: LogInViewModel
+    private let viewModel: PhoneNumberViewModel
     
     private lazy var ateenLogoImage: UIImageView = {
         let imageView = UIImageView()
@@ -57,9 +57,7 @@ public final class LogInViewController: UIViewController {
         button.layer.borderWidth = 1
         button.layer.borderColor = DesignSystemAsset.gray03.color.cgColor
         button.layer.cornerRadius = ViewValues.defaultRadius
-        button.addTarget(self,
-                         action: #selector(didSelectSignUpButton(_:)),
-                         for: .touchUpInside)
+        
         return button
     }()
     
@@ -95,7 +93,7 @@ public final class LogInViewController: UIViewController {
     // MARK: - Life Cycle
     init(
         coordinator: LogInViewControllerCoordinator?,
-        viewModel: LogInViewModel
+        viewModel: PhoneNumberViewModel
     ) {
         self.coordinator = coordinator
         self.viewModel = viewModel
@@ -187,18 +185,26 @@ public final class LogInViewController: UIViewController {
     
     // MARK: - Actions
     private func configAction() {
-        let loginAction = UIAction { [weak self] _ in
-            self?.viewModel.login()
-            print("로그인")
-//            self?.coordinator?.didFinish()
-        }
-        loginButton.addAction(loginAction, for: .touchUpInside)
+        signupToPhoneButton.addTarget(self,
+                         action: #selector(didSelectSignUpButton(_:)),
+                         for: .touchUpInside)
+        
+        loginButton.addTarget(self,
+                              action: #selector(didSelectSignInButton(_:)),
+                              for: .touchUpInside)
+        
     }
 }
 
 // MARK: - Extensions
 extension LogInViewController {
     @objc func didSelectSignUpButton(_ sender: UIButton) {
-        coordinator?.didSelectSignUpButton()
+        viewModel.changeSignType(signType: .signUp)
+        coordinator?.didSelectSignButton()
+    }
+    
+    @objc func didSelectSignInButton(_ sender: UIButton) {
+        viewModel.changeSignType(signType: .signIn)
+        coordinator?.didSelectSignButton()
     }
 }

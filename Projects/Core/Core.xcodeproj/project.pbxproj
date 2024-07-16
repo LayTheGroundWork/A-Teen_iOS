@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0FD2F5396850F0A7F8EB8AC5 /* AppContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E362C963BC54059D76B6BA1C /* AppContainer.swift */; };
 		17D609BCFD326AE005B64C04 /* Auth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CFFB3CCA609EFE9F591ED06 /* Auth.swift */; };
+		BAC682E3F47011F9DD01D47C /* Injected.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89DA55474E3BE9BC850CAFB2 /* Injected.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -30,6 +31,7 @@
 		26BDD2D3E7FED8CDE9A52F46 /* Core-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Core-Info.plist"; sourceTree = "<group>"; };
 		2B0FA7F85F3573FB522F9478 /* Core.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Core.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3CFFB3CCA609EFE9F591ED06 /* Auth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Auth.swift; sourceTree = "<group>"; };
+		89DA55474E3BE9BC850CAFB2 /* Injected.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Injected.swift; sourceTree = "<group>"; };
 		E362C963BC54059D76B6BA1C /* AppContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppContainer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -82,6 +84,7 @@
 			isa = PBXGroup;
 			children = (
 				E362C963BC54059D76B6BA1C /* AppContainer.swift */,
+				89DA55474E3BE9BC850CAFB2 /* Injected.swift */,
 			);
 			path = DIContainer;
 			sourceTree = "<group>";
@@ -188,6 +191,7 @@
 			files = (
 				17D609BCFD326AE005B64C04 /* Auth.swift in Sources */,
 				0FD2F5396850F0A7F8EB8AC5 /* AppContainer.swift in Sources */,
+				BAC682E3F47011F9DD01D47C /* Injected.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

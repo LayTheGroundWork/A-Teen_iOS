@@ -21,7 +21,6 @@ public final class TermsOfUseViewController: UIViewController {
     
     // MARK: - Private properties
     private weak var coordinator: TermsOfUseViewControllerCoordinator?
-    
     // 뒤로 가기 버튼
     private lazy var backButton: UIBarButtonItem = {
         let button = UIBarButtonItem(image: DesignSystemAsset.leftArrowIcon.image,

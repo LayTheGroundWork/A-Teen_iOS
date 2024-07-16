@@ -18,7 +18,7 @@ protocol PhoneNumberCollectionViewCellDelegate: AnyObject {
 final class PhoneNumberCollectionViewCell: UICollectionViewCell {
     // MARK: - Private properties
     private weak var delegate: PhoneNumberCollectionViewCellDelegate?
-    
+    private var viewModel: PhoneNumberViewModel?
     private lazy var inputNumberLabel: UILabel = {
         let label = UILabel()
         label.text = AppLocalized.inputPhoneNumberText
@@ -40,8 +40,8 @@ final class PhoneNumberCollectionViewCell: UICollectionViewCell {
         textField.layer.borderWidth = 2.0
         textField.layer.cornerRadius = 10
         textField.layer.borderColor = DesignSystemAsset.mainColor.color.cgColor
-        textField.backgroundColor = .white
-        textField.textColor = .black
+        textField.backgroundColor = UIColor.white
+        textField.textColor = UIColor.black
         textField.tintColor = DesignSystemAsset.gray01.color
         return textField
     }()
@@ -108,6 +108,9 @@ final class PhoneNumberCollectionViewCell: UICollectionViewCell {
     }
     
     private func setupActions() {
+        textField.addTarget(self,
+                            action: #selector(textFieldDidChange),
+                            for: .editingChanged)
         certificateButton.addTarget(self,
                              action: #selector(didSelectCertificateButton(_: )),
                              for: .touchUpInside)
@@ -116,19 +119,33 @@ final class PhoneNumberCollectionViewCell: UICollectionViewCell {
                                   for: .touchUpInside)
     }
     
-    func setDelegate(delegate: PhoneNumberCollectionViewCellDelegate) {
+    func setProperty(
+        delegate: PhoneNumberCollectionViewCellDelegate,
+        viewModel: PhoneNumberViewModel
+    ) {
         self.delegate = delegate
+        self.viewModel = viewModel
     }
     
     // MARK: - Actions
     @objc private func didSelectCertificateButton(_ sender: UIButton) {
-        delegate?.didSelectCertificateButton()
+//        viewModel?.requestCode {
+//            self.delegate?.didSelectCertificateButton()
+//        }
+        self.delegate?.didSelectCertificateButton()
     }
     
     @objc private func didSelectClearTextButton(_ sender: UIButton) {
         textField.text?.removeAll()
         textField.rightViewMode = .never
         updateCertificateButtonState(false)
+    }
+    
+    @objc private func textFieldDidChange(_ sender: Any?) {
+        let text = self.textField.text ?? .empty
+        
+        textField.text = formatPhoneNumber(text)
+        self.viewModel?.phoneNumber = text.filter("0123456789".contains)
     }
 }
 
@@ -182,6 +199,8 @@ extension PhoneNumberCollectionViewCell: UITextFieldDelegate {
         guard string.range(of: regex, options: .regularExpression) != nil else { return false }
 
         guard let text = textField.text, let predictRange = Range(range, in: text) else { return true }
+        
+                 
         let predictedText = text.replacingCharacters(in: predictRange, with: string)
             .trimmingCharacters(in: .whitespacesAndNewlines)
         
@@ -190,7 +209,27 @@ extension PhoneNumberCollectionViewCell: UITextFieldDelegate {
         } else {
             textField.rightViewMode = .whileEditing
         }
+        
         return true
+    }
+    
+    private func formatPhoneNumber(_ number: String) -> String {
+        let cleanNumber = number.filter("0123456789".contains)
+        var result = ""
+        var index = cleanNumber.startIndex
+        
+        let mask = cleanNumber.count == 11 ? "XXX-XXXX-XXXX" : "XXX-XXX-XXXX"
+        
+        for ch in mask where index < cleanNumber.endIndex {
+            if ch == "X" {
+                result.append(cleanNumber[index])
+                index = cleanNumber.index(after: index)
+            } else {
+                result.append(ch)
+            }
+        }
+        
+        return result
     }
 }
 

@@ -5,18 +5,24 @@
 //  Created by 최동호 on 5/15/24.
 //
 
-public struct AppContainer {
-    public var storage: [String: Any] = [:]
+import Foundation
 
-    public init() { }
-    public var auth = Auth()
+public final class AppContainer {
+    static var storage: [String: Any] = [:]
+    private static let queue = DispatchQueue(label: "AppContainerQueue", attributes: .concurrent)
     
-    public mutating func register<T>(type: T.Type, _ object: T) {
-        storage["\(type)"] = object
-    }
+    public static func register<T>(type: T.Type, _ object: T) {
+          queue.async(flags: .barrier) {
+              storage[String(describing: type)] = object
+          }
+      }
     
-    public func resolve<T>(type: T.Type) -> T {
-        guard let object = storage["\(type)"] as? T else {
+    public static func resolve<T>(type: T.Type) -> T {
+        var result: T?
+        queue.sync {
+            result = storage[String(describing: type)] as? T
+        }
+        guard let object = result else {
             fatalError("register 되지 않은 객체 호출: \(type)")
         }
         return object

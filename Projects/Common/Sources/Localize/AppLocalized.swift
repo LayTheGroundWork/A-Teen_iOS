@@ -68,7 +68,7 @@ public enum AppLocalized {
     public static let welcomeText = "반가워요! :)"
     public static let idInstructionText = "사용하실 아이디를 입력해주세요"
     public static let idCountText = "0/11"
-    public static let idGuideText = "소문자 알파벳 + 숫자 (4~11자리)\n아이디는 이후에 변경할 수 없습니다."
+    public static let idGuideText = "소문자 알파벳 또는 숫자 (4~11자리)\n아이디는 이후에 변경할 수 없습니다."
     
     // MARK: - UserNameViewController
     public static let secondWelcomeText = "A-TEEN에서 쓰일"
@@ -93,6 +93,7 @@ public enum AppLocalized {
                                                 """
     public static let existingUserDialogTitle = "이미 가입된 사용자에요!"
     public static let existingUserDialogMessage = "바로 로그인 할까요?"
+    public static let invalidCodeNumberDialogTitle = "인증번호가 틀렸어요!"
     
     // MARK: - MainView / Report
     public static let reportDialogTitle = "신고 사유"
@@ -107,8 +108,7 @@ public enum AppLocalized {
     
     // MARK: - Login / SignUp
     public static let userIDNumberOfCharactersErrrorMessage = "4자 이상 입력해주세요."
-    public static let userIDNumberErrrorMessage = "숫자를 추가해주세요."
-    public static let userIDLowercaseLetterErrrorMessage = "영어 소문자를 추가해주세요."
+    public static let userIDLowercaseLetterOrNumberErrrorMessage = "영어 소문자 또는 숫자만 입력 해주세요."
     public static let userIDCount = "/11"
     public static let userNameNumberErrrorMessage = "2자 이상 입력해주세요."
     public static let userNameIncorrectKoreanErrorMessage = "한글을 바르게 입력해주세요."
@@ -126,12 +126,12 @@ public enum AppLocalized {
     public static let accessMediaText = "A - TEEN은 사용자가 선택한 사진만 엑세스할 수 있습니다."
     public static let selectPhotoCategoryText = "자랑할 사진의 카테고리를 선택해보세요!"
     public static let selectVideoCategoryText = "자랑할 영상의 카테고리를 선택해보세요!"
-    public static let maxVideoTimeText = "영상의 길이는 최대 10까지만 사용 가능해요"
+    public static let maxVideoTimeText = "영상의 길이는 최대 10초까지만 사용 가능해요"
 }
 
 // MARK: - Regex 모음
 public enum ATeenRegex {
-    public static let lowercaseAndNumber = "^[a-z0-9]"
+    public static let lowercaseOrNumber = "^[a-z0-9]+$"
     public static let lowercase = "^[a-z]"
     public static let lowercaseAndNumberFourToElevenCharacters = "^(?=.*[a-z])(?=.*[0-9]).{4,11}$"
     public static let characterAndNumber = "^[a-zA-Z0-9ㄱ-ㅎㅏ-ㅣ가-힣]"

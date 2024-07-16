@@ -14,7 +14,7 @@ import UIKit
 
 final class PhotoCollectionViewCell: UICollectionViewCell {
     // MARK: - Private properties
-    private var viewModel = SignUpViewModel()
+    private var viewModel: SignUpViewModel?
     
     private lazy var plusImageView: UIImageView = {
         let imageView = UIImageView()

@@ -30,9 +30,17 @@ public struct ApiClientServiceImp: ApiClientService {
         guard let httpResponse = response as? HTTPURLResponse else {
             throw ApiError.unknownError
         }
+        
+        print(httpResponse)
+        
+        print(httpResponse.statusCode)
+        print(httpResponse.allHeaderFields)
+        
         switch httpResponse.statusCode {
         case HttpResponseStatus.ok:
             return
+        case HttpResponseStatus.existedUser:
+            throw ApiError.existedUserError
         case HttpResponseStatus.clientError:
             throw ApiError.clientError
         case HttpResponseStatus.serverError:
@@ -54,6 +62,7 @@ public struct ApiClientServiceImp: ApiClientService {
         guard let httpResponse = response as? HTTPURLResponse else {
             throw ApiError.unknownError
         }
+        
         switch httpResponse.statusCode {
         case HttpResponseStatus.ok:
             return try decodeModel(data: data)
@@ -68,10 +77,9 @@ public struct ApiClientServiceImp: ApiClientService {
     
     private func decodeModel<T: Decodable>(data: Data) throws -> T {
         let decoder = JSONDecoder()
-        decoder.keyDecodingStrategy = .convertFromSnakeCase
         let model = try? decoder.decode(T.self, from: data)
         guard let model = model else { throw ApiError.errorDecoding }
         return model
     }
-    
 }
+

@@ -6,7 +6,7 @@
 //  Copyright © 2024 ATeen. All rights reserved.
 //
 
-enum StateController {
+public enum StateController {
     case success
     case loading
     case fail(error: String)

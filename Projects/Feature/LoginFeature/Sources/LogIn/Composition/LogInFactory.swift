@@ -6,6 +6,7 @@
 //
 
 import Core
+import Domain
 import FeatureDependency
 import UIKit
 
@@ -20,18 +21,16 @@ public protocol LogInFactory {
 
 public struct LogInFactoryImp: LogInFactory {
     public let coordinatorProvider: CoordinatorProvider
-    let appContainer: AppContainer?
- 
+    let viewModel = PhoneNumberViewModel()
+    
     public init(
-        coordinatorProvider: CoordinatorProvider,
-        appContainer: AppContainer?
+        coordinatorProvider: CoordinatorProvider
     ) {
         self.coordinatorProvider = coordinatorProvider
-        self.appContainer = appContainer
     }
     
     public func makeLoginViewController(coordinator: LogInViewControllerCoordinator) -> UIViewController {
-        let viewModel = LogInViewModel(logInAuth: appContainer?.auth)
+       
         return LogInViewController(
             coordinator: coordinator,
             viewModel: viewModel)
@@ -48,6 +47,7 @@ public struct LogInFactoryImp: LogInFactory {
             factory: factory,
             childCoordinators: childCoordinators,
             delegate: delegate, 
-            coordinatorProvider: coordinatorProvider)
+            coordinatorProvider: coordinatorProvider,
+            viewModel: viewModel)
     }
 }

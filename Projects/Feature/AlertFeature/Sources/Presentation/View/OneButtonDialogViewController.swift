@@ -30,7 +30,6 @@ open class OneButtonDialogViewController: UIViewController {
     var buttonColor: UIColor
 
     private weak var coordinator: AlertViewControllerCoordinator?
-
     
     // MARK: - Private properties
     private lazy var dialogView: UIView = {

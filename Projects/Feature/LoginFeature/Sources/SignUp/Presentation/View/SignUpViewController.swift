@@ -8,6 +8,7 @@
 import SnapKit
 
 import Common
+import Combine
 import DesignSystem
 import UIKit
 
@@ -19,13 +20,13 @@ protocol SignUpViewControllerCoordinator: AnyObject {
 }
 
 final class SignUpViewController: UIViewController {
-    
     // MARK: - Private properties
     private var currentIndexPath = IndexPath(item: 0, section: 0)
+    private var cancellable = Set<AnyCancellable>()
     
     private var viewModel: SignUpViewModel
     private weak var coordinator: SignUpViewControllerCoordinator?
-
+    
     private lazy var progressView: UIProgressView = {
         let view = UIProgressView()
         view.trackTintColor = DesignSystemAsset.gray03.color
@@ -59,7 +60,7 @@ final class SignUpViewController: UIViewController {
         collectionView.register(UserBirthCollectionViewCell.self, forCellWithReuseIdentifier: UserBirthCollectionViewCell.reuseIdentifier)
         collectionView.register(SearchSchoolCollectionViewCell.self, forCellWithReuseIdentifier: SearchSchoolCollectionViewCell.reuseIdentifier)
         collectionView.register(SelectPhotoCollectionViewCell.self, forCellWithReuseIdentifier: SelectPhotoCollectionViewCell.reuseIdentifier)
-       
+        
         return collectionView
     }()
     
@@ -77,8 +78,9 @@ final class SignUpViewController: UIViewController {
         return button
     }()
     
-    init(viewModel: SignUpViewModel,
-         coordinator: SignUpViewControllerCoordinator
+    init(
+        viewModel: SignUpViewModel,
+        coordinator: SignUpViewControllerCoordinator
     ) {
         self.viewModel = viewModel
         self.coordinator = coordinator
@@ -95,6 +97,8 @@ final class SignUpViewController: UIViewController {
         configUserInterface()
         configLayout()
         setupActions()
+        stateController()
+        
     }
     
     // MARK: - Helpers
@@ -137,6 +141,23 @@ final class SignUpViewController: UIViewController {
                              for: .touchUpInside)
     }
     
+    private func stateController() {
+        viewModel
+            .state
+            .receive(on: RunLoop.main)
+            .sink { [weak self] state in
+                switch state {
+                case .success:
+                    self?.reloadSearchSchoolCollectionViewCell()
+                case .loading:
+                    self?.showSpinnerSchoolCollectionViewCell()
+                    break
+                case .fail(error: let error):
+                    print("검색한 학교가 없습니다. \(error)")
+                }
+            }.store(in: &cancellable)
+    }
+    
     // MARK: - Actions
     @objc private func didSelectNextButton(_ sender: UIButton) {
         guard currentIndexPath.section < collectionView.numberOfSections - 1 else { return }
@@ -162,7 +183,7 @@ final class SignUpViewController: UIViewController {
         // 유저 아이디
         case 1:
             let cell = collectionView.cellForItem(at: currentIndexPath) as? UserNameCollectionViewCell
-            cell?.textField.text = ""
+            cell?.textField.text = .empty
             cell?.contentView.endEditing(true)
         // 생년월일
         case 2:
@@ -173,7 +194,7 @@ final class SignUpViewController: UIViewController {
         // 학교 선택
         case 3:
             let cell = collectionView.cellForItem(at: currentIndexPath) as? SearchSchoolCollectionViewCell
-            cell?.schoolTextField.text = ""
+            cell?.schoolTextField.text = .empty
             cell?.tableBackgroundView.isHidden = true
             cell?.contentView.endEditing(true)
             break
@@ -223,7 +244,10 @@ extension SignUpViewController: UICollectionViewDataSource {
             else {
                 return UICollectionViewCell()
             }
-            cell.setProperties(delegate: self)
+            cell.setProperties(
+                delegate: self,
+                viewModel: viewModel
+            )
             return cell
             
         case 1:
@@ -234,7 +258,10 @@ extension SignUpViewController: UICollectionViewDataSource {
             else {
                 return UICollectionViewCell()
             }
-            cell.setProperties(delegate: self)
+            cell.setProperties(
+                delegate: self,
+                viewModel: viewModel
+            )
             return cell
             
         case 2:
@@ -247,9 +274,11 @@ extension SignUpViewController: UICollectionViewDataSource {
             }
             
             guard let coordinator = coordinator else { return UICollectionViewCell() }
-            cell.setProperties(viewModel: viewModel,
-                               coordinator: coordinator,
-                               delegate: self)
+            cell.setProperties(
+                coordinator: coordinator,
+                delegate: self,
+                viewModel: viewModel
+            )
             
             return cell
             
@@ -262,7 +291,10 @@ extension SignUpViewController: UICollectionViewDataSource {
                 return UICollectionViewCell()
             }
             
-            cell.setProperties(delegate: self, viewModel: viewModel)
+            cell.setProperties(
+                delegate: self,
+                viewModel: viewModel
+            )
             return cell
 
         case 4:
@@ -274,7 +306,10 @@ extension SignUpViewController: UICollectionViewDataSource {
                 return UICollectionViewCell()
             }
             
-            cell.setProperties(coordinator: coordinator, viewModel: SignUpViewModel())
+            cell.setProperties(
+                coordinator: coordinator,
+                viewModel: viewModel
+            )
             return cell
 
         default:
@@ -294,5 +329,36 @@ extension SignUpViewController: UserIdCollectionViewCellDelegate,
     
     func didTapNextButtonInKeyboard() {
         didSelectNextButton(nextButton)
+    }
+}
+
+// MARK: - SearchSchoolCollectionViewCell
+extension SignUpViewController {
+    private func reloadSearchSchoolCollectionViewCell() {
+        for cell in collectionView.visibleCells {
+            if let searchSchoolCell = cell as? SearchSchoolCollectionViewCell {
+                searchSchoolCell.reloadTableViewData()
+                hideSpinnerSchoolCollectionViewCell()
+                break
+            }
+        }
+    }
+    
+    private func showSpinnerSchoolCollectionViewCell() {
+        for cell in collectionView.visibleCells {
+            if let searchSchoolCell = cell as? SearchSchoolCollectionViewCell {
+                searchSchoolCell.changeTextFieldRigthView(view: .spinner)
+                break
+            }
+        }
+    }
+    
+    private func hideSpinnerSchoolCollectionViewCell() {
+        for cell in collectionView.visibleCells {
+            if let searchSchoolCell = cell as? SearchSchoolCollectionViewCell {
+                searchSchoolCell.changeTextFieldRigthView(view: .clearImage)
+                break
+            }
+        }
     }
 }

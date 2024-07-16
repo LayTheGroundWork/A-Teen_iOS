@@ -12,7 +12,7 @@ extension LogInCoordinator: LogInViewControllerCoordinator {
         delegate?.didFinishLogin(childCoordinator: self)
     }
     
-    public func didSelectSignUpButton() {
+    public func didSelectSignButton() {
         let coordinator = factory.makePhoneNumberCoordinator(
             navigation: navigation,
             childCoordinators: childCoordinators,

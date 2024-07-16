@@ -30,14 +30,11 @@ public protocol MainTabFactory {
 
 public struct MainTabFactoryImp: MainTabFactory {
     public let coordinatorProvider: CoordinatorProvider
-    let appContainer: AppContainer?
     
     public init(
-        coordinatorProvider: CoordinatorProvider,
-        appContainer: AppContainer?
+        coordinatorProvider: CoordinatorProvider
     ) {
         self.coordinatorProvider = coordinatorProvider
-        self.appContainer = appContainer
     }
     public func makeMainTabController() -> UITabBarController {
         let mainTabController = MainTabController()
@@ -46,7 +43,7 @@ public struct MainTabFactoryImp: MainTabFactory {
     }
     
     public func makeLoginCoordinator(delegate: LogInCoordinatorDelegate) -> Coordinator {
-        let factory = LogInFactoryImp(coordinatorProvider: coordinatorProvider, appContainer: appContainer)
+        let factory = LogInFactoryImp(coordinatorProvider: coordinatorProvider)
         let navigationController = UINavigationController()
         let navigation = NavigationImp(rootViewController: navigationController)
         
@@ -83,7 +80,7 @@ public struct MainTabFactoryImp: MainTabFactory {
         coordinatorProvider: CoordinatorProvider
     ) -> Coordinator {
         let navigation = NavigationImp(rootViewController: UINavigationController())
-        let factory = MainFactoryImp(appContainer: appContainer)
+        let factory = MainFactoryImp()
         return MainCoordinator(
             navigation: navigation,
             factory: factory,
@@ -95,7 +92,7 @@ public struct MainTabFactoryImp: MainTabFactory {
         delegate: RankingCoordinatorDelegate
     ) -> Coordinator {
         let navigation = NavigationImp(rootViewController: UINavigationController())
-        let factory = RankingFactoryImp(appContainer: appContainer)
+        let factory = RankingFactoryImp()
         return RankingCoordinator(
             navigation: navigation,
             factory: factory,
@@ -121,7 +118,7 @@ public struct MainTabFactoryImp: MainTabFactory {
     }
     
     private func makeProfileCoordinator(delegate: SettingsCoordinatorDelegate) -> Coordinator {
-        let factory = ProfileFactoryImp(appContainer: appContainer)
+        let factory = ProfileFactoryImp()
         let navigation = NavigationImp(rootViewController: UINavigationController())
         return ProfileCoordinator(
             navigation: navigation,

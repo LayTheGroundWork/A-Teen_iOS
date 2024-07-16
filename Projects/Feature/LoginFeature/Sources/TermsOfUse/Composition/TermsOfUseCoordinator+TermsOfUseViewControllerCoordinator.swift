@@ -14,6 +14,7 @@ extension TermsOfUseCoordinator: TermsOfUseViewControllerCoordinator {
     
     public func didSelectNextButton() {
         let coordinator = factory.makeSignUpCoordinator(
+            phoneNumber: phoneNumber,
             navigation: navigation,
             childCoordinators: childCoordinators,
             delegate: self)

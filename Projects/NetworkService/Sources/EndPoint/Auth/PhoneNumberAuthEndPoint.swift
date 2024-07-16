@@ -12,12 +12,17 @@ import Foundation
 
 public struct PhoneNumberAuthEndPoint: EndPoint {
     private let request: PhoneNumberAuthRequest
-    
+        
     public var path: String = "/v1/api/message/confirms"
     
     public var query: [String : String] = [:]
     
-    public var header: [String : String] = [:]
+    public var header: [String : String] {
+        [
+            "Content-Type": "application/json",
+            "Accept": "application/json"
+        ]
+    }
     
     public var body: [String : Any] {
         [

@@ -14,16 +14,20 @@ public protocol TermsOfUseCoordinatorDelegate: AnyObject {
 }
 
 public final class TermsOfUseCoordinator: Coordinator {
+    public let phoneNumber: String
     public var navigation: Navigation
     var factory: TermsOfUseFactory
     public var childCoordinators: [Coordinator]
     weak var delegate: TermsOfUseCoordinatorDelegate?
     
-    public init(navigation: Navigation,
+    public init(
+        phoneNumber: String,
+        navigation: Navigation,
          factory: TermsOfUseFactory,
          childCoordinators: [Coordinator],
          delegate: TermsOfUseCoordinatorDelegate
     ) {
+        self.phoneNumber = phoneNumber
         self.navigation = navigation
         self.factory = factory
         self.childCoordinators = childCoordinators
