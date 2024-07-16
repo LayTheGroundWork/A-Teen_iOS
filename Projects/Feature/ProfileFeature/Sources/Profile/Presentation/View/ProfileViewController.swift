@@ -15,6 +15,8 @@ import UIKit
 public protocol ProfileViewControllerCoordinator: AnyObject {
     func didTabSettingButton()
     func didTabLinkButton()
+    func didTabIntroduceButton()
+    func configTabbarState(view: ProfileFeatureViewNames)
 }
 
 public final class ProfileViewController: UIViewController {
@@ -356,6 +358,7 @@ public final class ProfileViewController: UIViewController {
     
     public override func viewWillAppear(_ animated: Bool) {
         guard let coordinator = coordinator else { return }
+        coordinator.configTabbarState(view: .profile)
         self.navigationItem.titleView =  CustomNaviView(
             frame: CGRect(
                 x: 0,
@@ -882,7 +885,7 @@ public final class ProfileViewController: UIViewController {
     }
     
     @objc private func clickMoreIntroduceButton(_ sender: UIButton) {
-        print("자기 소개 > 버튼 클릭")
+        coordinator?.didTabIntroduceButton()
     }
     
     @objc private func clickMoreQuestionButton(_ sender: UIButton) {
