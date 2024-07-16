@@ -18,6 +18,7 @@ protocol SearchSchoolCollectionViewCellDelegate: AnyObject {
 final class SearchSchoolCollectionViewCell: UICollectionViewCell {
     // MARK: - Private properties
     private var searchTask: DispatchWorkItem?
+    private var debouncer: Debouncer?
     private weak var delegate: SearchSchoolCollectionViewCellDelegate?
     private var viewModel: SignUpViewModel?
 
@@ -124,6 +125,8 @@ final class SearchSchoolCollectionViewCell: UICollectionViewCell {
         configUserInterface()
         configLayout()
         setupActions()
+        
+        debouncer = Debouncer(interval: 0.5)
     }
     
     required init?(coder: NSCoder) {
@@ -428,9 +431,7 @@ extension SearchSchoolCollectionViewCell: UITextFieldDelegate {
     func textFieldDidChangeSelection(_ textField: UITextField) {
         schoolTextField.font = .customFont(forTextStyle: .callout, weight: .regular)
         
-        searchTask?.cancel()
-        
-        let task = DispatchWorkItem { [weak self] in
+        debouncer?.call { [weak self] in
             guard let self = self else { return }
             if viewModel?.searchSchoolText.count != .zero {
                 viewModel?.searchSchoolData()
@@ -438,11 +439,7 @@ extension SearchSchoolCollectionViewCell: UITextFieldDelegate {
                 closeSearchScoolTableView()
             }
         }
-        // 0.5초 후에 실행
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: task)
-          
-        // 현재 실행 중인 searchTask 업데이트
-        searchTask = task
+       
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
