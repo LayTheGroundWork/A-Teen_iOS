@@ -288,7 +288,7 @@ final class SearchSchoolCollectionViewCell: UICollectionViewCell {
         tableBackgroundView.isHidden = false
 
         if viewModel?.filteredSchools.count ?? 0 < 6 {
-            tableBackgroundViewHeightAnchor?.update(offset: (viewModel?.filteredSchools.count ?? 0) * 45)
+            tableBackgroundViewHeightAnchor?.update(offset: (viewModel?.filteredSchools.count ?? 0) * 59)
             tableView.reloadData()
             tableView.isScrollEnabled = false
             
@@ -382,7 +382,7 @@ extension SearchSchoolCollectionViewCell: UITableViewDataSource {
 // MARK: - UITableViewDelegate
 extension SearchSchoolCollectionViewCell: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        47
+        59
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

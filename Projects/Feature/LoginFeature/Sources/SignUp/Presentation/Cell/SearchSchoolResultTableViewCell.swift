@@ -14,15 +14,15 @@ final class SearchSchoolResultTableViewCell: UITableViewCell {
     private lazy var schoolNameLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .left
-        label.font = .customFont(forTextStyle: .callout, weight: .regular)
+        label.font = .customFont(forTextStyle: .body, weight: .regular)
         return label
     }()
     
     private lazy var schoolAddressLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .left
-        label.font = .customFont(forTextStyle: .caption1, weight: .regular)
-        label.textColor = UIColor.gray
+        label.font = .customFont(forTextStyle: .footnote, weight: .regular)
+        label.textColor = DesignSystemAsset.gray01.color
         return label
     }()
     
@@ -53,12 +53,13 @@ final class SearchSchoolResultTableViewCell: UITableViewCell {
     private func configLayout() {
         schoolNameLabel.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview()
-            make.top.equalToSuperview().offset(8)
+            make.top.equalToSuperview().offset(11)
         }
         
         schoolAddressLabel.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview()
-            make.top.equalTo(schoolNameLabel.snp.bottom).offset(2)
+            make.top.equalTo(schoolNameLabel.snp.bottom).offset(5)
+            make.bottom.equalToSuperview().offset(-10)
         }
         
         lineView.snp.makeConstraints { make in
