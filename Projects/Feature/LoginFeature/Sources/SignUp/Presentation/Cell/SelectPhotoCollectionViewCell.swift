@@ -117,15 +117,7 @@ extension SelectPhotoCollectionViewCell: UICollectionViewDataSource {
 // MARK: - UICollectionViewDelegate
 extension SelectPhotoCollectionViewCell: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        viewModel?.requestAuthorization { [weak self] result in
-            guard let self else { return }
-            switch result {
-            case .success:
-                coordinator?.didSelectCell(item: indexPath.item)
-            case .failure:
-                return
-            }
-        }
+        print("인증완료")
     }
 }
 

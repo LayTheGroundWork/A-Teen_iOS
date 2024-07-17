@@ -17,8 +17,10 @@
 	<key>CFBundleShortVersionString</key>
 	<string>1.0.0</string>
 	<key>CFBundleVersion</key>
-	<string>2024.07.08.14.34</string>
-	<key>SERVER_URL</key>
-	<string>$(SERVER_URL)</string>
+	<string>2024.07.10.03.27</string>
+	<key>HOST_VALUE</key>
+	<string>$(HOST_VALUE)</string>
+	<key>PORT_NUMBER</key>
+	<string>$(PORT_NUMBER)</string>
 </dict>
 </plist>

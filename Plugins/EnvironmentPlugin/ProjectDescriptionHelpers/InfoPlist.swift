@@ -25,7 +25,8 @@ extension InfoPlist {
 
 public extension [String: Plist.Value] {
     static let secrets: Self = [
-        "SERVER_URL": "$(SERVER_URL)"
+        "HOST_VALUE": "$(HOST_VALUE)",
+        "PORT_NUMBER": "$(PORT_NUMBER)"
     ]
     
     static let baseInfoPlist: Self = [
@@ -40,6 +41,10 @@ public extension [String: Plist.Value] {
                 ]
             ]
         ],
+        "NSAppTransportSecurity":
+            [
+                "NSAllowsArbitraryLoads": true
+            ],
         "UILaunchStoryboardName": "LaunchScreen.storyboard",
         "UISupportedInterfaceOrientations":
             [

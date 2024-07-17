@@ -14,11 +14,11 @@ import UIKit
 public enum RegistrationStatus {
     case signedUp
     case notSignedUp
+    case inValidCodeNumber
 }
 
 public protocol CertificationCodeCollectionViewCellDelegate: AnyObject {
     func didSelectNextButton(registrationStatus: RegistrationStatus)
-    func didSelectResendCode()
 }
 
 public final class CertificationCodeCollectionViewCell: UICollectionViewCell {
@@ -28,7 +28,8 @@ public final class CertificationCodeCollectionViewCell: UICollectionViewCell {
     private weak var delegate: CertificationCodeCollectionViewCellDelegate?
     private weak var timer: Timer?
     private var totalTime = 180
-    
+    private var viewModel: PhoneNumberViewModel?
+
     private lazy var inputCodeLabel: UILabel = {
         let label = UILabel()
         label.text = AppLocalized.inputCodeText
@@ -177,27 +178,43 @@ public final class CertificationCodeCollectionViewCell: UICollectionViewCell {
                              for: .touchUpInside)
     }
     
-    func setDelegate(delegate: CertificationCodeCollectionViewCellDelegate) {
+    func setProperty(
+        delegate: CertificationCodeCollectionViewCellDelegate,
+        viewModel: PhoneNumberViewModel
+    ) {
         self.delegate = delegate
+        self.viewModel = viewModel
     }
     
     // MARK: - Actions
     @objc private func didSelectNextButton(_ sender: UIButton) {
-        stopTimer()
+        
+        convertVerificationCode()
+        
         // TODO: - 다음으로 이동할때, 가입된 사용자인지 검증 후 보내주기
-        let isNotSignedUpUser = true
-        if isNotSignedUpUser {      // 가입 가능
-            print("가입 가능")
-            delegate?.didSelectNextButton(registrationStatus: .notSignedUp)
-        } else {                    // 이미 가입된 사용자
-            print("이미 가입된 사용자")
-            delegate?.didSelectNextButton(registrationStatus: .signedUp)
+        viewModel?.verificationCode { result in
+            switch result {
+            case .success(.availablePhoneNumber):
+                self.stopTimer()
+                DispatchQueue.main.async {
+                    self.delegate?.didSelectNextButton(registrationStatus: .notSignedUp)
+                }
+            case .success(.existedUser):
+                DispatchQueue.main.async {
+                    self.delegate?.didSelectNextButton(registrationStatus: .signedUp)
+                }
+            case .failure(_):
+                DispatchQueue.main.async {
+                    self.delegate?.didSelectNextButton(registrationStatus: .inValidCodeNumber)
+                }
+            }
         }
     }
     
     @objc private func didSelectResendButton(_ sender: UIButton) {
-        delegate?.didSelectResendCode()
-        resetTimer()
+        viewModel?.requestCode {
+            self.resetTimer()
+        }
     }
     
     @objc private func updateTimer() {
@@ -210,7 +227,7 @@ public final class CertificationCodeCollectionViewCell: UICollectionViewCell {
             // TODO: - 시간 다 되었을 때, 상황에 맞춰 로직 추가 필요
         }
     }
-    
+
     // 모든 텍스트 필드가 채워졌는지 확인하고 **다음으로** 버튼을 활성화 또는 비활성화
     private func updateNextButtonState() {
         let allFieldsFilled = textFields.allSatisfy { $0.text?.count == 1 }
@@ -233,6 +250,13 @@ public final class CertificationCodeCollectionViewCell: UICollectionViewCell {
             } else {
                 bottomLine.backgroundColor = textField.text?.isEmpty == false ? DesignSystemAsset.mainColor.color : DesignSystemAsset.gray03.color
             }
+        }
+    }
+    
+    // 인증번호 배열에서 문자열로 변환
+    private func convertVerificationCode() {
+        viewModel?.verificationCode = textFields.reduce(.empty) {
+            $0 + ($1.text ?? .empty)
         }
     }
     

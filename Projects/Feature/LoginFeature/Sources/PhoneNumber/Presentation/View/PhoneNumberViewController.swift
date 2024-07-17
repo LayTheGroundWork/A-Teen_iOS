@@ -15,7 +15,7 @@ public protocol PhoneNumberViewControllerCoordinator: AnyObject {
     func didFinish()
     func openVerificationCompleteDialog()
     func openExistingUserLoginDialog()
-    func didSelectResendCode()
+    func openInValidCodeNumberDialog()
 }
 
 public final class PhoneNumberViewController: UIViewController {
@@ -24,7 +24,7 @@ public final class PhoneNumberViewController: UIViewController {
     // MARK: - Private properties
     private weak var coordinator: PhoneNumberViewControllerCoordinator?
     private var currentIndexPath = IndexPath(item: 0, section: 0)
-
+    private let viewModel: PhoneNumberViewModel
     // 뒤로 가기 버튼
     private lazy var backButton: UIBarButtonItem = {
         let button = UIBarButtonItem(image: DesignSystemAsset.leftArrowIcon.image,
@@ -53,8 +53,12 @@ public final class PhoneNumberViewController: UIViewController {
     
     
     // MARK: - Life Cycle
-    init(coordinator: PhoneNumberViewControllerCoordinator) {
+    init(
+        coordinator: PhoneNumberViewControllerCoordinator,
+        viewModel: PhoneNumberViewModel
+    ) {
         self.coordinator = coordinator
+        self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -163,7 +167,11 @@ extension PhoneNumberViewController: UICollectionViewDataSource {
             else {
                 return UICollectionViewCell()
             }
-            cell.setDelegate(delegate: self)
+            
+            cell.setProperty(
+                delegate: self,
+                viewModel: viewModel
+            )
             return cell
         case 1:
             guard
@@ -173,7 +181,11 @@ extension PhoneNumberViewController: UICollectionViewDataSource {
             else {
                 return UICollectionViewCell()
             }
-            cell.setDelegate(delegate: self)
+            
+            cell.setProperty(
+                delegate: self,
+                viewModel: viewModel
+            )
             return cell
         default:
             return UICollectionViewCell()
@@ -182,27 +194,31 @@ extension PhoneNumberViewController: UICollectionViewDataSource {
 }
 
 extension PhoneNumberViewController: PhoneNumberCollectionViewCellDelegate {
+
     func didSelectCertificateButton() {
         currentIndexPath.section += 1
-        collectionView.scrollToItem(
-            at: currentIndexPath,
-            at: .centeredHorizontally,
-            animated: true
-        )
-        view.endEditing(true)
+        DispatchQueue.main.async {
+            self.collectionView.scrollToItem(
+                at: self.currentIndexPath,
+                at: .centeredHorizontally,
+                animated: true
+            )
+            self.view.endEditing(true)
+        }
     }
 }
 
 extension PhoneNumberViewController: CertificationCodeCollectionViewCellDelegate {
     public func didSelectNextButton(registrationStatus: RegistrationStatus) {
-        if registrationStatus == .notSignedUp {
-            coordinator?.openVerificationCompleteDialog()
-        } else {
-            coordinator?.openExistingUserLoginDialog()
+        switch registrationStatus {
+        case .signedUp:
+            self.coordinator?.openExistingUserLoginDialog()
+
+        case .notSignedUp:
+            self.coordinator?.openVerificationCompleteDialog()
+
+        case .inValidCodeNumber:
+            self.coordinator?.openInValidCodeNumberDialog()
         }
-    }
-    
-    public func didSelectResendCode() {
-        coordinator?.didSelectResendCode()
     }
 }

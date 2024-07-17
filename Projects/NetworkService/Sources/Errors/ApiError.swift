@@ -14,6 +14,7 @@ public enum ApiError: Error {
     case unknownError
     case errorInUrl
     case errorDecoding
+    case existedUserError
 }
 
 extension ApiError: LocalizedError {
@@ -30,6 +31,8 @@ extension ApiError: LocalizedError {
         case .errorDecoding:
             return NSLocalizedString("디코딩 실패", comment: "")
 
+        case .existedUserError:
+            return NSLocalizedString("이미 존재하는 계정", comment: "")
         }
     }
 }

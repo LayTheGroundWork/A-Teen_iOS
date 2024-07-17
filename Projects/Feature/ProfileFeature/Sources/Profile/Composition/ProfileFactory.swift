@@ -26,9 +26,7 @@ public struct ProfileFactoryImp: ProfileFactory {
     let appContainer: AppContainer?
     let viewModel = ProfileViewModel()
     
-    public init(appContainer: AppContainer?) {
-        self.appContainer = appContainer
-    }
+    public init() { }
     
     public func makeProfileViewController(
         coordinator: ProfileViewControllerCoordinator
@@ -43,7 +41,7 @@ public struct ProfileFactoryImp: ProfileFactory {
         delegate: SettingsCoordinatorDelegate,
         childCoordinators: [Coordinator]
     ) -> Coordinator {
-        let factory = SettingsFactoryImp(appContainer: appContainer)
+        let factory = SettingsFactoryImp()
         let coordinator = SettingsCoordinator(
             navigation: navigation,
             factory: factory,

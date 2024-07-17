@@ -16,11 +16,16 @@ public struct VerificationCodeEndPoint: EndPoint {
     
     public var query: [String : String] = [:]
     
-    public var header: [String : String] = [:]
+    public var header: [String : String] {
+        [
+            "Content-Type": "application/json",
+            "Accept": "application/json"
+        ]
+    }
     
     public var body: [String : Any] {
         [
-            "phoneNumber": request.phoneNumber,
+            "phoneNumber": request.phoneNumber
         ]
     }
     
@@ -30,6 +35,6 @@ public struct VerificationCodeEndPoint: EndPoint {
         request: VerificationCodeRequest
     ) {
         self.request = request
-   
+        
     }
 }

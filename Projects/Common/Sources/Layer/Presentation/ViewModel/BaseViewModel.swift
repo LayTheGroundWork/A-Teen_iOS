@@ -8,7 +8,7 @@
 
 import Combine
 
-protocol BaseViewModel {
+public protocol BaseViewModel {
     var state: PassthroughSubject<StateController, Never> { get }
     func viewDidLoad()
 }

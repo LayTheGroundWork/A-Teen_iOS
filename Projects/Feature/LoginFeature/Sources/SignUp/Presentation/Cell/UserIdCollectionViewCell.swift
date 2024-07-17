@@ -20,7 +20,8 @@ final class UserIdCollectionViewCell: UICollectionViewCell {
     // MARK: - Private properties
     private weak var delegate: UserIdCollectionViewCellDelegate?
     private var errorMessageLabelHeight: Constraint?
-
+    private var viewModel: SignUpViewModel?
+    
     // 환영 메시지 레이블
     private lazy var welcomeLabel: UILabel = {
         let label = UILabel()
@@ -42,9 +43,13 @@ final class UserIdCollectionViewCell: UICollectionViewCell {
     }()
     
     // 텍스트 필드
-    lazy var textField: UITextField = {
-        let textField = UITextField()
+    private lazy var textField: UITextField = {
+        let textField = CustomClearXmarkTextField()
+        textField.delegate = self
         textField.borderStyle = .roundedRect
+        textField.clearButtonMode = .never
+        textField.rightView = clearTextButton
+        textField.rightViewMode = .whileEditing
         textField.layer.borderWidth = 2.0
         textField.layer.cornerRadius = 10
         textField.layer.borderColor = DesignSystemAsset.mainColor.color.cgColor
@@ -56,6 +61,12 @@ final class UserIdCollectionViewCell: UICollectionViewCell {
         textField.spellCheckingType = .no
         textField.returnKeyType = .next
         return textField
+    }()
+    
+    private lazy var clearTextButton: UIButton = {
+        let button = UIButton()
+        button.setImage(DesignSystemAsset.clearButton.image, for: .normal)
+        return button
     }()
     
     // 에러메세지 표시 레이블
@@ -93,7 +104,7 @@ final class UserIdCollectionViewCell: UICollectionViewCell {
         super.init(frame: frame)
         self.contentView.backgroundColor = UIColor.white
         setupLayout()
-        textField.delegate = self
+        setupActions()
     }
     
     required init?(coder: NSCoder) {
@@ -144,9 +155,32 @@ final class UserIdCollectionViewCell: UICollectionViewCell {
         }
     }
     
+    private func setupActions() {
+        textField.addTarget(self,
+                            action: #selector(textFieldDidChange),
+                            for: .editingChanged)
+        
+        clearTextButton.addTarget(self,
+                                  action: #selector(didSelectClearTextButton(_:)),
+                                  for: .touchUpInside)
+    }
+    
     // MARK: - Actions
-    func setProperties(delegate: UserIdCollectionViewCellDelegate) {
+    func setProperties(
+        delegate: UserIdCollectionViewCellDelegate,
+        viewModel: SignUpViewModel
+    ) {
         self.delegate = delegate
+        self.viewModel = viewModel
+    }
+    
+    @objc private func textFieldDidChange(_ sender: Any?) {
+        self.viewModel?.userId = textField.text ?? .empty
+    }
+    
+    @objc private func didSelectClearTextButton(_ sender: UIButton) {
+        textField.text?.removeAll()
+        textField.rightViewMode = .never
     }
 }
 
@@ -162,7 +196,7 @@ extension UserIdCollectionViewCell: UITextFieldDelegate {
     
     func textFieldDidChangeSelection(_ textField: UITextField) {
         guard let text = textField.text else { return }
-        if containsLowcaseAndNumberInString(text) {
+        if containsLowercaseOrNumber(text) && text.count >= 4 {
             textField.layer.borderColor = DesignSystemAsset.mainColor.color.cgColor
             delegate?.updateNextButtonState(true)
             errorMessageLabel.text = ""
@@ -172,30 +206,38 @@ extension UserIdCollectionViewCell: UITextFieldDelegate {
             delegate?.updateNextButtonState(false)
             if text.count < 4 {
                 errorMessageLabel.text = AppLocalized.userIDNumberOfCharactersErrrorMessage
-            } else if containsLowcaseInString(text) {
-                errorMessageLabel.text = AppLocalized.userIDNumberErrrorMessage
             } else {
-                errorMessageLabel.text = AppLocalized.userIDLowercaseLetterErrrorMessage
+                errorMessageLabel.text = AppLocalized.userIDLowercaseLetterOrNumberErrrorMessage
             }
             errorMessageLabelHeight?.update(offset: 16)
         }
         charCountLabel.text = "\(text.count)\(AppLocalized.userIDCount)"
     }
     
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        if string.isEmpty { return true }
-        guard let currentText = textField.text else { return true }
-        let updatedText = (currentText as NSString).replacingCharacters(in: range, with: string)
-        if updatedText.count > 11 {
-            return false
+    func textField(
+        _ textField: UITextField,
+        shouldChangeCharactersIn range: NSRange,
+        replacementString string: String) -> Bool {
+            if string.isEmpty { return true }
+            guard let currentText = textField.text else { return true }
+            let updatedText = (currentText as NSString).replacingCharacters(in: range, with: string)
+            
+            if updatedText.isEmpty {
+                textField.rightViewMode = .never
+            }  else {
+                textField.rightViewMode = .whileEditing
+            }
+            
+            if updatedText.count > 11 {
+                return false
+            }
+            guard containsLowercaseOrNumber(string) else { return false }
+            return true
         }
-        guard containsLowcaseAndNumber(string) else { return false }
-        return true
-    }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         guard let text = textField.text,
-              containsLowcaseAndNumberInString(text) else {
+              containsLowercaseOrNumber(text) else {
             return false
         }
         delegate?.didTapNextButtonInKeyboard()
@@ -203,31 +245,13 @@ extension UserIdCollectionViewCell: UITextFieldDelegate {
     }
     
     // 영어 소문자 또는 숫자 - character 확인
-    private func containsLowcaseAndNumber(_ text: String) -> Bool {
-        let containsLowcaseAndNumberRegex = ATeenRegex.lowercaseAndNumber
-        let regex = try! NSRegularExpression(pattern: containsLowcaseAndNumberRegex)
+    private func containsLowercaseOrNumber(_ text: String) -> Bool {
+        let containsLowcaseOrNumberRegex = ATeenRegex.lowercaseOrNumber
+        let regex = try! NSRegularExpression(pattern: containsLowcaseOrNumberRegex)
         let range = NSRange(location: 0, length: text.utf16.count)
         let result = regex.firstMatch(in: text, options: [], range: range) != nil
         return result
     }
-    
-    // 영어 소문자 & 숫자 & 4자 이상 11자 이하 - string 전체 확인
-    private func containsLowcaseAndNumberInString(_ text: String) -> Bool {
-        let containsLowcaseAndNumberRegex = ATeenRegex.lowercaseAndNumberFourToElevenCharacters
-        let regex = try! NSRegularExpression(pattern: containsLowcaseAndNumberRegex)
-        let range = NSRange(location: 0, length: text.utf16.count)
-        let result = regex.firstMatch(in: text, options: [], range: range) != nil
-        return result
-    }
-    
-    // 영어 소문자 포함 여부 확인
-    private func containsLowcaseInString(_ text: String) -> Bool {
-        let containsLowcaseRegex = ATeenRegex.lowercase
-        let regex = try! NSRegularExpression(pattern: containsLowcaseRegex)
-        let range = NSRange(location: 0, length: text.utf16.count)
-        return regex.firstMatch(in: text, options: [], range: range) != nil
-    }
-
 }
 
 extension UserIdCollectionViewCell: Reusable { }

@@ -22,6 +22,7 @@ final class UserNameCollectionViewCell: UICollectionViewCell {
     // MARK: - Private properties
     private weak var delegate: UserNameCollectionViewCellDelegate?
     private var errorMessageLabelHeight: Constraint?
+    private var viewModel: SignUpViewModel?
     
     // 환영 메시지 레이블
     private let welcomeLabel: UILabel = {
@@ -32,7 +33,7 @@ final class UserNameCollectionViewCell: UICollectionViewCell {
         label.textColor = .black
         return label
     }()
-
+    
     // 안내 메시지 레이블
     private let instructionLabel: UILabel = {
         let label = UILabel()
@@ -42,11 +43,15 @@ final class UserNameCollectionViewCell: UICollectionViewCell {
         label.textColor = .black
         return label
     }()
-
+    
     // 텍스트 필드
-    let textField: UITextField = {
-        let textField = UITextField()
+    lazy var textField: UITextField = {
+        let textField = CustomClearXmarkTextField()
+        textField.delegate = self
         textField.borderStyle = .roundedRect
+        textField.clearButtonMode = .never
+        textField.rightView = clearTextButton
+        textField.rightViewMode = .whileEditing
         textField.layer.borderWidth = 2.0
         textField.layer.cornerRadius = 10
         textField.layer.borderColor = DesignSystemAsset.mainColor.color.cgColor
@@ -59,7 +64,13 @@ final class UserNameCollectionViewCell: UICollectionViewCell {
         textField.returnKeyType = .next
         return textField
     }()
-
+    
+    private lazy var clearTextButton: UIButton = {
+        let button = UIButton()
+        button.setImage(DesignSystemAsset.clearButton.image, for: .normal)
+        return button
+    }()
+    
     // 에러메세지 표시 레이블
     private lazy var errorMessageLabel: UILabel = {
         let label = UILabel()
@@ -79,7 +90,7 @@ final class UserNameCollectionViewCell: UICollectionViewCell {
         label.textColor = UIColor.black
         return label
     }()
-
+    
     // 안내 문구 레이블
     private let guideLabel: UILabel = {
         let label = UILabel()
@@ -97,6 +108,7 @@ final class UserNameCollectionViewCell: UICollectionViewCell {
         self.contentView.backgroundColor = UIColor.white
         configUserInterface()
         configLayout()
+        setupActions()
         textField.delegate = self
     }
     
@@ -126,13 +138,13 @@ final class UserNameCollectionViewCell: UICollectionViewCell {
             make.leading.equalToSuperview().offset(ViewValues.defaultPadding)
             make.trailing.greaterThanOrEqualTo(self.contentView.snp.trailing).offset(ViewValues.defaultPadding)
         }
-
+        
         textField.snp.makeConstraints { make in
             make.top.equalTo(instructionLabel.snp.bottom).offset(10)
             make.leading.trailing.equalToSuperview().inset(ViewValues.defaultPadding)
             make.height.equalTo(50)
         }
-
+        
         errorMessageLabel.snp.makeConstraints { make in
             make.top.equalTo(textField.snp.bottom).offset(5)
             make.leading.equalTo(textField)
@@ -143,23 +155,43 @@ final class UserNameCollectionViewCell: UICollectionViewCell {
             make.top.equalTo(textField.snp.bottom).offset(5)
             make.trailing.equalTo(textField)
         }
-
+        
         guideLabel.snp.makeConstraints { make in
             make.top.equalTo(errorMessageLabel.snp.bottom).offset(10)
             make.leading.equalTo(textField)
         }
-
-    }
         
-            
+    }
+    
+    private func setupActions() {
+        textField.addTarget(self,
+                            action: #selector(textFieldDidChange),
+                            for: .editingChanged)
+        
+        clearTextButton.addTarget(self,
+                                  action: #selector(didSelectClearTextButton(_:)),
+                                  for: .touchUpInside)
+    }
     
     // MARK: - Actions
-    func setProperties(delegate: UserNameCollectionViewCellDelegate) {
+    func setProperties(
+        delegate: UserNameCollectionViewCellDelegate,
+        viewModel: SignUpViewModel
+    ) {
         self.delegate = delegate
+        self.viewModel = viewModel
+    }
+    
+    @objc private func textFieldDidChange(_ sender: Any?) {
+        self.viewModel?.userName = textField.text ?? .empty
+    }
+    
+    @objc private func didSelectClearTextButton(_ sender: UIButton) {
+        textField.text?.removeAll()
+        textField.rightViewMode = .never
     }
 }
 
-// MARK: - Extensions here
 
 // MARK: - UITextFieldDelegate
 extension UserNameCollectionViewCell: UITextFieldDelegate {
@@ -194,16 +226,27 @@ extension UserNameCollectionViewCell: UITextFieldDelegate {
         charCountLabel.text = "\(text.count)\(AppLocalized.userNameCount)"
     }
     
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        if string.isEmpty { return true }
-        guard let currentText = textField.text else { return true }
-        let updatedText = (currentText as NSString).replacingCharacters(in: range, with: string)
-        if updatedText.count > 8 {
-            return false
+    func textField(
+        _ textField: UITextField,
+        shouldChangeCharactersIn range: NSRange,
+        replacementString string: String) -> Bool {
+            if string.isEmpty { return true }
+            guard let currentText = textField.text else { return true }
+            let updatedText = (currentText as NSString).replacingCharacters(in: range, with: string)
+            
+            if updatedText.isEmpty {
+                textField.rightViewMode = .never
+            }  else {
+                textField.rightViewMode = .whileEditing
+            }
+            
+            if updatedText.count > 8 {
+                return false
+            }
+            
+            guard checkRegex(string) else { return false }
+            return true
         }
-        guard checkRegex(string) else { return false }
-        return true
-    }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         guard let text = textField.text,
