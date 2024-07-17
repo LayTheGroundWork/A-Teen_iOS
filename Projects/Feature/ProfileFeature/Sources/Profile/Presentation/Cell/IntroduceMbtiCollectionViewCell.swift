@@ -65,8 +65,6 @@ final class IntroduceMbtiCollectionViewCell: UICollectionViewCell {
             make.top.equalToSuperview()
         }
         
-        self.layoutIfNeeded()
-        
         mbtiCollectionView.snp.makeConstraints { make in
             make.leading.equalToSuperview().offset(ViewValues.defaultPadding)
             make.trailing.equalToSuperview().offset(-ViewValues.defaultPadding)
@@ -80,9 +78,12 @@ final class IntroduceMbtiCollectionViewCell: UICollectionViewCell {
 extension IntroduceMbtiCollectionViewCell {
     public func setProperties(viewModel: IntroduceViewModel) {
         self.viewModel = viewModel
+        
+        viewModel.changeMbti = viewModel.myMbti
     }
 }
 
+// MARK: - UICollectionViewDataSource
 extension IntroduceMbtiCollectionViewCell: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(
@@ -107,6 +108,7 @@ extension IntroduceMbtiCollectionViewCell: UICollectionViewDataSource {
     }
 }
 
+// MARK: - UICollectionViewDelegate
 extension IntroduceMbtiCollectionViewCell: UICollectionViewDelegate {
     public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         viewModel?.changeMyMbti(index: indexPath.item) { clearCellIndex in

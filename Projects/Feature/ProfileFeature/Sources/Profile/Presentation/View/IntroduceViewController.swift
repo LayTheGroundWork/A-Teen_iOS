@@ -135,6 +135,8 @@ public final class IntroduceViewController: UIViewController {
         if nextAndSaveButton.titleLabel?.text == "건너뛰기" {
             coordinator?.didTabBackButton()
         } else {
+            guard let cell = collectionView.cellForItem(at: IndexPath(item: 0, section: 1)) as? IntroduceWritingCollectionViewCell else { return }
+            cell.writingTextView.endEditing(true)
             nextAndSaveButton.setTitle("건너뛰기", for: .normal)
             collectionView.scrollToItem(at: IndexPath(item: 0, section: 0), at: .centeredHorizontally, animated: true)
         }
@@ -145,8 +147,11 @@ public final class IntroduceViewController: UIViewController {
             nextAndSaveButton.setTitle("완료", for: .normal)
             collectionView.scrollToItem(at: IndexPath(item: 0, section: 1), at: .centeredHorizontally, animated: true)
         } else {
-            //TODO: 서버 저장 로직
-            coordinator?.didTabBackButton()     //일단 첨으로 가게 해놨음
+            viewModel.saveChangeValue { success in
+                if success {
+                    self.coordinator?.didTabBackButton()     //일단 첨으로 가게 해놨음
+                }
+            }
         }
     }
 }
@@ -170,9 +175,7 @@ extension IntroduceViewController: UICollectionViewDataSource {
             else {
                 return UICollectionViewCell()
             }
-//            cell.setProperties(round: currentRound)
-//            cell.delegate = coordinator
-//            cell.roundDelegate = self
+            cell.setProperties(viewModel: viewModel)
             return cell
         }
     }
