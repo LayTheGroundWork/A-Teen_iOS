@@ -20,18 +20,12 @@ class CustomNaviView: UIView {
         return label
     }()
     
-    private lazy var alarmButton: UIButton = {
-        let button = UIButton()
-        button.setImage(DesignSystemAsset.bellIcon.image, for: .normal)
-        button.tintColor = .black
-        return button
-    }()
-    
     private lazy var settingButton: UIButton = {
         let button = UIButton()
-        // TODO: - 디자인에 설정 아이콘 나오면 Asset 추가 후, 수정 예정
-        button.setImage(UIImage(systemName: "gearshape.fill"), for: .normal)
-        button.tintColor = .black
+        button.setImage(DesignSystemAsset.settingIcon.image, for: .normal)
+        button.addTarget(self,
+                         action: #selector(clickSettingButton(_:)),
+                         for: .touchUpInside)
         return button
     }()
     
@@ -44,7 +38,6 @@ class CustomNaviView: UIView {
         super.init(frame: frame)
         
         configUserInterface()
-        setupActions()
     }
     
     required init?(coder: NSCoder) {
@@ -56,19 +49,7 @@ class CustomNaviView: UIView {
         self.backgroundColor = UIColor.clear
         
         self.addSubview(titleView)
-        self.addSubview(alarmButton)
         self.addSubview(settingButton)
-    }
-    
-    private func setupActions() {
-        alarmButton.addTarget(
-            self,
-            action: #selector(clickAlarmButton(_:)),
-            for: .touchUpInside)
-        settingButton.addTarget(
-            self,
-            action: #selector(clickSettingButton(_:)),
-            for: .touchUpInside)
     }
 }
 
@@ -87,21 +68,11 @@ extension CustomNaviView {
             make.centerY.equalToSuperview()
             make.width.height.equalTo(24)
         }
-        
-        self.alarmButton.snp.makeConstraints { make in
-            make.trailing.equalTo(self.settingButton.snp.leading).offset(-20)
-            make.centerY.equalToSuperview()
-            make.width.height.equalTo(24)
-        }
     }
 }
 
 // MARK: - Action
 extension CustomNaviView {
-    @objc func clickAlarmButton(_ sender: UIButton) {
-        print("알림 버튼 클릭")
-    }
-    
     @objc func clickSettingButton(_ sender: UIButton) {
         print("세팅 버튼 클릭")
         // NotUsedSettings 그룹에 있는 화면들로 임시 이동

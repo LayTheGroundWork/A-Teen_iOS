@@ -132,8 +132,7 @@ public final class ProfileViewController: UIViewController {
     
     private lazy var infoSettingButton: UIButton = {
         let button = UIButton()
-        // TODO: - 디자인 확정이 나지 않아 SFSymbol 사용 중 : 추후 변경 예정
-        button.setImage(UIImage(systemName: "gearshape"), for: .normal)
+        button.setImage(DesignSystemAsset.rightGrayIcon.image, for: .normal)
         button.tintColor = DesignSystemAsset.gray01.color
         button.isEnabled = true
         return button
