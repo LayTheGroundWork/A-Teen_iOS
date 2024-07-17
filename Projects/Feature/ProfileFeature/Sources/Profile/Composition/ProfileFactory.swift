@@ -23,7 +23,6 @@ public protocol ProfileFactory {
 }
 
 public struct ProfileFactoryImp: ProfileFactory {
-    let appContainer: AppContainer?
     let viewModel = ProfileViewModel()
     
     public init() { }
