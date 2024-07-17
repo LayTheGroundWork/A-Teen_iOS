@@ -13,5 +13,6 @@ extension ProfileCoordinator: LinksDialogCoordinatorDelegate {
         childCoordinator.navigation.dismissNavigation = nil
         removeChildCoordinator(childCoordinator)
         navigation.dismiss(animated: false)
+        profileViewControllerDelegate?.didTabBackButtonFromLinksDialogViewController()
     }
 }

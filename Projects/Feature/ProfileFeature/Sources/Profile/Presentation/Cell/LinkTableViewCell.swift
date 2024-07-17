@@ -10,25 +10,26 @@ import Common
 import DesignSystem
 import UIKit
 
-class LinkTableViewCell: UITableViewCell {
+final class LinkTableViewCell: UITableViewCell {
     var deleteButtonAction: (() -> Void)?
     
-    lazy var linkImageView: UIImageView = {
+    private lazy var linkImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = DesignSystemAsset.linkIcon.image
         return imageView
     }()
     
-    lazy var linkLabel: UILabel = {
+    private lazy var linkLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .left
         label.textColor = UIColor.black
-        label.numberOfLines = 0
+        label.numberOfLines = 1
+        label.lineBreakMode = .byTruncatingTail
         label.font = UIFont.customFont(forTextStyle: .footnote, weight: .regular)
         return label
     }()
     
-    lazy var deleteButton: UIButton = {
+    private lazy var deleteButton: UIButton = {
         let button = UIButton()
         button.setTitle("삭제", for: .normal)
         button.setTitleColor(DesignSystemAsset.gray01.color, for: .normal)
@@ -37,14 +38,34 @@ class LinkTableViewCell: UITableViewCell {
         return button
     }()
     
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?){
+    // MARK: - Life Cycle
+    override init(
+        style: UITableViewCell.CellStyle,
+        reuseIdentifier: String?
+    ) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         self.selectionStyle = .none
-        
+        configUserInterface()
+        configLayout()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        linkLabel.text = ""
+    }
+    
+    // MARK: - Helpers
+    private func configUserInterface() {
         contentView.addSubview(linkImageView)
         contentView.addSubview(deleteButton)
         contentView.addSubview(linkLabel)
-        
+    }
+    
+    private func configLayout() {
         linkImageView.snp.makeConstraints { make in
             make.leading.equalToSuperview().offset(20)
             make.bottom.equalToSuperview()
@@ -65,17 +86,17 @@ class LinkTableViewCell: UITableViewCell {
         }
     }
     
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    override func prepareForReuse() {
-        super.prepareForReuse()
-        linkLabel.text = ""
-    }
-    
-    func setLink(link: String) {
-        linkLabel.text = link
+    func setLink(link: String, title: String?) {
+        if let title = title {
+            let text = "\(title) | \(link)"
+            let attributedStr = NSMutableAttributedString(string: text)
+            attributedStr.addAttribute(.foregroundColor,
+                                       value: DesignSystemAsset.gray01.color,
+                                       range: (text as NSString).range(of: "|"))
+            linkLabel.attributedText = attributedStr
+        } else {
+            linkLabel.text = link
+        }
     }
 }
 

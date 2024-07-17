@@ -11,7 +11,7 @@ import DesignSystem
 import UIKit
 
 public class ProfileViewModel: ObservableObject{
-    @Published var userLinks: [String] = []
+    @Published var userLinks: [(link: String, title: String?)] = []
     
     var userName: String = "김 에스더"
     var userImage: UIImage = DesignSystemAsset.blackGlass.image
@@ -30,8 +30,21 @@ public class ProfileViewModel: ObservableObject{
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            """
+        ),
+        .init(
+            title: "Lorem ipsum dolor sit amet, Lorem ipsum dolor sit amet?",
+            text: """
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            """
+        ),
+        .init(
+            title: "Lorem ipsum dolor sit amet, Lorem ipsum dolor sit amet?",
+            text: """
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            """),
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            """
+        ),
     ]
 }

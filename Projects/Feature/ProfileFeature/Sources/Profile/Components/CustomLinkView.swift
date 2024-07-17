@@ -22,7 +22,7 @@ class CustomLinkView: UIView {
     lazy var threeLinkImageView: UIImageView = makeLinkImageView()
     lazy var threeLinkLabel: UILabel = makeLinkLabel()
     
-    init(frame: CGRect, linkList: [String]) {
+    init(frame: CGRect, linkList: [(link: String, title: String?)]) {
         super.init(frame: frame)
         configUserInterface(linkList: linkList)
     }
@@ -44,7 +44,8 @@ extension CustomLinkView {
         let label = UILabel()
         label.textAlignment = .left
         label.textColor = UIColor.black
-        label.numberOfLines = 0
+        label.numberOfLines = 1
+        label.lineBreakMode = .byTruncatingTail
         label.font = UIFont.customFont(forTextStyle: .footnote, weight: .regular)
         return label
     }
@@ -52,33 +53,33 @@ extension CustomLinkView {
 
 // MARK: - UI
 extension CustomLinkView {
-    func configUserInterface(linkList: [String]) {
+    func configUserInterface(linkList: [(link: String, title: String?)]) {
         self.backgroundColor = DesignSystemAsset.gray03.color
         self.layer.masksToBounds = true
         self.layer.cornerRadius = 20
         
-        for (index, link) in linkList.enumerated() {
+        for (index, linkInfo) in linkList.enumerated() {
             switch index {
             case 0:
                 setProperties(
                     linkImageView: oneLinkImageView,
                     linkLabel: oneLinkLabel,
                     beforeImageView: nil,
-                    link: link)
+                    linkInfo: linkInfo)
                 
             case 1:
                 setProperties(
                     linkImageView: twoLinkImageView,
                     linkLabel: twoLinkLabel,
                     beforeImageView: oneLinkImageView,
-                    link: link)
+                    linkInfo: linkInfo)
                 
             case 2:
                 setProperties(
                     linkImageView: threeLinkImageView,
                     linkLabel: threeLinkLabel,
                     beforeImageView: twoLinkImageView,
-                    link: link)
+                    linkInfo: linkInfo)
                 
             default:
                 break
@@ -86,8 +87,22 @@ extension CustomLinkView {
         }
     }
     
-    func setProperties(linkImageView: UIImageView, linkLabel: UILabel, beforeImageView: UIImageView?, link: String) {
-        linkLabel.text = link
+    func setProperties(
+        linkImageView: UIImageView,
+        linkLabel: UILabel,
+        beforeImageView: UIImageView?,
+        linkInfo: (link: String, title: String?)
+    ) {
+        if let title = linkInfo.title {
+            let text = "\(title) | \(linkInfo.link)"
+            let attributedStr = NSMutableAttributedString(string: text)
+            attributedStr.addAttribute(.foregroundColor,
+                                       value: DesignSystemAsset.gray01.color,
+                                       range: (text as NSString).range(of: "|"))
+            linkLabel.attributedText = attributedStr
+        } else {
+            linkLabel.text = linkInfo.link
+        }
         
         self.addSubview(linkImageView)
         self.addSubview(linkLabel)
@@ -101,7 +116,11 @@ extension CustomLinkView {
 
 // MARK: - Layout
 extension CustomLinkView {
-    func configLabelLayout(linkImageView: UIImageView, linkLabel: UILabel, beforeImageView: UIImageView?) {
+    func configLabelLayout(
+        linkImageView: UIImageView,
+        linkLabel: UILabel,
+        beforeImageView: UIImageView?
+    ) {
         if let beforeImageView = beforeImageView {
             linkImageView.snp.makeConstraints { make in
                 make.leading.equalToSuperview().offset(ViewValues.defaultPadding)
