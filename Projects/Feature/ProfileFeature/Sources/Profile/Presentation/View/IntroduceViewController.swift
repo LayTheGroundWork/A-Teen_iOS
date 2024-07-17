@@ -20,6 +20,7 @@ public protocol IntroduceViewControllerCoordinator: AnyObject {
 
 public final class IntroduceViewController: UIViewController {
     // MARK: - Private properties
+    private var viewModel: IntroduceViewModel
     private weak var coordinator: IntroduceViewControllerCoordinator?
     
     private lazy var backButton: UIBarButtonItem = {
@@ -31,27 +32,45 @@ public final class IntroduceViewController: UIViewController {
         button.tintColor = UIColor.black
         return button
     }()
+    
+    private lazy var titleLabel: UILabel = {
+        let label = UILabel()
+        label.text = "자기소개 정보 수정"
+        label.textColor = UIColor.black
+        label.textAlignment = .left
+        label.font = .customFont(forTextStyle: .title3, weight: .bold)
+        return label
+    }()
 
-//    private lazy var collectionView: UICollectionView = {
-//        let layout = UICollectionViewFlowLayout()
-//        layout.scrollDirection = .horizontal
-//        layout.itemSize = CGSize(width: ViewValues.width,
-//                                 height: ViewValues.height - 80)
-//        let collectionView = UICollectionView(frame: .zero,
-//                                              collectionViewLayout: layout)
-//        collectionView.backgroundColor = UIColor.black
-//        collectionView.contentInsetAdjustmentBehavior = .never
-//        collectionView.showsHorizontalScrollIndicator = false
-//        collectionView.isScrollEnabled = false
-//        collectionView.isPagingEnabled = true
-//        collectionView.register(TournamentRoundCollectionViewCell.self,
-//                                forCellWithReuseIdentifier: TournamentRoundCollectionViewCell.reuseIdentifier)
-//        collectionView.register(TournamentEndCollectionViewCell.self,
-//                                forCellWithReuseIdentifier: TournamentEndCollectionViewCell.reuseIdentifier)
-//        collectionView.delegate = self
-//        collectionView.dataSource = self
-//        return collectionView
-//    }()
+    private lazy var collectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .horizontal
+        layout.itemSize = CGSize(
+            width: ViewValues.width,
+            height: 430)
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionView.contentInsetAdjustmentBehavior = .never
+        collectionView.showsHorizontalScrollIndicator = false
+        collectionView.isScrollEnabled = false
+        collectionView.isPagingEnabled = true
+        collectionView.dataSource = self
+        collectionView.register(IntroduceMbtiCollectionViewCell.self,
+                                forCellWithReuseIdentifier: IntroduceMbtiCollectionViewCell.reuseIdentifier)
+        collectionView.register(IntroduceWritingCollectionViewCell.self,
+                                forCellWithReuseIdentifier: IntroduceWritingCollectionViewCell.reuseIdentifier)
+        return collectionView
+    }()
+    
+    private lazy var nextAndSaveButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("건너뛰기", for: .normal)
+        button.setTitleColor(UIColor.white, for: .normal)
+        button.backgroundColor = UIColor.black
+        button.titleLabel?.font = .customFont(forTextStyle: .subheadline, weight: .regular)
+        button.layer.cornerRadius = 20
+        button.addTarget(self, action: #selector(clickNextAndSaveButton(_:)), for: .touchUpInside)
+        return button
+    }()
     
     // MARK: - Life Cycle
     public override func viewDidLoad() {
@@ -66,8 +85,10 @@ public final class IntroduceViewController: UIViewController {
     }
     
     public init(
+        viewModel: IntroduceViewModel,
         coordinator: IntroduceViewControllerCoordinator
     ) {
+        self.viewModel = viewModel
         self.coordinator = coordinator
         super.init(nibName: nil, bundle: nil)
     }
@@ -82,14 +103,85 @@ public final class IntroduceViewController: UIViewController {
         
         navigationController?.isNavigationBarHidden = false
         navigationItem.leftBarButtonItem = backButton
+        
+        view.addSubview(titleLabel)
+        view.addSubview(nextAndSaveButton)
+        view.addSubview(collectionView)
     }
     
     private func configLayout() {
+        titleLabel.snp.makeConstraints { make in
+            make.leading.equalToSuperview().offset(ViewValues.defaultPadding)
+            make.trailing.equalToSuperview().offset(-ViewValues.defaultPadding)
+            make.top.equalTo(self.view.safeAreaLayoutGuide.snp.top).offset(13)
+        }
         
+        nextAndSaveButton.snp.makeConstraints { make in
+            make.trailing.equalToSuperview().offset(-ViewValues.defaultPadding)
+            make.bottom.equalToSuperview().offset(-48)
+            make.width.equalTo(116)
+            make.height.equalTo(50)
+        }
+        
+        collectionView.snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview()
+            make.top.equalTo(titleLabel.snp.bottom).offset(10)
+            make.height.equalTo(430)
+        }
     }
     
     // MARK: - Actions
     @objc private func clickBackButton(_ sender: UIBarButtonItem) {
-        coordinator?.didTabBackButton()
+        if nextAndSaveButton.titleLabel?.text == "건너뛰기" {
+            coordinator?.didTabBackButton()
+        } else {
+            nextAndSaveButton.setTitle("건너뛰기", for: .normal)
+            collectionView.scrollToItem(at: IndexPath(item: 0, section: 0), at: .centeredHorizontally, animated: true)
+        }
+    }
+    
+    @objc private func clickNextAndSaveButton(_ sender: UIBarButtonItem) {
+        if nextAndSaveButton.titleLabel?.text == "건너뛰기" {
+            nextAndSaveButton.setTitle("완료", for: .normal)
+            collectionView.scrollToItem(at: IndexPath(item: 0, section: 1), at: .centeredHorizontally, animated: true)
+        } else {
+            //TODO: 서버 저장 로직
+            coordinator?.didTabBackButton()     //일단 첨으로 가게 해놨음
+        }
+    }
+}
+
+// MARK: - UICollectionViewDataSource
+extension IntroduceViewController: UICollectionViewDataSource {
+    public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        if indexPath.section == 0 {
+            guard let cell = collectionView.dequeueReusableCell(
+                withReuseIdentifier: IntroduceMbtiCollectionViewCell.reuseIdentifier,
+                for: indexPath) as? IntroduceMbtiCollectionViewCell
+            else {
+                return UICollectionViewCell()
+            }
+            cell.setProperties(viewModel: viewModel)
+            return cell
+        } else {
+            guard let cell = collectionView.dequeueReusableCell(
+                withReuseIdentifier: IntroduceWritingCollectionViewCell.reuseIdentifier,
+                for: indexPath) as? IntroduceWritingCollectionViewCell
+            else {
+                return UICollectionViewCell()
+            }
+//            cell.setProperties(round: currentRound)
+//            cell.delegate = coordinator
+//            cell.roundDelegate = self
+            return cell
+        }
+    }
+    
+    public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        1
+    }
+    
+    public func numberOfSections(in collectionView: UICollectionView) -> Int {
+        2
     }
 }

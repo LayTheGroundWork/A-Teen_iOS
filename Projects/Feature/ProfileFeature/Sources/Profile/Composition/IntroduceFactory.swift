@@ -24,7 +24,10 @@ public struct IntroduceFactoryImp: IntroduceFactory {
     public func makeIntroduceViewController(
         coordinator: IntroduceViewControllerCoordinator
     ) -> UIViewController {
-        let controller = IntroduceViewController(coordinator: coordinator)
+        let viewModel = IntroduceViewModel()
+        let controller = IntroduceViewController(
+            viewModel: viewModel,
+            coordinator: coordinator)
         return controller
     }
 }
