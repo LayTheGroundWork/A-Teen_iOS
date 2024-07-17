@@ -16,7 +16,19 @@ class AnotherTeenTableViewCell: UITableViewCell {
     ]
     
     weak var delegate: MainViewControllerCoordinator?
-    
+//    
+//    lazy var teenCollectionView: UICollectionView = {
+//        let layout = UICollectionViewFlowLayout()
+//        layout.scrollDirection = .vertical
+//        layout.minimumLineSpacing = 16
+//        layout.minimumInteritemSpacing = 0
+//        layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+//        layout.itemSize = CGSize(width: ViewValues.todayTeenImageWidth, height: ViewValues.todayTeenImageHeight)
+//        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+//        collectionView.backgroundColor = UIColor.white
+//        collectionView.showsHorizontalScrollIndicator = false
+//        return collectionView
+//    }()
     var heartButtonAction: (() -> Void)?
     
     lazy var topGradientLayer: CAGradientLayer = {

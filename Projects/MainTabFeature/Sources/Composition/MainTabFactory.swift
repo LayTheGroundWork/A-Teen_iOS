@@ -106,7 +106,8 @@ public struct MainTabFactoryImp: MainTabFactory {
         let navigation = NavigationImp(rootViewController: UINavigationController())
         return TeenCoordinator(
             navigation: navigation,
-            factory: factory)
+            factory: factory,
+            coordinatorProvider: coordinatorProvider)
     }
     
     private func makeChatCoordinator() -> Coordinator {

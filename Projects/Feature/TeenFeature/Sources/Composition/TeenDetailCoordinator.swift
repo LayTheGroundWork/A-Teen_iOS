@@ -1,23 +1,23 @@
 //
-//  TeenCoordinator.swift
-//  ATeen
+//  TeenDetailCoordinator.swift
+//  TeenFeature
 //
-//  Created by 최동호 on 5/17/24.
+//  Created by 최동호 on 7/16/24.
+//  Copyright © 2024 ATeen. All rights reserved.
 //
 
 import Common
 import FeatureDependency
 import UIKit
 
-public final class TeenCoordinator: Coordinator {
+public final class TeenDetailCoordinator: Coordinator {
     public var navigation: Navigation
-    private var factory: TeenFactory
+    private var factory: TeenDetailFactory
     public var childCoordinators: [Coordinator] = []
     public let coordinatorProvider: CoordinatorProvider
-    
     public init(
         navigation: Navigation,
-        factory: TeenFactory,
+        factory: TeenDetailFactory,
         coordinatorProvider: CoordinatorProvider
     ) {
         self.navigation = navigation
@@ -26,10 +26,9 @@ public final class TeenCoordinator: Coordinator {
     }
     
     public func start() {
-        let controller = factory.makeTeenViewController()
-        navigation.navigationBar.prefersLargeTitles = true
+        let controller = factory.makeTeenDetailViewController()
         navigation.pushViewController(controller, animated: true)
     }
 }
 
-extension TeenCoordinator: ParentCoordinator { }
+extension TeenDetailCoordinator: ParentCoordinator { }

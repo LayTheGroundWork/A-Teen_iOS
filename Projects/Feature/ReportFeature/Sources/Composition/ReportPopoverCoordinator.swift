@@ -8,33 +8,36 @@
 import FeatureDependency
 import UIKit
 
-public protocol ReportPopoverCoordinatorDelegate: AnyObject {
-    func didFinish(childCoordinator: Coordinator)
-    func didSelectReportButton(childCoordinator: Coordinator)
-}
-
 public final class ReportPopoverCoordinator: Coordinator {
     public var navigation: Navigation
+    public var childCoordinators: [Coordinator]
     let factory: ReportPopoverFactory
     let popoverPosition: CGRect
     weak var delegate: ReportPopoverCoordinatorDelegate?
-
+    public let coordinatorProvider: CoordinatorProvider
+    
     public init(
         navigation: Navigation,
+        childCoordinators: [Coordinator],
         factory: ReportPopoverFactory,
         popoverPosition: CGRect,
-        delegate: ReportPopoverCoordinatorDelegate
+        delegate: ReportPopoverCoordinatorDelegate,
+        coordinatorProvider: CoordinatorProvider
     ) {
         self.navigation = navigation
+        self.childCoordinators = childCoordinators
         self.factory = factory
         self.popoverPosition = popoverPosition
         self.delegate = delegate
+        self.coordinatorProvider = coordinatorProvider
     }
     
     public func start() {
         let controller = factory.makeReportPopoverViewController(
             coordinator: self,
             popoverPosition: popoverPosition)
-        navigation.present(controller, animated: false)
+        navigation.viewControllers = [controller]
     }
 }
+
+extension ReportPopoverCoordinator: ParentCoordinator { }

@@ -26,4 +26,10 @@ public protocol FactoryProvider {
         delegate: AlertCoordinatorDelegate,
         dialogData: CustomDialog
     ) -> Coordinator
+    
+    func makePopoverCoordinator(
+        popoverPosition: CGRect,
+        delegate: ReportPopoverCoordinatorDelegate,
+        coordinatorProvider: CoordinatorProvider
+    ) -> Coordinator
 }

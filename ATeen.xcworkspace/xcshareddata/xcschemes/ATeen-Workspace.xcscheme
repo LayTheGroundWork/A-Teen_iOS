@@ -252,6 +252,20 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
+               BlueprintIdentifier = "4BFFB0541BDE3E11A876220E"
+               BuildableName = "ReportFeature.framework"
+               BlueprintName = "ReportFeature"
+               ReferencedContainer = "container:Projects/Feature/ReportFeature/ReportFeature.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
                BlueprintIdentifier = "8A043024BB190898066F1729"
                BuildableName = "SnapKit.framework"
                BlueprintName = "SnapKit"

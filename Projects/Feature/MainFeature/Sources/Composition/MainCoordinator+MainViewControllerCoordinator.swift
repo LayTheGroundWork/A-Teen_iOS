@@ -36,11 +36,15 @@ extension MainCoordinator: MainViewControllerCoordinator {
     }
     
     public func didSelectMenuButton(popoverPosition: CGRect) {
-        let reportPopoverCoordinator = factory.makeReportPopoverCoordinator(
-            navigation: navigation,
+        let reportPopoverCoordinator = coordinatorProvider.makePopoverCoordinator(
             popoverPosition: popoverPosition,
             delegate: self)
         addChildCoordinatorStart(reportPopoverCoordinator)
+        
+        navigation.present(
+            reportPopoverCoordinator.navigation.rootViewController,
+            animated: false)
+        
     }
     
     public func didSelectAboutATeenCell(tag: TabTag) {

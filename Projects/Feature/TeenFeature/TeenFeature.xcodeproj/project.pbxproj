@@ -7,9 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1C1F16E4CD6139671C907AC8 /* TeenDetailCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C122D391E0CEC823F0BF03 /* TeenDetailCoordinator.swift */; };
+		6DCB76054E14CF7D14A5B3EA /* TeenDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311D8170D17A7EE9BD2BC6D3 /* TeenDetailViewController.swift */; };
 		9218C41B566C368CEABA86A3 /* TeenCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B105CD7E0C59311C1F1C419 /* TeenCoordinator.swift */; };
+		C2B4C07452E21043D2FAD06D /* TeenDetailFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B73CCE0F7BF23D808B9A8D /* TeenDetailFactory.swift */; };
+		CF1F4CB9E261C32940A7BA80 /* TeenFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0BF74F2B721EA618622B842 /* TeenFactory.swift */; };
 		D19D84168D8493303E9CC4BD /* TeenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6FDDFA66C3A9A8F5268E6C /* TeenViewController.swift */; };
-		D373E1B81F6B7037ABECC7CC /* TeenFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B9E2A4545B5FE1E69DBC58A /* TeenFactory.swift */; };
 		EAF48FC210459BAF1BAC076D /* FeatureDependency.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 47E99AC7D204F3CFDE025354 /* FeatureDependency.framework */; };
 /* End PBXBuildFile section */
 
@@ -27,11 +30,14 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		17C122D391E0CEC823F0BF03 /* TeenDetailCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeenDetailCoordinator.swift; sourceTree = "<group>"; };
 		2796626C6DB624114F289D4D /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
+		311D8170D17A7EE9BD2BC6D3 /* TeenDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeenDetailViewController.swift; sourceTree = "<group>"; };
+		31B73CCE0F7BF23D808B9A8D /* TeenDetailFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeenDetailFactory.swift; sourceTree = "<group>"; };
 		47E99AC7D204F3CFDE025354 /* FeatureDependency.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FeatureDependency.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		4B9E2A4545B5FE1E69DBC58A /* TeenFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeenFactory.swift; sourceTree = "<group>"; };
 		7B105CD7E0C59311C1F1C419 /* TeenCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeenCoordinator.swift; sourceTree = "<group>"; };
 		9603EF6CC40655AC3FD65FD7 /* Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
+		A0BF74F2B721EA618622B842 /* TeenFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeenFactory.swift; sourceTree = "<group>"; };
 		A0E3FA825EFCB9EF32FDB746 /* TeenFeature-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "TeenFeature-Info.plist"; sourceTree = "<group>"; };
 		CAB2399BCFDAC1FAF31352BF /* TeenFeature.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TeenFeature.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB6FDDFA66C3A9A8F5268E6C /* TeenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeenViewController.swift; sourceTree = "<group>"; };
@@ -69,6 +75,9 @@
 			isa = PBXGroup;
 			children = (
 				7B105CD7E0C59311C1F1C419 /* TeenCoordinator.swift */,
+				17C122D391E0CEC823F0BF03 /* TeenDetailCoordinator.swift */,
+				31B73CCE0F7BF23D808B9A8D /* TeenDetailFactory.swift */,
+				A0BF74F2B721EA618622B842 /* TeenFactory.swift */,
 			);
 			path = Composition;
 			sourceTree = "<group>";
@@ -96,7 +105,6 @@
 			isa = PBXGroup;
 			children = (
 				92F1845846D53AAD8CBD181A /* View */,
-				4B9E2A4545B5FE1E69DBC58A /* TeenFactory.swift */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -112,6 +120,7 @@
 		92F1845846D53AAD8CBD181A /* View */ = {
 			isa = PBXGroup;
 			children = (
+				311D8170D17A7EE9BD2BC6D3 /* TeenDetailViewController.swift */,
 				CB6FDDFA66C3A9A8F5268E6C /* TeenViewController.swift */,
 			);
 			path = View;
@@ -202,7 +211,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				9218C41B566C368CEABA86A3 /* TeenCoordinator.swift in Sources */,
-				D373E1B81F6B7037ABECC7CC /* TeenFactory.swift in Sources */,
+				1C1F16E4CD6139671C907AC8 /* TeenDetailCoordinator.swift in Sources */,
+				C2B4C07452E21043D2FAD06D /* TeenDetailFactory.swift in Sources */,
+				CF1F4CB9E261C32940A7BA80 /* TeenFactory.swift in Sources */,
+				6DCB76054E14CF7D14A5B3EA /* TeenDetailViewController.swift in Sources */,
 				D19D84168D8493303E9CC4BD /* TeenViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

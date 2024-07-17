@@ -305,7 +305,9 @@ final class ReportDialogViewController: UIViewController {
     
     // MARK: - Actions
     @objc private func clickCloseButton(_ sender: UIButton) {
+        print("여기")
         coordinator?.didFinish()
+        print("gh")
     }
     
     @objc private func clickReasonButton(_ sender: CustomUsedToReportViewButton) {
@@ -331,6 +333,7 @@ final class ReportDialogViewController: UIViewController {
     @objc private func clickReportButton(_ sender: UIButton) {
         // TODO: - 신고
         // 현재는 화면 이동만 진행
+        print("하이")
         coordinator?.didReport()
     }
 }

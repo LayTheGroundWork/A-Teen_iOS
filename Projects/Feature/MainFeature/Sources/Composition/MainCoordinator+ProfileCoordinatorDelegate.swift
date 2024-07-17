@@ -11,25 +11,14 @@ import FeatureDependency
 import UIKit
 
 extension MainCoordinator: ProfileDetailCoordinatorDelegate,
-                           ReportPopoverCoordinatorDelegate,
-                           ReportDialogCoordinatorDelegate {
+                           ReportPopoverCoordinatorDelegate {
     public func didFinish(childCoordinator: Coordinator) {
         childCoordinator.navigation.dismissNavigation = nil
         removeChildCoordinator(childCoordinator)
         navigation.dismiss(animated: false)
     }
     
-    public func didSelectReportButton(childCoordinator: Coordinator) {
-        didFinish(childCoordinator: childCoordinator)
-        let reportDialogCoordinator = factory.makeReportDialogCoordinator(
-            navigation: navigation,
-            delegate: self)
-        addChildCoordinatorStart(reportDialogCoordinator)
-    }
-    
-    public func didReport(childCoordinator: Coordinator) {
-        didFinish(childCoordinator: childCoordinator)
-
+    public func didReport() {
         let coordinator = coordinatorProvider.makeAlertCoordinator(
             dialogType: .oneButton,
             delegate: self,
@@ -49,8 +38,20 @@ extension MainCoordinator: ProfileDetailCoordinatorDelegate,
                 secondButtonColor: nil))
         addChildCoordinatorStart(coordinator)
         
-        navigation.present(
-            coordinator.navigation.rootViewController,
-            animated: false)
+        navigation.present(coordinator.navigation.rootViewController, animated: false)
     }
 }
+
+extension MainCoordinator: AlertCoordinatorDelegate {
+    public func didFinish(childCoordinator: Coordinator, selectIndex: Int) {
+        switch selectIndex {
+        case 0:
+            childCoordinator.navigation.dismissNavigation = nil
+            removeChildCoordinator(childCoordinator)
+            navigation.dismiss(animated: false)
+        default:
+            break
+        }
+    }
+}
+

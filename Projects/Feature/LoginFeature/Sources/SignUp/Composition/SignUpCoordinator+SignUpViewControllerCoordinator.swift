@@ -35,7 +35,8 @@ extension SignUpCoordinator: SignUpViewControllerCoordinator {
     }
     
     func didSelectCell(item: Int) {
-        let albumCoordinator = coordinatorProvider.makeAlbumCoordinator(delegate: self)
+        let albumCoordinator = coordinatorProvider.makeAlbumCoordinator(
+            delegate: self)
         addChildCoordinatorStart(albumCoordinator)
         navigation.present(
             albumCoordinator.navigation.rootViewController,
