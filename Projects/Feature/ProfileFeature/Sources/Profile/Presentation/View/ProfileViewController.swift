@@ -16,6 +16,7 @@ public protocol ProfileViewControllerCoordinator: AnyObject {
     func didTabSettingButton()
     func didTabLinkButton()
     func didTabIntroduceButton()
+    func didTabQuestionButton()
     func configTabbarState(view: ProfileFeatureViewNames)
 }
 
@@ -889,7 +890,7 @@ public final class ProfileViewController: UIViewController {
     }
     
     @objc private func clickMoreQuestionButton(_ sender: UIButton) {
-        print("10문 10답 > 버튼 클릭")
+        coordinator?.didTabQuestionButton()
     }
     
     @objc private func clickMoreBottomButton(_ sender: UIButton) {

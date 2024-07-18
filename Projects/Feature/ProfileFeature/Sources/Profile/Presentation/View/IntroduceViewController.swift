@@ -8,7 +8,6 @@
 
 import SnapKit
 
-import Combine
 import Common
 import DesignSystem
 import UIKit
@@ -142,7 +141,7 @@ public final class IntroduceViewController: UIViewController {
         }
     }
     
-    @objc private func clickNextAndSaveButton(_ sender: UIBarButtonItem) {
+    @objc private func clickNextAndSaveButton(_ sender: UIButton) {
         if nextAndSaveButton.titleLabel?.text == "건너뛰기" {
             nextAndSaveButton.setTitle("완료", for: .normal)
             collectionView.scrollToItem(at: IndexPath(item: 0, section: 1), at: .centeredHorizontally, animated: true)

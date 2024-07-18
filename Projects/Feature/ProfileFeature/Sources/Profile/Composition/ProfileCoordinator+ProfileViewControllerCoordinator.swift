@@ -35,6 +35,15 @@ extension ProfileCoordinator: ProfileViewControllerCoordinator {
         addChildCoordinatorStart(coordinator)
     }
     
+    public func didTabQuestionButton() {
+        let coordinator = factory.makeQuestionsCoordinator(
+            navigation: navigation,
+            parentCoordinator: self,
+            delegate: self,
+            childCoordinators: childCoordinators)
+        addChildCoordinatorStart(coordinator)
+    }
+    
     public func configTabbarState(view: ProfileFeatureViewNames) {
         delegate?.configTabbarState(view: view)
     }
