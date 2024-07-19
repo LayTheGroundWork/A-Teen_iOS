@@ -17,4 +17,13 @@ extension ProfileCoordinator: ProfileViewControllerCoordinator {
             childCoordinators: childCoordinators)
         addChildCoordinatorStart(coordinator)
     }
+    
+    public func didTabLinkButton() {
+        let coordinator = factory.makeLinksDialogCoordinator(delegate: self)
+        addChildCoordinatorStart(coordinator)
+        
+        navigation.present(
+            coordinator.navigation.rootViewController,
+            animated: false)
+    }
 }

@@ -32,7 +32,6 @@ public final class SettingsCoordinator: Coordinator {
     
     public func start() {
         let controller = factory.makeSettingsCotroller(coordinator: self)
-        navigation.navigationBar.prefersLargeTitles = true
         navigation.pushViewController(controller, animated: true)
     }
 }

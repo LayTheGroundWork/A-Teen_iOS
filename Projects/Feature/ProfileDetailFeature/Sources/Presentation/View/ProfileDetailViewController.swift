@@ -25,6 +25,11 @@ public class ProfileDetailViewController: UIViewController {
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
             """),
         .init(
+            title: "Lorem ipsum dolor sit amet?",
+            text: """
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            """),
+        .init(
             title: "Lorem ipsum dolor sit amet, Lorem ipsum dolor sit amet?",
             text: """
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
@@ -34,16 +39,6 @@ public class ProfileDetailViewController: UIViewController {
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            """),
-        .init(
-            title: "Lorem ipsum dolor sit amet?",
-            text: """
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            """),
-        .init(
-            title: "Lorem ipsum dolor sit amet?",
-            text: """
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
             """),
     ]
@@ -99,28 +94,15 @@ public class ProfileDetailViewController: UIViewController {
         return layer
     }()
     
-    lazy var scrollView: UIScrollView = {
-        let scrollView = UIScrollView()
-        scrollView.backgroundColor = UIColor.systemBackground
-        scrollView.contentInsetAdjustmentBehavior = .never
-        scrollView.showsVerticalScrollIndicator = false
-        scrollView.clipsToBounds = true
-        scrollView.layer.cornerRadius = 20
-        scrollView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 90, right: 0)
-        return scrollView
-    }()
-    
-    lazy var backgroundView: UIView = {
+    lazy var naviView: UIView = {
         let view = UIView()
-        view.backgroundColor = DesignSystemAsset.grayLineColor.color
-        view.clipsToBounds = true
-        view.layer.cornerRadius = 20
+        view.backgroundColor = .clear
         return view
     }()
     
     lazy var closeButton: UIButton = {
         let button = UIButton()
-        button.setImage(UIImage(systemName: "arrowshape.backward.fill"), for: .normal)
+        button.setImage(DesignSystemAsset.xMarkWhiteIcon.image, for: .normal)
         button.tintColor = .white
         button.alpha = 0
         button.addTarget(self, action: #selector(clickCloseButton(_:)), for: .touchUpInside)
@@ -136,13 +118,61 @@ public class ProfileDetailViewController: UIViewController {
         return button
     }()
     
-    lazy var todayTeenImageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.image = self.todayTeen?.image
-        imageView.contentMode = .scaleAspectFill
-        imageView.layer.addSublayer(topGradientLayer)
-        imageView.layer.addSublayer(bottomGradientLayer)
-        return imageView
+    lazy var scrollView: UIScrollView = {
+        let scrollView = UIScrollView()
+        scrollView.backgroundColor = UIColor.systemBackground
+        scrollView.contentInsetAdjustmentBehavior = .never
+        scrollView.showsVerticalScrollIndicator = false
+        scrollView.clipsToBounds = true
+        scrollView.layer.cornerRadius = 20
+        scrollView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 90, right: 0)
+        scrollView.delegate = self
+        return scrollView
+    }()
+    
+    lazy var backgroundView: UIView = {
+        let view = UIView()
+        view.backgroundColor = UIColor.systemBackground
+        view.clipsToBounds = true
+        view.layer.cornerRadius = 20
+        return view
+    }()
+    
+    lazy var teenCollectionView: UICollectionView = {
+        guard let frame = self.frame else { return UICollectionView() }
+        let collectionView = UICollectionView(
+            frame: .zero,
+            collectionViewLayout: setCollectionViewLayout(width: frame.width, height: frame.height))
+        collectionView.backgroundColor = UIColor.white
+        collectionView.isPagingEnabled = true
+        collectionView.showsHorizontalScrollIndicator = false
+        collectionView.layer.addSublayer(topGradientLayer)
+        collectionView.layer.addSublayer(bottomGradientLayer)
+        collectionView.dataSource = self
+        collectionView.delegate = self
+        collectionView.register(TeenImageCellCollectionViewCell.self, forCellWithReuseIdentifier: TeenImageCellCollectionViewCell.reuseIdentifier)
+        return collectionView
+    }()
+    
+    lazy var pageControl: CustomPageControlView = {
+        let pageControl = CustomPageControlView()
+        pageControl.isUserInteractionEnabled = false
+        pageControl.dotColor = UIColor.white.withAlphaComponent(0.5)
+        pageControl.selectedColor = UIColor.white
+        return pageControl
+    }()
+    
+    lazy var categoryLabel: UILabel = {
+        let label = UILabel()
+        //TODO: 카테고리 유저 모델에 있겠지?
+        label.text = "#스포츠"
+        label.textColor = UIColor.white
+        label.textAlignment = .center
+        label.font = UIFont.customFont(forTextStyle: .footnote, weight: .regular)
+        label.layer.cornerRadius = 10
+        label.layer.borderWidth = 1
+        label.layer.borderColor = DesignSystemAsset.profileDetailCategoryBorderColor.color.cgColor
+        return label
     }()
     
     lazy var heartButton: CustomHeartButton = {
@@ -191,23 +221,23 @@ public class ProfileDetailViewController: UIViewController {
         return label
     }()
     
-    lazy var badgeButton: CustomProfileButton = {
-        let button = CustomProfileButton(
+    lazy var badgeButton: CustomProfileBadgeButton = {
+        let button = CustomProfileBadgeButton(
             frame: .zero,
             title: "뱃지",
             count: "10개",
-            imageString: "profileBadge")
+            imageType: .badge)
         button.layer.cornerRadius = 20
         button.addTarget(self, action: #selector(clickBadgeButton(_:)), for: .touchUpInside)
         return button
     }()
     
-    lazy var tournamentButton: CustomProfileButton = {
-        let button = CustomProfileButton(
+    lazy var tournamentButton: CustomProfileBadgeButton = {
+        let button = CustomProfileBadgeButton(
             frame: .zero,
             title: "Teen",
             count: "5월 2주차 우승",
-            imageString: "profileTournament")
+            imageType: .tournament)
         button.layer.cornerRadius = 20
         button.addTarget(self, action: #selector(clickTournamentButton(_:)), for: .touchUpInside)
         return button
@@ -246,6 +276,8 @@ public class ProfileDetailViewController: UIViewController {
         return label
     }()
     
+    lazy var divider = CustomDivider()
+    
     lazy var questionView: UIView = {
         let view = UIView()
         view.backgroundColor = UIColor.systemBackground
@@ -266,7 +298,7 @@ public class ProfileDetailViewController: UIViewController {
         return view
     }()
     
-    lazy var addBackgroundView: UIView = {
+    lazy var moreBackgroundView: UIView = {
         let view = UIView()
         view.backgroundColor = DesignSystemAsset.gray03.color
         view.layer.cornerRadius = 20
@@ -298,6 +330,10 @@ public class ProfileDetailViewController: UIViewController {
     public override func viewDidLoad() {
         super.viewDidLoad()
         setUI()
+    }
+    
+    public override func viewWillAppear(_ animated: Bool) {
+        addSampleImages()
     }
     
     public override func viewDidAppear(_ animated: Bool) {
@@ -332,40 +368,8 @@ extension ProfileDetailViewController {
     }
     
     @objc func clickMoreButton(_ sender: UIButton) {
-        print("펼치기 버튼 클릭")
-        if sender.titleLabel?.text == "펼쳐서 보기" {
-            UIView.animate(withDuration: 0.3, delay: 0, options: .showHideTransitionViews) {
-                self.questionTextViewHeightAnchor?.update(offset: self.questionTextView.recursiveUnionInDepthFor(view: self.questionTextView).height + 16)
-                
-                self.view.layoutIfNeeded()
-                self.questionViewHeightAnchor?.update(offset: self.questionTitleLabel.frame.height + self.questionTextView.frame.height + 190)
-                
-                self.view.layoutIfNeeded()
-                self.backgroundViewHeightAnchor?.update(offset: self.backgroundView.recursiveUnionInDepthFor(view: self.backgroundView).height)
-                
-                self.view.layoutIfNeeded()
-                self.scrollView.contentSize = CGSize(width: self.view.frame.width, height: self.backgroundView.frame.height)
-                
-                sender.setTitle("접기", for: .normal)
-            }
-        } else {
-            UIView.animate(withDuration: 0.3, delay: 0, options: .showHideTransitionViews) {
-                self.questionTextViewHeightAnchor?.update(offset: 267)
-                
-                self.view.layoutIfNeeded()
-                self.questionViewHeightAnchor?.update(offset: self.questionTitleLabel.frame.height + self.questionTextView.frame.height + 190)
-                
-                self.view.layoutIfNeeded()
-                self.backgroundViewHeightAnchor?.update(offset: self.backgroundView.recursiveUnionInDepthFor(view: self.backgroundView).height - 305)
-                
-                self.view.layoutIfNeeded()
-                self.scrollView.contentSize = CGSize(width: self.view.frame.width, height: self.backgroundView.frame.height)
-                
-                sender.setTitle("펼쳐서 보기", for: .normal)
-            }
-        }
+        moreButtonAnimation(sender)
     }
- 
 }
 
 // MARK: - UI
@@ -375,8 +379,6 @@ extension ProfileDetailViewController {
         view.backgroundColor = UIColor.clear
         
         addScrollView(frame: frame)
-        
-        //가장 마지막
         addNaviButton()
     }
     
@@ -413,32 +415,54 @@ extension ProfileDetailViewController {
     }
     
     private func addBackgroundComponentView() {
-        backgroundView.addSubview(todayTeenImageView)
+        backgroundView.addSubview(teenCollectionView)
+        backgroundView.addSubview(categoryLabel)
         backgroundView.addSubview(informationView)
+        backgroundView.addSubview(divider)
         backgroundView.addSubview(questionView)
         backgroundView.addSubview(heartButton)
+        backgroundView.addSubview(pageControl)
         
-        todayTeenImageView.snp.makeConstraints { make in
+        teenCollectionView.snp.makeConstraints { make in
             make.leading.trailing.top.equalToSuperview()
             make.height.equalTo(self.frame?.height ?? 360)
         }
         
+        categoryLabel.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(100)
+            make.leading.equalToSuperview().offset(16)
+            make.width.equalTo(
+                (self.categoryLabel.text! as NSString).size(withAttributes: [NSAttributedString.Key.font: self.categoryLabel.font!]).width + 40)
+            make.height.equalTo(26)
+        }
+        
         informationView.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview()
-            make.top.equalTo(self.todayTeenImageView.snp.bottom)
+            make.top.equalTo(self.teenCollectionView.snp.bottom)
             self.informationViewHeightAnchor = make.height.equalTo(0).constraint
+        }
+        
+        divider.snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview()
+            make.top.equalTo(self.informationView.snp.bottom)
         }
         
         questionView.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview()
-            make.top.equalTo(self.informationView.snp.bottom).offset(7)
+            make.top.equalTo(self.divider.snp.bottom)
             self.questionViewHeightAnchor = make.height.equalTo(0).constraint
         }
         
         heartButton.snp.makeConstraints { make in
-            make.top.equalTo(self.todayTeenImageView.snp.bottom).offset(-35)
+            make.top.equalTo(self.teenCollectionView.snp.bottom).offset(-35)
             make.centerX.equalToSuperview()
             make.width.height.equalTo(70)
+        }
+        
+        pageControl.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.bottom.equalTo(self.heartButton.snp.top).offset(-14)
+            make.height.equalTo(5)
         }
         
         self.view.layoutIfNeeded()
@@ -446,17 +470,16 @@ extension ProfileDetailViewController {
         self.topGradientLayer.frame = CGRect(
             x: 0,
             y: 0,
-            width: self.todayTeenImageView.frame.width,
-            height: self.todayTeenImageView.frame.height/2)
+            width: self.teenCollectionView.frame.width,
+            height: self.teenCollectionView.frame.height/2)
         
         self.bottomGradientLayer.frame = CGRect(
             x: 0,
-            y: self.todayTeenImageView.frame.height/2,
-            width: self.todayTeenImageView.frame.width,
-            height: self.todayTeenImageView.frame.height/2)
+            y: self.teenCollectionView.frame.height/2,
+            width: self.teenCollectionView.frame.width,
+            height: self.teenCollectionView.frame.height/2)
         
         addInfomationComponentView()
-        
         addQuestionComponentView()
     }
     
@@ -529,13 +552,14 @@ extension ProfileDetailViewController {
         
         self.view.layoutIfNeeded()
         
-        self.informationViewHeightAnchor?.update(offset: self.informationView.recursiveUnionInDepthFor(view: self.informationView).height + 40)
+        self.informationViewHeightAnchor?.update(
+            offset: nameLabel.frame.height + badgeButton.frame.height + aboutMeTitleLabel.frame.height + mbtiLabel.frame.height + aboutMeTextLabel.frame.height + 159
+        )
     }
     
     private func addQuestionComponentView() {
         questionView.addSubview(questionTitleLabel)
         questionView.addSubview(questionTextView)
-        questionView.addSubview(addBackgroundView)
         
         questionTitleLabel.snp.makeConstraints { make in
             make.leading.equalToSuperview().offset(16)
@@ -544,30 +568,50 @@ extension ProfileDetailViewController {
             make.height.equalTo(24)
         }
         
+        self.view.layoutIfNeeded()
+        
+        let height = questionTextView.oneTitleLabel.frame.height + questionTextView.oneTextLabel.frame.height + questionTextView.twoTitleLabel.frame.height + questionTextView.twoTextLabel.frame.height
+        
         questionTextView.snp.makeConstraints { make in
             make.leading.equalToSuperview().offset(16)
             make.trailing.equalToSuperview().offset(-16)
             make.top.equalTo(self.questionTitleLabel.snp.bottom).offset(22)
-            self.questionTextViewHeightAnchor = make.height.equalTo(267).constraint
+            if self.questionList.count > 2 {
+                self.questionTextViewHeightAnchor = make.height.equalTo(height + 44).constraint
+            } else {
+                if self.questionList.count == 1 {
+                    self.questionTextViewHeightAnchor = make.height.equalTo(height + 37).constraint
+                } else {
+                    self.questionTextViewHeightAnchor = make.height.equalTo(height + 59).constraint
+                }
+            }
         }
         
-        addBackgroundView.snp.makeConstraints { make in
+        self.view.layoutIfNeeded()
+        
+        if self.questionList.count > 2 {
+            self.questionViewHeightAnchor?.update(offset: questionTitleLabel.frame.height + questionTextView.frame.height + 210)
+            
+            addMoreBackgroundViewComponentView()
+        } else {
+            self.questionViewHeightAnchor?.update(offset: questionTitleLabel.frame.height + questionTextView.frame.height + 130)
+            
+            animateView()
+        }
+    }
+    
+    private func addMoreBackgroundViewComponentView() {
+        questionView.addSubview(moreBackgroundView)
+        
+        moreBackgroundView.addSubview(moreImageView)
+        moreBackgroundView.addSubview(moreButton)
+        
+        moreBackgroundView.snp.makeConstraints { make in
             make.leading.equalToSuperview().offset(16)
             make.trailing.equalToSuperview().offset(-16)
             make.top.equalTo(self.questionTextView.snp.bottom)
             make.height.equalTo(80)
         }
-        
-        self.view.layoutIfNeeded()
-        
-        self.questionViewHeightAnchor?.update(offset: questionTitleLabel.frame.height + questionTextView.frame.height + 190)
-        
-        addAddBackgroundComponentView()
-    }
-    
-    private func addAddBackgroundComponentView() {
-        addBackgroundView.addSubview(moreImageView)
-        addBackgroundView.addSubview(moreButton)
         
         moreImageView.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
@@ -587,18 +631,25 @@ extension ProfileDetailViewController {
     }
     
     private func addNaviButton(){
-        backgroundView.addSubview(closeButton)
-        backgroundView.addSubview(menuButton)
+        view.addSubview(naviView)
+        
+        naviView.addSubview(closeButton)
+        naviView.addSubview(menuButton)
+        
+        naviView.snp.makeConstraints { make in
+            make.leading.trailing.top.equalToSuperview()
+            make.height.equalTo(100)
+        }
         
         closeButton.snp.makeConstraints { make in
             make.leading.equalToSuperview().offset(16)
-            make.top.equalToSuperview().offset(60)
+            make.bottom.equalToSuperview().offset(-16)
             make.width.height.equalTo(24)
         }
         
         menuButton.snp.makeConstraints { make in
             make.trailing.equalToSuperview().offset(-16)
-            make.top.equalToSuperview().offset(57)
+            make.bottom.equalToSuperview().offset(-16)
             make.width.height.equalTo(30)
         }
         
@@ -611,6 +662,35 @@ extension ProfileDetailViewController {
             self.backgroundViewHeightAnchor?.update(offset: self.backgroundView.recursiveUnionInDepthFor(view: self.backgroundView).height)
         }
     }
+    
+    private func setCollectionViewLayout(width: CGFloat, height: CGFloat) -> UICollectionViewFlowLayout {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .horizontal
+        layout.minimumLineSpacing = 0
+        layout.minimumInteritemSpacing = 0
+        layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        layout.itemSize = CGSize(width: width, height: height)
+        return layout
+    }
+    
+    private func addSampleImages() {
+        for _ in 0..<9 {
+            self.todayTeen?.images.append(DesignSystemAsset.blackGlass.image)
+        }
+        
+        guard let imagesCount = self.todayTeen?.images.count else { return }
+        
+        pageControl.pages = imagesCount
+        
+        if imagesCount <= 5 {
+            pageControl.maxDots = 5
+            pageControl.centerDots = 5
+        } else {
+            pageControl.maxDots = 7
+            pageControl.centerDots = 3
+        }
+        self.teenCollectionView.reloadData()
+    }
 }
 
 // MARK: - Animation
@@ -622,6 +702,10 @@ extension ProfileDetailViewController {
             self.widthAnchor?.update(offset: self.view.frame.width)
             self.heightAnchor?.update(offset: self.view.frame.height)
             
+            self.teenCollectionView.collectionViewLayout = self.setCollectionViewLayout(
+                width: self.view.frame.width,
+                height: self.view.frame.height)
+            
             self.scrollView.layer.cornerRadius = 0
             self.backgroundView.layer.cornerRadius = 0
             self.view.layoutIfNeeded()
@@ -629,39 +713,41 @@ extension ProfileDetailViewController {
             self.topGradientLayer.frame = CGRect(
                 x: 0,
                 y: 0,
-                width: self.todayTeenImageView.frame.width,
-                height: self.todayTeenImageView.frame.height / 2)
+                width: self.teenCollectionView.frame.width,
+                height: self.teenCollectionView.frame.height / 2)
             
             self.bottomGradientLayer.frame = CGRect(
                 x: 0,
-                y: self.todayTeenImageView.frame.height / 2,
-                width: self.todayTeenImageView.frame.width,
-                height: self.todayTeenImageView.frame.height / 2)
+                y: self.teenCollectionView.frame.height / 2,
+                width: self.teenCollectionView.frame.width,
+                height: self.teenCollectionView.frame.height / 2)
             
             self.view.layoutIfNeeded()
             
-            self.backgroundViewHeightAnchor?.update(offset: self.backgroundView.recursiveUnionInDepthFor(view: self.backgroundView).height)
+            self.backgroundViewHeightAnchor?.update(offset: self.teenCollectionView.frame.height + self.informationView.frame.height + self.divider.frame.height + self.questionView.frame.height)
             
             self.view.layoutIfNeeded()
             
             self.scrollView.contentSize = CGSize(width: self.view.frame.width, height: self.backgroundView.frame.height)
         } completion: { _ in
-            self.todayTeenImageView.clipsToBounds = true
-            self.todayTeenImageView.contentMode = .scaleAspectFill
             self.barView.alpha = 1
         }
     }
     
     func closeAnimation() {
+        self.teenCollectionView.scrollToItem(at: IndexPath(item: 0, section: 0), at: .centeredHorizontally, animated: true)
+        
         self.scrollView.layer.cornerRadius = 20
+        self.scrollView.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
         
         //TODO: - 이미지 뷰 뺴고 다 0
+        self.naviView.alpha = 0
         self.closeButton.alpha = 0
         self.menuButton.alpha = 0
+        self.pageControl.alpha = 0
+        self.categoryLabel.alpha = 0
         self.heartButton.alpha = 0
         self.barView.alpha = 0
-        
-        self.todayTeenImageView.clipsToBounds = false
         
         UIView.animate(withDuration: 0.3, delay: 0, options: .showHideTransitionViews) {
             if let frame = self.frame {
@@ -670,10 +756,103 @@ extension ProfileDetailViewController {
                 self.widthAnchor?.update(offset: frame.size.width)
                 self.heightAnchor?.update(offset: frame.size.height)
                 
+                self.teenCollectionView.collectionViewLayout = self.setCollectionViewLayout(
+                    width: frame.width,
+                    height: frame.height)
+                
                 self.view.layoutIfNeeded()
             }
         } completion: { _ in
             self.coordinator?.didFinishFlow()
+        }
+    }
+    
+    func moreButtonAnimation(_ sender: UIButton) {
+        if sender.titleLabel?.text == "펼쳐서 보기" {
+            UIView.animate(withDuration: 0.3, delay: 0, options: .showHideTransitionViews) {
+                self.questionTextViewHeightAnchor?.update(offset: self.questionTextView.recursiveUnionInDepthFor(view: self.questionTextView).height + 15)
+                
+                self.view.layoutIfNeeded()
+                self.questionViewHeightAnchor?.update(offset: self.questionTitleLabel.frame.height + self.questionTextView.frame.height + 210)
+                
+                self.view.layoutIfNeeded()
+                self.backgroundViewHeightAnchor?.update(offset: self.teenCollectionView.frame.height + self.informationView.frame.height + self.divider.frame.height + self.questionView.frame.height)
+                
+                self.view.layoutIfNeeded()
+                self.scrollView.contentSize = CGSize(width: self.view.frame.width, height: self.backgroundView.frame.height)
+                
+                sender.setTitle("접기", for: .normal)
+            }
+        } else {
+            UIView.animate(withDuration: 0.3, delay: 0, options: .showHideTransitionViews) {
+                self.view.layoutIfNeeded()
+                let originHeight = self.questionTextView.oneTitleLabel.frame.height + self.questionTextView.oneTextLabel.frame.height + self.questionTextView.twoTitleLabel.frame.height + self.questionTextView.twoTextLabel.frame.height + 44
+
+                self.questionTextViewHeightAnchor?.update(offset: originHeight)
+                
+                self.view.layoutIfNeeded()
+                self.questionViewHeightAnchor?.update(offset: self.questionTitleLabel.frame.height + self.questionTextView.frame.height + 210)
+                
+                self.view.layoutIfNeeded()
+                self.backgroundViewHeightAnchor?.update(offset: self.teenCollectionView.frame.height + self.informationView.frame.height + self.divider.frame.height + self.questionView.frame.height)
+                
+                self.view.layoutIfNeeded()
+                self.scrollView.contentSize = CGSize(width: self.view.frame.width, height: self.backgroundView.frame.height)
+                
+                sender.setTitle("펼쳐서 보기", for: .normal)
+            }
+        }
+    }
+}
+
+extension ProfileDetailViewController: UIScrollViewDelegate {
+    public func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if let frame = frame {
+            let scrollOffset = scrollView.contentOffset.y
+            
+            if scrollOffset > frame.height - 100 {
+                naviView.backgroundColor = .white
+                closeButton.setImage(DesignSystemAsset.xMarkIcon.image, for: .normal)
+                menuButton.setImage(DesignSystemAsset.menuBlackIcon.image, for: .normal)
+            } else {
+                naviView.backgroundColor = .clear
+                closeButton.setImage(DesignSystemAsset.xMarkWhiteIcon.image, for: .normal)
+                menuButton.setImage(DesignSystemAsset.menuIcon.image, for: .normal)
+            }
+        }
+    }
+}
+
+// MARK: - UICollectionViewDataSource
+extension ProfileDetailViewController: UICollectionViewDataSource {
+    public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard
+            let cell = collectionView.dequeueReusableCell(
+                withReuseIdentifier: TeenImageCellCollectionViewCell.reuseIdentifier,
+                for: indexPath) as? TeenImageCellCollectionViewCell, let todayTeen = self.todayTeen
+        else {
+            return UICollectionViewCell()
+        }
+        cell.setImage(image: todayTeen.images[indexPath.row])
+        
+        return cell
+    }
+
+    public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        self.todayTeen?.images.count ?? 1
+    }
+}
+
+// MARK: - UICollectionViewDelegate
+extension ProfileDetailViewController: UICollectionViewDelegate {
+    public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        //TODO: 셀 클릭할 떄 동작
+    }
+
+    public func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        if scrollView == teenCollectionView {
+            let pageIndex = Int(targetContentOffset.pointee.x / self.view.frame.width)
+            pageControl.selectedPage = pageIndex
         }
     }
 }
