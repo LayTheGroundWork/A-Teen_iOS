@@ -1,0 +1,315 @@
+//
+//  ChatRoomViewController.swift
+//  ChatingFeature
+//
+//  Created by 김명현 on 7/10/24.
+//
+
+import Common
+import DesignSystem
+import UIKit
+
+final class ChatRoomViewController: UIViewController {
+    var chatMessageArray: [ChatMessageModel] = []
+    var partnerName: String?
+    
+    private lazy var backButton: UIButton = {
+        let button = UIButton()
+        button.setImage(UIImage(systemName: "arrow.left"), for: .normal)
+        button.tintColor = .white
+        
+        return button
+    }()
+    
+    private lazy var chatPartnerNameLabel: UILabel = {
+        let label = UILabel()
+        label.text = partnerName
+        label.textColor = .white
+        label.font = .systemFont(ofSize: 20, weight: .bold)
+        
+        return label
+    }()
+    
+    private lazy var headerBackground: UIView = {
+        let view = UIView()
+        view.backgroundColor = UIColor(named: "mainColor")
+        view.layer.cornerRadius = 25
+        view.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
+        view.layer.shadowColor = UIColor.black.cgColor
+        view.layer.shadowOpacity = 0.15
+        view.layer.shadowOffset = CGSize(width: 4, height: 4)
+        view.layer.shadowRadius = 4
+        
+        return view
+    }()
+    
+    private lazy var moreOptionsButton: UIButton = {
+        let button = UIButton()
+        button.setImage(UIImage(systemName: "ellipsis"), for: .normal)
+        button.tintColor = .white
+        button.addTarget(self, action: #selector(tappedMoreOptionsButton(_:)), for: .touchUpInside)
+        
+        return button
+    }()
+    
+    private lazy var messageTextViewBackground: UIView = {
+        let view = UIView()
+        view.backgroundColor = .systemGray6
+        view.layer.cornerRadius = 12
+        
+        return view
+    }()
+    
+    private lazy var messageTextView: UITextView = {
+        let textView = UITextView()
+        textView.text = "메세지를 입력해보세요"
+        textView.layer.cornerRadius = 12
+        textView.backgroundColor = .clear
+        textView.textContainerInset = UIEdgeInsets(top: 15, left: 15, bottom: 10, right: 15)
+        textView.font = UIFont.systemFont(ofSize: 15)
+        textView.textColor = .placeholderText
+        textView.isScrollEnabled = false
+        textView.delegate = self
+        return textView
+    }()
+    
+    private lazy var messageSendButton: UIButton = {
+        let button = UIButton()
+        button.backgroundColor = .gray
+        button.layer.cornerRadius = 12
+        button.setTitle("보내기", for: .normal)
+        button.setTitleColor(.white, for: .normal)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 14, weight: .semibold)
+        button.titleLabel?.textAlignment = .left
+        
+        let image = UIImage(systemName: "arrowtriangle.right.fill")
+        button.setImage(image, for: .normal)
+        button.tintColor = .white
+        
+        //        button.semanticContentAttribute = .forceRightToLeft
+        
+        button.titleEdgeInsets = UIEdgeInsets(top: 0, left: -35, bottom: 0, right: 0)
+        button.imageEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: -80)
+        
+        return button
+    }()
+    
+    private lazy var chatRoomTableView: UITableView = {
+        let tableView = UITableView()
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.backgroundColor = .white
+        tableView.separatorStyle = .none
+        
+        tableView.register(PartnerChatMessageViewCell.self, forCellReuseIdentifier: PartnerChatMessageViewCell.reuseIdentifier)
+        tableView.register(UserChatMessageViewCell.self, forCellReuseIdentifier: UserChatMessageViewCell.reuseIdentifier)
+        
+        return tableView
+    }()
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        view.backgroundColor = .white
+        navigationController?.setNavigationBarHidden(true, animated: true)
+        
+        setupActions()
+        configUserInterface()
+        configLayout()
+        
+        if let partnerName = partnerName {
+            chatPartnerNameLabel.text = partnerName
+        }
+    }
+    
+    private func configUserInterface() {
+        view.addSubview(chatRoomTableView)
+        view.addSubview(headerBackground)
+        view.addSubview(messageTextViewBackground)
+        messageTextViewBackground.addSubview(messageTextView)
+        messageTextViewBackground.addSubview(messageSendButton)
+        headerBackground.addSubview(chatPartnerNameLabel)
+        headerBackground.addSubview(backButton)
+        headerBackground.addSubview(moreOptionsButton)
+    }
+    
+    private func configLayout() {
+        chatRoomTableView.snp.makeConstraints { make in
+            make.top.equalTo(headerBackground.snp.bottom)
+            make.leading.trailing.equalToSuperview()
+            make.bottom.equalTo(messageTextView.snp.top)
+        }
+        
+        headerBackground.snp.makeConstraints { make in
+            make.top.leading.trailing.equalToSuperview()
+            make.height.equalTo(120)
+        }
+        
+        backButton.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(70)
+            make.leading.equalToSuperview().offset(21)
+            make.width.equalTo(30)
+            make.height.equalTo(30)
+        }
+        
+        chatPartnerNameLabel.snp.makeConstraints { make in
+            make.centerY.equalTo(backButton)
+            make.centerX.equalToSuperview()
+            make.height.equalTo(28)
+        }
+        
+        messageTextViewBackground.snp.makeConstraints { make in
+            make.bottom.equalToSuperview().offset(-54)
+            make.leading.equalToSuperview().offset(ViewValues.defaultPadding)
+            make.trailing.equalToSuperview().offset(-ViewValues.defaultPadding)
+            make.height.equalTo(48)
+        }
+        
+        messageSendButton.snp.makeConstraints { make in
+            make.centerY.equalToSuperview()
+            make.trailing.equalToSuperview().offset(-25)
+            make.width.equalTo(79)
+            make.height.equalTo(28)
+        }
+        
+        messageTextView.snp.makeConstraints { make in
+            make.top.leading.equalToSuperview()
+            make.trailing.equalTo(messageSendButton.snp.leading)
+            make.height.greaterThanOrEqualTo(48)
+        }
+        
+        moreOptionsButton.snp.makeConstraints { make in
+            make.centerY.equalTo(backButton)
+            make.trailing.equalToSuperview().offset(-16)
+            make.width.equalTo(40)
+            make.height.equalTo(40)
+        }
+    }
+    
+    private func setupActions() {
+        backButton.addTarget(self,
+                             action: #selector(tappedBackButton(_:)),
+                             for: .touchUpInside)
+        
+        moreOptionsButton.addTarget(self,
+                                    action: #selector(tappedMoreOptionsButton(_:)),
+                                    for: .touchUpInside)
+        
+        messageSendButton.addTarget(self,
+                                    action: #selector(tappedMessageSendButton(_:)),
+                                    for: .touchUpInside)
+    }
+    
+    private func updateSendButtonState() {
+        if messageTextView.text.isEmpty || messageTextView.text == "메세지를 입력해보세요" {
+            messageSendButton.backgroundColor = .gray
+            messageSendButton.isEnabled = false
+        } else {
+            messageSendButton.backgroundColor = UIColor(named: "mainColor")
+            messageSendButton.isEnabled = true
+        }
+    }
+    
+    @objc func tappedBackButton(_ sender: UIButton) {
+        navigationController?.popViewController(animated: true)
+    }
+    
+    @objc func tappedMoreOptionsButton(_ sender: UIButton) {
+        
+    }
+    
+    @objc func tappedMessageSendButton(_ sender: UIButton) {
+        guard let text = messageTextView.text, !text.isEmpty else { return }
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "HH:mm"
+        let currentTime = dateFormatter.string(from: Date())
+        
+        if let lastMessage = chatMessageArray.last, lastMessage.time == currentTime {
+            chatMessageArray[chatMessageArray.count - 1].isHiddenTimeLabel = true
+        }
+        
+        let newMessage = ChatMessageModel(text: text, messageType: .user, time: currentTime)
+        chatMessageArray.append(newMessage)
+        chatRoomTableView.reloadData()
+        messageTextView.text = ""
+        
+        // 늘어난 textView 원래크기로 초기화
+        UIView.animate(withDuration: 0.2) {
+            self.messageTextViewBackground.snp.updateConstraints { make in
+                make.height.equalTo(48)
+            }
+            self.updateSendButtonState()
+        }
+    }
+}
+
+extension ChatRoomViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        chatMessageArray.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        // Cell 분기처리
+        let message = chatMessageArray[indexPath.row]
+        
+        if message.messageType == .user {
+            guard let cell = tableView.dequeueReusableCell(
+                withIdentifier: UserChatMessageViewCell.reuseIdentifier,
+                for: indexPath
+            ) as? UserChatMessageViewCell else { return UITableViewCell() }
+            cell.setMessage(message.text, message.time, message.isHiddenTimeLabel)
+            return cell
+        } else {
+            guard let cell = tableView.dequeueReusableCell(
+                withIdentifier: PartnerChatMessageViewCell.reuseIdentifier,
+                for: indexPath
+            ) as? PartnerChatMessageViewCell else { return UITableViewCell() }
+            cell.setMessage(message.text, message.time, message.isHiddenTimeLabel)
+            return cell
+        }
+    }
+    
+}
+
+extension ChatRoomViewController: UITableViewDelegate {
+    
+}
+
+extension ChatRoomViewController: UITextViewDelegate {
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if textView.textColor == .placeholderText {
+            textView.text = nil
+            textView.textColor = .label
+        }
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if textView.text.isEmpty {
+            textView.text = "메세지를 입력해보세요"
+            textView.textColor = .placeholderText
+        }
+        
+    }
+    
+    func textViewDidChange(_ textView: UITextView) {
+        let size = CGSize(width: textView.frame.width, height: .infinity)
+        let estimatedSize = textView.sizeThatFits(size)
+        
+        UIView.animate(withDuration: 0.2) {
+            self.messageTextViewBackground.snp.updateConstraints { make in
+                make.height.equalTo(max(estimatedSize.height, 48))
+            }
+            self.view.layoutIfNeeded()
+            self.updateSendButtonState()
+        }
+    }
+    
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        // 300자 이상 제한
+        let newText = (textView.text as NSString).replacingCharacters(in: range, with: text)
+        return newText.count <= 300
+    }
+}
+
+
+

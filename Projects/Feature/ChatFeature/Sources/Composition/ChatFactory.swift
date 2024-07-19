@@ -14,7 +14,7 @@ public protocol ChatFactory {
 public struct ChatFactoryImp: ChatFactory {
     public init() { }
     public func makeChatViewController() -> UIViewController {
-        let controller = ChatViewContoller()
+        let controller = MainChatViewController()
         controller.navigationItem.title = "Chat"
         return controller
     }
