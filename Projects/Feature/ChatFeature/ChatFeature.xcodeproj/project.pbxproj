@@ -3,11 +3,14 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 55;
+	objectVersion = 56;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		0405AF9BE9B2A97C06FF10E0 /* ChatFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = E157CED2D7F38E69A7D15DD4 /* ChatFactory.swift */; };
+		048B3CFE2C4A4CD300FA637A /* ChatModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048B3CFD2C4A4CD300FA637A /* ChatModel.swift */; };
+		048B3D012C4A4F3B00FA637A /* ChatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048B3D002C4A4F3B00FA637A /* ChatViewModel.swift */; };
+		048B3D042C4A648C00FA637A /* ChatCoordinator+ChatConfigTabbarStateDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048B3D032C4A648C00FA637A /* ChatCoordinator+ChatConfigTabbarStateDelegate.swift */; };
 		554E3EF727A5CB6C969C0F02 /* FeatureDependency.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B6F1FC0AE38C9F2256C30FC /* FeatureDependency.framework */; };
 		5A8197ECDF6EE034FC2AC750 /* LeaveButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C926D01773ED6DA626B4928D /* LeaveButtonView.swift */; };
 		A08B70F7A94B3E96BD6076CB /* ChatCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1CE135CC907C86B3762D20 /* ChatCoordinator.swift */; };
@@ -33,6 +36,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		048B3CFD2C4A4CD300FA637A /* ChatModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatModel.swift; sourceTree = "<group>"; };
+		048B3D002C4A4F3B00FA637A /* ChatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewModel.swift; sourceTree = "<group>"; };
+		048B3D032C4A648C00FA637A /* ChatCoordinator+ChatConfigTabbarStateDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ChatCoordinator+ChatConfigTabbarStateDelegate.swift"; sourceTree = "<group>"; };
 		11ADF59C0267B2D34961074B /* ChatMessageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMessageModel.swift; sourceTree = "<group>"; };
 		2735D9F6B05793A1C3ABAEE4 /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
 		2B6F1FC0AE38C9F2256C30FC /* FeatureDependency.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FeatureDependency.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -61,6 +67,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		048B3CFF2C4A4F2700FA637A /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				048B3D002C4A4F3B00FA637A /* ChatViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		048B3D022C4A644B00FA637A /* MainChat */ = {
+			isa = PBXGroup;
+			children = (
+				BF1CE135CC907C86B3762D20 /* ChatCoordinator.swift */,
+				E157CED2D7F38E69A7D15DD4 /* ChatFactory.swift */,
+				048B3D032C4A648C00FA637A /* ChatCoordinator+ChatConfigTabbarStateDelegate.swift */,
+			);
+			path = MainChat;
+			sourceTree = "<group>";
+		};
 		2A644053838CFBB7C6F15420 /* Config */ = {
 			isa = PBXGroup;
 			children = (
@@ -100,6 +124,7 @@
 		6A3B0783441CC925B7AE721D /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				048B3CFF2C4A4F2700FA637A /* ViewModel */,
 				EB9C346FEA58491DAF7BE17D /* Cell */,
 				B03EFC76F581508B67CD3FC7 /* Model */,
 				323EA7FBEDF3775D7ACB66EB /* View */,
@@ -128,8 +153,7 @@
 		9753056E96A6214F09E12576 /* Composition */ = {
 			isa = PBXGroup;
 			children = (
-				BF1CE135CC907C86B3762D20 /* ChatCoordinator.swift */,
-				E157CED2D7F38E69A7D15DD4 /* ChatFactory.swift */,
+				048B3D022C4A644B00FA637A /* MainChat */,
 			);
 			path = Composition;
 			sourceTree = "<group>";
@@ -138,6 +162,7 @@
 			isa = PBXGroup;
 			children = (
 				11ADF59C0267B2D34961074B /* ChatMessageModel.swift */,
+				048B3CFD2C4A4CD300FA637A /* ChatModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -207,8 +232,6 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
 				ORGANIZATIONNAME = ATeen;
-				TargetAttributes = {
-				};
 			};
 			buildConfigurationList = E56248A5BA0D49BC0F2EFE59 /* Build configuration list for PBXProject "ChatFeature" */;
 			compatibilityVersion = "Xcode 14.0";
@@ -246,11 +269,14 @@
 				5A8197ECDF6EE034FC2AC750 /* LeaveButtonView.swift in Sources */,
 				A08B70F7A94B3E96BD6076CB /* ChatCoordinator.swift in Sources */,
 				0405AF9BE9B2A97C06FF10E0 /* ChatFactory.swift in Sources */,
+				048B3D042C4A648C00FA637A /* ChatCoordinator+ChatConfigTabbarStateDelegate.swift in Sources */,
 				CDFD8696BA4B025B3EC4AB5F /* ChatRoomCell.swift in Sources */,
 				EF4949BE3D25C7F9D0C11310 /* PartnerChatMessageViewCell.swift in Sources */,
+				048B3CFE2C4A4CD300FA637A /* ChatModel.swift in Sources */,
 				DE1EA2954425EC472B6DA91C /* UserChatMessageViewCell.swift in Sources */,
 				FCA54286F92D000A848AD1BC /* ChatMessageModel.swift in Sources */,
 				D8670E0E2DBB00C2C002633C /* ChatRoomViewController.swift in Sources */,
+				048B3D012C4A4F3B00FA637A /* ChatViewModel.swift in Sources */,
 				DF1CD913D48779955CD9EA42 /* MainChatViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -278,7 +304,10 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				OTHER_LDFLAGS = "$(inherited) -ObjC";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ATeen.ATeen.ChatFeature;
 				PRODUCT_NAME = ChatFeature;
 				SDKROOT = iphoneos;
@@ -427,7 +456,10 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				OTHER_LDFLAGS = "$(inherited) -ObjC";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ATeen.ATeen.ChatFeature;
 				PRODUCT_NAME = ChatFeature;
 				SDKROOT = iphoneos;
@@ -435,10 +467,7 @@
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = (
-					"$(inherited)",
-					DEBUG,
-				);
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG";
 				SWIFT_COMPILATION_MODE = singlefile;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;

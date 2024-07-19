@@ -12,7 +12,6 @@ import UIKit
 class ChatRoomCell: UITableViewCell {
     private lazy var profileImage: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "dog")
         imageView.contentMode = .scaleToFill
         imageView.clipsToBounds = true
         imageView.layer.cornerRadius = 10
@@ -22,7 +21,6 @@ class ChatRoomCell: UITableViewCell {
     
     private lazy var nameLabel: UILabel = {
         let label = UILabel()
-        label.text = "김철수"
         label.font = .systemFont(ofSize: 13, weight: .bold)
         
         return label
@@ -30,7 +28,6 @@ class ChatRoomCell: UITableViewCell {
     
     private lazy var messageLabel: UILabel = {
         let label = UILabel()
-        label.text = "안녕하세요! 반값습니다 :)\n김철수라고 해요!"
         label.numberOfLines = 2
         label.font = .systemFont(ofSize: 12, weight: .regular)
         label.textColor = .systemGray
@@ -40,7 +37,6 @@ class ChatRoomCell: UITableViewCell {
     
     private lazy var timeLabel: UILabel = {
         let label = UILabel()
-        label.text = "15분 전"
         label.font = .systemFont(ofSize: 12, weight: .regular)
         label.textColor = .systemGray
         
@@ -54,10 +50,9 @@ class ChatRoomCell: UITableViewCell {
         background.layer.masksToBounds = true
         
         let label = UILabel()
-        label.text = "1"
         label.textColor = .white
         label.textAlignment = .center
-        label.font = .systemFont(ofSize: 12, weight: .regular)
+        label.font = .systemFont(ofSize: 12, weight: .bold)
         
         background.addSubview(label)
         
@@ -119,8 +114,14 @@ class ChatRoomCell: UITableViewCell {
         }
     }
     
-    func configure(_ name: String) {
-        nameLabel.text = name
+    func configure(_ chatRoom: ChatModel) {
+        profileImage.image = chatRoom.profileImageName
+        nameLabel.text = chatRoom.name
+        messageLabel.text = chatRoom.lastMessage
+        timeLabel.text = chatRoom.lastMessageTime
+        if let label = unreadCountLabel.subviews.first as? UILabel {
+            label.text = "\(chatRoom.unreadCount)"
+        }
     }
 }
 

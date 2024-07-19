@@ -11,11 +11,16 @@ import DesignSystem
 import UIKit
 import SnapKit
 
-final class MainChatViewController: UIViewController {
-    private var chatRooms = ["강치우", "노주영", "이창준", "최동호"]
-    private var filteredChatRooms:[String] = []
+public protocol MainChatViewControllerCoordinator: AnyObject {
+    func configTabbarState(view: ChatFeatureViewNames)
+    func navigateToChatRoom(chatRoom: ChatModel)
+}
+
+public final class MainChatViewController: UIViewController {
+    // MARK: - Private properties
+    private var viewModel = ChatViewModel()
     private var deleteIndexPath: IndexPath?
-    
+    private weak var coordinator: MainChatViewControllerCoordinator?
     
     private lazy var chatTableView: UITableView = {
         let tableView = UITableView()
@@ -58,13 +63,31 @@ final class MainChatViewController: UIViewController {
         return title
     }()
     
-    override func viewDidLoad() {
+    // MARK: - Life Cycle
+    
+    public init(coordinator: MainChatViewControllerCoordinator) {
+        self.coordinator = coordinator
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    public override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
+        navigationController?.isNavigationBarHidden = true
         
-        filteredChatRooms = chatRooms
+        viewModel.filteredChatRooms = viewModel.chatRooms
         configUserInterFace()
         configLayout()
+    }
+    
+    public override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        coordinator?.configTabbarState(view: .main)
+        navigationController?.isNavigationBarHidden = true
     }
     
     private func configUserInterFace() {
@@ -79,7 +102,7 @@ final class MainChatViewController: UIViewController {
             make.top.equalTo(searchTextField.snp.bottom).offset(20)
             make.leading.equalToSuperview()
             make.trailing.equalToSuperview()
-            make.bottom.equalToSuperview().offset(-80)
+            make.bottom.equalToSuperview().offset(-85)
         }
         
         searchTextField.snp.makeConstraints { make in
@@ -95,41 +118,45 @@ final class MainChatViewController: UIViewController {
         }
     }
     
+    private func navigateToChatRoom(chatRoom: ChatModel) {
+        coordinator?.navigateToChatRoom(chatRoom: chatRoom)
+    }
+    
     @objc func searchTextChanged() {
         if let searchText = searchTextField.text, !searchText.isEmpty {
-            filteredChatRooms = chatRooms.filter { $0.contains(searchText) }
+            viewModel.filteredChatRooms = viewModel.chatRooms.filter { $0.name.contains(searchText) }
         } else {
-            filteredChatRooms = chatRooms
+            viewModel.filteredChatRooms = viewModel.chatRooms
         }
         chatTableView.reloadData()
     }
 }
 
+// MARK: - Extensions here
 extension MainChatViewController: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        filteredChatRooms.count
+    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        viewModel.filteredChatRooms.count
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(
             withIdentifier: ChatRoomCell.reuseIdentifier,
             for: indexPath
         ) as? ChatRoomCell else { return UITableViewCell() }
-        if indexPath.row < filteredChatRooms.count {
-            let name = filteredChatRooms[indexPath.row]
-            cell.configure(name)
-            
+        if indexPath.row < viewModel.filteredChatRooms.count {
+            let chatRoom = viewModel.filteredChatRooms[indexPath.row]
+            cell.configure(chatRoom)
         }
         return cell
     }
 }
 
 extension MainChatViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         85
     }
     
-    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+    public func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let leaveAction = UIContextualAction(style: .destructive, title: "") { (action, view, completionHandler) in
             // trailingSwipeButton 눌렀을때 액션
             self.showLeaveAlert()
@@ -147,12 +174,13 @@ extension MainChatViewController: UITableViewDelegate {
         return configuration
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let chatRoomVC = ChatRoomViewController()
-        let name = filteredChatRooms[indexPath.row]
+        let chatRoom = viewModel.filteredChatRooms[indexPath.row]
         
-        chatRoomVC.partnerName = name
-        navigationController?.pushViewController(chatRoomVC, animated: true)
+        chatRoomVC.partnerName = chatRoom.name
+        chatRoomVC.coordinator = coordinator
+        navigateToChatRoom(chatRoom: chatRoom)
     }
     
     private func showLeaveAlert() {
@@ -170,29 +198,31 @@ extension MainChatViewController: UITableViewDelegate {
             rightButtonText: "나가기",
             rightButtonColor: .red,
             coordinator: self)
+        alertVC.modalPresentationStyle = .overFullScreen
+        alertVC.modalTransitionStyle = .crossDissolve
+        present(alertVC, animated: true, completion: nil)
     }
 }
 
 extension MainChatViewController: UITextFieldDelegate {
-    func textFieldDidBeginEditing(_ textField: UITextField) {
+    public func textFieldDidBeginEditing(_ textField: UITextField) {
         textField.placeholder = ""
     }
 }
 
 extension MainChatViewController: AlertViewControllerCoordinator {
-    func didSelectButton() {
+    public func didSelectButton() {
         dismiss(animated: true)
     }
     
-    func didSelectSecondButton() {
+    public func didSelectSecondButton() {
         guard let indexPath = deleteIndexPath else { return }
-        let nameToRemove = filteredChatRooms[indexPath.row]
+        let chatRoomRemove = viewModel.filteredChatRooms[indexPath.row]
         
-        if let indexInChatRooms = chatRooms.firstIndex(of: nameToRemove) {
-            chatRooms.remove(at: indexInChatRooms)
+        if let indexInChatRooms = viewModel.chatRooms.firstIndex(where: { $0.name == chatRoomRemove.name }) {
+            viewModel.chatRooms.remove(at: indexInChatRooms)
         }
-        
-        filteredChatRooms.remove(at: indexPath.row)
+        viewModel.filteredChatRooms.remove(at: indexPath.row)
         chatTableView.deleteRows(at: [indexPath], with: .automatic)
         
         dismiss(animated: true)

@@ -46,6 +46,7 @@ public final class MainTabCoordinator: Coordinator {
             delegate: self,
             mainDelegate: self,
             rankingDelegate: self,
+            chatDelegate: self,
             coordinatorProvider: coordinatorProvider
         )
         let childNavigation = childCoordinators.map { $0.navigation.rootViewController }

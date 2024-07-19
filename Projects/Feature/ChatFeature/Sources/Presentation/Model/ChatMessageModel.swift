@@ -20,3 +20,4 @@ struct ChatMessageModel {
     var isHiddenTimeLabel: Bool = false
 }
 
+

@@ -12,6 +12,7 @@ import UIKit
 final class ChatRoomViewController: UIViewController {
     var chatMessageArray: [ChatMessageModel] = []
     var partnerName: String?
+    weak var coordinator: MainChatViewControllerCoordinator?
     
     private lazy var backButton: UIButton = {
         let button = UIButton()
@@ -32,7 +33,7 @@ final class ChatRoomViewController: UIViewController {
     
     private lazy var headerBackground: UIView = {
         let view = UIView()
-        view.backgroundColor = UIColor(named: "mainColor")
+        view.backgroundColor = DesignSystemAsset.mainColor.color
         view.layer.cornerRadius = 25
         view.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
         view.layer.shadowColor = UIColor.black.cgColor
@@ -121,6 +122,10 @@ final class ChatRoomViewController: UIViewController {
         }
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        coordinator?.configTabbarState(view: .chatRoom)
+    }
+    
     private func configUserInterface() {
         view.addSubview(chatRoomTableView)
         view.addSubview(headerBackground)
@@ -204,7 +209,7 @@ final class ChatRoomViewController: UIViewController {
             messageSendButton.backgroundColor = .gray
             messageSendButton.isEnabled = false
         } else {
-            messageSendButton.backgroundColor = UIColor(named: "mainColor")
+            messageSendButton.backgroundColor = DesignSystemAsset.mainColor.color
             messageSendButton.isEnabled = true
         }
     }
