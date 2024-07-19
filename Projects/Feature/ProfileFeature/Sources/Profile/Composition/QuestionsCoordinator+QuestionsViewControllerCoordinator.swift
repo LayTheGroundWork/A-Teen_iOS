@@ -14,7 +14,12 @@ extension QuestionsCoordinator: QuestionsViewControllerCoordinator {
     }
     
     public func didTabSelectQuestionButton() {
-        print("여기 얼럿")
+        let coordinator = factory.makeQuestionsDialogCoordinator(delegate: self)
+        addChildCoordinatorStart(coordinator)
+        
+        navigation.present(
+            coordinator.navigation.rootViewController,
+            animated: false)
     }
     
     public func configTabbarState(view: ProfileFeatureViewNames) {

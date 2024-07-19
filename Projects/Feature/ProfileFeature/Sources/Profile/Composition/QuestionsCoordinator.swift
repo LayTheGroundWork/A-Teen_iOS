@@ -18,6 +18,7 @@ public final class QuestionsCoordinator: Coordinator {
     public var navigation: Navigation
     public var factory: QuestionsFactory
     weak var delegate: QuestionsCoordinatorDelegate?
+    weak var questionsViewControllerDelegate: QuestionsViewControllerDelegate?
     public var childCoordinators: [Coordinator]
     
     public init(
@@ -34,7 +35,9 @@ public final class QuestionsCoordinator: Coordinator {
     
     public func start() {
         let controller = factory.makeQuestionsViewController(coordinator: self)
+        questionsViewControllerDelegate = controller as? any QuestionsViewControllerDelegate
         navigation.pushViewController(controller, animated: true)
     }
 }
 
+extension QuestionsCoordinator: ParentCoordinator { }

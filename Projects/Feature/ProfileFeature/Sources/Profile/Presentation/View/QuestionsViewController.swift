@@ -18,6 +18,11 @@ public protocol QuestionsViewControllerCoordinator: AnyObject {
     func configTabbarState(view: ProfileFeatureViewNames)
 }
 
+
+public protocol QuestionsViewControllerDelegate: AnyObject {
+    func didTabBackButtonFromQuestionsDialogViewController()
+}
+
 public final class QuestionsViewController: UIViewController {
     // MARK: - Private properties
     private var viewModel: QuestionsViewModel
@@ -128,6 +133,8 @@ public final class QuestionsViewController: UIViewController {
     ) {
         self.viewModel = viewModel
         self.coordinator = coordinator
+        
+        viewModel.changeQuestionList = viewModel.questionList
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -206,13 +213,16 @@ public final class QuestionsViewController: UIViewController {
             make.top.equalTo(tableView.snp.bottom).offset(19)
             make.height.equalTo(44)
         }
+        
+        changeHeight()
+    }
     
+    func changeHeight() {
         self.view.layoutIfNeeded()
-        tableViewHeightAnchor?.update(offset: viewModel.questionList.count * 220)
+        tableViewHeightAnchor?.update(offset: viewModel.changeQuestionList.count * 220)
         
         self.view.layoutIfNeeded()
         
-        print(tableView.frame.height + selectQuestionButton.frame.height + 19)
         backgroundViewHeightAnchor?.update(offset: tableView.frame.height + selectQuestionButton.frame.height + 19)
         
         self.view.layoutIfNeeded()
@@ -221,6 +231,7 @@ public final class QuestionsViewController: UIViewController {
             width: self.view.frame.width,
             height: backgroundView.frame.height)
     }
+    
     // MARK: - Actions
     @objc private func clickBackButton(_ sender: UIBarButtonItem) {
         coordinator?.didTabBackButton()
@@ -248,19 +259,28 @@ extension QuestionsViewController: UITableViewDataSource {
         }
         cell.setProperties(viewModel: viewModel, index: indexPath.row)
         cell.deleteButtonAction = { [weak self] in
-            print("삭제")
+            self?.viewModel.changeQuestionList.remove(at: indexPath.row)
+            self?.changeHeight()
+            self?.tableView.reloadData()
         }
         
         return cell
     }
     
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        viewModel.questionList.count
+        viewModel.changeQuestionList.count
     }
 }
 
 extension QuestionsViewController: UITableViewDelegate {
     public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         220
+    }
+}
+
+extension QuestionsViewController: QuestionsViewControllerDelegate {
+    public func didTabBackButtonFromQuestionsDialogViewController() {
+        changeHeight()
+        tableView.reloadData()
     }
 }

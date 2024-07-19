@@ -6,6 +6,8 @@
 //  Copyright © 2024 ATeen. All rights reserved.
 //
 
+import SnapKit
+
 import Common
 import DesignSystem
 import UIKit
@@ -97,14 +99,14 @@ class QuestionsTableViewCell: UITableViewCell {
     func setProperties(viewModel: QuestionsViewModel, index: Int) {
         self.viewModel = viewModel
         self.index = index
-        self.questionLabel.text = "\(String(index + 1)). \(viewModel.questionList[index].title)"
+        self.questionLabel.text = "\(String(index + 1)). \(viewModel.changeQuestionList[index].title)"
         
-        if viewModel.questionList[index].title == "" {
+        if viewModel.changeQuestionList[index].title == "" {
             writingTextView.layer.borderColor = UIColor.red.cgColor
             writingTextView.text = textViewPlaceHolder
         } else {
             writingTextView.layer.borderColor = DesignSystemAsset.mainColor.color.cgColor
-            writingTextView.text = viewModel.questionList[index].text
+            writingTextView.text = viewModel.changeQuestionList[index].text
         }
     }
 }
