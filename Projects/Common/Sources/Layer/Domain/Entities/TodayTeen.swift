@@ -9,10 +9,10 @@ import UIKit
 
 public struct TodayTeen {
     public var name: String
-    public var image: UIImage
-    
-    public init(name: String, image: UIImage) {
+    public var images: [UIImage]
+
+    public init(name: String, images: [UIImage]) {
         self.name = name
-        self.image = image
+        self.images = images
     }
 }
