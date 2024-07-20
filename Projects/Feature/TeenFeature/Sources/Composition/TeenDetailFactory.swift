@@ -9,14 +9,22 @@
 import UIKit
 
 public protocol TeenDetailFactory {
-    func makeTeenDetailViewController() -> UIViewController
+    func makeTeenDetailViewController(
+        coordinator: TeenDetailViewControllerCoordinator
+    ) -> UIViewController
 }
 
 public struct TeenDetailFactoryImp: TeenDetailFactory {
+    let viewModel = TeenDetailViewModel()
+    
     public init() { }
     
-    public func makeTeenDetailViewController() -> UIViewController {
-        let controller = TeenDetailViewController()
+    public func makeTeenDetailViewController(
+        coordinator: TeenDetailViewControllerCoordinator
+    ) -> UIViewController {
+        let controller = TeenDetailViewController(
+            viewModel: viewModel,
+            coordinator: coordinator)
         return controller
     }
 }

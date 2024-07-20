@@ -3,13 +3,14 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 55;
+	objectVersion = 56;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		09F9D04D96D7D0911868E276 /* SpinnerDisplayable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 390F0F25C510E4E45DD91920 /* SpinnerDisplayable.swift */; };
 		2AE2442457DCECCC55C49611 /* UIView+Layer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9347F19E7CA63054E643E5C /* UIView+Layer.swift */; };
 		32E85901F7A04A4096C803EB /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9005F43599E3AE2CCB247B4F /* SnapKit.framework */; };
+		417688EA2C4BB36E00A58FAC /* TeenTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 417688E92C4BB36E00A58FAC /* TeenTableViewCell.swift */; };
 		4288F5B555587A91E8DACF93 /* UIFont+TextStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62C700FB34E2E83D970827F /* UIFont+TextStyle.swift */; };
 		4DCF1827E9016A17A9DD4066 /* TeenCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E556F69796E68FD12F076C2 /* TeenCollectionViewCell.swift */; };
 		4ED1FAC9639BF5C44001C110 /* UIViewController+TouchGesture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91A68140F7B39D12A54351B0 /* UIViewController+TouchGesture.swift */; };
@@ -37,6 +38,7 @@
 /* Begin PBXFileReference section */
 		1E556F69796E68FD12F076C2 /* TeenCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeenCollectionViewCell.swift; sourceTree = "<group>"; };
 		390F0F25C510E4E45DD91920 /* SpinnerDisplayable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinnerDisplayable.swift; sourceTree = "<group>"; };
+		417688E92C4BB36E00A58FAC /* TeenTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeenTableViewCell.swift; sourceTree = "<group>"; };
 		4F6AF114A38FDBD9663A6B1B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		69B7BBEAD5472C7195924AC8 /* DesignSystem.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DesignSystem.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7516C9F8F52188417896B438 /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
@@ -148,6 +150,7 @@
 				F3A5DD84C76B66DD85EF180B /* CustomImageLabelButton.swift */,
 				390F0F25C510E4E45DD91920 /* SpinnerDisplayable.swift */,
 				1E556F69796E68FD12F076C2 /* TeenCollectionViewCell.swift */,
+				417688E92C4BB36E00A58FAC /* TeenTableViewCell.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -197,8 +200,6 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
 				ORGANIZATIONNAME = ATeen;
-				TargetAttributes = {
-				};
 			};
 			buildConfigurationList = 5C0CBBA2BFE0CEE21375AF0A /* Build configuration list for PBXProject "DesignSystem" */;
 			compatibilityVersion = "Xcode 14.0";
@@ -236,6 +237,7 @@
 			files = (
 				ABB14811E13F7B1ECCF8B086 /* TuistAssets+DesignSystem.swift in Sources */,
 				F6018B5F7748E322214C52D6 /* TuistBundle+DesignSystem.swift in Sources */,
+				417688EA2C4BB36E00A58FAC /* TeenTableViewCell.swift in Sources */,
 				CD3530D96EC2AAEF759D0831 /* CustomImageLabelButton.swift in Sources */,
 				09F9D04D96D7D0911868E276 /* SpinnerDisplayable.swift in Sources */,
 				4DCF1827E9016A17A9DD4066 /* TeenCollectionViewCell.swift in Sources */,
@@ -270,7 +272,10 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				OTHER_LDFLAGS = "$(inherited) -ObjC";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ATeen.ATeen.DesignSystem;
 				PRODUCT_NAME = DesignSystem;
 				SDKROOT = iphoneos;
@@ -278,10 +283,7 @@
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = (
-					"$(inherited)",
-					DEBUG,
-				);
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG";
 				SWIFT_COMPILATION_MODE = singlefile;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -311,7 +313,10 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				OTHER_LDFLAGS = "$(inherited) -ObjC";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ATeen.ATeen.DesignSystem;
 				PRODUCT_NAME = DesignSystem;
 				SDKROOT = iphoneos;

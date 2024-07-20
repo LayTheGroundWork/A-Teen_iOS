@@ -83,8 +83,8 @@ public final class CertificationCodeCollectionViewCell: UICollectionViewCell {
         return label
     }()
     
-    private var textFields = [UITextField]()
-    private var bottomLines = [UIView]()
+    private lazy var textFields = [UITextField]()
+    private lazy var bottomLines = [UIView]()
     
     // MARK: - Life Cycle
     override init(frame: CGRect) {

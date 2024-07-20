@@ -24,8 +24,9 @@ public protocol MainTabFactory {
         delegate: SettingsCoordinatorDelegate,
         mainDelegate: MainCoordinatorDelegate,
         rankingDelegate: RankingCoordinatorDelegate,
+        teenDelegate: TeenCoordinatorDelegate,
         coordinatorProvider: CoordinatorProvider
-    ) -> [Coordinator]
+    ) -> [Coordinator] 
 }
 
 public struct MainTabFactoryImp: MainTabFactory {
@@ -59,12 +60,13 @@ public struct MainTabFactoryImp: MainTabFactory {
         delegate: SettingsCoordinatorDelegate,
         mainDelegate: MainCoordinatorDelegate,
         rankingDelegate: RankingCoordinatorDelegate,
+        teenDelegate: TeenCoordinatorDelegate,
         coordinatorProvider: CoordinatorProvider
     ) -> [Coordinator] {
         let mainCoordinator = makeMainCoordinator(delegate: mainDelegate,
                                                   coordinatorProvider: coordinatorProvider)
         let rankingCoordinator = makeRankingCoordinator(delegate: rankingDelegate)
-        let teenCoordinator = makeTeenCoordinator()
+        let teenCoordinator = makeTeenCoordinator(delegate: teenDelegate)
         let chatCoordinator = makeChatCoordinator()
         let profileCoordinator = makeProfileCoordinator(delegate: delegate)
         
@@ -101,12 +103,15 @@ public struct MainTabFactoryImp: MainTabFactory {
         )
     }
     
-    private func makeTeenCoordinator() -> Coordinator {
+    private func makeTeenCoordinator(
+        delegate: TeenCoordinatorDelegate
+    ) -> Coordinator {
         let factory = TeenFactoryImp()
         let navigation = NavigationImp(rootViewController: UINavigationController())
         return TeenCoordinator(
             navigation: navigation,
             factory: factory,
+            delegate: delegate,
             coordinatorProvider: coordinatorProvider)
     }
     

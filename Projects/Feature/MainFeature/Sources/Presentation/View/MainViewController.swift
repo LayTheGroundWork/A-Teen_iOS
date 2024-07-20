@@ -8,6 +8,7 @@
 import SnapKit
 
 import Common
+import DesignSystem
 import UIKit
 
 public protocol MainViewControllerCoordinator: AnyObject {
@@ -40,7 +41,7 @@ public final class MainViewController: UIViewController {
         tableView.register(AboutATeenTableViewCell.self, forCellReuseIdentifier: AboutATeenTableViewCell.reuseIdentifier)
         tableView.register(TournamentTableViewCell.self, forCellReuseIdentifier: TournamentTableViewCell.reuseIdentifier)
         tableView.register(HeaderTableViewCell.self, forCellReuseIdentifier: HeaderTableViewCell.reuseIdentifier)
-        tableView.register(AnotherTeenTableViewCell.self, forCellReuseIdentifier: AnotherTeenTableViewCell.reuseIdentifier)
+        tableView.register(TeenTableViewCell.self, forCellReuseIdentifier: TeenTableViewCell.reuseIdentifier)
         return tableView
     }()
     // MARK: - Private properties
@@ -62,6 +63,7 @@ public final class MainViewController: UIViewController {
     public override func viewDidLoad() {
         super.viewDidLoad()
         configUserInterface()
+        configLayout()
     }
     
     public override func viewWillAppear(_ animated: Bool) {
@@ -74,11 +76,15 @@ public final class MainViewController: UIViewController {
 
         //테이블 뷰
         self.view.addSubview(tableView)
+    }
+    
+    private func configLayout() {
         self.tableView.snp.makeConstraints { make in
             make.leading.trailing.bottom.equalToSuperview()
             make.top.equalTo(self.view.safeAreaLayoutGuide.snp.top)
         }
     }
+    
     // MARK: - Actions
     
 }
@@ -144,17 +150,35 @@ extension MainViewController: UITableViewDataSource {
         case 4:
             guard
                 let cell = tableView.dequeueReusableCell(
-                    withIdentifier: AnotherTeenTableViewCell.reuseIdentifier,
-                    for: indexPath) as? AnotherTeenTableViewCell
+                    withIdentifier: TeenTableViewCell.reuseIdentifier,
+                    for: indexPath) as? TeenTableViewCell
             else {
                 return UITableViewCell()
             }
             
             cell.selectionStyle = .none
-            cell.delegate = coordinator
-            cell.setUI(teen: viewModel.getTodayTeenItemMainViewModel(row: indexPath.row))
+            cell.setCell(teen: viewModel.getTodayTeenItemMainViewModel(row: indexPath.row))
+            
+            cell.chatButtonAction = {
+                self.coordinator?.didSelectTodayTeenChattingButton()
+            }
+            
             cell.heartButtonAction = {
                 self.viewModel.didSelectTodayTeenHeartButton()
+            }
+            cell.menuButtonAction = {
+                cell.layoutIfNeeded()
+                guard let mainView = tableView.superview,
+                      let appView = mainView.superview
+                else { return }
+                
+                let cellPosition = cell.convert(cell.bounds, to: appView)
+                let menuButtonPosition = CGRect(
+                    x: cellPosition.maxX,
+                    y: cellPosition.minY,
+                    width: cellPosition.width,
+                    height: cellPosition.height)
+                self.coordinator?.didSelectMenuButton(popoverPosition: menuButtonPosition)
             }
             return cell
             

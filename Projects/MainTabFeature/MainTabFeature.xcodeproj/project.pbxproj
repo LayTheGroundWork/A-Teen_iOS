@@ -3,13 +3,14 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 55;
+	objectVersion = 56;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		012B904FFCFD7D4204F28289 /* MainTabCoordinator+RankingCoordinatorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B4125C653D73B4C64122026 /* MainTabCoordinator+RankingCoordinatorDelegate.swift */; };
 		22B771E22A2C1639383D2A54 /* MainTabCoordinator+SettingsCoordinatorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC351BE39E1D990A74A8A873 /* MainTabCoordinator+SettingsCoordinatorDelegate.swift */; };
 		378F72306ADD0C7A67364684 /* MediaEditorFeature.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66B07D75B28CCDFDD8D67157 /* MediaEditorFeature.framework */; };
+		417688FB2C4BF64500A58FAC /* MainTabCoordinator+TeenCoordinatorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 417688FA2C4BF64500A58FAC /* MainTabCoordinator+TeenCoordinatorDelegate.swift */; };
 		426E4AA9DB40A030D648BE08 /* ReportFeature.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E8CBEADECACAC22CADD3EAE1 /* ReportFeature.framework */; };
 		4B0B05C2E03C232E04A4D4B2 /* LoginFeature.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D811A0994ED45CD4EBE43333 /* LoginFeature.framework */; };
 		4DA8B5C15B52962A58C27412 /* AlertFeature.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5322AE6F9A728F48633C22E5 /* AlertFeature.framework */; };
@@ -47,6 +48,7 @@
 		2C6ACB6B490AA319F179BF57 /* CustomTabBarButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarButton.swift; sourceTree = "<group>"; };
 		372C93AEDE2C496EA5D210FF /* MainFeature.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MainFeature.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A81669B81656FFB90F95C0C /* MainTabFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabFactory.swift; sourceTree = "<group>"; };
+		417688FA2C4BF64500A58FAC /* MainTabCoordinator+TeenCoordinatorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainTabCoordinator+TeenCoordinatorDelegate.swift"; sourceTree = "<group>"; };
 		46B9091B7A05386A74935ABC /* ProfileDetailFeature.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ProfileDetailFeature.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4B4125C653D73B4C64122026 /* MainTabCoordinator+RankingCoordinatorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainTabCoordinator+RankingCoordinatorDelegate.swift"; sourceTree = "<group>"; };
 		5322AE6F9A728F48633C22E5 /* AlertFeature.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AlertFeature.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -155,6 +157,7 @@
 				C0705AA04C1BF5986F8FA618 /* MainTabCoordinator.swift */,
 				12142B2D3D8BAFD40142F53E /* MainTabCoordinator+LogInCoordinatorDelegate.swift */,
 				990677C393F69FA2F7EBBEAE /* MainTabCoordinator+MainCoordinatorDelegate.swift */,
+				417688FA2C4BF64500A58FAC /* MainTabCoordinator+TeenCoordinatorDelegate.swift */,
 				4B4125C653D73B4C64122026 /* MainTabCoordinator+RankingCoordinatorDelegate.swift */,
 				EC351BE39E1D990A74A8A873 /* MainTabCoordinator+SettingsCoordinatorDelegate.swift */,
 				3A81669B81656FFB90F95C0C /* MainTabFactory.swift */,
@@ -208,8 +211,6 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
 				ORGANIZATIONNAME = ATeen;
-				TargetAttributes = {
-				};
 			};
 			buildConfigurationList = 3AE8E69C6C0CEA60529676FD /* Build configuration list for PBXProject "MainTabFeature" */;
 			compatibilityVersion = "Xcode 14.0";
@@ -248,6 +249,7 @@
 				FEE1C5501AB91E19FD2ACE6F /* MainTabCoordinator+MainCoordinatorDelegate.swift in Sources */,
 				012B904FFCFD7D4204F28289 /* MainTabCoordinator+RankingCoordinatorDelegate.swift in Sources */,
 				22B771E22A2C1639383D2A54 /* MainTabCoordinator+SettingsCoordinatorDelegate.swift in Sources */,
+				417688FB2C4BF64500A58FAC /* MainTabCoordinator+TeenCoordinatorDelegate.swift in Sources */,
 				53F6F0B749B747EBD9E10C4C /* MainTabCoordinator.swift in Sources */,
 				71E9068BEC27B3E779860540 /* MainTabFactory.swift in Sources */,
 				661C2721F63D2E6E20E11A67 /* CustomTabBarButton.swift in Sources */,
@@ -278,7 +280,10 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				OTHER_LDFLAGS = "$(inherited) -ObjC";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ATeen.ATeen.MainTabFeature;
 				PRODUCT_NAME = MainTabFeature;
 				SDKROOT = iphoneos;
@@ -427,7 +432,10 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				OTHER_LDFLAGS = "$(inherited) -ObjC";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ATeen.ATeen.MainTabFeature;
 				PRODUCT_NAME = MainTabFeature;
 				SDKROOT = iphoneos;
@@ -435,10 +443,7 @@
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = (
-					"$(inherited)",
-					DEBUG,
-				);
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG";
 				SWIFT_COMPILATION_MODE = singlefile;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;

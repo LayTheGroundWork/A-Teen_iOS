@@ -11,8 +11,6 @@ import DesignSystem
 import UIKit
 
 class MainViewModel {
-    var auth: Auth?
-    
     var categoryList: [ProfileCategory] = [
         ProfileCategory(title: "전체", isSelect: true),
         ProfileCategory(title: "뷰티", isSelect: false),
