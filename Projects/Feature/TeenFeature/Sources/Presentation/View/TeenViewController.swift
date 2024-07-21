@@ -3,6 +3,7 @@
 //  ATeen
 //
 //  Created by 강치우 on 7/21/24.
+//  Copyright © 2024 ATeen. All rights reserved.
 //
 
 import DesignSystem
@@ -27,9 +28,8 @@ public final class TeenViewController: UIViewController {
     
     private let cellId = "cell id"
     
-    // TODO: 뷰모델 값으로 변경해야함
+    // TODO: 뷰모델로 빼야함
     private let imageNames = ["pic1", "pic2", "pic3", "pic4"]
-    
     private let labels = ["투표 수가 많은\nTEEN", "최근 가입한\nTEEN", "주간 인기\nTEEN", "대회에 참여한\nTEEN"]
     
     private lazy var heroImageView: UIImageView = {
@@ -112,7 +112,6 @@ public final class TeenViewController: UIViewController {
         super.viewDidLoad()
         configUserInterface()
         configLayout()
-//        setButtonActions()
     }
     
     public override func viewWillAppear(_ animated: Bool) {
@@ -122,7 +121,7 @@ public final class TeenViewController: UIViewController {
     // MARK: - Helpers
     private func configUserInterface() {
         self.view.backgroundColor = UIColor.systemBackground
-        navigationController?.isNavigationBarHidden = true
+        navigationItem.title = nil
     }
     
     private func configLayout() {
@@ -170,19 +169,10 @@ public final class TeenViewController: UIViewController {
         collectionView.register(CustomTeenCollectionViewCell.self, forCellWithReuseIdentifier: cellId)
     }
     
-//    private func setButtonActions() {
-//        teenButton.addTarget(self, action: #selector(selectTeenButton(_:)), for: .touchUpInside)
-//    }
-    
     // MARK: - Actions
-    private func buttonTapped(at index: Int) {
-        print("\(index)번째 버튼 눌렀당")
-    }
-    
-    @objc private func selectTeenButton(_ sender: UIButton) {
+    @objc private func buttonTapped(at index: Int) {
         self.coordinator?.didSelectTeenCategory()
     }
- 
 }
 
 // MARK: - Extensions here
