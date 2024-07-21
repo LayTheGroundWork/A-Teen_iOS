@@ -3,13 +3,15 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 55;
+	objectVersion = 56;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		1C1F16E4CD6139671C907AC8 /* TeenDetailCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C122D391E0CEC823F0BF03 /* TeenDetailCoordinator.swift */; };
 		252041ABAC7C1B9399E78BDF /* TeenCoordinator+TeenViewControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97162D97940C23AA780A2949 /* TeenCoordinator+TeenViewControllerCoordinator.swift */; };
 		433403EBDD58ADBDBE416689 /* TeenCoordinator+TeenConfigTabbarStateDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B8B4D666C3BC2FE0943724 /* TeenCoordinator+TeenConfigTabbarStateDelegate.swift */; };
+		635056F62C4D180700491271 /* CustomPagingCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635056F52C4D180700491271 /* CustomPagingCollectionViewLayout.swift */; };
+		635056F82C4D183700491271 /* CustomTeenCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635056F72C4D183700491271 /* CustomTeenCollectionViewCell.swift */; };
 		65C848060EAE85372E970E6A /* TeenCoordinator+TeenDetailCoordinatorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D97885493F58BDDE03A642A0 /* TeenCoordinator+TeenDetailCoordinatorDelegate.swift */; };
 		6DCB76054E14CF7D14A5B3EA /* TeenDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311D8170D17A7EE9BD2BC6D3 /* TeenDetailViewController.swift */; };
 		8CE274733485C13AA8F15368 /* TeenDetailCoordinator+ ProfileDetailCoordinatorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F498D673CECBDC90988293CA /* TeenDetailCoordinator+ ProfileDetailCoordinatorDelegate.swift */; };
@@ -44,6 +46,8 @@
 		31B73CCE0F7BF23D808B9A8D /* TeenDetailFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeenDetailFactory.swift; sourceTree = "<group>"; };
 		47E99AC7D204F3CFDE025354 /* FeatureDependency.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FeatureDependency.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		52B8B4D666C3BC2FE0943724 /* TeenCoordinator+TeenConfigTabbarStateDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TeenCoordinator+TeenConfigTabbarStateDelegate.swift"; sourceTree = "<group>"; };
+		635056F52C4D180700491271 /* CustomPagingCollectionViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPagingCollectionViewLayout.swift; sourceTree = "<group>"; };
+		635056F72C4D183700491271 /* CustomTeenCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTeenCollectionViewCell.swift; sourceTree = "<group>"; };
 		6A0A941AB58BFE9439FA4F25 /* TeenDetailCoordinator+TeenDetailViewControllerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TeenDetailCoordinator+TeenDetailViewControllerCoordinator.swift"; sourceTree = "<group>"; };
 		7B105CD7E0C59311C1F1C419 /* TeenCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeenCoordinator.swift; sourceTree = "<group>"; };
 		8006970457ACDDC424AE18A1 /* TeenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeenViewModel.swift; sourceTree = "<group>"; };
@@ -111,9 +115,19 @@
 			path = ../../../Config;
 			sourceTree = "<group>";
 		};
+		635056F42C4D17E600491271 /* Component */ = {
+			isa = PBXGroup;
+			children = (
+				635056F52C4D180700491271 /* CustomPagingCollectionViewLayout.swift */,
+				635056F72C4D183700491271 /* CustomTeenCollectionViewCell.swift */,
+			);
+			path = Component;
+			sourceTree = "<group>";
+		};
 		7ADF51D06E689741062F9A72 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				635056F42C4D17E600491271 /* Component */,
 				27B9155ECBD8819E6F674943 /* Composition */,
 				82DC364EAFA2300681439BA8 /* Presentation */,
 			);
@@ -203,8 +217,6 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
 				ORGANIZATIONNAME = ATeen;
-				TargetAttributes = {
-				};
 			};
 			buildConfigurationList = 84DFA615233CDE78886710E0 /* Build configuration list for PBXProject "TeenFeature" */;
 			compatibilityVersion = "Xcode 14.0";
@@ -246,7 +258,9 @@
 				8CE274733485C13AA8F15368 /* TeenDetailCoordinator+ ProfileDetailCoordinatorDelegate.swift in Sources */,
 				9CC065E528F104E0F3CFDAFD /* TeenDetailCoordinator+TeenDetailViewControllerCoordinator.swift in Sources */,
 				1C1F16E4CD6139671C907AC8 /* TeenDetailCoordinator.swift in Sources */,
+				635056F62C4D180700491271 /* CustomPagingCollectionViewLayout.swift in Sources */,
 				C2B4C07452E21043D2FAD06D /* TeenDetailFactory.swift in Sources */,
+				635056F82C4D183700491271 /* CustomTeenCollectionViewCell.swift in Sources */,
 				CF1F4CB9E261C32940A7BA80 /* TeenFactory.swift in Sources */,
 				6DCB76054E14CF7D14A5B3EA /* TeenDetailViewController.swift in Sources */,
 				D19D84168D8493303E9CC4BD /* TeenViewController.swift in Sources */,
@@ -278,7 +292,10 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				OTHER_LDFLAGS = "$(inherited) -ObjC";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ATeen.ATeen.TeenFeature;
 				PRODUCT_NAME = TeenFeature;
 				SDKROOT = iphoneos;
@@ -315,7 +332,10 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				OTHER_LDFLAGS = "$(inherited) -ObjC";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ATeen.ATeen.TeenFeature;
 				PRODUCT_NAME = TeenFeature;
 				SDKROOT = iphoneos;
@@ -323,10 +343,7 @@
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = (
-					"$(inherited)",
-					DEBUG,
-				);
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG";
 				SWIFT_COMPILATION_MODE = singlefile;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
