@@ -268,8 +268,12 @@ extension QuestionsDialogViewController: UITableViewDelegate {
     }
     
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if viewModel.changeQuestionList.contains(where: { $0.title == viewModel.sampleQuestionList[indexPath.row] }) {
-            print("중복된 질문")
+        if let index = viewModel.changeQuestionList.firstIndex(where: { $0.title == viewModel.sampleQuestionList[indexPath.row] }) {
+            viewModel.changeQuestionList.remove(at: index)
+            
+            guard let cell = tableView.cellForRow(at: indexPath) as? QuestionsDialogTableViewCell else { return }
+            
+            cell.questionLabel.font = .customFont(forTextStyle: .footnote, weight: .regular)
         } else {
             viewModel.changeQuestionList.append(
                 .init(
