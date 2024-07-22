@@ -8,11 +8,12 @@
 
 import Common
 import UIKit
+import DesignSystem
 
 final class UserChatMessageViewCell: UITableViewCell {
     private lazy var chatMessage: UIView = {
         let view = UIView()
-        view.backgroundColor = UIColor(named: "mainColor")
+        view.backgroundColor = DesignSystemAsset.mainColor.color
         view.layer.cornerRadius = 15
         view.layer.maskedCorners = CACornerMask(
             arrayLiteral: [.layerMinXMinYCorner,

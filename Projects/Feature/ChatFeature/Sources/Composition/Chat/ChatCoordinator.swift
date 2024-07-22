@@ -19,13 +19,11 @@ public protocol ChatConfigTabbarStateDelegate: AnyObject {
 
 public protocol ChatCoordinatorDelegate: ChatConfigTabbarStateDelegate { }
 
-public final class ChatCoordinator: Coordinator, MainChatViewControllerCoordinator {
-    
-    
+public final class ChatCoordinator: Coordinator {
     public var navigation: Navigation
     public var factory: ChatFactory
     public var childCoordinators: [Coordinator] = []
-    weak var delegate: ChatCoordinatorDelegate?
+    weak var delegate: ChatConfigTabbarStateDelegate?
     
     public init(
         navigation: Navigation,
@@ -38,16 +36,9 @@ public final class ChatCoordinator: Coordinator, MainChatViewControllerCoordinat
     }
     
     public func start() {
-        let controller = factory.makeMainChatViewController(coordinator: self)
+        let controller = factory.makeChatViewController(coordinator: self)
         navigation.pushViewController(controller, animated: true)
     }
-    
-    public func navigateToChatRoom(chatRoom: ChatModel) {
-        let chatRoomVC = factory.makeChatRoomViewController()
-        if let chatRoomVC = chatRoomVC as? ChatRoomViewController {
-            chatRoomVC.partnerName = chatRoom.name
-            chatRoomVC.coordinator = self
-        }
-        navigation.pushViewController(chatRoomVC, animated: true)
-    }
 }
+
+extension ChatCoordinator: ParentCoordinator { }

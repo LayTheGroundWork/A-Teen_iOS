@@ -15,7 +15,6 @@ extension MainTabCoordinator: ChatCoordinatorDelegate {
         guard let tab = navigation.viewControllers.first as? MainTabController else { return }
         
         switch view {
-        
         case .main:
             tab.showTabbar()
             

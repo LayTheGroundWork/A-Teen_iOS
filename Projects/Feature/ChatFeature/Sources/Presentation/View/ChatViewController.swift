@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  ChatViewController.swift
 //  ChatingFeature
 //
 //  Created by 김명현 on 7/28/24.
@@ -11,16 +11,16 @@ import DesignSystem
 import UIKit
 import SnapKit
 
-public protocol MainChatViewControllerCoordinator: AnyObject {
+public protocol ChatViewControllerCoordinator: AnyObject {
     func configTabbarState(view: ChatFeatureViewNames)
-    func navigateToChatRoom(chatRoom: ChatModel)
+    func didTapCell(userID: ChatModel)
 }
 
-public final class MainChatViewController: UIViewController {
+public final class ChatViewController: UIViewController {
     // MARK: - Private properties
-    private var viewModel = ChatViewModel()
+    private var viewModel: ChatViewModel
     private var deleteIndexPath: IndexPath?
-    private weak var coordinator: MainChatViewControllerCoordinator?
+    private weak var coordinator: ChatViewControllerCoordinator?
     
     private lazy var chatTableView: UITableView = {
         let tableView = UITableView()
@@ -65,8 +65,9 @@ public final class MainChatViewController: UIViewController {
     
     // MARK: - Life Cycle
     
-    public init(coordinator: MainChatViewControllerCoordinator) {
+    public init(coordinator: ChatViewControllerCoordinator, viewModel: ChatViewModel) {
         self.coordinator = coordinator
+        self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -118,10 +119,6 @@ public final class MainChatViewController: UIViewController {
         }
     }
     
-    private func navigateToChatRoom(chatRoom: ChatModel) {
-        coordinator?.navigateToChatRoom(chatRoom: chatRoom)
-    }
-    
     @objc func searchTextChanged() {
         if let searchText = searchTextField.text, !searchText.isEmpty {
             viewModel.filteredChatRooms = viewModel.chatRooms.filter { $0.name.contains(searchText) }
@@ -133,7 +130,7 @@ public final class MainChatViewController: UIViewController {
 }
 
 // MARK: - Extensions here
-extension MainChatViewController: UITableViewDataSource {
+extension ChatViewController: UITableViewDataSource {
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         viewModel.filteredChatRooms.count
     }
@@ -151,7 +148,7 @@ extension MainChatViewController: UITableViewDataSource {
     }
 }
 
-extension MainChatViewController: UITableViewDelegate {
+extension ChatViewController: UITableViewDelegate {
     public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         85
     }
@@ -175,12 +172,14 @@ extension MainChatViewController: UITableViewDelegate {
     }
     
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let chatRoomVC = ChatRoomViewController()
-        let chatRoom = viewModel.filteredChatRooms[indexPath.row]
+        //        let chatRoomVC = ChatRoomViewController()
+        //        let chatRoom = viewModel.filteredChatRooms[indexPath.row]
+        //
+        //        chatRoomVC.partnerName = chatRoom.name
+        //        chatRoomVC.coordinator = coordinator
+        //        navigateToChatRoom(chatRoom: chatRoom)
+        coordinator?.didTapCell(userID: viewModel.chatRooms[indexPath.row])
         
-        chatRoomVC.partnerName = chatRoom.name
-        chatRoomVC.coordinator = coordinator
-        navigateToChatRoom(chatRoom: chatRoom)
     }
     
     private func showLeaveAlert() {
@@ -204,13 +203,13 @@ extension MainChatViewController: UITableViewDelegate {
     }
 }
 
-extension MainChatViewController: UITextFieldDelegate {
+extension ChatViewController: UITextFieldDelegate {
     public func textFieldDidBeginEditing(_ textField: UITextField) {
         textField.placeholder = ""
     }
 }
 
-extension MainChatViewController: AlertViewControllerCoordinator {
+extension ChatViewController: AlertViewControllerCoordinator {
     public func didSelectButton() {
         dismiss(animated: true)
     }

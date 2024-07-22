@@ -9,10 +9,27 @@ import Common
 import DesignSystem
 import UIKit
 
+public protocol ChatRoomViewControllerCoordinator: AnyObject {
+    func configTabbarState(view: ChatFeatureViewNames)
+    func didFinish()
+}
+
 final class ChatRoomViewController: UIViewController {
     var chatMessageArray: [ChatMessageModel] = []
-    var partnerName: String?
-    weak var coordinator: MainChatViewControllerCoordinator?
+    var partnerName: String
+    weak var coordinator: ChatRoomViewControllerCoordinator?
+    
+    public init(partnerName: String, coordinator: ChatRoomViewControllerCoordinator) {
+        self.partnerName = partnerName
+        self.coordinator = coordinator
+        super.init(nibName: nil, bundle: nil)
+        self.chatPartnerNameLabel.text = partnerName
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     
     private lazy var backButton: UIButton = {
         let button = UIButton()
@@ -116,10 +133,6 @@ final class ChatRoomViewController: UIViewController {
         setupActions()
         configUserInterface()
         configLayout()
-        
-        if let partnerName = partnerName {
-            chatPartnerNameLabel.text = partnerName
-        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -215,7 +228,7 @@ final class ChatRoomViewController: UIViewController {
     }
     
     @objc func tappedBackButton(_ sender: UIButton) {
-        navigationController?.popViewController(animated: true)
+        coordinator?.didFinish()
     }
     
     @objc func tappedMoreOptionsButton(_ sender: UIButton) {
