@@ -134,15 +134,18 @@ extension TodayTeenTableViewCell: UICollectionViewDataSource {
             
             cell.setCell(teen: viewModel.getTodayTeenItemMainViewModel(row: indexPath.row))
             
-            cell.chatButtonAction = {
+            cell.chatButtonAction = { [weak self] in
+                guard let self = self else { return }
                 self.delegate?.didSelectTodayTeenChattingButton()
             }
             
-            cell.heartButtonAction = {
+            cell.heartButtonAction = { [weak self] in
+                guard let self = self else { return }
                 self.viewModel.didSelectTodayTeenHeartButton()
             }
             
-            cell.menuButtonAction = {
+            cell.menuButtonAction = { [weak self] in
+                guard let self = self else { return }
                 cell.layoutIfNeeded()
                 guard let tableViewCell = self.superview,
                       let tableView = tableViewCell.superview,

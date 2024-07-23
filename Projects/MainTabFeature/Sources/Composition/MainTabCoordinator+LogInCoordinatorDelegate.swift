@@ -11,11 +11,8 @@ import UIKit
 
 extension MainTabCoordinator: LogInCoordinatorDelegate {
     public func didFinishLogin(childCoordinator: Coordinator) {
-        //
         childCoordinator.navigation.dismissNavigation = nil
-        removeChildCoordinator(childCoordinator)
-        navigation.dismiss(animated: true)
-        //
+        clearAllViewControllers(childCoordinator)
         clearAllChildsCoordinator()
         delegate?.didFinish()
     }

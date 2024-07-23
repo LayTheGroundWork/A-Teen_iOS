@@ -129,7 +129,8 @@ final class PhoneNumberCollectionViewCell: UICollectionViewCell {
     
     // MARK: - Actions
     @objc private func didSelectCertificateButton(_ sender: UIButton) {
-//        viewModel?.requestCode {
+//        viewModel?.requestCode { [weak self] in
+//            guard let self = self else { return }
 //            self.delegate?.didSelectCertificateButton()
 //        }
         self.delegate?.didSelectCertificateButton()

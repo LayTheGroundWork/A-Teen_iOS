@@ -159,14 +159,17 @@ extension MainViewController: UITableViewDataSource {
             cell.selectionStyle = .none
             cell.setCell(teen: viewModel.getTodayTeenItemMainViewModel(row: indexPath.row))
             
-            cell.chatButtonAction = {
+            cell.chatButtonAction = { [weak self] in
+                guard let self = self else { return }
                 self.coordinator?.didSelectTodayTeenChattingButton()
             }
             
-            cell.heartButtonAction = {
+            cell.heartButtonAction = { [weak self] in
+                guard let self = self else { return }
                 self.viewModel.didSelectTodayTeenHeartButton()
             }
-            cell.menuButtonAction = {
+            cell.menuButtonAction = { [weak self] in
+                guard let self = self else { return }
                 cell.layoutIfNeeded()
                 guard let mainView = tableView.superview,
                       let appView = mainView.superview

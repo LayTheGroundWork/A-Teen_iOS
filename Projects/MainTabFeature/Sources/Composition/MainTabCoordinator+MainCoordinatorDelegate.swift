@@ -20,8 +20,9 @@ extension MainTabCoordinator: MainCoordinatorDelegate {
             animated: true)
         
         loginCoordinator.navigation.dismissNavigation = { [weak self] in
-            self?.removeChildCoordinator(loginCoordinator)
+            self?.didFinishLogin(childCoordinator: loginCoordinator)
         }
+
     }
     
     public func didSelectAboutATeenCell(tag: TabTag) {

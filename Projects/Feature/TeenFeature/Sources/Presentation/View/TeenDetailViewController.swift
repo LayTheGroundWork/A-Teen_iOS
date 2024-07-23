@@ -132,14 +132,18 @@ extension TeenDetailViewController: UITableViewDataSource {
 
         cell.setCell(teen: viewModel.getTeenItemTeenViewModel(row: indexPath.row))
         
-        cell.chatButtonAction = {
+        cell.chatButtonAction = { [weak self] in
+            guard let self = self else { return }
             self.coordinator?.didSelectTeenChattingButton()
         }
         
-        cell.heartButtonAction = {
+        cell.heartButtonAction = { [weak self] in
+            guard let self = self else { return }
             self.viewModel.didSelectTeenHeartButton()
         }
-        cell.menuButtonAction = {
+        cell.menuButtonAction = { [weak self] in
+            guard let self = self else { return }
+
             cell.layoutIfNeeded()
             guard let mainView = tableView.superview,
                   let appView = mainView.superview

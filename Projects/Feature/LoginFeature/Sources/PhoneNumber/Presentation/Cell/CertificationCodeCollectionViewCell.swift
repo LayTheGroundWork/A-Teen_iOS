@@ -192,7 +192,8 @@ public final class CertificationCodeCollectionViewCell: UICollectionViewCell {
         convertVerificationCode()
         
         // TODO: - 다음으로 이동할때, 가입된 사용자인지 검증 후 보내주기
-        viewModel?.verificationCode { result in
+        viewModel?.verificationCode { [weak self] result in
+            guard let self = self else { return }
             switch result {
             case .success(.availablePhoneNumber):
                 self.stopTimer()
@@ -212,7 +213,8 @@ public final class CertificationCodeCollectionViewCell: UICollectionViewCell {
     }
     
     @objc private func didSelectResendButton(_ sender: UIButton) {
-        viewModel?.requestCode {
+        viewModel?.requestCode { [weak self] in
+            guard let self = self else { return }
             self.resetTimer()
         }
     }
@@ -271,7 +273,9 @@ public final class CertificationCodeCollectionViewCell: UICollectionViewCell {
     
     // 타이머 초기화
     func startTimer() {
-        timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
+        timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [weak self] _ in
+            self?.updateTimer()
+        }
     }
     
     func formatTime(_ totalSeconds: Int) -> String {
@@ -377,3 +381,18 @@ extension CertificationCodeCollectionViewCell: UITextFieldDelegate {
 }
 
 extension CertificationCodeCollectionViewCell: Reusable { }
+
+
+class WeakTimerTarget {
+    weak var target: NSObjectProtocol?
+    let selector: Selector
+
+    init(target: NSObjectProtocol, selector: Selector) {
+        self.target = target
+        self.selector = selector
+    }
+
+    @objc func timerDidFire(_ timer: Timer) {
+        target?.perform(selector)
+    }
+}

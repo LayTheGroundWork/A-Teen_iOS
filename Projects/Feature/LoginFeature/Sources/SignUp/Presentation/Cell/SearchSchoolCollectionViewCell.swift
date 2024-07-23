@@ -244,7 +244,8 @@ final class SearchSchoolCollectionViewCell: UICollectionViewCell {
                 withDuration: 0.2,
                 delay: 0,
                 options: .showHideTransitionViews
-            ) {
+            ) { [weak self] in
+                guard let self = self else { return }
                 if frame.origin.y < 23 {
                     self.tableView.scrollToRow(
                         at: IndexPath(row: 0, section: 0),
