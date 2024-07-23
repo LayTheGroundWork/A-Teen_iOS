@@ -34,12 +34,12 @@ class CustomTeenCollectionViewCell: UICollectionViewCell {
         
         contentView.addSubview(label)
         label.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(24)
-            make.leading.equalToSuperview().offset(24)
+            make.top.equalToSuperview().offset(16)
+            make.leading.equalToSuperview().offset(16)
         }
         
         label.textColor = .white
-        label.font = UIFont.boldSystemFont(ofSize: 20)
+        label.font = UIFont.boldSystemFont(ofSize: 16)
         label.textAlignment = .left
         label.numberOfLines = 0
         

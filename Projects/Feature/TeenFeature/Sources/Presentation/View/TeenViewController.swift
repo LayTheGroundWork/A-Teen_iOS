@@ -23,14 +23,13 @@ public final class TeenViewController: UIViewController {
     private var viewModel: TeenViewModel
     private weak var coordinator: TeenViewControllerCoordinator?
     
-    private let cellWidth = (3 / 4) * UIScreen.main.bounds.width
     private let cellSpacing = (1 / 16) * UIScreen.main.bounds.width
     
     private let cellId = "cell id"
     
     // TODO: 뷰모델로 빼야함
-    private let imageNames = ["pic1", "pic2", "pic3", "pic4"]
-    private let labels = ["투표 수가 많은\nTEEN", "최근 가입한\nTEEN", "주간 인기\nTEEN", "대회에 참여한\nTEEN"]
+    private let imageNames = ["pic1", "pic2", "pic3", "pic4", "pic5", "pic6", "pic7", "pic8", "pic9", "pic10", "pic11", "pic12"]
+    private let labels = ["투표 수가 많은\nTEEN", "최근 가입한\nTEEN", "주간 인기\nTEEN", "대회에 참여한\nTEEN", "투표 수가 많은\nTEEN", "최근 가입한\nTEEN", "주간 인기\nTEEN", "대회에 참여한\nTEEN", "투표 수가 많은\nTEEN", "최근 가입한\nTEEN", "주간 인기\nTEEN", "대회에 참여한\nTEEN"]
     
     private lazy var heroImageView: UIImageView = {
         let imageView = UIImageView()
@@ -82,7 +81,7 @@ public final class TeenViewController: UIViewController {
         let layout = CustomPagingCollectionViewLayout()
         layout.scrollDirection = .horizontal
         layout.sectionInset = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
-        layout.itemSize = CGSize(width: cellWidth, height: cellWidth)
+        layout.itemSize = CGSize(width: 146, height: 163)
         layout.minimumLineSpacing = cellSpacing
         
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
@@ -93,6 +92,8 @@ public final class TeenViewController: UIViewController {
         collectionView.dataSource = self
         return collectionView
     }()
+    
+    
     
     // MARK: - Life Cycle
     init(
@@ -159,9 +160,9 @@ public final class TeenViewController: UIViewController {
         }
         
         collectionView.snp.makeConstraints { make in
-            make.top.equalTo(subTitleLabel.snp.bottom).offset(24)
+            make.top.equalTo(subTitleLabel.snp.bottom).offset(12)
             make.leading.trailing.equalToSuperview()
-            make.height.equalTo(cellWidth)
+            make.height.equalTo(337)
         }
     }
     
