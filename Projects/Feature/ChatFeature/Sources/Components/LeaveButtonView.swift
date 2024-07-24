@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class LeaveButtonView: UIView {
+public final class LeaveButtonView: UIView {
     private lazy var label: UILabel = {
         let label = UILabel()
         label.text = "나가기"
@@ -37,7 +37,7 @@ final class LeaveButtonView: UIView {
         }
     }
     
-    override func layoutSubviews() {
+    public override func layoutSubviews() {
         super.layoutSubviews()
 //        // 오른쪽 변만 cornerRadius 주기
         let path = UIBezierPath(roundedRect: self.bounds, byRoundingCorners: [.topRight, .bottomRight], cornerRadii: CGSize(width: 12, height: 12))

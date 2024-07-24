@@ -14,7 +14,7 @@ public protocol ChatRoomViewControllerCoordinator: AnyObject {
     func didFinish()
 }
 
-final class ChatRoomViewController: UIViewController {
+public final class ChatRoomViewController: UIViewController {
     var chatMessageArray: [ChatMessageModel] = []
     var partnerName: String
     weak var coordinator: ChatRoomViewControllerCoordinator?
@@ -29,7 +29,6 @@ final class ChatRoomViewController: UIViewController {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
     
     private lazy var backButton: UIButton = {
         let button = UIButton()
@@ -118,14 +117,14 @@ final class ChatRoomViewController: UIViewController {
         tableView.dataSource = self
         tableView.backgroundColor = .white
         tableView.separatorStyle = .none
-        
         tableView.register(PartnerChatMessageViewCell.self, forCellReuseIdentifier: PartnerChatMessageViewCell.reuseIdentifier)
         tableView.register(UserChatMessageViewCell.self, forCellReuseIdentifier: UserChatMessageViewCell.reuseIdentifier)
+        tableView.register(ChatHeaderView.self, forHeaderFooterViewReuseIdentifier: ChatHeaderView.reuseIdentifier)
         
         return tableView
     }()
     
-    override func viewDidLoad() {
+    public override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
         navigationController?.setNavigationBarHidden(true, animated: true)
@@ -135,7 +134,7 @@ final class ChatRoomViewController: UIViewController {
         configLayout()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
+    public override func viewWillAppear(_ animated: Bool) {
         coordinator?.configTabbarState(view: .chatRoom)
     }
     
@@ -262,11 +261,11 @@ final class ChatRoomViewController: UIViewController {
 }
 
 extension ChatRoomViewController: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         chatMessageArray.count
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // Cell 분기처리
         let message = chatMessageArray[indexPath.row]
         
@@ -290,18 +289,28 @@ extension ChatRoomViewController: UITableViewDataSource {
 }
 
 extension ChatRoomViewController: UITableViewDelegate {
+    public func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        guard let chatHeader = tableView.dequeueReusableHeaderFooterView(withIdentifier: ChatHeaderView.reuseIdentifier) as? ChatHeaderView else {
+            return UIView()
+        }
+        chatHeader.configure(headerType: .today)
+        return chatHeader
+    }
     
+    public func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+            return 50 
+        }
 }
 
 extension ChatRoomViewController: UITextViewDelegate {
-    func textViewDidBeginEditing(_ textView: UITextView) {
+    public func textViewDidBeginEditing(_ textView: UITextView) {
         if textView.textColor == .placeholderText {
             textView.text = nil
             textView.textColor = .label
         }
     }
     
-    func textViewDidEndEditing(_ textView: UITextView) {
+    public func textViewDidEndEditing(_ textView: UITextView) {
         if textView.text.isEmpty {
             textView.text = "메세지를 입력해보세요"
             textView.textColor = .placeholderText
@@ -309,7 +318,7 @@ extension ChatRoomViewController: UITextViewDelegate {
         
     }
     
-    func textViewDidChange(_ textView: UITextView) {
+    public func textViewDidChange(_ textView: UITextView) {
         let size = CGSize(width: textView.frame.width, height: .infinity)
         let estimatedSize = textView.sizeThatFits(size)
         
@@ -322,7 +331,7 @@ extension ChatRoomViewController: UITextViewDelegate {
         }
     }
     
-    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+    public func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         // 300자 이상 제한
         let newText = (textView.text as NSString).replacingCharacters(in: range, with: text)
         return newText.count <= 300

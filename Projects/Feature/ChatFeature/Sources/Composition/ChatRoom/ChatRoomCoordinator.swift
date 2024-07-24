@@ -9,8 +9,7 @@
 import FeatureDependency
 import UIKit
 
-public protocol ChatRoomCoordinatorDelegate: AnyObject {
-    func configTabbarState(view: ChatFeatureViewNames)
+public protocol ChatRoomCoordinatorDelegate: ChatConfigTabbarStateDelegate {
     func didFinish(childCoordinator: Coordinator)
 }
 

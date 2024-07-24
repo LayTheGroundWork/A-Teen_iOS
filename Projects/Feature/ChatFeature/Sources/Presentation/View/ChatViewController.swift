@@ -95,7 +95,6 @@ public final class ChatViewController: UIViewController {
         view.addSubview(chatTableView)
         view.addSubview(searchTextField)
         view.addSubview(titleLabel)
-        
     }
     
     private func configLayout() {
@@ -117,6 +116,26 @@ public final class ChatViewController: UIViewController {
             make.top.equalToSuperview().offset(60)
             make.leading.equalToSuperview().offset(ViewValues.defaultPadding)
         }
+    }
+    
+    private func showLeaveAlert() {
+        let alertVC = TwoButtonDialogViewController(
+            dialogTitle: "채팅방에서 나가시겠습니까?",
+            titleColor: .black,
+            titleNumberOfLine: 1,
+            titleFont: UIFont.systemFont(ofSize: 16,weight: .bold),
+            dialogMessage: nil,
+            messageColor: .gray,
+            messageNumberOfLine: 2,
+            messageFont: UIFont.systemFont(ofSize: 14),
+            leftButtonText: "취소",
+            leftButtonColor: .gray,
+            rightButtonText: "나가기",
+            rightButtonColor: .red,
+            coordinator: self)
+        alertVC.modalPresentationStyle = .overFullScreen
+        alertVC.modalTransitionStyle = .crossDissolve
+        present(alertVC, animated: true, completion: nil)
     }
     
     @objc func searchTextChanged() {
@@ -172,34 +191,7 @@ extension ChatViewController: UITableViewDelegate {
     }
     
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //        let chatRoomVC = ChatRoomViewController()
-        //        let chatRoom = viewModel.filteredChatRooms[indexPath.row]
-        //
-        //        chatRoomVC.partnerName = chatRoom.name
-        //        chatRoomVC.coordinator = coordinator
-        //        navigateToChatRoom(chatRoom: chatRoom)
         coordinator?.didTapCell(userID: viewModel.chatRooms[indexPath.row])
-        
-    }
-    
-    private func showLeaveAlert() {
-        let alertVC = TwoButtonDialogViewController(
-            dialogTitle: "채팅방에서 나가시겠습니까?",
-            titleColor: .black,
-            titleNumberOfLine: 1,
-            titleFont: UIFont.systemFont(ofSize: 16,weight: .bold),
-            dialogMessage: nil,
-            messageColor: .gray,
-            messageNumberOfLine: 2,
-            messageFont: UIFont.systemFont(ofSize: 14),
-            leftButtonText: "취소",
-            leftButtonColor: .gray,
-            rightButtonText: "나가기",
-            rightButtonColor: .red,
-            coordinator: self)
-        alertVC.modalPresentationStyle = .overFullScreen
-        alertVC.modalTransitionStyle = .crossDissolve
-        present(alertVC, animated: true, completion: nil)
     }
 }
 

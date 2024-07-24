@@ -13,7 +13,7 @@ enum MessageType {
     case partner
 }
 
-struct ChatMessageModel {
+public struct ChatMessageModel {
     let text: String
     let messageType: MessageType
     let time: String

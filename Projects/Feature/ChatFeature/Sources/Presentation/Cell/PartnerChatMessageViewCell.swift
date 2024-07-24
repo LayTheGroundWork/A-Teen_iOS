@@ -9,7 +9,7 @@
 import Common
 import UIKit
 
-final class PartnerChatMessageViewCell: UITableViewCell {
+public final class PartnerChatMessageViewCell: UITableViewCell {
     private lazy var profileImage: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "dog")

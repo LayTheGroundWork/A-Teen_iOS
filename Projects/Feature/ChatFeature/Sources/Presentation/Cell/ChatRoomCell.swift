@@ -9,7 +9,7 @@ import Common
 import DesignSystem
 import UIKit
 
-class ChatRoomCell: UITableViewCell {
+public final class ChatRoomCell: UITableViewCell {
     private lazy var profileImage: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleToFill

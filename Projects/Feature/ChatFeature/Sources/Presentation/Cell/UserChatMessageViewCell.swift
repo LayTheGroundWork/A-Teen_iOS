@@ -10,7 +10,7 @@ import Common
 import UIKit
 import DesignSystem
 
-final class UserChatMessageViewCell: UITableViewCell {
+public final class UserChatMessageViewCell: UITableViewCell {
     private lazy var chatMessage: UIView = {
         let view = UIView()
         view.backgroundColor = DesignSystemAsset.mainColor.color
