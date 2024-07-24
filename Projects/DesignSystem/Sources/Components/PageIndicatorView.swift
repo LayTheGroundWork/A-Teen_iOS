@@ -1,5 +1,5 @@
 //
-//  CircularView.swift
+//  PageIndicatorView.swift
 //  ProfileDetailFeature
 //
 //  Created by 노주영 on 7/9/24.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CircularView: UIView {
+class PageIndicatorView: UIView {
     override func tintColorDidChange() {
         self.backgroundColor = tintColor
     }

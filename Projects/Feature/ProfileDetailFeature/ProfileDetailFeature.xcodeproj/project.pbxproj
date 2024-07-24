@@ -3,17 +3,15 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 55;
+	objectVersion = 56;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		1CF4AF9AAEE5DCAF480AD3EE /* FeatureDependency.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46298C4EFDC4672E09C3EDF3 /* FeatureDependency.framework */; };
 		2EB4557D901ECF9A12C834EE /* ProfileDetailFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A43EB6119562050FB155947 /* ProfileDetailFactory.swift */; };
 		8B9ADA99106D2357F17B7889 /* CustomHeartButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3C44FA71744D6F4F0817AC /* CustomHeartButton.swift */; };
-		B597B691073C765BF9A29631 /* CircularView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E963C04334A46ED41564C3C /* CircularView.swift */; };
 		E71E926FD6866151B500EB92 /* CustomVoteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8852B8B7CA23BC191935C3AC /* CustomVoteButton.swift */; };
 		E8FA98278D78200AC911AEB9 /* ProfileDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A62956AACF348719350390B /* ProfileDetailViewController.swift */; };
-		F1B41215BBB89FEDA91AD611 /* CustomPageControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AF70FF756650D7A7AEF0394 /* CustomPageControlView.swift */; };
 		F3ABCF72461EE6623C4EB41C /* TeenImageCellCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE207437DD4A943EC9B8249 /* TeenImageCellCollectionViewCell.swift */; };
 		F475F8605C01B8F7398DFECB /* ProfileDetailCoordinatorImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A509B9F085C4A804E9A5CF /* ProfileDetailCoordinatorImp.swift */; };
 		FCB76CF995D35B798E8DC3F4 /* ProfileDetailBottomBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE408B2BCF2173C4643AB346 /* ProfileDetailBottomBar.swift */; };
@@ -37,11 +35,9 @@
 		01174DEA02D1DDC348B0CCBC /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
 		46298C4EFDC4672E09C3EDF3 /* FeatureDependency.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FeatureDependency.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		48A509B9F085C4A804E9A5CF /* ProfileDetailCoordinatorImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDetailCoordinatorImp.swift; sourceTree = "<group>"; };
-		4AF70FF756650D7A7AEF0394 /* CustomPageControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPageControlView.swift; sourceTree = "<group>"; };
 		4F6AE01DD4B6F0D1794206D1 /* ProfileDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDetailViewModel.swift; sourceTree = "<group>"; };
 		5A62956AACF348719350390B /* ProfileDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDetailViewController.swift; sourceTree = "<group>"; };
 		8852B8B7CA23BC191935C3AC /* CustomVoteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomVoteButton.swift; sourceTree = "<group>"; };
-		8E963C04334A46ED41564C3C /* CircularView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularView.swift; sourceTree = "<group>"; };
 		9A43EB6119562050FB155947 /* ProfileDetailFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDetailFactory.swift; sourceTree = "<group>"; };
 		9D3C44FA71744D6F4F0817AC /* CustomHeartButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomHeartButton.swift; sourceTree = "<group>"; };
 		B0A5CCB5F5D5CB2DECE9752F /* Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
@@ -66,8 +62,6 @@
 		21AD35ADEB4A158677701916 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				8E963C04334A46ED41564C3C /* CircularView.swift */,
-				4AF70FF756650D7A7AEF0394 /* CustomPageControlView.swift */,
 				DE408B2BCF2173C4643AB346 /* ProfileDetailBottomBar.swift */,
 			);
 			path = View;
@@ -218,8 +212,6 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
 				ORGANIZATIONNAME = ATeen;
-				TargetAttributes = {
-				};
 			};
 			buildConfigurationList = 24E039D9F663739F86E017A6 /* Build configuration list for PBXProject "ProfileDetailFeature" */;
 			compatibilityVersion = "Xcode 14.0";
@@ -256,8 +248,6 @@
 			files = (
 				8B9ADA99106D2357F17B7889 /* CustomHeartButton.swift in Sources */,
 				E71E926FD6866151B500EB92 /* CustomVoteButton.swift in Sources */,
-				B597B691073C765BF9A29631 /* CircularView.swift in Sources */,
-				F1B41215BBB89FEDA91AD611 /* CustomPageControlView.swift in Sources */,
 				FCB76CF995D35B798E8DC3F4 /* ProfileDetailBottomBar.swift in Sources */,
 				F475F8605C01B8F7398DFECB /* ProfileDetailCoordinatorImp.swift in Sources */,
 				2EB4557D901ECF9A12C834EE /* ProfileDetailFactory.swift in Sources */,
@@ -290,7 +280,10 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				OTHER_LDFLAGS = "$(inherited) -ObjC";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ATeen.ATeen.ProfileDetailFeature;
 				PRODUCT_NAME = ProfileDetailFeature;
 				SDKROOT = iphoneos;
@@ -298,10 +291,7 @@
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = (
-					"$(inherited)",
-					DEBUG,
-				);
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG";
 				SWIFT_COMPILATION_MODE = singlefile;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -331,7 +321,10 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				OTHER_LDFLAGS = "$(inherited) -ObjC";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ATeen.ATeen.ProfileDetailFeature;
 				PRODUCT_NAME = ProfileDetailFeature;
 				SDKROOT = iphoneos;

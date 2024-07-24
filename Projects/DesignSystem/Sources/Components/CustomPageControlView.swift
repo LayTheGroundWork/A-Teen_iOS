@@ -1,16 +1,16 @@
 //
-//  CustomTeenPageControl.swift
+//  CustomPageControlView.swift
 //  TeenFeature
 //
-//  Created by 강치우 on 7/24/24.
+//  Created by 최동호 on 7/24/24.
 //  Copyright © 2024 ATeen. All rights reserved.
 //
 
 import UIKit
 
-class CustomTeenPageControl: UIView {
+public class CustomPageControlView: UIView {
     // 총 페이지 갯수
-    var pages: Int = 0 {
+    public var pages: Int = 0 {
         didSet {
             guard pages != oldValue else { return }
             pages = max(0, pages)
@@ -20,7 +20,7 @@ class CustomTeenPageControl: UIView {
     }
 
     // 현재 페이지
-    var selectedPage: Int = 0 {
+    public var selectedPage: Int = 0 {
         didSet {
             guard selectedPage != oldValue else { return }
             selectedPage = max(0, min (selectedPage, pages - 1))
@@ -34,7 +34,7 @@ class CustomTeenPageControl: UIView {
     }
 
     // 보일 수 있는 점의 최대 갯수
-    var maxDots = 7 {
+    public var maxDots = 7 {
         didSet {
             maxDots = max(3, maxDots)
             if maxDots % 2 == 0 {
@@ -59,8 +59,8 @@ class CustomTeenPageControl: UIView {
     }
 
     // UI
-    var dotColor = UIColor.lightGray { didSet { updateColors() } }
-    var selectedColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1) { didSet { updateColors() } }
+    public var dotColor = DesignSystemAsset.gray03.color { didSet { updateColors() } }
+    public var selectedColor = DesignSystemAsset.gray02.color { didSet { updateColors() } }
 
     var dotViews: [UIView] = [] {
         didSet {
@@ -71,10 +71,18 @@ class CustomTeenPageControl: UIView {
         }
     }
 
-    var dotSize: CGFloat = 6 {
+    var dotWidth: CGFloat = 44 {
         didSet {
-            dotSize = max(1, dotSize)
-            dotViews.forEach { $0.frame = CGRect(origin: .zero, size: CGSize(width: dotSize, height: dotSize)) }
+            dotWidth = max(1, dotWidth)
+            dotViews.forEach { $0.frame = CGRect(origin: .zero, size: CGSize(width: dotWidth, height: dotHeight)) }
+            invalidateIntrinsicContentSize()
+        }
+    }
+    
+    var dotHeight: CGFloat = 5 {
+        didSet {
+            dotHeight = max(1, dotHeight)
+            dotViews.forEach { $0.frame = CGRect(origin: .zero, size: CGSize(width: dotWidth, height: dotHeight)) }
             invalidateIntrinsicContentSize()
         }
     }
@@ -98,35 +106,38 @@ class CustomTeenPageControl: UIView {
         }
     }
 
-    public init() {
+    // 초기화 메서드
+    public init(dotWidth: CGFloat, dotHeight: CGFloat) {
+        self.dotWidth = dotWidth
+        self.dotHeight = dotHeight
         super.init(frame: .zero)
         isOpaque = false
+        createViews()
     }
 
     public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
 
-    override func layoutSubviews() {
+    public override func layoutSubviews() {
         super.layoutSubviews()
         guard bounds.size != lastSize else { return }
         lastSize = bounds.size
         updatePositions()
     }
 
-    override var intrinsicContentSize: CGSize {
+    public override var intrinsicContentSize: CGSize {
         let pages = min(maxDots, self.pages)
-        let width = CGFloat(pages) * dotSize + CGFloat(pages - 1) * spacing
-        let height = dotSize
+        let width = CGFloat(pages) * dotWidth + CGFloat(pages - 1) * spacing
+        let height = dotHeight
         return CGSize(width: width, height: height)
     }
 
     private func createViews() {
         dotViews = (0..<pages).map { index in
-            IndicatorCircularView(frame: CGRect(origin: .zero, size: CGSize(width: dotSize, height: dotSize)))
+            PageIndicatorView(frame: CGRect(origin: .zero, size: CGSize(width: dotWidth, height: dotHeight)))
         }
     }
-
     private func updateColors() {
         dotViews.enumerated().forEach { page, dot in
             dot.tintColor = page == selectedPage ? selectedColor : dotColor
@@ -137,16 +148,16 @@ class CustomTeenPageControl: UIView {
         let centerDots = min(self.centerDots, pages)
         let maxDots = min(self.maxDots, pages)
         let sidePages = (maxDots - centerDots) / 2
-        let horizontalOffset = CGFloat(-pageOffset + sidePages) * (dotSize + spacing) + (bounds.width - intrinsicContentSize.width) / 2
+        let horizontalOffset = CGFloat(-pageOffset + sidePages) * (dotWidth + spacing) + (bounds.width - intrinsicContentSize.width) / 2
         let centerPage = centerDots / 2 + pageOffset
         dotViews.enumerated().forEach { page, dot in
-            let center = CGPoint(x: horizontalOffset + bounds.minX + dotSize / 2 + (dotSize + spacing) * CGFloat(page), y: bounds.midY)
+            let center = CGPoint(x: horizontalOffset + bounds.minX + dotWidth / 2 + (dotWidth + spacing) * CGFloat(page), y: bounds.midY)
             let scale: CGFloat = {
                 let distance = abs(page - centerPage)
                 if distance > (maxDots / 2) { return 0 }
                 return [1, 0.66, 0.33, 0.16][max(0, min(3, distance - centerDots / 2))]
             }()
-            dot.frame = CGRect(origin: .zero, size: CGSize(width: dotSize * scale, height: dotSize * scale))
+            dot.frame = CGRect(origin: .zero, size: CGSize(width: dotWidth * scale, height: dotHeight * scale))
             dot.center = center
         }
     }

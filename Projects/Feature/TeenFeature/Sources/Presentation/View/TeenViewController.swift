@@ -93,17 +93,8 @@ public final class TeenViewController: UIViewController {
         return collectionView
     }()
     
-//    private lazy var pageControl: UIPageControl = {
-//        let pageControl = UIPageControl()
-//        pageControl.currentPage = 0
-//        pageControl.numberOfPages = (imageNames.count + 3) / 4
-//        pageControl.currentPageIndicatorTintColor = .black
-//        pageControl.pageIndicatorTintColor = .lightGray
-//        return pageControl
-//    }()
-    
-    private lazy var pageControl: CustomTeenPageControl = {
-        let pageControl = CustomTeenPageControl()
+    private lazy var pageControl: CustomPageControlView = {
+        let pageControl = CustomPageControlView(dotWidth: 44, dotHeight: 5)
         pageControl.pages = (imageNames.count + 3) / 4 // 4개 단위로 페이지 설정
         return pageControl
     }()
