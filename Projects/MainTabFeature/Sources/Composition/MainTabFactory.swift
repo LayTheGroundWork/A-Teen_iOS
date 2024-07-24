@@ -21,7 +21,7 @@ public protocol MainTabFactory {
         delegate: LogInCoordinatorDelegate
     ) -> Coordinator
     func makeChildCoordinators(
-        delegate: SettingsCoordinatorDelegate,
+        profileDelegate: ProfileCoordinatorDelegate,
         mainDelegate: MainCoordinatorDelegate,
         rankingDelegate: RankingCoordinatorDelegate,
         coordinatorProvider: CoordinatorProvider
@@ -56,7 +56,7 @@ public struct MainTabFactoryImp: MainTabFactory {
     }
     
     public func makeChildCoordinators(
-        delegate: SettingsCoordinatorDelegate,
+        profileDelegate: ProfileCoordinatorDelegate,
         mainDelegate: MainCoordinatorDelegate,
         rankingDelegate: RankingCoordinatorDelegate,
         coordinatorProvider: CoordinatorProvider
@@ -66,7 +66,7 @@ public struct MainTabFactoryImp: MainTabFactory {
         let rankingCoordinator = makeRankingCoordinator(delegate: rankingDelegate)
         let teenCoordinator = makeTeenCoordinator()
         let chatCoordinator = makeChatCoordinator()
-        let profileCoordinator = makeProfileCoordinator(delegate: delegate)
+        let profileCoordinator = makeProfileCoordinator(delegate: profileDelegate)
         
         return [mainCoordinator,
                 rankingCoordinator,
@@ -117,7 +117,7 @@ public struct MainTabFactoryImp: MainTabFactory {
             factory: factory)
     }
     
-    private func makeProfileCoordinator(delegate: SettingsCoordinatorDelegate) -> Coordinator {
+    private func makeProfileCoordinator(delegate: ProfileCoordinatorDelegate) -> Coordinator {
         let factory = ProfileFactoryImp()
         let navigation = NavigationImp(rootViewController: UINavigationController())
         return ProfileCoordinator(
