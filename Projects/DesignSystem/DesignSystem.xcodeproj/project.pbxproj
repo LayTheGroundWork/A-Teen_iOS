@@ -3,21 +3,21 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 55;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		05A4BA38E845E0187596D9DE /* TeenTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9938CE2A863D77CCCB66351 /* TeenTableViewCell.swift */; };
 		09F9D04D96D7D0911868E276 /* SpinnerDisplayable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 390F0F25C510E4E45DD91920 /* SpinnerDisplayable.swift */; };
-		0C7379C82CA937C0F42036F4 /* CustomPageControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D7B12C8D576751FF77573D7 /* CustomPageControlView.swift */; };
 		21FE6F5C74A61EC93460A362 /* CustomQuestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E3C35C733DE7AD9739F8C3 /* CustomQuestionView.swift */; };
 		2AE2442457DCECCC55C49611 /* UIView+Layer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9347F19E7CA63054E643E5C /* UIView+Layer.swift */; };
 		32E85901F7A04A4096C803EB /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9005F43599E3AE2CCB247B4F /* SnapKit.framework */; };
 		3461499F2128C3EC59CAD9A6 /* CustomProfileBadgeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6155ACADE951831825C7129 /* CustomProfileBadgeButton.swift */; };
+		35C04CA77F23D9C5B069D60C /* PageIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF391A88AA7D41A7D1B7E8F /* PageIndicatorView.swift */; };
 		4288F5B555587A91E8DACF93 /* UIFont+TextStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62C700FB34E2E83D970827F /* UIFont+TextStyle.swift */; };
 		4DCF1827E9016A17A9DD4066 /* TeenCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E556F69796E68FD12F076C2 /* TeenCollectionViewCell.swift */; };
 		4ED1FAC9639BF5C44001C110 /* UIViewController+TouchGesture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91A68140F7B39D12A54351B0 /* UIViewController+TouchGesture.swift */; };
-		51564C065150AEF023C2CBC7 /* PageIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3167C5E34B41C81EE5561898 /* PageIndicatorView.swift */; };
+		9E659635F95D96815C1BD8A2 /* CustomPageControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CBAFE6CAE2AAAEC837B271 /* CustomPageControlView.swift */; };
 		ABB14811E13F7B1ECCF8B086 /* TuistAssets+DesignSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5263BC75B281154AC0B5A7B /* TuistAssets+DesignSystem.swift */; };
 		CD3530D96EC2AAEF759D0831 /* CustomImageLabelButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A5DD84C76B66DD85EF180B /* CustomImageLabelButton.swift */; };
 		D2E21543F5B3B63472BE98A1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F6AF114A38FDBD9663A6B1B /* Assets.xcassets */; };
@@ -41,14 +41,14 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		18CBAFE6CAE2AAAEC837B271 /* CustomPageControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPageControlView.swift; sourceTree = "<group>"; };
 		1E556F69796E68FD12F076C2 /* TeenCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeenCollectionViewCell.swift; sourceTree = "<group>"; };
-		3167C5E34B41C81EE5561898 /* PageIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageIndicatorView.swift; sourceTree = "<group>"; };
+		1FF391A88AA7D41A7D1B7E8F /* PageIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageIndicatorView.swift; sourceTree = "<group>"; };
 		390F0F25C510E4E45DD91920 /* SpinnerDisplayable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinnerDisplayable.swift; sourceTree = "<group>"; };
 		3F416008BEA6BA3D455E3F43 /* CustomDivider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDivider.swift; sourceTree = "<group>"; };
 		4F6AF114A38FDBD9663A6B1B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		69B7BBEAD5472C7195924AC8 /* DesignSystem.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DesignSystem.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7516C9F8F52188417896B438 /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
-		7D7B12C8D576751FF77573D7 /* CustomPageControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPageControlView.swift; sourceTree = "<group>"; };
 		85684A958F484BEE98C8D726 /* UILabel+Constraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Constraints.swift"; sourceTree = "<group>"; };
 		8937FA9427EEA938B58C5B3E /* DesignSystem-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "DesignSystem-Info.plist"; sourceTree = "<group>"; };
 		9005F43599E3AE2CCB247B4F /* SnapKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SnapKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -159,10 +159,10 @@
 			children = (
 				3F416008BEA6BA3D455E3F43 /* CustomDivider.swift */,
 				F3A5DD84C76B66DD85EF180B /* CustomImageLabelButton.swift */,
-				7D7B12C8D576751FF77573D7 /* CustomPageControlView.swift */,
+				18CBAFE6CAE2AAAEC837B271 /* CustomPageControlView.swift */,
 				E6155ACADE951831825C7129 /* CustomProfileBadgeButton.swift */,
 				A7E3C35C733DE7AD9739F8C3 /* CustomQuestionView.swift */,
-				3167C5E34B41C81EE5561898 /* PageIndicatorView.swift */,
+				1FF391A88AA7D41A7D1B7E8F /* PageIndicatorView.swift */,
 				390F0F25C510E4E45DD91920 /* SpinnerDisplayable.swift */,
 				1E556F69796E68FD12F076C2 /* TeenCollectionViewCell.swift */,
 				A9938CE2A863D77CCCB66351 /* TeenTableViewCell.swift */,
@@ -215,6 +215,8 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
 				ORGANIZATIONNAME = ATeen;
+				TargetAttributes = {
+				};
 			};
 			buildConfigurationList = 5C0CBBA2BFE0CEE21375AF0A /* Build configuration list for PBXProject "DesignSystem" */;
 			compatibilityVersion = "Xcode 14.0";
@@ -254,10 +256,10 @@
 				F6018B5F7748E322214C52D6 /* TuistBundle+DesignSystem.swift in Sources */,
 				E4D184F09D281654C1F8CBB8 /* CustomDivider.swift in Sources */,
 				CD3530D96EC2AAEF759D0831 /* CustomImageLabelButton.swift in Sources */,
-				0C7379C82CA937C0F42036F4 /* CustomPageControlView.swift in Sources */,
+				9E659635F95D96815C1BD8A2 /* CustomPageControlView.swift in Sources */,
 				3461499F2128C3EC59CAD9A6 /* CustomProfileBadgeButton.swift in Sources */,
 				21FE6F5C74A61EC93460A362 /* CustomQuestionView.swift in Sources */,
-				51564C065150AEF023C2CBC7 /* PageIndicatorView.swift in Sources */,
+				35C04CA77F23D9C5B069D60C /* PageIndicatorView.swift in Sources */,
 				09F9D04D96D7D0911868E276 /* SpinnerDisplayable.swift in Sources */,
 				4DCF1827E9016A17A9DD4066 /* TeenCollectionViewCell.swift in Sources */,
 				05A4BA38E845E0187596D9DE /* TeenTableViewCell.swift in Sources */,
@@ -292,10 +294,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					"-ObjC",
-				);
+				OTHER_LDFLAGS = "$(inherited) -ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ATeen.ATeen.DesignSystem;
 				PRODUCT_NAME = DesignSystem;
 				SDKROOT = iphoneos;
@@ -303,7 +302,10 @@
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = (
+					"$(inherited)",
+					DEBUG,
+				);
 				SWIFT_COMPILATION_MODE = singlefile;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -333,10 +335,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					"-ObjC",
-				);
+				OTHER_LDFLAGS = "$(inherited) -ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ATeen.ATeen.DesignSystem;
 				PRODUCT_NAME = DesignSystem;
 				SDKROOT = iphoneos;

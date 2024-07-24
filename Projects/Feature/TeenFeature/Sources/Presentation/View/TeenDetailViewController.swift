@@ -84,6 +84,11 @@ public final class TeenDetailViewController: UIViewController {
         super.viewDidLoad()
         configUserInterface()
         configLayout()
+        
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(updateTableView(_:)),
+                                               name: .completeLogin,
+                                               object: nil)
     }
     
     public override func viewWillAppear(_ animated: Bool) {
@@ -110,6 +115,11 @@ public final class TeenDetailViewController: UIViewController {
     // MARK: - Actions
     @objc private func didSelectBackButton(_ sender: UIButton) {
         coordinator?.didTapBackButton()
+    }
+    
+    @objc private func updateTableView(_ notification: Notification) {
+        print("11")
+        tableView.reloadData()
     }
 }
 

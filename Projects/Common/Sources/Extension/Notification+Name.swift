@@ -9,4 +9,5 @@ import Foundation
 
 extension Notification.Name {
     public static let selectBirth = Notification.Name("selectBirth")
+    public static let completeLogin = Notification.Name("login")
 }

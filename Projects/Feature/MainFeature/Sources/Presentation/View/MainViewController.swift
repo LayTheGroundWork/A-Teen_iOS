@@ -64,6 +64,11 @@ public final class MainViewController: UIViewController {
         super.viewDidLoad()
         configUserInterface()
         configLayout()
+        
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(updateTableView(_:)),
+                                               name: .completeLogin,
+                                               object: nil)
     }
     
     public override func viewWillAppear(_ animated: Bool) {
@@ -86,7 +91,10 @@ public final class MainViewController: UIViewController {
     }
     
     // MARK: - Actions
-    
+    @objc private func updateTableView(_ notification: Notification) {
+        print("!23")
+        tableView.reloadData()
+    }
 }
 
 // MARK: - Extensions here

@@ -17,7 +17,7 @@
 	<key>CFBundleShortVersionString</key>
 	<string>1.0.0</string>
 	<key>CFBundleVersion</key>
-	<string>2024.07.17.01.49</string>
+	<string>2024.07.24.17.51</string>
 	<key>HOST_VALUE</key>
 	<string>$(HOST_VALUE)</string>
 	<key>PORT_NUMBER</key>

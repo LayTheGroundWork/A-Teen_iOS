@@ -13,7 +13,11 @@ extension MainTabCoordinator: LogInCoordinatorDelegate {
     public func didFinishLogin(childCoordinator: Coordinator) {
         childCoordinator.navigation.dismissNavigation = nil
         clearAllViewControllers(childCoordinator)
-        clearAllChildsCoordinator()
-        delegate?.didFinish()
+        removeChildCoordinator(childCoordinator)
+        
+        guard let childCoordinator = childCoordinator as? ParentCoordinator else { return }
+        childCoordinator.clearAllChildsCoordinator()
+        //clearAllChildsCoordinator()
+        //delegate?.didFinish()
     }
 }
