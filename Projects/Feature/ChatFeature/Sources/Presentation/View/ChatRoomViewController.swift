@@ -17,6 +17,7 @@ public protocol ChatRoomViewControllerCoordinator: AnyObject {
 public final class ChatRoomViewController: UIViewController {
     var chatMessageArray: [ChatMessageModel] = []
     var partnerName: String
+    var showChatHeader = false
     weak var coordinator: ChatRoomViewControllerCoordinator?
     
     public init(partnerName: String, coordinator: ChatRoomViewControllerCoordinator) {
@@ -250,6 +251,8 @@ public final class ChatRoomViewController: UIViewController {
         chatRoomTableView.reloadData()
         messageTextView.text = ""
         
+        showChatHeader = true
+        
         // 늘어난 textView 원래크기로 초기화
         UIView.animate(withDuration: 0.2) {
             self.messageTextViewBackground.snp.updateConstraints { make in
@@ -298,8 +301,8 @@ extension ChatRoomViewController: UITableViewDelegate {
     }
     
     public func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-            return 50 
-        }
+        return showChatHeader ? 50 : 0
+    }
 }
 
 extension ChatRoomViewController: UITextViewDelegate {
