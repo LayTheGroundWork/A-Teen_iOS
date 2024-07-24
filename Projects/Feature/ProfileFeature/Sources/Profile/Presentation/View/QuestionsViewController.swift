@@ -242,8 +242,20 @@ public final class QuestionsViewController: UIViewController {
     }
     
     @objc private func clickSaveButton(_ sender: UIButton) {
-        //TODO: 저장 로직 및 변경사항 없을 때의 처리
-        coordinator?.didTabBackButton()     //일단 끝나면 뒤로 처리
+        viewModel.saveChangeValue { success, error in
+            if success {
+                self.coordinator?.didTabBackButton()     //일단 끝나면 뒤로 처리
+            } else {
+                switch error {
+                case .notChange:
+                    print("변경사항 없음")
+                case .textNil:
+                    print("텍스트 없음")
+                case .none:
+                    break
+                }
+            }
+        }
     }
 }
 

@@ -8,6 +8,10 @@
 
 import Common
 
+enum SaveError {
+    case notChange, textNil
+}
+
 public class QuestionsViewModel {
     let sampleQuestionList: [String] = [
         "내가 사는 곳은 어딘가요?",
@@ -29,4 +33,17 @@ public class QuestionsViewModel {
     
     var questionList: [Question] = []
     var changeQuestionList: [Question] = []
+    
+    func saveChangeValue(completion: @escaping(Bool, SaveError?) -> Void) {
+        if questionList != changeQuestionList {
+            if changeQuestionList.contains(where: { $0.text == "" }) {
+                completion(false, .textNil)
+            } else {
+                //TODO: 서버 저장 로직
+                completion(true, nil)
+            }
+        } else {
+            completion(false, .notChange)
+        }
+    }
 }
