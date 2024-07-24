@@ -15,12 +15,6 @@ public protocol IntroduceFactory {
 }
 
 public struct IntroduceFactoryImp: IntroduceFactory {
-    let appContainer: AppContainer?
-    
-    public init(appContainer: AppContainer?) {
-        self.appContainer = appContainer
-    }
-    
     public func makeIntroduceViewController(
         coordinator: IntroduceViewControllerCoordinator
     ) -> UIViewController {

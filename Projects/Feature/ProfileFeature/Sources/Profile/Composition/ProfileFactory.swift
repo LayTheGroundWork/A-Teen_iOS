@@ -81,7 +81,7 @@ public struct ProfileFactoryImp: ProfileFactory {
         delegate: IntroduceCoordinatorDelegate,
         childCoordinators: [Coordinator]
     ) -> Coordinator {
-        let factory = IntroduceFactoryImp(appContainer: appContainer)
+        let factory = IntroduceFactoryImp()
         let coordinator = IntroduceCoordinator(
             navigation: navigation,
             factory: factory,

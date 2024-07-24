@@ -11,24 +11,21 @@
 		1D34015903FDEA9D60557488 /* IntroduceWritingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C0D32AAEED5B693EDBC860B /* IntroduceWritingCollectionViewCell.swift */; };
 		1F3B43E6A5A54543E49661D3 /* ProfileCoordinator+LinksDialogCoordinatorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFBC6A99BD5AEF5A4F240BB6 /* ProfileCoordinator+LinksDialogCoordinatorDelegate.swift */; };
 		219B3EBC5E815DEA41F36A75 /* QuestionsCoordinator+QuestionsViewControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B854E47250B7F0759FD475 /* QuestionsCoordinator+QuestionsViewControllerCoordinator.swift */; };
+		2FDA4DB82F6B97790A75DA23 /* QuestionsDialogCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8A6E4BFE0D267FED044D78 /* QuestionsDialogCoordinator.swift */; };
 		30C7883EC5C80AFFCCFE5A72 /* LinksDialogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35AEF625E9EB80A53BF3D7F9 /* LinksDialogViewController.swift */; };
-		4AFD0F9D8DF425434B63259A /* AddLinkCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F747AB2A08BCECA60C35CF12 /* AddLinkCollectionViewCell.swift */; };
+		3A480E1F26D6029058F0BC75 /* QuestionsDialogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC31044E1AB78EF985832B8 /* QuestionsDialogViewController.swift */; };
 		3C18489A1B8F90BB85A66ACC /* QuestionsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 087243634A26307538522694 /* QuestionsViewModel.swift */; };
+		4AFD0F9D8DF425434B63259A /* AddLinkCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F747AB2A08BCECA60C35CF12 /* AddLinkCollectionViewCell.swift */; };
 		50C7EBDFF11158934C9027D2 /* SettingsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2FF38E5388DAF2F177352A /* SettingsCoordinator.swift */; };
 		55FE9E485CF63075412F9235 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93A8444F9FE80E07A61F92F5 /* SettingsViewModel.swift */; };
 		5BB80EFC84503C494DD440F1 /* FeatureDependency.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 641BBD2F2133A809547B278F /* FeatureDependency.framework */; };
 		651C0C41583A7362A1DA6298 /* UserConfigurationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DBA6AE9367F8E0930D17190 /* UserConfigurationCoordinator.swift */; };
 		6753CE3620A26AD3322960E8 /* LinksDialogCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 004DE565F155364550DB4A46 /* LinksDialogCoordinator.swift */; };
 		70895A41B1F0B0B5B100D0B0 /* LinkTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB0D2929363226C93B98E4C /* LinkTableViewCell.swift */; };
-		7503FD6D25B276BACE138BE7 /* LinksCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46B648E1C1E5A399E3BF63E9 /* LinksCollectionViewCell.swift */; };
-		73BE119D2C4A593800DABE33 /* QuestionsDialogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73BE119C2C4A593800DABE33 /* QuestionsDialogViewController.swift */; };
-		73BE119F2C4A5D3300DABE33 /* QuestionsDialogTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73BE119E2C4A5D3300DABE33 /* QuestionsDialogTableViewCell.swift */; };
-		73BE11A12C4A640300DABE33 /* QuestionsDialogCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73BE11A02C4A640300DABE33 /* QuestionsDialogCoordinator.swift */; };
-		73BE11A32C4A641100DABE33 /* QuestionsDialogFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73BE11A22C4A641100DABE33 /* QuestionsDialogFactory.swift */; };
-		73BE11A52C4A654F00DABE33 /* QuestionsDialogCoordinator+QuestionsDialogViewControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73BE11A42C4A654F00DABE33 /* QuestionsDialogCoordinator+QuestionsDialogViewControllerCoordinator.swift */; };
-		73BE11A72C4A675300DABE33 /* QuestionsCoordinator+QuestionsDialogCoordinatorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73BE11A62C4A675300DABE33 /* QuestionsCoordinator+QuestionsDialogCoordinatorDelegate.swift */; };
 		7437742AB548604B9D645E25 /* ProfileCoordinator+SettingsCoordinatorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE52768296FE8ED09EDCF5E3 /* ProfileCoordinator+SettingsCoordinatorDelegate.swift */; };
+		7503FD6D25B276BACE138BE7 /* LinksCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46B648E1C1E5A399E3BF63E9 /* LinksCollectionViewCell.swift */; };
 		755BE18E11E861FDDF150DEF /* CustomNaviView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E49EF055D5905E6493CCEF /* CustomNaviView.swift */; };
+		7DEDC755211F4A29597FFAC4 /* QuestionsDialogTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8EB52A99D4CBBAC7D995CA9 /* QuestionsDialogTableViewCell.swift */; };
 		82D6398E5EA99B4CB2D33E13 /* UserConfigurationFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7A14D63C33266DECE68E15D /* UserConfigurationFactory.swift */; };
 		84F190EE865F1BE143AEE321 /* IntroduceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D952084FA7936F875A1DB685 /* IntroduceViewController.swift */; };
 		884C0B8B51D014E5907A6A02 /* IntroduceCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5466D3C6C8A47436F09CC20 /* IntroduceCoordinator.swift */; };
@@ -38,6 +35,7 @@
 		93EC267EF72DC6D8BE42017C /* IntroduceFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4450F46FC039ADA18CB5649 /* IntroduceFactory.swift */; };
 		95BC236C36ABBA77349D9B34 /* CustomSelectQuestionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAF80EE55293ECE0A8225772 /* CustomSelectQuestionButton.swift */; };
 		9A66A7C60A02BE8DC358B9F8 /* SettingsCoordinator+SettingsViewControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A021C9386BA2E61F34B01B1 /* SettingsCoordinator+SettingsViewControllerCoordinator.swift */; };
+		9DC0756BE25C16A875E5F6B3 /* QuestionsDialogCoordinator+QuestionsDialogViewControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F95F0E8781B67004AB20C27 /* QuestionsDialogCoordinator+QuestionsDialogViewControllerCoordinator.swift */; };
 		A035510A4A6EE163CA4B8A67 /* IntroduceMbtiCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C670D099F7F3EDC5E439D26D /* IntroduceMbtiCollectionViewCell.swift */; };
 		A84231931BFBC9A0E1E7D8C9 /* QuestionsFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4BFD11C9B12400672E424F6 /* QuestionsFactory.swift */; };
 		AA6C5B85743DD784AFE990D1 /* ProfileCoordinator+QuestionsCoordinatorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51773E00ED871B91A95B60A /* ProfileCoordinator+QuestionsCoordinatorDelegate.swift */; };
@@ -54,9 +52,11 @@
 		DACAD6A2C03A97065E842288 /* IntroduceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F33F76681A8564608F3DE7 /* IntroduceViewModel.swift */; };
 		DB5FC79A2A35D69A18839684 /* QuestionsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B787AA2B300EEB573020337 /* QuestionsCoordinator.swift */; };
 		DEFF6D70F7D6DB2A67103B18 /* LinksDialogCoordinator+LinksDialogViewControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD99243CC94000D81C7F43F /* LinksDialogCoordinator+LinksDialogViewControllerCoordinator.swift */; };
+		E032D8884F7D05DCF70FFE4B /* QuestionsCoordinator+QuestionsDialogCoordinatorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1189D08F6204C2385B0D7C6 /* QuestionsCoordinator+QuestionsDialogCoordinatorDelegate.swift */; };
 		E26DE4296CE0EE35791A7B04 /* QuestionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328B1195AB0B5C831268D97D /* QuestionsViewController.swift */; };
 		EB4CDD951E2FB2A7F20B2192 /* ProfileFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1D889A2FB2244033060C6D4 /* ProfileFactory.swift */; };
 		EF45F4D9378FA1A827A7B736 /* IntroduceCoordinator+IntroduceViewControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 737994A55C1FB491A5A83C8C /* IntroduceCoordinator+IntroduceViewControllerCoordinator.swift */; };
+		F5311B514F7744F501D594C6 /* QuestionsDialogFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E7C5274F794A02F231B0ACB /* QuestionsDialogFactory.swift */; };
 		F921C7F56F471F3B4DF17FCC /* UserConfigurationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C01D72B7494D5394ADD666F /* UserConfigurationViewController.swift */; };
 		FBBDC5A8AF21B30E8F2ED784 /* SettingsCoordinator+UserConfigurationCoordinatorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C93CF9A2566ADD6453D07B /* SettingsCoordinator+UserConfigurationCoordinatorDelegate.swift */; };
 		FC3205877C44FCF45F11158A /* ProfileCoordinator+ProfileViewControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 731A11DA88A7ABACFE37E26C /* ProfileCoordinator+ProfileViewControllerCoordinator.swift */; };
@@ -80,11 +80,11 @@
 		0047357D2E6C44164FCE4A37 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		004DE565F155364550DB4A46 /* LinksDialogCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinksDialogCoordinator.swift; sourceTree = "<group>"; };
 		05B8D902E7152C60B8C958FB /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
-		0BB0D2929363226C93B98E4C /* LinkTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkTableViewCell.swift; sourceTree = "<group>"; };
 		087243634A26307538522694 /* QuestionsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionsViewModel.swift; sourceTree = "<group>"; };
 		0BB0D2929363226C93B98E4C /* LinkTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkTableViewCell.swift; sourceTree = "<group>"; };
 		0F6590180222333CA02BD1AA /* QuestionsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionsTableViewCell.swift; sourceTree = "<group>"; };
 		1413DD890A39C746AB537CAD /* SettingsViewNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewNavigation.swift; sourceTree = "<group>"; };
+		1CC31044E1AB78EF985832B8 /* QuestionsDialogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionsDialogViewController.swift; sourceTree = "<group>"; };
 		1DBA6AE9367F8E0930D17190 /* UserConfigurationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserConfigurationCoordinator.swift; sourceTree = "<group>"; };
 		30D0F25CA220C48D63B514FE /* CustomLinkAddButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLinkAddButton.swift; sourceTree = "<group>"; };
 		328B1195AB0B5C831268D97D /* QuestionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionsViewController.swift; sourceTree = "<group>"; };
@@ -92,8 +92,8 @@
 		35AEF625E9EB80A53BF3D7F9 /* LinksDialogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinksDialogViewController.swift; sourceTree = "<group>"; };
 		3A021C9386BA2E61F34B01B1 /* SettingsCoordinator+SettingsViewControllerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SettingsCoordinator+SettingsViewControllerCoordinator.swift"; sourceTree = "<group>"; };
 		3C01D72B7494D5394ADD666F /* UserConfigurationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserConfigurationViewController.swift; sourceTree = "<group>"; };
-		46B648E1C1E5A399E3BF63E9 /* LinksCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinksCollectionViewCell.swift; sourceTree = "<group>"; };
 		3C0D32AAEED5B693EDBC860B /* IntroduceWritingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroduceWritingCollectionViewCell.swift; sourceTree = "<group>"; };
+		46B648E1C1E5A399E3BF63E9 /* LinksCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinksCollectionViewCell.swift; sourceTree = "<group>"; };
 		47A6CE17EA77D71FB5B6272E /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
 		4A67824CBC94EB926F41E23B /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		4D6BD7FF19595E3D572390D1 /* ExampleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleViewController.swift; sourceTree = "<group>"; };
@@ -104,17 +104,13 @@
 		729B89851D11E20937F47A6E /* LinksDialogFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinksDialogFactory.swift; sourceTree = "<group>"; };
 		731A11DA88A7ABACFE37E26C /* ProfileCoordinator+ProfileViewControllerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProfileCoordinator+ProfileViewControllerCoordinator.swift"; sourceTree = "<group>"; };
 		737994A55C1FB491A5A83C8C /* IntroduceCoordinator+IntroduceViewControllerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "IntroduceCoordinator+IntroduceViewControllerCoordinator.swift"; sourceTree = "<group>"; };
-		73BE119C2C4A593800DABE33 /* QuestionsDialogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionsDialogViewController.swift; sourceTree = "<group>"; };
-		73BE119E2C4A5D3300DABE33 /* QuestionsDialogTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionsDialogTableViewCell.swift; sourceTree = "<group>"; };
-		73BE11A02C4A640300DABE33 /* QuestionsDialogCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionsDialogCoordinator.swift; sourceTree = "<group>"; };
-		73BE11A22C4A641100DABE33 /* QuestionsDialogFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionsDialogFactory.swift; sourceTree = "<group>"; };
-		73BE11A42C4A654F00DABE33 /* QuestionsDialogCoordinator+QuestionsDialogViewControllerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "QuestionsDialogCoordinator+QuestionsDialogViewControllerCoordinator.swift"; sourceTree = "<group>"; };
-		73BE11A62C4A675300DABE33 /* QuestionsCoordinator+QuestionsDialogCoordinatorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "QuestionsCoordinator+QuestionsDialogCoordinatorDelegate.swift"; sourceTree = "<group>"; };
 		78F33F76681A8564608F3DE7 /* IntroduceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroduceViewModel.swift; sourceTree = "<group>"; };
 		795ABA557C83383D98BF7228 /* ProfileCoordinator+IntroduceCoordinatorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProfileCoordinator+IntroduceCoordinatorDelegate.swift"; sourceTree = "<group>"; };
 		7B787AA2B300EEB573020337 /* QuestionsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionsCoordinator.swift; sourceTree = "<group>"; };
 		7D75411655BD7C1F2248A03D /* ProfileFeature.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ProfileFeature.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7E7C5274F794A02F231B0ACB /* QuestionsDialogFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionsDialogFactory.swift; sourceTree = "<group>"; };
 		881A6CF6D1DA006BCB78DB81 /* CustomMbtiButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomMbtiButton.swift; sourceTree = "<group>"; };
+		8F95F0E8781B67004AB20C27 /* QuestionsDialogCoordinator+QuestionsDialogViewControllerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "QuestionsDialogCoordinator+QuestionsDialogViewControllerCoordinator.swift"; sourceTree = "<group>"; };
 		93A8444F9FE80E07A61F92F5 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		9ACE8CAF734090465D7B89D5 /* Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
 		A5466D3C6C8A47436F09CC20 /* IntroduceCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroduceCoordinator.swift; sourceTree = "<group>"; };
@@ -127,15 +123,18 @@
 		B4BFD11C9B12400672E424F6 /* QuestionsFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionsFactory.swift; sourceTree = "<group>"; };
 		BAF80EE55293ECE0A8225772 /* CustomSelectQuestionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSelectQuestionButton.swift; sourceTree = "<group>"; };
 		BE52768296FE8ED09EDCF5E3 /* ProfileCoordinator+SettingsCoordinatorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProfileCoordinator+SettingsCoordinatorDelegate.swift"; sourceTree = "<group>"; };
+		C1189D08F6204C2385B0D7C6 /* QuestionsCoordinator+QuestionsDialogCoordinatorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "QuestionsCoordinator+QuestionsDialogCoordinatorDelegate.swift"; sourceTree = "<group>"; };
 		C670D099F7F3EDC5E439D26D /* IntroduceMbtiCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroduceMbtiCollectionViewCell.swift; sourceTree = "<group>"; };
+		CB8A6E4BFE0D267FED044D78 /* QuestionsDialogCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionsDialogCoordinator.swift; sourceTree = "<group>"; };
 		D2B854E47250B7F0759FD475 /* QuestionsCoordinator+QuestionsViewControllerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "QuestionsCoordinator+QuestionsViewControllerCoordinator.swift"; sourceTree = "<group>"; };
 		D2C93CF9A2566ADD6453D07B /* SettingsCoordinator+UserConfigurationCoordinatorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SettingsCoordinator+UserConfigurationCoordinatorDelegate.swift"; sourceTree = "<group>"; };
 		D5DE40BFB4D377B1E561DAA5 /* IntroduceMbtiButtonCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroduceMbtiButtonCollectionViewCell.swift; sourceTree = "<group>"; };
 		D7A132978DEDA4EA526FE0A4 /* SettingsFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsFactory.swift; sourceTree = "<group>"; };
-		F747AB2A08BCECA60C35CF12 /* AddLinkCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddLinkCollectionViewCell.swift; sourceTree = "<group>"; };
+		D8EB52A99D4CBBAC7D995CA9 /* QuestionsDialogTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionsDialogTableViewCell.swift; sourceTree = "<group>"; };
 		D952084FA7936F875A1DB685 /* IntroduceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroduceViewController.swift; sourceTree = "<group>"; };
 		E4450F46FC039ADA18CB5649 /* IntroduceFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroduceFactory.swift; sourceTree = "<group>"; };
 		E51773E00ED871B91A95B60A /* ProfileCoordinator+QuestionsCoordinatorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProfileCoordinator+QuestionsCoordinatorDelegate.swift"; sourceTree = "<group>"; };
+		F747AB2A08BCECA60C35CF12 /* AddLinkCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddLinkCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -156,7 +155,7 @@
 				D952084FA7936F875A1DB685 /* IntroduceViewController.swift */,
 				35AEF625E9EB80A53BF3D7F9 /* LinksDialogViewController.swift */,
 				05B8D902E7152C60B8C958FB /* ProfileViewController.swift */,
-				73BE119C2C4A593800DABE33 /* QuestionsDialogViewController.swift */,
+				1CC31044E1AB78EF985832B8 /* QuestionsDialogViewController.swift */,
 				328B1195AB0B5C831268D97D /* QuestionsViewController.swift */,
 			);
 			path = View;
@@ -176,13 +175,13 @@
 			isa = PBXGroup;
 			children = (
 				F747AB2A08BCECA60C35CF12 /* AddLinkCollectionViewCell.swift */,
-				46B648E1C1E5A399E3BF63E9 /* LinksCollectionViewCell.swift */,
-				0BB0D2929363226C93B98E4C /* LinkTableViewCell.swift */,
 				D5DE40BFB4D377B1E561DAA5 /* IntroduceMbtiButtonCollectionViewCell.swift */,
 				C670D099F7F3EDC5E439D26D /* IntroduceMbtiCollectionViewCell.swift */,
 				3C0D32AAEED5B693EDBC860B /* IntroduceWritingCollectionViewCell.swift */,
+				46B648E1C1E5A399E3BF63E9 /* LinksCollectionViewCell.swift */,
+				0BB0D2929363226C93B98E4C /* LinkTableViewCell.swift */,
+				D8EB52A99D4CBBAC7D995CA9 /* QuestionsDialogTableViewCell.swift */,
 				0F6590180222333CA02BD1AA /* QuestionsTableViewCell.swift */,
-				73BE119E2C4A5D3300DABE33 /* QuestionsDialogTableViewCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -203,12 +202,12 @@
 				E51773E00ED871B91A95B60A /* ProfileCoordinator+QuestionsCoordinatorDelegate.swift */,
 				BE52768296FE8ED09EDCF5E3 /* ProfileCoordinator+SettingsCoordinatorDelegate.swift */,
 				B1D889A2FB2244033060C6D4 /* ProfileFactory.swift */,
-				73BE11A02C4A640300DABE33 /* QuestionsDialogCoordinator.swift */,
-				73BE11A42C4A654F00DABE33 /* QuestionsDialogCoordinator+QuestionsDialogViewControllerCoordinator.swift */,
-				73BE11A22C4A641100DABE33 /* QuestionsDialogFactory.swift */,
 				7B787AA2B300EEB573020337 /* QuestionsCoordinator.swift */,
+				C1189D08F6204C2385B0D7C6 /* QuestionsCoordinator+QuestionsDialogCoordinatorDelegate.swift */,
 				D2B854E47250B7F0759FD475 /* QuestionsCoordinator+QuestionsViewControllerCoordinator.swift */,
-				73BE11A62C4A675300DABE33 /* QuestionsCoordinator+QuestionsDialogCoordinatorDelegate.swift */,
+				CB8A6E4BFE0D267FED044D78 /* QuestionsDialogCoordinator.swift */,
+				8F95F0E8781B67004AB20C27 /* QuestionsDialogCoordinator+QuestionsDialogViewControllerCoordinator.swift */,
+				7E7C5274F794A02F231B0ACB /* QuestionsDialogFactory.swift */,
 				B4BFD11C9B12400672E424F6 /* QuestionsFactory.swift */,
 			);
 			path = Composition;
@@ -411,17 +410,13 @@
 				9A66A7C60A02BE8DC358B9F8 /* SettingsCoordinator+SettingsViewControllerCoordinator.swift in Sources */,
 				FBBDC5A8AF21B30E8F2ED784 /* SettingsCoordinator+UserConfigurationCoordinatorDelegate.swift in Sources */,
 				50C7EBDFF11158934C9027D2 /* SettingsCoordinator.swift in Sources */,
-				73BE11A72C4A675300DABE33 /* QuestionsCoordinator+QuestionsDialogCoordinatorDelegate.swift in Sources */,
 				FD3E2FA7C3E0DA9EEDA147B7 /* SettingsFactory.swift in Sources */,
 				651C0C41583A7362A1DA6298 /* UserConfigurationCoordinator.swift in Sources */,
 				82D6398E5EA99B4CB2D33E13 /* UserConfigurationFactory.swift in Sources */,
 				AB5925C31F9634BD20280D83 /* ExampleViewController.swift in Sources */,
 				B878F46F5D147FA6A0C328A4 /* ItemSettingViewModel.swift in Sources */,
 				C06241105876ED5A18CE8E3A /* SettingsViewController.swift in Sources */,
-				73BE11A32C4A641100DABE33 /* QuestionsDialogFactory.swift in Sources */,
 				55FE9E485CF63075412F9235 /* SettingsViewModel.swift in Sources */,
-				73BE119F2C4A5D3300DABE33 /* QuestionsDialogTableViewCell.swift in Sources */,
-				73BE119D2C4A593800DABE33 /* QuestionsDialogViewController.swift in Sources */,
 				1AF2769C08BB127855B1AAF0 /* SettingsViewNavigation.swift in Sources */,
 				F921C7F56F471F3B4DF17FCC /* UserConfigurationViewController.swift in Sources */,
 				8A98CED0067FEF0B0859573B /* CustomLinkAddButton.swift in Sources */,
@@ -442,21 +437,25 @@
 				7437742AB548604B9D645E25 /* ProfileCoordinator+SettingsCoordinatorDelegate.swift in Sources */,
 				C2A87FEAC54A3B99E63DB817 /* ProfileCoordinator.swift in Sources */,
 				EB4CDD951E2FB2A7F20B2192 /* ProfileFactory.swift in Sources */,
-				4AFD0F9D8DF425434B63259A /* AddLinkCollectionViewCell.swift in Sources */,
-				70895A41B1F0B0B5B100D0B0 /* LinkTableViewCell.swift in Sources */,
-				7503FD6D25B276BACE138BE7 /* LinksCollectionViewCell.swift in Sources */,
+				E032D8884F7D05DCF70FFE4B /* QuestionsCoordinator+QuestionsDialogCoordinatorDelegate.swift in Sources */,
 				219B3EBC5E815DEA41F36A75 /* QuestionsCoordinator+QuestionsViewControllerCoordinator.swift in Sources */,
 				DB5FC79A2A35D69A18839684 /* QuestionsCoordinator.swift in Sources */,
+				9DC0756BE25C16A875E5F6B3 /* QuestionsDialogCoordinator+QuestionsDialogViewControllerCoordinator.swift in Sources */,
+				2FDA4DB82F6B97790A75DA23 /* QuestionsDialogCoordinator.swift in Sources */,
+				F5311B514F7744F501D594C6 /* QuestionsDialogFactory.swift in Sources */,
 				A84231931BFBC9A0E1E7D8C9 /* QuestionsFactory.swift in Sources */,
+				4AFD0F9D8DF425434B63259A /* AddLinkCollectionViewCell.swift in Sources */,
 				9334EDDB692BA398EC302C76 /* IntroduceMbtiButtonCollectionViewCell.swift in Sources */,
-				73BE11A12C4A640300DABE33 /* QuestionsDialogCoordinator.swift in Sources */,
 				A035510A4A6EE163CA4B8A67 /* IntroduceMbtiCollectionViewCell.swift in Sources */,
 				1D34015903FDEA9D60557488 /* IntroduceWritingCollectionViewCell.swift in Sources */,
+				70895A41B1F0B0B5B100D0B0 /* LinkTableViewCell.swift in Sources */,
+				7503FD6D25B276BACE138BE7 /* LinksCollectionViewCell.swift in Sources */,
+				7DEDC755211F4A29597FFAC4 /* QuestionsDialogTableViewCell.swift in Sources */,
 				CC286220C6A3FAAF1496B521 /* QuestionsTableViewCell.swift in Sources */,
 				84F190EE865F1BE143AEE321 /* IntroduceViewController.swift in Sources */,
 				30C7883EC5C80AFFCCFE5A72 /* LinksDialogViewController.swift in Sources */,
-				73BE11A52C4A654F00DABE33 /* QuestionsDialogCoordinator+QuestionsDialogViewControllerCoordinator.swift in Sources */,
 				8B346E18C8519296F391B661 /* ProfileViewController.swift in Sources */,
+				3A480E1F26D6029058F0BC75 /* QuestionsDialogViewController.swift in Sources */,
 				E26DE4296CE0EE35791A7B04 /* QuestionsViewController.swift in Sources */,
 				DACAD6A2C03A97065E842288 /* IntroduceViewModel.swift in Sources */,
 				CF31723F1111CE1D7B7868F7 /* ProfileViewModel.swift in Sources */,

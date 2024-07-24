@@ -59,7 +59,7 @@ final class LinksCollectionViewCell: UICollectionViewCell {
             make.top.equalToSuperview().offset(22)
             make.height.equalTo(40)
             make.width.equalTo(
-                (self.linkAddButton.customtextLabel.text! as NSString).size(withAttributes: [NSAttributedString.Key.font: self.linkAddButton.customtextLabel.font!]).width + 50
+                (self.linkAddButton.customTextLabel.text! as NSString).size(withAttributes: [NSAttributedString.Key.font: self.linkAddButton.customTextLabel.font!]).width + 50
             )
         }
         
@@ -97,10 +97,10 @@ final class LinksCollectionViewCell: UICollectionViewCell {
         
         if userLinks.count == 3 {
             linkAddButton.plusImageView.image = DesignSystemAsset.plusGray03Icon.image
-            linkAddButton.customtextLabel.textColor = DesignSystemAsset.gray03.color
+            linkAddButton.customTextLabel.textColor = DesignSystemAsset.gray03.color
         } else if userLinks.count < 3 {
             self.linkAddButton.plusImageView.image = DesignSystemAsset.plusGray01Icon.image
-            self.linkAddButton.customtextLabel.textColor = DesignSystemAsset.gray02.color
+            self.linkAddButton.customTextLabel.textColor = DesignSystemAsset.gray02.color
         }
     }
 }

@@ -22,7 +22,6 @@ public protocol ProfileCoordinatorDelegate: AnyObject {
 public final class ProfileCoordinator: Coordinator {
     public var navigation: Navigation
     var factory: ProfileFactory
-    weak var delegate: SettingsCoordinatorDelegate?
     weak var profileViewControllerDelegate: ProfileViewControllerDelegate?
     weak var delegate: ProfileCoordinatorDelegate?
     public var childCoordinators: [Coordinator] = []

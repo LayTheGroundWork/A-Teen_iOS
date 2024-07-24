@@ -117,10 +117,8 @@ public struct MainTabFactoryImp: MainTabFactory {
             factory: factory)
     }
     
-    private func makeProfileCoordinator(delegate: SettingsCoordinatorDelegate) -> Coordinator {
-        let factory = ProfileFactoryImp()
     private func makeProfileCoordinator(delegate: ProfileCoordinatorDelegate) -> Coordinator {
-        let factory = ProfileFactoryImp(appContainer: appContainer)
+        let factory = ProfileFactoryImp()
         let navigation = NavigationImp(rootViewController: UINavigationController())
         return ProfileCoordinator(
             navigation: navigation,
