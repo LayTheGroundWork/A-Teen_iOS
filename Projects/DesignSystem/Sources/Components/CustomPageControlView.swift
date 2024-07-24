@@ -71,7 +71,7 @@ public class CustomPageControlView: UIView {
         }
     }
 
-    var dotWidth: CGFloat = 44 {
+    var dotWidth: CGFloat = 6 {
         didSet {
             dotWidth = max(1, dotWidth)
             dotViews.forEach { $0.frame = CGRect(origin: .zero, size: CGSize(width: dotWidth, height: dotHeight)) }
@@ -79,7 +79,7 @@ public class CustomPageControlView: UIView {
         }
     }
     
-    var dotHeight: CGFloat = 5 {
+    var dotHeight: CGFloat = 6 {
         didSet {
             dotHeight = max(1, dotHeight)
             dotViews.forEach { $0.frame = CGRect(origin: .zero, size: CGSize(width: dotWidth, height: dotHeight)) }

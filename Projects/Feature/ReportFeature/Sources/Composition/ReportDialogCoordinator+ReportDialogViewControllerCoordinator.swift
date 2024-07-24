@@ -16,7 +16,6 @@ extension ReportDialogCoordinator: ReportDialogViewControllerCoordinator {
     }
     
     public func didReport() {
-        delegate?.didFinish(childCoordinator: self)
         delegate?.didReport()
     }
 }
