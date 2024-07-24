@@ -28,8 +28,8 @@ public final class TeenViewController: UIViewController {
     private let cellId = "cell id"
     
     // TODO: 뷰모델로 빼야함
-    private let imageNames = ["pic1", "pic2", "pic3", "pic4", "pic5", "pic6", "pic7", "pic8", "pic9", "pic10", "pic11", "pic12"]
-    private let labels = ["투표 수가 많은\nTEEN", "최근 가입한\nTEEN", "주간 인기\nTEEN", "대회에 참여한\nTEEN", "투표 수가 많은\nTEEN", "최근 가입한\nTEEN", "주간 인기\nTEEN", "대회에 참여한\nTEEN", "투표 수가 많은\nTEEN", "최근 가입한\nTEEN", "주간 인기\nTEEN", "대회에 참여한\nTEEN"]
+    private let imageNames = ["pic1", "pic2", "pic3", "pic4", "pic5", "pic6", "pic7", "pic8"]
+    private let labels = ["투표 수가 많은\nTEEN", "최근 가입한\nTEEN", "주간 인기\nTEEN", "대회에 참여한\nTEEN", "투표 수가 많은\nTEEN", "최근 가입한\nTEEN", "주간 인기\nTEEN", "대회에 참여한\nTEEN"]
     
     private lazy var heroImageView: UIImageView = {
         let imageView = UIImageView()
@@ -93,7 +93,20 @@ public final class TeenViewController: UIViewController {
         return collectionView
     }()
     
+//    private lazy var pageControl: UIPageControl = {
+//        let pageControl = UIPageControl()
+//        pageControl.currentPage = 0
+//        pageControl.numberOfPages = (imageNames.count + 3) / 4
+//        pageControl.currentPageIndicatorTintColor = .black
+//        pageControl.pageIndicatorTintColor = .lightGray
+//        return pageControl
+//    }()
     
+    private lazy var pageControl: CustomTeenPageControl = {
+        let pageControl = CustomTeenPageControl()
+        pageControl.pages = (imageNames.count + 3) / 4 // 4개 단위로 페이지 설정
+        return pageControl
+    }()
     
     // MARK: - Life Cycle
     init(
@@ -113,6 +126,7 @@ public final class TeenViewController: UIViewController {
         super.viewDidLoad()
         configUserInterface()
         configLayout()
+        collectionView.delegate = self
     }
     
     public override func viewWillAppear(_ animated: Bool) {
@@ -134,6 +148,7 @@ public final class TeenViewController: UIViewController {
         view.addSubview(heroImageView)
         view.addSubview(subTitleLabel)
         view.addSubview(collectionView)
+        view.addSubview(pageControl)
         
         heroImageView.addSubview(titleLabel)
         heroImageView.addSubview(textLabel)
@@ -163,6 +178,11 @@ public final class TeenViewController: UIViewController {
             make.top.equalTo(subTitleLabel.snp.bottom).offset(12)
             make.leading.trailing.equalToSuperview()
             make.height.equalTo(337)
+        }
+        
+        pageControl.snp.makeConstraints { make in
+            make.top.equalTo(collectionView.snp.bottom).offset(12)
+            make.leading.trailing.equalToSuperview()
         }
     }
     
@@ -194,12 +214,25 @@ extension TeenViewController: UICollectionViewDataSource {
     }
 }
 
-extension TeenViewController: UIScrollViewDelegate {
-    // 상단 스크롤 막기
+extension TeenViewController: UICollectionViewDelegate {
     public func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        if scrollView.contentOffset.y < 0 {
-            scrollView.contentOffset.y = 0
-        }
+        updatePageControl()
+    }
+    
+    private func updatePageControl() {
+        let pageWidth = collectionView.frame.size.width
+        let currentOffset = collectionView.contentOffset.x
+        let page = Int((currentOffset + pageWidth / 2) / pageWidth)
+        pageControl.selectedPage = page
     }
 }
+
+//extension TeenViewController: UIScrollViewDelegate {
+//    // 상단 스크롤 막기
+//    public func scrollViewDidScroll(_ scrollView: UIScrollView) {
+//        if scrollView.contentOffset.y < 0 {
+//            scrollView.contentOffset.y = 0
+//        }
+//    }
+//}
 

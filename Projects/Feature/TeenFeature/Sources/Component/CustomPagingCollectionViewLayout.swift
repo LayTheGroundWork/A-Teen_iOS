@@ -11,7 +11,7 @@ import UIKit
 class CustomPagingCollectionViewLayout: UICollectionViewFlowLayout {
     
     var velocityThresholdPerPage: CGFloat = 2
-    var numberOfItemsPerPage: CGFloat = 2 // 한번에 넘길 수 있는 갯수
+    var numberOfItemsPerPage: CGFloat = 1 // 한 번에 넘길 수 있는 페이지 수
     
     override func prepare() {
         super.prepare()
@@ -21,7 +21,7 @@ class CustomPagingCollectionViewLayout: UICollectionViewFlowLayout {
         let availableWidth = collectionView.bounds.width
         let availableHeight = collectionView.bounds.height
         
-        // MARK: 가로 세로 2*2
+        // 가로 세로 2*2
         let itemsPerRow: CGFloat = 2
         let itemsPerColumn: CGFloat = 2
         
@@ -49,11 +49,11 @@ class CustomPagingCollectionViewLayout: UICollectionViewFlowLayout {
         let speed: CGFloat
         
         if scrollDirection == .horizontal {
-            pageLength = (self.itemSize.width + self.minimumLineSpacing) * numberOfItemsPerPage
+            pageLength = (self.itemSize.width + self.minimumLineSpacing) * 2
             approxPage = collectionView.contentOffset.x / pageLength
             speed = velocity.x
         } else {
-            pageLength = (self.itemSize.height + self.minimumLineSpacing) * numberOfItemsPerPage
+            pageLength = (self.itemSize.height + self.minimumLineSpacing) * 2
             approxPage = collectionView.contentOffset.y / pageLength
             speed = velocity.y
         }
@@ -86,4 +86,3 @@ class CustomPagingCollectionViewLayout: UICollectionViewFlowLayout {
         }
     }
 }
-
