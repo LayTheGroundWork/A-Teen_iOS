@@ -12,7 +12,6 @@ extension UIView {
     public func asImage() -> UIImage? {
         self.layoutIfNeeded()
         let renderer = UIGraphicsImageRenderer(bounds: bounds)
-        print(bounds)
         return renderer.image { rendererContext in
             layer.render(in: rendererContext.cgContext)
         }

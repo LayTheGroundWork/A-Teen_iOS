@@ -68,7 +68,7 @@ public struct MainTabFactoryImp: MainTabFactory {
         let rankingCoordinator = makeRankingCoordinator(delegate: rankingDelegate)
         let teenCoordinator = makeTeenCoordinator()
         let chatCoordinator = makeChatCoordinator(delegate: chatDelegate)
-        let profileCoordinator = makeProfileCoordinator(delegate: delegate)
+        let profileCoordinator = makeProfileCoordinator(delegate: profileDelegate)
         
         return [mainCoordinator,
                 rankingCoordinator,
