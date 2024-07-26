@@ -5,7 +5,7 @@
 //  Created by 노주영 on 5/22/24.
 //
 
-public struct Question {
+public struct Question: Equatable {
     public var title: String
     public var text: String
     

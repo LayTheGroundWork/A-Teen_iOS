@@ -43,7 +43,7 @@ public final class MainTabCoordinator: Coordinator {
         navigation.navigationBar.isHidden = true
         
         childCoordinators = factory.makeChildCoordinators(
-            delegate: self,
+            profileDelegate: self,
             mainDelegate: self,
             rankingDelegate: self,
             chatDelegate: self,

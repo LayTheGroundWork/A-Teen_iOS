@@ -18,6 +18,7 @@
 		661C2721F63D2E6E20E11A67 /* CustomTabBarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6ACB6B490AA319F179BF57 /* CustomTabBarButton.swift */; };
 		71E9068BEC27B3E779860540 /* MainTabFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A81669B81656FFB90F95C0C /* MainTabFactory.swift */; };
 		7CF7AFEFD32B55FCD07C6775 /* TeenFeature.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F565F922CB5DBE1EF3DFA39 /* TeenFeature.framework */; };
+		85AB1B29C8644E48E5924EE1 /* MainTabCoordinator+ProfileCoordinatorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FC251997FFCE8AC54D8813 /* MainTabCoordinator+ProfileCoordinatorDelegate.swift */; };
 		9061811B89FF066738340A74 /* MainTabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BABD1C7A6357738F656C46D /* MainTabController.swift */; };
 		951AF69CB6A02607BEA18D3A /* MainFeature.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 372C93AEDE2C496EA5D210FF /* MainFeature.framework */; };
 		A6BD8911E4F7EC9925838A45 /* ChatFeature.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67CE8373CF19BD00DBDDDCB3 /* ChatFeature.framework */; };
@@ -58,11 +59,11 @@
 		990677C393F69FA2F7EBBEAE /* MainTabCoordinator+MainCoordinatorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainTabCoordinator+MainCoordinatorDelegate.swift"; sourceTree = "<group>"; };
 		9C34294A2398A0A8F407C438 /* ProfileFeature.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ProfileFeature.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ABF87786BEB604C6125E4C36 /* MainTabFeature-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "MainTabFeature-Info.plist"; sourceTree = "<group>"; };
+		B5FC251997FFCE8AC54D8813 /* MainTabCoordinator+ProfileCoordinatorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainTabCoordinator+ProfileCoordinatorDelegate.swift"; sourceTree = "<group>"; };
 		C0705AA04C1BF5986F8FA618 /* MainTabCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabCoordinator.swift; sourceTree = "<group>"; };
 		D811A0994ED45CD4EBE43333 /* LoginFeature.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = LoginFeature.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E6BDC1D9B6B51ABA66682855 /* RankingFeature.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RankingFeature.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB80C9C6AC0C132632C258EE /* MainTabFeature.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MainTabFeature.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		EC351BE39E1D990A74A8A873 /* MainTabCoordinator+SettingsCoordinatorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainTabCoordinator+SettingsCoordinatorDelegate.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -153,8 +154,8 @@
 				C0705AA04C1BF5986F8FA618 /* MainTabCoordinator.swift */,
 				12142B2D3D8BAFD40142F53E /* MainTabCoordinator+LogInCoordinatorDelegate.swift */,
 				990677C393F69FA2F7EBBEAE /* MainTabCoordinator+MainCoordinatorDelegate.swift */,
+				B5FC251997FFCE8AC54D8813 /* MainTabCoordinator+ProfileCoordinatorDelegate.swift */,
 				4B4125C653D73B4C64122026 /* MainTabCoordinator+RankingCoordinatorDelegate.swift */,
-				EC351BE39E1D990A74A8A873 /* MainTabCoordinator+SettingsCoordinatorDelegate.swift */,
 				3A81669B81656FFB90F95C0C /* MainTabFactory.swift */,
 				048B3D052C4A65E600FA637A /* MainTabCoordinator+ChatCoordinatorDelegate.swift */,
 			);
@@ -244,8 +245,8 @@
 				B5972FC1989156F964D620C8 /* MainTabCoordinator+LogInCoordinatorDelegate.swift in Sources */,
 				FEE1C5501AB91E19FD2ACE6F /* MainTabCoordinator+MainCoordinatorDelegate.swift in Sources */,
 				048B3D062C4A65E600FA637A /* MainTabCoordinator+ChatCoordinatorDelegate.swift in Sources */,
+				85AB1B29C8644E48E5924EE1 /* MainTabCoordinator+ProfileCoordinatorDelegate.swift in Sources */,
 				012B904FFCFD7D4204F28289 /* MainTabCoordinator+RankingCoordinatorDelegate.swift in Sources */,
-				22B771E22A2C1639383D2A54 /* MainTabCoordinator+SettingsCoordinatorDelegate.swift in Sources */,
 				53F6F0B749B747EBD9E10C4C /* MainTabCoordinator.swift in Sources */,
 				71E9068BEC27B3E779860540 /* MainTabFactory.swift in Sources */,
 				661C2721F63D2E6E20E11A67 /* CustomTabBarButton.swift in Sources */,
