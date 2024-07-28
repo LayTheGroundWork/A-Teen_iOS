@@ -9,7 +9,7 @@
 import FeatureDependency
 
 extension TeenCoordinator: TeenViewControllerCoordinator {
-    public func didSelectTeenCategory(with label: String) {
+    public func didSelectTeenCategory(label: String) {
             let coordinator = factory.makeTeenDetailCoordinator(
                 navigation: navigation,
                 childCoordinators: childCoordinators,

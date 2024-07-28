@@ -12,7 +12,7 @@ import SnapKit
 import UIKit
 
 public protocol TeenViewControllerCoordinator: AnyObject {
-    func didSelectTeenCategory(with label: String)
+    func didSelectTeenCategory(label: String)
     func configTabbarState(view: TeenFeatureViewNames)
 }
 
@@ -180,7 +180,7 @@ public final class TeenViewController: UIViewController {
     // MARK: - Actions
     @objc private func buttonTapped(at index: Int) {
         let selectedLabel = viewModel.labels[index]
-        self.coordinator?.didSelectTeenCategory(with: selectedLabel)
+        self.coordinator?.didSelectTeenCategory(label: selectedLabel)
     }
 }
 
