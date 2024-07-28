@@ -41,9 +41,9 @@ public final class TeenDetailViewController: UIViewController {
                          for: .touchUpInside)
 
         let label = UILabel()
-        label.text = selectedLabelText ?? AppLocalized.teenDetailTextLabel
+        label.text = (selectedLabelText ?? AppLocalized.teenDetailTextLabel).replacingOccurrences(of: "\n", with: " ")
         label.textColor = UIColor.black
-        label.font = .customFont(forTextStyle: .title2,
+        label.font = .customFont(forTextStyle: .title3,
                                  weight: .bold)
         label.textAlignment = .center
 
