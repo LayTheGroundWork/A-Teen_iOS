@@ -47,7 +47,6 @@ public final class MainTabCoordinator: Coordinator {
             mainDelegate: self,
             rankingDelegate: self, 
             teenDelegate: self,
-            rankingDelegate: self,
             chatDelegate: self,
             coordinatorProvider: coordinatorProvider
         )
