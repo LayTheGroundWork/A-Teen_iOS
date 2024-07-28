@@ -6,6 +6,7 @@
 //  Copyright © 2024 ATeen. All rights reserved.
 //
 
+import Common
 import DesignSystem
 import SnapKit
 
@@ -23,15 +24,13 @@ public final class TeenViewController: UIViewController {
     private var viewModel: TeenViewModel
     private weak var coordinator: TeenViewControllerCoordinator?
     
-    private let cellSpacing = (1 / 16) * UIScreen.main.bounds.width
-    
     private let cellId = "cell id"
     
     private lazy var heroImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
         imageView.backgroundColor = DesignSystemAsset.mainColor.color
-        imageView.layer.cornerRadius = 20
+        imageView.layer.cornerRadius = ViewValues.defaultRadius
         imageView.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
         imageView.clipsToBounds = true
         return imageView
@@ -39,16 +38,18 @@ public final class TeenViewController: UIViewController {
     
     private lazy var titleLabel: UILabel = {
         let titleLabel = UILabel()
-        titleLabel.text = "TEEN"
+        titleLabel.text = AppLocalized.teenTitle
         titleLabel.textColor = .white
-        titleLabel.font = UIFont.boldSystemFont(ofSize: 20)
+        titleLabel.font = UIFont.customFont(forTextStyle: .title3,
+                                            weight: .bold)
         return titleLabel
     }()
     
     private lazy var textLabel: UILabel = {
         let label = UILabel()
         label.textColor = .white
-        label.font = .systemFont(ofSize: 20)
+        label.font = UIFont.customFont(forTextStyle: .title3,
+                                       weight: .regular)
         label.numberOfLines = 0
         label.lineBreakMode = .byWordWrapping
 
@@ -57,7 +58,7 @@ public final class TeenViewController: UIViewController {
         paragraphStyle.lineSpacing = 5
 
         let attributedText = NSAttributedString(
-            string: "친구들의 프로필을\n구경해보세요!",
+            string: AppLocalized.teenTextLabel,
             attributes: [NSAttributedString.Key.paragraphStyle: paragraphStyle]
         )
         label.attributedText = attributedText
@@ -67,9 +68,10 @@ public final class TeenViewController: UIViewController {
     
     private lazy var subTitleLabel: UILabel = {
         let titleLabel = UILabel()
-        titleLabel.text = "오늘의 TEEN"
+        titleLabel.text = AppLocalized.teenSubTitleLabel
         titleLabel.textColor = .black
-        titleLabel.font = UIFont.boldSystemFont(ofSize: 20)
+        titleLabel.font = UIFont.customFont(forTextStyle: .title3,
+                                            weight: .bold)
         return titleLabel
     }()
     
@@ -78,7 +80,7 @@ public final class TeenViewController: UIViewController {
         layout.scrollDirection = .horizontal
         layout.sectionInset = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
         layout.itemSize = CGSize(width: 146, height: 163)
-        layout.minimumLineSpacing = cellSpacing
+        layout.minimumLineSpacing = ViewValues.teenCellSpacing
         
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.translatesAutoresizingMaskIntoConstraints = false

@@ -31,7 +31,7 @@ public final class RankingViewController: UIViewController {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
         imageView.backgroundColor = DesignSystemAsset.mainColor.color
-        imageView.layer.cornerRadius = 20
+        imageView.layer.cornerRadius = ViewValues.defaultRadius
         imageView.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
         imageView.clipsToBounds = true
         return imageView
@@ -39,17 +39,19 @@ public final class RankingViewController: UIViewController {
     
     private lazy var titleLabel: UILabel = {
         let titleLabel = UILabel()
-        titleLabel.text = "Ranking"
+        titleLabel.text = AppLocalized.rankingTitleLabel
         titleLabel.textColor = .white
-        titleLabel.font = UIFont.boldSystemFont(ofSize: 20)
+        titleLabel.font = UIFont.customFont(forTextStyle: .title3,
+                                            weight: .bold)
         return titleLabel
     }()
     
     private lazy var textLabel: UILabel = {
         let label = UILabel()
-        label.text = "투표해보세요"
+        label.text = AppLocalized.rankingTextLabel
         label.textColor = .white
-        label.font = .systemFont(ofSize: 20)
+        label.font = UIFont.customFont(forTextStyle: .title3,
+                                       weight: .regular)
         return label
     }()
     
@@ -62,7 +64,7 @@ public final class RankingViewController: UIViewController {
     private lazy var categoryStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .horizontal
-        stackView.spacing = 16
+        stackView.spacing = ViewValues.defaultSpacing
         stackView.isLayoutMarginsRelativeArrangement = true
         stackView.layoutMargins = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
         return stackView
@@ -158,7 +160,7 @@ public final class RankingViewController: UIViewController {
             button.setTitle(category, for: .normal)
             button.setTitleColor(.black, for: .normal)
             button.backgroundColor = .white
-            button.layer.cornerRadius = 20
+            button.layer.cornerRadius = ViewValues.defaultRadius
             button.layer.borderWidth = 1
             button.layer.borderColor = UIColor.black.cgColor
             button.tag = index
@@ -221,7 +223,8 @@ extension RankingViewController: UITableViewDelegate {
     // MARK: 폰트 설정
     public func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         guard let header = view as? UITableViewHeaderFooterView else { return }
-        header.textLabel?.font = .systemFont(ofSize: 20, weight: .semibold)
+        header.textLabel?.font = UIFont.customFont(forTextStyle: .title3,
+                                                   weight: .semibold)
         header.textLabel?.frame = CGRect(x: header.bounds.origin.x + 20, y: header.bounds.origin.y, width: 100, height: header.bounds.height)
         header.textLabel?.textColor = .black
         header.textLabel?.text = header.textLabel?.text?.lowercased()

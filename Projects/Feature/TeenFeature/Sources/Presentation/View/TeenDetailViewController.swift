@@ -41,9 +41,10 @@ public final class TeenDetailViewController: UIViewController {
                          for: .touchUpInside)
 
         let label = UILabel()
-        label.text = selectedLabelText ?? "투표 수가 많은 Teen"
+        label.text = selectedLabelText ?? AppLocalized.teenDetailTextLabel
         label.textColor = UIColor.black
-        label.font = .customFont(forTextStyle: .title2, weight: .bold)
+        label.font = .customFont(forTextStyle: .title2,
+                                 weight: .bold)
         label.textAlignment = .center
 
         let customView = UIStackView(arrangedSubviews: [button, label])

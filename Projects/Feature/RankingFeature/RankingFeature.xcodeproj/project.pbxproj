@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 55;
+	objectVersion = 56;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -116,6 +116,16 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
+		63C5EC8A2C564C54008994A5 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				5E1984671E525F2B1545D8A8 /* RankingResultViewController.swift */,
+				B41778F12338F23475EE2765 /* RankingViewController.swift */,
+				A8F55157C68BA5391332D783 /* TournamentViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		6C3C55E5AEB1391A3E4B7368 /* Tournament */ = {
 			isa = PBXGroup;
 			children = (
@@ -209,10 +219,8 @@
 		E895A38565171EBEBC02EDEF /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				63C5EC8A2C564C54008994A5 /* View */,
 				3133B999CA77995F4F165F81 /* Cell */,
-				5E1984671E525F2B1545D8A8 /* RankingResultViewController.swift */,
-				B41778F12338F23475EE2765 /* RankingViewController.swift */,
-				A8F55157C68BA5391332D783 /* TournamentViewController.swift */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -266,8 +274,6 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
 				ORGANIZATIONNAME = ATeen;
-				TargetAttributes = {
-				};
 			};
 			buildConfigurationList = B342376EBCA2AFCF06DDAED1 /* Build configuration list for PBXProject "RankingFeature" */;
 			compatibilityVersion = "Xcode 14.0";
@@ -407,7 +413,10 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				OTHER_LDFLAGS = "$(inherited) -ObjC";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ATeen.ATeen.RankingFeature;
 				PRODUCT_NAME = RankingFeature;
 				SDKROOT = iphoneos;
@@ -415,10 +424,7 @@
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = (
-					"$(inherited)",
-					DEBUG,
-				);
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG";
 				SWIFT_COMPILATION_MODE = singlefile;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -448,7 +454,10 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				OTHER_LDFLAGS = "$(inherited) -ObjC";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ATeen.ATeen.RankingFeature;
 				PRODUCT_NAME = RankingFeature;
 				SDKROOT = iphoneos;
