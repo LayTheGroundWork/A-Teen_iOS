@@ -23,7 +23,7 @@ class CustomLinkAddButton: UIButton {
         return imageView
     }()
     
-    lazy var customtextLabel: UILabel = {
+    lazy var customTextLabel: UILabel = {
         let label = UILabel()
         label.text = "외부 링크 추가"
         label.textAlignment = .left
@@ -36,7 +36,7 @@ class CustomLinkAddButton: UIButton {
         super.init(frame: frame)
         
         self.addSubview(plusImageView)
-        self.addSubview(customtextLabel)
+        self.addSubview(customTextLabel)
     }
     
     required init?(coder: NSCoder) {
@@ -53,7 +53,7 @@ extension CustomLinkAddButton {
             make.width.equalTo(40)
         }
         
-        customtextLabel.snp.makeConstraints { make in
+        customTextLabel.snp.makeConstraints { make in
             make.trailing.top.bottom.equalToSuperview()
             make.leading.equalTo(plusImageView.snp.trailing).offset(10)
         }

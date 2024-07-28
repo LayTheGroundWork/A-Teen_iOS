@@ -21,10 +21,11 @@ public protocol MainTabFactory {
         delegate: LogInCoordinatorDelegate
     ) -> Coordinator
     func makeChildCoordinators(
-        delegate: SettingsCoordinatorDelegate,
+        profileDelegate: ProfileCoordinatorDelegate,
         mainDelegate: MainCoordinatorDelegate,
         rankingDelegate: RankingCoordinatorDelegate,
         teenDelegate: TeenCoordinatorDelegate,
+        chatDelegate: ChatCoordinatorDelegate,
         coordinatorProvider: CoordinatorProvider
     ) -> [Coordinator] 
 }
@@ -57,10 +58,11 @@ public struct MainTabFactoryImp: MainTabFactory {
     }
     
     public func makeChildCoordinators(
-        delegate: SettingsCoordinatorDelegate,
+        profileDelegate: ProfileCoordinatorDelegate,
         mainDelegate: MainCoordinatorDelegate,
         rankingDelegate: RankingCoordinatorDelegate,
         teenDelegate: TeenCoordinatorDelegate,
+        chatDelegate: ChatCoordinatorDelegate,
         coordinatorProvider: CoordinatorProvider
     ) -> [Coordinator] {
         let mainCoordinator = makeMainCoordinator(delegate: mainDelegate,
@@ -69,6 +71,9 @@ public struct MainTabFactoryImp: MainTabFactory {
         let teenCoordinator = makeTeenCoordinator(delegate: teenDelegate)
         let chatCoordinator = makeChatCoordinator()
         let profileCoordinator = makeProfileCoordinator(delegate: delegate)
+        let teenCoordinator = makeTeenCoordinator()
+        let chatCoordinator = makeChatCoordinator(delegate: chatDelegate)
+        let profileCoordinator = makeProfileCoordinator(delegate: profileDelegate)
         
         return [mainCoordinator,
                 rankingCoordinator,
@@ -115,15 +120,15 @@ public struct MainTabFactoryImp: MainTabFactory {
             coordinatorProvider: coordinatorProvider)
     }
     
-    private func makeChatCoordinator() -> Coordinator {
+    private func makeChatCoordinator(delegate: ChatCoordinatorDelegate) -> Coordinator {
         let factory = ChatFactoryImp()
         let navigation = NavigationImp(rootViewController: UINavigationController())
         return ChatCoordinator(
             navigation: navigation,
-            factory: factory)
+            factory: factory, delegate: delegate)
     }
     
-    private func makeProfileCoordinator(delegate: SettingsCoordinatorDelegate) -> Coordinator {
+    private func makeProfileCoordinator(delegate: ProfileCoordinatorDelegate) -> Coordinator {
         let factory = ProfileFactoryImp()
         let navigation = NavigationImp(rootViewController: UINavigationController())
         return ProfileCoordinator(

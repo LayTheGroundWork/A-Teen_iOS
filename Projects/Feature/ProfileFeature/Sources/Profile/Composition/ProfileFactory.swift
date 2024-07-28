@@ -20,6 +20,18 @@ public protocol ProfileFactory {
     func makeLinksDialogCoordinator(
         delegate: LinksDialogCoordinatorDelegate
     ) -> Coordinator
+    func makeIntroduceCoordinator(
+        navigation: Navigation,
+        parentCoordinator: ParentCoordinator,
+        delegate: IntroduceCoordinatorDelegate,
+        childCoordinators: [Coordinator]
+    ) -> Coordinator
+    func makeQuestionsCoordinator(
+        navigation: Navigation,
+        parentCoordinator: ParentCoordinator,
+        delegate: QuestionsCoordinatorDelegate,
+        childCoordinators: [Coordinator]
+    ) -> Coordinator
 }
 
 public struct ProfileFactoryImp: ProfileFactory {
@@ -62,4 +74,35 @@ public struct ProfileFactoryImp: ProfileFactory {
             delegate: delegate)
         return coordinator
     }
+    
+    public func makeIntroduceCoordinator(
+        navigation: Navigation,
+        parentCoordinator: ParentCoordinator,
+        delegate: IntroduceCoordinatorDelegate,
+        childCoordinators: [Coordinator]
+    ) -> Coordinator {
+        let factory = IntroduceFactoryImp()
+        let coordinator = IntroduceCoordinator(
+            navigation: navigation,
+            factory: factory,
+            delegate: delegate,
+            childCoordinators: childCoordinators)
+        return coordinator
+    }
+    
+    public func makeQuestionsCoordinator(
+        navigation: Navigation,
+        parentCoordinator: ParentCoordinator,
+        delegate: QuestionsCoordinatorDelegate,
+        childCoordinators: [Coordinator]
+    ) -> Coordinator {
+        let factory = QuestionsFactoryImp()
+        let coordinator = QuestionsCoordinator(
+            navigation: navigation,
+            factory: factory,
+            delegate: delegate,
+            childCoordinators: childCoordinators)
+        return coordinator
+    }
+    
 }

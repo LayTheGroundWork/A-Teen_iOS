@@ -184,7 +184,7 @@ open class TwoButtonDialogViewController: UIViewController {
         }
     }
     
-    private func setupActions() {
+     func setupActions() {
         leftButton.addTarget(self,
                                 action: #selector(clickLeftButton(_:)),
                                 for: .touchUpInside)
