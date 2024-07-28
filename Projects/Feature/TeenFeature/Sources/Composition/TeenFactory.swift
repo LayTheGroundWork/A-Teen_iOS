@@ -16,7 +16,8 @@ public protocol TeenFactory {
         navigation: Navigation,
         childCoordinators: [Coordinator],
         delegate: TeenDetailCoordinatorDelegate,
-        coordinatorProvider: CoordinatorProvider
+        coordinatorProvider: CoordinatorProvider,
+        labelText: String
     ) -> Coordinator
 }
 
@@ -39,7 +40,8 @@ public struct TeenFactoryImp: TeenFactory {
         navigation: Navigation,
         childCoordinators: [Coordinator],
         delegate: TeenDetailCoordinatorDelegate,
-        coordinatorProvider: CoordinatorProvider
+        coordinatorProvider: CoordinatorProvider,
+        labelText: String
     ) -> Coordinator {
         let factory = TeenDetailFactoryImp()
         return TeenDetailCoordinator(
@@ -47,6 +49,7 @@ public struct TeenFactoryImp: TeenFactory {
             factory: factory,
             childCoordinators: childCoordinators,
             delegate: delegate,
-            coordinatorProvider: coordinatorProvider)
+            coordinatorProvider: coordinatorProvider,
+            labelText: labelText)
     }
 }

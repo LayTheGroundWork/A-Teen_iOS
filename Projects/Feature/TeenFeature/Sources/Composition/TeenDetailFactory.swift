@@ -10,7 +10,8 @@ import UIKit
 
 public protocol TeenDetailFactory {
     func makeTeenDetailViewController(
-        coordinator: TeenDetailViewControllerCoordinator
+        coordinator: TeenDetailViewControllerCoordinator,
+        labelText: String
     ) -> UIViewController
 }
 
@@ -20,11 +21,13 @@ public struct TeenDetailFactoryImp: TeenDetailFactory {
     public init() { }
     
     public func makeTeenDetailViewController(
-        coordinator: TeenDetailViewControllerCoordinator
+        coordinator: TeenDetailViewControllerCoordinator,
+        labelText: String
     ) -> UIViewController {
         let controller = TeenDetailViewController(
             viewModel: viewModel,
-            coordinator: coordinator)
+            coordinator: coordinator,
+            selectedLabelText: labelText)
         return controller
     }
 }

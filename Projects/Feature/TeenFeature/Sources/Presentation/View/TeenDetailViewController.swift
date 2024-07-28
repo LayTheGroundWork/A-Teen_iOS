@@ -24,11 +24,13 @@ public protocol TeenDetailViewControllerCoordinator: AnyObject {
 
 public final class TeenDetailViewController: UIViewController {
     // MARK: - Public properties
-    
+
     // MARK: - Private properties
     private let viewModel: TeenDetailViewModel
     private weak var coordinator: TeenDetailViewControllerCoordinator?
-    
+
+    private var selectedLabelText: String?
+
     private lazy var backButton: UIBarButtonItem = {
         let button = UIButton()
         button.setImage(DesignSystemAsset.leftArrowIcon.image,
@@ -37,21 +39,21 @@ public final class TeenDetailViewController: UIViewController {
         button.addTarget(self,
                          action: #selector(didSelectBackButton(_:)),
                          for: .touchUpInside)
-        
+
         let label = UILabel()
-        label.text = "투표 수가 많은 Teen"
+        label.text = selectedLabelText ?? "투표 수가 많은 Teen"
         label.textColor = UIColor.black
         label.font = .customFont(forTextStyle: .title2, weight: .bold)
         label.textAlignment = .center
-        
+
         let customView = UIStackView(arrangedSubviews: [button, label])
         customView.axis = .horizontal
         customView.alignment = .center
         customView.spacing = 10
-        
+
         let buttonItem = UIBarButtonItem(customView: customView)
         return buttonItem
-        
+
     }()
 
     private lazy var tableView: UITableView = {
@@ -65,58 +67,60 @@ public final class TeenDetailViewController: UIViewController {
 
         return tableView
     }()
-    
+
     // MARK: - Life Cycle
     init(
         viewModel: TeenDetailViewModel,
-        coordinator: TeenDetailViewControllerCoordinator
+        coordinator: TeenDetailViewControllerCoordinator,
+        selectedLabelText: String?
     ) {
         self.viewModel = viewModel
         self.coordinator = coordinator
+        self.selectedLabelText = selectedLabelText
         super.init(nibName: nil, bundle: nil)
     }
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     public override func viewDidLoad() {
         super.viewDidLoad()
         configUserInterface()
         configLayout()
-        
+
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(updateTableView(_:)),
                                                name: .completeLogin,
                                                object: nil)
     }
-    
+
     public override func viewWillAppear(_ animated: Bool) {
         coordinator?.configTabbarState(view: .teenDetail)
     }
-    
+
     // MARK: - Helpers
     private func configUserInterface() {
         view.backgroundColor = UIColor.systemBackground
-        
+
         navigationItem.leftBarButtonItem = backButton
 
         self.view.addSubview(tableView)
-    
+
     }
-    
+
     private func configLayout() {
         self.tableView.snp.makeConstraints { make in
             make.leading.trailing.bottom.equalToSuperview()
             make.top.equalTo(self.view.safeAreaLayoutGuide.snp.top)
         }
     }
-    
+
     // MARK: - Actions
     @objc private func didSelectBackButton(_ sender: UIButton) {
         coordinator?.didTapBackButton()
     }
-    
+
     @objc private func updateTableView(_ notification: Notification) {
         print("11")
         tableView.reloadData()
@@ -128,7 +132,7 @@ extension TeenDetailViewController: UITableViewDataSource {
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         viewModel.teenList.count
     }
-    
+
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard
             let cell = tableView.dequeueReusableCell(
@@ -137,16 +141,16 @@ extension TeenDetailViewController: UITableViewDataSource {
         else {
             return UITableViewCell()
         }
-        
+
         cell.selectionStyle = .none
 
         cell.setCell(teen: viewModel.getTeenItemTeenViewModel(row: indexPath.row))
-        
+
         cell.chatButtonAction = { [weak self] in
             guard let self = self else { return }
             self.coordinator?.didSelectTeenChattingButton()
         }
-        
+
         cell.heartButtonAction = { [weak self] in
             guard let self = self else { return }
             self.viewModel.didSelectTeenHeartButton()
@@ -158,7 +162,7 @@ extension TeenDetailViewController: UITableViewDataSource {
             guard let mainView = tableView.superview,
                   let appView = mainView.superview
             else { return }
-            
+
             let cellPosition = cell.convert(cell.bounds, to: appView)
             let menuButtonPosition = CGRect(
                 x: cellPosition.maxX,
@@ -183,12 +187,12 @@ extension TeenDetailViewController: UITableViewDelegate {
                     height: cellClicked.frame.height),
                 to: nil)
         else { return }
-        
+
         coordinator?.didSelectTeenImage(
             frame: frame,
             teen: viewModel.getTeenItemTeenViewModel(row: indexPath.row))
     }
-    
+
     public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         ViewValues.anotherTeenImageHeight
     }

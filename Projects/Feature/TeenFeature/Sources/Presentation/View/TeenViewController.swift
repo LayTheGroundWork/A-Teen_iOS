@@ -12,7 +12,7 @@ import SnapKit
 import UIKit
 
 public protocol TeenViewControllerCoordinator: AnyObject {
-    func didSelectTeenCategory()
+    func didSelectTeenCategory(with label: String)
     func configTabbarState(view: TeenFeatureViewNames)
 }
 
@@ -26,10 +26,6 @@ public final class TeenViewController: UIViewController {
     private let cellSpacing = (1 / 16) * UIScreen.main.bounds.width
     
     private let cellId = "cell id"
-    
-    // TODO: 뷰모델로 빼야함
-    private let imageNames = ["pic1", "pic2", "pic3", "pic4", "pic5", "pic6", "pic7", "pic8"]
-    private let labels = ["투표 수가 많은\nTEEN", "최근 가입한\nTEEN", "주간 인기\nTEEN", "대회에 참여한\nTEEN", "투표 수가 많은\nTEEN", "최근 가입한\nTEEN", "주간 인기\nTEEN", "대회에 참여한\nTEEN"]
     
     private lazy var heroImageView: UIImageView = {
         let imageView = UIImageView()
@@ -95,7 +91,7 @@ public final class TeenViewController: UIViewController {
     
     private lazy var pageControl: CustomPageControlView = {
         let pageControl = CustomPageControlView(dotWidth: 44, dotHeight: 5)
-        pageControl.pages = (imageNames.count + 3) / 4 // 4개 단위로 페이지 설정
+        pageControl.pages = (viewModel.imageNames.count + 3) / 4 // 4개 단위로 페이지 설정
         return pageControl
     }()
     
@@ -183,7 +179,8 @@ public final class TeenViewController: UIViewController {
     
     // MARK: - Actions
     @objc private func buttonTapped(at index: Int) {
-        self.coordinator?.didSelectTeenCategory()
+        let selectedLabel = viewModel.labels[index]
+        self.coordinator?.didSelectTeenCategory(with: selectedLabel)
     }
 }
 
@@ -191,13 +188,13 @@ public final class TeenViewController: UIViewController {
 extension TeenViewController: UICollectionViewDataSource {
     
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return imageNames.count
+        return viewModel.imageNames.count
     }
     
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! CustomTeenCollectionViewCell
-        let imageName = imageNames[indexPath.item]
-        let label = labels[indexPath.item]
+        let imageName = viewModel.imageNames[indexPath.item]
+        let label = viewModel.labels[indexPath.item]
         cell.configure(with: UIImage(named: imageName), text: label, buttonAction: { [weak self] in
             self?.buttonTapped(at: indexPath.item)
         })
@@ -217,13 +214,4 @@ extension TeenViewController: UICollectionViewDelegate {
         pageControl.selectedPage = page
     }
 }
-
-//extension TeenViewController: UIScrollViewDelegate {
-//    // 상단 스크롤 막기
-//    public func scrollViewDidScroll(_ scrollView: UIScrollView) {
-//        if scrollView.contentOffset.y < 0 {
-//            scrollView.contentOffset.y = 0
-//        }
-//    }
-//}
 

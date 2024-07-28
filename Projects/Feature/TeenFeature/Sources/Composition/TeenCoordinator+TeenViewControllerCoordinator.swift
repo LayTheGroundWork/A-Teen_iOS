@@ -9,12 +9,13 @@
 import FeatureDependency
 
 extension TeenCoordinator: TeenViewControllerCoordinator {
-    public func didSelectTeenCategory() {
-        let coordinator = factory.makeTeenDetailCoordinator(
-            navigation: navigation,
-            childCoordinators: childCoordinators,
-            delegate: self,
-            coordinatorProvider: coordinatorProvider)
-        addChildCoordinatorStart(coordinator)
-    }
+    public func didSelectTeenCategory(with label: String) {
+            let coordinator = factory.makeTeenDetailCoordinator(
+                navigation: navigation,
+                childCoordinators: childCoordinators,
+                delegate: self,
+                coordinatorProvider: coordinatorProvider,
+                labelText: label)
+            addChildCoordinatorStart(coordinator)
+        }
 }
