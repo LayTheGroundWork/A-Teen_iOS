@@ -94,6 +94,9 @@ public final class TeenDetailViewController: UIViewController {
                                                selector: #selector(updateTableView(_:)),
                                                name: .completeLogin,
                                                object: nil)
+        
+        self.navigationController?.interactivePopGestureRecognizer?.delegate = self
+        self.navigationController?.interactivePopGestureRecognizer?.isEnabled = true
     }
 
     public override func viewWillAppear(_ animated: Bool) {
@@ -196,5 +199,11 @@ extension TeenDetailViewController: UITableViewDelegate {
 
     public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         ViewValues.anotherTeenImageHeight
+    }
+}
+
+extension TeenDetailViewController: UIGestureRecognizerDelegate {
+    public func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+        return true
     }
 }
