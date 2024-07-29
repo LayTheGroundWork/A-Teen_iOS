@@ -24,9 +24,10 @@ public protocol MainTabFactory {
         profileDelegate: ProfileCoordinatorDelegate,
         mainDelegate: MainCoordinatorDelegate,
         rankingDelegate: RankingCoordinatorDelegate,
+        teenDelegate: TeenCoordinatorDelegate,
         chatDelegate: ChatCoordinatorDelegate,
         coordinatorProvider: CoordinatorProvider
-    ) -> [Coordinator]
+    ) -> [Coordinator] 
 }
 
 public struct MainTabFactoryImp: MainTabFactory {
@@ -60,13 +61,14 @@ public struct MainTabFactoryImp: MainTabFactory {
         profileDelegate: ProfileCoordinatorDelegate,
         mainDelegate: MainCoordinatorDelegate,
         rankingDelegate: RankingCoordinatorDelegate,
+        teenDelegate: TeenCoordinatorDelegate,
         chatDelegate: ChatCoordinatorDelegate,
         coordinatorProvider: CoordinatorProvider
     ) -> [Coordinator] {
         let mainCoordinator = makeMainCoordinator(delegate: mainDelegate,
                                                   coordinatorProvider: coordinatorProvider)
         let rankingCoordinator = makeRankingCoordinator(delegate: rankingDelegate)
-        let teenCoordinator = makeTeenCoordinator()
+        let teenCoordinator = makeTeenCoordinator(delegate: teenDelegate)
         let chatCoordinator = makeChatCoordinator(delegate: chatDelegate)
         let profileCoordinator = makeProfileCoordinator(delegate: profileDelegate)
         
@@ -103,12 +105,16 @@ public struct MainTabFactoryImp: MainTabFactory {
         )
     }
     
-    private func makeTeenCoordinator() -> Coordinator {
+    private func makeTeenCoordinator(
+        delegate: TeenCoordinatorDelegate
+    ) -> Coordinator {
         let factory = TeenFactoryImp()
         let navigation = NavigationImp(rootViewController: UINavigationController())
         return TeenCoordinator(
             navigation: navigation,
-            factory: factory)
+            factory: factory,
+            delegate: delegate,
+            coordinatorProvider: coordinatorProvider)
     }
     
     private func makeChatCoordinator(delegate: ChatCoordinatorDelegate) -> Coordinator {

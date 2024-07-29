@@ -18,6 +18,7 @@ public struct ViewValues {
     
     // MARK: - Spacing
     public static let defaultSpacing: CGFloat = 16
+    public static let teenCellSpacing: CGFloat = (1 / 16) * UIScreen.main.bounds.width
     
     // MARK: - Padding
     public static let defaultPadding = 16

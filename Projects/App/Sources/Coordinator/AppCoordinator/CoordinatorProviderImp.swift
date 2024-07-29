@@ -55,3 +55,16 @@ extension CoordinatorProviderImp {
             dialogData: dialogData)
     }
 }
+
+// MARK: - Report
+extension CoordinatorProviderImp {
+    func makePopoverCoordinator(
+        popoverPosition: CGRect,
+        delegate: ReportPopoverCoordinatorDelegate
+    ) -> Coordinator {
+        factoryProvider.makePopoverCoordinator(
+            popoverPosition: popoverPosition,
+            delegate: delegate,
+            coordinatorProvider: self)
+    }
+}

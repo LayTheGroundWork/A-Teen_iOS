@@ -10,6 +10,7 @@ import Common
 import FeatureDependency
 import AlertFeature
 import ProfileDetailFeature
+import ReportFeature
 import MediaEditorFeature
 import UIKit
 
@@ -66,5 +67,25 @@ final class FactoryProviderImp: FactoryProvider {
             factory: factory,
             dialogData: dialogData,
             delegate: delegate)
+    }
+    
+    func makePopoverCoordinator(
+        popoverPosition: CGRect,
+        delegate: ReportPopoverCoordinatorDelegate,
+        coordinatorProvider: CoordinatorProvider
+    ) -> Coordinator {
+        let navigationController = UINavigationController()
+        navigationController.modalPresentationStyle = .overFullScreen
+        navigationController.view.backgroundColor = UIColor.clear
+        let navigation = NavigationImp(rootViewController: navigationController)
+        let factory = ReportPopoverFactoryImp()
+        return ReportPopoverCoordinator(
+            navigation: navigation,
+            childCoordinators: [],
+            factory: factory,
+            popoverPosition: popoverPosition,
+            delegate: delegate,
+            coordinatorProvider: coordinatorProvider
+        )
     }
 }

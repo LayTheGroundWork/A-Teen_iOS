@@ -23,4 +23,13 @@ extension ParentCoordinator {
     public func clearAllChildsCoordinator() {
         childCoordinators = []
     }
+    
+    public func clearAllViewControllers(_ childCoordinator: Coordinator) {
+        childCoordinator.navigation.viewControllers.forEach { viewController in
+            viewController.view.subviews.forEach { view in
+                view.removeFromSuperview()
+            }
+            viewController.removeFromParent()
+        }
+    }
 }

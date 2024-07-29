@@ -3,14 +3,13 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 55;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		012B904FFCFD7D4204F28289 /* MainTabCoordinator+RankingCoordinatorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B4125C653D73B4C64122026 /* MainTabCoordinator+RankingCoordinatorDelegate.swift */; };
-		048B3D062C4A65E600FA637A /* MainTabCoordinator+ChatCoordinatorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048B3D052C4A65E600FA637A /* MainTabCoordinator+ChatCoordinatorDelegate.swift */; };
-		22B771E22A2C1639383D2A54 /* MainTabCoordinator+SettingsCoordinatorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC351BE39E1D990A74A8A873 /* MainTabCoordinator+SettingsCoordinatorDelegate.swift */; };
 		378F72306ADD0C7A67364684 /* MediaEditorFeature.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66B07D75B28CCDFDD8D67157 /* MediaEditorFeature.framework */; };
+		426E4AA9DB40A030D648BE08 /* ReportFeature.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E8CBEADECACAC22CADD3EAE1 /* ReportFeature.framework */; };
 		4B0B05C2E03C232E04A4D4B2 /* LoginFeature.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D811A0994ED45CD4EBE43333 /* LoginFeature.framework */; };
 		4DA8B5C15B52962A58C27412 /* AlertFeature.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5322AE6F9A728F48633C22E5 /* AlertFeature.framework */; };
 		53F6F0B749B747EBD9E10C4C /* MainTabCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0705AA04C1BF5986F8FA618 /* MainTabCoordinator.swift */; };
@@ -25,6 +24,8 @@
 		B5972FC1989156F964D620C8 /* MainTabCoordinator+LogInCoordinatorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12142B2D3D8BAFD40142F53E /* MainTabCoordinator+LogInCoordinatorDelegate.swift */; };
 		B93319F0076615A3D3DFAC87 /* RankingFeature.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6BDC1D9B6B51ABA66682855 /* RankingFeature.framework */; };
 		D7762730317F025DCA287FCF /* ProfileFeature.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C34294A2398A0A8F407C438 /* ProfileFeature.framework */; };
+		DA42CE94C48AA8D6ACE97143 /* MainTabCoordinator+ChatCoordinatorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96D1B3983B501E106E4011D8 /* MainTabCoordinator+ChatCoordinatorDelegate.swift */; };
+		DF94675EA9526E945B5D1D66 /* MainTabCoordinator+TeenCoordinatorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53855136D5A595EB0A7CEEE8 /* MainTabCoordinator+TeenCoordinatorDelegate.swift */; };
 		FEE1C5501AB91E19FD2ACE6F /* MainTabCoordinator+MainCoordinatorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 990677C393F69FA2F7EBBEAE /* MainTabCoordinator+MainCoordinatorDelegate.swift */; };
 /* End PBXBuildFile section */
 
@@ -43,7 +44,6 @@
 
 /* Begin PBXFileReference section */
 		012A140AE43C132D1A947770 /* Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
-		048B3D052C4A65E600FA637A /* MainTabCoordinator+ChatCoordinatorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainTabCoordinator+ChatCoordinatorDelegate.swift"; sourceTree = "<group>"; };
 		12142B2D3D8BAFD40142F53E /* MainTabCoordinator+LogInCoordinatorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainTabCoordinator+LogInCoordinatorDelegate.swift"; sourceTree = "<group>"; };
 		2BABD1C7A6357738F656C46D /* MainTabController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabController.swift; sourceTree = "<group>"; };
 		2C6ACB6B490AA319F179BF57 /* CustomTabBarButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarButton.swift; sourceTree = "<group>"; };
@@ -52,10 +52,12 @@
 		46B9091B7A05386A74935ABC /* ProfileDetailFeature.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ProfileDetailFeature.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4B4125C653D73B4C64122026 /* MainTabCoordinator+RankingCoordinatorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainTabCoordinator+RankingCoordinatorDelegate.swift"; sourceTree = "<group>"; };
 		5322AE6F9A728F48633C22E5 /* AlertFeature.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AlertFeature.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		53855136D5A595EB0A7CEEE8 /* MainTabCoordinator+TeenCoordinatorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainTabCoordinator+TeenCoordinatorDelegate.swift"; sourceTree = "<group>"; };
 		66B07D75B28CCDFDD8D67157 /* MediaEditorFeature.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MediaEditorFeature.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		67CE8373CF19BD00DBDDDCB3 /* ChatFeature.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ChatFeature.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		74477E3F61BF8B9592B607DD /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
 		8F565F922CB5DBE1EF3DFA39 /* TeenFeature.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TeenFeature.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		96D1B3983B501E106E4011D8 /* MainTabCoordinator+ChatCoordinatorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainTabCoordinator+ChatCoordinatorDelegate.swift"; sourceTree = "<group>"; };
 		990677C393F69FA2F7EBBEAE /* MainTabCoordinator+MainCoordinatorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainTabCoordinator+MainCoordinatorDelegate.swift"; sourceTree = "<group>"; };
 		9C34294A2398A0A8F407C438 /* ProfileFeature.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ProfileFeature.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ABF87786BEB604C6125E4C36 /* MainTabFeature-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "MainTabFeature-Info.plist"; sourceTree = "<group>"; };
@@ -63,6 +65,7 @@
 		C0705AA04C1BF5986F8FA618 /* MainTabCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabCoordinator.swift; sourceTree = "<group>"; };
 		D811A0994ED45CD4EBE43333 /* LoginFeature.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = LoginFeature.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E6BDC1D9B6B51ABA66682855 /* RankingFeature.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RankingFeature.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E8CBEADECACAC22CADD3EAE1 /* ReportFeature.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ReportFeature.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB80C9C6AC0C132632C258EE /* MainTabFeature.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MainTabFeature.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -79,6 +82,7 @@
 				60B1253BB2BBE20604CC2599 /* ProfileDetailFeature.framework in Frameworks */,
 				D7762730317F025DCA287FCF /* ProfileFeature.framework in Frameworks */,
 				B93319F0076615A3D3DFAC87 /* RankingFeature.framework in Frameworks */,
+				426E4AA9DB40A030D648BE08 /* ReportFeature.framework in Frameworks */,
 				7CF7AFEFD32B55FCD07C6775 /* TeenFeature.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -107,6 +111,7 @@
 				46B9091B7A05386A74935ABC /* ProfileDetailFeature.framework */,
 				9C34294A2398A0A8F407C438 /* ProfileFeature.framework */,
 				E6BDC1D9B6B51ABA66682855 /* RankingFeature.framework */,
+				E8CBEADECACAC22CADD3EAE1 /* ReportFeature.framework */,
 				8F565F922CB5DBE1EF3DFA39 /* TeenFeature.framework */,
 			);
 			name = Products;
@@ -152,12 +157,13 @@
 			isa = PBXGroup;
 			children = (
 				C0705AA04C1BF5986F8FA618 /* MainTabCoordinator.swift */,
+				96D1B3983B501E106E4011D8 /* MainTabCoordinator+ChatCoordinatorDelegate.swift */,
 				12142B2D3D8BAFD40142F53E /* MainTabCoordinator+LogInCoordinatorDelegate.swift */,
 				990677C393F69FA2F7EBBEAE /* MainTabCoordinator+MainCoordinatorDelegate.swift */,
 				B5FC251997FFCE8AC54D8813 /* MainTabCoordinator+ProfileCoordinatorDelegate.swift */,
 				4B4125C653D73B4C64122026 /* MainTabCoordinator+RankingCoordinatorDelegate.swift */,
+				53855136D5A595EB0A7CEEE8 /* MainTabCoordinator+TeenCoordinatorDelegate.swift */,
 				3A81669B81656FFB90F95C0C /* MainTabFactory.swift */,
-				048B3D052C4A65E600FA637A /* MainTabCoordinator+ChatCoordinatorDelegate.swift */,
 			);
 			path = Composition;
 			sourceTree = "<group>";
@@ -208,6 +214,8 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
 				ORGANIZATIONNAME = ATeen;
+				TargetAttributes = {
+				};
 			};
 			buildConfigurationList = 3AE8E69C6C0CEA60529676FD /* Build configuration list for PBXProject "MainTabFeature" */;
 			compatibilityVersion = "Xcode 14.0";
@@ -242,11 +250,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DA42CE94C48AA8D6ACE97143 /* MainTabCoordinator+ChatCoordinatorDelegate.swift in Sources */,
 				B5972FC1989156F964D620C8 /* MainTabCoordinator+LogInCoordinatorDelegate.swift in Sources */,
 				FEE1C5501AB91E19FD2ACE6F /* MainTabCoordinator+MainCoordinatorDelegate.swift in Sources */,
-				048B3D062C4A65E600FA637A /* MainTabCoordinator+ChatCoordinatorDelegate.swift in Sources */,
 				85AB1B29C8644E48E5924EE1 /* MainTabCoordinator+ProfileCoordinatorDelegate.swift in Sources */,
 				012B904FFCFD7D4204F28289 /* MainTabCoordinator+RankingCoordinatorDelegate.swift in Sources */,
+				DF94675EA9526E945B5D1D66 /* MainTabCoordinator+TeenCoordinatorDelegate.swift in Sources */,
 				53F6F0B749B747EBD9E10C4C /* MainTabCoordinator.swift in Sources */,
 				71E9068BEC27B3E779860540 /* MainTabFactory.swift in Sources */,
 				661C2721F63D2E6E20E11A67 /* CustomTabBarButton.swift in Sources */,
@@ -277,10 +286,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					"-ObjC",
-				);
+				OTHER_LDFLAGS = "$(inherited) -ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ATeen.ATeen.MainTabFeature;
 				PRODUCT_NAME = MainTabFeature;
 				SDKROOT = iphoneos;
@@ -429,10 +435,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					"-ObjC",
-				);
+				OTHER_LDFLAGS = "$(inherited) -ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ATeen.ATeen.MainTabFeature;
 				PRODUCT_NAME = MainTabFeature;
 				SDKROOT = iphoneos;
@@ -440,7 +443,10 @@
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = (
+					"$(inherited)",
+					DEBUG,
+				);
 				SWIFT_COMPILATION_MODE = singlefile;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;

@@ -15,10 +15,8 @@ extension MainTabCoordinator: RankingCoordinatorDelegate {
         guard let tab = navigation.viewControllers.first as? MainTabController else { return }
         
         switch view {
-        
         case .ranking:
             tab.showTabbar()
-            
         case .tournament, .rankingResult:
             tab.hideTabbar()
         }

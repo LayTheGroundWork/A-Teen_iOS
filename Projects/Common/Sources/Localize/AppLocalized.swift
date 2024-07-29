@@ -127,6 +127,15 @@ public enum AppLocalized {
     public static let selectPhotoCategoryText = "자랑할 사진의 카테고리를 선택해보세요!"
     public static let selectVideoCategoryText = "자랑할 영상의 카테고리를 선택해보세요!"
     public static let maxVideoTimeText = "영상의 길이는 최대 10초까지만 사용 가능해요"
+    
+    // MARK: - Ranking
+    public static let rankingTitleLabel = "Ranking"
+    public static let rankingTextLabel = "투표해보세요"
+    
+    // MARK: - Teen / TeenDetail
+    public static let teenTextLabel = "친구들의 프로필을\n구경해보세요!"
+    public static let teenSubTitleLabel = "오늘의 TEEN"
+    public static let teenDetailTextLabel = "투표 수가 많은 Teen"
 }
 
 // MARK: - Regex 모음

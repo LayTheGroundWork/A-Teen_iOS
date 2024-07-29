@@ -16,12 +16,10 @@ public protocol LogInViewControllerCoordinator: AnyObject {
     func didSelectSignButton()
 }
 
-public final class LogInViewController: UIViewController {
-    // MARK: - Public properties
-    
+public final class LogInViewController: UIViewController {    
     // MARK: - Private properties
     private weak var coordinator: LogInViewControllerCoordinator?
-    private let viewModel: PhoneNumberViewModel
+    private let viewModel: PhoneNumberViewModel?
     
     private lazy var ateenLogoImage: UIImageView = {
         let imageView = UIImageView()
@@ -93,7 +91,7 @@ public final class LogInViewController: UIViewController {
     // MARK: - Life Cycle
     init(
         coordinator: LogInViewControllerCoordinator?,
-        viewModel: PhoneNumberViewModel
+        viewModel: PhoneNumberViewModel?
     ) {
         self.coordinator = coordinator
         self.viewModel = viewModel
@@ -199,12 +197,12 @@ public final class LogInViewController: UIViewController {
 // MARK: - Extensions
 extension LogInViewController {
     @objc func didSelectSignUpButton(_ sender: UIButton) {
-        viewModel.changeSignType(signType: .signUp)
+        viewModel?.changeSignType(signType: .signUp)
         coordinator?.didSelectSignButton()
     }
     
     @objc func didSelectSignInButton(_ sender: UIButton) {
-        viewModel.changeSignType(signType: .signIn)
+        viewModel?.changeSignType(signType: .signIn)
         coordinator?.didSelectSignButton()
     }
 }

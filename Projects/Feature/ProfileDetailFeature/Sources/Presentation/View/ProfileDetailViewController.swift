@@ -155,7 +155,7 @@ public class ProfileDetailViewController: UIViewController {
     }()
     
     lazy var pageControl: CustomPageControlView = {
-        let pageControl = CustomPageControlView()
+        let pageControl = CustomPageControlView(dotWidth: 6, dotHeight: 6)
         pageControl.isUserInteractionEnabled = false
         pageControl.dotColor = UIColor.white.withAlphaComponent(0.5)
         pageControl.selectedColor = UIColor.white

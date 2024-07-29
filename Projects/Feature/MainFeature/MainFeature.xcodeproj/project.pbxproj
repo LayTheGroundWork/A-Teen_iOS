@@ -7,33 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		163660A1FEF834572F479953 /* TournamentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A1F6804625C61BE6F801C8 /* TournamentTableViewCell.swift */; };
+		0CC2181FE6BE400D6B73021D /* HeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F93DCD94815081F5B773583 /* HeaderTableViewCell.swift */; };
 		18DED3C9AB2572FF2E85ACCE /* MainFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188A0576F4849CC1D136980E /* MainFactory.swift */; };
 		1FF73CB870D99E82EE70F28B /* CustomAboutATeenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA0885F2D529811E9F26742 /* CustomAboutATeenView.swift */; };
 		261AB37F0994EF981A7F81BD /* MainCoordinator+ProfileCoordinatorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55063A7A79EE751BFDA6C75 /* MainCoordinator+ProfileCoordinatorDelegate.swift */; };
 		2768C053B4D45EC826879E1D /* MainCoordinator+MainViewControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EDED329CDE504D0E71701F5 /* MainCoordinator+MainViewControllerCoordinator.swift */; };
-		2EA4676B687C65F38D0D5540 /* ReportDialogCoordinator+ReportDialogViewControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A2F5DAD78FB2BBBF63757B0 /* ReportDialogCoordinator+ReportDialogViewControllerCoordinator.swift */; };
-		31422E3DFBE651CA19AD4F55 /* ReportDialogFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C1509E4C8DA3F0B28FABC09 /* ReportDialogFactory.swift */; };
-		39E39D126248361A40A60B0C /* AnotherTeenTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210CB7365E088B19EC7CF59E /* AnotherTeenTableViewCell.swift */; };
-		746535D204B8F9319A8FEBC7 /* CustomUsedToReportViewButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AF3A4B6728E1D40BC548AE /* CustomUsedToReportViewButton.swift */; };
-		7AF6132EE1CA5DA4C371B7FF /* CategoryTournamentCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D8A3847BA63B1717071768F /* CategoryTournamentCollectionViewCell.swift */; };
-		8B0553CAA1F822E2ECC75E6E /* ReportDialogCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5615F9345679941ACCF4F1 /* ReportDialogCoordinator.swift */; };
-		95DB3B68C78A7E50D1B805BD /* AboutATeenTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9859CF2BE87D03E01A0EE5 /* AboutATeenTableViewCell.swift */; };
+		27A90CA62B2030933F97D8A5 /* TodayTeenCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32456D5EE802713E6BA65703 /* TodayTeenCollectionViewCell.swift */; };
+		6535F3CE418E3B913BF1202B /* TodayTeenTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54ACBEF0C5639404B2503865 /* TodayTeenTableViewCell.swift */; };
 		A008A74C16400F4C352D614A /* FeatureDependency.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF59E537DED595ABC4723375 /* FeatureDependency.framework */; };
+		A3735BA5D6C9DE54F9ACBE7E /* CategoryTodayCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522BE9F9999FD3490173CF84 /* CategoryTodayCollectionViewCell.swift */; };
 		A5FBE828161CA2B9F24F0D55 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC68D160038C3AED5DD9DB7 /* MainViewController.swift */; };
-		A608078756842AE9BCF9081C /* TodayTeenTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F4163E7027769202F76FDA /* TodayTeenTableViewCell.swift */; };
-		AF09BCEA347F849A9858B8BB /* ReportPopoverFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0C939454A6D8CB5166C9933 /* ReportPopoverFactory.swift */; };
-		B5793E96A4A6935C33F6D1EC /* CustomPopoverButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E9E8E7818FF54CE445ACB2 /* CustomPopoverButton.swift */; };
-		BCDC94E66F39DABA0D3D570E /* ReportDialogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B18584A7AD79002D8E1E659 /* ReportDialogViewController.swift */; };
 		BE6C333354CB38471D704614 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 018C9FFFD97313091FBC0105 /* MainViewModel.swift */; };
-		C2C90010F556CA29A02A358A /* HeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CC17C8718F5E2ED9E6372B6 /* HeaderTableViewCell.swift */; };
-		CDD0920642D9E452410FFC9C /* ReportPopoverCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9ABF5567451B40573D1C71F /* ReportPopoverCoordinator.swift */; };
-		D2D9C3946CD25689E91DDDF7 /* TodayTeenCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F7EDDF944D10B61E131867A /* TodayTeenCollectionViewCell.swift */; };
+		C2CDC386CF2FD92F82B746BE /* CategoryTournamentCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A634B6A6C90FBAAE4A5F0EF5 /* CategoryTournamentCollectionViewCell.swift */; };
+		D3C4BCF1C5B86C8AC7C1FF8A /* TournamentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37F2FD8E95F4D77644E39D2 /* TournamentTableViewCell.swift */; };
+		D5254253461208EA68B7FD57 /* AboutATeenTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 073E519F1C2A8AE5F8639F3E /* AboutATeenTableViewCell.swift */; };
 		DB6705AB97FBA9F5C0A28F3C /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B06DBC64C44174C188C4F64 /* MainCoordinator.swift */; };
-		DF6D21F3CA70087B8AD762AC /* ReportPopoverCoordinator+ReportPopoverViewControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A62B885A46A8F332F9A594CD /* ReportPopoverCoordinator+ReportPopoverViewControllerCoordinator.swift */; };
-		E400A43DDA1C453994E8FBEA /* MainCoordinator+AlertCoordinatorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EC22B4B964E3AB5D50C7CCE /* MainCoordinator+AlertCoordinatorDelegate.swift */; };
-		E9159249AEB8C88EA7259100 /* CategoryTodayCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EBD847E5057932B4F6A0C9 /* CategoryTodayCollectionViewCell.swift */; };
-		EE324355555A58427AF8BD8D /* ReportPopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B92AB433FA37196720FE6929 /* ReportPopoverViewController.swift */; };
 		FDF6CD4366B0D4EDBF1999BC /* CustomNaviView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 563B5B673904807BF5DDE9A9 /* CustomNaviView.swift */; };
 /* End PBXBuildFile section */
 
@@ -53,34 +41,22 @@
 /* Begin PBXFileReference section */
 		018C9FFFD97313091FBC0105 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		028067B5198A06189E74D594 /* MainFeature-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "MainFeature-Info.plist"; sourceTree = "<group>"; };
-		04AF3A4B6728E1D40BC548AE /* CustomUsedToReportViewButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUsedToReportViewButton.swift; sourceTree = "<group>"; };
+		073E519F1C2A8AE5F8639F3E /* AboutATeenTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutATeenTableViewCell.swift; sourceTree = "<group>"; };
 		0EDED329CDE504D0E71701F5 /* MainCoordinator+MainViewControllerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainCoordinator+MainViewControllerCoordinator.swift"; sourceTree = "<group>"; };
 		188A0576F4849CC1D136980E /* MainFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainFactory.swift; sourceTree = "<group>"; };
-		1F7EDDF944D10B61E131867A /* TodayTeenCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayTeenCollectionViewCell.swift; sourceTree = "<group>"; };
-		210CB7365E088B19EC7CF59E /* AnotherTeenTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnotherTeenTableViewCell.swift; sourceTree = "<group>"; };
-		2D8A3847BA63B1717071768F /* CategoryTournamentCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTournamentCollectionViewCell.swift; sourceTree = "<group>"; };
+		32456D5EE802713E6BA65703 /* TodayTeenCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayTeenCollectionViewCell.swift; sourceTree = "<group>"; };
 		412DEA5C9D73808BEA29B72A /* Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
 		4A4646C564432D5BB7376920 /* MainFeature.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MainFeature.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4F93DCD94815081F5B773583 /* HeaderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderTableViewCell.swift; sourceTree = "<group>"; };
+		522BE9F9999FD3490173CF84 /* CategoryTodayCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTodayCollectionViewCell.swift; sourceTree = "<group>"; };
+		54ACBEF0C5639404B2503865 /* TodayTeenTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayTeenTableViewCell.swift; sourceTree = "<group>"; };
 		563B5B673904807BF5DDE9A9 /* CustomNaviView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNaviView.swift; sourceTree = "<group>"; };
-		5B18584A7AD79002D8E1E659 /* ReportDialogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportDialogViewController.swift; sourceTree = "<group>"; };
 		5BC68D160038C3AED5DD9DB7 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
-		5C1509E4C8DA3F0B28FABC09 /* ReportDialogFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportDialogFactory.swift; sourceTree = "<group>"; };
-		6A2F5DAD78FB2BBBF63757B0 /* ReportDialogCoordinator+ReportDialogViewControllerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ReportDialogCoordinator+ReportDialogViewControllerCoordinator.swift"; sourceTree = "<group>"; };
-		7EC22B4B964E3AB5D50C7CCE /* MainCoordinator+AlertCoordinatorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainCoordinator+AlertCoordinatorDelegate.swift"; sourceTree = "<group>"; };
-		88F4163E7027769202F76FDA /* TodayTeenTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayTeenTableViewCell.swift; sourceTree = "<group>"; };
-		8A5615F9345679941ACCF4F1 /* ReportDialogCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportDialogCoordinator.swift; sourceTree = "<group>"; };
 		8B06DBC64C44174C188C4F64 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
-		9CC17C8718F5E2ED9E6372B6 /* HeaderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderTableViewCell.swift; sourceTree = "<group>"; };
-		A0EBD847E5057932B4F6A0C9 /* CategoryTodayCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTodayCollectionViewCell.swift; sourceTree = "<group>"; };
-		A62B885A46A8F332F9A594CD /* ReportPopoverCoordinator+ReportPopoverViewControllerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ReportPopoverCoordinator+ReportPopoverViewControllerCoordinator.swift"; sourceTree = "<group>"; };
-		A9ABF5567451B40573D1C71F /* ReportPopoverCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportPopoverCoordinator.swift; sourceTree = "<group>"; };
-		AC9859CF2BE87D03E01A0EE5 /* AboutATeenTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutATeenTableViewCell.swift; sourceTree = "<group>"; };
-		B92AB433FA37196720FE6929 /* ReportPopoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportPopoverViewController.swift; sourceTree = "<group>"; };
+		A634B6A6C90FBAAE4A5F0EF5 /* CategoryTournamentCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTournamentCollectionViewCell.swift; sourceTree = "<group>"; };
+		B37F2FD8E95F4D77644E39D2 /* TournamentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TournamentTableViewCell.swift; sourceTree = "<group>"; };
 		D55063A7A79EE751BFDA6C75 /* MainCoordinator+ProfileCoordinatorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainCoordinator+ProfileCoordinatorDelegate.swift"; sourceTree = "<group>"; };
-		E0C939454A6D8CB5166C9933 /* ReportPopoverFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportPopoverFactory.swift; sourceTree = "<group>"; };
 		E88239E3C16860C07494EEE2 /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
-		F1E9E8E7818FF54CE445ACB2 /* CustomPopoverButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPopoverButton.swift; sourceTree = "<group>"; };
-		F2A1F6804625C61BE6F801C8 /* TournamentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TournamentTableViewCell.swift; sourceTree = "<group>"; };
 		FF59E537DED595ABC4723375 /* FeatureDependency.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FeatureDependency.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFA0885F2D529811E9F26742 /* CustomAboutATeenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAboutATeenView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -97,15 +73,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		052CF5BDFD0C2730B177E6DB /* Button */ = {
-			isa = PBXGroup;
-			children = (
-				F1E9E8E7818FF54CE445ACB2 /* CustomPopoverButton.swift */,
-				04AF3A4B6728E1D40BC548AE /* CustomUsedToReportViewButton.swift */,
-			);
-			path = Button;
-			sourceTree = "<group>";
-		};
 		0CD3FC6251C22EBCDDA725CD /* InfoPlists */ = {
 			isa = PBXGroup;
 			children = (
@@ -114,13 +81,21 @@
 			path = InfoPlists;
 			sourceTree = "<group>";
 		};
+		1E7627E4AAB288833FAEC89E /* CollectionViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				522BE9F9999FD3490173CF84 /* CategoryTodayCollectionViewCell.swift */,
+				A634B6A6C90FBAAE4A5F0EF5 /* CategoryTournamentCollectionViewCell.swift */,
+				32456D5EE802713E6BA65703 /* TodayTeenCollectionViewCell.swift */,
+			);
+			path = CollectionViewCell;
+			sourceTree = "<group>";
+		};
 		207DD46D7CF7C7493DDF1D8D /* View */ = {
 			isa = PBXGroup;
 			children = (
 				A84DD29D312BB44083844161 /* Cell */,
 				5BC68D160038C3AED5DD9DB7 /* MainViewController.swift */,
-				5B18584A7AD79002D8E1E659 /* ReportDialogViewController.swift */,
-				B92AB433FA37196720FE6929 /* ReportPopoverViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -140,16 +115,6 @@
 				D9511F88C5BA2161C63AE5BD /* ViewModel */,
 			);
 			path = Presentation;
-			sourceTree = "<group>";
-		};
-		75878E00E72EF608FBA03FF8 /* CollectionViewCell */ = {
-			isa = PBXGroup;
-			children = (
-				A0EBD847E5057932B4F6A0C9 /* CategoryTodayCollectionViewCell.swift */,
-				2D8A3847BA63B1717071768F /* CategoryTournamentCollectionViewCell.swift */,
-				1F7EDDF944D10B61E131867A /* TodayTeenCollectionViewCell.swift */,
-			);
-			path = CollectionViewCell;
 			sourceTree = "<group>";
 		};
 		88B00E4983284B1C425F8B55 = {
@@ -192,24 +157,26 @@
 		A84DD29D312BB44083844161 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				B704C552254158BB0694B3B1 /* Cell */,
+				1E7627E4AAB288833FAEC89E /* CollectionViewCell */,
+				A955942F48614C48ADC93193 /* TableViewCell */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
 		};
-		B704C552254158BB0694B3B1 /* Cell */ = {
+		A955942F48614C48ADC93193 /* TableViewCell */ = {
 			isa = PBXGroup;
 			children = (
-				75878E00E72EF608FBA03FF8 /* CollectionViewCell */,
-				E7CBAF5F6ADC18890C355BDC /* TableViewCell */,
+				073E519F1C2A8AE5F8639F3E /* AboutATeenTableViewCell.swift */,
+				4F93DCD94815081F5B773583 /* HeaderTableViewCell.swift */,
+				54ACBEF0C5639404B2503865 /* TodayTeenTableViewCell.swift */,
+				B37F2FD8E95F4D77644E39D2 /* TournamentTableViewCell.swift */,
 			);
-			path = Cell;
+			path = TableViewCell;
 			sourceTree = "<group>";
 		};
 		C21565BC70BA28649E1B80F2 /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				052CF5BDFD0C2730B177E6DB /* Button */,
 				9C5E07FAE0620DDF9982992F /* View */,
 			);
 			path = Components;
@@ -219,16 +186,9 @@
 			isa = PBXGroup;
 			children = (
 				8B06DBC64C44174C188C4F64 /* MainCoordinator.swift */,
-				7EC22B4B964E3AB5D50C7CCE /* MainCoordinator+AlertCoordinatorDelegate.swift */,
 				0EDED329CDE504D0E71701F5 /* MainCoordinator+MainViewControllerCoordinator.swift */,
 				D55063A7A79EE751BFDA6C75 /* MainCoordinator+ProfileCoordinatorDelegate.swift */,
 				188A0576F4849CC1D136980E /* MainFactory.swift */,
-				8A5615F9345679941ACCF4F1 /* ReportDialogCoordinator.swift */,
-				6A2F5DAD78FB2BBBF63757B0 /* ReportDialogCoordinator+ReportDialogViewControllerCoordinator.swift */,
-				5C1509E4C8DA3F0B28FABC09 /* ReportDialogFactory.swift */,
-				A9ABF5567451B40573D1C71F /* ReportPopoverCoordinator.swift */,
-				A62B885A46A8F332F9A594CD /* ReportPopoverCoordinator+ReportPopoverViewControllerCoordinator.swift */,
-				E0C939454A6D8CB5166C9933 /* ReportPopoverFactory.swift */,
 			);
 			path = Composition;
 			sourceTree = "<group>";
@@ -239,18 +199,6 @@
 				018C9FFFD97313091FBC0105 /* MainViewModel.swift */,
 			);
 			path = ViewModel;
-			sourceTree = "<group>";
-		};
-		E7CBAF5F6ADC18890C355BDC /* TableViewCell */ = {
-			isa = PBXGroup;
-			children = (
-				AC9859CF2BE87D03E01A0EE5 /* AboutATeenTableViewCell.swift */,
-				210CB7365E088B19EC7CF59E /* AnotherTeenTableViewCell.swift */,
-				9CC17C8718F5E2ED9E6372B6 /* HeaderTableViewCell.swift */,
-				88F4163E7027769202F76FDA /* TodayTeenTableViewCell.swift */,
-				F2A1F6804625C61BE6F801C8 /* TournamentTableViewCell.swift */,
-			);
-			path = TableViewCell;
 			sourceTree = "<group>";
 		};
 		EBE3D5F842746F51E6A3D84B /* Products */ = {
@@ -337,32 +285,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B5793E96A4A6935C33F6D1EC /* CustomPopoverButton.swift in Sources */,
-				746535D204B8F9319A8FEBC7 /* CustomUsedToReportViewButton.swift in Sources */,
 				1FF73CB870D99E82EE70F28B /* CustomAboutATeenView.swift in Sources */,
 				FDF6CD4366B0D4EDBF1999BC /* CustomNaviView.swift in Sources */,
-				E400A43DDA1C453994E8FBEA /* MainCoordinator+AlertCoordinatorDelegate.swift in Sources */,
 				2768C053B4D45EC826879E1D /* MainCoordinator+MainViewControllerCoordinator.swift in Sources */,
 				261AB37F0994EF981A7F81BD /* MainCoordinator+ProfileCoordinatorDelegate.swift in Sources */,
 				DB6705AB97FBA9F5C0A28F3C /* MainCoordinator.swift in Sources */,
 				18DED3C9AB2572FF2E85ACCE /* MainFactory.swift in Sources */,
-				2EA4676B687C65F38D0D5540 /* ReportDialogCoordinator+ReportDialogViewControllerCoordinator.swift in Sources */,
-				8B0553CAA1F822E2ECC75E6E /* ReportDialogCoordinator.swift in Sources */,
-				31422E3DFBE651CA19AD4F55 /* ReportDialogFactory.swift in Sources */,
-				DF6D21F3CA70087B8AD762AC /* ReportPopoverCoordinator+ReportPopoverViewControllerCoordinator.swift in Sources */,
-				CDD0920642D9E452410FFC9C /* ReportPopoverCoordinator.swift in Sources */,
-				AF09BCEA347F849A9858B8BB /* ReportPopoverFactory.swift in Sources */,
-				E9159249AEB8C88EA7259100 /* CategoryTodayCollectionViewCell.swift in Sources */,
-				7AF6132EE1CA5DA4C371B7FF /* CategoryTournamentCollectionViewCell.swift in Sources */,
-				D2D9C3946CD25689E91DDDF7 /* TodayTeenCollectionViewCell.swift in Sources */,
-				95DB3B68C78A7E50D1B805BD /* AboutATeenTableViewCell.swift in Sources */,
-				39E39D126248361A40A60B0C /* AnotherTeenTableViewCell.swift in Sources */,
-				C2C90010F556CA29A02A358A /* HeaderTableViewCell.swift in Sources */,
-				A608078756842AE9BCF9081C /* TodayTeenTableViewCell.swift in Sources */,
-				163660A1FEF834572F479953 /* TournamentTableViewCell.swift in Sources */,
+				A3735BA5D6C9DE54F9ACBE7E /* CategoryTodayCollectionViewCell.swift in Sources */,
+				C2CDC386CF2FD92F82B746BE /* CategoryTournamentCollectionViewCell.swift in Sources */,
+				27A90CA62B2030933F97D8A5 /* TodayTeenCollectionViewCell.swift in Sources */,
+				D5254253461208EA68B7FD57 /* AboutATeenTableViewCell.swift in Sources */,
+				0CC2181FE6BE400D6B73021D /* HeaderTableViewCell.swift in Sources */,
+				6535F3CE418E3B913BF1202B /* TodayTeenTableViewCell.swift in Sources */,
+				D3C4BCF1C5B86C8AC7C1FF8A /* TournamentTableViewCell.swift in Sources */,
 				A5FBE828161CA2B9F24F0D55 /* MainViewController.swift in Sources */,
-				BCDC94E66F39DABA0D3D570E /* ReportDialogViewController.swift in Sources */,
-				EE324355555A58427AF8BD8D /* ReportPopoverViewController.swift in Sources */,
 				BE6C333354CB38471D704614 /* MainViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

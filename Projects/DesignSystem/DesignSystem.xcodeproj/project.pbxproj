@@ -7,13 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		05A4BA38E845E0187596D9DE /* TeenTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9938CE2A863D77CCCB66351 /* TeenTableViewCell.swift */; };
 		09F9D04D96D7D0911868E276 /* SpinnerDisplayable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 390F0F25C510E4E45DD91920 /* SpinnerDisplayable.swift */; };
 		21FE6F5C74A61EC93460A362 /* CustomQuestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E3C35C733DE7AD9739F8C3 /* CustomQuestionView.swift */; };
 		2AE2442457DCECCC55C49611 /* UIView+Layer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9347F19E7CA63054E643E5C /* UIView+Layer.swift */; };
 		32E85901F7A04A4096C803EB /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9005F43599E3AE2CCB247B4F /* SnapKit.framework */; };
 		3461499F2128C3EC59CAD9A6 /* CustomProfileBadgeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6155ACADE951831825C7129 /* CustomProfileBadgeButton.swift */; };
+		35C04CA77F23D9C5B069D60C /* PageIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF391A88AA7D41A7D1B7E8F /* PageIndicatorView.swift */; };
 		4288F5B555587A91E8DACF93 /* UIFont+TextStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62C700FB34E2E83D970827F /* UIFont+TextStyle.swift */; };
+		4DCF1827E9016A17A9DD4066 /* TeenCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E556F69796E68FD12F076C2 /* TeenCollectionViewCell.swift */; };
 		4ED1FAC9639BF5C44001C110 /* UIViewController+TouchGesture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91A68140F7B39D12A54351B0 /* UIViewController+TouchGesture.swift */; };
+		9E659635F95D96815C1BD8A2 /* CustomPageControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CBAFE6CAE2AAAEC837B271 /* CustomPageControlView.swift */; };
 		ABB14811E13F7B1ECCF8B086 /* TuistAssets+DesignSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5263BC75B281154AC0B5A7B /* TuistAssets+DesignSystem.swift */; };
 		CD3530D96EC2AAEF759D0831 /* CustomImageLabelButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A5DD84C76B66DD85EF180B /* CustomImageLabelButton.swift */; };
 		CFE4925AA440C85B6D8D28D7 /* UIView+ImageRender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 920DA469DBBE73FF7D4216D5 /* UIView+ImageRender.swift */; };
@@ -38,6 +42,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		18CBAFE6CAE2AAAEC837B271 /* CustomPageControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPageControlView.swift; sourceTree = "<group>"; };
+		1E556F69796E68FD12F076C2 /* TeenCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeenCollectionViewCell.swift; sourceTree = "<group>"; };
+		1FF391A88AA7D41A7D1B7E8F /* PageIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageIndicatorView.swift; sourceTree = "<group>"; };
 		390F0F25C510E4E45DD91920 /* SpinnerDisplayable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinnerDisplayable.swift; sourceTree = "<group>"; };
 		3F416008BEA6BA3D455E3F43 /* CustomDivider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDivider.swift; sourceTree = "<group>"; };
 		4F6AF114A38FDBD9663A6B1B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -51,6 +58,7 @@
 		A5263BC75B281154AC0B5A7B /* TuistAssets+DesignSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TuistAssets+DesignSystem.swift"; sourceTree = "<group>"; };
 		A7E3C35C733DE7AD9739F8C3 /* CustomQuestionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomQuestionView.swift; sourceTree = "<group>"; };
 		A85CAE797083F72B19BA5031 /* UIView+Constraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Constraints.swift"; sourceTree = "<group>"; };
+		A9938CE2A863D77CCCB66351 /* TeenTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeenTableViewCell.swift; sourceTree = "<group>"; };
 		B9347F19E7CA63054E643E5C /* UIView+Layer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Layer.swift"; sourceTree = "<group>"; };
 		BE4AD9735556ECA8C8008FEC /* TuistBundle+DesignSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TuistBundle+DesignSystem.swift"; sourceTree = "<group>"; };
 		C62C700FB34E2E83D970827F /* UIFont+TextStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+TextStyle.swift"; sourceTree = "<group>"; };
@@ -154,9 +162,13 @@
 			children = (
 				3F416008BEA6BA3D455E3F43 /* CustomDivider.swift */,
 				F3A5DD84C76B66DD85EF180B /* CustomImageLabelButton.swift */,
+				18CBAFE6CAE2AAAEC837B271 /* CustomPageControlView.swift */,
 				E6155ACADE951831825C7129 /* CustomProfileBadgeButton.swift */,
 				A7E3C35C733DE7AD9739F8C3 /* CustomQuestionView.swift */,
+				1FF391A88AA7D41A7D1B7E8F /* PageIndicatorView.swift */,
 				390F0F25C510E4E45DD91920 /* SpinnerDisplayable.swift */,
+				1E556F69796E68FD12F076C2 /* TeenCollectionViewCell.swift */,
+				A9938CE2A863D77CCCB66351 /* TeenTableViewCell.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -247,9 +259,13 @@
 				F6018B5F7748E322214C52D6 /* TuistBundle+DesignSystem.swift in Sources */,
 				E4D184F09D281654C1F8CBB8 /* CustomDivider.swift in Sources */,
 				CD3530D96EC2AAEF759D0831 /* CustomImageLabelButton.swift in Sources */,
+				9E659635F95D96815C1BD8A2 /* CustomPageControlView.swift in Sources */,
 				3461499F2128C3EC59CAD9A6 /* CustomProfileBadgeButton.swift in Sources */,
 				21FE6F5C74A61EC93460A362 /* CustomQuestionView.swift in Sources */,
+				35C04CA77F23D9C5B069D60C /* PageIndicatorView.swift in Sources */,
 				09F9D04D96D7D0911868E276 /* SpinnerDisplayable.swift in Sources */,
+				4DCF1827E9016A17A9DD4066 /* TeenCollectionViewCell.swift in Sources */,
+				05A4BA38E845E0187596D9DE /* TeenTableViewCell.swift in Sources */,
 				4288F5B555587A91E8DACF93 /* UIFont+TextStyle.swift in Sources */,
 				F161FE102834E18739642B92 /* UILabel+Constraints.swift in Sources */,
 				E7427A1ADE455252D771EBCE /* UIView+Constraints.swift in Sources */,

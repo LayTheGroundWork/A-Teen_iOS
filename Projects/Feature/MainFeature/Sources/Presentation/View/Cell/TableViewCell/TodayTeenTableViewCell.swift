@@ -103,7 +103,7 @@ class TodayTeenTableViewCell: UITableViewCell {
         
         self.teenCollectionView.dataSource = self
         self.teenCollectionView.delegate = self
-        self.teenCollectionView.register(TodayTeenCollectionViewCell.self, forCellWithReuseIdentifier: TodayTeenCollectionViewCell.reuseIdentifier)
+        self.teenCollectionView.register(TeenCollectionViewCell.self, forCellWithReuseIdentifier: TeenCollectionViewCell.reuseIdentifier)
     }
 }
 
@@ -126,18 +126,42 @@ extension TodayTeenTableViewCell: UICollectionViewDataSource {
         case self.teenCollectionView:
             guard
                 let cell = collectionView.dequeueReusableCell(
-                    withReuseIdentifier: TodayTeenCollectionViewCell.reuseIdentifier,
-                    for: indexPath) as? TodayTeenCollectionViewCell
+                    withReuseIdentifier: TeenCollectionViewCell.reuseIdentifier,
+                    for: indexPath) as? TeenCollectionViewCell
             else {
                 return UICollectionViewCell()
             }
             
-            cell.delegate = delegate
             cell.setCell(teen: viewModel.getTodayTeenItemMainViewModel(row: indexPath.row))
             
-            cell.heartButtonAction = {
+            cell.chatButtonAction = { [weak self] in
+                guard let self = self else { return }
+                self.delegate?.didSelectTodayTeenChattingButton()
+            }
+            
+            cell.heartButtonAction = { [weak self] in
+                guard let self = self else { return }
                 self.viewModel.didSelectTodayTeenHeartButton()
             }
+            
+            cell.menuButtonAction = { [weak self] in
+                guard let self = self else { return }
+                cell.layoutIfNeeded()
+                guard let tableViewCell = self.superview,
+                      let tableView = tableViewCell.superview,
+                      let mainView = tableView.superview,
+                      let appView = mainView.superview
+                else { return }
+                
+                let cellPosition = cell.convert(cell.bounds, to: appView)
+                let menuButtonPosition = CGRect(
+                    x: cellPosition.maxX,
+                    y: cellPosition.minY,
+                    width: cellPosition.width,
+                    height: cellPosition.height)
+                self.delegate?.didSelectMenuButton(popoverPosition: menuButtonPosition)
+            }
+            
             return cell
             
         default:

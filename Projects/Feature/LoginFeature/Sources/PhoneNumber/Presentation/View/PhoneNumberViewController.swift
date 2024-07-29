@@ -197,7 +197,8 @@ extension PhoneNumberViewController: PhoneNumberCollectionViewCellDelegate {
 
     func didSelectCertificateButton() {
         currentIndexPath.section += 1
-        DispatchQueue.main.async {
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else { return }
             self.collectionView.scrollToItem(
                 at: self.currentIndexPath,
                 at: .centeredHorizontally,

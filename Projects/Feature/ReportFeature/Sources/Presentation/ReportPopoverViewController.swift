@@ -76,10 +76,11 @@ final class ReportPopoverViewController: UIViewController {
     private func configLayout() {
         popoverView.snp.makeConstraints { make in
             make.trailing.equalToSuperview().offset(-95)
-            if popoverPosition.origin.y >= ViewValues.height / 2 {
-                make.top.equalToSuperview().offset(popoverPosition.origin.y - 80 + popoverPosition.size.height / 2)
+            print(popoverPosition.origin.y)
+            if popoverPosition.origin.y >= 0 {
+                make.top.equalToSuperview().offset(popoverPosition.origin.y - 120 + popoverPosition.size.height)
             } else {
-                make.top.equalToSuperview().offset(popoverPosition.origin.y + popoverPosition.size.height / 2)
+                make.top.equalToSuperview().offset(popoverPosition.origin.y - 60 + popoverPosition.size.height)
             }
             make.height.equalTo(80)
             make.width.equalTo(144)
@@ -98,8 +99,6 @@ final class ReportPopoverViewController: UIViewController {
             make.width.equalTo(144)
             make.top.equalTo(reportButton.snp.bottom)
         }
-
-        animateView()
     }
     
     private func setupActions() {
@@ -142,18 +141,3 @@ extension ReportPopoverViewController: UIGestureRecognizerDelegate {
     }
 }
 
-// MARK: - Animation
-extension ReportPopoverViewController {
-    func animateView() {
-        UIView.animate(
-            withDuration: 2,
-            delay: 0,
-            options: .overrideInheritedCurve
-        ) {
-            // TODO: -
-            self.view.layoutIfNeeded()
-        } completion: { _ in
-            print("animation")
-        }
-    }
-}

@@ -45,7 +45,8 @@ public final class MainTabCoordinator: Coordinator {
         childCoordinators = factory.makeChildCoordinators(
             profileDelegate: self,
             mainDelegate: self,
-            rankingDelegate: self,
+            rankingDelegate: self, 
+            teenDelegate: self,
             chatDelegate: self,
             coordinatorProvider: coordinatorProvider
         )

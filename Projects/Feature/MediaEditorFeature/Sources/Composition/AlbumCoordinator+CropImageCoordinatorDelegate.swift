@@ -10,7 +10,6 @@ import FeatureDependency
 
 extension AlbumCoordinator: CropImageCoordinatorDelegate, TrimVideoCoordinatorDelegate {
     public func didFinish(childCoordinator: Coordinator) {
-        childCoordinator.navigation.dismissNavigation = nil
         removeChildCoordinator(childCoordinator)
         navigation.popViewController(animated: true)
     }
