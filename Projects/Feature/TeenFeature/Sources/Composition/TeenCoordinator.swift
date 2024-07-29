@@ -43,7 +43,6 @@ public final class TeenCoordinator: Coordinator {
     
     public func start() {
         let controller = factory.makeTeenViewController(coordinator: self)
-        navigation.navigationBar.prefersLargeTitles = true
         navigation.pushViewController(controller, animated: true)
     }
 }
