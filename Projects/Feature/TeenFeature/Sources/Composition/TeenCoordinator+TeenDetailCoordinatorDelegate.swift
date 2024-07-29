@@ -13,7 +13,6 @@ import UIKit
 
 extension TeenCoordinator: TeenDetailCoordinatorDelegate {
     public func didFinish(childCoordinator: Coordinator) {
-        childCoordinator.navigation.dismissNavigation = nil
         removeChildCoordinator(childCoordinator)
         navigation.popViewController(animated: true)
     }

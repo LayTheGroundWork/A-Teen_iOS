@@ -13,7 +13,6 @@ import UIKit
 
 extension ReportPopoverCoordinator: ReportDialogCoordinatorDelegate {
     public func didFinish(childCoordinator: Coordinator) {
-        childCoordinator.navigation.dismissNavigation = nil
         removeChildCoordinator(childCoordinator)
         navigation.popViewController(animated: false)
         delegate?.didFinish(childCoordinator: self)

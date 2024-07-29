@@ -92,7 +92,7 @@ public final class MainViewController: UIViewController {
     
     // MARK: - Actions
     @objc private func updateTableView(_ notification: Notification) {
-        print("!23")
+        print("LogOut/LogIn -> Reload Data")
         tableView.reloadData()
     }
 }

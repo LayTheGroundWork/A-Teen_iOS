@@ -9,7 +9,6 @@ import FeatureDependency
 
 extension PhoneNumberCoordinator: TermsOfUseCoordinatorDelegate {
     public func didFinish(childCoordinator: Coordinator) {
-        childCoordinator.navigation.dismissNavigation = nil
         removeChildCoordinator(childCoordinator)
         navigation.popViewController(animated: true)
     }
