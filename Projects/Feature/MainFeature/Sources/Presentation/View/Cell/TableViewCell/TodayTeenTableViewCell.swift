@@ -124,6 +124,7 @@ class TodayTeenTableViewCell: UITableViewCell {
         }
     }
     
+    // 자동 스크롤 시작
     private func startAutoScroll() {
         teenCollectionViewAutoScrollTimer?.invalidate() // 중복 실행 방지
         teenCollectionViewAutoScrollTimer = Timer.scheduledTimer(
@@ -134,12 +135,14 @@ class TodayTeenTableViewCell: UITableViewCell {
             repeats: true
         )
     }
-    
+
+    // 자동 스크롤 정지
     private func stopAutoScroll() {
         teenCollectionViewAutoScrollTimer?.invalidate()
         teenCollectionViewAutoScrollTimer = nil
     }
     
+    // 자동 스크롤 : 다음 cell 로 페이징 스크롤
     @objc private func scrollToNextItem() {
         var nextItem = currentTeenIndexPath.item + 1
         if nextItem >= viewModel.todayTeenList.count {
