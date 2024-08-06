@@ -65,7 +65,6 @@ public final class ChatRoomViewController: UIViewController {
         let button = UIButton()
         button.setImage(UIImage(systemName: "ellipsis"), for: .normal)
         button.tintColor = .white
-        button.addTarget(self, action: #selector(tappedMoreOptionsButton(_:)), for: .touchUpInside)
         
         return button
     }()
@@ -232,7 +231,10 @@ public final class ChatRoomViewController: UIViewController {
     }
     
     @objc func tappedMoreOptionsButton(_ sender: UIButton) {
-        
+        let modalVC = ChatPopOverModalViewController()
+        modalVC.modalPresentationStyle = .custom
+        modalVC.transitioningDelegate = self
+        present(modalVC, animated: true, completion: nil)
     }
     
     @objc func tappedMessageSendButton(_ sender: UIButton) {
@@ -307,6 +309,7 @@ extension ChatRoomViewController: UITableViewDelegate {
 
 extension ChatRoomViewController: UITextViewDelegate {
     public func textViewDidBeginEditing(_ textView: UITextView) {
+        // textView 타이핑 시 placeHolder 제거
         if textView.textColor == .placeholderText {
             textView.text = nil
             textView.textColor = .label
@@ -314,6 +317,7 @@ extension ChatRoomViewController: UITextViewDelegate {
     }
     
     public func textViewDidEndEditing(_ textView: UITextView) {
+        // textView placeHolder가 없어서 이렇게 사용
         if textView.text.isEmpty {
             textView.text = "메세지를 입력해보세요"
             textView.textColor = .placeholderText

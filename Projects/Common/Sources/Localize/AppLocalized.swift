@@ -38,6 +38,9 @@ public enum AppLocalized {
     public static let chatText = "채팅을 통해 친구들과 소통해보세요!"
     public static let myTeenText = "나만의의 프로필을 등록해보세요!"
     
+    // MARK: - Chat
+    public static let chatModalTitle = "신고 및 차단하기"
+    
     // MARK: - LogInViewController
     public static let signupTitle = "가입하기"
     public static let signupSubTitle = """
