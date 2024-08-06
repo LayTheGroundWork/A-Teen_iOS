@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 55;
+	objectVersion = 56;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -12,7 +12,6 @@
 		1FF73CB870D99E82EE70F28B /* CustomAboutATeenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA0885F2D529811E9F26742 /* CustomAboutATeenView.swift */; };
 		261AB37F0994EF981A7F81BD /* MainCoordinator+ProfileCoordinatorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55063A7A79EE751BFDA6C75 /* MainCoordinator+ProfileCoordinatorDelegate.swift */; };
 		2768C053B4D45EC826879E1D /* MainCoordinator+MainViewControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EDED329CDE504D0E71701F5 /* MainCoordinator+MainViewControllerCoordinator.swift */; };
-		27A90CA62B2030933F97D8A5 /* TodayTeenCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32456D5EE802713E6BA65703 /* TodayTeenCollectionViewCell.swift */; };
 		6535F3CE418E3B913BF1202B /* TodayTeenTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54ACBEF0C5639404B2503865 /* TodayTeenTableViewCell.swift */; };
 		A008A74C16400F4C352D614A /* FeatureDependency.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF59E537DED595ABC4723375 /* FeatureDependency.framework */; };
 		A3735BA5D6C9DE54F9ACBE7E /* CategoryTodayCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522BE9F9999FD3490173CF84 /* CategoryTodayCollectionViewCell.swift */; };
@@ -44,7 +43,6 @@
 		073E519F1C2A8AE5F8639F3E /* AboutATeenTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutATeenTableViewCell.swift; sourceTree = "<group>"; };
 		0EDED329CDE504D0E71701F5 /* MainCoordinator+MainViewControllerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainCoordinator+MainViewControllerCoordinator.swift"; sourceTree = "<group>"; };
 		188A0576F4849CC1D136980E /* MainFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainFactory.swift; sourceTree = "<group>"; };
-		32456D5EE802713E6BA65703 /* TodayTeenCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayTeenCollectionViewCell.swift; sourceTree = "<group>"; };
 		412DEA5C9D73808BEA29B72A /* Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
 		4A4646C564432D5BB7376920 /* MainFeature.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MainFeature.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F93DCD94815081F5B773583 /* HeaderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderTableViewCell.swift; sourceTree = "<group>"; };
@@ -86,7 +84,6 @@
 			children = (
 				522BE9F9999FD3490173CF84 /* CategoryTodayCollectionViewCell.swift */,
 				A634B6A6C90FBAAE4A5F0EF5 /* CategoryTournamentCollectionViewCell.swift */,
-				32456D5EE802713E6BA65703 /* TodayTeenCollectionViewCell.swift */,
 			);
 			path = CollectionViewCell;
 			sourceTree = "<group>";
@@ -249,8 +246,6 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
 				ORGANIZATIONNAME = ATeen;
-				TargetAttributes = {
-				};
 			};
 			buildConfigurationList = EAACB9E6F08918F3B50EE017 /* Build configuration list for PBXProject "MainFeature" */;
 			compatibilityVersion = "Xcode 14.0";
@@ -293,7 +288,6 @@
 				18DED3C9AB2572FF2E85ACCE /* MainFactory.swift in Sources */,
 				A3735BA5D6C9DE54F9ACBE7E /* CategoryTodayCollectionViewCell.swift in Sources */,
 				C2CDC386CF2FD92F82B746BE /* CategoryTournamentCollectionViewCell.swift in Sources */,
-				27A90CA62B2030933F97D8A5 /* TodayTeenCollectionViewCell.swift in Sources */,
 				D5254253461208EA68B7FD57 /* AboutATeenTableViewCell.swift in Sources */,
 				0CC2181FE6BE400D6B73021D /* HeaderTableViewCell.swift in Sources */,
 				6535F3CE418E3B913BF1202B /* TodayTeenTableViewCell.swift in Sources */,
@@ -326,7 +320,10 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				OTHER_LDFLAGS = "$(inherited) -ObjC";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ATeen.ATeen.MainFeature;
 				PRODUCT_NAME = MainFeature;
 				SDKROOT = iphoneos;
@@ -334,10 +331,7 @@
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = (
-					"$(inherited)",
-					DEBUG,
-				);
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG";
 				SWIFT_COMPILATION_MODE = singlefile;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -367,7 +361,10 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				OTHER_LDFLAGS = "$(inherited) -ObjC";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ATeen.ATeen.MainFeature;
 				PRODUCT_NAME = MainFeature;
 				SDKROOT = iphoneos;

@@ -13,10 +13,9 @@ import UIKit
 
 class TodayTeenTableViewCell: UITableViewCell {
     weak var delegate: MainViewControllerCoordinator?
-    
     var viewModel: MainViewModel = .init()
-    
-    lazy var categoryCollectionView: UICollectionView = {
+
+    private lazy var categoryCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         let width: CGFloat = 100
         layout.scrollDirection = .horizontal
@@ -30,7 +29,7 @@ class TodayTeenTableViewCell: UITableViewCell {
         return collectionView
     }()
     
-    lazy var titleLabel: UILabel = {
+    private lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.text = AppLocalized.todaysTeen
         label.textAlignment = .left
@@ -38,7 +37,7 @@ class TodayTeenTableViewCell: UITableViewCell {
         return label
     }()
     
-    lazy var teenCollectionView: UICollectionView = {
+    private lazy var teenCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         layout.minimumLineSpacing = 16
@@ -48,10 +47,12 @@ class TodayTeenTableViewCell: UITableViewCell {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.backgroundColor = UIColor.white
         collectionView.showsHorizontalScrollIndicator = false
+        collectionView.isPagingEnabled = false
+        collectionView.decelerationRate = .fast
         return collectionView
     }()
     
-    lazy var grayLine: UIView = {
+    private lazy var grayLine: UIView = {
         let view = UIView()
         view.backgroundColor = DesignSystemAsset.grayLineColor.color
         return view
@@ -109,7 +110,10 @@ class TodayTeenTableViewCell: UITableViewCell {
 
 // MARK: - UICollectionViewDataSource
 extension TodayTeenTableViewCell: UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    func collectionView(
+        _ collectionView: UICollectionView,
+        cellForItemAt indexPath: IndexPath
+    ) -> UICollectionViewCell {
         switch collectionView {
         case self.categoryCollectionView:
             guard
@@ -169,7 +173,10 @@ extension TodayTeenTableViewCell: UICollectionViewDataSource {
         }
     }
 
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(
+        _ collectionView: UICollectionView,
+        numberOfItemsInSection section: Int
+    ) -> Int {
         switch collectionView {
         case self.categoryCollectionView:
             return viewModel.categoryList.count
@@ -183,13 +190,34 @@ extension TodayTeenTableViewCell: UICollectionViewDataSource {
 
 // MARK: - UICollectionViewDelegate
 extension TodayTeenTableViewCell: UICollectionViewDelegate {
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    func collectionView(
+        _ collectionView: UICollectionView,
+        didSelectItemAt indexPath: IndexPath
+    ) {
         switch collectionView {
         case self.categoryCollectionView:
-            //self.categoryCollectionView.scrollToItem(at: indexPath, at: .left, animated: true)
+            // 선택 시, 왼쪽에 맞게 카테고리 셀 이동 로직
+            if let attributes = collectionView.layoutAttributesForItem(at: indexPath) {
+                let cellFrame = attributes.frame
+                var targetOffset = cellFrame.origin.x - 16  // Inset: 16
+                // 컬렉션 뷰의 최대 offset
+                let maxOffset = collectionView.contentSize.width - collectionView.bounds.width
+                // 마지막 셀이 보이면, 왼쪽에 고정되지 않도록 하는 로직
+                if targetOffset > maxOffset {
+                    targetOffset = maxOffset
+                }
+                // offset 조정: 0보다 작을 수 없음
+                let newOffset = max(0, targetOffset)
+                // offset 설정
+                collectionView.setContentOffset(
+                    CGPoint(x: newOffset, y: 0),
+                    animated: true
+                )
+            }
+            //
             viewModel.didSelectCategoryCell(row: indexPath.row)
             collectionView.reloadData()
-            
+
         case self.teenCollectionView:
             guard let cellClicked = collectionView.cellForItem(at: indexPath),
                   let frame = cellClicked.superview?.convert(cellClicked.frame, to: nil)
@@ -201,6 +229,51 @@ extension TodayTeenTableViewCell: UICollectionViewDelegate {
         default:
             break
         }
+    }
+}
+
+extension TodayTeenTableViewCell: UICollectionViewDelegateFlowLayout {
+    // 페이징 로직
+    func scrollViewWillEndDragging(
+        _ scrollView: UIScrollView,
+        withVelocity velocity: CGPoint,
+        targetContentOffset: UnsafeMutablePointer<CGPoint>
+    ) {
+        // 셀 크기
+        let cellWidth = ViewValues.todayTeenImageWidth + 16
+        // 현재 페이지 위치
+        let approxPage = scrollView.contentOffset.x / cellWidth
+        // 스크롤 속도
+        let speed = velocity.x
+        // 스크롤 속도 고려한, 실제 페이지 위치
+        let currentPage: CGFloat
+        // currentPage 계산
+        if speed < 0 {
+            currentPage = ceil(approxPage)
+        } else if speed > 0 {
+            currentPage = floor(approxPage)
+        } else {
+            currentPage = round(approxPage)
+        }
+        // 속도 0일 경우, 페이지 offset 설정
+        guard speed != 0
+        else {
+            targetContentOffset.pointee = CGPoint(
+                x: (currentPage * cellWidth) - scrollView.contentInset.left,
+                y: scrollView.contentInset.top)
+            return
+        }
+        // currentPage 에서 속도와 방향에 맞춰 다음 페이지 결정
+        var nextPage: CGFloat = currentPage + (speed > 0 ? 1 : -1)
+        // 페이징 임계값 조정
+        let velocityThresholdPerPage: CGFloat = 2.0
+        // 임계값과 속도를 계산하여 다음 페이지 결정
+        let increment = speed / velocityThresholdPerPage
+        nextPage += (speed < 0) ? ceil(increment) : floor(increment)
+        // 최종 페이지 offset 설정
+        targetContentOffset.pointee = CGPoint(
+            x: (nextPage * cellWidth) - scrollView.contentInset.left,
+            y: scrollView.contentInset.top)
     }
 }
 
