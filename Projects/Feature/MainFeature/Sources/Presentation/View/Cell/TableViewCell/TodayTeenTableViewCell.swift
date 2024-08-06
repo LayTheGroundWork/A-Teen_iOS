@@ -14,6 +14,10 @@ import UIKit
 class TodayTeenTableViewCell: UITableViewCell {
     weak var delegate: MainViewControllerCoordinator?
     var viewModel: MainViewModel = .init()
+    
+    // MARK: - Private properties
+    private var currentTeenIndexPath: IndexPath = .init(row: 0, section: 0)
+    private var teenCollectionViewAutoScrollTimer: Timer?
 
     private lazy var categoryCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -58,15 +62,42 @@ class TodayTeenTableViewCell: UITableViewCell {
         return view
     }()
     
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?){
+    // MARK: - Life Cycle
+    override init(
+        style: UITableViewCell.CellStyle,
+        reuseIdentifier: String?
+    ){
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         registerDelegate()
+        configUserInterface()
+        configLayout()
+        // 유저 카드 셀 자동 페이징 시작
+        startAutoScroll()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    // MARK: - Helpers
+    private func registerDelegate(){
+        self.categoryCollectionView.dataSource = self
+        self.categoryCollectionView.delegate = self
+        self.categoryCollectionView.register(CategoryTodayCollectionViewCell.self, forCellWithReuseIdentifier: CategoryTodayCollectionViewCell.reuseIdentifier)
         
+        self.teenCollectionView.dataSource = self
+        self.teenCollectionView.delegate = self
+        self.teenCollectionView.register(TeenCollectionViewCell.self, forCellWithReuseIdentifier: TeenCollectionViewCell.reuseIdentifier)
+    }
+    
+    private func configUserInterface() {
         contentView.addSubview(categoryCollectionView)
         contentView.addSubview(titleLabel)
         contentView.addSubview(teenCollectionView)
         contentView.addSubview(grayLine)
-        
+    }
+    
+    private func configLayout() {
         self.categoryCollectionView.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(20)
             make.leading.trailing.equalToSuperview()
@@ -93,18 +124,32 @@ class TodayTeenTableViewCell: UITableViewCell {
         }
     }
     
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    private func startAutoScroll() {
+        teenCollectionViewAutoScrollTimer?.invalidate() // 중복 실행 방지
+        teenCollectionViewAutoScrollTimer = Timer.scheduledTimer(
+            timeInterval: 2.0,
+            target: self,
+            selector: #selector(scrollToNextItem),
+            userInfo: nil,
+            repeats: true
+        )
     }
     
-    private func registerDelegate(){
-        self.categoryCollectionView.dataSource = self
-        self.categoryCollectionView.delegate = self
-        self.categoryCollectionView.register(CategoryTodayCollectionViewCell.self, forCellWithReuseIdentifier: CategoryTodayCollectionViewCell.reuseIdentifier)
-        
-        self.teenCollectionView.dataSource = self
-        self.teenCollectionView.delegate = self
-        self.teenCollectionView.register(TeenCollectionViewCell.self, forCellWithReuseIdentifier: TeenCollectionViewCell.reuseIdentifier)
+    private func stopAutoScroll() {
+        teenCollectionViewAutoScrollTimer?.invalidate()
+        teenCollectionViewAutoScrollTimer = nil
+    }
+    
+    @objc private func scrollToNextItem() {
+        var nextItem = currentTeenIndexPath.item + 1
+        if nextItem >= viewModel.todayTeenList.count {
+            nextItem = 0
+        }
+        currentTeenIndexPath = IndexPath(item: nextItem,
+                                      section: currentTeenIndexPath.section)
+        self.teenCollectionView.scrollToItem(at: currentTeenIndexPath,
+                                             at: .centeredHorizontally,
+                                             animated: true)
     }
 }
 
@@ -242,38 +287,42 @@ extension TodayTeenTableViewCell: UICollectionViewDelegateFlowLayout {
         // 셀 크기
         let cellWidth = ViewValues.todayTeenImageWidth + 16
         // 현재 페이지 위치
-        let approxPage = scrollView.contentOffset.x / cellWidth
+        let currentPage = scrollView.contentOffset.x / cellWidth
         // 스크롤 속도
         let speed = velocity.x
         // 스크롤 속도 고려한, 실제 페이지 위치
-        let currentPage: CGFloat
-        // currentPage 계산
+        var nextPage: CGFloat = currentPage
+        // nextPage 계산
         if speed < 0 {
-            currentPage = ceil(approxPage)
+            nextPage = ceil(currentPage - 1)
         } else if speed > 0 {
-            currentPage = floor(approxPage)
+            nextPage = floor(currentPage + 1)
         } else {
-            currentPage = round(approxPage)
+            nextPage = round(currentPage)
         }
-        // 속도 0일 경우, 페이지 offset 설정
-        guard speed != 0
-        else {
-            targetContentOffset.pointee = CGPoint(
-                x: (currentPage * cellWidth) - scrollView.contentInset.left,
-                y: scrollView.contentInset.top)
-            return
+        // 맨 앞
+        if nextPage <= 0 {
+            nextPage = 0
         }
-        // currentPage 에서 속도와 방향에 맞춰 다음 페이지 결정
-        var nextPage: CGFloat = currentPage + (speed > 0 ? 1 : -1)
-        // 페이징 임계값 조정
-        let velocityThresholdPerPage: CGFloat = 2.0
-        // 임계값과 속도를 계산하여 다음 페이지 결정
-        let increment = speed / velocityThresholdPerPage
-        nextPage += (speed < 0) ? ceil(increment) : floor(increment)
+        // 맨 뒤
+        if Int(nextPage) >= viewModel.todayTeenList.count {
+            nextPage -= 1
+        }
+        // 현재 페이지 IndexPath 설정
+        currentTeenIndexPath = IndexPath(item: Int(nextPage),
+                                         section: currentTeenIndexPath.section)
         // 최종 페이지 offset 설정
         targetContentOffset.pointee = CGPoint(
             x: (nextPage * cellWidth) - scrollView.contentInset.left,
             y: scrollView.contentInset.top)
+    }
+    
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        startAutoScroll()
+    }
+
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        startAutoScroll()
     }
 }
 
