@@ -36,3 +36,5 @@ public final class ChatRoomCoordinator: Coordinator {
         navigation.pushViewController(controller, animated: true)
     }
 }
+
+extension ChatRoomCoordinator: ParentCoordinator { }

@@ -12,6 +12,7 @@ import UIKit
 public protocol ChatRoomViewControllerCoordinator: AnyObject {
     func configTabbarState(view: ChatFeatureViewNames)
     func didFinish()
+    func presentChatRoomModal()
 }
 
 public final class ChatRoomViewController: UIViewController {
@@ -231,10 +232,12 @@ public final class ChatRoomViewController: UIViewController {
     }
     
     @objc func tappedMoreOptionsButton(_ sender: UIButton) {
-        let modalVC = ChatPopOverModalViewController()
-        modalVC.modalPresentationStyle = .custom
-        modalVC.transitioningDelegate = self
-        present(modalVC, animated: true, completion: nil)
+//        let modalVC = ChatRoomModalViewController()
+//        modalVC.modalPresentationStyle = .custom
+//        modalVC.transitioningDelegate = self
+//        present(modalVC, animated: true, completion: nil)
+        
+        coordinator?.presentChatRoomModal()
     }
     
     @objc func tappedMessageSendButton(_ sender: UIButton) {

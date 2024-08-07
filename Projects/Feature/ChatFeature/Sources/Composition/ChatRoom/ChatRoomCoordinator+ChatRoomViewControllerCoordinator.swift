@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import FeatureDependency
 
 extension ChatRoomCoordinator: ChatRoomViewControllerCoordinator {
     public func configTabbarState(view: ChatFeatureViewNames) {
@@ -15,5 +16,17 @@ extension ChatRoomCoordinator: ChatRoomViewControllerCoordinator {
     
     public func didFinish() {
         delegate?.didFinish(childCoordinator: self)
+    }
+    
+    public func presentChatRoomModal() {
+        let chatRoomModalCoordinator = factory.makeChatRoomModalCoordinator(
+            navigation: navigation,
+            parentCoordinator: self,
+            delegate: self,
+            childCoordinators: childCoordinators)
+        
+        addChildCoordinatorStart(chatRoomModalCoordinator)
+        chatRoomModalCoordinator.start()
+        
     }
 }

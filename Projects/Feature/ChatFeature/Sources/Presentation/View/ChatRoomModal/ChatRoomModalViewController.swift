@@ -11,7 +11,13 @@ import DesignSystem
 import SnapKit
 import UIKit
 
-public final class ChatPopOverModalViewController: UIViewController {
+public protocol ChatRoomModalViewControllerCoordinator: AnyObject {
+    func didFinish()
+}
+
+public final class ChatRoomModalViewController: UIViewController {
+    weak var coordinator: ChatRoomModalViewControllerCoordinator?
+    
     private lazy var tableView: UITableView = {
         let tableView = UITableView()
         tableView.delegate = self
@@ -28,6 +34,17 @@ public final class ChatPopOverModalViewController: UIViewController {
         view.layer.cornerRadius = 2.5
         return view
     }()
+    
+    public init(coordinator: ChatRoomModalViewControllerCoordinator) {
+        self.coordinator = coordinator
+        super.init(nibName: nil, bundle: nil)
+        modalPresentationStyle = .custom
+        transitioningDelegate = self
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     public override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,7 +76,7 @@ public final class ChatPopOverModalViewController: UIViewController {
     }
 }
 
-extension ChatPopOverModalViewController: UITableViewDelegate, UITableViewDataSource {
+extension ChatRoomModalViewController: UITableViewDelegate, UITableViewDataSource {
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 2
     }
@@ -93,8 +110,8 @@ extension ChatPopOverModalViewController: UITableViewDelegate, UITableViewDataSo
     }
 }
 
-extension ChatRoomViewController: UIViewControllerTransitioningDelegate {
+extension ChatRoomModalViewController: UIViewControllerTransitioningDelegate {
     public func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
-        return ChatPresentationController(presentedViewController: presented, presenting: presenting)
+        return ChatRoomPresentationController(presentedViewController: presented, presenting: presenting)
     }
 }

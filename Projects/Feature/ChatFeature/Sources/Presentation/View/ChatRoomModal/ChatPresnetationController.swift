@@ -9,7 +9,7 @@
 import UIKit
 import DesignSystem
 
-public final class ChatPresentationController: UIPresentationController {
+public final class ChatRoomPresentationController: UIPresentationController {
     private var dimmingView: UIView!
     private var gestureRecognizer: UIPanGestureRecognizer!
 

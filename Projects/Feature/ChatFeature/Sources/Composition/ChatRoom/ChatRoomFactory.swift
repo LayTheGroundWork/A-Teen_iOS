@@ -7,9 +7,16 @@
 //
 
 import UIKit
+import FeatureDependency
 
 public protocol ChatRoomFactory {
     func makeChatRoomViewController(coordinator: ChatRoomViewControllerCoordinator) -> UIViewController
+    func makeChatRoomModalCoordinator(
+        navigation: Navigation,
+        parentCoordinator: ParentCoordinator,
+        delegate: ChatRoomModalCoordinatorDelegate,
+        childCoordinators: [Coordinator]
+    ) -> ChatRoomModalCoordinator
 }
 
 public struct ChatRoomFactoryImp: ChatRoomFactory {
@@ -22,5 +29,20 @@ public struct ChatRoomFactoryImp: ChatRoomFactory {
     public func makeChatRoomViewController(coordinator: ChatRoomViewControllerCoordinator) -> UIViewController {
         let controller = ChatRoomViewController(partnerName: userID.name, coordinator: coordinator)
         return controller
+    }
+    
+    public func makeChatRoomModalCoordinator(
+        navigation: Navigation,
+        parentCoordinator: ParentCoordinator,
+        delegate: ChatRoomModalCoordinatorDelegate,
+        childCoordinators: [Coordinator]
+    ) -> ChatRoomModalCoordinator {
+        let factory = ChatRoomModalFactoryImp()
+        let coordinator = ChatRoomModalCoordinator(
+            navigation: navigation,
+            factory: factory,
+            delegate: delegate
+        )
+        return coordinator
     }
 }

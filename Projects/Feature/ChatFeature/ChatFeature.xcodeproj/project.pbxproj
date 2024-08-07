@@ -8,8 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		048B3D162C60BEC500FA637A /* ChatPresnetationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048B3D152C60BEC500FA637A /* ChatPresnetationController.swift */; };
-		048B3D182C60C38E00FA637A /* ChatPopOverModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048B3D172C60C38E00FA637A /* ChatPopOverModalViewController.swift */; };
+		048B3D182C60C38E00FA637A /* ChatRoomModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048B3D172C60C38E00FA637A /* ChatRoomModalViewController.swift */; };
 		048B3D1A2C6214E000FA637A /* ChatPopOverModalTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048B3D192C6214E000FA637A /* ChatPopOverModalTableViewCell.swift */; };
+		048B3D1E2C63492800FA637A /* ChatRoomModalFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048B3D1D2C63492800FA637A /* ChatRoomModalFactory.swift */; };
+		048B3D202C63557900FA637A /* ChatRoomModalCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048B3D1F2C63557900FA637A /* ChatRoomModalCoordinator.swift */; };
+		048B3D222C635F6300FA637A /* ChatRoomModalCoordinator+ ChatRoomModalViewControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048B3D212C635F6300FA637A /* ChatRoomModalCoordinator+ ChatRoomModalViewControllerCoordinator.swift */; };
+		048B3D242C63798700FA637A /* ChatRoomCoordinator+ChatRoomModalCoordinatorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048B3D232C63798700FA637A /* ChatRoomCoordinator+ChatRoomModalCoordinatorDelegate.swift */; };
 		20E22A4DA538B4FC3DA8D52B /* ChatCoordinator+ChatViewControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E71061B94CCA13A2833F0D8 /* ChatCoordinator+ChatViewControllerCoordinator.swift */; };
 		23ACE27AB02358A4D3E023EE /* ChatHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 741E6BCB0140ACED41156889 /* ChatHeaderView.swift */; };
 		25801A38909A8BB97989AFBE /* ChatRoomCoordinator+ChatRoomViewControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDDB8E4E3975CC5C069C04C7 /* ChatRoomCoordinator+ChatRoomViewControllerCoordinator.swift */; };
@@ -46,8 +50,12 @@
 
 /* Begin PBXFileReference section */
 		048B3D152C60BEC500FA637A /* ChatPresnetationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatPresnetationController.swift; sourceTree = "<group>"; };
-		048B3D172C60C38E00FA637A /* ChatPopOverModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatPopOverModalViewController.swift; sourceTree = "<group>"; };
+		048B3D172C60C38E00FA637A /* ChatRoomModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomModalViewController.swift; sourceTree = "<group>"; };
 		048B3D192C6214E000FA637A /* ChatPopOverModalTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatPopOverModalTableViewCell.swift; sourceTree = "<group>"; };
+		048B3D1D2C63492800FA637A /* ChatRoomModalFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomModalFactory.swift; sourceTree = "<group>"; };
+		048B3D1F2C63557900FA637A /* ChatRoomModalCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomModalCoordinator.swift; sourceTree = "<group>"; };
+		048B3D212C635F6300FA637A /* ChatRoomModalCoordinator+ ChatRoomModalViewControllerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ChatRoomModalCoordinator+ ChatRoomModalViewControllerCoordinator.swift"; sourceTree = "<group>"; };
+		048B3D232C63798700FA637A /* ChatRoomCoordinator+ChatRoomModalCoordinatorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ChatRoomCoordinator+ChatRoomModalCoordinatorDelegate.swift"; sourceTree = "<group>"; };
 		11ADF59C0267B2D34961074B /* ChatMessageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMessageModel.swift; sourceTree = "<group>"; };
 		2735D9F6B05793A1C3ABAEE4 /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
 		2B6F1FC0AE38C9F2256C30FC /* FeatureDependency.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FeatureDependency.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -85,14 +93,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		048B3D1B2C62186200FA637A /* BottomModal */ = {
+		048B3D1B2C62186200FA637A /* ChatRoomModal */ = {
 			isa = PBXGroup;
 			children = (
+				048B3D172C60C38E00FA637A /* ChatRoomModalViewController.swift */,
 				048B3D152C60BEC500FA637A /* ChatPresnetationController.swift */,
-				048B3D172C60C38E00FA637A /* ChatPopOverModalViewController.swift */,
 				048B3D192C6214E000FA637A /* ChatPopOverModalTableViewCell.swift */,
 			);
-			path = BottomModal;
+			path = ChatRoomModal;
+			sourceTree = "<group>";
+		};
+		048B3D1C2C63486300FA637A /* ChatRoomModal */ = {
+			isa = PBXGroup;
+			children = (
+				048B3D1F2C63557900FA637A /* ChatRoomModalCoordinator.swift */,
+				048B3D1D2C63492800FA637A /* ChatRoomModalFactory.swift */,
+				048B3D212C635F6300FA637A /* ChatRoomModalCoordinator+ ChatRoomModalViewControllerCoordinator.swift */,
+			);
+			path = ChatRoomModal;
 			sourceTree = "<group>";
 		};
 		17941DE1984B6E4735E8E0E8 /* Chat */ = {
@@ -122,7 +140,7 @@
 			children = (
 				C8FFA80478C266C38C0875A4 /* ChatViewController.swift */,
 				31E3B482A0D7F38D098FEA7C /* ChatRoomViewController.swift */,
-				048B3D1B2C62186200FA637A /* BottomModal */,
+				048B3D1B2C62186200FA637A /* ChatRoomModal */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -176,6 +194,7 @@
 			children = (
 				E3B560FF5AF66461963266C6 /* ChatRoomCoordinator.swift */,
 				CDDB8E4E3975CC5C069C04C7 /* ChatRoomCoordinator+ChatRoomViewControllerCoordinator.swift */,
+				048B3D232C63798700FA637A /* ChatRoomCoordinator+ChatRoomModalCoordinatorDelegate.swift */,
 				86C8CDC69FA57554A344101D /* ChatRoomFactory.swift */,
 			);
 			path = ChatRoom;
@@ -196,6 +215,7 @@
 			children = (
 				17941DE1984B6E4735E8E0E8 /* Chat */,
 				8739BE4EB099B84F419664F7 /* ChatRoom */,
+				048B3D1C2C63486300FA637A /* ChatRoomModal */,
 			);
 			path = Composition;
 			sourceTree = "<group>";
@@ -313,23 +333,27 @@
 				5A8197ECDF6EE034FC2AC750 /* LeaveButtonView.swift in Sources */,
 				A4358AB1C9EEF1D07F24CD95 /* ChatCoordinator+ChatConfigTabbarStateDelegate.swift in Sources */,
 				44CB624789D399E95831DDE9 /* ChatCoordinator+ChatRoomCoordinatorDelegate .swift in Sources */,
-				048B3D182C60C38E00FA637A /* ChatPopOverModalViewController.swift in Sources */,
+				048B3D182C60C38E00FA637A /* ChatRoomModalViewController.swift in Sources */,
 				048B3D1A2C6214E000FA637A /* ChatPopOverModalTableViewCell.swift in Sources */,
 				20E22A4DA538B4FC3DA8D52B /* ChatCoordinator+ChatViewControllerCoordinator.swift in Sources */,
 				B196FE2CE0EB3E9D65752D5C /* ChatCoordinator.swift in Sources */,
 				048B3D162C60BEC500FA637A /* ChatPresnetationController.swift in Sources */,
 				8C1FBE0B516893C24961B856 /* ChatFactory.swift in Sources */,
+				048B3D202C63557900FA637A /* ChatRoomModalCoordinator.swift in Sources */,
 				25801A38909A8BB97989AFBE /* ChatRoomCoordinator+ChatRoomViewControllerCoordinator.swift in Sources */,
 				E0BC4D0398E4E0ED7D7DB693 /* ChatRoomCoordinator.swift in Sources */,
+				048B3D242C63798700FA637A /* ChatRoomCoordinator+ChatRoomModalCoordinatorDelegate.swift in Sources */,
 				FB7CCFA1295B74904F5E8D3E /* ChatRoomFactory.swift in Sources */,
 				CDFD8696BA4B025B3EC4AB5F /* ChatRoomCell.swift in Sources */,
 				EF4949BE3D25C7F9D0C11310 /* PartnerChatMessageViewCell.swift in Sources */,
 				DE1EA2954425EC472B6DA91C /* UserChatMessageViewCell.swift in Sources */,
 				FCA54286F92D000A848AD1BC /* ChatMessageModel.swift in Sources */,
+				048B3D1E2C63492800FA637A /* ChatRoomModalFactory.swift in Sources */,
 				87DDD8C84D9244A7ADEB17A7 /* ChatModel.swift in Sources */,
 				D8670E0E2DBB00C2C002633C /* ChatRoomViewController.swift in Sources */,
 				E037430F3E251B80984A1BD6 /* ChatViewController.swift in Sources */,
 				28C9964E5B51DFDE96382A5B /* ChatViewModel.swift in Sources */,
+				048B3D222C635F6300FA637A /* ChatRoomModalCoordinator+ ChatRoomModalViewControllerCoordinator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

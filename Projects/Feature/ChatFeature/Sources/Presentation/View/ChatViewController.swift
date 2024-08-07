@@ -21,7 +21,7 @@ public final class ChatViewController: UIViewController {
     private var viewModel: ChatViewModel
     private var deleteIndexPath: IndexPath?
     private weak var coordinator: ChatViewControllerCoordinator?
-    
+     
     private lazy var chatTableView: UITableView = {
         let tableView = UITableView()
         tableView.dataSource = self
