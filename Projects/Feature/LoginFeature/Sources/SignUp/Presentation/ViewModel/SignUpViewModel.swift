@@ -35,6 +35,9 @@ public final class SignUpViewModel {
     //SearchSchool
     public var schoolData: SchoolData = SchoolData(schoolName: .empty, schoolLocation: .empty)
     
+    //Category
+    public var category: CategoryType = CategoryType.etc
+    
     public var searchSchoolText: String = .empty
     public var filteredSchools: [SchoolData] = []
     public var selectIndexPath: IndexPath?
@@ -42,6 +45,15 @@ public final class SignUpViewModel {
     var selectPhotoAsset = Array(repeating: AssetInfo.self, count: 10)
     
     private let authService = MyPhotoAuthService()
+    
+    let categoryExplain: [CategoryType] = [
+        .beauty,
+        .exercise,
+        .study,
+        .art,
+        .game,
+        .etc
+    ]
     
     // MARK: - Helpers
     public func searchSchoolData() {
@@ -102,5 +114,14 @@ extension SignUpViewModel {
         } else {
             return false
         }
+    }
+}
+
+// MARK: - SelectCategory {
+extension SignUpViewModel {
+    public func changeCategory(index: Int, completion: (Int) -> Void) {
+        guard let clearIndex = categoryExplain.firstIndex(of: category) else { return }
+        category = categoryExplain[index]
+        completion(clearIndex)
     }
 }

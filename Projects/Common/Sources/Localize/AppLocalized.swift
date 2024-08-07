@@ -117,7 +117,11 @@ public enum AppLocalized {
     public static let userBirthSelectButton = "태어난 날을 선택해주세요"
     public static let userBirthServiceTermsButton = "서비스 약관 바로 보기"
     public static let searchSchoolTitle = "다니고 있는\n학교를 알려주세요"
-    
+    public static let selectCategoryTitle = """
+                                            TEEN에서 자랑할 나만의
+                                            카테고리를 골라주세요!
+                                            """
+    public static let categoryMaximumText = "하나의 카테고리를 선택할 수 있어요!"
     // MARK: - Login / SelectPhoto
     public static let insertMediaText = "TEEN에서 자랑할\n사진이나 동영상을 추가해보세요"
     public static let maxInsertMediaCountText = "*최대 10개을 등록할 수 있어요"

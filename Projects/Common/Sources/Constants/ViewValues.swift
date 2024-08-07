@@ -27,6 +27,7 @@ public struct ViewValues {
     public static let width = UIScreen.main.bounds.width
     public static let height = UIScreen.main.bounds.height
     public static let halfHeight = height / 2
+    public static let signUpCollectionViewHeight = height * 0.7
     public static let phoneNumberCollectionViewHeight = height * 0.8
     
     public static let todayTeenImageWidth = width - 50
@@ -54,7 +55,7 @@ public struct ViewValues {
     public static let defaultRadius: CGFloat = 20
     
     // MARK: - Progress
-    public static let signUpProgress: Float = 0.2
+    public static let signUpProgress: Float = 1 / 6
     
     // MARK: - Spinner
     public static let tagIdentifierSpinner = 123

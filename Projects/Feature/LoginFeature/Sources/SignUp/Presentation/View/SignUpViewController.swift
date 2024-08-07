@@ -58,7 +58,9 @@ final class SignUpViewController: UIViewController {
         collectionView.register(UserIdCollectionViewCell.self, forCellWithReuseIdentifier: UserIdCollectionViewCell.reuseIdentifier)
         collectionView.register(UserNameCollectionViewCell.self, forCellWithReuseIdentifier: UserNameCollectionViewCell.reuseIdentifier)
         collectionView.register(UserBirthCollectionViewCell.self, forCellWithReuseIdentifier: UserBirthCollectionViewCell.reuseIdentifier)
+        collectionView.register(SelectCategoryCollectionViewCell.self, forCellWithReuseIdentifier: SelectCategoryCollectionViewCell.reuseIdentifier)
         collectionView.register(SearchSchoolCollectionViewCell.self, forCellWithReuseIdentifier: SearchSchoolCollectionViewCell.reuseIdentifier)
+    
         collectionView.register(SelectPhotoCollectionViewCell.self, forCellWithReuseIdentifier: SelectPhotoCollectionViewCell.reuseIdentifier)
         
         return collectionView
@@ -198,8 +200,13 @@ final class SignUpViewController: UIViewController {
             cell?.tableBackgroundView.isHidden = true
             cell?.contentView.endEditing(true)
             break
-        // 사진 선택
+        // 카테고리 선택
         case 4:
+            let cell = collectionView.cellForItem(at: currentIndexPath) as? SelectCategoryCollectionViewCell
+            cell?.contentView.endEditing(true)
+            break
+        // 사진 선택
+        case 5:
             let cell = collectionView.cellForItem(at: currentIndexPath) as? SelectPhotoCollectionViewCell
             cell?.contentView.endEditing(true)
             break
@@ -227,7 +234,7 @@ extension SignUpViewController: UICollectionViewDataSource {
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        5
+        6
     }
     
     func collectionView(
@@ -281,8 +288,21 @@ extension SignUpViewController: UICollectionViewDataSource {
             )
             
             return cell
-            
         case 3:
+            guard
+                let cell = collectionView.dequeueReusableCell(
+                withReuseIdentifier: SelectCategoryCollectionViewCell.reuseIdentifier,
+                for: indexPath) as? SelectCategoryCollectionViewCell
+            else {
+                return UICollectionViewCell()
+            }
+            
+            cell.setProperties(
+                delegate: self,
+                viewModel: viewModel
+            )
+            return cell
+        case 4:
             guard
                 let cell = collectionView.dequeueReusableCell(
                 withReuseIdentifier: SearchSchoolCollectionViewCell.reuseIdentifier,
@@ -296,8 +316,7 @@ extension SignUpViewController: UICollectionViewDataSource {
                 viewModel: viewModel
             )
             return cell
-
-        case 4:
+        case 5:
             guard
                 let cell = collectionView.dequeueReusableCell(
                 withReuseIdentifier: SelectPhotoCollectionViewCell.reuseIdentifier,
@@ -321,7 +340,8 @@ extension SignUpViewController: UICollectionViewDataSource {
 extension SignUpViewController: UserIdCollectionViewCellDelegate,
                                 UserNameCollectionViewCellDelegate,
                                 UserBirthCollectionViewCellDelegate,
-                                SearchSchoolCollectionViewCellDelegate {
+                                SearchSchoolCollectionViewCellDelegate,
+                                SelectCategoryCollectionViewCellDelegate {
     func updateNextButtonState(_ state: Bool) {
         nextButton.isEnabled = state
         nextButton.backgroundColor = if state { UIColor.black } else { DesignSystemAsset.gray03.color }
