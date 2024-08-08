@@ -10,7 +10,13 @@ import UIKit
  
 extension CropImageCoordinator: CropImageViewControllerCoordinator {
     public func didSelectCheckButton(selectImage: UIImage) {
-        print("hi")
+        let coordinator = factory.makeSelectCategoryPhotoCoordinator(
+            navigation: navigation,
+            childCoordinators: childCoordinators,
+            delegate: self,
+            selectImage: selectImage)
+
+        addChildCoordinatorStart(coordinator)
     }
     
     public func didFinish() {

@@ -10,6 +10,7 @@ import UIKit
 public final class NavigationImp: NSObject {
     public var rootViewController: UINavigationController
     public var dismissNavigation: (() -> Void)?
+    public var dismissNavigationFromAlbum: ((UIImage) -> Void)?
     
     public var backCompletions: [UIViewController: () -> Void] = [:]
     

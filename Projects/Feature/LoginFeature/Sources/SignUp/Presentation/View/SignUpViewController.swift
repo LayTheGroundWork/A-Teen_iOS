@@ -19,6 +19,10 @@ protocol SignUpViewControllerCoordinator: AnyObject {
     func didSelectCell(item: Int)
 }
 
+protocol SignUpViewControllerDelegate: AnyObject {
+    func updateImage(index: Int, selectImage: UIImage)
+}
+
 final class SignUpViewController: UIViewController {
     // MARK: - Private properties
     private var currentIndexPath = IndexPath(item: 0, section: 0)
@@ -26,6 +30,7 @@ final class SignUpViewController: UIViewController {
     
     private var viewModel: SignUpViewModel
     private weak var coordinator: SignUpViewControllerCoordinator?
+    private weak var delegate: SelectPhotoCollectionViewCellDelegate?
     
     private lazy var progressView: UIProgressView = {
         let view = UIProgressView()
@@ -302,21 +307,21 @@ extension SignUpViewController: UICollectionViewDataSource {
                 viewModel: viewModel
             )
             return cell
-        case 4:
-            guard
-                let cell = collectionView.dequeueReusableCell(
-                withReuseIdentifier: SearchSchoolCollectionViewCell.reuseIdentifier,
-                for: indexPath) as? SearchSchoolCollectionViewCell
-            else {
-                return UICollectionViewCell()
-            }
-            
-            cell.setProperties(
-                delegate: self,
-                viewModel: viewModel
-            )
-            return cell
-        case 5:
+//        case 4:
+//            guard
+//                let cell = collectionView.dequeueReusableCell(
+//                withReuseIdentifier: SearchSchoolCollectionViewCell.reuseIdentifier,
+//                for: indexPath) as? SearchSchoolCollectionViewCell
+//            else {
+//                return UICollectionViewCell()
+//            }
+//            
+//            cell.setProperties(
+//                delegate: self,
+//                viewModel: viewModel
+//            )
+//            return cell
+        case 4, 5:
             guard
                 let cell = collectionView.dequeueReusableCell(
                 withReuseIdentifier: SelectPhotoCollectionViewCell.reuseIdentifier,
@@ -324,6 +329,8 @@ extension SignUpViewController: UICollectionViewDataSource {
             else {
                 return UICollectionViewCell()
             }
+            
+            delegate = cell
             
             cell.setProperties(
                 coordinator: coordinator,
@@ -380,5 +387,11 @@ extension SignUpViewController {
                 break
             }
         }
+    }
+}
+
+extension SignUpViewController: SignUpViewControllerDelegate {
+    func updateImage(index: Int, selectImage: UIImage) {
+        delegate?.updateImage(index: index, selectImage: selectImage)
     }
 }

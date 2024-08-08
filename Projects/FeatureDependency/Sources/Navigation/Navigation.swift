@@ -23,6 +23,7 @@ public protocol Navigation {
     func dismiss(animated: Bool)
     func popViewController(animated: Bool)
     var dismissNavigation: (() -> Void)? { get set }
+    var dismissNavigationFromAlbum: ((UIImage) -> Void)? { get set }
 }
 
 extension Navigation {

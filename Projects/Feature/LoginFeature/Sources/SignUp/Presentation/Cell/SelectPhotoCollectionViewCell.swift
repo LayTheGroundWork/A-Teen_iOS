@@ -12,6 +12,10 @@ import Common
 import DesignSystem
 import UIKit
 
+protocol SelectPhotoCollectionViewCellDelegate: AnyObject {
+    func updateImage(index: Int, selectImage: UIImage)
+}
+
 final class SelectPhotoCollectionViewCell: UICollectionViewCell {
     // MARK: - Private properties
     private var coordinator: SignUpViewControllerCoordinator?
@@ -117,8 +121,16 @@ extension SelectPhotoCollectionViewCell: UICollectionViewDataSource {
 // MARK: - UICollectionViewDelegate
 extension SelectPhotoCollectionViewCell: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("인증완료")
+        coordinator?.didSelectCell(item: indexPath.item)
     }
 }
+
+extension SelectPhotoCollectionViewCell: SelectPhotoCollectionViewCellDelegate {
+    func updateImage(index: Int, selectImage: UIImage) {
+        print("하튼 여기 뷰모델 배열에 인덱스 맞춰서 사진넣기")
+        collectionView.reloadData()
+    }
+}
+
 
 extension SelectPhotoCollectionViewCell: Reusable { }

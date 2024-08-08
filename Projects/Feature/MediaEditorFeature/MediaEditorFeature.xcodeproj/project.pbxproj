@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 55;
+	objectVersion = 56;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -20,6 +20,10 @@
 		55C869454C8D373F2082745B /* AlbumCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 199C7289ADA6F3A4D2EA0A9A /* AlbumCollectionViewCell.swift */; };
 		5B56C2D14156851ECFC6C099 /* AlbumFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B719DD31722B13F90907467 /* AlbumFactory.swift */; };
 		61C13FD5F6D29C1DB3E0AC6C /* CropImageFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6FA49CEDC3012072E41E4D1 /* CropImageFactory.swift */; };
+		7322FFD92C64BD9300EA6D5D /* SelectCategoryPhotoCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7322FFD82C64BD9300EA6D5D /* SelectCategoryPhotoCoordinator.swift */; };
+		7322FFDB2C64BDA000EA6D5D /* SelectCategoryPhotoFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7322FFDA2C64BDA000EA6D5D /* SelectCategoryPhotoFactory.swift */; };
+		7322FFDD2C64BE9D00EA6D5D /* SelectCategoryPhotoCoordinator+SelectCategoryPhotoViewControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7322FFDC2C64BE9D00EA6D5D /* SelectCategoryPhotoCoordinator+SelectCategoryPhotoViewControllerCoordinator.swift */; };
+		7322FFDF2C64C05D00EA6D5D /* CropImageCoordinator+SelectCategoryPhotoCoordinatorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7322FFDE2C64C05D00EA6D5D /* CropImageCoordinator+SelectCategoryPhotoCoordinatorDelegate.swift */; };
 		7F6B6F36911075095E790B99 /* AlbumService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21A46EBC82171159EA1AC990 /* AlbumService.swift */; };
 		804B300875012E8BFFD7F40C /* TrimVideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDBBC309857E48FBE1BECF44 /* TrimVideoViewController.swift */; };
 		84E29E159EBE4830C2D208EA /* AlbumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A8994654409088760D8863 /* AlbumViewController.swift */; };
@@ -59,6 +63,10 @@
 		5010F84FD3F93AE84B91D82C /* AssetInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetInfo.swift; sourceTree = "<group>"; };
 		5F4623969970F91EE6BB2832 /* SelectCategoryVideoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCategoryVideoViewController.swift; sourceTree = "<group>"; };
 		66A8994654409088760D8863 /* AlbumViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumViewController.swift; sourceTree = "<group>"; };
+		7322FFD82C64BD9300EA6D5D /* SelectCategoryPhotoCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCategoryPhotoCoordinator.swift; sourceTree = "<group>"; };
+		7322FFDA2C64BDA000EA6D5D /* SelectCategoryPhotoFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCategoryPhotoFactory.swift; sourceTree = "<group>"; };
+		7322FFDC2C64BE9D00EA6D5D /* SelectCategoryPhotoCoordinator+SelectCategoryPhotoViewControllerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SelectCategoryPhotoCoordinator+SelectCategoryPhotoViewControllerCoordinator.swift"; sourceTree = "<group>"; };
+		7322FFDE2C64C05D00EA6D5D /* CropImageCoordinator+SelectCategoryPhotoCoordinatorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CropImageCoordinator+SelectCategoryPhotoCoordinatorDelegate.swift"; sourceTree = "<group>"; };
 		7E31502214B6176F23A61825 /* AlbumCoordinator+CropImageCoordinatorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AlbumCoordinator+CropImageCoordinatorDelegate.swift"; sourceTree = "<group>"; };
 		7E3A88A30597CB09CF4C2243 /* VideoTrimmerThumb.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoTrimmerThumb.swift; sourceTree = "<group>"; };
 		8CBC7A94586D0ED7EE6E3D73 /* Album.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Album.swift; sourceTree = "<group>"; };
@@ -145,12 +153,16 @@
 				7E31502214B6176F23A61825 /* AlbumCoordinator+CropImageCoordinatorDelegate.swift */,
 				0B719DD31722B13F90907467 /* AlbumFactory.swift */,
 				BA3165BEEF96C114936668A6 /* CropImageCoordinator.swift */,
+				7322FFDE2C64C05D00EA6D5D /* CropImageCoordinator+SelectCategoryPhotoCoordinatorDelegate.swift */,
 				9EF074AD4659AA09142078FB /* CropImageCoordinator+CropImageViewControllerCoordinator.swift */,
 				E6FA49CEDC3012072E41E4D1 /* CropImageFactory.swift */,
 				E52AF4E04CE55072B15A3C9D /* TrimVideoCoordinator.swift */,
 				BECD1B533D307C244C0215E0 /* TrimVideoCoordinator+AlertCoordinatorDelegate.swift */,
 				D5E0B41FF813138D8EC41A54 /* TrimVideoCoordinator+TrimVideoViewControllerCoordinator.swift */,
 				DB7E006123255D438553F398 /* TrimVideoFactory.swift */,
+				7322FFD82C64BD9300EA6D5D /* SelectCategoryPhotoCoordinator.swift */,
+				7322FFDC2C64BE9D00EA6D5D /* SelectCategoryPhotoCoordinator+SelectCategoryPhotoViewControllerCoordinator.swift */,
+				7322FFDA2C64BDA000EA6D5D /* SelectCategoryPhotoFactory.swift */,
 			);
 			path = Composition;
 			sourceTree = "<group>";
@@ -271,8 +283,6 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
 				ORGANIZATIONNAME = ATeen;
-				TargetAttributes = {
-				};
 			};
 			buildConfigurationList = ECDC9D69D4A6975B88A34BCB /* Build configuration list for PBXProject "MediaEditorFeature" */;
 			compatibilityVersion = "Xcode 14.0";
@@ -307,15 +317,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7322FFDF2C64C05D00EA6D5D /* CropImageCoordinator+SelectCategoryPhotoCoordinatorDelegate.swift in Sources */,
 				B799350C756CA0E5C4ADD17F /* CustomCropView.swift in Sources */,
 				063D3D607BB1B5D6D90C0960 /* VideoTrimmer.swift in Sources */,
 				3C6D524FE41AD8F120FD2281 /* VideoTrimmerThumb.swift in Sources */,
+				7322FFD92C64BD9300EA6D5D /* SelectCategoryPhotoCoordinator.swift in Sources */,
 				8FFA9160BE818D2DF17963F9 /* AlbumCoordinator+AlbumViewControllerCoordinator.swift in Sources */,
 				1A863A70B6B0FE223F99814D /* AlbumCoordinator+CropImageCoordinatorDelegate.swift in Sources */,
 				DF5AB840A482FB55F1ACE93A /* AlbumCoordinator.swift in Sources */,
 				5B56C2D14156851ECFC6C099 /* AlbumFactory.swift in Sources */,
 				E5E98BCD11FE3462D8B7A0B0 /* CropImageCoordinator+CropImageViewControllerCoordinator.swift in Sources */,
 				CCCC0053FA36FC86A27383F0 /* CropImageCoordinator.swift in Sources */,
+				7322FFDD2C64BE9D00EA6D5D /* SelectCategoryPhotoCoordinator+SelectCategoryPhotoViewControllerCoordinator.swift in Sources */,
 				61C13FD5F6D29C1DB3E0AC6C /* CropImageFactory.swift in Sources */,
 				A3DBD6F428F29E91B60A5822 /* TrimVideoCoordinator+AlertCoordinatorDelegate.swift in Sources */,
 				51E5D386461DF1B08DE4C721 /* TrimVideoCoordinator+TrimVideoViewControllerCoordinator.swift in Sources */,
@@ -330,6 +343,7 @@
 				A76462B8DC077971A15EC2A2 /* SelectCategoryVideoViewController.swift in Sources */,
 				804B300875012E8BFFD7F40C /* TrimVideoViewController.swift in Sources */,
 				17A757E34B1A3391BB442E9E /* AlbumViewModel.swift in Sources */,
+				7322FFDB2C64BDA000EA6D5D /* SelectCategoryPhotoFactory.swift in Sources */,
 				7F6B6F36911075095E790B99 /* AlbumService.swift in Sources */,
 				2A8374B03B6080234372C0EC /* ConvertToMediaService.swift in Sources */,
 			);
@@ -358,7 +372,10 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				OTHER_LDFLAGS = "$(inherited) -ObjC";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ATeen.ATeen.MediaEditorFeature;
 				PRODUCT_NAME = MediaEditorFeature;
 				SDKROOT = iphoneos;
@@ -507,7 +524,10 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				OTHER_LDFLAGS = "$(inherited) -ObjC";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ATeen.ATeen.MediaEditorFeature;
 				PRODUCT_NAME = MediaEditorFeature;
 				SDKROOT = iphoneos;
@@ -515,10 +535,7 @@
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = (
-					"$(inherited)",
-					DEBUG,
-				);
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG";
 				SWIFT_COMPILATION_MODE = singlefile;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;

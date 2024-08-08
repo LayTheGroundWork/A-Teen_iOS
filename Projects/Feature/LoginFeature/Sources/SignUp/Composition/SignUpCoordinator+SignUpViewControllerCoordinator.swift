@@ -44,6 +44,11 @@ extension SignUpCoordinator: SignUpViewControllerCoordinator {
         albumCoordinator.navigation.dismissNavigation = { [weak self] in
             self?.removeChildCoordinator(albumCoordinator)
         }
+        
+        albumCoordinator.navigation.dismissNavigationFromAlbum = { [weak self] image in
+            self?.removeChildCoordinator(albumCoordinator)
+            self?.signUpViewControllerDelegate?.updateImage(index: item, selectImage: image)
+        }
     }
     
 }
