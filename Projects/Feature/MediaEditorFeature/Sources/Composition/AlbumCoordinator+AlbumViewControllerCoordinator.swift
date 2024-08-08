@@ -30,6 +30,6 @@ extension AlbumCoordinator: AlbumViewControllerCoordinator {
     }
     
     public func didFinishFlow() {
-        delegate?.didFinish(childCoordinator: self)
+        delegate?.didFinishAlbum(childCoordinator: self)
     }
 }

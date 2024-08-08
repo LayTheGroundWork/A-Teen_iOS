@@ -10,6 +10,7 @@ import FeatureDependency
 
 extension CropImageCoordinator: SelectCategoryPhotoCoordinatorDelegate {
     public func didFinish(childCoordinator: Coordinator) {
-        print("이거 할 필요 있나")
+        removeChildCoordinator(childCoordinator)
+        navigation.popViewController(animated: true)
     }
 }

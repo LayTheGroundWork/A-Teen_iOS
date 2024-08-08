@@ -37,7 +37,7 @@ public protocol ProfileDetailCoordinatorDelegate: AnyObject {
 }
 
 public protocol AlbumCoordinatorDelegate: AnyObject {
-    func didFinish(childCoordinator: Coordinator)
+    func didFinishAlbum(childCoordinator: Coordinator)
 }
 
 public protocol AlertCoordinatorDelegate: AnyObject {

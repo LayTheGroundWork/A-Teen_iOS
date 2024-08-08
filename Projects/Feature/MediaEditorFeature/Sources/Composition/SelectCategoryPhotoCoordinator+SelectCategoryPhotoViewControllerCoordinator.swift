@@ -9,6 +9,10 @@
 import UIKit
 
 extension SelectCategoryPhotoCoordinator: SelectCategoryPhotoViewControllerCoordinator {
+    public func didFinishFlow() {
+        delegate?.didFinish(childCoordinator: self)
+    }
+    
     public func didSelect(image: UIImage) {
         navigation.dismissNavigationFromAlbum?(image)
         

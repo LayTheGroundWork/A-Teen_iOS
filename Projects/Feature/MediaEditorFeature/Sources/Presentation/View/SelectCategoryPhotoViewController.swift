@@ -13,6 +13,7 @@ import DesignSystem
 import UIKit
 
 public protocol SelectCategoryPhotoViewControllerCoordinator: AnyObject {
+    func didFinishFlow()
     func didSelect(image: UIImage)
 }
 
@@ -102,7 +103,7 @@ final class SelectCategoryPhotoViewController: UIViewController {
 
     // MARK: - Actions
     @objc func didSelectCancelButton(_ sender: UIButton) {
-        self.navigationController?.popViewController(animated: true)
+        coordinator?.didFinishFlow()
     }
     
     @objc func didSelectCheckButton(_ sender: UIButton) {
