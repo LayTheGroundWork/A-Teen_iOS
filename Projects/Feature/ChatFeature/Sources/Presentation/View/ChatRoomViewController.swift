@@ -91,24 +91,10 @@ public final class ChatRoomViewController: UIViewController {
         return textView
     }()
     
-    private lazy var messageSendButton: UIButton = {
-        let button = UIButton()
+    private lazy var messageSendButton: CustomSendButton = {
+        let button = CustomSendButton()
         button.backgroundColor = .gray
         button.layer.cornerRadius = 12
-        button.setTitle("보내기", for: .normal)
-        button.setTitleColor(.white, for: .normal)
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 14, weight: .semibold)
-        button.titleLabel?.textAlignment = .left
-        
-        let image = UIImage(systemName: "arrowtriangle.right.fill")
-        button.setImage(image, for: .normal)
-        button.tintColor = .white
-        
-        //        button.semanticContentAttribute = .forceRightToLeft
-        
-        button.titleEdgeInsets = UIEdgeInsets(top: 0, left: -35, bottom: 0, right: 0)
-        button.imageEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: -80)
-        
         return button
     }()
     
@@ -232,11 +218,6 @@ public final class ChatRoomViewController: UIViewController {
     }
     
     @objc func tappedMoreOptionsButton(_ sender: UIButton) {
-//        let modalVC = ChatRoomModalViewController()
-//        modalVC.modalPresentationStyle = .custom
-//        modalVC.transitioningDelegate = self
-//        present(modalVC, animated: true, completion: nil)
-        
         coordinator?.presentChatRoomModal()
     }
     

@@ -13,5 +13,4 @@ extension ChatRoomCoordinator: ChatRoomModalCoordinatorDelegate {
     public func didFinishModal(childCoordinator: FeatureDependency.Coordinator) {
         removeChildCoordinator(childCoordinator)
     }
-
 }
