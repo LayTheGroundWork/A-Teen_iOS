@@ -12,13 +12,10 @@ import UIKit
 class CustomTeenCollectionViewCell: UICollectionViewCell {
     
     private let imageView = UIImageView()
-    private let blurEffectView: UIVisualEffectView
     private let label = UILabel()
     private let button = UIButton()
     
     override init(frame: CGRect) {
-        let blurEffect = UIBlurEffect(style: .systemUltraThinMaterialDark)
-        blurEffectView = UIVisualEffectView(effect: blurEffect)
         
         super.init(frame: frame)
         
@@ -27,10 +24,8 @@ class CustomTeenCollectionViewCell: UICollectionViewCell {
             make.edges.equalToSuperview()
         }
         
-        contentView.addSubview(blurEffectView)
-        blurEffectView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
-        }
+        imageView.contentMode = .scaleAspectFill
+        imageView.clipsToBounds = true
         
         contentView.addSubview(label)
         label.snp.makeConstraints { make in
