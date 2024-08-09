@@ -13,20 +13,19 @@ import Common
 import DesignSystem
 import UIKit
 
+public protocol SelectCategoryVideoViewControllerCoordinator: AnyObject {
+    func didFinishFlow()
+    func didSelect(avAsset: AVAsset)
+}
+
 final class SelectCategoryVideoViewController: UIViewController {
     // MARK: - Private properties
     private let asset: AVAsset?
+    private let coordinator: SelectCategoryVideoViewControllerCoordinator?
     
     private lazy var cancelButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(systemName: "arrow.left"), for: .normal)
-        button.tintColor = UIColor.white
-        return button
-    }()
-
-    private lazy var checkButton: UIButton = {
-        let button = UIButton()
-        button.setImage(UIImage(systemName: "checkmark"), for: .normal)
         button.tintColor = UIColor.white
         return button
     }()
@@ -51,34 +50,24 @@ final class SelectCategoryVideoViewController: UIViewController {
         playerLayer.videoGravity = .resizeAspect
         return playerLayer
     }()
-    
-    private lazy var selectCategoryTitleLabel: UILabel = {
-        let label = UILabel()
-        label.textColor = UIColor.white
-        label.font = .customFont(forTextStyle: .callout, weight: .regular)
-        label.text = AppLocalized.selectVideoCategoryText
-        return label
+   
+    private lazy var checkButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("등록 완료", for: .normal)
+        button.setTitleColor(UIColor.white, for: .normal)
+        button.backgroundColor = DesignSystemAsset.mainColor.color
+        button.titleLabel?.font = UIFont.customFont(forTextStyle: .callout, weight: .regular)
+        button.layer.cornerRadius = 20
+        return button
     }()
     
-    private lazy var exerciseCategoryButton = makeCategoryButton(title: "운동")
-    private lazy var beautyCategoryButton = makeCategoryButton(title: "뷰티")
-    private lazy var hobbyCategoryButton = makeCategoryButton(title: "취미")
-    private lazy var studyCategoryButton = makeCategoryButton(title: "공부")
-    
-    private lazy var firstHorizontalStackView = makeHorizontalStackView(buttons: [exerciseCategoryButton, beautyCategoryButton])
-    private lazy var secondHorizontalStackView = makeHorizontalStackView(buttons: [hobbyCategoryButton, studyCategoryButton])
-    
-    private lazy var verticalStackView: UIStackView = {
-        let stackView =  UIStackView(arrangedSubviews: [firstHorizontalStackView, secondHorizontalStackView])
-        stackView.axis = .vertical
-        stackView.spacing = 10
-        stackView.distribution = .fillEqually
-        return stackView
-    }()
-    
-    // MARK: - Life Cycl
-    init(asset: AVAsset) {
+    // MARK: - Life Cycle
+    init(
+        asset: AVAsset,
+        coordinator: SelectCategoryVideoViewControllerCoordinator
+    ) {
         self.asset = asset
+        self.coordinator = coordinator
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -102,10 +91,8 @@ final class SelectCategoryVideoViewController: UIViewController {
     private func configUserInterface() {
         view.backgroundColor = .black
         view.addSubview(cancelButton)
-        view.addSubview(checkButton)
         view.addSubview(videoBackgroundView)
-        view.addSubview(selectCategoryTitleLabel)
-        view.addSubview(verticalStackView)
+        view.addSubview(checkButton)
     }
     
     private func configLayout() {
@@ -115,30 +102,18 @@ final class SelectCategoryVideoViewController: UIViewController {
             make.width.height.equalTo(24)
         }
         
-        checkButton.snp.makeConstraints { make in
-            make.top.equalTo(view.safeAreaLayoutGuide).offset(20)
-            make.trailing.equalToSuperview().offset(-16)
-            make.width.height.equalTo(24)
-        }
-        
         videoBackgroundView.snp.makeConstraints { make in
-            make.top.equalTo(cancelButton.snp.bottom).offset(16)
-            make.leading.trailing.equalToSuperview()
-            make.height.equalTo(UIScreen.main.bounds.width * 1.16)
+            make.center.equalToSuperview()
+            make.width.equalTo(ViewValues.width)
+            make.height.equalTo(ViewValues.width * 1.16)
         }
         
-        selectCategoryTitleLabel.snp.makeConstraints { make in
-            make.top.equalTo(videoBackgroundView.snp.bottom).offset(32)
-            make.centerX.equalToSuperview()
+        checkButton.snp.makeConstraints { make in
+            make.bottom.equalToSuperview().offset(-70)
+            make.trailing.equalToSuperview().offset(-ViewValues.defaultPadding)
+            make.width.equalTo(116)
+            make.height.equalTo(50)
         }
-        
-        verticalStackView.snp.makeConstraints { make in
-            make.top.equalTo(selectCategoryTitleLabel.snp.bottom).offset(50)
-            make.centerX.equalToSuperview()
-            make.width.equalTo(UIScreen.main.bounds.width * 0.65)
-            make.height.equalTo(UIScreen.main.bounds.width * 0.65 * 0.39)
-        }
-        
     }
     
     private func setButtonActions() {
@@ -183,10 +158,11 @@ final class SelectCategoryVideoViewController: UIViewController {
     }
     
     @objc func didSelectCancelButton(_ sender: UIButton) {
-        self.navigationController?.popViewController(animated: true)
+        coordinator?.didFinishFlow()
     }
     
     @objc func didSelectCheckButton(_ sender: UIButton) {
-        self.navigationController?.popViewController(animated: true)
+        guard let asset = asset else { return }
+        coordinator?.didSelect(avAsset: asset)
     }
 }

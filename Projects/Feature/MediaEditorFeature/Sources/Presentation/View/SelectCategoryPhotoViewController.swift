@@ -50,7 +50,10 @@ final class SelectCategoryPhotoViewController: UIViewController {
     }()
     
     // MARK: - Life Cycle
-    init(selectImage: UIImage, coordinator: SelectCategoryPhotoViewControllerCoordinator) {
+    init(
+        selectImage: UIImage,
+        coordinator: SelectCategoryPhotoViewControllerCoordinator
+    ) {
         self.selectImage = selectImage
         self.coordinator = coordinator
         super.init(nibName: nil, bundle: nil)
@@ -83,13 +86,12 @@ final class SelectCategoryPhotoViewController: UIViewController {
         }
         
         photoImageView.snp.makeConstraints { make in
-            make.top.equalTo(cancelButton.snp.bottom).offset(16)
-            make.centerX.equalToSuperview()
+            make.centerY.equalToSuperview()
             make.width.equalTo(ViewValues.width)
         }
         
         checkButton.snp.makeConstraints { make in
-            make.top.equalTo(photoImageView.snp.bottom).offset(71)
+            make.bottom.equalToSuperview().offset(-70)
             make.trailing.equalToSuperview().offset(-ViewValues.defaultPadding)
             make.width.equalTo(116)
             make.height.equalTo(50)

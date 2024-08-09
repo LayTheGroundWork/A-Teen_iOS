@@ -15,7 +15,7 @@ public protocol SelectCategoryPhotoCoordinatorDelegate: AnyObject {
 
 public final class SelectCategoryPhotoCoordinator: Coordinator {
     public var navigation: Navigation
-    public var childCoordinators: [Coordinator] = []
+    public var childCoordinators: [Coordinator]
     var factory: SelectCategoryPhotoFactory
     let selectImage: UIImage
     weak var delegate: SelectCategoryPhotoCoordinatorDelegate?

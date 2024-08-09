@@ -13,7 +13,7 @@ import DesignSystem
 import UIKit
 
 protocol SelectPhotoCollectionViewCellDelegate: AnyObject {
-    func updateImage(index: Int, selectImage: UIImage)
+    func updatePhotoList(index: Int, selectItem: AlbumType)
 }
 
 final class SelectPhotoCollectionViewCell: UICollectionViewCell {
@@ -94,7 +94,10 @@ final class SelectPhotoCollectionViewCell: UICollectionViewCell {
     }
 
     // MARK: - Actions
-    func setProperties(coordinator: SignUpViewControllerCoordinator?, viewModel: SignUpViewModel) {
+    func setProperties(
+        coordinator: SignUpViewControllerCoordinator?,
+        viewModel: SignUpViewModel
+    ) {
         self.coordinator = coordinator
         self.viewModel = viewModel
     }
@@ -103,8 +106,13 @@ final class SelectPhotoCollectionViewCell: UICollectionViewCell {
 // MARK: - UICollectionViewDataSource
 extension SelectPhotoCollectionViewCell: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        guard let count = viewModel?.selectPhotoAsset.count else { return 0 }
-        return count
+        guard let count = viewModel?.selectPhotoList.count else { return 0 }
+        
+        if count == 10 {
+            return count
+        } else {
+            return count + 1
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -112,8 +120,18 @@ extension SelectPhotoCollectionViewCell: UICollectionViewDataSource {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PhotoCollectionViewCell.reuseIdentifier, for: indexPath) as? PhotoCollectionViewCell,
             let viewModel = viewModel
         else { return UICollectionViewCell() }
-        cell.setProperties(viewModel: viewModel)
         cell.setCellCustom(item: indexPath.item)
+        
+        if indexPath.item < viewModel.selectPhotoList.count || viewModel.selectPhotoList.count == 10 {
+            if let image = viewModel.selectPhotoList[indexPath.item].image {
+                cell.setImage(image: image)
+            } else {
+                guard let asset = viewModel.selectPhotoList[indexPath.item].avAsset else { return UICollectionViewCell() }
+                viewModel.extractImageFromVideo(asset: asset) { [weak cell] image in
+                    cell?.setImage(image: image)
+                }
+            }
+        }
         return cell
     }
 }
@@ -126,9 +144,10 @@ extension SelectPhotoCollectionViewCell: UICollectionViewDelegate {
 }
 
 extension SelectPhotoCollectionViewCell: SelectPhotoCollectionViewCellDelegate {
-    func updateImage(index: Int, selectImage: UIImage) {
-        print("하튼 여기 뷰모델 배열에 인덱스 맞춰서 사진넣기")
-        collectionView.reloadData()
+    func updatePhotoList(index: Int, selectItem: AlbumType) {
+        viewModel?.addAlbumItem(index: index, albumType: selectItem) {
+            collectionView.reloadData()
+        }
     }
 }
 

@@ -42,7 +42,8 @@ public final class SignUpViewModel {
     public var filteredSchools: [SchoolData] = []
     public var selectIndexPath: IndexPath?
     
-    var selectPhotoAsset = Array(repeating: AssetInfo.self, count: 10)
+    //SelectPhoto
+    var selectPhotoList: [AlbumType] = []
     
     private let authService = MyPhotoAuthService()
     
@@ -117,11 +118,39 @@ extension SignUpViewModel {
     }
 }
 
-// MARK: - SelectCategory {
+// MARK: - SelectCategory
 extension SignUpViewModel {
     public func changeCategory(index: Int, completion: (Int) -> Void) {
         guard let clearIndex = categoryExplain.firstIndex(of: category) else { return }
         category = categoryExplain[index]
         completion(clearIndex)
+    }
+}
+
+// MARK: - SelectPhoto
+extension SignUpViewModel {
+    public func extractImageFromVideo(asset: AVAsset, completion: @escaping(UIImage) -> Void) {
+        let imageGenerator = AVAssetImageGenerator(asset: asset)
+        imageGenerator.appliesPreferredTrackTransform = true // 비디오의 회전을 반영
+
+        do {
+            // 요청된 시간에서 이미지를 생성
+            let cgImage = try imageGenerator.copyCGImage(
+                at: CMTime(seconds: 0.0, preferredTimescale: 600),
+                actualTime: nil)
+            let image = UIImage(cgImage: cgImage)
+            completion(image)
+        } catch {
+            print("Error extracting image: \(error.localizedDescription)")
+        }
+    }
+    
+    func addAlbumItem(index: Int, albumType: AlbumType, completion: () -> Void) {
+        if selectPhotoList.indices.contains(index) {
+            selectPhotoList[index] = albumType
+        } else {
+            selectPhotoList.append(albumType)
+        }
+        completion()
     }
 }

@@ -6,6 +6,7 @@
 //  Copyright © 2024 ATeen. All rights reserved.
 //
 
+import Common
 import UIKit
 
 extension SelectCategoryPhotoCoordinator: SelectCategoryPhotoViewControllerCoordinator {
@@ -14,8 +15,7 @@ extension SelectCategoryPhotoCoordinator: SelectCategoryPhotoViewControllerCoord
     }
     
     public func didSelect(image: UIImage) {
-        navigation.dismissNavigationFromAlbum?(image)
-        removeChildCoordinator(self)
-        navigation.popViewController(animated: true)
+        delegate?.didFinish(childCoordinator: self)
+        navigation.dismissNavigationFromAlbum?(AlbumType(image: image))
     }
 }

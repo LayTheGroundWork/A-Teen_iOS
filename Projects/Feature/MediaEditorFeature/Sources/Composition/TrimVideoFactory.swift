@@ -7,12 +7,20 @@
 //
 
 import AVKit
+import FeatureDependency
 
 public protocol TrimVideoFactory {
     func makeTrimVideoViewController(
         asset: AVAsset,
         coordinator: TrimVideoViewControllerCoordinator
     ) -> UIViewController
+    
+    func makeSelectCategoryVideoCoordinator(
+        navigation: Navigation,
+        childCoordinators: [Coordinator],
+        delegate: SelectCategoryVideoCoordinatorDelegate,
+        selectAsset: AVAsset
+    ) -> Coordinator
 }
 
 final class TrimVideoFactoryImp: TrimVideoFactory {
@@ -24,5 +32,20 @@ final class TrimVideoFactoryImp: TrimVideoFactory {
             asset: asset,
             coordinator: coordinator)
         return controller
+    }
+    
+    func makeSelectCategoryVideoCoordinator(
+        navigation: Navigation,
+        childCoordinators: [Coordinator],
+        delegate: SelectCategoryVideoCoordinatorDelegate,
+        selectAsset: AVAsset
+    ) -> Coordinator {
+        let factory = SelectCategoryVideoFactoryImp()
+        return SelectCategoryVideoCoordinator(
+            navigation: navigation,
+            childCoordinators: childCoordinators,
+            factory: factory,
+            avAsset: selectAsset,
+            delegate: delegate)
     }
 }

@@ -20,7 +20,7 @@ protocol SignUpViewControllerCoordinator: AnyObject {
 }
 
 protocol SignUpViewControllerDelegate: AnyObject {
-    func updateImage(index: Int, selectImage: UIImage)
+    func updateImage(index: Int, selectItem: AlbumType)
 }
 
 final class SignUpViewController: UIViewController {
@@ -248,19 +248,19 @@ extension SignUpViewController: UICollectionViewDataSource {
     ) -> UICollectionViewCell {
         switch indexPath.section {
 
-        case 0:
-            guard
-                let cell = collectionView.dequeueReusableCell(
-                withReuseIdentifier: UserIdCollectionViewCell.reuseIdentifier,
-                for: indexPath) as? UserIdCollectionViewCell
-            else {
-                return UICollectionViewCell()
-            }
-            cell.setProperties(
-                delegate: self,
-                viewModel: viewModel
-            )
-            return cell
+//        case 0:
+//            guard
+//                let cell = collectionView.dequeueReusableCell(
+//                withReuseIdentifier: UserIdCollectionViewCell.reuseIdentifier,
+//                for: indexPath) as? UserIdCollectionViewCell
+//            else {
+//                return UICollectionViewCell()
+//            }
+//            cell.setProperties(
+//                delegate: self,
+//                viewModel: viewModel
+//            )
+//            return cell
             
         case 1:
             guard
@@ -321,7 +321,7 @@ extension SignUpViewController: UICollectionViewDataSource {
 //                viewModel: viewModel
 //            )
 //            return cell
-        case 4, 5:
+        case 0, 4, 5:
             guard
                 let cell = collectionView.dequeueReusableCell(
                 withReuseIdentifier: SelectPhotoCollectionViewCell.reuseIdentifier,
@@ -391,7 +391,7 @@ extension SignUpViewController {
 }
 
 extension SignUpViewController: SignUpViewControllerDelegate {
-    func updateImage(index: Int, selectImage: UIImage) {
-        delegate?.updateImage(index: index, selectImage: selectImage)
+    func updateImage(index: Int, selectItem: AlbumType) {
+        delegate?.updatePhotoList(index: index, selectItem: selectItem)
     }
 }
