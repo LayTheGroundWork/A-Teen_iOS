@@ -11,7 +11,7 @@ import Common
 import UIKit
 
 class CategoryTodayCollectionViewCell: UICollectionViewCell {
-    lazy var categoryLabel: UILabel = {
+    private lazy var categoryLabel: UILabel = {
         let label = UILabel()
         label.textColor = UIColor.black
         label.textAlignment = .center

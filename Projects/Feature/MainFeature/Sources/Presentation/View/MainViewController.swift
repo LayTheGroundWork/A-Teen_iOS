@@ -12,17 +12,13 @@ import DesignSystem
 import UIKit
 
 public protocol MainViewControllerCoordinator: AnyObject {
-    func didSelectTodayTeenImage(
-        frame: CGRect,
-        todayTeen: TodayTeen)
+    func didSelectTodayTeenImage(frame: CGRect, todayTeen: TodayTeen)
     func didSelectTodayTeenChattingButton()
     func didSelectMenuButton(popoverPosition: CGRect)
     func didSelectAboutATeenCell(tag: TabTag)
     func didSelectTournamentImage(collectionView: UICollectionView, indexPath: IndexPath)
     func didSelectTournamentMoreButton()
-    func didSelectAnotherTeenCell(
-        frame: CGRect,
-        todayTeen: TodayTeen)
+    func didSelectAnotherTeenCell(frame: CGRect, todayTeen: TodayTeen)
 }
 
 public final class MainViewController: UIViewController {
@@ -30,7 +26,7 @@ public final class MainViewController: UIViewController {
     private weak var coordinator: MainViewControllerCoordinator?
     
     // MARK: - Public properties
-    lazy var tableView: UITableView = {
+    private lazy var tableView: UITableView = {
         let tableView = UITableView()
         tableView.separatorStyle = .none
         tableView.showsVerticalScrollIndicator = false
@@ -44,8 +40,7 @@ public final class MainViewController: UIViewController {
         tableView.register(TeenTableViewCell.self, forCellReuseIdentifier: TeenTableViewCell.reuseIdentifier)
         return tableView
     }()
-    // MARK: - Private properties
-    
+
     // MARK: - Life Cycle
     init(
         viewModel: MainViewModel,
@@ -98,6 +93,7 @@ public final class MainViewController: UIViewController {
 }
 
 // MARK: - Extensions here
+
 // MARK: - UITableViewDataSource
 extension MainViewController: UITableViewDataSource {
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
