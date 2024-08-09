@@ -9,6 +9,13 @@ import Common
 import DesignSystem
 import UIKit
 
+public protocol ProfileDetailBottomBarDelegate: AnyObject {
+    func didTapSNSButton(
+        contentViewController: UIViewController,
+        defaultHeight: CGFloat
+    )
+}
+
 final class ProfileDetailBottomBar: UIView {
     // MARK: - Private properties
     lazy var voteButton: UIButton = {
@@ -28,7 +35,13 @@ final class ProfileDetailBottomBar: UIView {
     
     lazy var snsButton: UIButton = makeSmallButton(imageName: "linkBlackIcon")
     
-    override init(frame: CGRect) {
+    private weak var coordinator: ProfileDetailBottomBarDelegate?
+    
+    init(
+        frame: CGRect,
+        coordinator: ProfileDetailBottomBarDelegate
+    ) {
+        self.coordinator = coordinator
         super.init(frame: frame)
         configUserInterface()
         setupActions()
@@ -139,24 +152,23 @@ final class ProfileDetailBottomBar: UIView {
     }
     
     @objc private func didTapSNSButton() {
-        guard let parentViewController = self.parentViewController else { return }
-        
-        let linkList = [
-            (link: "https://instagram.com", title: "Instagram"),
-            (link: "https://twitter.com", title: "Twitter"),
-            (link: "https://facebook.com", title: "Facebook")
-        ]
-        
+//        guard let parentViewController = self.parentViewController else { return }
+
         // CustomLinkView 생성
 //        let customLinkView = CustomLinkView(frame: .zero, linkList: linkList)
         
+  
         let height: CGFloat = 200 // 하단 시트 높이 설정
-        let bottomSheet = SNSBottomSheetViewController(contentViewController: UIViewController(),
-                                                       defaultHeight: height,
-                                                       cornerRadius: 25,
-                                                       isPannedable: true)
-        
-        parentViewController.present(bottomSheet, animated: true, completion: nil)
+//        let bottomSheet = SNSBottomSheetViewController(contentViewController: UIViewController(),
+//                                                       defaultHeight: height,
+//                                                       cornerRadius: 25,
+//                                                       isPannedable: true)
+//        
+//        parentViewController.present(bottomSheet, animated: true, completion: nil)
+        coordinator?.didTapSNSButton(
+            contentViewController: UIViewController(),
+            defaultHeight: height
+        )
     }
 }
 

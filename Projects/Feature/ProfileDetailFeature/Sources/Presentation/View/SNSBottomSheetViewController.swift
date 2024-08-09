@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class SNSBottomSheetViewController: UIViewController {
+public final class SNSBottomSheetViewController: UIViewController {
     enum BottomSheetViewState {
         case expanded
         case normal
@@ -52,7 +52,7 @@ final class SNSBottomSheetViewController: UIViewController {
     
     private let contentViewController: UIViewController
     
-    init(contentViewController: UIViewController, defaultHeight: CGFloat, cornerRadius: CGFloat = 16, dimmedAlpha: CGFloat = 0.4, isPannedable: Bool = false) {
+    public init(contentViewController: UIViewController, defaultHeight: CGFloat, cornerRadius: CGFloat = 16, dimmedAlpha: CGFloat = 0.4, isPannedable: Bool = false) {
         self.contentViewController = contentViewController
         self.defaultHeight = defaultHeight
         self.cornerRedius = cornerRadius
@@ -67,7 +67,7 @@ final class SNSBottomSheetViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func viewDidLoad() {
+    public override func viewDidLoad() {
         super.viewDidLoad()
         
         self.configureUI()
@@ -80,13 +80,13 @@ final class SNSBottomSheetViewController: UIViewController {
         }
     }
     
-    override func viewDidAppear(_ animated: Bool) {
+    public override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
         self.showBottomSheet()
     }
     
-    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+    public override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
         coordinator.animate { [weak self] _ in
             self?.showBottomSheet()

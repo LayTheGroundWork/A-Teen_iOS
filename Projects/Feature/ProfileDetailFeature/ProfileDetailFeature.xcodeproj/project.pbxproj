@@ -3,12 +3,16 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 55;
+	objectVersion = 56;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		1CF4AF9AAEE5DCAF480AD3EE /* FeatureDependency.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46298C4EFDC4672E09C3EDF3 /* FeatureDependency.framework */; };
 		2EB4557D901ECF9A12C834EE /* ProfileDetailFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A43EB6119562050FB155947 /* ProfileDetailFactory.swift */; };
+		419E118E2C6640E600645F7E /* SNSBottomSheetCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419E118D2C6640E600645F7E /* SNSBottomSheetCoordinator.swift */; };
+		419E11902C6640F100645F7E /* SNSBottomSheetFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419E118F2C6640F100645F7E /* SNSBottomSheetFactory.swift */; };
+		419E11922C66479E00645F7E /* ProfileDetailCoordinatorImp+ProfileDetailViewControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419E11912C66479E00645F7E /* ProfileDetailCoordinatorImp+ProfileDetailViewControllerCoordinator.swift */; };
+		419E11942C66558300645F7E /* ProfileDetailCoordinatorImp+SNSBottomSheetCoordinatorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419E11932C66558300645F7E /* ProfileDetailCoordinatorImp+SNSBottomSheetCoordinatorDelegate.swift */; };
 		559B960DC3151627A8BC05A8 /* SNSBottomSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F1D1FA23D7E736642F1A42F /* SNSBottomSheetViewController.swift */; };
 		5DD49C53C2A86A14236D7FED /* TeenImageCellCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 367CCE582E5175E1DE0BBD7B /* TeenImageCellCollectionViewCell.swift */; };
 		8B9ADA99106D2357F17B7889 /* CustomHeartButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3C44FA71744D6F4F0817AC /* CustomHeartButton.swift */; };
@@ -35,6 +39,10 @@
 /* Begin PBXFileReference section */
 		01174DEA02D1DDC348B0CCBC /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
 		367CCE582E5175E1DE0BBD7B /* TeenImageCellCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeenImageCellCollectionViewCell.swift; sourceTree = "<group>"; };
+		419E118D2C6640E600645F7E /* SNSBottomSheetCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SNSBottomSheetCoordinator.swift; sourceTree = "<group>"; };
+		419E118F2C6640F100645F7E /* SNSBottomSheetFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SNSBottomSheetFactory.swift; sourceTree = "<group>"; };
+		419E11912C66479E00645F7E /* ProfileDetailCoordinatorImp+ProfileDetailViewControllerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProfileDetailCoordinatorImp+ProfileDetailViewControllerCoordinator.swift"; sourceTree = "<group>"; };
+		419E11932C66558300645F7E /* ProfileDetailCoordinatorImp+SNSBottomSheetCoordinatorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProfileDetailCoordinatorImp+SNSBottomSheetCoordinatorDelegate.swift"; sourceTree = "<group>"; };
 		46298C4EFDC4672E09C3EDF3 /* FeatureDependency.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FeatureDependency.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		48A509B9F085C4A804E9A5CF /* ProfileDetailCoordinatorImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDetailCoordinatorImp.swift; sourceTree = "<group>"; };
 		4F6AE01DD4B6F0D1794206D1 /* ProfileDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDetailViewModel.swift; sourceTree = "<group>"; };
@@ -82,6 +90,10 @@
 			children = (
 				48A509B9F085C4A804E9A5CF /* ProfileDetailCoordinatorImp.swift */,
 				9A43EB6119562050FB155947 /* ProfileDetailFactory.swift */,
+				419E118D2C6640E600645F7E /* SNSBottomSheetCoordinator.swift */,
+				419E118F2C6640F100645F7E /* SNSBottomSheetFactory.swift */,
+				419E11912C66479E00645F7E /* ProfileDetailCoordinatorImp+ProfileDetailViewControllerCoordinator.swift */,
+				419E11932C66558300645F7E /* ProfileDetailCoordinatorImp+SNSBottomSheetCoordinatorDelegate.swift */,
 			);
 			path = Composition;
 			sourceTree = "<group>";
@@ -223,8 +235,6 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
 				ORGANIZATIONNAME = ATeen;
-				TargetAttributes = {
-				};
 			};
 			buildConfigurationList = 24E039D9F663739F86E017A6 /* Build configuration list for PBXProject "ProfileDetailFeature" */;
 			compatibilityVersion = "Xcode 14.0";
@@ -259,6 +269,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				419E11942C66558300645F7E /* ProfileDetailCoordinatorImp+SNSBottomSheetCoordinatorDelegate.swift in Sources */,
+				419E118E2C6640E600645F7E /* SNSBottomSheetCoordinator.swift in Sources */,
+				419E11902C6640F100645F7E /* SNSBottomSheetFactory.swift in Sources */,
+				419E11922C66479E00645F7E /* ProfileDetailCoordinatorImp+ProfileDetailViewControllerCoordinator.swift in Sources */,
 				8B9ADA99106D2357F17B7889 /* CustomHeartButton.swift in Sources */,
 				E71E926FD6866151B500EB92 /* CustomVoteButton.swift in Sources */,
 				FCB76CF995D35B798E8DC3F4 /* ProfileDetailBottomBar.swift in Sources */,
@@ -294,7 +308,10 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				OTHER_LDFLAGS = "$(inherited) -ObjC";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ATeen.ATeen.ProfileDetailFeature;
 				PRODUCT_NAME = ProfileDetailFeature;
 				SDKROOT = iphoneos;
@@ -302,10 +319,7 @@
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = (
-					"$(inherited)",
-					DEBUG,
-				);
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG";
 				SWIFT_COMPILATION_MODE = singlefile;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -335,7 +349,10 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				OTHER_LDFLAGS = "$(inherited) -ObjC";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ATeen.ATeen.ProfileDetailFeature;
 				PRODUCT_NAME = ProfileDetailFeature;
 				SDKROOT = iphoneos;

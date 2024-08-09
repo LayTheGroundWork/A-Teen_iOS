@@ -6,12 +6,16 @@
 //  Copyright © 2024 ATeen. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 public protocol ProfileDetailCoordinator: Coordinator {
     func didFinishFlow()
 }
 
 public protocol ProfileDetailViewControllerCoordinator: AnyObject {
+    func didTapSNSButton(
+        contentViewController: UIViewController,
+        defaultHeight: CGFloat
+    )
     func didFinishFlow()
 }
