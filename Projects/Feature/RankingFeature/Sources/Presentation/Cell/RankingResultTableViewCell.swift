@@ -45,6 +45,21 @@ final class RankingResultTableViewCell: UITableViewCell {
         return label
     }()
     
+    private lazy var userIDLabel: UILabel = {
+        let label = UILabel()
+        label.textColor = DesignSystemAsset.gray01.color
+        label.font = .customFont(forTextStyle: .footnote, weight: .regular)
+        return label
+    }()
+    
+    private lazy var nameAndIDStack: UIStackView = {
+        let stack = UIStackView(arrangedSubviews: [userNameLabel, userIDLabel])
+        stack.axis = .vertical
+        stack.spacing = 4
+        stack.alignment = .leading
+        return stack
+    }()
+    
     private lazy var proportionLabel: UILabel = {
         let label = UILabel()
         label.textColor = UIColor.black
@@ -82,7 +97,7 @@ final class RankingResultTableViewCell: UITableViewCell {
         contentView.addSubview(background)
         background.addSubview(rankLabel)
         background.addSubview(userImageView)
-        background.addSubview(userNameLabel)
+        background.addSubview(nameAndIDStack)
         background.addSubview(proportionLabel)
         background.addSubview(chevronImage)
     }
@@ -116,7 +131,7 @@ final class RankingResultTableViewCell: UITableViewCell {
             make.height.equalTo(imageHeight)
         }
         
-        userNameLabel.snp.makeConstraints { make in
+        nameAndIDStack.snp.makeConstraints { make in
             make.leading.equalTo(userImageView.snp.trailing).offset(11)
             make.centerY.equalToSuperview()
         }
@@ -135,10 +150,12 @@ final class RankingResultTableViewCell: UITableViewCell {
     func setProperties(
         rank: Int,
         userName: String,
+        userID: String,
         proportion: Double
     ) {
         rankLabel.text = String(rank)
         userNameLabel.text = userName
+        userIDLabel.text = userID
         proportionLabel.text = "\(proportion)%"
     }
 }

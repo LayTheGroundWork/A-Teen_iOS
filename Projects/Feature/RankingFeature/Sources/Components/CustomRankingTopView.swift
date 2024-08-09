@@ -20,6 +20,7 @@ final class CustomRankingTopView: UIView {
     let image: UIImage
     let rank: RankPlace
     let userName: String
+    let userID: String
     let proportion: Double
     let imageWidth = (ViewValues.width - 32 - 28) / 3 - 2
     let imageHeight = ((ViewValues.width - 32 - 28) / 3 - 2) * 1.14
@@ -72,6 +73,14 @@ final class CustomRankingTopView: UIView {
         return label
     }()
     
+    private lazy var userIDLabel: UILabel = {
+        let label = UILabel()
+        label.text = userID
+        label.textColor = UIColor.white
+        label.font = .customFont(forTextStyle: .footnote, weight: .regular)
+        return label
+    }()
+    
     private lazy var proportionLabel: UILabel = {
         let label = UILabel()
         label.text = "\(proportion)%"
@@ -86,11 +95,13 @@ final class CustomRankingTopView: UIView {
         image: UIImage,
         rank: RankPlace,
         userName: String,
+        userID: String,
         proportion: Double
     ) {
         self.image = image
         self.rank = rank
         self.userName = userName
+        self.userID = userID
         self.proportion = proportion
         super.init(frame: frame)
         
@@ -108,6 +119,7 @@ final class CustomRankingTopView: UIView {
         self.addSubview(imageBackgroundView)
         imageBackgroundView.addSubview(imageView)
         imageView.addSubview(nameLabel)
+        imageView.addSubview(userIDLabel)
         imageView.addSubview(proportionLabel)
         
         self.addSubview(rankCircle)
@@ -143,13 +155,18 @@ extension CustomRankingTopView {
         }
         
         proportionLabel.snp.makeConstraints { make in
-            make.centerX.equalToSuperview()
-            make.bottom.equalToSuperview().offset(-7)
+            make.top.equalToSuperview().offset(12)
+            make.trailing.equalToSuperview().offset(-12)
         }
         
         nameLabel.snp.makeConstraints { make in
-            make.centerX.equalToSuperview()
-            make.bottom.equalTo(proportionLabel.snp.top).offset(-4)
+            make.leading.equalToSuperview().offset(12)
+            make.bottom.equalTo(userIDLabel.snp.top)
+        }
+        
+        userIDLabel.snp.makeConstraints { make in
+            make.leading.equalTo(nameLabel.snp.leading)
+            make.bottom.equalToSuperview().offset(-12)
         }
         
         rankCircle.snp.makeConstraints { make in

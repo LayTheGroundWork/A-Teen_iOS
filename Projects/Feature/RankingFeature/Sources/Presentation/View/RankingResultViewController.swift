@@ -20,24 +20,24 @@ public final class RankingResultViewController: UIViewController {
     let sector: String
     let session: String
     
-    // Sample data with 16 items, proportions summing to 90
+    // Sample data with 16 items
     private let rankings = [
-        (rank: 1, userName: "User1", proportion: 11.2),
-        (rank: 2, userName: "User2", proportion: 10.5),
-        (rank: 3, userName: "User3", proportion: 10.1),
-        (rank: 4, userName: "User4", proportion: 7.5),
-        (rank: 5, userName: "User5", proportion: 7.0),
-        (rank: 6, userName: "User6", proportion: 6.5),
-        (rank: 7, userName: "User7", proportion: 6.0),
-        (rank: 8, userName: "User8", proportion: 5.5),
-        (rank: 9, userName: "User9", proportion: 5.0),
-        (rank: 10, userName: "User10", proportion: 4.5),
-        (rank: 11, userName: "User11", proportion: 4.0),
-        (rank: 12, userName: "User12", proportion: 3.5),
-        (rank: 13, userName: "User13", proportion: 3.0),
-        (rank: 14, userName: "User14", proportion: 2.5),
-        (rank: 15, userName: "User15", proportion: 2.0),
-        (rank: 16, userName: "User16", proportion: 1.5)
+        (rank: 1, userName: "User1", userID: "user ID", proportion: 11.2),
+        (rank: 2, userName: "User2", userID: "user ID", proportion: 10.5),
+        (rank: 3, userName: "User3", userID: "user ID", proportion: 10.1),
+        (rank: 4, userName: "User4", userID: "user ID", proportion: 7.5),
+        (rank: 5, userName: "User5", userID: "user ID", proportion: 7.0),
+        (rank: 6, userName: "User6", userID: "user ID", proportion: 6.5),
+        (rank: 7, userName: "User7", userID: "user ID", proportion: 6.0),
+        (rank: 8, userName: "User8", userID: "user ID", proportion: 5.5),
+        (rank: 9, userName: "User9", userID: "user ID", proportion: 5.0),
+        (rank: 10, userName: "User10", userID: "user ID", proportion: 4.5),
+        (rank: 11, userName: "User11", userID: "user ID", proportion: 4.0),
+        (rank: 12, userName: "User12", userID: "user ID", proportion: 3.5),
+        (rank: 13, userName: "User13", userID: "user ID", proportion: 3.0),
+        (rank: 14, userName: "User14", userID: "user ID", proportion: 2.5),
+        (rank: 15, userName: "User15", userID: "user ID", proportion: 2.0),
+        (rank: 16, userName: "User16", userID: "user ID", proportion: 1.5)
     ]
     
     // MARK: - Private properties
@@ -88,18 +88,21 @@ public final class RankingResultViewController: UIViewController {
         image: DesignSystemAsset.dressGlass.image,
         rank: .first,
         userName: "XXX",
+        userID: "user ID",
         proportion: 20.0)
     
     private lazy var secondBox: UIView = CustomRankingTopView(
         image: DesignSystemAsset.blackGlass.image,
         rank: .second,
         userName: "흐르미",
+        userID: "user ID",
         proportion: 18.7)
     
     private lazy var thirdBox: UIView = CustomRankingTopView(
         image: DesignSystemAsset.whiteGlass.image,
         rank: .third,
         userName: "XXX",
+        userID: "user ID",
         proportion: 12.3)
     
     private lazy var topThreeStack: UIStackView = {
@@ -239,6 +242,7 @@ extension RankingResultViewController: UITableViewDataSource {
         let ranking = rankings[indexPath.row + 3]
         cell.setProperties(rank: ranking.rank,
                            userName: ranking.userName,
+                           userID: ranking.userID,
                            proportion: ranking.proportion)
         return cell
     }
