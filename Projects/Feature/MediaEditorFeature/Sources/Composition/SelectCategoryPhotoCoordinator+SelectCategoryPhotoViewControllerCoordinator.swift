@@ -15,7 +15,7 @@ extension SelectCategoryPhotoCoordinator: SelectCategoryPhotoViewControllerCoord
     
     public func didSelect(image: UIImage) {
         navigation.dismissNavigationFromAlbum?(image)
-        
-        navigation.dismiss(animated: true)
+        removeChildCoordinator(self)
+        navigation.popViewController(animated: true)
     }
 }

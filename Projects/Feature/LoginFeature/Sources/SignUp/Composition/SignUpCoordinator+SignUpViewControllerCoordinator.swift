@@ -24,10 +24,6 @@ extension SignUpCoordinator: SignUpViewControllerCoordinator {
         navigation.present(
             selectBirthCoordinator.navigation.rootViewController,
             animated: false)
-        
-        selectBirthCoordinator.navigation.dismissNavigation = { [weak self] in
-            self?.removeChildCoordinator(selectBirthCoordinator)
-        }
     }
     
     public func didSelectService() {
@@ -41,9 +37,6 @@ extension SignUpCoordinator: SignUpViewControllerCoordinator {
         navigation.present(
             albumCoordinator.navigation.rootViewController,
             animated: true)
-        albumCoordinator.navigation.dismissNavigation = { [weak self] in
-            self?.didFinishAlbum(childCoordinator: albumCoordinator)
-        }
         
         albumCoordinator.navigation.dismissNavigationFromAlbum = { [weak self] image in
             self?.didFinishAlbum(childCoordinator: albumCoordinator)
