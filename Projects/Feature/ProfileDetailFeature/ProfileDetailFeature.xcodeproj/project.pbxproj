@@ -9,10 +9,11 @@
 /* Begin PBXBuildFile section */
 		1CF4AF9AAEE5DCAF480AD3EE /* FeatureDependency.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46298C4EFDC4672E09C3EDF3 /* FeatureDependency.framework */; };
 		2EB4557D901ECF9A12C834EE /* ProfileDetailFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A43EB6119562050FB155947 /* ProfileDetailFactory.swift */; };
+		559B960DC3151627A8BC05A8 /* SNSBottomSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F1D1FA23D7E736642F1A42F /* SNSBottomSheetViewController.swift */; };
+		5DD49C53C2A86A14236D7FED /* TeenImageCellCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 367CCE582E5175E1DE0BBD7B /* TeenImageCellCollectionViewCell.swift */; };
 		8B9ADA99106D2357F17B7889 /* CustomHeartButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3C44FA71744D6F4F0817AC /* CustomHeartButton.swift */; };
 		E71E926FD6866151B500EB92 /* CustomVoteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8852B8B7CA23BC191935C3AC /* CustomVoteButton.swift */; };
 		E8FA98278D78200AC911AEB9 /* ProfileDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A62956AACF348719350390B /* ProfileDetailViewController.swift */; };
-		F3ABCF72461EE6623C4EB41C /* TeenImageCellCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE207437DD4A943EC9B8249 /* TeenImageCellCollectionViewCell.swift */; };
 		F475F8605C01B8F7398DFECB /* ProfileDetailCoordinatorImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A509B9F085C4A804E9A5CF /* ProfileDetailCoordinatorImp.swift */; };
 		FCB76CF995D35B798E8DC3F4 /* ProfileDetailBottomBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE408B2BCF2173C4643AB346 /* ProfileDetailBottomBar.swift */; };
 		FF09C008A3512D2463C9656C /* ProfileDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F6AE01DD4B6F0D1794206D1 /* ProfileDetailViewModel.swift */; };
@@ -33,16 +34,17 @@
 
 /* Begin PBXFileReference section */
 		01174DEA02D1DDC348B0CCBC /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
+		367CCE582E5175E1DE0BBD7B /* TeenImageCellCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeenImageCellCollectionViewCell.swift; sourceTree = "<group>"; };
 		46298C4EFDC4672E09C3EDF3 /* FeatureDependency.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FeatureDependency.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		48A509B9F085C4A804E9A5CF /* ProfileDetailCoordinatorImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDetailCoordinatorImp.swift; sourceTree = "<group>"; };
 		4F6AE01DD4B6F0D1794206D1 /* ProfileDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDetailViewModel.swift; sourceTree = "<group>"; };
 		5A62956AACF348719350390B /* ProfileDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDetailViewController.swift; sourceTree = "<group>"; };
+		5F1D1FA23D7E736642F1A42F /* SNSBottomSheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SNSBottomSheetViewController.swift; sourceTree = "<group>"; };
 		8852B8B7CA23BC191935C3AC /* CustomVoteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomVoteButton.swift; sourceTree = "<group>"; };
 		9A43EB6119562050FB155947 /* ProfileDetailFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDetailFactory.swift; sourceTree = "<group>"; };
 		9D3C44FA71744D6F4F0817AC /* CustomHeartButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomHeartButton.swift; sourceTree = "<group>"; };
 		B0A5CCB5F5D5CB2DECE9752F /* Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
 		B64E014FDA2477E825D0B2C3 /* ProfileDetailFeature-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "ProfileDetailFeature-Info.plist"; sourceTree = "<group>"; };
-		BAE207437DD4A943EC9B8249 /* TeenImageCellCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeenImageCellCollectionViewCell.swift; sourceTree = "<group>"; };
 		DE408B2BCF2173C4643AB346 /* ProfileDetailBottomBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDetailBottomBar.swift; sourceTree = "<group>"; };
 		F8963FCB828AAB0D6A70608F /* ProfileDetailFeature.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ProfileDetailFeature.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -59,6 +61,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1B2359FA02ECAF3DC9E84E01 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				367CCE582E5175E1DE0BBD7B /* TeenImageCellCollectionViewCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		21AD35ADEB4A158677701916 /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -97,6 +107,7 @@
 		7EDF951E707EC83639497336 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				1B2359FA02ECAF3DC9E84E01 /* Cell */,
 				AF76701D73859A7197961CD8 /* View */,
 				8181CA03AAAEF767002BF0E5 /* ViewModel */,
 			);
@@ -142,7 +153,7 @@
 			isa = PBXGroup;
 			children = (
 				5A62956AACF348719350390B /* ProfileDetailViewController.swift */,
-				BAE207437DD4A943EC9B8249 /* TeenImageCellCollectionViewCell.swift */,
+				5F1D1FA23D7E736642F1A42F /* SNSBottomSheetViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -253,8 +264,9 @@
 				FCB76CF995D35B798E8DC3F4 /* ProfileDetailBottomBar.swift in Sources */,
 				F475F8605C01B8F7398DFECB /* ProfileDetailCoordinatorImp.swift in Sources */,
 				2EB4557D901ECF9A12C834EE /* ProfileDetailFactory.swift in Sources */,
+				5DD49C53C2A86A14236D7FED /* TeenImageCellCollectionViewCell.swift in Sources */,
 				E8FA98278D78200AC911AEB9 /* ProfileDetailViewController.swift in Sources */,
-				F3ABCF72461EE6623C4EB41C /* TeenImageCellCollectionViewCell.swift in Sources */,
+				559B960DC3151627A8BC05A8 /* SNSBottomSheetViewController.swift in Sources */,
 				FF09C008A3512D2463C9656C /* ProfileDetailViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

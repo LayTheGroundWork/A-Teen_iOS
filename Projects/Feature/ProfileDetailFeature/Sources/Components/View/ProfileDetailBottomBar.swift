@@ -26,11 +26,12 @@ final class ProfileDetailBottomBar: UIView {
     
     lazy var messageButton: UIButton = makeSmallButton(imageName: "blackChattingIcon")
     
-    lazy var snsButton: UIButton = makeSmallButton(imageName: "instaIcon")
+    lazy var snsButton: UIButton = makeSmallButton(imageName: "linkBlackIcon")
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         configUserInterface()
+        setupActions()
     }
     
     required init?(coder: NSCoder) {
@@ -108,11 +109,8 @@ final class ProfileDetailBottomBar: UIView {
         button.layer.masksToBounds = false
         
         let imageView = UIImageView()
-        if imageName == "blackChattingIcon" {
-            imageView.image = DesignSystemAsset.blackChattingIcon.image
-        } else {
-            imageView.image = DesignSystemAsset.instaIcon.image
-        }
+        imageView.image = imageForName(imageName)
+        
         button.addSubview(imageView)
         
         imageView.snp.makeConstraints { make in
@@ -121,5 +119,70 @@ final class ProfileDetailBottomBar: UIView {
         }
         
         return button
+    }
+    
+    private func imageForName(_ imageName: String) -> UIImage? {
+        switch imageName {
+        case "blackChattingIcon":
+            return DesignSystemAsset.blackChattingIcon.image
+        case "linkBlackIcon":
+            return DesignSystemAsset.linkBlackIcon.image
+        case "linkWhiteIcon":
+            return DesignSystemAsset.linkWhiteIcon.image
+        default:
+            return nil
+        }
+    }
+    
+    private func setupActions() {
+        snsButton.addTarget(self, action: #selector(didTapSNSButton), for: .touchUpInside)
+    }
+    
+    @objc private func didTapSNSButton() {
+        guard let parentViewController = self.parentViewController else { return }
+        
+        let linkList = [
+            (link: "https://instagram.com", title: "Instagram"),
+            (link: "https://twitter.com", title: "Twitter"),
+            (link: "https://facebook.com", title: "Facebook")
+        ]
+        
+        // CustomLinkView 생성
+//        let customLinkView = CustomLinkView(frame: .zero, linkList: linkList)
+        
+        let height: CGFloat = 200 // 하단 시트 높이 설정
+        let bottomSheet = SNSBottomSheetViewController(contentViewController: UIViewController(),
+                                                       defaultHeight: height,
+                                                       cornerRadius: 25,
+                                                       isPannedable: true)
+        
+        parentViewController.present(bottomSheet, animated: true, completion: nil)
+    }
+}
+
+extension UIView {
+    var parentViewController: UIViewController? {
+        var parentResponder: UIResponder? = self
+        while parentResponder != nil {
+            parentResponder = parentResponder!.next
+            if let viewController = parentResponder as? UIViewController {
+                return viewController
+            }
+        }
+        return nil
+    }
+}
+
+extension ProfileDetailBottomBar: UIViewControllerTransitioningDelegate {
+    
+    func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
+            return OneThirdSizePresentationController(presentedViewController: presented, presenting: presenting)
+        }
+}
+
+class OneThirdSizePresentationController: UIPresentationController {
+    override var frameOfPresentedViewInContainerView: CGRect {
+        guard let containerView = containerView else { return .zero }
+        return CGRect(x: 0, y: containerView.bounds.height * 2/3, width: containerView.bounds.width, height: containerView.bounds.height / 3)
     }
 }
