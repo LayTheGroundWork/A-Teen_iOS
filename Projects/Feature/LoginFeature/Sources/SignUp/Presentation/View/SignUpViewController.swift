@@ -63,9 +63,8 @@ final class SignUpViewController: UIViewController {
         collectionView.register(UserIdCollectionViewCell.self, forCellWithReuseIdentifier: UserIdCollectionViewCell.reuseIdentifier)
         collectionView.register(UserNameCollectionViewCell.self, forCellWithReuseIdentifier: UserNameCollectionViewCell.reuseIdentifier)
         collectionView.register(UserBirthCollectionViewCell.self, forCellWithReuseIdentifier: UserBirthCollectionViewCell.reuseIdentifier)
-        collectionView.register(SelectCategoryCollectionViewCell.self, forCellWithReuseIdentifier: SelectCategoryCollectionViewCell.reuseIdentifier)
         collectionView.register(SearchSchoolCollectionViewCell.self, forCellWithReuseIdentifier: SearchSchoolCollectionViewCell.reuseIdentifier)
-    
+        collectionView.register(SelectCategoryCollectionViewCell.self, forCellWithReuseIdentifier: SelectCategoryCollectionViewCell.reuseIdentifier)
         collectionView.register(SelectPhotoCollectionViewCell.self, forCellWithReuseIdentifier: SelectPhotoCollectionViewCell.reuseIdentifier)
         
         return collectionView
@@ -105,7 +104,6 @@ final class SignUpViewController: UIViewController {
         configLayout()
         setupActions()
         stateController()
-        
     }
     
     // MARK: - Helpers
@@ -168,7 +166,10 @@ final class SignUpViewController: UIViewController {
     
     // MARK: - Actions
     @objc private func didSelectNextButton(_ sender: UIButton) {
-        guard currentIndexPath.section < collectionView.numberOfSections - 1 else { return }
+        guard currentIndexPath.section < collectionView.numberOfSections - 1 else {
+            coordinator?.didSelectService()
+            return
+        }
         
         currentIndexPath.section += 1
         progressView.setProgress(progressView.progress + ViewValues.signUpProgress, animated: true)

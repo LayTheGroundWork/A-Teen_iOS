@@ -27,7 +27,10 @@ extension SignUpCoordinator: SignUpViewControllerCoordinator {
     }
     
     public func didSelectService() {
-        print("123421412")
+        let celebrateCoordinator = factory.makeCelebrateCoordinator(
+            navigation: navigation,
+            delegate: self)
+        addChildCoordinatorStart(celebrateCoordinator)
     }
     
     func didSelectCell(item: Int) {

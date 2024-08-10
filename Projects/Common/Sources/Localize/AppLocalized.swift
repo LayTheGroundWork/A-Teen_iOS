@@ -13,6 +13,7 @@ public enum AppLocalized {
     
     public static let showMoreButton = "더보기"
     
+    public static let startButton = "시작하기"
     public static let publicRelations = "자기 소개"
     public static let tenQuestions = "10문 10답"
     public static let voteButton = "투표하기"
@@ -131,6 +132,12 @@ public enum AppLocalized {
     public static let selectPhotoCategoryText = "자랑할 사진의 카테고리를 선택해보세요!"
     public static let selectVideoCategoryText = "자랑할 영상의 카테고리를 선택해보세요!"
     public static let maxVideoTimeText = "영상의 길이는 최대 10초까지만 사용 가능해요"
+    
+    // MARK: - Celebrate
+    public static let celebrateTitle = """
+                                        등록이 완료되었어요!
+                                        이제 A-TEEN을 시작해보세요 :)
+                                        """
     
     // MARK: - Ranking
     public static let rankingTitleLabel = "Ranking"
