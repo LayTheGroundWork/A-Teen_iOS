@@ -23,7 +23,7 @@ final class ProfileDetailBottomBar: UIView {
             imageColor: UIColor.white,
             textColor: UIColor.white,
             labelText: "투표하기",
-            buttonBackgroundColor: DesignSystemAsset.mainColor.color,
+            buttonBackgroundColor: .black,
             labelFont: UIFont.preferredFont(forTextStyle: .caption1),
             frame: .zero)
         button.layer.cornerRadius = ViewValues.defaultRadius
