@@ -11,7 +11,11 @@ import Foundation
 
 public struct SchoolDataEndPoint: EndPoint {
     private let request: SchoolDataRequest
-        
+    
+    public var port: String {
+        ""
+    }
+    
     public var path: String = "/v1/api/schools"
     
     public var query: [String : String] {

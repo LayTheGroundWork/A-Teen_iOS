@@ -13,6 +13,10 @@ import Foundation
 public struct PhoneNumberAuthEndPoint: EndPoint {
     private let request: PhoneNumberAuthRequest
         
+    public var port: String {
+        ""
+    }
+    
     public var path: String = "/v1/api/message/confirms"
     
     public var query: [String : String] = [:]

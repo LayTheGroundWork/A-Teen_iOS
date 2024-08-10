@@ -160,6 +160,7 @@ final class SignUpViewController: UIViewController {
                     self?.showSpinnerSchoolCollectionViewCell()
                     break
                 case .fail(error: let error):
+                    self?.hideSpinnerSchoolCollectionViewCell()
                     print("검색한 학교가 없습니다. \(error)")
                 }
             }.store(in: &cancellable)
@@ -248,19 +249,19 @@ extension SignUpViewController: UICollectionViewDataSource {
     ) -> UICollectionViewCell {
         switch indexPath.section {
 
-//        case 0:
-//            guard
-//                let cell = collectionView.dequeueReusableCell(
-//                withReuseIdentifier: UserIdCollectionViewCell.reuseIdentifier,
-//                for: indexPath) as? UserIdCollectionViewCell
-//            else {
-//                return UICollectionViewCell()
-//            }
-//            cell.setProperties(
-//                delegate: self,
-//                viewModel: viewModel
-//            )
-//            return cell
+        case 0:
+            guard
+                let cell = collectionView.dequeueReusableCell(
+                withReuseIdentifier: UserIdCollectionViewCell.reuseIdentifier,
+                for: indexPath) as? UserIdCollectionViewCell
+            else {
+                return UICollectionViewCell()
+            }
+            cell.setProperties(
+                delegate: self,
+                viewModel: viewModel
+            )
+            return cell
             
         case 1:
             guard
@@ -293,7 +294,23 @@ extension SignUpViewController: UICollectionViewDataSource {
             )
             
             return cell
+   
         case 3:
+            guard
+                let cell = collectionView.dequeueReusableCell(
+                withReuseIdentifier: SearchSchoolCollectionViewCell.reuseIdentifier,
+                for: indexPath) as? SearchSchoolCollectionViewCell
+            else {
+                return UICollectionViewCell()
+            }
+            
+            cell.setProperties(
+                delegate: self,
+                viewModel: viewModel
+            )
+            return cell
+            
+        case 4:
             guard
                 let cell = collectionView.dequeueReusableCell(
                 withReuseIdentifier: SelectCategoryCollectionViewCell.reuseIdentifier,
@@ -307,21 +324,8 @@ extension SignUpViewController: UICollectionViewDataSource {
                 viewModel: viewModel
             )
             return cell
-//        case 4:
-//            guard
-//                let cell = collectionView.dequeueReusableCell(
-//                withReuseIdentifier: SearchSchoolCollectionViewCell.reuseIdentifier,
-//                for: indexPath) as? SearchSchoolCollectionViewCell
-//            else {
-//                return UICollectionViewCell()
-//            }
-//            
-//            cell.setProperties(
-//                delegate: self,
-//                viewModel: viewModel
-//            )
-//            return cell
-        case 0, 4, 5:
+            
+        case 5:
             guard
                 let cell = collectionView.dequeueReusableCell(
                 withReuseIdentifier: SelectPhotoCollectionViewCell.reuseIdentifier,

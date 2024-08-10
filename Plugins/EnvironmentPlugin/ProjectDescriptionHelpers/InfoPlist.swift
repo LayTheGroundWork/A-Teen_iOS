@@ -26,7 +26,6 @@ extension InfoPlist {
 public extension [String: Plist.Value] {
     static let secrets: Self = [
         "HOST_VALUE": "$(HOST_VALUE)",
-        "PORT_NUMBER": "$(PORT_NUMBER)"
     ]
     
     static let baseInfoPlist: Self = [
