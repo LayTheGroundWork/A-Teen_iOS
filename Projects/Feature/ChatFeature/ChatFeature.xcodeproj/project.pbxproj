@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 55;
+	objectVersion = 56;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -20,7 +20,7 @@
 		7FD7D4DEB7687A0C7397F7D9 /* ChatRoomModalCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F6BA4C1A0653428AA32844E /* ChatRoomModalCoordinator.swift */; };
 		87DDD8C84D9244A7ADEB17A7 /* ChatModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47237B770DFD640BB7A8D51A /* ChatModel.swift */; };
 		8C1FBE0B516893C24961B856 /* ChatFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB7996E54602953C53BB81CF /* ChatFactory.swift */; };
-		8FD53A837E40020AEC5D14AF /* ChatPopOverModalTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55598443BB46AE2E13BEC4A3 /* ChatPopOverModalTableViewCell.swift */; };
+		8FD53A837E40020AEC5D14AF /* ChatRoomModalTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55598443BB46AE2E13BEC4A3 /* ChatRoomModalTableViewCell.swift */; };
 		A191FC98621B77240E137470 /* ChatRoomModalCoordinator+ ChatRoomModalViewControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A43214A6E8685F0B6B72AB /* ChatRoomModalCoordinator+ ChatRoomModalViewControllerCoordinator.swift */; };
 		A4358AB1C9EEF1D07F24CD95 /* ChatCoordinator+ChatConfigTabbarStateDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F8D87B1164E1E2247C65A03 /* ChatCoordinator+ChatConfigTabbarStateDelegate.swift */; };
 		B086464C212A93613CC90AA6 /* ChatRoomModalFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = E34E2464C7510A32F5C6722D /* ChatRoomModalFactory.swift */; };
@@ -57,7 +57,7 @@
 		3DADA4555C4DC50292CB7054 /* ChatFeature-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "ChatFeature-Info.plist"; sourceTree = "<group>"; };
 		47237B770DFD640BB7A8D51A /* ChatModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatModel.swift; sourceTree = "<group>"; };
 		4F6BA4C1A0653428AA32844E /* ChatRoomModalCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomModalCoordinator.swift; sourceTree = "<group>"; };
-		55598443BB46AE2E13BEC4A3 /* ChatPopOverModalTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatPopOverModalTableViewCell.swift; sourceTree = "<group>"; };
+		55598443BB46AE2E13BEC4A3 /* ChatRoomModalTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomModalTableViewCell.swift; sourceTree = "<group>"; };
 		5E71061B94CCA13A2833F0D8 /* ChatCoordinator+ChatViewControllerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ChatCoordinator+ChatViewControllerCoordinator.swift"; sourceTree = "<group>"; };
 		5F8D87B1164E1E2247C65A03 /* ChatCoordinator+ChatConfigTabbarStateDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ChatCoordinator+ChatConfigTabbarStateDelegate.swift"; sourceTree = "<group>"; };
 		64C454AEDCFC65B49B4B7532 /* UserChatMessageViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserChatMessageViewCell.swift; sourceTree = "<group>"; };
@@ -130,9 +130,9 @@
 		2FC60CD5CA6722832D9636D6 /* ChatRoomModal */ = {
 			isa = PBXGroup;
 			children = (
-				55598443BB46AE2E13BEC4A3 /* ChatPopOverModalTableViewCell.swift */,
-				B300B96498BBFBDFEC14A78C /* ChatPresnetationController.swift */,
 				F48004408112FCD4C90D382D /* ChatRoomModalViewController.swift */,
+				B300B96498BBFBDFEC14A78C /* ChatPresnetationController.swift */,
+				55598443BB46AE2E13BEC4A3 /* ChatRoomModalTableViewCell.swift */,
 			);
 			path = ChatRoomModal;
 			sourceTree = "<group>";
@@ -141,8 +141,8 @@
 			isa = PBXGroup;
 			children = (
 				2FC60CD5CA6722832D9636D6 /* ChatRoomModal */,
-				31E3B482A0D7F38D098FEA7C /* ChatRoomViewController.swift */,
 				C8FFA80478C266C38C0875A4 /* ChatViewController.swift */,
+				31E3B482A0D7F38D098FEA7C /* ChatRoomViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -298,8 +298,6 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
 				ORGANIZATIONNAME = ATeen;
-				TargetAttributes = {
-				};
 			};
 			buildConfigurationList = E56248A5BA0D49BC0F2EFE59 /* Build configuration list for PBXProject "ChatFeature" */;
 			compatibilityVersion = "Xcode 14.0";
@@ -354,7 +352,7 @@
 				DE1EA2954425EC472B6DA91C /* UserChatMessageViewCell.swift in Sources */,
 				FCA54286F92D000A848AD1BC /* ChatMessageModel.swift in Sources */,
 				87DDD8C84D9244A7ADEB17A7 /* ChatModel.swift in Sources */,
-				8FD53A837E40020AEC5D14AF /* ChatPopOverModalTableViewCell.swift in Sources */,
+				8FD53A837E40020AEC5D14AF /* ChatRoomModalTableViewCell.swift in Sources */,
 				44E77A09AA1D52ADF3ED2B62 /* ChatPresnetationController.swift in Sources */,
 				07AF370519CD695ADCF1432B /* ChatRoomModalViewController.swift in Sources */,
 				D8670E0E2DBB00C2C002633C /* ChatRoomViewController.swift in Sources */,
@@ -386,7 +384,10 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				OTHER_LDFLAGS = "$(inherited) -ObjC";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ATeen.ATeen.ChatFeature;
 				PRODUCT_NAME = ChatFeature;
 				SDKROOT = iphoneos;
@@ -535,7 +536,10 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				OTHER_LDFLAGS = "$(inherited) -ObjC";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ATeen.ATeen.ChatFeature;
 				PRODUCT_NAME = ChatFeature;
 				SDKROOT = iphoneos;
@@ -543,10 +547,7 @@
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = (
-					"$(inherited)",
-					DEBUG,
-				);
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG";
 				SWIFT_COMPILATION_MODE = singlefile;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;

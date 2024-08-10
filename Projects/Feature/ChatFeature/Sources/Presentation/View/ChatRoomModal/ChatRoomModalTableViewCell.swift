@@ -1,5 +1,5 @@
 //
-//  ChatPopOverModalTableViewCell.swift
+//  ChatRoomModalTableViewCell.swift
 //  ChatFeature
 //
 //  Created by 김명현 on 8/6/24.
@@ -10,7 +10,8 @@ import Common
 import DesignSystem
 import UIKit
 
-final class ChatPopOverModalTableViewCell: UITableViewCell {
+final class ChatRoomModalTableViewCell: UITableViewCell {
+    // MARK: - Private properties
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 16, weight: .medium)
@@ -24,9 +25,11 @@ final class ChatPopOverModalTableViewCell: UITableViewCell {
         return imageView
     }()
     
+    // MARK: - Life Cycle
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        contentView.backgroundColor = DesignSystemAsset.backgroundColor.color
+        contentView.backgroundColor = .white
+        
         setupViews()
         setupLayout()
     }
@@ -35,6 +38,7 @@ final class ChatPopOverModalTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - Helpers
     private func setupViews() {
         contentView.addSubview(iconImageView)
         contentView.addSubview(titleLabel)
@@ -54,10 +58,13 @@ final class ChatPopOverModalTableViewCell: UITableViewCell {
         }
     }
     
-    func configure(with title: String, image: UIImage?) {
+    func configure(title: String, image: UIImage?, color: UIColor) {
         titleLabel.text = title
         iconImageView.image = image
+        titleLabel.textColor = color
+        iconImageView.tintColor = color
     }
 }
 
-extension ChatPopOverModalTableViewCell: Reusable { }
+// MARK: - Extensions here
+extension ChatRoomModalTableViewCell: Reusable { }

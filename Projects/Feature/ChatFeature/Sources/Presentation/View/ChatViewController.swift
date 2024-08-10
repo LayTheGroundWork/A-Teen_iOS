@@ -64,7 +64,6 @@ public final class ChatViewController: UIViewController {
     }()
     
     // MARK: - Life Cycle
-    
     public init(coordinator: ChatViewControllerCoordinator, viewModel: ChatViewModel) {
         self.coordinator = coordinator
         self.viewModel = viewModel
@@ -91,6 +90,7 @@ public final class ChatViewController: UIViewController {
         navigationController?.isNavigationBarHidden = true
     }
     
+    // MARK: - Helpers
     private func configUserInterFace() {
         view.addSubview(chatTableView)
         view.addSubview(searchTextField)

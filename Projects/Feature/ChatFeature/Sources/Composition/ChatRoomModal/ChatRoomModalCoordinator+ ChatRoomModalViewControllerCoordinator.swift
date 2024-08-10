@@ -10,6 +10,7 @@ import Foundation
 
 extension ChatRoomModalCoordinator: ChatRoomModalViewControllerCoordinator {
     public func didFinish() {
+        navigation.dismissNavigation?()
         delegate?.didFinishModal(childCoordinator: self)
     }
 }

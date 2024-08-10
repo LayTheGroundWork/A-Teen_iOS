@@ -10,15 +10,18 @@ import UIKit
 import DesignSystem
 
 public final class ChatRoomPresentationController: UIPresentationController {
+    // MARK: - Private properties
     private var dimmingView: UIView!
     private var gestureRecognizer: UIPanGestureRecognizer!
 
+    // MARK: - Life Cycle
     override init(presentedViewController: UIViewController, presenting presentingViewController: UIViewController?) {
         super.init(presentedViewController: presentedViewController, presenting: presentingViewController)
         setupDimmingView()
         setGestureRecognizer()
     }
     
+    // MARK: - Helpers
     private func setupDimmingView() {
         dimmingView = UIView()
         dimmingView.backgroundColor = UIColor.black.withAlphaComponent(0.4)
@@ -61,7 +64,7 @@ public final class ChatRoomPresentationController: UIPresentationController {
         // modal 크기, 높이 조절
         guard let containerView = containerView else { return .zero }
         let screenBounds = containerView.bounds
-        let size = CGSize(width: screenBounds.width, height: screenBounds.height * 0.18)
+        let size = CGSize(width: screenBounds.width, height: screenBounds.height * 0.3)
         let origin = CGPoint(x: 0, y: screenBounds.height - size.height)
         return CGRect(origin: origin, size: size)
     }

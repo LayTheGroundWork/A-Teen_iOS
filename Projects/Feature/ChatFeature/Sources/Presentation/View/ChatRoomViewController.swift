@@ -16,21 +16,11 @@ public protocol ChatRoomViewControllerCoordinator: AnyObject {
 }
 
 public final class ChatRoomViewController: UIViewController {
+    // MARK: - Private properties
     var chatMessageArray: [ChatMessageModel] = []
     var partnerName: String
     var showChatHeader = false
     weak var coordinator: ChatRoomViewControllerCoordinator?
-    
-    public init(partnerName: String, coordinator: ChatRoomViewControllerCoordinator) {
-        self.partnerName = partnerName
-        self.coordinator = coordinator
-        super.init(nibName: nil, bundle: nil)
-        self.chatPartnerNameLabel.text = partnerName
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
     
     private lazy var backButton: UIButton = {
         let button = UIButton()
@@ -111,6 +101,18 @@ public final class ChatRoomViewController: UIViewController {
         return tableView
     }()
     
+    // MARK: - Life Cycle
+    public init(partnerName: String, coordinator: ChatRoomViewControllerCoordinator) {
+        self.partnerName = partnerName
+        self.coordinator = coordinator
+        super.init(nibName: nil, bundle: nil)
+        self.chatPartnerNameLabel.text = partnerName
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     public override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
@@ -121,6 +123,7 @@ public final class ChatRoomViewController: UIViewController {
         configLayout()
     }
     
+    // MARK: - Helpers
     public override func viewWillAppear(_ animated: Bool) {
         coordinator?.configTabbarState(view: .chatRoom)
     }
@@ -249,6 +252,7 @@ public final class ChatRoomViewController: UIViewController {
     }
 }
 
+// MARK: - Extensions here
 extension ChatRoomViewController: UITableViewDataSource {
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         chatMessageArray.count
@@ -329,5 +333,10 @@ extension ChatRoomViewController: UITextViewDelegate {
     }
 }
 
+extension ChatRoomViewController: ChatRoomModalViewControllerCoordinator {
+    public func didFinish() {
+        coordinator?.didFinish()
+    }
+}
 
 
