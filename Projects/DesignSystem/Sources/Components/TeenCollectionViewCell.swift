@@ -23,7 +23,7 @@ public final class TeenCollectionViewCell: UICollectionViewCell {
     public var heartButtonAction: (() -> Void)?
     public var menuButtonAction: (() -> Void)?
 
-    lazy var topGradientLayer: CAGradientLayer = {
+    private lazy var topGradientLayer: CAGradientLayer = {
         let layer = CAGradientLayer()
         layer.frame = CGRect(x: 0, y: 0, width: contentView.frame.width, height: contentView.frame.height / 2)
         layer.colors = colors
@@ -33,7 +33,7 @@ public final class TeenCollectionViewCell: UICollectionViewCell {
         return layer
     }()
     
-    lazy var bottomGradientLayer: CAGradientLayer = {
+    private lazy var bottomGradientLayer: CAGradientLayer = {
         let layer = CAGradientLayer()
         layer.frame = CGRect(x: 0, y: contentView.frame.height / 2, width: contentView.frame.width, height: contentView.frame.height / 2)
         layer.colors = colors
@@ -43,7 +43,7 @@ public final class TeenCollectionViewCell: UICollectionViewCell {
         return layer
     }()
     
-    lazy var titleImageView: UIImageView = {
+    private lazy var titleImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
@@ -54,7 +54,7 @@ public final class TeenCollectionViewCell: UICollectionViewCell {
         return imageView
     }()
     
-    lazy var schoolImageView: UIImageView = {
+    private lazy var schoolImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = DesignSystemAsset.schoolIcon.image
         imageView.contentMode = .scaleAspectFit
@@ -62,7 +62,7 @@ public final class TeenCollectionViewCell: UICollectionViewCell {
         return imageView
     }()
     
-    lazy var schoolLabel: UILabel = {
+    private lazy var schoolLabel: UILabel = {
         let label = UILabel()
         label.text = "인덕원고등학교"
         label.textColor = UIColor.white
@@ -71,7 +71,7 @@ public final class TeenCollectionViewCell: UICollectionViewCell {
         return label
     }()
     
-    lazy var nameLabel: UILabel = {
+    private lazy var nameLabel: UILabel = {
         let label = UILabel()
         label.textColor = UIColor.white
         label.textAlignment = .left
@@ -79,7 +79,7 @@ public final class TeenCollectionViewCell: UICollectionViewCell {
         return label
     }()
     
-    lazy var idLabel: UILabel = {
+    private lazy var idLabel: UILabel = {
         let label = UILabel()
         label.text = "ateen"
         label.textColor = DesignSystemAsset.gray03.color
@@ -88,7 +88,7 @@ public final class TeenCollectionViewCell: UICollectionViewCell {
         return label
     }()
     
-    lazy var chattingButton: UIButton = {
+    private lazy var chattingButton: UIButton = {
         let button = UIButton()
         button.setImage(DesignSystemAsset.chattingIcon.image, for: .normal)
         button.tintColor = .white
@@ -97,7 +97,7 @@ public final class TeenCollectionViewCell: UICollectionViewCell {
         return button
     }()
     
-    lazy var heartButton: UIButton = {
+    private lazy var heartButton: UIButton = {
         let button = UIButton()
         button.setImage(DesignSystemAsset.heartIcon.image, for: .normal)
         button.tintColor = .white
@@ -107,7 +107,7 @@ public final class TeenCollectionViewCell: UICollectionViewCell {
         return button
     }()
     
-    lazy var menuButton: UIButton = {
+    private lazy var menuButton: UIButton = {
         let button = UIButton()
         button.setImage(DesignSystemAsset.menuIcon.image, for: .normal)
         button.tintColor = .white
