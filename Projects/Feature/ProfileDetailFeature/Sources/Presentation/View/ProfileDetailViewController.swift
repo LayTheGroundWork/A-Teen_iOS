@@ -862,9 +862,8 @@ extension ProfileDetailViewController: UICollectionViewDelegate {
 //MARK: - ProfileDetailBottomBarDelegate
 extension ProfileDetailViewController: ProfileDetailBottomBarDelegate {
     public func didTapSNSButton(
-        contentViewController: UIViewController,
-        defaultHeight: CGFloat
+        contentViewController: UIViewController
     ) {
-        coordinator?.didTapSNSButton(contentViewController: contentViewController, defaultHeight: defaultHeight)
+        coordinator?.didTapSNSButton(contentViewController: contentViewController)
     }
 }

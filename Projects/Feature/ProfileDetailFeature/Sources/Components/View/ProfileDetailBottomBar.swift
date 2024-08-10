@@ -11,8 +11,7 @@ import UIKit
 
 public protocol ProfileDetailBottomBarDelegate: AnyObject {
     func didTapSNSButton(
-        contentViewController: UIViewController,
-        defaultHeight: CGFloat
+        contentViewController: UIViewController
     )
 }
 
@@ -152,22 +151,37 @@ final class ProfileDetailBottomBar: UIView {
     }
     
     @objc private func didTapSNSButton() {
-//        guard let parentViewController = self.parentViewController else { return }
+        let contentViewController = SNSBottomSheetViewController()
+        contentViewController.modalPresentationStyle = .pageSheet
 
-        // CustomLinkView 생성
-//        let customLinkView = CustomLinkView(frame: .zero, linkList: linkList)
-        
-  
-        let height: CGFloat = 200 // 하단 시트 높이 설정
-//        let bottomSheet = SNSBottomSheetViewController(contentViewController: UIViewController(),
-//                                                       defaultHeight: height,
-//                                                       cornerRadius: 25,
-//                                                       isPannedable: true)
-//        
-//        parentViewController.present(bottomSheet, animated: true, completion: nil)
+        if let sheet = contentViewController.sheetPresentationController {
+            // 지원할 크기 지정
+            if #available(iOS 16.0, *) {
+                sheet.detents = [.custom { context in
+                    return 150
+                }]
+            } else {
+                sheet.detents = [.medium()]
+            }
+            
+            sheet.delegate = self
+            
+            // 시트 상단에 그래버 표시
+            sheet.prefersGrabberVisible = true
+            
+            sheet.preferredCornerRadius = 25
+            
+            // 처음 크기 지정
+            sheet.selectedDetentIdentifier = .medium
+            
+            // 뒤 배경 흐리게 제거
+            // sheet.largestUndimmedDetentIdentifier = .medium
+        }
+
+        parentViewController?.present(contentViewController, animated: true, completion: nil)
+
         coordinator?.didTapSNSButton(
-            contentViewController: UIViewController(),
-            defaultHeight: height
+            contentViewController: contentViewController
         )
     }
 }
@@ -176,7 +190,7 @@ extension UIView {
     var parentViewController: UIViewController? {
         var parentResponder: UIResponder? = self
         while parentResponder != nil {
-            parentResponder = parentResponder!.next
+            parentResponder = parentResponder?.next
             if let viewController = parentResponder as? UIViewController {
                 return viewController
             }
@@ -185,16 +199,4 @@ extension UIView {
     }
 }
 
-extension ProfileDetailBottomBar: UIViewControllerTransitioningDelegate {
-    
-    func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
-            return OneThirdSizePresentationController(presentedViewController: presented, presenting: presenting)
-        }
-}
-
-class OneThirdSizePresentationController: UIPresentationController {
-    override var frameOfPresentedViewInContainerView: CGRect {
-        guard let containerView = containerView else { return .zero }
-        return CGRect(x: 0, y: containerView.bounds.height * 2/3, width: containerView.bounds.width, height: containerView.bounds.height / 3)
-    }
-}
+extension ProfileDetailBottomBar: UISheetPresentationControllerDelegate { }

@@ -15,7 +15,6 @@ public protocol ProfileDetailFactory {
         navigation: Navigation,
         childCoordinators: [Coordinator],
         contentViewController: UIViewController,
-        height: CGFloat,
         delegate: SNSBottomSheetCoordinatorDelegate
     ) -> Coordinator
 }
@@ -46,7 +45,6 @@ public struct ProfileDetailFactoryImp: ProfileDetailFactory {
         navigation: Navigation,
         childCoordinators: [Coordinator],
         contentViewController: UIViewController,
-        height: CGFloat,
         delegate: SNSBottomSheetCoordinatorDelegate
     ) -> Coordinator {
         let factory = SNSBottomSheetFactoryImp()
@@ -55,7 +53,6 @@ public struct ProfileDetailFactoryImp: ProfileDetailFactory {
             factory: factory,
             childCoordinators: childCoordinators,
             contentViewController: contentViewController,
-            height: height,
             delegate: delegate)
     }
 }

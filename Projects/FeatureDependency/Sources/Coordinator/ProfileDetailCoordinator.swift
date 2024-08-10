@@ -14,8 +14,7 @@ public protocol ProfileDetailCoordinator: Coordinator {
 
 public protocol ProfileDetailViewControllerCoordinator: AnyObject {
     func didTapSNSButton(
-        contentViewController: UIViewController,
-        defaultHeight: CGFloat
+        contentViewController: UIViewController
     )
     func didFinishFlow()
 }

@@ -15,14 +15,12 @@ extension ProfileDetailCoordinatorImp: ProfileDetailViewControllerCoordinator {
     }
     
     public func didTapSNSButton(
-        contentViewController: UIViewController,
-        defaultHeight: CGFloat
+        contentViewController: UIViewController
     ) {
         let snsBottomSheetCoordinator = factory.makeSNSBottomSheetCoordinator(
             navigation: navigation,
             childCoordinators: childCoordinators,
             contentViewController: contentViewController,
-            height: defaultHeight,
             delegate: self)
         
         addChildCoordinatorStart(snsBottomSheetCoordinator)

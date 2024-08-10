@@ -12,20 +12,15 @@ import UIKit
 
 public protocol SNSBottomSheetFactory {
     func makeSNSBottomSheetViewController(
-        contentViewController: UIViewController,
-        defaultHeight: CGFloat
+        contentViewController: UIViewController
     ) -> UIViewController
 }
 
 public struct SNSBottomSheetFactoryImp: SNSBottomSheetFactory {
     public func makeSNSBottomSheetViewController(
-        contentViewController: UIViewController,
-        defaultHeight: CGFloat
+        contentViewController: UIViewController
     ) -> UIViewController {
-        let controller = SNSBottomSheetViewController(
-            contentViewController: contentViewController,
-            defaultHeight: defaultHeight
-        )
+        let controller = SNSBottomSheetViewController()
         return controller
     }
 }
