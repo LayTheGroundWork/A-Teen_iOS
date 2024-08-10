@@ -151,7 +151,7 @@ final class ProfileDetailBottomBar: UIView {
     }
     
     @objc private func didTapSNSButton() {
-        let contentViewController = SNSBottomSheetViewController()
+        let contentViewController = SNSBottomSheetViewController(linkList: LinkItem.linkData)
         contentViewController.modalPresentationStyle = .pageSheet
 
         if let sheet = contentViewController.sheetPresentationController {

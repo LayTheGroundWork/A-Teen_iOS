@@ -20,7 +20,7 @@ public struct SNSBottomSheetFactoryImp: SNSBottomSheetFactory {
     public func makeSNSBottomSheetViewController(
         contentViewController: UIViewController
     ) -> UIViewController {
-        let controller = SNSBottomSheetViewController()
+        let controller = SNSBottomSheetViewController(linkList: LinkItem.linkData)
         return controller
     }
 }
