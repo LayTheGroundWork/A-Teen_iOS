@@ -35,12 +35,13 @@ public final class SignUpViewModel {
     //SearchSchool
     public var schoolData: SchoolData = SchoolData(schoolName: .empty, schoolLocation: .empty)
     
-    //Category
-    public var category: CategoryType = CategoryType.none
-    
     public var searchSchoolText: String = .empty
     public var filteredSchools: [SchoolData] = []
     public var selectIndexPath: IndexPath?
+    
+    //Category
+    public var category: CategoryType = CategoryType.none
+    
     
     //SelectPhoto
     var selectPhotoList: [AlbumType] = []
@@ -57,7 +58,7 @@ public final class SignUpViewModel {
     ]
     
     // MARK: - Helpers
-    public func searchSchoolData() {
+    public func searchSchoolData(completion: @escaping () -> Void) {
         state.send(.loading)
         searchUseCase.searchSchool(request: SchoolDataRequest(schoolName: searchSchoolText)) { result in
             switch result {
@@ -71,6 +72,11 @@ public final class SignUpViewModel {
                 print(self.filteredSchools)
                 print(self.filteredSchools.count)
                 self.state.send(.success)
+                
+                if !self.filteredSchools.isEmpty {
+                    completion()
+                }
+                
             case .failure(let error):
                 self.state.send(.fail(error: error.localizedDescription))
             }
