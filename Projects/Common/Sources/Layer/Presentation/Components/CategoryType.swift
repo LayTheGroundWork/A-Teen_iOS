@@ -13,4 +13,5 @@ public enum CategoryType: String {
     case art = "예술"
     case game = "게임"
     case etc = "기타"
+    case none = "선택 전"
 }

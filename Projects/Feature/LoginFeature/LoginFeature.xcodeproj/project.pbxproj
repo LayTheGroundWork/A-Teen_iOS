@@ -3,29 +3,27 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 55;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		0F52C4BC7D28185E049D59AA /* PhoneNumberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D87D38BC4A72521BF8C99CCE /* PhoneNumberViewController.swift */; };
 		1802A091B7C6E15CC613E123 /* CustomClearXmarkTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7A569F07A02E670B199B5E6 /* CustomClearXmarkTextField.swift */; };
+		1CAA94B5E855F37ADF4F8D01 /* SignUpCoordinator+CelebrateCoordinatorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01B1FF8B4D105FFC34E2CDA2 /* SignUpCoordinator+CelebrateCoordinatorDelegate.swift */; };
+		1CC48D15126F3679055F79C1 /* CelebrateCoordinator+CelebrateViewControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B857F577CDD7D5BABB747324 /* CelebrateCoordinator+CelebrateViewControllerCoordinator.swift */; };
 		1EA970F7C0B97A2FE935ED0B /* CustomLoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01AF3C01EE7A192D2EBB23D6 /* CustomLoginButton.swift */; };
 		252DEED5BA048C197FD80759 /* SearchSchoolCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC2F0F661319F4B69ED62AB3 /* SearchSchoolCollectionViewCell.swift */; };
 		2D4E4569F63F4E50CE315CB2 /* CertificationCodeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 984C70E8B1E14BB4C144EB9C /* CertificationCodeCollectionViewCell.swift */; };
 		2FF6CCB7FCB510F428F6A3FB /* SelectPhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BF9E852E87EB82262B93633 /* SelectPhotoCollectionViewCell.swift */; };
 		32F8205B9D1483711C170ED7 /* TermsOfUseCoordinator+TermsOfUseViewControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A362F7E45E3D955366345900 /* TermsOfUseCoordinator+TermsOfUseViewControllerCoordinator.swift */; };
 		36509349AB71C5C00B7A0103 /* TermsOfUseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D532E9C0BB8D939C73698C9 /* TermsOfUseViewController.swift */; };
-		41AE2B702C67A4990077567F /* CelebrateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41AE2B6F2C67A4990077567F /* CelebrateViewController.swift */; };
-		41AE2B722C67A4A60077567F /* CelebrateCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41AE2B712C67A4A60077567F /* CelebrateCoordinator.swift */; };
-		41AE2B742C67A4B10077567F /* CelebrateFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41AE2B732C67A4B10077567F /* CelebrateFactory.swift */; };
-		41AE2B762C67B0D40077567F /* CelebrateCoordinator+CelebrateViewControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41AE2B752C67B0D40077567F /* CelebrateCoordinator+CelebrateViewControllerCoordinator.swift */; };
-		41AE2B782C67B3480077567F /* SignUpCoordinator+CelebrateCoordinatorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41AE2B772C67B3480077567F /* SignUpCoordinator+CelebrateCoordinatorDelegate.swift */; };
 		4E309D480C3DB53E8D5E03F9 /* PhoneNumberCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 494AB6AD1ED9003C81881396 /* PhoneNumberCoordinator.swift */; };
 		4FB725818C09B5917924D627 /* LogInFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B573739E363183AC97AC45D /* LogInFactory.swift */; };
 		51D09836C8B49B1CF6672BBC /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DFF7A23A43A0FB2157D63DC /* LogInViewController.swift */; };
 		55B2726C834A17D59ED33962 /* SignUpFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9489DDDE029FD676893F7E45 /* SignUpFactory.swift */; };
 		56B2D853CCDA75EAC726B207 /* CustomShowDetailButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E6FF0DAAD1C501D80987CE /* CustomShowDetailButton.swift */; };
 		5725F2D85212C0C58B614BF8 /* PhoneNumberCoordinator+AlertCoordinatorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F36624FEF71B27D7F3B345 /* PhoneNumberCoordinator+AlertCoordinatorDelegate.swift */; };
+		5A3D8A4843C2DB6B73806DE0 /* CelebrateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BE04C41594B336187F297E0 /* CelebrateViewController.swift */; };
 		60DCC44F881D008069B63CAF /* SignUpCoordinator+SignUpViewControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4F29E0C2476AA80A6DACD2 /* SignUpCoordinator+SignUpViewControllerCoordinator.swift */; };
 		6412F48189B7D868B320FC0C /* SelectCategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD8A4E6186BDABB400F50448 /* SelectCategoryCollectionViewCell.swift */; };
 		67202D52B8ECFED01CFD5197 /* SelectBirthFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F243057CDFD67868E4D2B7 /* SelectBirthFactory.swift */; };
@@ -43,10 +41,12 @@
 		9AA0D642E1708AC43ECB3FD2 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA701135A68E2F9250CD6D6 /* SignUpViewController.swift */; };
 		9BD35FDF479CAEEB10111FA0 /* SelectBirthCoordinator+SelectBirthViewControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940F40FDF70C78A49F99530D /* SelectBirthCoordinator+SelectBirthViewControllerCoordinator.swift */; };
 		A602D56E605758107D3E71ED /* SelectBirthCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D47A1A5A59EDC9FF2D340667 /* SelectBirthCoordinator.swift */; };
+		A6143B296A39E39B4B69237D /* CelebrateFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5057B26C71FE735919F8B426 /* CelebrateFactory.swift */; };
 		AD99E05DA16CC4043C823CB5 /* PhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF852DD64392F49F096A69C6 /* PhotoCollectionViewCell.swift */; };
 		AF37FCC2BF5B27B61EDAB420 /* UserNameCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FECDCC9DAF510C2C83328DD /* UserNameCollectionViewCell.swift */; };
 		BA16A9F1F4BAFCE925DA1CA8 /* PhoneNumberCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952823C90056BADECCDE3FF5 /* PhoneNumberCollectionViewCell.swift */; };
 		BF6A3844C2D5BC6A3C7C7D94 /* UserIdCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19E6B65D5B09A67AB4FECAEF /* UserIdCollectionViewCell.swift */; };
+		C2A9CA62AE2F058F3A7A3F6F /* CelebrateCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5354149FB59E493237D98EA /* CelebrateCoordinator.swift */; };
 		C362B80F42F06724640F8FF0 /* LogInCoordinator+PhoneNumberCoordinatorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C742406150803B5A226C65 /* LogInCoordinator+PhoneNumberCoordinatorDelegate.swift */; };
 		C906513A973B742B78B2463A /* TermsOfUseFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8650BEC5B1EC78B2610A9D7B /* TermsOfUseFactory.swift */; };
 		C94F93F83B5BCF9BE6001D9E /* SignUpCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CB44DB9D1459A1C18F9B388 /* SignUpCoordinator.swift */; };
@@ -76,6 +76,7 @@
 
 /* Begin PBXFileReference section */
 		01AF3C01EE7A192D2EBB23D6 /* CustomLoginButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLoginButton.swift; sourceTree = "<group>"; };
+		01B1FF8B4D105FFC34E2CDA2 /* SignUpCoordinator+CelebrateCoordinatorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SignUpCoordinator+CelebrateCoordinatorDelegate.swift"; sourceTree = "<group>"; };
 		04F243057CDFD67868E4D2B7 /* SelectBirthFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectBirthFactory.swift; sourceTree = "<group>"; };
 		0B573739E363183AC97AC45D /* LogInFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInFactory.swift; sourceTree = "<group>"; };
 		0BD2EE4B93D0451DB48745F5 /* CustomLineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLineView.swift; sourceTree = "<group>"; };
@@ -86,19 +87,16 @@
 		1FEEAA8345B95769A463E802 /* SignUpCoordinator+SelectBirthCoordinatorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SignUpCoordinator+SelectBirthCoordinatorDelegate.swift"; sourceTree = "<group>"; };
 		240A7A39EFC38E63AEB46D18 /* TermsOfUseCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsOfUseCoordinator.swift; sourceTree = "<group>"; };
 		29F36624FEF71B27D7F3B345 /* PhoneNumberCoordinator+AlertCoordinatorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PhoneNumberCoordinator+AlertCoordinatorDelegate.swift"; sourceTree = "<group>"; };
+		2BE04C41594B336187F297E0 /* CelebrateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CelebrateViewController.swift; sourceTree = "<group>"; };
 		34BCE74515E87E0D93F6CC3D /* CustomBirthButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomBirthButton.swift; sourceTree = "<group>"; };
 		34F77941C65FDD2BE5055BE6 /* UserBirthCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserBirthCollectionViewCell.swift; sourceTree = "<group>"; };
 		3720BC1FC97AF7CB3E44C428 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
 		3BF9E852E87EB82262B93633 /* SelectPhotoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectPhotoCollectionViewCell.swift; sourceTree = "<group>"; };
-		41AE2B6F2C67A4990077567F /* CelebrateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CelebrateViewController.swift; sourceTree = "<group>"; };
-		41AE2B712C67A4A60077567F /* CelebrateCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CelebrateCoordinator.swift; sourceTree = "<group>"; };
-		41AE2B732C67A4B10077567F /* CelebrateFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CelebrateFactory.swift; sourceTree = "<group>"; };
-		41AE2B752C67B0D40077567F /* CelebrateCoordinator+CelebrateViewControllerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CelebrateCoordinator+CelebrateViewControllerCoordinator.swift"; sourceTree = "<group>"; };
-		41AE2B772C67B3480077567F /* SignUpCoordinator+CelebrateCoordinatorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SignUpCoordinator+CelebrateCoordinatorDelegate.swift"; sourceTree = "<group>"; };
 		46A9D342723C5B76FC39373B /* LogInCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInCoordinator.swift; sourceTree = "<group>"; };
 		494AB6AD1ED9003C81881396 /* PhoneNumberCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberCoordinator.swift; sourceTree = "<group>"; };
 		4BB9BE718E7B7F73BB64C145 /* PhoneNumberCoordinator+PhoneNumberViewControllerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PhoneNumberCoordinator+PhoneNumberViewControllerCoordinator.swift"; sourceTree = "<group>"; };
 		4E4F29E0C2476AA80A6DACD2 /* SignUpCoordinator+SignUpViewControllerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SignUpCoordinator+SignUpViewControllerCoordinator.swift"; sourceTree = "<group>"; };
+		5057B26C71FE735919F8B426 /* CelebrateFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CelebrateFactory.swift; sourceTree = "<group>"; };
 		5D532E9C0BB8D939C73698C9 /* TermsOfUseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsOfUseViewController.swift; sourceTree = "<group>"; };
 		5E6FEF20965C996B6CBC7542 /* LoginBirthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginBirthViewModel.swift; sourceTree = "<group>"; };
 		71E6FF0DAAD1C501D80987CE /* CustomShowDetailButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomShowDetailButton.swift; sourceTree = "<group>"; };
@@ -118,6 +116,7 @@
 		B00D5C715A60CA859EF1680C /* SearchSchoolResultTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchSchoolResultTableViewCell.swift; sourceTree = "<group>"; };
 		B0C621C84CC71BBA1A73FCC4 /* PhoneNumberViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberViewModel.swift; sourceTree = "<group>"; };
 		B67BE68D4D9159CC81144BAF /* Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
+		B857F577CDD7D5BABB747324 /* CelebrateCoordinator+CelebrateViewControllerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CelebrateCoordinator+CelebrateViewControllerCoordinator.swift"; sourceTree = "<group>"; };
 		BD8A4E6186BDABB400F50448 /* SelectCategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCategoryCollectionViewCell.swift; sourceTree = "<group>"; };
 		BF16E3C12ECD785475A3AA85 /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
 		CC2F0F661319F4B69ED62AB3 /* SearchSchoolCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchSchoolCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -128,6 +127,7 @@
 		E7A569F07A02E670B199B5E6 /* CustomClearXmarkTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomClearXmarkTextField.swift; sourceTree = "<group>"; };
 		F0635FB907648B99234ED111 /* CustomServiceButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomServiceButton.swift; sourceTree = "<group>"; };
 		F2350A966587011EBA120FC9 /* SignUpCoordinator+AlbumCoordinatorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SignUpCoordinator+AlbumCoordinatorDelegate.swift"; sourceTree = "<group>"; };
+		F5354149FB59E493237D98EA /* CelebrateCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CelebrateCoordinator.swift; sourceTree = "<group>"; };
 		FC856D9CBCFC1A7BCB2C3150 /* FeatureDependency.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FeatureDependency.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF852DD64392F49F096A69C6 /* PhotoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewCell.swift; sourceTree = "<group>"; };
 		FFE36AD7F7BA45FCD11AC654 /* TermsOfUseCoordinator+SignUpCoordinatorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TermsOfUseCoordinator+SignUpCoordinatorDelegate.swift"; sourceTree = "<group>"; };
@@ -152,8 +152,8 @@
 				940F40FDF70C78A49F99530D /* SelectBirthCoordinator+SelectBirthViewControllerCoordinator.swift */,
 				04F243057CDFD67868E4D2B7 /* SelectBirthFactory.swift */,
 				1CB44DB9D1459A1C18F9B388 /* SignUpCoordinator.swift */,
-				41AE2B772C67B3480077567F /* SignUpCoordinator+CelebrateCoordinatorDelegate.swift */,
 				F2350A966587011EBA120FC9 /* SignUpCoordinator+AlbumCoordinatorDelegate.swift */,
+				01B1FF8B4D105FFC34E2CDA2 /* SignUpCoordinator+CelebrateCoordinatorDelegate.swift */,
 				1FEEAA8345B95769A463E802 /* SignUpCoordinator+SelectBirthCoordinatorDelegate.swift */,
 				4E4F29E0C2476AA80A6DACD2 /* SignUpCoordinator+SignUpViewControllerCoordinator.swift */,
 				9489DDDE029FD676893F7E45 /* SignUpFactory.swift */,
@@ -196,6 +196,15 @@
 			path = Components;
 			sourceTree = "<group>";
 		};
+		29045838B99BFDD7D3CEEA48 /* Celebrate */ = {
+			isa = PBXGroup;
+			children = (
+				F427D282C87AFA895056FA62 /* Composition */,
+				B936CB9B972CCA9F41E75C6F /* Presentation */,
+			);
+			path = Celebrate;
+			sourceTree = "<group>";
+		};
 		2D68C6F7C3BB735C4CE63A94 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
@@ -231,33 +240,6 @@
 				CB433EF4C46AF0A68BE2B290 /* Presentation */,
 			);
 			path = LogIn;
-			sourceTree = "<group>";
-		};
-		41AE2B6C2C67A4270077567F /* Celebrate */ = {
-			isa = PBXGroup;
-			children = (
-				41AE2B6E2C67A44A0077567F /* Presentation */,
-				41AE2B6D2C67A4440077567F /* Composition */,
-			);
-			path = Celebrate;
-			sourceTree = "<group>";
-		};
-		41AE2B6D2C67A4440077567F /* Composition */ = {
-			isa = PBXGroup;
-			children = (
-				41AE2B712C67A4A60077567F /* CelebrateCoordinator.swift */,
-				41AE2B752C67B0D40077567F /* CelebrateCoordinator+CelebrateViewControllerCoordinator.swift */,
-				41AE2B732C67A4B10077567F /* CelebrateFactory.swift */,
-			);
-			path = Composition;
-			sourceTree = "<group>";
-		};
-		41AE2B6E2C67A44A0077567F /* Presentation */ = {
-			isa = PBXGroup;
-			children = (
-				41AE2B6F2C67A4990077567F /* CelebrateViewController.swift */,
-			);
-			path = Presentation;
 			sourceTree = "<group>";
 		};
 		44D557B2F861E1FA23A436B7 /* View */ = {
@@ -381,6 +363,14 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		B936CB9B972CCA9F41E75C6F /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				2BE04C41594B336187F297E0 /* CelebrateViewController.swift */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
 		BA784EB0252BEE72E629D09D /* Components */ = {
 			isa = PBXGroup;
 			children = (
@@ -411,7 +401,7 @@
 		D2A627B760F8D76AF09C7825 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				41AE2B6C2C67A4270077567F /* Celebrate */,
+				29045838B99BFDD7D3CEEA48 /* Celebrate */,
 				3A84189F38C4CE463E126A92 /* LogIn */,
 				DA55BA90266A6A819BFEAA08 /* PhoneNumber */,
 				87E3AD24512507DB66593B1F /* SignUp */,
@@ -454,6 +444,16 @@
 				7FECDCC9DAF510C2C83328DD /* UserNameCollectionViewCell.swift */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		F427D282C87AFA895056FA62 /* Composition */ = {
+			isa = PBXGroup;
+			children = (
+				F5354149FB59E493237D98EA /* CelebrateCoordinator.swift */,
+				B857F577CDD7D5BABB747324 /* CelebrateCoordinator+CelebrateViewControllerCoordinator.swift */,
+				5057B26C71FE735919F8B426 /* CelebrateFactory.swift */,
+			);
+			path = Composition;
 			sourceTree = "<group>";
 		};
 		FBCE973F62B52D10E794DEF5 /* Components */ = {
@@ -501,6 +501,8 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
 				ORGANIZATIONNAME = ATeen;
+				TargetAttributes = {
+				};
 			};
 			buildConfigurationList = 519D11A0875F41BC6D832807 /* Build configuration list for PBXProject "LoginFeature" */;
 			compatibilityVersion = "Xcode 14.0";
@@ -535,6 +537,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1CC48D15126F3679055F79C1 /* CelebrateCoordinator+CelebrateViewControllerCoordinator.swift in Sources */,
+				C2A9CA62AE2F058F3A7A3F6F /* CelebrateCoordinator.swift in Sources */,
+				A6143B296A39E39B4B69237D /* CelebrateFactory.swift in Sources */,
+				5A3D8A4843C2DB6B73806DE0 /* CelebrateViewController.swift in Sources */,
 				1EA970F7C0B97A2FE935ED0B /* CustomLoginButton.swift in Sources */,
 				86AAF232164B3FC82E8DD063 /* LogInCoordinator+LogInViewControllerCoordinator.swift in Sources */,
 				C362B80F42F06724640F8FF0 /* LogInCoordinator+PhoneNumberCoordinatorDelegate.swift in Sources */,
@@ -558,6 +564,7 @@
 				A602D56E605758107D3E71ED /* SelectBirthCoordinator.swift in Sources */,
 				67202D52B8ECFED01CFD5197 /* SelectBirthFactory.swift in Sources */,
 				FDBE36C01AE4E6DD991FFF87 /* SignUpCoordinator+AlbumCoordinatorDelegate.swift in Sources */,
+				1CAA94B5E855F37ADF4F8D01 /* SignUpCoordinator+CelebrateCoordinatorDelegate.swift in Sources */,
 				6BB5A41B470F6D0A679A304E /* SignUpCoordinator+SelectBirthCoordinatorDelegate.swift in Sources */,
 				60DCC44F881D008069B63CAF /* SignUpCoordinator+SignUpViewControllerCoordinator.swift in Sources */,
 				C94F93F83B5BCF9BE6001D9E /* SignUpCoordinator.swift in Sources */,
@@ -567,19 +574,14 @@
 				252DEED5BA048C197FD80759 /* SearchSchoolCollectionViewCell.swift in Sources */,
 				EC59603D9890FCFD4DACF066 /* SearchSchoolResultTableViewCell.swift in Sources */,
 				6412F48189B7D868B320FC0C /* SelectCategoryCollectionViewCell.swift in Sources */,
-				41AE2B722C67A4A60077567F /* CelebrateCoordinator.swift in Sources */,
 				2FF6CCB7FCB510F428F6A3FB /* SelectPhotoCollectionViewCell.swift in Sources */,
 				EB5AD433292BE171A2D7530F /* UserBirthCollectionViewCell.swift in Sources */,
 				BF6A3844C2D5BC6A3C7C7D94 /* UserIdCollectionViewCell.swift in Sources */,
-				41AE2B762C67B0D40077567F /* CelebrateCoordinator+CelebrateViewControllerCoordinator.swift in Sources */,
 				AF37FCC2BF5B27B61EDAB420 /* UserNameCollectionViewCell.swift in Sources */,
 				E8D0DCDF3045B40C469C2CB7 /* SelectBirthViewController.swift in Sources */,
 				9AA0D642E1708AC43ECB3FD2 /* SignUpViewController.swift in Sources */,
-				41AE2B782C67B3480077567F /* SignUpCoordinator+CelebrateCoordinatorDelegate.swift in Sources */,
 				793C65F03D6357E55A720535 /* LoginBirthViewModel.swift in Sources */,
-				41AE2B742C67A4B10077567F /* CelebrateFactory.swift in Sources */,
 				745EBAB33B5C3149A9398B89 /* SignUpViewModel.swift in Sources */,
-				41AE2B702C67A4990077567F /* CelebrateViewController.swift in Sources */,
 				56B2D853CCDA75EAC726B207 /* CustomShowDetailButton.swift in Sources */,
 				6DE8F775A60B011EC63C67F1 /* TermsOfUseCoordinator+SignUpCoordinatorDelegate.swift in Sources */,
 				32F8205B9D1483711C170ED7 /* TermsOfUseCoordinator+TermsOfUseViewControllerCoordinator.swift in Sources */,
@@ -671,10 +673,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					"-ObjC",
-				);
+				OTHER_LDFLAGS = "$(inherited) -ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ATeen.ATeen.LoginFeature;
 				PRODUCT_NAME = LoginFeature;
 				SDKROOT = iphoneos;
@@ -711,10 +710,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					"-ObjC",
-				);
+				OTHER_LDFLAGS = "$(inherited) -ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ATeen.ATeen.LoginFeature;
 				PRODUCT_NAME = LoginFeature;
 				SDKROOT = iphoneos;
@@ -722,7 +718,10 @@
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = (
+					"$(inherited)",
+					DEBUG,
+				);
 				SWIFT_COMPILATION_MODE = singlefile;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;

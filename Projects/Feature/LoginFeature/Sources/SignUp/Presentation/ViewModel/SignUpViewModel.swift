@@ -36,7 +36,7 @@ public final class SignUpViewModel {
     public var schoolData: SchoolData = SchoolData(schoolName: .empty, schoolLocation: .empty)
     
     //Category
-    public var category: CategoryType = CategoryType.etc
+    public var category: CategoryType = CategoryType.none
     
     public var searchSchoolText: String = .empty
     public var filteredSchools: [SchoolData] = []
@@ -120,10 +120,10 @@ extension SignUpViewModel {
 
 // MARK: - SelectCategory
 extension SignUpViewModel {
-    public func changeCategory(index: Int, completion: (Int) -> Void) {
-        guard let clearIndex = categoryExplain.firstIndex(of: category) else { return }
+    public func changeCategory(index: Int, completion: () -> Void) {
         category = categoryExplain[index]
-        completion(clearIndex)
+        print(category)
+        completion()
     }
 }
 

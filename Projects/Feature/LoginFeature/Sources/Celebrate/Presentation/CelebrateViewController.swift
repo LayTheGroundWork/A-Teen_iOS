@@ -77,6 +77,7 @@ public final class CelebrateViewController: UIViewController {
             make.leading.equalToSuperview().offset(ViewValues.defaultPadding)
             make.trailing.equalToSuperview().offset(-ViewValues.defaultPadding)
             make.bottom.equalToSuperview().offset(-50)
+            make.height.equalTo(50)
         }
     }
     

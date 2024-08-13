@@ -16,7 +16,7 @@ final class CustomShowDetailButton: CustomImageLabelButton {
         imageColor: UIColor? = DesignSystemAsset.gray01.color,
         selectedImageColor: UIColor? = nil,
         textColor: UIColor = DesignSystemAsset.gray01.color,
-        labelText: String = AppLocalized.showDetailsButton,
+        labelText: String,
         buttonBackgroundColor: UIColor = .clear,
         labelFont: UIFont = UIFont.customFont(forTextStyle: .footnote,
                                               weight: .regular),

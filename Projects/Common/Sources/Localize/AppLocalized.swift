@@ -126,6 +126,7 @@ public enum AppLocalized {
     // MARK: - Login / SelectPhoto
     public static let insertMediaText = "TEEN에서 자랑할\n사진이나 동영상을 추가해보세요"
     public static let maxInsertMediaCountText = "*최대 10개을 등록할 수 있어요"
+    public static let photoGuideButton = "사진 가이드를 참고해주세요"
     
     // MARK: - MediaEditor
     public static let accessMediaText = "A - TEEN은 사용자가 선택한 사진만 엑세스할 수 있습니다."

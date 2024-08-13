@@ -45,14 +45,14 @@ final class SelectCategoryCollectionViewCell: UICollectionViewCell {
     
     private lazy var categoryCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .vertical
+        layout.scrollDirection = .horizontal
         layout.minimumInteritemSpacing = 16
         layout.minimumLineSpacing = 16
         layout.itemSize = CGSize(
-            width: (ViewValues.width / 2) - 24,
-            height: 90)
+            width: ViewValues.selectCatogoryCellWidth,
+            height: ViewValues.selectCategoryCellHeight)
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.isScrollEnabled = false
+        collectionView.showsHorizontalScrollIndicator = false
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.register(
@@ -123,6 +123,10 @@ extension SelectCategoryCollectionViewCell: UICollectionViewDataSource {
         cell.setProperties(
             text: viewModel?.categoryExplain[indexPath.row].rawValue ?? ""
         )
+        
+        if viewModel?.category == viewModel?.categoryExplain[indexPath.row] {
+            cell.selectCell()
+        }
         return cell
     }
     
@@ -134,14 +138,16 @@ extension SelectCategoryCollectionViewCell: UICollectionViewDataSource {
 // MARK: - UICollectionViewDelegate
 extension SelectCategoryCollectionViewCell: UICollectionViewDelegate {
     public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        viewModel?.changeCategory(index: indexPath.item) { clearCellIndex in
+        viewModel?.changeCategory(index: indexPath.item) {
             guard let cell = collectionView.cellForItem(at: indexPath) as? CategoryButtonCollectionViewCell else { return }
-            guard let anotherCell = collectionView.cellForItem(
-                at: IndexPath(
-                    item: clearCellIndex,
-                    section: 0)) as? CategoryButtonCollectionViewCell else { return }
-            anotherCell.clearCell()
+            print("셀 색상 변경")
             cell.selectCell()
+            
+            (0..<collectionView.numberOfItems(inSection: indexPath.section))
+                .filter { $0 != indexPath.item }
+                .compactMap { collectionView.cellForItem(at: IndexPath(item: $0, section: indexPath.section)) as? CategoryButtonCollectionViewCell }
+                .forEach { $0.clearCell() }
+            
             delegate?.updateNextButtonState(true)
         }
     }

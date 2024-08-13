@@ -39,6 +39,11 @@ final class SelectPhotoCollectionViewCell: UICollectionViewCell {
         return label
     }()
     
+    private lazy var photoGuideButton: UIButton = {
+        let button = CustomShowDetailButton(labelText: AppLocalized.photoGuideButton)
+        return button
+    }()
+    
     private lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
@@ -72,6 +77,7 @@ final class SelectPhotoCollectionViewCell: UICollectionViewCell {
         contentView.addSubview(titleLabel)
         contentView.addSubview(subTitleLabel)
         contentView.addSubview(collectionView)
+        contentView.addSubview(photoGuideButton)
     }
     
     private func configLayout() {
@@ -89,7 +95,14 @@ final class SelectPhotoCollectionViewCell: UICollectionViewCell {
         
         collectionView.snp.makeConstraints { make in
             make.leading.trailing.bottom.equalToSuperview()
-            make.top.equalTo(subTitleLabel.snp.bottom).offset(31)
+            make.top.equalTo(subTitleLabel.snp.bottom)
+        }
+        
+        photoGuideButton.snp.makeConstraints { make in
+            make.leading.equalToSuperview().offset(ViewValues.defaultPadding)
+            make.top.equalTo(collectionView.snp.bottom)
+            make.width.equalTo(177)
+            make.height.equalTo(24)
         }
     }
 
