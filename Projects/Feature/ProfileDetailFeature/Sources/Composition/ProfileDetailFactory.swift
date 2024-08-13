@@ -10,7 +10,13 @@ import FeatureDependency
 import UIKit
 
 public protocol ProfileDetailFactory {
-     func makeProfileDetailViewController(coordinator: ProfileDetailViewControllerCoordinator) -> UIViewController
+    func makeProfileDetailViewController(coordinator: ProfileDetailViewControllerCoordinator) -> UIViewController
+    func makeSNSBottomSheetCoordinator(
+        navigation: Navigation,
+        childCoordinators: [Coordinator],
+        contentViewController: UIViewController,
+        delegate: SNSBottomSheetCoordinatorDelegate
+    ) -> Coordinator
 }
 
 public struct ProfileDetailFactoryImp: ProfileDetailFactory {
@@ -21,7 +27,7 @@ public struct ProfileDetailFactoryImp: ProfileDetailFactory {
         self.frame = frame
         self.todayTeen = todayTeen
     }
-//    
+    
     public func makeProfileDetailViewController(coordinator: ProfileDetailViewControllerCoordinator) -> UIViewController {
         let viewModel = ProfileDetailViewModel()
         let controller = ProfileDetailViewController(
@@ -29,9 +35,24 @@ public struct ProfileDetailFactoryImp: ProfileDetailFactory {
             coordinator: coordinator,
             frame: frame,
             todayTeen: todayTeen)
-    
+        
         controller.modalPresentationStyle = .overFullScreen
         
         return controller
+    }
+    
+    public func makeSNSBottomSheetCoordinator(
+        navigation: Navigation,
+        childCoordinators: [Coordinator],
+        contentViewController: UIViewController,
+        delegate: SNSBottomSheetCoordinatorDelegate
+    ) -> Coordinator {
+        let factory = SNSBottomSheetFactoryImp()
+        return SNSBottomSheetCoordinator(
+            navigation: navigation,
+            factory: factory,
+            childCoordinators: childCoordinators,
+            contentViewController: contentViewController,
+            delegate: delegate)
     }
 }

@@ -12,7 +12,7 @@ import Common
 import DesignSystem
 import UIKit
 
-class CustomLinkView: UIView {
+public class CustomLinkView: UIView {
     lazy var oneLinkImageView: UIImageView = makeLinkImageView()
     lazy var oneLinkLabel: UILabel = makeLinkLabel()
     
@@ -22,7 +22,7 @@ class CustomLinkView: UIView {
     lazy var threeLinkImageView: UIImageView = makeLinkImageView()
     lazy var threeLinkLabel: UILabel = makeLinkLabel()
     
-    init(frame: CGRect, linkList: [(link: String, title: String?)]) {
+    public init(frame: CGRect, linkList: [(link: String, title: String?)]) {
         super.init(frame: frame)
         configUserInterface(linkList: linkList)
     }

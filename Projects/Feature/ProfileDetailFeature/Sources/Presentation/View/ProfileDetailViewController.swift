@@ -323,7 +323,8 @@ public class ProfileDetailViewController: UIViewController {
     }()
     
     lazy var barView: UIView = {
-        let view = ProfileDetailBottomBar()
+        let view = ProfileDetailBottomBar(frame: .zero,
+                                          coordinator: self)
         return view
     }()
 
@@ -854,5 +855,15 @@ extension ProfileDetailViewController: UICollectionViewDelegate {
             let pageIndex = Int(targetContentOffset.pointee.x / self.view.frame.width)
             pageControl.selectedPage = pageIndex
         }
+    }
+}
+
+
+//MARK: - ProfileDetailBottomBarDelegate
+extension ProfileDetailViewController: ProfileDetailBottomBarDelegate {
+    public func didTapSNSButton(
+        contentViewController: UIViewController
+    ) {
+        coordinator?.didTapSNSButton(contentViewController: contentViewController)
     }
 }
