@@ -27,7 +27,7 @@ public struct ViewValues {
     public static let width = UIScreen.main.bounds.width
     public static let height = UIScreen.main.bounds.height
     public static let halfHeight = height / 2
-    public static let signUpCollectionViewHeight = height * 0.7
+    public static let signUpCollectionViewHeight = height * 0.6
     public static let phoneNumberCollectionViewHeight = height * 0.8
     
     public static let todayTeenImageWidth = width - 50

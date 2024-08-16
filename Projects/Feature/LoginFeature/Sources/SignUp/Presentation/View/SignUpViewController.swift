@@ -54,7 +54,7 @@ final class SignUpViewController: UIViewController {
     private lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
-        layout.itemSize = CGSize(width: ViewValues.width, height: ViewValues.halfHeight)
+        layout.itemSize = CGSize(width: ViewValues.width, height: ViewValues.signUpCollectionViewHeight)
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.backgroundColor = UIColor.white
         collectionView.showsHorizontalScrollIndicator = false
@@ -129,7 +129,7 @@ final class SignUpViewController: UIViewController {
         collectionView.snp.makeConstraints { make in
             make.top.equalTo(progressView.snp.bottom).offset(ViewValues.defaultPadding)
             make.leading.trailing.equalToSuperview()
-            make.height.equalTo(ViewValues.halfHeight)
+            make.height.equalTo(ViewValues.signUpCollectionViewHeight)
         }
         
         nextButton.snp.makeConstraints { make in
@@ -334,13 +334,13 @@ extension SignUpViewController: UICollectionViewDataSource {
             else {
                 return UICollectionViewCell()
             }
-            
+            updateNextButtonState(true)
             delegate = cell
-            
             cell.setProperties(
                 coordinator: coordinator,
                 viewModel: viewModel
             )
+            
             return cell
 
         default:

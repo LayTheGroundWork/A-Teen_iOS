@@ -95,8 +95,8 @@ final class SelectCategoryCollectionViewCell: UICollectionViewCell {
         categoryCollectionView.snp.makeConstraints { make in
             make.leading.equalToSuperview().offset(ViewValues.defaultPadding)
             make.trailing.equalToSuperview().offset(-ViewValues.defaultPadding)
-            make.top.equalTo(subTitleLabel.snp.bottom).offset(31)
-            make.bottom.equalToSuperview()
+            make.top.equalTo(subTitleLabel.snp.bottom).offset(45)
+            make.height.equalTo(ViewValues.selectCategoryCellHeight)
         }
     }
     

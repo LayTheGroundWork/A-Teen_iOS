@@ -44,7 +44,7 @@ public final class SignUpViewModel {
     
     
     //SelectPhoto
-    var selectPhotoList: [AlbumType] = []
+    var selectPhotoList: [AlbumType] = [.init(image: nil), .init(image: nil)]
     
     private let authService = MyPhotoAuthService()
     

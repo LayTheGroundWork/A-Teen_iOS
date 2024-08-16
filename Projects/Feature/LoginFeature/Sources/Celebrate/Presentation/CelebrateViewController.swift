@@ -38,7 +38,6 @@ public final class CelebrateViewController: UIViewController {
         button.setTitleColor(UIColor.white, for: .normal)
         button.backgroundColor = UIColor.black
         button.layer.cornerRadius = ViewValues.defaultRadius
-        button.isEnabled = false
         return button
     }()
     
@@ -54,6 +53,8 @@ public final class CelebrateViewController: UIViewController {
     
     public override func viewDidLoad() {
         super.viewDidLoad()
+        navigationController?.isNavigationBarHidden = true
+
         configUserInterface()
         configLayout()
         setButtonActions()
@@ -62,14 +63,13 @@ public final class CelebrateViewController: UIViewController {
     // MARK: - Helpers
     private func configUserInterface() {
         view.backgroundColor = .systemBackground
-
         view.addSubview(titleLabel)
         view.addSubview(startButton)
     }
     
     private func configLayout() {
         titleLabel.snp.makeConstraints { make in
-            make.top.equalTo(self.view.safeAreaLayoutGuide.snp.top).offset(31)
+            make.top.equalTo(self.view.safeAreaLayoutGuide.snp.top).offset(111)
             make.centerX.equalToSuperview()
         }
         

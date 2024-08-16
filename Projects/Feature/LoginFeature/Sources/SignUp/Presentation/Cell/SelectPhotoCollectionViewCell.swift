@@ -94,13 +94,14 @@ final class SelectPhotoCollectionViewCell: UICollectionViewCell {
         }
         
         collectionView.snp.makeConstraints { make in
-            make.leading.trailing.bottom.equalToSuperview()
-            make.top.equalTo(subTitleLabel.snp.bottom)
+            make.leading.trailing.equalToSuperview()
+            make.top.equalTo(subTitleLabel.snp.bottom).offset(26)
+            make.height.equalTo(ViewValues.cellHeight)
         }
         
         photoGuideButton.snp.makeConstraints { make in
             make.leading.equalToSuperview().offset(ViewValues.defaultPadding)
-            make.top.equalTo(collectionView.snp.bottom)
+            make.top.equalTo(collectionView.snp.bottom).offset(26)
             make.width.equalTo(177)
             make.height.equalTo(24)
         }
@@ -120,7 +121,6 @@ final class SelectPhotoCollectionViewCell: UICollectionViewCell {
 extension SelectPhotoCollectionViewCell: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         guard let count = viewModel?.selectPhotoList.count else { return 0 }
-        
         if count == 10 {
             return count
         } else {
@@ -132,19 +132,29 @@ extension SelectPhotoCollectionViewCell: UICollectionViewDataSource {
         guard
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PhotoCollectionViewCell.reuseIdentifier, for: indexPath) as? PhotoCollectionViewCell,
             let viewModel = viewModel
-        else { return UICollectionViewCell() }
-        cell.setCellCustom(item: indexPath.item)
+        else {
+            return UICollectionViewCell()
+        }
+
+        let itemIndex = indexPath.item
+        let maxPhotoCount = 10
         
-        if indexPath.item < viewModel.selectPhotoList.count || viewModel.selectPhotoList.count == 10 {
-            if let image = viewModel.selectPhotoList[indexPath.item].image {
-                cell.setImage(image: image)
-            } else {
-                guard let asset = viewModel.selectPhotoList[indexPath.item].avAsset else { return UICollectionViewCell() }
-                viewModel.extractImageFromVideo(asset: asset) { [weak cell] image in
-                    cell?.setImage(image: image)
-                }
+        cell.setCellCustom(item: itemIndex)
+        
+        guard itemIndex < viewModel.selectPhotoList.count || viewModel.selectPhotoList.count == maxPhotoCount else {
+            return cell
+        }
+
+        let selectedItem = viewModel.selectPhotoList[itemIndex]
+
+        if let image = selectedItem.image {
+            cell.setImage(image: image)
+        } else if let asset = selectedItem.avAsset {
+            viewModel.extractImageFromVideo(asset: asset) { [weak cell] image in
+                cell?.setImage(image: image)
             }
         }
+
         return cell
     }
 }

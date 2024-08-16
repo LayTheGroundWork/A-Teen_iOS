@@ -24,7 +24,6 @@ extension MainTabCoordinator: MainCoordinatorDelegate {
             NotificationCenter.default.post(name: .completeLogin, object: nil, userInfo: nil)
             self?.didFinishLogin(childCoordinator: loginCoordinator)
         }
-
     }
     
     public func didSelectAboutATeenCell(tag: TabTag) {
