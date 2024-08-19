@@ -21,7 +21,11 @@ extension MainTabCoordinator: MainCoordinatorDelegate {
         
         loginCoordinator.navigation.dismissNavigation = { [weak self] in
             print("HIHI")
-            NotificationCenter.default.post(name: .completeLogin, object: nil, userInfo: nil)
+            NotificationCenter.default.post(
+                name: .completeLogin,
+                object: nil,
+                userInfo: nil
+            )
             self?.didFinishLogin(childCoordinator: loginCoordinator)
         }
     }

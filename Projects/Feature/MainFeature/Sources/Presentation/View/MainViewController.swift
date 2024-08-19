@@ -22,10 +22,26 @@ public protocol MainViewControllerCoordinator: AnyObject {
 }
 
 public final class MainViewController: UIViewController {
+    // MARK: - Private properties
     private var viewModel: MainViewModel
     private weak var coordinator: MainViewControllerCoordinator?
     
-    // MARK: - Public properties
+    private var lastContentOffset: CGFloat = 0.0
+    
+    private lazy var categoryCollectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        let width: CGFloat = 100
+        layout.scrollDirection = .horizontal
+        layout.minimumLineSpacing = 10
+        layout.minimumInteritemSpacing = 0
+        layout.sectionInset = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
+        layout.itemSize = CGSize(width: width, height: 47)
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionView.backgroundColor = UIColor.white
+        collectionView.showsHorizontalScrollIndicator = false
+        return collectionView
+    }()
+    
     private lazy var tableView: UITableView = {
         let tableView = UITableView()
         tableView.separatorStyle = .none
@@ -40,7 +56,7 @@ public final class MainViewController: UIViewController {
         tableView.register(TeenTableViewCell.self, forCellReuseIdentifier: TeenTableViewCell.reuseIdentifier)
         return tableView
     }()
-
+    
     // MARK: - Life Cycle
     init(
         viewModel: MainViewModel,
@@ -57,6 +73,7 @@ public final class MainViewController: UIViewController {
     
     public override func viewDidLoad() {
         super.viewDidLoad()
+        registerDelegate()
         configUserInterface()
         configLayout()
         
@@ -67,21 +84,34 @@ public final class MainViewController: UIViewController {
     }
     
     public override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         self.navigationItem.titleView =  CustomNaviView(frame: CGRect(x: 0, y: 0, width: ViewValues.width, height: 40))
     }
     
     // MARK: - Helpers
+    private func registerDelegate() {
+        self.categoryCollectionView.dataSource = self
+        self.categoryCollectionView.delegate = self
+        self.categoryCollectionView.register(CategoryTodayCollectionViewCell.self, forCellWithReuseIdentifier: CategoryTodayCollectionViewCell.reuseIdentifier)
+    }
+    
     private func configUserInterface() {
         view.backgroundColor = UIColor.systemBackground
-
-        //테이블 뷰
+        
+        self.view.addSubview(categoryCollectionView)
         self.view.addSubview(tableView)
     }
     
     private func configLayout() {
+        self.categoryCollectionView.snp.makeConstraints { make in
+            make.top.equalTo(self.view.safeAreaLayoutGuide.snp.top)
+            make.leading.trailing.equalToSuperview()
+            make.height.equalTo(50)
+        }
+        
         self.tableView.snp.makeConstraints { make in
             make.leading.trailing.bottom.equalToSuperview()
-            make.top.equalTo(self.view.safeAreaLayoutGuide.snp.top)
+            make.top.equalTo(categoryCollectionView.snp.bottom)
         }
     }
     
@@ -92,7 +122,33 @@ public final class MainViewController: UIViewController {
     }
 }
 
-// MARK: - Extensions here
+// MARK: - UIScrollViewDelegate
+extension MainViewController: UIScrollViewDelegate {
+    public func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let offsetY = scrollView.contentOffset.y
+        
+        if offsetY > lastContentOffset && offsetY > 0 {
+            // 이미 네비게이션 바가 숨겨진 상태라면 다시 애니메이션하지 않도록 방지
+            if self.navigationController?.isNavigationBarHidden == false {
+                UIView.animate(withDuration: 0.3, animations: {
+                    self.navigationController?.setNavigationBarHidden(true, animated: true)
+                })
+            }
+        } else if offsetY < lastContentOffset {
+            // 이미 네비게이션 바가 보이는 상태라면 다시 애니메이션하지 않도록 방지
+            if self.navigationController?.isNavigationBarHidden == true {
+                UIView.animate(withDuration: 0.3, animations: {
+                    self.navigationController?.setNavigationBarHidden(false, animated: true)
+                }, completion: { _ in
+                    self.navigationItem.titleView?.setNeedsLayout()
+                    self.navigationItem.titleView?.layoutIfNeeded()
+                })
+            }
+        }
+        
+        lastContentOffset = offsetY
+    }
+}
 
 // MARK: - UITableViewDataSource
 extension MainViewController: UITableViewDataSource {
@@ -248,5 +304,61 @@ extension MainViewController: UITableViewDelegate {
         default:
             return 0
         }
+    }
+}
+
+// MARK: - UICollectionViewDataSource
+extension MainViewController: UICollectionViewDataSource {
+    public func collectionView(
+        _ collectionView: UICollectionView,
+        cellForItemAt indexPath: IndexPath
+    ) -> UICollectionViewCell {
+        guard
+            let cell = collectionView.dequeueReusableCell(
+                withReuseIdentifier: CategoryTodayCollectionViewCell.reuseIdentifier,
+                for: indexPath) as? CategoryTodayCollectionViewCell
+        else {
+            return UICollectionViewCell()
+        }
+        
+        cell.setButton(category: viewModel.getCategoryItemMainViewModel(row: indexPath.row))
+        return cell
+        
+    }
+    
+    public func collectionView(
+        _ collectionView: UICollectionView,
+        numberOfItemsInSection section: Int
+    ) -> Int {
+        viewModel.categoryList.count
+    }
+}
+
+// MARK: - UICollectionViewDelegate
+extension MainViewController: UICollectionViewDelegate {
+    public func collectionView(
+        _ collectionView: UICollectionView,
+        didSelectItemAt indexPath: IndexPath
+    ) {
+        if let attributes = collectionView.layoutAttributesForItem(at: indexPath) {
+            let cellFrame = attributes.frame
+            var targetOffset = cellFrame.origin.x - 16  // Inset: 16
+            // 컬렉션 뷰의 최대 offset
+            let maxOffset = collectionView.contentSize.width - collectionView.bounds.width
+            // 마지막 셀이 보이면, 왼쪽에 고정되지 않도록 하는 로직
+            if targetOffset > maxOffset {
+                targetOffset = maxOffset
+            }
+            // offset 조정: 0보다 작을 수 없음
+            let newOffset = max(0, targetOffset)
+            // offset 설정
+            collectionView.setContentOffset(
+                CGPoint(x: newOffset, y: 0),
+                animated: true
+            )
+        }
+        
+        viewModel.didSelectCategoryCell(row: indexPath.row)
+        collectionView.reloadData()
     }
 }
