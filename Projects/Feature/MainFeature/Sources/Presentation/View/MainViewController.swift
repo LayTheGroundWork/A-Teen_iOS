@@ -308,9 +308,9 @@ extension MainViewController: UITableViewDelegate {
     public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch indexPath.section {
         case 0:
-            return 187 + ViewValues.todayTeenImageHeight
+            return 111 + ViewValues.todayTeenImageHeight
         case 1:
-            return 369
+            return 355
         case 2:
             return 358
         case 3:

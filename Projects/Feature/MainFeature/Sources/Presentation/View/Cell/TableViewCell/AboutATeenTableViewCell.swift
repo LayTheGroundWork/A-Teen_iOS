@@ -120,7 +120,7 @@ class AboutATeenTableViewCell: UITableViewCell {
         
         self.grayLine.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview()
-            make.top.equalTo(self.everythingStackView.snp.bottom).offset(40)
+            make.top.equalTo(self.everythingStackView.snp.bottom).offset(46)
             make.height.equalTo(7)
         }
     }
