@@ -21,6 +21,10 @@ public protocol MainViewControllerCoordinator: AnyObject {
     func didSelectAnotherTeenCell(frame: CGRect, todayTeen: TodayTeen)
 }
 
+protocol MainViewControllerDelegate: AnyObject {
+    func reStartTimer()
+}
+
 public final class MainViewController: UIViewController {
     // MARK: - Private properties
     private var viewModel: MainViewModel
@@ -129,6 +133,7 @@ public final class MainViewController: UIViewController {
     @objc private func updateTableView(_ notification: Notification) {
         print("LogOut/LogIn -> Reload Data")
         tableView.reloadData()
+        reStartTimer()
     }
 }
 
@@ -371,5 +376,12 @@ extension MainViewController: UICollectionViewDelegate {
         
         viewModel.didSelectCategoryCell(row: indexPath.row)
         collectionView.reloadData()
+    }
+}
+
+extension MainViewController: MainViewControllerDelegate {
+    func reStartTimer() {
+        guard let cell = tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? TodayTeenTableViewCell else { return }
+        cell.startAutoScroll()
     }
 }

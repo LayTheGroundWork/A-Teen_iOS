@@ -16,6 +16,7 @@ extension MainCoordinator: ProfileDetailCoordinatorDelegate,
         childCoordinator.navigation.dismissNavigation = nil
         removeChildCoordinator(childCoordinator)
         navigation.dismiss(animated: false)
+        mainViewControllerDelegate?.reStartTimer()
     }
     
     public func didReport() {

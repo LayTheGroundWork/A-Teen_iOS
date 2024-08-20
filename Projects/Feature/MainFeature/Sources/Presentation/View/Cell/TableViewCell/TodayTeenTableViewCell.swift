@@ -100,7 +100,7 @@ class TodayTeenTableViewCell: UITableViewCell {
     }
     
     // 자동 스크롤 시작
-    private func startAutoScroll() {
+    func startAutoScroll() {
         teenCollectionViewAutoScrollTimer?.invalidate() // 중복 실행 방지
         teenCollectionViewAutoScrollTimer = Timer.scheduledTimer(
             timeInterval: 4.0,
@@ -149,6 +149,7 @@ extension TodayTeenTableViewCell: UICollectionViewDataSource {
         
         cell.chatButtonAction = { [weak self] in
             guard let self = self else { return }
+            stopAutoScroll()
             self.delegate?.didSelectTodayTeenChattingButton()
         }
         
@@ -159,6 +160,7 @@ extension TodayTeenTableViewCell: UICollectionViewDataSource {
         
         cell.menuButtonAction = { [weak self] in
             guard let self = self else { return }
+            stopAutoScroll()
             cell.layoutIfNeeded()
             guard let tableViewCell = self.superview,
                   let tableView = tableViewCell.superview,
@@ -195,7 +197,7 @@ extension TodayTeenTableViewCell: UICollectionViewDelegate {
         guard let cellClicked = collectionView.cellForItem(at: indexPath),
               let frame = cellClicked.superview?.convert(cellClicked.frame, to: nil)
         else { return }
-        
+        stopAutoScroll()
         delegate?.didSelectTodayTeenImage(
             frame: frame,
             todayTeen: viewModel.getTodayTeenItemMainViewModel(row: indexPath.row))
