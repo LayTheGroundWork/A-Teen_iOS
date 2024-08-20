@@ -12,6 +12,7 @@ import UIKit
 extension SignUpCoordinator: CelebrateCoordinatorDelegate {
     public func didFinish(childCoordinator: Coordinator) {
         removeChildCoordinator(childCoordinator)
-        navigation.popViewController(animated: true)
+        navigation.dismissNavigation?()
+        navigation.dismiss(animated: true)
     }
 }
