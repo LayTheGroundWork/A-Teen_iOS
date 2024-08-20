@@ -26,7 +26,12 @@ public final class MainViewController: UIViewController {
     private var viewModel: MainViewModel
     private weak var coordinator: MainViewControllerCoordinator?
     
-    private var lastContentOffset: CGFloat = 0.0
+    private var startContentOffset: CGFloat = 0.0
+    
+    private var naviHeightAnchor: Constraint?
+    
+    private lazy var customNaviView = CustomNaviView()
+    // CustomNaviView(frame: CGRect(x: 0, y: 0, width: ViewValues.width, height: 40))
     
     private lazy var categoryCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -83,11 +88,6 @@ public final class MainViewController: UIViewController {
                                                object: nil)
     }
     
-    public override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        self.navigationItem.titleView =  CustomNaviView(frame: CGRect(x: 0, y: 0, width: ViewValues.width, height: 40))
-    }
-    
     // MARK: - Helpers
     private func registerDelegate() {
         self.categoryCollectionView.dataSource = self
@@ -96,17 +96,27 @@ public final class MainViewController: UIViewController {
     }
     
     private func configUserInterface() {
+        self.navigationController?.isNavigationBarHidden = true
+        
         view.backgroundColor = UIColor.systemBackground
         
+        self.view.addSubview(customNaviView)
         self.view.addSubview(categoryCollectionView)
         self.view.addSubview(tableView)
     }
     
     private func configLayout() {
-        self.categoryCollectionView.snp.makeConstraints { make in
+        self.customNaviView.snp.makeConstraints { make in
             make.top.equalTo(self.view.safeAreaLayoutGuide.snp.top)
+            make.leading.equalToSuperview().offset(ViewValues.defaultPadding)
+            make.trailing.equalToSuperview().offset(-ViewValues.defaultPadding)
+            self.naviHeightAnchor = make.height.equalTo(40).constraint
+        }
+        
+        self.categoryCollectionView.snp.makeConstraints { make in
+            make.top.equalTo(self.customNaviView.snp.bottom)
             make.leading.trailing.equalToSuperview()
-            make.height.equalTo(50)
+            make.height.equalTo(60)
         }
         
         self.tableView.snp.makeConstraints { make in
@@ -124,29 +134,30 @@ public final class MainViewController: UIViewController {
 
 // MARK: - UIScrollViewDelegate
 extension MainViewController: UIScrollViewDelegate {
-    public func scrollViewDidScroll(_ scrollView: UIScrollView) {
+    public func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        startContentOffset = scrollView.contentOffset.y
+    }
+    
+    public func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         let offsetY = scrollView.contentOffset.y
-        
-        if offsetY > lastContentOffset && offsetY > 0 {
-            // 이미 네비게이션 바가 숨겨진 상태라면 다시 애니메이션하지 않도록 방지
-            if self.navigationController?.isNavigationBarHidden == false {
-                UIView.animate(withDuration: 0.3, animations: {
-                    self.navigationController?.setNavigationBarHidden(true, animated: true)
-                })
+
+        if offsetY > startContentOffset {
+            UIView.animate(withDuration: 0.2, delay: 0, options: .showHideTransitionViews) {
+                self.naviHeightAnchor?.update(offset: 0)
+                self.customNaviView.isHidden = true
+                
+                self.view.layoutIfNeeded()
             }
-        } else if offsetY < lastContentOffset {
-            // 이미 네비게이션 바가 보이는 상태라면 다시 애니메이션하지 않도록 방지
-            if self.navigationController?.isNavigationBarHidden == true {
-                UIView.animate(withDuration: 0.3, animations: {
-                    self.navigationController?.setNavigationBarHidden(false, animated: true)
-                }, completion: { _ in
-                    self.navigationItem.titleView?.setNeedsLayout()
-                    self.navigationItem.titleView?.layoutIfNeeded()
-                })
+        } else {
+            self.customNaviView.isHidden = false
+            
+            UIView.animate(withDuration: 0.2, delay: 0, options: .showHideTransitionViews) {
+                self.naviHeightAnchor?.update(offset: 40)
+                
+                self.view.layoutIfNeeded()
             }
         }
-        
-        lastContentOffset = offsetY
+        startContentOffset = 0.0
     }
 }
 
