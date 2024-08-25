@@ -3,16 +3,23 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 55;
+	objectVersion = 56;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		1CF4AF9AAEE5DCAF480AD3EE /* FeatureDependency.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46298C4EFDC4672E09C3EDF3 /* FeatureDependency.framework */; };
 		2EB4557D901ECF9A12C834EE /* ProfileDetailFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A43EB6119562050FB155947 /* ProfileDetailFactory.swift */; };
+		419E118E2C6640E600645F7E /* SNSBottomSheetCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419E118D2C6640E600645F7E /* SNSBottomSheetCoordinator.swift */; };
+		419E11902C6640F100645F7E /* SNSBottomSheetFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419E118F2C6640F100645F7E /* SNSBottomSheetFactory.swift */; };
+		419E11922C66479E00645F7E /* ProfileDetailCoordinatorImp+ProfileDetailViewControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419E11912C66479E00645F7E /* ProfileDetailCoordinatorImp+ProfileDetailViewControllerCoordinator.swift */; };
+		419E11942C66558300645F7E /* ProfileDetailCoordinatorImp+SNSBottomSheetCoordinatorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419E11932C66558300645F7E /* ProfileDetailCoordinatorImp+SNSBottomSheetCoordinatorDelegate.swift */; };
+		559B960DC3151627A8BC05A8 /* SNSBottomSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F1D1FA23D7E736642F1A42F /* SNSBottomSheetViewController.swift */; };
+		5DD49C53C2A86A14236D7FED /* TeenImageCellCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 367CCE582E5175E1DE0BBD7B /* TeenImageCellCollectionViewCell.swift */; };
+		630C92B42C67B20A000A7A36 /* LinkItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630C92B32C67B20A000A7A36 /* LinkItem.swift */; };
+		630C92B62C67B73B000A7A36 /* LinkItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630C92B52C67B73B000A7A36 /* LinkItemCell.swift */; };
 		8B9ADA99106D2357F17B7889 /* CustomHeartButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3C44FA71744D6F4F0817AC /* CustomHeartButton.swift */; };
 		E71E926FD6866151B500EB92 /* CustomVoteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8852B8B7CA23BC191935C3AC /* CustomVoteButton.swift */; };
 		E8FA98278D78200AC911AEB9 /* ProfileDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A62956AACF348719350390B /* ProfileDetailViewController.swift */; };
-		F3ABCF72461EE6623C4EB41C /* TeenImageCellCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE207437DD4A943EC9B8249 /* TeenImageCellCollectionViewCell.swift */; };
 		F475F8605C01B8F7398DFECB /* ProfileDetailCoordinatorImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A509B9F085C4A804E9A5CF /* ProfileDetailCoordinatorImp.swift */; };
 		FCB76CF995D35B798E8DC3F4 /* ProfileDetailBottomBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE408B2BCF2173C4643AB346 /* ProfileDetailBottomBar.swift */; };
 		FF09C008A3512D2463C9656C /* ProfileDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F6AE01DD4B6F0D1794206D1 /* ProfileDetailViewModel.swift */; };
@@ -33,16 +40,23 @@
 
 /* Begin PBXFileReference section */
 		01174DEA02D1DDC348B0CCBC /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
+		367CCE582E5175E1DE0BBD7B /* TeenImageCellCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeenImageCellCollectionViewCell.swift; sourceTree = "<group>"; };
+		419E118D2C6640E600645F7E /* SNSBottomSheetCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SNSBottomSheetCoordinator.swift; sourceTree = "<group>"; };
+		419E118F2C6640F100645F7E /* SNSBottomSheetFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SNSBottomSheetFactory.swift; sourceTree = "<group>"; };
+		419E11912C66479E00645F7E /* ProfileDetailCoordinatorImp+ProfileDetailViewControllerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProfileDetailCoordinatorImp+ProfileDetailViewControllerCoordinator.swift"; sourceTree = "<group>"; };
+		419E11932C66558300645F7E /* ProfileDetailCoordinatorImp+SNSBottomSheetCoordinatorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProfileDetailCoordinatorImp+SNSBottomSheetCoordinatorDelegate.swift"; sourceTree = "<group>"; };
 		46298C4EFDC4672E09C3EDF3 /* FeatureDependency.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FeatureDependency.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		48A509B9F085C4A804E9A5CF /* ProfileDetailCoordinatorImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDetailCoordinatorImp.swift; sourceTree = "<group>"; };
 		4F6AE01DD4B6F0D1794206D1 /* ProfileDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDetailViewModel.swift; sourceTree = "<group>"; };
 		5A62956AACF348719350390B /* ProfileDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDetailViewController.swift; sourceTree = "<group>"; };
+		5F1D1FA23D7E736642F1A42F /* SNSBottomSheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SNSBottomSheetViewController.swift; sourceTree = "<group>"; };
+		630C92B32C67B20A000A7A36 /* LinkItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkItem.swift; sourceTree = "<group>"; };
+		630C92B52C67B73B000A7A36 /* LinkItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkItemCell.swift; sourceTree = "<group>"; };
 		8852B8B7CA23BC191935C3AC /* CustomVoteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomVoteButton.swift; sourceTree = "<group>"; };
 		9A43EB6119562050FB155947 /* ProfileDetailFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDetailFactory.swift; sourceTree = "<group>"; };
 		9D3C44FA71744D6F4F0817AC /* CustomHeartButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomHeartButton.swift; sourceTree = "<group>"; };
 		B0A5CCB5F5D5CB2DECE9752F /* Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
 		B64E014FDA2477E825D0B2C3 /* ProfileDetailFeature-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "ProfileDetailFeature-Info.plist"; sourceTree = "<group>"; };
-		BAE207437DD4A943EC9B8249 /* TeenImageCellCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeenImageCellCollectionViewCell.swift; sourceTree = "<group>"; };
 		DE408B2BCF2173C4643AB346 /* ProfileDetailBottomBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDetailBottomBar.swift; sourceTree = "<group>"; };
 		F8963FCB828AAB0D6A70608F /* ProfileDetailFeature.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ProfileDetailFeature.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -59,6 +73,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1B2359FA02ECAF3DC9E84E01 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				367CCE582E5175E1DE0BBD7B /* TeenImageCellCollectionViewCell.swift */,
+				630C92B52C67B73B000A7A36 /* LinkItemCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		21AD35ADEB4A158677701916 /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -72,6 +95,10 @@
 			children = (
 				48A509B9F085C4A804E9A5CF /* ProfileDetailCoordinatorImp.swift */,
 				9A43EB6119562050FB155947 /* ProfileDetailFactory.swift */,
+				419E118D2C6640E600645F7E /* SNSBottomSheetCoordinator.swift */,
+				419E118F2C6640F100645F7E /* SNSBottomSheetFactory.swift */,
+				419E11912C66479E00645F7E /* ProfileDetailCoordinatorImp+ProfileDetailViewControllerCoordinator.swift */,
+				419E11932C66558300645F7E /* ProfileDetailCoordinatorImp+SNSBottomSheetCoordinatorDelegate.swift */,
 			);
 			path = Composition;
 			sourceTree = "<group>";
@@ -94,9 +121,19 @@
 			path = Button;
 			sourceTree = "<group>";
 		};
+		630C92B22C67B1FE000A7A36 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				630C92B32C67B20A000A7A36 /* LinkItem.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		7EDF951E707EC83639497336 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				630C92B22C67B1FE000A7A36 /* Model */,
+				1B2359FA02ECAF3DC9E84E01 /* Cell */,
 				AF76701D73859A7197961CD8 /* View */,
 				8181CA03AAAEF767002BF0E5 /* ViewModel */,
 			);
@@ -142,7 +179,7 @@
 			isa = PBXGroup;
 			children = (
 				5A62956AACF348719350390B /* ProfileDetailViewController.swift */,
-				BAE207437DD4A943EC9B8249 /* TeenImageCellCollectionViewCell.swift */,
+				5F1D1FA23D7E736642F1A42F /* SNSBottomSheetViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -211,9 +248,8 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1540;
 				ORGANIZATIONNAME = ATeen;
-				TargetAttributes = {
-				};
 			};
 			buildConfigurationList = 24E039D9F663739F86E017A6 /* Build configuration list for PBXProject "ProfileDetailFeature" */;
 			compatibilityVersion = "Xcode 14.0";
@@ -248,13 +284,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				419E11942C66558300645F7E /* ProfileDetailCoordinatorImp+SNSBottomSheetCoordinatorDelegate.swift in Sources */,
+				419E118E2C6640E600645F7E /* SNSBottomSheetCoordinator.swift in Sources */,
+				419E11902C6640F100645F7E /* SNSBottomSheetFactory.swift in Sources */,
+				419E11922C66479E00645F7E /* ProfileDetailCoordinatorImp+ProfileDetailViewControllerCoordinator.swift in Sources */,
 				8B9ADA99106D2357F17B7889 /* CustomHeartButton.swift in Sources */,
 				E71E926FD6866151B500EB92 /* CustomVoteButton.swift in Sources */,
 				FCB76CF995D35B798E8DC3F4 /* ProfileDetailBottomBar.swift in Sources */,
 				F475F8605C01B8F7398DFECB /* ProfileDetailCoordinatorImp.swift in Sources */,
 				2EB4557D901ECF9A12C834EE /* ProfileDetailFactory.swift in Sources */,
+				630C92B62C67B73B000A7A36 /* LinkItemCell.swift in Sources */,
+				5DD49C53C2A86A14236D7FED /* TeenImageCellCollectionViewCell.swift in Sources */,
 				E8FA98278D78200AC911AEB9 /* ProfileDetailViewController.swift in Sources */,
-				F3ABCF72461EE6623C4EB41C /* TeenImageCellCollectionViewCell.swift in Sources */,
+				559B960DC3151627A8BC05A8 /* SNSBottomSheetViewController.swift in Sources */,
+				630C92B42C67B20A000A7A36 /* LinkItem.swift in Sources */,
 				FF09C008A3512D2463C9656C /* ProfileDetailViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -273,6 +316,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				INFOPLIST_FILE = "Derived/InfoPlists/ProfileDetailFeature-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
@@ -282,7 +326,11 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				OTHER_LDFLAGS = "$(inherited) -ObjC";
+				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu11 gnu++14";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ATeen.ATeen.ProfileDetailFeature;
 				PRODUCT_NAME = ProfileDetailFeature;
 				SDKROOT = iphoneos;
@@ -290,10 +338,7 @@
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = (
-					"$(inherited)",
-					DEBUG,
-				);
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG";
 				SWIFT_COMPILATION_MODE = singlefile;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -314,6 +359,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				INFOPLIST_FILE = "Derived/InfoPlists/ProfileDetailFeature-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
@@ -323,7 +369,11 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				OTHER_LDFLAGS = "$(inherited) -ObjC";
+				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu11 gnu++14";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ATeen.ATeen.ProfileDetailFeature;
 				PRODUCT_NAME = ProfileDetailFeature;
 				SDKROOT = iphoneos;

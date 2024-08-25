@@ -9,6 +9,12 @@ import Common
 import DesignSystem
 import UIKit
 
+public protocol ProfileDetailBottomBarDelegate: AnyObject {
+    func didTapSNSButton(
+        contentViewController: UIViewController
+    )
+}
+
 final class ProfileDetailBottomBar: UIView {
     // MARK: - Private properties
     lazy var voteButton: UIButton = {
@@ -17,7 +23,7 @@ final class ProfileDetailBottomBar: UIView {
             imageColor: UIColor.white,
             textColor: UIColor.white,
             labelText: "투표하기",
-            buttonBackgroundColor: DesignSystemAsset.mainColor.color,
+            buttonBackgroundColor: .black,
             labelFont: UIFont.preferredFont(forTextStyle: .caption1),
             frame: .zero)
         button.layer.cornerRadius = ViewValues.defaultRadius
@@ -26,11 +32,18 @@ final class ProfileDetailBottomBar: UIView {
     
     lazy var messageButton: UIButton = makeSmallButton(imageName: "blackChattingIcon")
     
-    lazy var snsButton: UIButton = makeSmallButton(imageName: "instaIcon")
+    lazy var snsButton: UIButton = makeSmallButton(imageName: "linkBlackIcon")
     
-    override init(frame: CGRect) {
+    private weak var coordinator: ProfileDetailBottomBarDelegate?
+    
+    init(
+        frame: CGRect,
+        coordinator: ProfileDetailBottomBarDelegate
+    ) {
+        self.coordinator = coordinator
         super.init(frame: frame)
         configUserInterface()
+        setupActions()
     }
     
     required init?(coder: NSCoder) {
@@ -108,11 +121,8 @@ final class ProfileDetailBottomBar: UIView {
         button.layer.masksToBounds = false
         
         let imageView = UIImageView()
-        if imageName == "blackChattingIcon" {
-            imageView.image = DesignSystemAsset.blackChattingIcon.image
-        } else {
-            imageView.image = DesignSystemAsset.instaIcon.image
-        }
+        imageView.image = imageForName(imageName)
+        
         button.addSubview(imageView)
         
         imageView.snp.makeConstraints { make in
@@ -122,4 +132,71 @@ final class ProfileDetailBottomBar: UIView {
         
         return button
     }
+    
+    private func imageForName(_ imageName: String) -> UIImage? {
+        switch imageName {
+        case "blackChattingIcon":
+            return DesignSystemAsset.blackChattingIcon.image
+        case "linkBlackIcon":
+            return DesignSystemAsset.linkBlackIcon.image
+        case "linkWhiteIcon":
+            return DesignSystemAsset.linkWhiteIcon.image
+        default:
+            return nil
+        }
+    }
+    
+    private func setupActions() {
+        snsButton.addTarget(self, action: #selector(didTapSNSButton), for: .touchUpInside)
+    }
+    
+    @objc private func didTapSNSButton() {
+        let contentViewController = SNSBottomSheetViewController(linkList: LinkItem.linkData)
+        contentViewController.modalPresentationStyle = .pageSheet
+
+        if let sheet = contentViewController.sheetPresentationController {
+            // 지원할 크기 지정
+            if #available(iOS 16.0, *) {
+                sheet.detents = [.custom { context in
+                    return 150
+                }]
+            } else {
+                sheet.detents = [.medium()]
+            }
+            
+            sheet.delegate = self
+            
+            // 시트 상단에 그래버 표시
+            sheet.prefersGrabberVisible = true
+            
+            sheet.preferredCornerRadius = 25
+            
+            // 처음 크기 지정
+            sheet.selectedDetentIdentifier = .medium
+            
+            // 뒤 배경 흐리게 제거
+            // sheet.largestUndimmedDetentIdentifier = .medium
+        }
+
+        parentViewController?.present(contentViewController, animated: true, completion: nil)
+
+        coordinator?.didTapSNSButton(
+            contentViewController: contentViewController
+        )
+    }
 }
+
+extension UIView {
+    var parentViewController: UIViewController? {
+        var parentResponder: UIResponder? = self
+        while parentResponder != nil {
+            parentResponder = parentResponder?.next
+            if let viewController = parentResponder as? UIViewController {
+                return viewController
+            }
+        }
+        return nil
+    }
+}
+
+extension ProfileDetailBottomBar: UISheetPresentationControllerDelegate { }

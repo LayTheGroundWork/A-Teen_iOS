@@ -195,9 +195,9 @@ extension TeenViewController: UICollectionViewDataSource {
     
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! CustomTeenCollectionViewCell
-        let imageName = viewModel.imageNames[indexPath.item]
+        let image = viewModel.imageNames[indexPath.item]
         let label = viewModel.labels[indexPath.item]
-        cell.configure(with: UIImage(named: imageName), text: label, buttonAction: { [weak self] in
+        cell.configure(with: image, text: label, buttonAction: { [weak self] in
             self?.buttonTapped(at: indexPath.item)
         })
         return cell

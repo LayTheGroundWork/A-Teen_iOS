@@ -41,7 +41,9 @@ public enum DesignSystemAsset {
   public static let heartIcon = DesignSystemImages(name: "heartIcon")
   public static let leftArrowIcon = DesignSystemImages(name: "leftArrowIcon")
   public static let leftArrowWhiteIcon = DesignSystemImages(name: "leftArrowWhiteIcon")
+  public static let linkBlackIcon = DesignSystemImages(name: "linkBlackIcon")
   public static let linkIcon = DesignSystemImages(name: "linkIcon")
+  public static let linkWhiteIcon = DesignSystemImages(name: "linkWhiteIcon")
   public static let menuBlackIcon = DesignSystemImages(name: "menuBlackIcon")
   public static let menuIcon = DesignSystemImages(name: "menuIcon")
   public static let moreIcon = DesignSystemImages(name: "moreIcon")
@@ -92,6 +94,14 @@ public enum DesignSystemAsset {
   public static let rankingIconSelected = DesignSystemImages(name: "rankingIconSelected")
   public static let teenIcon = DesignSystemImages(name: "teenIcon")
   public static let teenIconSelected = DesignSystemImages(name: "teenIconSelected")
+  public static let teencard1 = DesignSystemImages(name: "teencard1")
+  public static let teencard2 = DesignSystemImages(name: "teencard2")
+  public static let teencard3 = DesignSystemImages(name: "teencard3")
+  public static let teencard4 = DesignSystemImages(name: "teencard4")
+  public static let teencard5 = DesignSystemImages(name: "teencard5")
+  public static let teencard6 = DesignSystemImages(name: "teencard6")
+  public static let teencard7 = DesignSystemImages(name: "teencard7")
+  public static let teencard8 = DesignSystemImages(name: "teencard8")
 }
 // swiftlint:enable identifier_name line_length nesting type_body_length type_name
 
