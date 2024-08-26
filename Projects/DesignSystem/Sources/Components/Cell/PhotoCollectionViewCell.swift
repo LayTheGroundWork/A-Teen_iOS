@@ -9,10 +9,9 @@
 import SnapKit
 
 import Common
-import DesignSystem
 import UIKit
 
-final class PhotoCollectionViewCell: UICollectionViewCell {
+public final class PhotoCollectionViewCell: UICollectionViewCell {
     // MARK: - Private properties
     private lazy var photoImageView: UIImageView = {
         let imageView = UIImageView()
@@ -28,7 +27,7 @@ final class PhotoCollectionViewCell: UICollectionViewCell {
     }()
 
     // MARK: - Life Cycle
-    override init(frame: CGRect) {
+    public override init(frame: CGRect) {
         super.init(frame: frame)
         configUserInterface()
         configLayout()
@@ -38,7 +37,7 @@ final class PhotoCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func prepareForReuse() {
+    public override func prepareForReuse() {
         contentView.backgroundColor = DesignSystemAsset.gray03.color
         contentView.layer.borderWidth = 0
         contentView.layer.borderColor = UIColor.white.cgColor
@@ -71,7 +70,7 @@ final class PhotoCollectionViewCell: UICollectionViewCell {
     }
 
     // MARK: - Actions
-    func setCellCustom(item: Int) {
+    public func setCellCustom(item: Int) {
         switch item {
         case 0:
             contentView.backgroundColor = UIColor.white
@@ -86,7 +85,7 @@ final class PhotoCollectionViewCell: UICollectionViewCell {
         photoImageView.isHidden = true
     }
     
-    func setImage(image: UIImage) {
+    public func setImage(image: UIImage) {
         plusImageView.isHidden = true
         photoImageView.isHidden = false
         photoImageView.image = image

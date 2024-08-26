@@ -12,6 +12,7 @@ public enum ProfileFeatureViewNames {
     case profile
     case introduce
     case question
+    case editPhoto
 }
 
 public protocol ProfileCoordinatorDelegate: AnyObject {
@@ -21,6 +22,7 @@ public protocol ProfileCoordinatorDelegate: AnyObject {
 
 public final class ProfileCoordinator: Coordinator {
     public var navigation: Navigation
+    public var coordinatorProvider: CoordinatorProvider
     var factory: ProfileFactory
     weak var profileViewControllerDelegate: ProfileViewControllerDelegate?
     weak var delegate: ProfileCoordinatorDelegate?
@@ -28,11 +30,13 @@ public final class ProfileCoordinator: Coordinator {
 
     public init(
         navigation: Navigation,
+        coordinatorProvider: CoordinatorProvider,
         factory: ProfileFactory,
         delegate: ProfileCoordinatorDelegate
 
     ) {
         self.navigation = navigation
+        self.coordinatorProvider = coordinatorProvider
         self.factory = factory
         self.delegate = delegate
     }

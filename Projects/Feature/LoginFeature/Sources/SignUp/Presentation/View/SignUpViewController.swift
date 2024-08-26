@@ -135,8 +135,8 @@ final class SignUpViewController: UIViewController {
         nextButton.snp.makeConstraints { make in
             make.trailing.equalToSuperview().offset(-ViewValues.defaultPadding)
             make.bottom.equalToSuperview().offset(-50)
-            make.width.equalTo(ViewValues.signUpNextButtonWidth)
-            make.height.equalTo(ViewValues.signUpNextButtonHeight)
+            make.width.equalTo(ViewValues.defaultButtonWidth)
+            make.height.equalTo(ViewValues.defaultButtonWidth)
         }
     }
     

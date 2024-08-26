@@ -145,6 +145,11 @@ public enum AppLocalized {
     public static let teenTextLabel = "친구들의 프로필을\n구경해보세요!"
     public static let teenSubTitleLabel = "오늘의 TEEN"
     public static let teenDetailTextLabel = "투표 수가 많은 Teen"
+    
+    // MARK: - Profile
+    public static let editMyPhotoTitle = "사진 수정"
+    public static let photoGuideTextLabel = "*사진, 동영상 포함 최대 10장을 등록할 수 있어요"
+    public static let completeEdit = "수정 완료"
 }
 
 // MARK: - Regex 모음

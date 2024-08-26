@@ -54,7 +54,6 @@ public final class TeenDetailViewController: UIViewController {
 
         let buttonItem = UIBarButtonItem(customView: customView)
         return buttonItem
-
     }()
 
     private lazy var tableView: UITableView = {

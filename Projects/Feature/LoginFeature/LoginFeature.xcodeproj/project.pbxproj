@@ -42,7 +42,6 @@
 		9BD35FDF479CAEEB10111FA0 /* SelectBirthCoordinator+SelectBirthViewControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940F40FDF70C78A49F99530D /* SelectBirthCoordinator+SelectBirthViewControllerCoordinator.swift */; };
 		A602D56E605758107D3E71ED /* SelectBirthCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D47A1A5A59EDC9FF2D340667 /* SelectBirthCoordinator.swift */; };
 		A6143B296A39E39B4B69237D /* CelebrateFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5057B26C71FE735919F8B426 /* CelebrateFactory.swift */; };
-		AD99E05DA16CC4043C823CB5 /* PhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF852DD64392F49F096A69C6 /* PhotoCollectionViewCell.swift */; };
 		AF37FCC2BF5B27B61EDAB420 /* UserNameCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FECDCC9DAF510C2C83328DD /* UserNameCollectionViewCell.swift */; };
 		BA16A9F1F4BAFCE925DA1CA8 /* PhoneNumberCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952823C90056BADECCDE3FF5 /* PhoneNumberCollectionViewCell.swift */; };
 		BF6A3844C2D5BC6A3C7C7D94 /* UserIdCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19E6B65D5B09A67AB4FECAEF /* UserIdCollectionViewCell.swift */; };
@@ -129,7 +128,6 @@
 		F2350A966587011EBA120FC9 /* SignUpCoordinator+AlbumCoordinatorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SignUpCoordinator+AlbumCoordinatorDelegate.swift"; sourceTree = "<group>"; };
 		F5354149FB59E493237D98EA /* CelebrateCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CelebrateCoordinator.swift; sourceTree = "<group>"; };
 		FC856D9CBCFC1A7BCB2C3150 /* FeatureDependency.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FeatureDependency.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		FF852DD64392F49F096A69C6 /* PhotoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewCell.swift; sourceTree = "<group>"; };
 		FFE36AD7F7BA45FCD11AC654 /* TermsOfUseCoordinator+SignUpCoordinatorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TermsOfUseCoordinator+SignUpCoordinatorDelegate.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -434,7 +432,6 @@
 			isa = PBXGroup;
 			children = (
 				8A5D42B0DB60AE18A13D05B5 /* CategoryButtonCollectionViewCell.swift */,
-				FF852DD64392F49F096A69C6 /* PhotoCollectionViewCell.swift */,
 				CC2F0F661319F4B69ED62AB3 /* SearchSchoolCollectionViewCell.swift */,
 				B00D5C715A60CA859EF1680C /* SearchSchoolResultTableViewCell.swift */,
 				BD8A4E6186BDABB400F50448 /* SelectCategoryCollectionViewCell.swift */,
@@ -570,7 +567,6 @@
 				C94F93F83B5BCF9BE6001D9E /* SignUpCoordinator.swift in Sources */,
 				55B2726C834A17D59ED33962 /* SignUpFactory.swift in Sources */,
 				996DF81B9C17A212C916FABE /* CategoryButtonCollectionViewCell.swift in Sources */,
-				AD99E05DA16CC4043C823CB5 /* PhotoCollectionViewCell.swift in Sources */,
 				252DEED5BA048C197FD80759 /* SearchSchoolCollectionViewCell.swift in Sources */,
 				EC59603D9890FCFD4DACF066 /* SearchSchoolResultTableViewCell.swift in Sources */,
 				6412F48189B7D868B320FC0C /* SelectCategoryCollectionViewCell.swift in Sources */,

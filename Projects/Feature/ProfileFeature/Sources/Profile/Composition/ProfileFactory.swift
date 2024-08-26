@@ -32,6 +32,12 @@ public protocol ProfileFactory {
         delegate: QuestionsCoordinatorDelegate,
         childCoordinators: [Coordinator]
     ) -> Coordinator
+    func makeEditMyPhotoCoordinator(
+        navigation: Navigation,
+        coordinatorProvider: CoordinatorProvider,
+        childCoordinators: [Coordinator],
+        delegate: EditMyPhotoCoordinatorDelegate
+    ) -> Coordinator
 }
 
 public struct ProfileFactoryImp: ProfileFactory {
@@ -67,7 +73,7 @@ public struct ProfileFactoryImp: ProfileFactory {
         navigationController.view.backgroundColor = UIColor.clear
         let navigation = NavigationImp(rootViewController: navigationController)
         let factory = LinksDialogFactoryImp(viewModel: viewModel)
-
+        
         let coordinator = LinksDialogCoordinator(
             navigation: navigation,
             factory: factory,
@@ -102,6 +108,22 @@ public struct ProfileFactoryImp: ProfileFactory {
             factory: factory,
             delegate: delegate,
             childCoordinators: childCoordinators)
+        return coordinator
+    }
+    
+    public func makeEditMyPhotoCoordinator(
+        navigation: Navigation,
+        coordinatorProvider: CoordinatorProvider,
+        childCoordinators: [Coordinator],
+        delegate: EditMyPhotoCoordinatorDelegate
+    ) -> Coordinator {
+        let factory = EditMyPhotoFactoryImp()
+        let coordinator = EditMyPhotoCoordinator(
+            navigation: navigation,
+            coordinatorProvider: coordinatorProvider,
+            childCoordinators: childCoordinators,
+            factory: factory,
+            delegate: delegate)
         return coordinator
     }
     
