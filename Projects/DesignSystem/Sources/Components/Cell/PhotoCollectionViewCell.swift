@@ -15,7 +15,7 @@ public final class PhotoCollectionViewCell: UICollectionViewCell {
     // MARK: - Private properties
     private lazy var photoImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.contentMode = .scaleAspectFit
+        imageView.contentMode = .scaleAspectFill
         return imageView
     }()
     
