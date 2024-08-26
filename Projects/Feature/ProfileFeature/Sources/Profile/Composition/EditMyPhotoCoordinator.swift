@@ -20,6 +20,7 @@ public final class EditMyPhotoCoordinator: Coordinator {
     public var childCoordinators: [Coordinator]
     var factory: EditMyPhotoFactory
     weak var delegate: EditMyPhotoCoordinatorDelegate?
+    weak var editMyPhotoViewControllerDelegate: EditMyPhotoViewControllerDelegate?
     
     public init(
         navigation: Navigation,
@@ -37,6 +38,8 @@ public final class EditMyPhotoCoordinator: Coordinator {
 
     public func start() {
         let controller = factory.makeEditMyPhotoViewController(coordinator: self)
+        editMyPhotoViewControllerDelegate = controller as? EditMyPhotoViewControllerDelegate
+        
         navigation.pushViewController(controller, animated: true)
     }
 }

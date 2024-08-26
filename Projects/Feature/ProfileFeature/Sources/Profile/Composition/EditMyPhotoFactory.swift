@@ -14,8 +14,11 @@ public protocol EditMyPhotoFactory {
 
 public final class EditMyPhotoFactoryImp: EditMyPhotoFactory {
     public func makeEditMyPhotoViewController(coordinator: EditMyPhotoViewControllerCoordinator) -> UIViewController {
-        let controller = EditMyPhotoViewController(coordinator: coordinator)
-        
+        let viewModel = EditMyPhotoViewModel()
+        let controller = EditMyPhotoViewController(
+            viewModel: viewModel,
+            coordinator: coordinator
+        )
         return controller
     }
     

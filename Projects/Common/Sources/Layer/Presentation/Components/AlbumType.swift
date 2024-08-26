@@ -9,7 +9,7 @@
 import AVFoundation
 import UIKit
 
-public struct AlbumType {
+public struct AlbumType: Equatable {
     public let image: UIImage?
     public let avAsset: AVAsset?
     

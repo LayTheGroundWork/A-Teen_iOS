@@ -41,13 +41,7 @@ public final class SignUpViewModel {
     
     //Category
     public var category: CategoryType = CategoryType.none
-    
-    
-    //SelectPhoto
-    var selectPhotoList: [AlbumType] = [.init(image: nil), .init(image: nil)]
-    
-    private let authService = MyPhotoAuthService()
-    
+   
     let categoryExplain: [CategoryType] = [
         .beauty,
         .exercise,
@@ -57,6 +51,13 @@ public final class SignUpViewModel {
         .etc
     ]
     
+    
+    //SelectPhoto
+    var selectPhotoList: [AlbumType] = [.init(image: nil), .init(image: nil)]
+    
+    private let authService = MyPhotoAuthService()
+    
+
     // MARK: - Helpers
     public func searchSchoolData(completion: @escaping () -> Void) {
         state.send(.loading)

@@ -19,6 +19,8 @@
 		418DB2222C7C5F6F00F49448 /* EditMyPhotoFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418DB2212C7C5F6F00F49448 /* EditMyPhotoFactory.swift */; };
 		418DB2242C7C613800F49448 /* ProfileCoordinator+EditMyPhotoCoordinatorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418DB2232C7C613800F49448 /* ProfileCoordinator+EditMyPhotoCoordinatorDelegate.swift */; };
 		418DB2262C7C662600F49448 /* EditMyPhotoCoordinator+EditMyPhotoViewControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418DB2252C7C662600F49448 /* EditMyPhotoCoordinator+EditMyPhotoViewControllerCoordinator.swift */; };
+		418DB2282C7C6F0700F49448 /* EditMyPhotoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418DB2272C7C6F0700F49448 /* EditMyPhotoViewModel.swift */; };
+		418DB22A2C7C71F700F49448 /* EditMyPhotoCoordinator+AlbumCoordinatorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418DB2292C7C71F700F49448 /* EditMyPhotoCoordinator+AlbumCoordinatorDelegate.swift */; };
 		4AFD0F9D8DF425434B63259A /* AddLinkCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F747AB2A08BCECA60C35CF12 /* AddLinkCollectionViewCell.swift */; };
 		50C7EBDFF11158934C9027D2 /* SettingsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2FF38E5388DAF2F177352A /* SettingsCoordinator.swift */; };
 		55FE9E485CF63075412F9235 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93A8444F9FE80E07A61F92F5 /* SettingsViewModel.swift */; };
@@ -102,6 +104,8 @@
 		418DB2212C7C5F6F00F49448 /* EditMyPhotoFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditMyPhotoFactory.swift; sourceTree = "<group>"; };
 		418DB2232C7C613800F49448 /* ProfileCoordinator+EditMyPhotoCoordinatorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProfileCoordinator+EditMyPhotoCoordinatorDelegate.swift"; sourceTree = "<group>"; };
 		418DB2252C7C662600F49448 /* EditMyPhotoCoordinator+EditMyPhotoViewControllerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EditMyPhotoCoordinator+EditMyPhotoViewControllerCoordinator.swift"; sourceTree = "<group>"; };
+		418DB2272C7C6F0700F49448 /* EditMyPhotoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditMyPhotoViewModel.swift; sourceTree = "<group>"; };
+		418DB2292C7C71F700F49448 /* EditMyPhotoCoordinator+AlbumCoordinatorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EditMyPhotoCoordinator+AlbumCoordinatorDelegate.swift"; sourceTree = "<group>"; };
 		46B648E1C1E5A399E3BF63E9 /* LinksCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinksCollectionViewCell.swift; sourceTree = "<group>"; };
 		47A6CE17EA77D71FB5B6272E /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
 		4A67824CBC94EB926F41E23B /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
@@ -221,6 +225,7 @@
 				7E7C5274F794A02F231B0ACB /* QuestionsDialogFactory.swift */,
 				B4BFD11C9B12400672E424F6 /* QuestionsFactory.swift */,
 				418DB21F2C7C5F6900F49448 /* EditMyPhotoCoordinator.swift */,
+				418DB2292C7C71F700F49448 /* EditMyPhotoCoordinator+AlbumCoordinatorDelegate.swift */,
 				418DB2252C7C662600F49448 /* EditMyPhotoCoordinator+EditMyPhotoViewControllerCoordinator.swift */,
 				418DB2232C7C613800F49448 /* ProfileCoordinator+EditMyPhotoCoordinatorDelegate.swift */,
 				418DB2212C7C5F6F00F49448 /* EditMyPhotoFactory.swift */,
@@ -259,6 +264,7 @@
 			children = (
 				78F33F76681A8564608F3DE7 /* IntroduceViewModel.swift */,
 				4A67824CBC94EB926F41E23B /* ProfileViewModel.swift */,
+				418DB2272C7C6F0700F49448 /* EditMyPhotoViewModel.swift */,
 				087243634A26307538522694 /* QuestionsViewModel.swift */,
 			);
 			path = ViewModel;
@@ -421,6 +427,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9A66A7C60A02BE8DC358B9F8 /* SettingsCoordinator+SettingsViewControllerCoordinator.swift in Sources */,
+				418DB22A2C7C71F700F49448 /* EditMyPhotoCoordinator+AlbumCoordinatorDelegate.swift in Sources */,
 				FBBDC5A8AF21B30E8F2ED784 /* SettingsCoordinator+UserConfigurationCoordinatorDelegate.swift in Sources */,
 				50C7EBDFF11158934C9027D2 /* SettingsCoordinator.swift in Sources */,
 				FD3E2FA7C3E0DA9EEDA147B7 /* SettingsFactory.swift in Sources */,
@@ -458,6 +465,7 @@
 				DB5FC79A2A35D69A18839684 /* QuestionsCoordinator.swift in Sources */,
 				9DC0756BE25C16A875E5F6B3 /* QuestionsDialogCoordinator+QuestionsDialogViewControllerCoordinator.swift in Sources */,
 				2FDA4DB82F6B97790A75DA23 /* QuestionsDialogCoordinator.swift in Sources */,
+				418DB2282C7C6F0700F49448 /* EditMyPhotoViewModel.swift in Sources */,
 				F5311B514F7744F501D594C6 /* QuestionsDialogFactory.swift in Sources */,
 				A84231931BFBC9A0E1E7D8C9 /* QuestionsFactory.swift in Sources */,
 				418DB2202C7C5F6900F49448 /* EditMyPhotoCoordinator.swift in Sources */,

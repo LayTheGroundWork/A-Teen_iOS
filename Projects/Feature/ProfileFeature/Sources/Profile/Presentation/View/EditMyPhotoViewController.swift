@@ -15,12 +15,19 @@ import UIKit
 public protocol EditMyPhotoViewControllerCoordinator: AnyObject {
     func didTabBackButton()
     func configTabbarState(view: ProfileFeatureViewNames)
+    func didSelectCell(item: Int)
+    func didTabCompleteButton()
+}
+
+public protocol EditMyPhotoViewControllerDelegate: AnyObject {
+    func updateImage(index: Int, selectItem: AlbumType)
 }
 
 final class EditMyPhotoViewController: UIViewController {
     // MARK: - Public properties
     
     // MARK: - Private properties
+    private var viewModel: EditMyPhotoViewModel
     private weak var coordinator: EditMyPhotoViewControllerCoordinator?
     
     private lazy var backButton: UIBarButtonItem = {
@@ -91,7 +98,11 @@ final class EditMyPhotoViewController: UIViewController {
         coordinator?.configTabbarState(view: .editPhoto)
     }
     
-    init(coordinator: EditMyPhotoViewControllerCoordinator) {
+    init(
+        viewModel: EditMyPhotoViewModel,
+        coordinator: EditMyPhotoViewControllerCoordinator
+    ) {
+        self.viewModel = viewModel
         self.coordinator = coordinator
         super.init(nibName: nil, bundle: nil)
     }
@@ -132,7 +143,7 @@ final class EditMyPhotoViewController: UIViewController {
     }
     
     private func setButtonActions() {
-        
+        completeButton.addTarget(self, action: #selector(didSelectCompleteButton(_:)), for: .touchUpInside)
     }
     
     // MARK: - Actions
@@ -140,12 +151,27 @@ final class EditMyPhotoViewController: UIViewController {
         coordinator?.didTabBackButton()
     }
     
+    @objc private func didSelectCompleteButton(_ sender: UIButton) {
+        coordinator?.didTabCompleteButton()
+    }
+    
+    // MARK: - Helpers
+    func updateCompleteButtonState(_ state: Bool) {
+        completeButton.isEnabled = state
+        completeButton.backgroundColor = if state { UIColor.black } else { DesignSystemAsset.gray03.color }
+    }
 }
 
 // MARK: - UICollectionViewDataSource
 extension EditMyPhotoViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        1
+        let count = viewModel.myPhotoList.count
+        
+        if count == 10 {
+            return count
+        } else {
+            return count + 1
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -160,13 +186,36 @@ extension EditMyPhotoViewController: UICollectionViewDataSource {
         
         cell.setCellCustom(item: itemIndex)
 
+        guard itemIndex < viewModel.myPhotoList.count || viewModel.myPhotoList.count == maxPhotoCount else {
+            return cell
+        }
+        
+        let selectedItem = viewModel.myPhotoList[itemIndex]
+        if let image = selectedItem.image {
+            cell.setImage(image: image)
+        } else if let asset = selectedItem.avAsset {
+            viewModel.extractImageFromVideo(asset: asset) { [weak cell] image in
+                cell?.setImage(image: image)
+            }
+        }
+        
         return cell
     }
-    
-    
 }
 
 // MARK: - UICollectionViewDelegate
 extension EditMyPhotoViewController: UICollectionViewDelegate {
-    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        coordinator?.didSelectCell(item: indexPath.item)
+    }
+}
+
+// MARK: - EditMyPhotoViewControllerDelegate
+extension EditMyPhotoViewController: EditMyPhotoViewControllerDelegate {
+    func updateImage(index: Int, selectItem: AlbumType) {
+        viewModel.addAlbumItem(index: index, albumType: selectItem) {
+            updateCompleteButtonState(viewModel.checkEditValue())
+            collectionView.reloadData()
+        }
+    }
 }
