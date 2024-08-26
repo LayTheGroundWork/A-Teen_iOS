@@ -32,30 +32,25 @@ public final class TeenDetailViewController: UIViewController {
     private var selectedLabelText: String?
 
     private lazy var backButton: UIBarButtonItem = {
-        let button = UIButton()
-        button.setImage(DesignSystemAsset.leftArrowIcon.image,
-                        for: .normal)
-        button.tintColor = UIColor.black
-        button.addTarget(self,
-                         action: #selector(didSelectBackButton(_:)),
-                         for: .touchUpInside)
+        let button = UIBarButtonItem(
+            image: DesignSystemAsset.leftArrowIcon.image,
+            style: .plain,
+            target: self,
+            action: #selector(didSelectBackButton))
 
+        button.tintColor = UIColor.black
+        return button
+    }()
+    
+    private lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.text = (selectedLabelText ?? AppLocalized.teenDetailTextLabel).replacingOccurrences(of: "\n", with: " ")
         label.textColor = UIColor.black
-        label.font = .customFont(forTextStyle: .title3,
-                                 weight: .bold)
-        label.textAlignment = .center
-
-        let customView = UIStackView(arrangedSubviews: [button, label])
-        customView.axis = .horizontal
-        customView.alignment = .center
-        customView.spacing = 10
-
-        let buttonItem = UIBarButtonItem(customView: customView)
-        return buttonItem
+        label.font = UIFont.customFont(forTextStyle: .title3, weight: .bold)
+        
+        return label
     }()
-
+    
     private lazy var tableView: UITableView = {
         let tableView = UITableView()
         tableView.separatorStyle = .none
@@ -107,7 +102,8 @@ public final class TeenDetailViewController: UIViewController {
         view.backgroundColor = UIColor.systemBackground
 
         navigationItem.leftBarButtonItem = backButton
-
+        navigationItem.titleView = titleLabel
+        
         self.view.addSubview(tableView)
 
     }

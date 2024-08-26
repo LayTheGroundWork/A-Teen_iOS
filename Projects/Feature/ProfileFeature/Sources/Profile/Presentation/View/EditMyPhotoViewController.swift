@@ -45,6 +45,7 @@ final class EditMyPhotoViewController: UIViewController {
         let label = UILabel()
         label.text = AppLocalized.editMyPhotoTitle
         label.textColor = UIColor.black
+        label.font = UIFont.customFont(forTextStyle: .title3, weight: .bold)
         
         return label
     }()
