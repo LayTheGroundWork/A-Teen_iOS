@@ -62,9 +62,9 @@ public struct ViewValues {
     public static let opacityContainerSpinner = 0.3
     
     // MARK: - Media
-    public static let selectPhotoCellWidth = width * 0.68
+    public static let selectPhotoCellWidth = selectPhotoCellHeight * 0.856
+    public static let selectPhotoCellHeight = height * 0.29
     public static let cellWidth = (width - 48) / 2
-    public static let cellHeight = selectPhotoCellWidth * 1.17
     
     public static let selectCatogoryCellWidth = width * 0.49
     public static let selectCategoryCellHeight = selectCatogoryCellWidth * 1.17

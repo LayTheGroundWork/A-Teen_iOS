@@ -191,27 +191,27 @@ public final class CertificationCodeCollectionViewCell: UICollectionViewCell {
         
         convertVerificationCode()
         
-//        self.delegate?.didSelectNextButton(registrationStatus: .notSignedUp)
+        self.delegate?.didSelectNextButton(registrationStatus: .notSignedUp)
         
         // TODO: - 다음으로 이동할때, 가입된 사용자인지 검증 후 보내주기
-        viewModel?.verificationCode { [weak self] result in
-            guard let self = self else { return }
-            switch result {
-            case .success(.availablePhoneNumber):
-                self.stopTimer()
-                DispatchQueue.main.async {
-                    self.delegate?.didSelectNextButton(registrationStatus: .notSignedUp)
-                }
-            case .success(.existedUser):
-                DispatchQueue.main.async {
-                    self.delegate?.didSelectNextButton(registrationStatus: .signedUp)
-                }
-            case .failure(_):
-                DispatchQueue.main.async {
-                    self.delegate?.didSelectNextButton(registrationStatus: .inValidCodeNumber)
-                }
-            }
-        }
+//        viewModel?.verificationCode { [weak self] result in
+//            guard let self = self else { return }
+//            switch result {
+//            case .success(.availablePhoneNumber):
+//                self.stopTimer()
+//                DispatchQueue.main.async {
+//                    self.delegate?.didSelectNextButton(registrationStatus: .notSignedUp)
+//                }
+//            case .success(.existedUser):
+//                DispatchQueue.main.async {
+//                    self.delegate?.didSelectNextButton(registrationStatus: .signedUp)
+//                }
+//            case .failure(_):
+//                DispatchQueue.main.async {
+//                    self.delegate?.didSelectNextButton(registrationStatus: .inValidCodeNumber)
+//                }
+//            }
+//        }
     }
     
     @objc private func didSelectResendButton(_ sender: UIButton) {

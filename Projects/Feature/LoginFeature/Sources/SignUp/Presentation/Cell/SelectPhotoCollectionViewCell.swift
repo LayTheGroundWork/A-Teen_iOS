@@ -50,7 +50,7 @@ final class SelectPhotoCollectionViewCell: UICollectionViewCell {
         layout.sectionInset = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
         layout.minimumLineSpacing = 16
         layout.minimumInteritemSpacing = 16
-        layout.itemSize = CGSize(width: ViewValues.selectPhotoCellWidth, height: ViewValues.cellHeight)
+        layout.itemSize = CGSize(width: ViewValues.selectPhotoCellWidth, height: ViewValues.selectPhotoCellHeight)
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.dataSource = self
@@ -96,7 +96,7 @@ final class SelectPhotoCollectionViewCell: UICollectionViewCell {
         collectionView.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview()
             make.top.equalTo(subTitleLabel.snp.bottom).offset(26)
-            make.height.equalTo(ViewValues.cellHeight)
+            make.height.equalTo(ViewValues.selectPhotoCellHeight)
         }
         
         photoGuideButton.snp.makeConstraints { make in
