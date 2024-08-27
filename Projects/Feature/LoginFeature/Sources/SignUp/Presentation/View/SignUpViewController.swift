@@ -334,7 +334,7 @@ extension SignUpViewController: UICollectionViewDataSource {
             else {
                 return UICollectionViewCell()
             }
-            updateNextButtonState(true)
+
             delegate = cell
             cell.setProperties(
                 coordinator: coordinator,
@@ -345,6 +345,17 @@ extension SignUpViewController: UICollectionViewDataSource {
 
         default:
             return UICollectionViewCell()
+        }
+    }
+    
+    func collectionView(
+        _ collectionView: UICollectionView,
+        willDisplay cell: UICollectionViewCell,
+        forItemAt indexPath: IndexPath
+    ) {
+        if indexPath.section == 5, cell is SelectPhotoCollectionViewCell {
+            updateNextButtonState(true)
+            delegate = cell as? SelectPhotoCollectionViewCell
         }
     }
 }

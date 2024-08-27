@@ -141,6 +141,7 @@ extension SelectCategoryCollectionViewCell: UICollectionViewDelegate {
         viewModel?.changeCategory(index: indexPath.item) {
             guard let cell = collectionView.cellForItem(at: indexPath) as? CategoryButtonCollectionViewCell else { return }
             print("셀 색상 변경")
+            
             cell.selectCell()
             
             (0..<collectionView.numberOfItems(inSection: indexPath.section))
