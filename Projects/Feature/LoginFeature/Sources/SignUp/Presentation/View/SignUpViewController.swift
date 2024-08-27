@@ -136,7 +136,7 @@ final class SignUpViewController: UIViewController {
             make.trailing.equalToSuperview().offset(-ViewValues.defaultPadding)
             make.bottom.equalToSuperview().offset(-50)
             make.width.equalTo(ViewValues.defaultButtonWidth)
-            make.height.equalTo(ViewValues.defaultButtonWidth)
+            make.height.equalTo(ViewValues.defaultButtonHeight)
         }
     }
     
@@ -201,19 +201,19 @@ final class SignUpViewController: UIViewController {
             cell?.birthButton.customLabel.text = AppLocalized.userBirthSelectButton
             break
         // 학교 선택
-        case 5:
+        case 3:
             let cell = collectionView.cellForItem(at: currentIndexPath) as? SearchSchoolCollectionViewCell
             cell?.schoolTextField.text = .empty
             cell?.tableBackgroundView.isHidden = true
             cell?.contentView.endEditing(true)
             break
         // 카테고리 선택
-        case 3:
+        case 4:
             let cell = collectionView.cellForItem(at: currentIndexPath) as? SelectCategoryCollectionViewCell
             cell?.contentView.endEditing(true)
             break
         // 사진 선택
-        case 4:
+        case 5:
             let cell = collectionView.cellForItem(at: currentIndexPath) as? SelectPhotoCollectionViewCell
             cell?.contentView.endEditing(true)
             break
@@ -296,7 +296,7 @@ extension SignUpViewController: UICollectionViewDataSource {
             
             return cell
    
-        case 5:
+        case 3:
             guard
                 let cell = collectionView.dequeueReusableCell(
                 withReuseIdentifier: SearchSchoolCollectionViewCell.reuseIdentifier,
@@ -311,7 +311,7 @@ extension SignUpViewController: UICollectionViewDataSource {
             )
             return cell
             
-        case 3:
+        case 4:
             guard
                 let cell = collectionView.dequeueReusableCell(
                 withReuseIdentifier: SelectCategoryCollectionViewCell.reuseIdentifier,
@@ -326,7 +326,7 @@ extension SignUpViewController: UICollectionViewDataSource {
             )
             return cell
             
-        case 4:
+        case 5:
             guard
                 let cell = collectionView.dequeueReusableCell(
                 withReuseIdentifier: SelectPhotoCollectionViewCell.reuseIdentifier,
