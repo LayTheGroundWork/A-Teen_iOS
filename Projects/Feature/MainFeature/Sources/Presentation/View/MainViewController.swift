@@ -21,11 +21,36 @@ public protocol MainViewControllerCoordinator: AnyObject {
     func didSelectAnotherTeenCell(frame: CGRect, todayTeen: TodayTeen)
 }
 
+protocol MainViewControllerDelegate: AnyObject {
+    func reStartTimer()
+}
+
 public final class MainViewController: UIViewController {
+    // MARK: - Private properties
     private var viewModel: MainViewModel
     private weak var coordinator: MainViewControllerCoordinator?
     
-    // MARK: - Public properties
+    private var startContentOffset: CGFloat = 0.0
+    
+    private var naviHeightAnchor: Constraint?
+    
+    private lazy var customNaviView = CustomNaviView()
+    // CustomNaviView(frame: CGRect(x: 0, y: 0, width: ViewValues.width, height: 40))
+    
+    private lazy var categoryCollectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        let width: CGFloat = 100
+        layout.scrollDirection = .horizontal
+        layout.minimumLineSpacing = 10
+        layout.minimumInteritemSpacing = 0
+        layout.sectionInset = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
+        layout.itemSize = CGSize(width: width, height: 47)
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionView.backgroundColor = UIColor.white
+        collectionView.showsHorizontalScrollIndicator = false
+        return collectionView
+    }()
+    
     private lazy var tableView: UITableView = {
         let tableView = UITableView()
         tableView.separatorStyle = .none
@@ -40,7 +65,7 @@ public final class MainViewController: UIViewController {
         tableView.register(TeenTableViewCell.self, forCellReuseIdentifier: TeenTableViewCell.reuseIdentifier)
         return tableView
     }()
-
+    
     // MARK: - Life Cycle
     init(
         viewModel: MainViewModel,
@@ -57,6 +82,7 @@ public final class MainViewController: UIViewController {
     
     public override func viewDidLoad() {
         super.viewDidLoad()
+        registerDelegate()
         configUserInterface()
         configLayout()
         
@@ -66,22 +92,40 @@ public final class MainViewController: UIViewController {
                                                object: nil)
     }
     
-    public override func viewWillAppear(_ animated: Bool) {
-        self.navigationItem.titleView =  CustomNaviView(frame: CGRect(x: 0, y: 0, width: ViewValues.width, height: 40))
+    // MARK: - Helpers
+    private func registerDelegate() {
+        self.categoryCollectionView.dataSource = self
+        self.categoryCollectionView.delegate = self
+        self.categoryCollectionView.register(CategoryTodayCollectionViewCell.self, forCellWithReuseIdentifier: CategoryTodayCollectionViewCell.reuseIdentifier)
     }
     
-    // MARK: - Helpers
     private func configUserInterface() {
+        self.navigationController?.isNavigationBarHidden = true
+        
         view.backgroundColor = UIColor.systemBackground
-
-        //테이블 뷰
+        
+        self.view.addSubview(customNaviView)
+        self.view.addSubview(categoryCollectionView)
         self.view.addSubview(tableView)
     }
     
     private func configLayout() {
+        self.customNaviView.snp.makeConstraints { make in
+            make.top.equalTo(self.view.safeAreaLayoutGuide.snp.top)
+            make.leading.equalToSuperview().offset(ViewValues.defaultPadding)
+            make.trailing.equalToSuperview().offset(-ViewValues.defaultPadding)
+            self.naviHeightAnchor = make.height.equalTo(40).constraint
+        }
+        
+        self.categoryCollectionView.snp.makeConstraints { make in
+            make.top.equalTo(self.customNaviView.snp.bottom)
+            make.leading.trailing.equalToSuperview()
+            make.height.equalTo(60)
+        }
+        
         self.tableView.snp.makeConstraints { make in
             make.leading.trailing.bottom.equalToSuperview()
-            make.top.equalTo(self.view.safeAreaLayoutGuide.snp.top)
+            make.top.equalTo(categoryCollectionView.snp.bottom)
         }
     }
     
@@ -89,10 +133,38 @@ public final class MainViewController: UIViewController {
     @objc private func updateTableView(_ notification: Notification) {
         print("LogOut/LogIn -> Reload Data")
         tableView.reloadData()
+        reStartTimer()
     }
 }
 
-// MARK: - Extensions here
+// MARK: - UIScrollViewDelegate
+extension MainViewController: UIScrollViewDelegate {
+    public func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        startContentOffset = scrollView.contentOffset.y
+    }
+    
+    public func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        let offsetY = scrollView.contentOffset.y
+
+        if offsetY > startContentOffset {
+            UIView.animate(withDuration: 0.2, delay: 0, options: .showHideTransitionViews) {
+                self.naviHeightAnchor?.update(offset: 0)
+                self.customNaviView.isHidden = true
+                
+                self.view.layoutIfNeeded()
+            }
+        } else {
+            self.customNaviView.isHidden = false
+            
+            UIView.animate(withDuration: 0.2, delay: 0, options: .showHideTransitionViews) {
+                self.naviHeightAnchor?.update(offset: 40)
+                
+                self.view.layoutIfNeeded()
+            }
+        }
+        startContentOffset = 0.0
+    }
+}
 
 // MARK: - UITableViewDataSource
 extension MainViewController: UITableViewDataSource {
@@ -236,9 +308,9 @@ extension MainViewController: UITableViewDelegate {
     public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch indexPath.section {
         case 0:
-            return 187 + ViewValues.todayTeenImageHeight
+            return 111 + ViewValues.todayTeenImageHeight
         case 1:
-            return 369
+            return 355
         case 2:
             return 358
         case 3:
@@ -248,5 +320,68 @@ extension MainViewController: UITableViewDelegate {
         default:
             return 0
         }
+    }
+}
+
+// MARK: - UICollectionViewDataSource
+extension MainViewController: UICollectionViewDataSource {
+    public func collectionView(
+        _ collectionView: UICollectionView,
+        cellForItemAt indexPath: IndexPath
+    ) -> UICollectionViewCell {
+        guard
+            let cell = collectionView.dequeueReusableCell(
+                withReuseIdentifier: CategoryTodayCollectionViewCell.reuseIdentifier,
+                for: indexPath) as? CategoryTodayCollectionViewCell
+        else {
+            return UICollectionViewCell()
+        }
+        
+        cell.setButton(category: viewModel.getCategoryItemMainViewModel(row: indexPath.row))
+        return cell
+        
+    }
+    
+    public func collectionView(
+        _ collectionView: UICollectionView,
+        numberOfItemsInSection section: Int
+    ) -> Int {
+        viewModel.categoryList.count
+    }
+}
+
+// MARK: - UICollectionViewDelegate
+extension MainViewController: UICollectionViewDelegate {
+    public func collectionView(
+        _ collectionView: UICollectionView,
+        didSelectItemAt indexPath: IndexPath
+    ) {
+        if let attributes = collectionView.layoutAttributesForItem(at: indexPath) {
+            let cellFrame = attributes.frame
+            var targetOffset = cellFrame.origin.x - 16  // Inset: 16
+            // 컬렉션 뷰의 최대 offset
+            let maxOffset = collectionView.contentSize.width - collectionView.bounds.width
+            // 마지막 셀이 보이면, 왼쪽에 고정되지 않도록 하는 로직
+            if targetOffset > maxOffset {
+                targetOffset = maxOffset
+            }
+            // offset 조정: 0보다 작을 수 없음
+            let newOffset = max(0, targetOffset)
+            // offset 설정
+            collectionView.setContentOffset(
+                CGPoint(x: newOffset, y: 0),
+                animated: true
+            )
+        }
+        
+        viewModel.didSelectCategoryCell(row: indexPath.row)
+        collectionView.reloadData()
+    }
+}
+
+extension MainViewController: MainViewControllerDelegate {
+    func reStartTimer() {
+        guard let cell = tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? TodayTeenTableViewCell else { return }
+        cell.startAutoScroll()
     }
 }

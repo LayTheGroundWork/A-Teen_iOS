@@ -21,6 +21,8 @@ final class ReportPopoverViewController: UIViewController {
     
     // MARK: - Private properties
     private weak var coordinator: ReportPopoverViewControllerCoordinator?
+    
+    private var popOverViewHeightAnchor: Constraint?
 
     private lazy var popoverView: UIView = {
         let view = UIView()
@@ -34,12 +36,14 @@ final class ReportPopoverViewController: UIViewController {
     private lazy var reportButton: UIButton = {
         let button = CustomPopoverButton(imageName: DesignSystemAsset.reportIcon.name,
                                          labelText: AppLocalized.reportButton)
+        button.isHidden = true
         return button
     }()
     
     private lazy var blockButton: UIButton = {
         let button = CustomPopoverButton(imageName: DesignSystemAsset.blockIcon.name,
                                          labelText: AppLocalized.blockButton)
+        button.isHidden = true
         return button
     }()
     
@@ -63,6 +67,7 @@ final class ReportPopoverViewController: UIViewController {
         configLayout()
         setupActions()
         setupDismissGesture()
+        animation()
     }
     
     // MARK: - Helpers
@@ -76,15 +81,16 @@ final class ReportPopoverViewController: UIViewController {
     private func configLayout() {
         popoverView.snp.makeConstraints { make in
             make.trailing.equalToSuperview().offset(-95)
-            print(popoverPosition.origin.y)
+            make.width.equalTo(144)
+            self.popOverViewHeightAnchor = make.height.equalTo(0).constraint
+
             if popoverPosition.origin.y >= 0 {
-                make.top.equalToSuperview().offset(popoverPosition.origin.y - 120 + popoverPosition.size.height)
+                make.bottom.equalToSuperview().offset(-ViewValues.height + popoverPosition.origin.y + popoverPosition.size.height - 48)
             } else {
                 make.top.equalToSuperview().offset(popoverPosition.origin.y - 60 + popoverPosition.size.height)
             }
-            make.height.equalTo(80)
-            make.width.equalTo(144)
         }
+        self.view.layoutIfNeeded()
         
         reportButton.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
@@ -117,6 +123,17 @@ final class ReportPopoverViewController: UIViewController {
         view.addGestureRecognizer(tapGesture)
     }
     
+    private func animation() {
+        UIView.animate(withDuration: 0.2, delay: 0, options: .showHideTransitionViews) {
+            self.popOverViewHeightAnchor?.update(offset: 80)
+            
+            self.view.layoutIfNeeded()
+        } completion: { _ in
+            self.reportButton.isHidden = false
+            self.blockButton.isHidden = false
+        }
+    }
+    
     // MARK: - Actions
     @objc private func clickReportButton(_ sender: UIButton) {
         coordinator?.didSelectReportButton()
@@ -127,7 +144,15 @@ final class ReportPopoverViewController: UIViewController {
     }
     
     @objc private func dismissPopover() {
-        coordinator?.didFinish()
+        UIView.animate(withDuration: 0.2, delay: 0, options: .showHideTransitionViews) {
+            self.reportButton.isHidden = true
+            self.blockButton.isHidden = true
+            self.popOverViewHeightAnchor?.update(offset: 0)
+            
+            self.view.layoutIfNeeded()
+        } completion: { _ in
+            self.coordinator?.didFinish()
+        }
     }
 }
 

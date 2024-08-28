@@ -17,6 +17,15 @@ extension ProfileCoordinator: ProfileViewControllerCoordinator {
         addChildCoordinatorStart(coordinator)
     }
     
+    public func didTabEditMyPhotoButton() {
+        let coordinator = factory.makeEditMyPhotoCoordinator(
+            navigation: navigation,
+            coordinatorProvider: coordinatorProvider,
+            childCoordinators: childCoordinators,
+            delegate: self)
+        addChildCoordinatorStart(coordinator)
+    }
+    
     public func didTabLinkButton() {
         let coordinator = factory.makeLinksDialogCoordinator(delegate: self)
         addChildCoordinatorStart(coordinator)

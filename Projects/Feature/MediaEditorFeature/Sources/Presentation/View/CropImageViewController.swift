@@ -188,7 +188,8 @@ final class CropImageViewController: UIViewController, UIScrollViewDelegate {
     
     @objc func didSelectCheckButton(_ sender: UIButton) {
         let image = cropImage()
-        self.navigationController?.pushViewController(SelectCategoryPhotoViewController(selectImage: image), animated: true)
+        coordinator?.didSelectCheckButton(selectImage: image)
+//        self.navigationController?.pushViewController(SelectCategoryPhotoViewController(selectImage: image), animated: true)
     }
     
     private func cropImage() -> UIImage {

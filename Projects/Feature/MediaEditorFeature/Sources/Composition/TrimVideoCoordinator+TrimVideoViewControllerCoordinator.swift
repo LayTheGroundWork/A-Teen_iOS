@@ -13,10 +13,15 @@ import FeatureDependency
 
 extension TrimVideoCoordinator: TrimVideoViewControllerCoordinator {
     public func didSelectCheckButton(asset: AVAsset, isPossible: Bool) {
-        
         switch isPossible {
         case true:
-            print("영상 사용 가능 다음 화면으로 이동")
+            let coordinator = factory.makeSelectCategoryVideoCoordinator(
+                navigation: navigation,
+                childCoordinators: childCoordinators,
+                delegate: self,
+                selectAsset: asset)
+
+            addChildCoordinatorStart(coordinator)
         case false:
             let coordinator = coordinatorProvider.makeAlertCoordinator(
                 dialogType: .oneButton,

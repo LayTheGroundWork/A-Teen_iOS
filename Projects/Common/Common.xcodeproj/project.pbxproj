@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 55;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -14,6 +14,7 @@
 		2AB0F9ED51BBDC9373BDDFF2 /* AppLocalized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 170170CE0C43F0B37C75808F /* AppLocalized.swift */; };
 		4043066FDA1D66C0826483A6 /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E981128731E287F70D41FC5 /* Question.swift */; };
 		4BFF6DAF726DD208666270E4 /* SpinnerDisplayable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA225B41A556B6629B92DCBD /* SpinnerDisplayable.swift */; };
+		50A60507DBC78EC7BB8CCCA8 /* CategoryType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7953C495FF4288845D4E69B4 /* CategoryType.swift */; };
 		51DF4E18342ED9EC34A9EBE8 /* TodayTeen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712D368CA33D5EB13A4BBDBA /* TodayTeen.swift */; };
 		53BD92714B0C3B78781D3513 /* AlertDialogType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878FDF405C052006C4AA2688 /* AlertDialogType.swift */; };
 		53F06C00D26255EC07247A70 /* CustomDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = E81A216314320B2606E3AEC3 /* CustomDialog.swift */; };
@@ -31,6 +32,7 @@
 		C7327928996CA0A97E1DB6E5 /* MediaType.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7E28589EB048B9F540E6C97 /* MediaType.swift */; };
 		DA0376CBDFA9631AC9159BFD /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E93D6A592CC58F27504DAC /* BaseViewModel.swift */; };
 		E8809AB3BC4F8A508A69E652 /* AVAsset+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636ED55C583CAE77274FECAE /* AVAsset+Utils.swift */; };
+		F19A11CF97A8237CDA4B8E19 /* AlbumType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 895CEBF9131539C3F94BC451 /* AlbumType.swift */; };
 		FE6E2ACADAA4EC0C24B63F00 /* Notification+Name.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFCDE72C33C19AADE9F4B8B5 /* Notification+Name.swift */; };
 /* End PBXBuildFile section */
 
@@ -61,8 +63,10 @@
 		6A81A2C9A17ACE100D4CEDE1 /* TabTag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabTag.swift; sourceTree = "<group>"; };
 		6AE1134CEE040274D4E1D68F /* AssetInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetInfo.swift; sourceTree = "<group>"; };
 		712D368CA33D5EB13A4BBDBA /* TodayTeen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayTeen.swift; sourceTree = "<group>"; };
+		7953C495FF4288845D4E69B4 /* CategoryType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryType.swift; sourceTree = "<group>"; };
 		82D7601C0DA86991BE4509BC /* SignType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignType.swift; sourceTree = "<group>"; };
 		878FDF405C052006C4AA2688 /* AlertDialogType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertDialogType.swift; sourceTree = "<group>"; };
+		895CEBF9131539C3F94BC451 /* AlbumType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumType.swift; sourceTree = "<group>"; };
 		AFCDE72C33C19AADE9F4B8B5 /* Notification+Name.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification+Name.swift"; sourceTree = "<group>"; };
 		B7E28589EB048B9F540E6C97 /* MediaType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaType.swift; sourceTree = "<group>"; };
 		BEE98649F065A0BDE45EED71 /* String+Contraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Contraints.swift"; sourceTree = "<group>"; };
@@ -140,8 +144,10 @@
 		52576A6025EE611E28726323 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				895CEBF9131539C3F94BC451 /* AlbumType.swift */,
 				878FDF405C052006C4AA2688 /* AlertDialogType.swift */,
 				6AE1134CEE040274D4E1D68F /* AssetInfo.swift */,
+				7953C495FF4288845D4E69B4 /* CategoryType.swift */,
 				EED8FBB7E6BA564519AA6407 /* Debouncer.swift */,
 				B7E28589EB048B9F540E6C97 /* MediaType.swift */,
 				82D7601C0DA86991BE4509BC /* SignType.swift */,
@@ -290,8 +296,9 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
-				LastUpgradeCheck = 1540;
 				ORGANIZATIONNAME = ATeen;
+				TargetAttributes = {
+				};
 			};
 			buildConfigurationList = 7A960902591CDB4F68854742 /* Build configuration list for PBXProject "Common" */;
 			compatibilityVersion = "Xcode 14.0";
@@ -339,8 +346,10 @@
 				51DF4E18342ED9EC34A9EBE8 /* TodayTeen.swift in Sources */,
 				8C216E86336FF6D62BC28AEF /* TournamentCategory.swift in Sources */,
 				2754EE32C637ABD22C607FAD /* PhotoAuthService.swift in Sources */,
+				F19A11CF97A8237CDA4B8E19 /* AlbumType.swift in Sources */,
 				53BD92714B0C3B78781D3513 /* AlertDialogType.swift in Sources */,
 				5F01EB50F693B3D47824FDF2 /* AssetInfo.swift in Sources */,
+				50A60507DBC78EC7BB8CCCA8 /* CategoryType.swift in Sources */,
 				C62C2C499AE8058EC46454E9 /* Debouncer.swift in Sources */,
 				C7327928996CA0A97E1DB6E5 /* MediaType.swift in Sources */,
 				55E4FC1F94DD90C91BF7B82F /* SignType.swift in Sources */,
@@ -368,7 +377,6 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_MODULE_VERIFIER = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				INFOPLIST_FILE = "Derived/InfoPlists/Common-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
@@ -378,11 +386,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu11 gnu++14";
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					"-ObjC",
-				);
+				OTHER_LDFLAGS = "$(inherited) -ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ATeen.ATeen.Common;
 				PRODUCT_NAME = Common;
 				SDKROOT = iphoneos;
@@ -469,7 +473,6 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_MODULE_VERIFIER = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				INFOPLIST_FILE = "Derived/InfoPlists/Common-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
@@ -479,11 +482,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu11 gnu++14";
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					"-ObjC",
-				);
+				OTHER_LDFLAGS = "$(inherited) -ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ATeen.ATeen.Common;
 				PRODUCT_NAME = Common;
 				SDKROOT = iphoneos;
@@ -491,7 +490,10 @@
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = (
+					"$(inherited)",
+					DEBUG,
+				);
 				SWIFT_COMPILATION_MODE = singlefile;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;

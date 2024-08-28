@@ -27,6 +27,7 @@ public struct ViewValues {
     public static let width = UIScreen.main.bounds.width
     public static let height = UIScreen.main.bounds.height
     public static let halfHeight = height / 2
+    public static let signUpCollectionViewHeight = height * 0.6
     public static let phoneNumberCollectionViewHeight = height * 0.8
     
     public static let todayTeenImageWidth = width - 50
@@ -40,8 +41,8 @@ public struct ViewValues {
     public static let bottomVoteButtonWidth = (width - 48) / 2
     public static let bottomSmallButtonWidth = (bottomVoteButtonWidth - 16) / 2
     
-    public static let signUpNextButtonWidth = width * 0.32
-    public static let signUpNextButtonHeight = 50
+    public static let defaultButtonWidth = width * 0.32
+    public static let defaultButtonHeight = 50
 
     public static let tabBarHegith = 80
     
@@ -50,18 +51,27 @@ public struct ViewValues {
     public static let componentPickerWidth = width / 5
     public static let componentPickerHight = componentPickerWidth * 0.72
     
+    // media
+    public static let selectPhotoCellWidth = selectPhotoCellHeight * 0.856
+    public static let selectPhotoCellHeight = height * 0.29
+    public static let cellWidth = (width - 48) / 2
+    
+    public static let selectCatogoryCellWidth = width * 0.49
+    public static let selectCategoryCellHeight = selectCatogoryCellWidth * 1.16
+    
+    // profile
+    public static let editMyPhotoCollectionViewCellWidth = (width - 48) / 2
+    public static let editMyPhotoCollectionViewCellHeight = editMyPhotoCollectionViewCellWidth * 1.16
+    
     // MARK: - CornerRadius
     public static let defaultRadius: CGFloat = 20
     
     // MARK: - Progress
-    public static let signUpProgress: Float = 0.2
+    public static let signUpProgress: Float = 1 / 6
     
     // MARK: - Spinner
     public static let tagIdentifierSpinner = 123
     public static let opacityContainerSpinner = 0.3
     
-    // MARK: - Media
-    public static let selectPhotoCellWidth = width * 0.69
-    public static let cellWidth = (width - 48) / 2
-    public static let cellHeight = selectPhotoCellWidth * 1.17
+   
 }

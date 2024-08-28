@@ -7,12 +7,20 @@
 //
 
 import UIKit
+import FeatureDependency
 
 public protocol CropImageFactory {
     func makeCropImageViewController(
         selectImage: UIImage,
         coordinator: CropImageViewControllerCoordinator
     ) -> UIViewController
+    
+    func makeSelectCategoryPhotoCoordinator(
+        navigation: Navigation,
+        childCoordinators: [Coordinator],
+        delegate: SelectCategoryPhotoCoordinatorDelegate,
+        selectImage: UIImage
+    ) -> Coordinator
 }
 
 final class CropImageFactoryImp: CropImageFactory {
@@ -24,5 +32,20 @@ final class CropImageFactoryImp: CropImageFactory {
             selectImage: selectImage,
             coordinator: coordinator)
         return controller
+    }
+    
+    public func makeSelectCategoryPhotoCoordinator(
+        navigation: Navigation,
+        childCoordinators: [Coordinator],
+        delegate: SelectCategoryPhotoCoordinatorDelegate,
+        selectImage: UIImage
+    ) -> Coordinator {
+        let factory = SelectCategoryPhotoFactoryImp()
+        return SelectCategoryPhotoCoordinator(
+            navigation: navigation,
+            childCoordinators: childCoordinators,
+            factory: factory,
+            selectImage: selectImage,
+            delegate: delegate)
     }
 }

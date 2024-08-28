@@ -13,6 +13,7 @@ import UIKit
 
 public protocol ProfileViewControllerCoordinator: AnyObject {
     func didTabSettingButton()
+    func didTabEditMyPhotoButton()
     func didTabLinkButton()
     func didTabIntroduceButton()
     func didTabQuestionButton()
@@ -863,7 +864,7 @@ public final class ProfileViewController: UIViewController {
     
     // MARK: - Actions
     @objc private func clickUpdateImageButton(_ sender: UIButton) {
-        print("사진 수정 버튼 클릭")
+        coordinator?.didTabEditMyPhotoButton()
     }
     
     @objc private func clickSettingsButton(_ sender: UIButton) {

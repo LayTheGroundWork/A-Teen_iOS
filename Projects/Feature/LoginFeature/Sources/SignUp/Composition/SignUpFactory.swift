@@ -17,6 +17,10 @@ public protocol SignUpFactory {
     func makeSelectBirthCoordinator(
         delegate: SelectBirthCoordinatorDelegate
     ) -> Coordinator
+    func makeCelebrateCoordinator(
+        navigation: Navigation,
+        delegate: CelebrateCoordinatorDelegate
+    ) -> Coordinator
 }
 
 public struct SignUpFactoryImp: SignUpFactory {
@@ -49,5 +53,15 @@ public struct SignUpFactoryImp: SignUpFactory {
             factory: factory,
             delegate: delegate)
     }
+    
+    public func makeCelebrateCoordinator(
+        navigation: Navigation,
+        delegate: CelebrateCoordinatorDelegate
+    ) -> Coordinator {
+        let factory = CelebrateFactoryImp()
+        return CelebrateCoordinator(
+            navigation: navigation,
+            factory: factory,
+            delegate: delegate)
+    }
 }
-

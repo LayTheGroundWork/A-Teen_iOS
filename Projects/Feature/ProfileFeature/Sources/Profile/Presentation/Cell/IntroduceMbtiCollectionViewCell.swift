@@ -37,7 +37,10 @@ final class IntroduceMbtiCollectionViewCell: UICollectionViewCell {
         collectionView.isScrollEnabled = false
         collectionView.dataSource = self
         collectionView.delegate = self
-        collectionView.register(IntroduceMbtiButtonCollectionViewCell.self, forCellWithReuseIdentifier: IntroduceMbtiButtonCollectionViewCell.reuseIdentifier)
+        collectionView.register(
+            IntroduceMbtiButtonCollectionViewCell.self,
+            forCellWithReuseIdentifier: IntroduceMbtiButtonCollectionViewCell.reuseIdentifier
+        )
         return collectionView
     }()
     

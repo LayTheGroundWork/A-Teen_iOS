@@ -19,6 +19,7 @@ public final class SignUpCoordinator: Coordinator {
     public var childCoordinators: [Coordinator]
     var factory: SignUpFactory
     weak var delegate: SignUpCoordinatorDelegate?
+    weak var signUpViewControllerDelegate: SignUpViewControllerDelegate?
     
     public init(
         phoneNumber: String,
@@ -41,6 +42,7 @@ public final class SignUpCoordinator: Coordinator {
             phoneNumber: phoneNumber,
             coordinator: self
         )
+        signUpViewControllerDelegate = controller as? any SignUpViewControllerDelegate
         navigation.pushViewController(controller, animated: true)
     }
 }

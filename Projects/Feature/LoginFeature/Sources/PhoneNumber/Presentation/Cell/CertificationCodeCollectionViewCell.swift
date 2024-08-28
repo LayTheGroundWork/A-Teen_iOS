@@ -162,8 +162,8 @@ public final class CertificationCodeCollectionViewCell: UICollectionViewCell {
         nextButton.snp.makeConstraints { make in
             make.trailing.equalToSuperview().offset(-ViewValues.defaultPadding)
             make.bottom.equalToSuperview().offset(-50)
-            make.width.equalTo(ViewValues.signUpNextButtonWidth)
-            make.height.equalTo(ViewValues.signUpNextButtonHeight)
+            make.width.equalTo(ViewValues.defaultButtonWidth)
+            make.height.equalTo(ViewValues.defaultButtonHeight)
         }
         
         timerLabel.snp.makeConstraints { make in
@@ -190,6 +190,7 @@ public final class CertificationCodeCollectionViewCell: UICollectionViewCell {
     @objc private func didSelectNextButton(_ sender: UIButton) {
         
         convertVerificationCode()
+//        self.delegate?.didSelectNextButton(registrationStatus: .notSignedUp)
         
         // TODO: - 다음으로 이동할때, 가입된 사용자인지 검증 후 보내주기
         viewModel?.verificationCode { [weak self] result in

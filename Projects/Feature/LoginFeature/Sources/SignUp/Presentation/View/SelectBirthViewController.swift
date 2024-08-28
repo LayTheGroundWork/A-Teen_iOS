@@ -65,6 +65,7 @@ final class SelectBirthViewController: UIViewController {
         let pickerView = UIPickerView()
         pickerView.dataSource = self
         pickerView.delegate = self
+        pickerView.layer.transform = CATransform3DIdentity
         return pickerView
     }()
     
@@ -150,7 +151,7 @@ final class SelectBirthViewController: UIViewController {
         }
         
         birthPicker.snp.makeConstraints { make in
-            make.top.equalTo(titleLabel.snp.bottom).offset(52)
+            make.top.equalTo(titleLabel.snp.bottom).offset(32)
             make.leading.equalToSuperview().offset(ViewValues.componentPickerWidth)
             make.trailing.equalToSuperview().offset(-ViewValues.componentPickerWidth)
             make.height.equalTo(ViewValues.componentPickerHight * 3)
@@ -158,7 +159,7 @@ final class SelectBirthViewController: UIViewController {
         
         okButton.snp.makeConstraints { make in
             make.trailing.equalToSuperview().offset(-ViewValues.defaultPadding)
-            make.bottom.equalToSuperview().offset(-64)
+            make.top.equalTo(birthPicker.snp.bottom).offset(20)
             make.width.equalTo(116)
             make.height.equalTo(50)
         }
@@ -193,6 +194,7 @@ final class SelectBirthViewController: UIViewController {
             birthPicker.selectRow((Int(viewModel.month) ?? 0) - 1, inComponent: 1, animated: false)
             birthPicker.selectRow((Int(viewModel.day) ?? 0) - 1, inComponent: 2, animated: false)
         }
+        self.birthPicker.reloadAllComponents()
     }
 
     // MARK: - Actions
@@ -216,7 +218,9 @@ final class SelectBirthViewController: UIViewController {
 extension SelectBirthViewController {
     func animateView() {
         UIView.animate(withDuration: 0.4, delay: 0, options: .showHideTransitionViews) {
-            self.alertViewHeightAnchor?.update(offset: self.view.frame.height / 2)
+            let height = ViewValues.componentPickerHight * 3 + 189
+            
+            self.alertViewHeightAnchor?.update(offset: height)
             
             self.view.layoutIfNeeded()
         } completion: { _ in

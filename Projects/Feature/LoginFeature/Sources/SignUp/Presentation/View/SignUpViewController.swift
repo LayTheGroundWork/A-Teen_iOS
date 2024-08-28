@@ -19,6 +19,10 @@ protocol SignUpViewControllerCoordinator: AnyObject {
     func didSelectCell(item: Int)
 }
 
+protocol SignUpViewControllerDelegate: AnyObject {
+    func updateImage(index: Int, selectItem: AlbumType)
+}
+
 final class SignUpViewController: UIViewController {
     // MARK: - Private properties
     private var currentIndexPath = IndexPath(item: 0, section: 0)
@@ -26,6 +30,7 @@ final class SignUpViewController: UIViewController {
     
     private var viewModel: SignUpViewModel
     private weak var coordinator: SignUpViewControllerCoordinator?
+    private weak var delegate: SelectPhotoCollectionViewCellDelegate?
     
     private lazy var progressView: UIProgressView = {
         let view = UIProgressView()
@@ -49,7 +54,7 @@ final class SignUpViewController: UIViewController {
     private lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
-        layout.itemSize = CGSize(width: ViewValues.width, height: ViewValues.halfHeight)
+        layout.itemSize = CGSize(width: ViewValues.width, height: ViewValues.signUpCollectionViewHeight)
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.backgroundColor = UIColor.white
         collectionView.showsHorizontalScrollIndicator = false
@@ -59,6 +64,7 @@ final class SignUpViewController: UIViewController {
         collectionView.register(UserNameCollectionViewCell.self, forCellWithReuseIdentifier: UserNameCollectionViewCell.reuseIdentifier)
         collectionView.register(UserBirthCollectionViewCell.self, forCellWithReuseIdentifier: UserBirthCollectionViewCell.reuseIdentifier)
         collectionView.register(SearchSchoolCollectionViewCell.self, forCellWithReuseIdentifier: SearchSchoolCollectionViewCell.reuseIdentifier)
+        collectionView.register(SelectCategoryCollectionViewCell.self, forCellWithReuseIdentifier: SelectCategoryCollectionViewCell.reuseIdentifier)
         collectionView.register(SelectPhotoCollectionViewCell.self, forCellWithReuseIdentifier: SelectPhotoCollectionViewCell.reuseIdentifier)
         
         return collectionView
@@ -98,7 +104,6 @@ final class SignUpViewController: UIViewController {
         configLayout()
         setupActions()
         stateController()
-        
     }
     
     // MARK: - Helpers
@@ -124,14 +129,14 @@ final class SignUpViewController: UIViewController {
         collectionView.snp.makeConstraints { make in
             make.top.equalTo(progressView.snp.bottom).offset(ViewValues.defaultPadding)
             make.leading.trailing.equalToSuperview()
-            make.height.equalTo(ViewValues.halfHeight)
+            make.height.equalTo(ViewValues.signUpCollectionViewHeight)
         }
         
         nextButton.snp.makeConstraints { make in
             make.trailing.equalToSuperview().offset(-ViewValues.defaultPadding)
             make.bottom.equalToSuperview().offset(-50)
-            make.width.equalTo(ViewValues.signUpNextButtonWidth)
-            make.height.equalTo(ViewValues.signUpNextButtonHeight)
+            make.width.equalTo(ViewValues.defaultButtonWidth)
+            make.height.equalTo(ViewValues.defaultButtonHeight)
         }
     }
     
@@ -153,6 +158,7 @@ final class SignUpViewController: UIViewController {
                     self?.showSpinnerSchoolCollectionViewCell()
                     break
                 case .fail(error: let error):
+                    self?.hideSpinnerSchoolCollectionViewCell()
                     print("검색한 학교가 없습니다. \(error)")
                 }
             }.store(in: &cancellable)
@@ -160,7 +166,10 @@ final class SignUpViewController: UIViewController {
     
     // MARK: - Actions
     @objc private func didSelectNextButton(_ sender: UIButton) {
-        guard currentIndexPath.section < collectionView.numberOfSections - 1 else { return }
+        guard currentIndexPath.section < collectionView.numberOfSections - 1 else {
+            coordinator?.didSelectService()
+            return
+        }
         
         currentIndexPath.section += 1
         progressView.setProgress(progressView.progress + ViewValues.signUpProgress, animated: true)
@@ -198,8 +207,13 @@ final class SignUpViewController: UIViewController {
             cell?.tableBackgroundView.isHidden = true
             cell?.contentView.endEditing(true)
             break
-        // 사진 선택
+        // 카테고리 선택
         case 4:
+            let cell = collectionView.cellForItem(at: currentIndexPath) as? SelectCategoryCollectionViewCell
+            cell?.contentView.endEditing(true)
+            break
+        // 사진 선택
+        case 5:
             let cell = collectionView.cellForItem(at: currentIndexPath) as? SelectPhotoCollectionViewCell
             cell?.contentView.endEditing(true)
             break
@@ -227,7 +241,7 @@ extension SignUpViewController: UICollectionViewDataSource {
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        5
+        6
     }
     
     func collectionView(
@@ -281,7 +295,7 @@ extension SignUpViewController: UICollectionViewDataSource {
             )
             
             return cell
-            
+   
         case 3:
             guard
                 let cell = collectionView.dequeueReusableCell(
@@ -296,8 +310,23 @@ extension SignUpViewController: UICollectionViewDataSource {
                 viewModel: viewModel
             )
             return cell
-
+            
         case 4:
+            guard
+                let cell = collectionView.dequeueReusableCell(
+                withReuseIdentifier: SelectCategoryCollectionViewCell.reuseIdentifier,
+                for: indexPath) as? SelectCategoryCollectionViewCell
+            else {
+                return UICollectionViewCell()
+            }
+            
+            cell.setProperties(
+                delegate: self,
+                viewModel: viewModel
+            )
+            return cell
+            
+        case 5:
             guard
                 let cell = collectionView.dequeueReusableCell(
                 withReuseIdentifier: SelectPhotoCollectionViewCell.reuseIdentifier,
@@ -305,15 +334,28 @@ extension SignUpViewController: UICollectionViewDataSource {
             else {
                 return UICollectionViewCell()
             }
-            
+
+            delegate = cell
             cell.setProperties(
                 coordinator: coordinator,
                 viewModel: viewModel
             )
+            
             return cell
 
         default:
             return UICollectionViewCell()
+        }
+    }
+    
+    func collectionView(
+        _ collectionView: UICollectionView,
+        willDisplay cell: UICollectionViewCell,
+        forItemAt indexPath: IndexPath
+    ) {
+        if indexPath.section == 5, cell is SelectPhotoCollectionViewCell {
+            updateNextButtonState(true)
+            delegate = cell as? SelectPhotoCollectionViewCell
         }
     }
 }
@@ -321,7 +363,8 @@ extension SignUpViewController: UICollectionViewDataSource {
 extension SignUpViewController: UserIdCollectionViewCellDelegate,
                                 UserNameCollectionViewCellDelegate,
                                 UserBirthCollectionViewCellDelegate,
-                                SearchSchoolCollectionViewCellDelegate {
+                                SearchSchoolCollectionViewCellDelegate,
+                                SelectCategoryCollectionViewCellDelegate {
     func updateNextButtonState(_ state: Bool) {
         nextButton.isEnabled = state
         nextButton.backgroundColor = if state { UIColor.black } else { DesignSystemAsset.gray03.color }
@@ -360,5 +403,11 @@ extension SignUpViewController {
                 break
             }
         }
+    }
+}
+
+extension SignUpViewController: SignUpViewControllerDelegate {
+    func updateImage(index: Int, selectItem: AlbumType) {
+        delegate?.updatePhotoList(index: index, selectItem: selectItem)
     }
 }

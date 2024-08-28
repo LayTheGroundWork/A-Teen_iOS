@@ -9,12 +9,15 @@
 import SnapKit
 
 import Common
-import DesignSystem
 import UIKit
 
-final class PhotoCollectionViewCell: UICollectionViewCell {
+public final class PhotoCollectionViewCell: UICollectionViewCell {
     // MARK: - Private properties
-    private var viewModel: SignUpViewModel?
+    private lazy var photoImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFill
+        return imageView
+    }()
     
     private lazy var plusImageView: UIImageView = {
         let imageView = UIImageView()
@@ -24,7 +27,7 @@ final class PhotoCollectionViewCell: UICollectionViewCell {
     }()
 
     // MARK: - Life Cycle
-    override init(frame: CGRect) {
+    public override init(frame: CGRect) {
         super.init(frame: frame)
         configUserInterface()
         configLayout()
@@ -34,6 +37,17 @@ final class PhotoCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    public override func prepareForReuse() {
+        contentView.backgroundColor = DesignSystemAsset.gray03.color
+        contentView.layer.borderWidth = 0
+        contentView.layer.borderColor = UIColor.white.cgColor
+        
+        plusImageView.isHidden = false
+        plusImageView.tintColor = DesignSystemAsset.lightMainColor.color
+        
+        photoImageView.isHidden = true
+    }
+    
     // MARK: - Helpers
     private func configUserInterface() {
         contentView.backgroundColor = DesignSystemAsset.gray03.color
@@ -41,7 +55,7 @@ final class PhotoCollectionViewCell: UICollectionViewCell {
         contentView.layer.cornerRadius = 20
         
         contentView.addSubview(plusImageView)
-
+        contentView.addSubview(photoImageView)
     }
     
     private func configLayout() {
@@ -49,23 +63,14 @@ final class PhotoCollectionViewCell: UICollectionViewCell {
             make.center.equalToSuperview()
             make.width.height.equalTo(24)
         }
-    }
-    
-    override func prepareForReuse() {
-        contentView.backgroundColor = DesignSystemAsset.gray03.color
-        contentView.layer.borderWidth = 0
-        contentView.layer.borderColor = UIColor.white.cgColor
         
-        plusImageView.tintColor = DesignSystemAsset.lightMainColor.color
-
+        photoImageView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
     }
 
     // MARK: - Actions
-    func setProperties(viewModel: SignUpViewModel) {
-        self.viewModel = viewModel
-    }
-    
-    func setCellCustom(item: Int) {
+    public func setCellCustom(item: Int) {
         switch item {
         case 0:
             contentView.backgroundColor = UIColor.white
@@ -76,6 +81,14 @@ final class PhotoCollectionViewCell: UICollectionViewCell {
         default:
             break
         }
+        plusImageView.isHidden = false
+        photoImageView.isHidden = true
+    }
+    
+    public func setImage(image: UIImage) {
+        plusImageView.isHidden = true
+        photoImageView.isHidden = false
+        photoImageView.image = image
     }
 }
 

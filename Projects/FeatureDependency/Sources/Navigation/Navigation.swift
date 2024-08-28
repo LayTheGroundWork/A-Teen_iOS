@@ -5,6 +5,7 @@
 //  Created by Pozol on 5/21/24.
 //
 
+import Common
 import UIKit
 
 public protocol Navigation {
@@ -23,6 +24,7 @@ public protocol Navigation {
     func dismiss(animated: Bool)
     func popViewController(animated: Bool)
     var dismissNavigation: (() -> Void)? { get set }
+    var dismissNavigationFromAlbum: ((AlbumType) -> Void)? { get set }
 }
 
 extension Navigation {
