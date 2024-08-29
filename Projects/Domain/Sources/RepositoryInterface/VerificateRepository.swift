@@ -1,5 +1,5 @@
 //
-//  VerificateService.swift
+//  VerificateRepository.swift
 //  Domain
 //
 //  Created by 최동호 on 6/30/24.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-public protocol VerificateService {
+public protocol VerificateRepository {
     func requestCode(
         request: VerificationCodeRequest,
         completion: @escaping () -> Void

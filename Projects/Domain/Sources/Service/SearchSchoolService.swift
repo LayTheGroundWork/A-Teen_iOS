@@ -1,5 +1,5 @@
 //
-//  SearchUseCase.swift
+//  SearchSchoolService.swift
 //  Domain
 //
 //  Created by 최동호 on 7/5/24.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-public protocol SearchUseCase {
+public protocol SearchSchoolService {
     func searchSchool(
         request: SchoolDataRequest,
         completion: @escaping (Result<[SchoolDataResponse], Error>) -> Void

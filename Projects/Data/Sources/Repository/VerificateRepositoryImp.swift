@@ -1,5 +1,5 @@
 //
-//  VerificateServiceImp.swift
+//  VerificateRepositoryImp.swift
 //  Data
 //
 //  Created by 최동호 on 6/30/24.
@@ -10,7 +10,7 @@ import Domain
 import NetworkService
 import Foundation
 
-final public class VerificateServiceImp: NSObject, VerificateService {
+final public class VerificateRepositoryImp: NSObject, VerificateRepository {
     private let apiClientService: ApiClientService
     
     public init(

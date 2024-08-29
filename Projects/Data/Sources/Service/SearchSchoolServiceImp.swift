@@ -1,14 +1,15 @@
 //
-//  SearchUseCaseImp.swift
+//  SearchSchoolServiceImp.swift
 //  Domain
 //
 //  Created by 최동호 on 7/5/24.
 //  Copyright © 2024 ATeen. All rights reserved.
 //
 
+import Domain
 import Foundation
 
-public struct SearchUseCaseImp: SearchUseCase {
+public struct SearchSchoolServiceImp: SearchSchoolService {
     let schoolDataRepository: SchoolDataRepository
     
     public init(

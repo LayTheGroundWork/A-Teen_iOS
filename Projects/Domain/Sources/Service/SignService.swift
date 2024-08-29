@@ -1,15 +1,14 @@
 //
-//  SignUseCase.swift
+//  SignService.swift
 //  Domain
 //
-//  Created by 최동호 on 6/28/24.
+//  Created by 최동호 on 8/29/24.
 //  Copyright © 2024 ATeen. All rights reserved.
 //
 
-
 import Foundation
 
-public protocol SignUseCase {
+public protocol SignService {
     func signIn(
         request: LogInRequest,
         completion: @escaping (Result<LogInResponse, Error>) -> Void
@@ -27,14 +26,8 @@ public protocol SignUseCase {
         completion: @escaping (Result<VerificationCodeResponse, Error>) -> Void
     )
     
-    func searchSchool(
-        request: SchoolDataRequest,
-        completion: @escaping (Result<[SchoolDataResponse], Error>) -> Void
-    )
-    
     func duplicationCheck(
         request: DuplicationCheckRequest,
         completion: @escaping (Result<DuplicationCheckResponse, Error>) -> Void
     )
 }
-

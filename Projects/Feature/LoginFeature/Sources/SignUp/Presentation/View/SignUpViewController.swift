@@ -171,6 +171,14 @@ final class SignUpViewController: UIViewController {
             return
         }
         
+        if currentIndexPath.section == 0 {
+            viewModel.duplicationCheck{ result in
+                if !result {
+                    return
+                }
+            }
+        }
+        
         currentIndexPath.section += 1
         progressView.setProgress(progressView.progress + ViewValues.signUpProgress, animated: true)
         collectionView.scrollToItem(

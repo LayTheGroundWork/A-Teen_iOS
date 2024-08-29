@@ -17,9 +17,6 @@ public final class SignUpViewModel {
     @Injected(SignUseCase.self)
     public var signUseCase: SignUseCase
     
-    @Injected(SearchUseCase.self)
-    public var searchUseCase: SearchUseCase
-    
     var state = PassthroughSubject<StateController, Never>()
 
     // phoneNumber
@@ -61,7 +58,7 @@ public final class SignUpViewModel {
     // MARK: - Helpers
     public func searchSchoolData(completion: @escaping () -> Void) {
         state.send(.loading)
-        searchUseCase.searchSchool(request: SchoolDataRequest(schoolName: searchSchoolText)) { result in
+        signUseCase.searchSchool(request: SchoolDataRequest(schoolName: searchSchoolText)) { result in
             switch result {
             case .success(let schoolDataResponses):
                 self.filteredSchools = schoolDataResponses.map {
@@ -89,6 +86,21 @@ public final class SignUpViewModel {
          signUseCase.signUp(request: <#T##SignUpRequest#>, completion: <#T##(Result<LogInResponse, Error>) -> Void#>)
          */
     }
+    
+    func duplicationCheck(completion: @escaping (Bool) -> Void) {
+        signUseCase.duplicationCheck(request: .init(uniqueId: userId)) { result in
+            switch result {
+            case .success(let duplicationCheckResponse):
+                self.state.send(.success)
+                completion(true)
+            case .failure(let error):
+                self.state.send(.fail(error: error.localizedDescription))
+                completion(false)
+            }
+        }
+            
+    }
+    
 }
 
 // MARK: - UserBirth

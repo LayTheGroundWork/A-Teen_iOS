@@ -31,11 +31,6 @@ public struct ApiClientServiceImp: ApiClientService {
             throw ApiError.unknownError
         }
         
-        print(httpResponse)
-        
-        print(httpResponse.statusCode)
-        print(httpResponse.allHeaderFields)
-        
         switch httpResponse.statusCode {
         case HttpResponseStatus.ok:
             return
