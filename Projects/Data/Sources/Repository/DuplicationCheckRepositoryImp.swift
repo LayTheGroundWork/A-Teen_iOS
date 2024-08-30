@@ -29,7 +29,6 @@ final public class DuplicationCheckRepositoryImp: NSObject, DuplictaionCheckRepo
                 }
                 let response = try await apiClientService.request(request: urlRequest, type: DuplicationCheckDTO.self).toDomain()
                 completion(.success(response))
-                
             } catch {
                 completion(.failure(error))
             }

@@ -24,7 +24,7 @@ public protocol SignUseCase {
     )
     func verificateCode(
         request: PhoneNumberAuthRequest,
-        completion: @escaping (Result<VerificationCodeResponse, Error>) -> Void
+        completion: @escaping (String?) -> Void
     )
     
     func searchSchool(

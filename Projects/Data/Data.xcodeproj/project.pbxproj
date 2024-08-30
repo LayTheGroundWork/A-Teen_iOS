@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0DBCAF3ECEE41D1C03C9E875 /* NetworkService.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAC8A24EF2DA38A8911C0332 /* NetworkService.framework */; };
+		0E72D32CC7317B0025CEFDD3 /* VerificationCodeDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E87E9420A6B0A4D0B04A69 /* VerificationCodeDTO.swift */; };
 		3112C262B4E13548C85649F4 /* DuplicationCheckRepositoryImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A688569C09B4BCC20BC6AD /* DuplicationCheckRepositoryImp.swift */; };
 		50F14E7B0701EF6F91B36332 /* SignServiceImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4E02BD664565FEC69E1BC72 /* SignServiceImp.swift */; };
 		51F0C835F74D2286CC0B55F7 /* RemoteImageDataServiceImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5907E87F4E28906AADE46420 /* RemoteImageDataServiceImp.swift */; };
@@ -41,6 +42,7 @@
 		4E75197C294DE74F5162FAA7 /* Data.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Data.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5907E87F4E28906AADE46420 /* RemoteImageDataServiceImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteImageDataServiceImp.swift; sourceTree = "<group>"; };
 		73A06AFE9B4DF92FD9348D91 /* SchoolDataDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolDataDTO.swift; sourceTree = "<group>"; };
+		74E87E9420A6B0A4D0B04A69 /* VerificationCodeDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationCodeDTO.swift; sourceTree = "<group>"; };
 		83BACFA88E8BAFE9714D4D0D /* LocalDataImageServiceImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalDataImageServiceImp.swift; sourceTree = "<group>"; };
 		B284CD75BAD317D668DD797D /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
 		B3E861D0B2DAA07B06874952 /* VerificateRepositoryImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificateRepositoryImp.swift; sourceTree = "<group>"; };
@@ -82,6 +84,7 @@
 				C6C7C54502732E0F6BA44010 /* DuplicationCheckDTO.swift */,
 				F236624AC5E8597B137B48CF /* LogInDTO.swift */,
 				73A06AFE9B4DF92FD9348D91 /* SchoolDataDTO.swift */,
+				74E87E9420A6B0A4D0B04A69 /* VerificationCodeDTO.swift */,
 			);
 			path = DTO;
 			sourceTree = "<group>";
@@ -231,6 +234,7 @@
 				85A2FA4C6E365BDCDE873DB5 /* DuplicationCheckDTO.swift in Sources */,
 				811E132B6F39024EB106B257 /* LogInDTO.swift in Sources */,
 				E15BCA1558059EB1705D9856 /* SchoolDataDTO.swift in Sources */,
+				0E72D32CC7317B0025CEFDD3 /* VerificationCodeDTO.swift in Sources */,
 				3112C262B4E13548C85649F4 /* DuplicationCheckRepositoryImp.swift in Sources */,
 				5D1E91A654E9AEA1F5FD824B /* ImageDataRepositoryImp.swift in Sources */,
 				C95817D3823F9FA0F3B90647 /* SchoolDataRepositoryImp.swift in Sources */,

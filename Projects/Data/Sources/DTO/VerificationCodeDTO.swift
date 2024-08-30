@@ -1,14 +1,15 @@
 //
-//  VerificationCodeResponse.swift
-//  Domain
+//  VerificationCodeDTO.swift
+//  Data
 //
-//  Created by 최동호 on 7/10/24.
+//  Created by 노주영 on 8/30/24.
 //  Copyright © 2024 ATeen. All rights reserved.
 //
 
+import Domain
 import Foundation
 
-public struct VerificationCodeResponse: Decodable {
+public struct VerificationCodeDTO: Decodable {
     public let status: String
     public let data: String?
     public let message: String
@@ -23,3 +24,12 @@ public struct VerificationCodeResponse: Decodable {
         self.message = message
     }
 }
+
+extension VerificationCodeDTO {
+    func toDomain() -> VerificationCodeResponse {
+        .init(
+            status: status, data: data, message: message
+        )
+    }
+}
+

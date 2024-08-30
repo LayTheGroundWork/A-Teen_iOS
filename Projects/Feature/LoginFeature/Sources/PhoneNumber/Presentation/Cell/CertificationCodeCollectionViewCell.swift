@@ -188,28 +188,32 @@ public final class CertificationCodeCollectionViewCell: UICollectionViewCell {
     
     // MARK: - Actions
     @objc private func didSelectNextButton(_ sender: UIButton) {
-        
         convertVerificationCode()
-//        self.delegate?.didSelectNextButton(registrationStatus: .notSignedUp)
         
         // TODO: - 다음으로 이동할때, 가입된 사용자인지 검증 후 보내주기
-        viewModel?.verificationCode { [weak self] result in
+        viewModel?.verificationCode { [weak self] data in
             guard let self = self else { return }
-            switch result {
-            case .success(.availablePhoneNumber):
-                self.stopTimer()
-                DispatchQueue.main.async {
-                    self.delegate?.didSelectNextButton(registrationStatus: .notSignedUp)
-                }
-            case .success(.existedUser):
-                DispatchQueue.main.async {
-                    self.delegate?.didSelectNextButton(registrationStatus: .signedUp)
-                }
-            case .failure(_):
-                DispatchQueue.main.async {
-                    self.delegate?.didSelectNextButton(registrationStatus: .inValidCodeNumber)
-                }
+            
+            DispatchQueue.main.async {
+                self.delegate?.didSelectNextButton(registrationStatus: .notSignedUp)
             }
+            
+//            //TODO: 나중에 인증된 전화번호가 있을 경우 테스트하기
+//            if let _ = data {
+//                //TODO: 기존 사용자인지 확인 필요
+//                DispatchQueue.main.async {
+//                    self.delegate?.didSelectNextButton(registrationStatus: .notSignedUp)
+//                }
+//                
+//              기존 사용자
+//              DispatchQueue.main.async {
+//                  self.delegate?.didSelectNextButton(registrationStatus: .signedUp)
+//              }
+//            } else {
+//                DispatchQueue.main.async {
+//                    self.delegate?.didSelectNextButton(registrationStatus: .inValidCodeNumber)
+//                }
+//            }
         }
     }
     

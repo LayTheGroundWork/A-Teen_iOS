@@ -27,12 +27,10 @@ public final class PhoneNumberViewModel {
         }
     }
     
-    func verificationCode(completion: @escaping (Result<VerificationCodeResponse, Error>) -> Void) {
-        useCase.verificateCode(request: PhoneNumberAuthRequest(
-            phoneNumber: phoneNumber,
-            verificationCode: verificationCode)) { result in
-            completion(result)
-        }
+    func verificationCode(completion: @escaping (String?) -> Void) {
+        useCase.verificateCode(
+            request: .init(phoneNumber: phoneNumber, verificationCode: verificationCode),
+            completion: completion)
     }
     
     func signIn() {

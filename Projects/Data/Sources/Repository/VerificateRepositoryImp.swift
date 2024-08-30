@@ -47,15 +47,10 @@ final public class VerificateRepositoryImp: NSObject, VerificateRepository {
                 guard let urlRequest = endPoint.toURLRequest else {
                     throw ApiError.errorInUrl
                 }
-                try await apiClientService.request(request: urlRequest)
-                completion(.success(.availablePhoneNumber))
+                let response = try await apiClientService.request(request: urlRequest, type: VerificationCodeDTO.self).toDomain()
+                completion(.success(response))
             } catch {
-                if let apiError = error as? ApiError, apiError == .existedUserError {
-                            completion(.success(.existedUser))
-                } else {
-                    print("인증코드 인증 오류: ", error.localizedDescription)
-                    completion(.failure(error))
-                }
+                completion(.failure(error))
             }
         }
     }

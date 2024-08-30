@@ -48,9 +48,17 @@ public struct SignServiceImp: SignService {
     
     public func verificateCode(
         request: PhoneNumberAuthRequest,
-        completion: @escaping (Result<VerificationCodeResponse, Error>) -> Void
+        completion: @escaping (String?) -> Void
     ) {
-        verificateRepository.verificateCode(request: request, completion: completion)
+        verificateRepository.verificateCode(request: request) { result in
+            switch result {
+            case .success(let response):
+                completion(response.data)
+            case .failure(let error):
+                print(error.localizedDescription)
+                completion("")
+            }
+        }
     }
     
     public func duplicationCheck(

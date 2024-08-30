@@ -23,7 +23,7 @@ public protocol SignService {
     )
     func verificateCode(
         request: PhoneNumberAuthRequest,
-        completion: @escaping (Result<VerificationCodeResponse, Error>) -> Void
+        completion: @escaping (String?) -> Void
     )
     
     func duplicationCheck(

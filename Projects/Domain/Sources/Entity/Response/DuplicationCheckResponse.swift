@@ -14,5 +14,4 @@ public struct DuplicationCheckResponse: Decodable {
     public init(data: Bool) {
         self.data = data
     }
-    
 }
