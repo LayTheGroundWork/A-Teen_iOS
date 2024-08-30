@@ -209,8 +209,9 @@ final class SearchSchoolCollectionViewCell: UICollectionViewCell {
         self.viewModel?.searchSchoolText = text
         if !text.isEmpty {
             changeTextFieldRigthView(view: .clearImage)
+        } else {
+            changeTextFieldRigthView(view: .searchImage)
         }
-        
     }
     
     @objc private func didSelectClearTextButton(_ sender: UIButton) {

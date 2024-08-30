@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 55;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -11,10 +11,10 @@
 		150D6995E52A32B29DBA855E /* LogInResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0466867E7CA24A7196EB9339 /* LogInResponse.swift */; };
 		23E6F0300D0F5577048F6B53 /* SchoolDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3D5166F9BAE202703C8ADDB /* SchoolDataRepository.swift */; };
 		2405CEBB75D3A316A75D6994 /* SchoolDataResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D160BBBDBAADD18EC4B667FB /* SchoolDataResponse.swift */; };
+		2EFD7FCC76E6706E77E334D0 /* DuplicationCheckResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23A4F2AAD337740CD19AB39E /* DuplicationCheckResponse.swift */; };
 		30A9A12EAAB824CB847A8F55 /* SearchSchoolService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49451361217E78799DEB15E /* SearchSchoolService.swift */; };
 		337435614E3EF754DF8C5FCC /* VerificationCodeRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4220232C6D323CEE154173C8 /* VerificationCodeRequest.swift */; };
 		3CD20E63F5B08BA33A48403C /* SchoolDataRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432D1265802A2173DE408F5E /* SchoolDataRequest.swift */; };
-		419A65992C805FE300E88CD6 /* DuplicationCheckResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419A65982C805FE300E88CD6 /* DuplicationCheckResponse.swift */; };
 		4412DD94E9BE92B437216169 /* ImageDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C9895B94482D7F1DCACB8C /* ImageDataRepository.swift */; };
 		67B020A5ED1B6DE1F1FD34EA /* SignRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ACB320B7ABCFA6BA58774D5 /* SignRepository.swift */; };
 		689FF34CB0364FA3C40676A3 /* VerificateRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2351A343B1E60467F91A42DD /* VerificateRepository.swift */; };
@@ -49,9 +49,9 @@
 		0466867E7CA24A7196EB9339 /* LogInResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInResponse.swift; sourceTree = "<group>"; };
 		09C9895B94482D7F1DCACB8C /* ImageDataRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDataRepository.swift; sourceTree = "<group>"; };
 		2351A343B1E60467F91A42DD /* VerificateRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificateRepository.swift; sourceTree = "<group>"; };
+		23A4F2AAD337740CD19AB39E /* DuplicationCheckResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DuplicationCheckResponse.swift; sourceTree = "<group>"; };
 		299140D435D99FBFCD846F9E /* DuplictaionCheckRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DuplictaionCheckRepository.swift; sourceTree = "<group>"; };
 		3A4620A0019C901EC7C993A2 /* Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
-		419A65982C805FE300E88CD6 /* DuplicationCheckResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DuplicationCheckResponse.swift; sourceTree = "<group>"; };
 		4220232C6D323CEE154173C8 /* VerificationCodeRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationCodeRequest.swift; sourceTree = "<group>"; };
 		432D1265802A2173DE408F5E /* SchoolDataRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolDataRequest.swift; sourceTree = "<group>"; };
 		451ACE222BE8C01F4B361381 /* ImageDataUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDataUseCase.swift; sourceTree = "<group>"; };
@@ -165,10 +165,10 @@
 		5F19E3F651E9BB799AF06CFF /* Response */ = {
 			isa = PBXGroup;
 			children = (
+				23A4F2AAD337740CD19AB39E /* DuplicationCheckResponse.swift */,
 				0466867E7CA24A7196EB9339 /* LogInResponse.swift */,
 				D160BBBDBAADD18EC4B667FB /* SchoolDataResponse.swift */,
 				839C089244517B59E39817A4 /* VerificationCodeResponse.swift */,
-				419A65982C805FE300E88CD6 /* DuplicationCheckResponse.swift */,
 			);
 			path = Response;
 			sourceTree = "<group>";
@@ -253,6 +253,8 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
 				ORGANIZATIONNAME = ATeen;
+				TargetAttributes = {
+				};
 			};
 			buildConfigurationList = 5B17347D429F14C389327C78 /* Build configuration list for PBXProject "Domain" */;
 			compatibilityVersion = "Xcode 14.0";
@@ -287,13 +289,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				419A65992C805FE300E88CD6 /* DuplicationCheckResponse.swift in Sources */,
 				AD634F47C39E92CE6FD78E9A /* DuplicationCheckRequest.swift in Sources */,
 				83315DB61E2BEAE20B3C84D1 /* LogInRequest.swift in Sources */,
 				9034909F680164DCD97B8693 /* PhoneNumberAuthRequest.swift in Sources */,
 				3CD20E63F5B08BA33A48403C /* SchoolDataRequest.swift in Sources */,
 				C8094BE4D30D193A2265DD54 /* SignUpRequest.swift in Sources */,
 				337435614E3EF754DF8C5FCC /* VerificationCodeRequest.swift in Sources */,
+				2EFD7FCC76E6706E77E334D0 /* DuplicationCheckResponse.swift in Sources */,
 				150D6995E52A32B29DBA855E /* LogInResponse.swift in Sources */,
 				2405CEBB75D3A316A75D6994 /* SchoolDataResponse.swift in Sources */,
 				0B18DF21FFE477910B74B1B6 /* VerificationCodeResponse.swift in Sources */,
@@ -389,10 +391,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					"-ObjC",
-				);
+				OTHER_LDFLAGS = "$(inherited) -ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ATeen.ATeen.Domain;
 				PRODUCT_NAME = Domain;
 				SDKROOT = iphoneos;
@@ -488,10 +487,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					"-ObjC",
-				);
+				OTHER_LDFLAGS = "$(inherited) -ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ATeen.ATeen.Domain;
 				PRODUCT_NAME = Domain;
 				SDKROOT = iphoneos;
@@ -499,7 +495,10 @@
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = (
+					"$(inherited)",
+					DEBUG,
+				);
 				SWIFT_COMPILATION_MODE = singlefile;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;

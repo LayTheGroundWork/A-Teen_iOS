@@ -3,17 +3,17 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 55;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		0DBCAF3ECEE41D1C03C9E875 /* NetworkService.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAC8A24EF2DA38A8911C0332 /* NetworkService.framework */; };
 		3112C262B4E13548C85649F4 /* DuplicationCheckRepositoryImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A688569C09B4BCC20BC6AD /* DuplicationCheckRepositoryImp.swift */; };
-		419A659B2C8061B300E88CD6 /* DuplicationCheckDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419A659A2C8061B300E88CD6 /* DuplicationCheckDTO.swift */; };
 		50F14E7B0701EF6F91B36332 /* SignServiceImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4E02BD664565FEC69E1BC72 /* SignServiceImp.swift */; };
 		51F0C835F74D2286CC0B55F7 /* RemoteImageDataServiceImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5907E87F4E28906AADE46420 /* RemoteImageDataServiceImp.swift */; };
 		5D1E91A654E9AEA1F5FD824B /* ImageDataRepositoryImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C60ED58678DE3E2AB8634E /* ImageDataRepositoryImp.swift */; };
 		811E132B6F39024EB106B257 /* LogInDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = F236624AC5E8597B137B48CF /* LogInDTO.swift */; };
+		85A2FA4C6E365BDCDE873DB5 /* DuplicationCheckDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C7C54502732E0F6BA44010 /* DuplicationCheckDTO.swift */; };
 		B70F9D0D6E1620DF8AF43342 /* LocalDataImageServiceImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83BACFA88E8BAFE9714D4D0D /* LocalDataImageServiceImp.swift */; };
 		C012C24D8A5C5E9FC118E121 /* VerificateRepositoryImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E861D0B2DAA07B06874952 /* VerificateRepositoryImp.swift */; };
 		C95817D3823F9FA0F3B90647 /* SchoolDataRepositoryImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB672E162D8CD9924D89491D /* SchoolDataRepositoryImp.swift */; };
@@ -38,7 +38,6 @@
 /* Begin PBXFileReference section */
 		00C60ED58678DE3E2AB8634E /* ImageDataRepositoryImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDataRepositoryImp.swift; sourceTree = "<group>"; };
 		033B57EACF093CA22F91EAB9 /* Data-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Data-Info.plist"; sourceTree = "<group>"; };
-		419A659A2C8061B300E88CD6 /* DuplicationCheckDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DuplicationCheckDTO.swift; sourceTree = "<group>"; };
 		4E75197C294DE74F5162FAA7 /* Data.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Data.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5907E87F4E28906AADE46420 /* RemoteImageDataServiceImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteImageDataServiceImp.swift; sourceTree = "<group>"; };
 		73A06AFE9B4DF92FD9348D91 /* SchoolDataDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolDataDTO.swift; sourceTree = "<group>"; };
@@ -46,6 +45,7 @@
 		B284CD75BAD317D668DD797D /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
 		B3E861D0B2DAA07B06874952 /* VerificateRepositoryImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificateRepositoryImp.swift; sourceTree = "<group>"; };
 		BF1C37177A90CA77CA970C70 /* SignRepositoryImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignRepositoryImp.swift; sourceTree = "<group>"; };
+		C6C7C54502732E0F6BA44010 /* DuplicationCheckDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DuplicationCheckDTO.swift; sourceTree = "<group>"; };
 		CEBAFBEBD1A165F75FAA04A2 /* SearchSchoolServiceImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchSchoolServiceImp.swift; sourceTree = "<group>"; };
 		D4E02BD664565FEC69E1BC72 /* SignServiceImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignServiceImp.swift; sourceTree = "<group>"; };
 		D7A688569C09B4BCC20BC6AD /* DuplicationCheckRepositoryImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DuplicationCheckRepositoryImp.swift; sourceTree = "<group>"; };
@@ -79,9 +79,9 @@
 		647255CD65221C9CD4A43DED /* DTO */ = {
 			isa = PBXGroup;
 			children = (
+				C6C7C54502732E0F6BA44010 /* DuplicationCheckDTO.swift */,
 				F236624AC5E8597B137B48CF /* LogInDTO.swift */,
 				73A06AFE9B4DF92FD9348D91 /* SchoolDataDTO.swift */,
-				419A659A2C8061B300E88CD6 /* DuplicationCheckDTO.swift */,
 			);
 			path = DTO;
 			sourceTree = "<group>";
@@ -192,6 +192,8 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
 				ORGANIZATIONNAME = ATeen;
+				TargetAttributes = {
+				};
 			};
 			buildConfigurationList = BDB112DA78B2B42275EC3A62 /* Build configuration list for PBXProject "Data" */;
 			compatibilityVersion = "Xcode 14.0";
@@ -226,12 +228,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				85A2FA4C6E365BDCDE873DB5 /* DuplicationCheckDTO.swift in Sources */,
 				811E132B6F39024EB106B257 /* LogInDTO.swift in Sources */,
 				E15BCA1558059EB1705D9856 /* SchoolDataDTO.swift in Sources */,
 				3112C262B4E13548C85649F4 /* DuplicationCheckRepositoryImp.swift in Sources */,
 				5D1E91A654E9AEA1F5FD824B /* ImageDataRepositoryImp.swift in Sources */,
 				C95817D3823F9FA0F3B90647 /* SchoolDataRepositoryImp.swift in Sources */,
-				419A659B2C8061B300E88CD6 /* DuplicationCheckDTO.swift in Sources */,
 				E3695D6B34FC3F09A6040ECF /* SignRepositoryImp.swift in Sources */,
 				C012C24D8A5C5E9FC118E121 /* VerificateRepositoryImp.swift in Sources */,
 				B70F9D0D6E1620DF8AF43342 /* LocalDataImageServiceImp.swift in Sources */,
@@ -264,10 +266,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					"-ObjC",
-				);
+				OTHER_LDFLAGS = "$(inherited) -ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ATeen.ATeen.Data;
 				PRODUCT_NAME = Data;
 				SDKROOT = iphoneos;
@@ -275,7 +274,10 @@
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = (
+					"$(inherited)",
+					DEBUG,
+				);
 				SWIFT_COMPILATION_MODE = singlefile;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -305,10 +307,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					"-ObjC",
-				);
+				OTHER_LDFLAGS = "$(inherited) -ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ATeen.ATeen.Data;
 				PRODUCT_NAME = Data;
 				SDKROOT = iphoneos;

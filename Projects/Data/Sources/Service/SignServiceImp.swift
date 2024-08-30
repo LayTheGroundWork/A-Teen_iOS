@@ -55,8 +55,16 @@ public struct SignServiceImp: SignService {
     
     public func duplicationCheck(
         request: DuplicationCheckRequest,
-        completion: @escaping (Result<DuplicationCheckResponse, Error>) -> Void
+        completion: @escaping (Bool) -> Void
     ) {
-        duplicationCheckRepository.duplicationCheck(request: request, completion: completion)
+        duplicationCheckRepository.duplicationCheck(request: request) { result in
+            switch result {
+            case .success(_):
+                completion(true)
+            case .failure(let error):
+                print(error.localizedDescription)
+                completion(false)
+            }
+        }
     }
 }

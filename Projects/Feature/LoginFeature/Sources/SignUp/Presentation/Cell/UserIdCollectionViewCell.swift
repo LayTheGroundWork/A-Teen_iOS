@@ -174,6 +174,11 @@ final class UserIdCollectionViewCell: UICollectionViewCell {
         self.viewModel = viewModel
     }
     
+    func changeLabelByDuplicationCheck() {
+        errorMessageLabel.text = AppLocalized.userIDDuplicationCheckErrorMessage
+        errorMessageLabelHeight?.update(offset: 16)
+    }
+    
     @objc private func textFieldDidChange(_ sender: Any?) {
         self.viewModel?.userId = textField.text ?? .empty
     }

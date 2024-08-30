@@ -28,6 +28,6 @@ public protocol SignService {
     
     func duplicationCheck(
         request: DuplicationCheckRequest,
-        completion: @escaping (Result<DuplicationCheckResponse, Error>) -> Void
+        completion: @escaping (Bool) -> Void
     )
 }

@@ -11,11 +11,11 @@ import Foundation
 
 public struct SchoolDataDTO: Decodable {
     public let status: String
-    public let data: [SchoolData]
+    public let data: [SchoolDetailData]
     public let message: String
 }
 
-public struct SchoolData: Decodable {
+public struct SchoolDetailData: Decodable {
     public let schoolName: String
     public let schoolRegion: String
     

@@ -18,7 +18,24 @@ public struct SearchSchoolServiceImp: SearchSchoolService {
         self.schoolDataRepository = schoolDataRepository
     }
     
-    public func searchSchool(request: SchoolDataRequest, completion: @escaping (Result<[SchoolDataResponse], Error>) -> Void) {
-        schoolDataRepository.searchSchool(request: request, completion: completion)
+    public func searchSchool(request: SchoolDataRequest, completion: @escaping ([SchoolData]) -> Void) {
+        schoolDataRepository.searchSchool(request: request) { result in
+            switch result {
+            case .success(let schoolDataResponses):
+                let filteredSchools: [SchoolData] = schoolDataResponses.map {
+                    .init(
+                        schoolName: $0.name,
+                        schoolLocation: $0.address
+                    )
+                }
+                
+                if !filteredSchools.isEmpty {
+                    completion(filteredSchools)
+                }
+                
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
     }
 }

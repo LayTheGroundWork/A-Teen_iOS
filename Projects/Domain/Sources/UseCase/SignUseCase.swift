@@ -29,12 +29,12 @@ public protocol SignUseCase {
     
     func searchSchool(
         request: SchoolDataRequest,
-        completion: @escaping (Result<[SchoolDataResponse], Error>) -> Void
+        completion: @escaping ([SchoolData]) -> Void
     )
     
     func duplicationCheck(
         request: DuplicationCheckRequest,
-        completion: @escaping (Result<DuplicationCheckResponse, Error>) -> Void
+        completion: @escaping (Bool) -> Void
     )
 }
 

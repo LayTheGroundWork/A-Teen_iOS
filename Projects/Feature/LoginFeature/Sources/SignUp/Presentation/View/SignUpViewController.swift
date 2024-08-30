@@ -171,14 +171,31 @@ final class SignUpViewController: UIViewController {
             return
         }
         
-        if currentIndexPath.section == 0 {
-            viewModel.duplicationCheck{ result in
-                if !result {
-                    return
+        switch currentIndexPath.section {
+        case 0:
+            viewModel.duplicationCheck { [weak self] check in
+                guard let self = self else { return }
+                
+                DispatchQueue.main.async {
+                    if check {
+                        self.changeNextCell()
+                    } else {
+                        
+                        guard let cell = self.collectionView.cellForItem(at: IndexPath(item: 0, section: 0)) as? UserIdCollectionViewCell else { return }
+                        cell.changeLabelByDuplicationCheck()
+                        
+                    }
                 }
             }
+        case 1, 2, 3, 4, 5:
+            changeNextCell()
+            
+        default:
+            break
         }
-        
+    }
+    
+    func changeNextCell() {
         currentIndexPath.section += 1
         progressView.setProgress(progressView.progress + ViewValues.signUpProgress, animated: true)
         collectionView.scrollToItem(
@@ -197,30 +214,30 @@ final class SignUpViewController: UIViewController {
             return
         }
         switch currentIndexPath.section {
-        // 유저 아이디
+            // 유저 이름
         case 1:
             let cell = collectionView.cellForItem(at: currentIndexPath) as? UserNameCollectionViewCell
             cell?.textField.text = .empty
             cell?.contentView.endEditing(true)
-        // 생년월일
+            // 생년월일
         case 2:
             let cell = collectionView.cellForItem(at: currentIndexPath) as? UserBirthCollectionViewCell
             cell?.birthButton.customLabel.attributedText = nil
             cell?.birthButton.customLabel.text = AppLocalized.userBirthSelectButton
             break
-        // 학교 선택
+            // 학교 선택
         case 3:
             let cell = collectionView.cellForItem(at: currentIndexPath) as? SearchSchoolCollectionViewCell
             cell?.schoolTextField.text = .empty
             cell?.tableBackgroundView.isHidden = true
             cell?.contentView.endEditing(true)
             break
-        // 카테고리 선택
+            // 카테고리 선택
         case 4:
             let cell = collectionView.cellForItem(at: currentIndexPath) as? SelectCategoryCollectionViewCell
             cell?.contentView.endEditing(true)
             break
-        // 사진 선택
+            // 사진 선택
         case 5:
             let cell = collectionView.cellForItem(at: currentIndexPath) as? SelectPhotoCollectionViewCell
             cell?.contentView.endEditing(true)
@@ -257,12 +274,12 @@ extension SignUpViewController: UICollectionViewDataSource {
         cellForItemAt indexPath: IndexPath
     ) -> UICollectionViewCell {
         switch indexPath.section {
-
+            
         case 0:
             guard
                 let cell = collectionView.dequeueReusableCell(
-                withReuseIdentifier: UserIdCollectionViewCell.reuseIdentifier,
-                for: indexPath) as? UserIdCollectionViewCell
+                    withReuseIdentifier: UserIdCollectionViewCell.reuseIdentifier,
+                    for: indexPath) as? UserIdCollectionViewCell
             else {
                 return UICollectionViewCell()
             }
@@ -275,8 +292,8 @@ extension SignUpViewController: UICollectionViewDataSource {
         case 1:
             guard
                 let cell = collectionView.dequeueReusableCell(
-                withReuseIdentifier: UserNameCollectionViewCell.reuseIdentifier,
-                for: indexPath) as? UserNameCollectionViewCell
+                    withReuseIdentifier: UserNameCollectionViewCell.reuseIdentifier,
+                    for: indexPath) as? UserNameCollectionViewCell
             else {
                 return UICollectionViewCell()
             }
@@ -289,8 +306,8 @@ extension SignUpViewController: UICollectionViewDataSource {
         case 2:
             guard
                 let cell = collectionView.dequeueReusableCell(
-                withReuseIdentifier: UserBirthCollectionViewCell.reuseIdentifier,
-                for: indexPath) as? UserBirthCollectionViewCell
+                    withReuseIdentifier: UserBirthCollectionViewCell.reuseIdentifier,
+                    for: indexPath) as? UserBirthCollectionViewCell
             else {
                 return UICollectionViewCell()
             }
@@ -303,12 +320,12 @@ extension SignUpViewController: UICollectionViewDataSource {
             )
             
             return cell
-   
+            
         case 3:
             guard
                 let cell = collectionView.dequeueReusableCell(
-                withReuseIdentifier: SearchSchoolCollectionViewCell.reuseIdentifier,
-                for: indexPath) as? SearchSchoolCollectionViewCell
+                    withReuseIdentifier: SearchSchoolCollectionViewCell.reuseIdentifier,
+                    for: indexPath) as? SearchSchoolCollectionViewCell
             else {
                 return UICollectionViewCell()
             }
@@ -322,8 +339,8 @@ extension SignUpViewController: UICollectionViewDataSource {
         case 4:
             guard
                 let cell = collectionView.dequeueReusableCell(
-                withReuseIdentifier: SelectCategoryCollectionViewCell.reuseIdentifier,
-                for: indexPath) as? SelectCategoryCollectionViewCell
+                    withReuseIdentifier: SelectCategoryCollectionViewCell.reuseIdentifier,
+                    for: indexPath) as? SelectCategoryCollectionViewCell
             else {
                 return UICollectionViewCell()
             }
@@ -337,12 +354,12 @@ extension SignUpViewController: UICollectionViewDataSource {
         case 5:
             guard
                 let cell = collectionView.dequeueReusableCell(
-                withReuseIdentifier: SelectPhotoCollectionViewCell.reuseIdentifier,
-                for: indexPath) as? SelectPhotoCollectionViewCell
+                    withReuseIdentifier: SelectPhotoCollectionViewCell.reuseIdentifier,
+                    for: indexPath) as? SelectPhotoCollectionViewCell
             else {
                 return UICollectionViewCell()
             }
-
+            
             delegate = cell
             cell.setProperties(
                 coordinator: coordinator,
@@ -350,7 +367,7 @@ extension SignUpViewController: UICollectionViewDataSource {
             )
             
             return cell
-
+            
         default:
             return UICollectionViewCell()
         }

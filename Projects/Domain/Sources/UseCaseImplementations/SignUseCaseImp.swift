@@ -50,14 +50,14 @@ public struct SignUseCaseImp: SignUseCase {
     
     public func searchSchool(
         request: SchoolDataRequest,
-        completion: @escaping (Result<[SchoolDataResponse], Error>) -> Void
+        completion: @escaping ([SchoolData]) -> Void
     ) {
         searchService.searchSchool(request: request, completion: completion)
     }
    
     public func duplicationCheck(
         request: DuplicationCheckRequest,
-        completion: @escaping (Result<DuplicationCheckResponse, Error>) -> Void
+        completion: @escaping (Bool) -> Void
     ) {
         signService.duplicationCheck(request: request, completion: completion)
     }

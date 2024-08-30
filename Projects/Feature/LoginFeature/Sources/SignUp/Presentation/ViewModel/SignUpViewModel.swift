@@ -48,7 +48,6 @@ public final class SignUpViewModel {
         .etc
     ]
     
-    
     //SelectPhoto
     var selectPhotoList: [AlbumType] = [.init(image: nil), .init(image: nil)]
     
@@ -58,26 +57,10 @@ public final class SignUpViewModel {
     // MARK: - Helpers
     public func searchSchoolData(completion: @escaping () -> Void) {
         state.send(.loading)
-        signUseCase.searchSchool(request: SchoolDataRequest(schoolName: searchSchoolText)) { result in
-            switch result {
-            case .success(let schoolDataResponses):
-                self.filteredSchools = schoolDataResponses.map {
-                    .init(
-                        schoolName: $0.name,
-                        schoolLocation: $0.address
-                    )
-                }
-                print(self.filteredSchools)
-                print(self.filteredSchools.count)
-                self.state.send(.success)
-                
-                if !self.filteredSchools.isEmpty {
-                    completion()
-                }
-                
-            case .failure(let error):
-                self.state.send(.fail(error: error.localizedDescription))
-            }
+        signUseCase.searchSchool(request: SchoolDataRequest(schoolName: searchSchoolText)) { filteredSchools in
+            self.filteredSchools = filteredSchools
+            self.state.send(.success)
+            completion()
         }
     }
     
@@ -88,19 +71,10 @@ public final class SignUpViewModel {
     }
     
     func duplicationCheck(completion: @escaping (Bool) -> Void) {
-        signUseCase.duplicationCheck(request: .init(uniqueId: userId)) { result in
-            switch result {
-            case .success(let duplicationCheckResponse):
-                self.state.send(.success)
-                completion(true)
-            case .failure(let error):
-                self.state.send(.fail(error: error.localizedDescription))
-                completion(false)
-            }
+        signUseCase.duplicationCheck(request: .init(uniqueId: userId)) { check in
+            completion(check)
         }
-            
     }
-    
 }
 
 // MARK: - UserBirth
