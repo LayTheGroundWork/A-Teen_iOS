@@ -16,22 +16,17 @@ public class QuestionsViewModel {
     let sampleQuestionList: [String] = [
         "내가 사는 곳은 어딘가요?",
         "나의 취미는 뭔가요?",
-        "나의 취미는 뭔가요?",
-        "나의 취미는 뭔가요?",
-        "나의 취미는 뭔가요?",
-        "나의 취미는 뭔가요?",
-        "나의 취미는 뭔가요?",
-        "나의 취미는 뭔가요?",
-        "나의 취미는 뭔가요?",
-        "나의 취미는 뭔가요?",
-        "나의 취미는 뭔가요?",
-        "나의 취미는 뭔가요?",
-        "나의 취미는 뭔가요?",
-        "나의 취미는 뭔가요?",
-        "내가 좋아하는 것은 뭔가요?"
+        "나는 누구인가요?",
+        "질문거리가 생각이 안나요",
+        "내가 좋아하는 것은 뭔가요?",
+        "허허",
+        "하하",
+        "호호",
+        "후후",
+        "긴거 실험용입니다~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
     ]
     
-    var questionList: [Question] = []
+    var questionList: [Question] = [Question(title: "실험용", text: "ㅁㄴㅇㅁㅇㄴㅇㄴ")]
     var changeQuestionList: [Question] = []
     
     func saveChangeValue(completion: @escaping(Bool, SaveError?) -> Void) {

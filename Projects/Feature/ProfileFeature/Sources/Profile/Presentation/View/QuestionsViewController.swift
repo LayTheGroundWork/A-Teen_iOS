@@ -74,7 +74,7 @@ public final class QuestionsViewController: UIViewController {
         scrollView.backgroundColor = UIColor.systemBackground
         scrollView.showsVerticalScrollIndicator = false
         scrollView.clipsToBounds = true
-        scrollView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 100, right: 0)
+        scrollView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 84, right: 0)
         //scrollView.delegate = self
         return scrollView
     }()
@@ -88,7 +88,8 @@ public final class QuestionsViewController: UIViewController {
     
     lazy var tableView: UITableView = {
         let tableView = UITableView()
-        tableView.separatorStyle = .none
+        tableView.backgroundColor = DesignSystemAsset.gray03.color
+        tableView.layer.cornerRadius = 10
         tableView.showsVerticalScrollIndicator = false
         tableView.isScrollEnabled = false
         tableView.dataSource = self
@@ -102,7 +103,6 @@ public final class QuestionsViewController: UIViewController {
         button.addTarget(self, action: #selector(clickSelectQuestionButton(_:)), for: .touchUpInside)
         return button
     }()
-    
     
     private lazy var saveButton: UIButton = {
         let button = UIButton()
@@ -191,7 +191,7 @@ public final class QuestionsViewController: UIViewController {
         scrollView.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview()
             make.top.equalTo(questionsLabel.snp.bottom).offset(42)
-            make.bottom.equalTo(saveButton.snp.top)
+            make.bottom.equalTo(saveButton.snp.top).offset(-ViewValues.defaultPadding)
         }
         
         backgroundView.snp.makeConstraints { make in
@@ -213,13 +213,42 @@ public final class QuestionsViewController: UIViewController {
             make.top.equalTo(tableView.snp.bottom).offset(19)
             make.height.equalTo(44)
         }
-        
+
         changeHeight()
     }
     
     func changeHeight() {
+        prepareToGetCellHeight()
+        
         self.view.layoutIfNeeded()
-        tableViewHeightAnchor?.update(offset: viewModel.changeQuestionList.count * 220)
+        var height: CGFloat = 0.0
+        
+        for index in 0..<viewModel.changeQuestionList.count {
+            guard let cell = tableView.cellForRow(at: IndexPath(row: index, section: 0)) as?
+                    QuestionsTableViewCell else { break }
+            
+            print(cell.questionBackgroundView.frame.height)
+            height += cell.questionBackgroundView.frame.height
+        }
+
+        tableViewHeightAnchor?.update(offset: height)
+        
+        self.view.layoutIfNeeded()
+        
+        backgroundViewHeightAnchor?.update(offset: tableView.frame.height + selectQuestionButton.frame.height + 19)
+        
+        self.view.layoutIfNeeded()
+        
+        self.scrollView.contentSize = CGSize(
+            width: self.view.frame.width,
+            height: backgroundView.frame.height)
+    }
+    
+    func prepareToGetCellHeight() {
+        self.tableView.reloadData()
+        self.view.layoutIfNeeded()
+
+        tableViewHeightAnchor?.update(offset: tableView.frame.height + 20)
         
         self.view.layoutIfNeeded()
         
@@ -269,12 +298,7 @@ extension QuestionsViewController: UITableViewDataSource {
         else {
             return UITableViewCell()
         }
-        cell.setProperties(viewModel: viewModel, index: indexPath.row)
-        cell.deleteButtonAction = { [weak self] in
-            self?.viewModel.changeQuestionList.remove(at: indexPath.row)
-            self?.changeHeight()
-            self?.tableView.reloadData()
-        }
+        cell.setProperties(question: viewModel.changeQuestionList[indexPath.row])
         
         return cell
     }
@@ -286,13 +310,14 @@ extension QuestionsViewController: UITableViewDataSource {
 
 extension QuestionsViewController: UITableViewDelegate {
     public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        220
+        UITableView.automaticDimension
     }
 }
 
 extension QuestionsViewController: QuestionsViewControllerDelegate {
     public func didTabBackButtonFromQuestionsDialogViewController() {
-        changeHeight()
-        tableView.reloadData()
+        UIView.animate(withDuration: 0.3, delay: 0, options: .showHideTransitionViews) {
+            self.changeHeight()
+        }
     }
 }
