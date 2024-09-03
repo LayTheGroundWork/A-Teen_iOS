@@ -17,7 +17,7 @@ class CustomSelectQuestionButton: UIButton {
         let label = UILabel()
         label.text = "질문 선택하기"
         label.textAlignment = .left
-        label.textColor = DesignSystemAsset.gray02.color
+        label.textColor = DesignSystemAsset.gray01.color
         label.font = .customFont(forTextStyle: .callout, weight: .bold)
         return label
     }()

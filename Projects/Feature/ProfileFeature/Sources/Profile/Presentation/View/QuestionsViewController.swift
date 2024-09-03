@@ -43,7 +43,7 @@ public final class QuestionsViewController: UIViewController {
     
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
-        label.text = "10문 10답 정보 수정"
+        label.text = "자문자답 정보 수정"
         label.textColor = UIColor.black
         label.textAlignment = .left
         label.font = .customFont(forTextStyle: .title3, weight: .bold)
@@ -245,7 +245,7 @@ public final class QuestionsViewController: UIViewController {
     }
     
     func prepareToGetCellHeight() {
-        self.tableView.reloadData()
+        //self.tableView.reloadData()
         self.view.layoutIfNeeded()
 
         tableViewHeightAnchor?.update(offset: tableView.frame.height + 20)
@@ -259,6 +259,12 @@ public final class QuestionsViewController: UIViewController {
         self.scrollView.contentSize = CGSize(
             width: self.view.frame.width,
             height: backgroundView.frame.height)
+    }
+    
+    func animationOfTableview() {
+        UIView.animate(withDuration: 0.3, delay: 0, options: .showHideTransitionViews) {
+            self.changeHeight()
+        }
     }
     
     // MARK: - Actions
@@ -299,7 +305,15 @@ extension QuestionsViewController: UITableViewDataSource {
             return UITableViewCell()
         }
         cell.setProperties(question: viewModel.changeQuestionList[indexPath.row])
-        
+        cell.deleteButtonAction = { [weak self] in
+            guard let self = self else { return }
+            
+            if let indexPath = tableView.indexPath(for: cell) {
+                self.viewModel.changeQuestionList.remove(at: indexPath.row)
+                tableView.deleteRows(at: [indexPath], with: .automatic)
+                animationOfTableview()
+            }
+        }
         return cell
     }
     
@@ -316,8 +330,7 @@ extension QuestionsViewController: UITableViewDelegate {
 
 extension QuestionsViewController: QuestionsViewControllerDelegate {
     public func didTabBackButtonFromQuestionsDialogViewController() {
-        UIView.animate(withDuration: 0.3, delay: 0, options: .showHideTransitionViews) {
-            self.changeHeight()
-        }
+        self.tableView.reloadData()
+        animationOfTableview()
     }
 }

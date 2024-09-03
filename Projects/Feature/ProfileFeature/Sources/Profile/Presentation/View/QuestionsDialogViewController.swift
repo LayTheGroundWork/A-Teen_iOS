@@ -35,6 +35,13 @@ open class QuestionsDialogViewController: UIViewController {
         return view
     }()
     
+    private lazy var xmarkButton: UIButton = {
+        let button = UIButton()
+        button.setImage(DesignSystemAsset.xMarkIcon.image, for: .normal)
+        button.addTarget(self, action: #selector(clickCloseButton(_:)), for: .touchUpInside)
+        return button
+    }()
+    
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.text = "마음에 드는 질문을 선택해주세요"
@@ -106,6 +113,7 @@ open class QuestionsDialogViewController: UIViewController {
         
         view.addSubview(dialogView)
         
+        dialogView.addSubview(xmarkButton)
         dialogView.addSubview(titleLabel)
         dialogView.addSubview(tableBackgroundView)
         
@@ -122,8 +130,14 @@ open class QuestionsDialogViewController: UIViewController {
             make.height.equalTo(ViewValues.halfHeight)
         }
         
+        xmarkButton.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(20)
+            make.trailing.equalToSuperview().offset(-ViewValues.defaultPadding)
+            make.width.height.equalTo(24)
+        }
+        
         titleLabel.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(27)
+            make.top.equalToSuperview().offset(47)
             make.leading.equalToSuperview().offset(ViewValues.defaultPadding)
             make.trailing.equalToSuperview().offset(-ViewValues.defaultPadding)
         }
@@ -156,7 +170,10 @@ open class QuestionsDialogViewController: UIViewController {
         
         updateCustomIndicator()
     }
-    
+}
+
+// MARK: - Action
+extension QuestionsDialogViewController {
     private func updateCustomIndicator() {
         self.view.layoutIfNeeded()
         
@@ -240,6 +257,10 @@ open class QuestionsDialogViewController: UIViewController {
             break
         }
     }
+    
+    @objc func clickCloseButton(_ sender: UIButton) {
+        coordinator?.didFinish()
+    }
 }
 
 // MARK: - UITableViewDataSource
@@ -278,7 +299,7 @@ extension QuestionsDialogViewController: UITableViewDelegate {
             viewModel.changeQuestionList.append(
                 .init(
                     title: viewModel.sampleQuestionList[indexPath.row],
-                    text: "")
+                    text: AppLocalized.textViewPlaceHolder)
             )
             coordinator?.didFinish()
         }

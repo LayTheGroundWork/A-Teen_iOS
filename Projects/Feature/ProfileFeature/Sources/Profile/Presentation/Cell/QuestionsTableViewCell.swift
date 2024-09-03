@@ -13,9 +13,18 @@ import DesignSystem
 import UIKit
 
 class QuestionsTableViewCell: UITableViewCell {
+    var deleteButtonAction: (() -> Void)?
+    
     lazy var questionBackgroundView: UIView = {
         let view = UIView()
         return view
+    }()
+    
+    lazy var deleteButton: UIButton = {
+        let button = UIButton()
+        button.setImage(DesignSystemAsset.xMarkGray01Icon.image, for: .normal)
+        button.addTarget(self, action: #selector(clickDeleteButton(_:)), for: .touchUpInside)
+        return button
     }()
     
     lazy var questionLabel: UILabel = {
@@ -29,6 +38,7 @@ class QuestionsTableViewCell: UITableViewCell {
     lazy var questionTextLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .left
+        label.textColor = DesignSystemAsset.gray01.color
         label.font = UIFont.customFont(forTextStyle: .footnote, weight: .regular)
         return label
     }()
@@ -41,6 +51,7 @@ class QuestionsTableViewCell: UITableViewCell {
         
         contentView.addSubview(questionBackgroundView)
         
+        questionBackgroundView.addSubview(deleteButton)
         questionBackgroundView.addSubview(questionLabel)
         questionBackgroundView.addSubview(questionTextLabel)
         
@@ -48,15 +59,21 @@ class QuestionsTableViewCell: UITableViewCell {
             make.edges.equalToSuperview()
         }
         
+        deleteButton.snp.makeConstraints { make in
+            make.centerY.equalToSuperview()
+            make.trailing.equalToSuperview().offset(-ViewValues.defaultPadding)
+            make.width.height.equalTo(24)
+        }
+        
         questionLabel.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(ViewValues.defaultPadding)
             make.leading.equalToSuperview().offset(ViewValues.defaultPadding)
-            make.trailing.equalToSuperview().offset(-ViewValues.defaultPadding)
+            make.trailing.equalTo(deleteButton.snp.leading).offset(-10)
         }
         
         questionTextLabel.snp.makeConstraints { make in
             make.leading.equalToSuperview().offset(ViewValues.defaultPadding)
-            make.trailing.equalToSuperview().offset(-ViewValues.defaultPadding)
+            make.trailing.equalTo(deleteButton.snp.leading).offset(-10)
             make.bottom.equalToSuperview().offset(-ViewValues.defaultPadding)
             make.top.equalTo(questionLabel.snp.bottom).offset(13)
         }
@@ -73,6 +90,13 @@ class QuestionsTableViewCell: UITableViewCell {
     func setProperties(question: Question) {
         self.questionLabel.text = question.title
         self.questionTextLabel.text = question.text
+    }
+}
+
+// MARK: - Action
+extension QuestionsTableViewCell {
+    @objc func clickDeleteButton(_ sender: UIButton) {
+        deleteButtonAction?()
     }
 }
 
