@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 55;
+	objectVersion = 56;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -25,6 +25,11 @@
 		6753CE3620A26AD3322960E8 /* LinksDialogCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 004DE565F155364550DB4A46 /* LinksDialogCoordinator.swift */; };
 		70895A41B1F0B0B5B100D0B0 /* LinkTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB0D2929363226C93B98E4C /* LinkTableViewCell.swift */; };
 		70DE0EAAF4F6C57528A97416 /* EditMyPhotoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BFA407D1318C8EBC50CDFF /* EditMyPhotoViewModel.swift */; };
+		73A93F612C86E368003512A5 /* QuestionDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73A93F602C86E368003512A5 /* QuestionDetailViewController.swift */; };
+		73A93F632C86E39E003512A5 /* QuestionDetailFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73A93F622C86E39E003512A5 /* QuestionDetailFactory.swift */; };
+		73A93F652C86E3AE003512A5 /* QuestionDetailCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73A93F642C86E3AE003512A5 /* QuestionDetailCoordinator.swift */; };
+		73A93F672C86F786003512A5 /* QuestionDetailCoordinator+QuestionDetailViewControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73A93F662C86F786003512A5 /* QuestionDetailCoordinator+QuestionDetailViewControllerCoordinator.swift */; };
+		73A93F692C86FB1D003512A5 /* QuestionsCoordinator+QuestionDetailCoordinatorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73A93F682C86FB1D003512A5 /* QuestionsCoordinator+QuestionDetailCoordinatorDelegate.swift */; };
 		7437742AB548604B9D645E25 /* ProfileCoordinator+SettingsCoordinatorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE52768296FE8ED09EDCF5E3 /* ProfileCoordinator+SettingsCoordinatorDelegate.swift */; };
 		7503FD6D25B276BACE138BE7 /* LinksCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46B648E1C1E5A399E3BF63E9 /* LinksCollectionViewCell.swift */; };
 		755BE18E11E861FDDF150DEF /* CustomNaviView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E49EF055D5905E6493CCEF /* CustomNaviView.swift */; };
@@ -117,6 +122,11 @@
 		731A11DA88A7ABACFE37E26C /* ProfileCoordinator+ProfileViewControllerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProfileCoordinator+ProfileViewControllerCoordinator.swift"; sourceTree = "<group>"; };
 		73515D0C838BE4DC8FF4402E /* EditMyPhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditMyPhotoViewController.swift; sourceTree = "<group>"; };
 		737994A55C1FB491A5A83C8C /* IntroduceCoordinator+IntroduceViewControllerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "IntroduceCoordinator+IntroduceViewControllerCoordinator.swift"; sourceTree = "<group>"; };
+		73A93F602C86E368003512A5 /* QuestionDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionDetailViewController.swift; sourceTree = "<group>"; };
+		73A93F622C86E39E003512A5 /* QuestionDetailFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionDetailFactory.swift; sourceTree = "<group>"; };
+		73A93F642C86E3AE003512A5 /* QuestionDetailCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionDetailCoordinator.swift; sourceTree = "<group>"; };
+		73A93F662C86F786003512A5 /* QuestionDetailCoordinator+QuestionDetailViewControllerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "QuestionDetailCoordinator+QuestionDetailViewControllerCoordinator.swift"; sourceTree = "<group>"; };
+		73A93F682C86FB1D003512A5 /* QuestionsCoordinator+QuestionDetailCoordinatorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "QuestionsCoordinator+QuestionDetailCoordinatorDelegate.swift"; sourceTree = "<group>"; };
 		78F33F76681A8564608F3DE7 /* IntroduceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroduceViewModel.swift; sourceTree = "<group>"; };
 		795ABA557C83383D98BF7228 /* ProfileCoordinator+IntroduceCoordinatorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProfileCoordinator+IntroduceCoordinatorDelegate.swift"; sourceTree = "<group>"; };
 		7B787AA2B300EEB573020337 /* QuestionsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionsCoordinator.swift; sourceTree = "<group>"; };
@@ -172,6 +182,7 @@
 				05B8D902E7152C60B8C958FB /* ProfileViewController.swift */,
 				1CC31044E1AB78EF985832B8 /* QuestionsDialogViewController.swift */,
 				328B1195AB0B5C831268D97D /* QuestionsViewController.swift */,
+				73A93F602C86E368003512A5 /* QuestionDetailViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -224,11 +235,15 @@
 				B1D889A2FB2244033060C6D4 /* ProfileFactory.swift */,
 				7B787AA2B300EEB573020337 /* QuestionsCoordinator.swift */,
 				C1189D08F6204C2385B0D7C6 /* QuestionsCoordinator+QuestionsDialogCoordinatorDelegate.swift */,
+				73A93F682C86FB1D003512A5 /* QuestionsCoordinator+QuestionDetailCoordinatorDelegate.swift */,
 				D2B854E47250B7F0759FD475 /* QuestionsCoordinator+QuestionsViewControllerCoordinator.swift */,
 				CB8A6E4BFE0D267FED044D78 /* QuestionsDialogCoordinator.swift */,
 				8F95F0E8781B67004AB20C27 /* QuestionsDialogCoordinator+QuestionsDialogViewControllerCoordinator.swift */,
 				7E7C5274F794A02F231B0ACB /* QuestionsDialogFactory.swift */,
 				B4BFD11C9B12400672E424F6 /* QuestionsFactory.swift */,
+				73A93F642C86E3AE003512A5 /* QuestionDetailCoordinator.swift */,
+				73A93F662C86F786003512A5 /* QuestionDetailCoordinator+QuestionDetailViewControllerCoordinator.swift */,
+				73A93F622C86E39E003512A5 /* QuestionDetailFactory.swift */,
 			);
 			path = Composition;
 			sourceTree = "<group>";
@@ -392,8 +407,6 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
 				ORGANIZATIONNAME = ATeen;
-				TargetAttributes = {
-				};
 			};
 			buildConfigurationList = 820D491C7A089E9609C5577D /* Build configuration list for PBXProject "ProfileFeature" */;
 			compatibilityVersion = "Xcode 14.0";
@@ -440,6 +453,7 @@
 				55FE9E485CF63075412F9235 /* SettingsViewModel.swift in Sources */,
 				1AF2769C08BB127855B1AAF0 /* SettingsViewNavigation.swift in Sources */,
 				F921C7F56F471F3B4DF17FCC /* UserConfigurationViewController.swift in Sources */,
+				73A93F612C86E368003512A5 /* QuestionDetailViewController.swift in Sources */,
 				8A98CED0067FEF0B0859573B /* CustomLinkAddButton.swift in Sources */,
 				BFADE4B2D1576800E307DAFE /* CustomLinkView.swift in Sources */,
 				B62968261FB465C9CB558474 /* CustomMbtiButton.swift in Sources */,
@@ -448,6 +462,7 @@
 				BE94B61B2040760205DA45B5 /* EditMyPhotoCoordinator+AlbumCoordinatorDelegate.swift in Sources */,
 				394775912FB460EFBC4B7299 /* EditMyPhotoCoordinator+EditMyPhotoViewControllerCoordinator.swift in Sources */,
 				4DD9488108DD37175CE7618C /* EditMyPhotoCoordinator.swift in Sources */,
+				73A93F692C86FB1D003512A5 /* QuestionsCoordinator+QuestionDetailCoordinatorDelegate.swift in Sources */,
 				EAC7B530B4BC5BCC3870B98C /* EditMyPhotoFactory.swift in Sources */,
 				EF45F4D9378FA1A827A7B736 /* IntroduceCoordinator+IntroduceViewControllerCoordinator.swift in Sources */,
 				884C0B8B51D014E5907A6A02 /* IntroduceCoordinator.swift in Sources */,
@@ -469,17 +484,20 @@
 				9DC0756BE25C16A875E5F6B3 /* QuestionsDialogCoordinator+QuestionsDialogViewControllerCoordinator.swift in Sources */,
 				2FDA4DB82F6B97790A75DA23 /* QuestionsDialogCoordinator.swift in Sources */,
 				F5311B514F7744F501D594C6 /* QuestionsDialogFactory.swift in Sources */,
+				73A93F672C86F786003512A5 /* QuestionDetailCoordinator+QuestionDetailViewControllerCoordinator.swift in Sources */,
 				A84231931BFBC9A0E1E7D8C9 /* QuestionsFactory.swift in Sources */,
 				4AFD0F9D8DF425434B63259A /* AddLinkCollectionViewCell.swift in Sources */,
 				9334EDDB692BA398EC302C76 /* IntroduceMbtiButtonCollectionViewCell.swift in Sources */,
 				A035510A4A6EE163CA4B8A67 /* IntroduceMbtiCollectionViewCell.swift in Sources */,
 				1D34015903FDEA9D60557488 /* IntroduceWritingCollectionViewCell.swift in Sources */,
 				70895A41B1F0B0B5B100D0B0 /* LinkTableViewCell.swift in Sources */,
+				73A93F652C86E3AE003512A5 /* QuestionDetailCoordinator.swift in Sources */,
 				7503FD6D25B276BACE138BE7 /* LinksCollectionViewCell.swift in Sources */,
 				7DEDC755211F4A29597FFAC4 /* QuestionsDialogTableViewCell.swift in Sources */,
 				CC286220C6A3FAAF1496B521 /* QuestionsTableViewCell.swift in Sources */,
 				778FEA0055B7D693A3C63559 /* EditMyPhotoViewController.swift in Sources */,
 				84F190EE865F1BE143AEE321 /* IntroduceViewController.swift in Sources */,
+				73A93F632C86E39E003512A5 /* QuestionDetailFactory.swift in Sources */,
 				30C7883EC5C80AFFCCFE5A72 /* LinksDialogViewController.swift in Sources */,
 				8B346E18C8519296F391B661 /* ProfileViewController.swift in Sources */,
 				3A480E1F26D6029058F0BC75 /* QuestionsDialogViewController.swift in Sources */,
@@ -626,7 +644,10 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				OTHER_LDFLAGS = "$(inherited) -ObjC";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ATeen.ATeen.ProfileFeature;
 				PRODUCT_NAME = ProfileFeature;
 				SDKROOT = iphoneos;
@@ -634,10 +655,7 @@
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = (
-					"$(inherited)",
-					DEBUG,
-				);
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG";
 				SWIFT_COMPILATION_MODE = singlefile;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -667,7 +685,10 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				OTHER_LDFLAGS = "$(inherited) -ObjC";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ATeen.ATeen.ProfileFeature;
 				PRODUCT_NAME = ProfileFeature;
 				SDKROOT = iphoneos;

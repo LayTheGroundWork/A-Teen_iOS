@@ -15,5 +15,8 @@ extension QuestionsCoordinator: QuestionsDialogCoordinatorDelegate {
         navigation.dismiss(animated: false)
         
         questionsViewControllerDelegate?.didTabBackButtonFromQuestionsDialogViewController()
+        이렇게 했음
+        guard let factory = factory as? QuestionsFactoryImp else { return }
+        didTabCell(index: factory.viewModel.changeQuestionList.endIndex - 1)
     }
 }

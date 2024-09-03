@@ -13,6 +13,15 @@ extension QuestionsCoordinator: QuestionsViewControllerCoordinator {
         delegate?.didFinishQuestionsViewController(childCoordinator: self)
     }
     
+    public func didTabCell(index: Int) {
+        let coordinator = factory.makeQuestionDetailCoordinator(
+            navigation: navigation,
+            childCoordinators: childCoordinators,
+            delegate: self,
+            index: index)
+        addChildCoordinatorStart(coordinator)
+    }
+    
     public func didTabSelectQuestionButton() {
         let coordinator = factory.makeQuestionsDialogCoordinator(delegate: self)
         addChildCoordinatorStart(coordinator)

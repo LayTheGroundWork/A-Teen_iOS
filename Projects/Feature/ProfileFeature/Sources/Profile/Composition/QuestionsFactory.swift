@@ -7,6 +7,7 @@
 //
 
 import Core
+import Common
 import FeatureDependency
 import UIKit
 
@@ -14,6 +15,12 @@ public protocol QuestionsFactory {
     func makeQuestionsViewController(coordinator: QuestionsViewControllerCoordinator) -> UIViewController
     func makeQuestionsDialogCoordinator(
         delegate: QuestionsDialogCoordinatorDelegate
+    ) -> Coordinator
+    func makeQuestionDetailCoordinator(
+        navigation: Navigation,
+        childCoordinators: [Coordinator],
+        delegate: QuestionDetailCoordinatorDelegate,
+        index: Int
     ) -> Coordinator
 }
 
@@ -40,6 +47,24 @@ public struct QuestionsFactoryImp: QuestionsFactory {
             navigation: navigation,
             factory: factory,
             delegate: delegate)
+        return coordinator
+    }
+    
+    public func makeQuestionDetailCoordinator(
+        navigation: Navigation,
+        childCoordinators: [Coordinator],
+        delegate: QuestionDetailCoordinatorDelegate,
+        index: Int
+    ) -> Coordinator {
+        let factory = QuestionDetailFactoryImp(
+            question: viewModel.changeQuestionList[index],
+            index: index)
+        
+        let coordinator = QuestionDetailCoordinator(
+            navigation: navigation,
+            factory: factory,
+            delegate: delegate,
+            childCoordinators: childCoordinators)
         return coordinator
     }
 }

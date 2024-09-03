@@ -14,6 +14,7 @@ import UIKit
 
 public protocol QuestionsViewControllerCoordinator: AnyObject {
     func didTabBackButton()
+    func didTabCell(index: Int)
     func didTabSelectQuestionButton()
     func configTabbarState(view: ProfileFeatureViewNames)
 }
@@ -325,6 +326,10 @@ extension QuestionsViewController: UITableViewDataSource {
 extension QuestionsViewController: UITableViewDelegate {
     public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         UITableView.automaticDimension
+    }
+    
+    public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        coordinator?.didTabCell(index: indexPath.row)
     }
 }
 
