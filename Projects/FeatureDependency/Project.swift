@@ -14,6 +14,7 @@ let project = Project.makeProject(
     dependencies: [
         .designSystem,
         .common,
-        .domain
+        .domain,
+        .external(name: "SocketIO")
     ]
 )

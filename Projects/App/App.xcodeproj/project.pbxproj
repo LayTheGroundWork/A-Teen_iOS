@@ -31,6 +31,7 @@
 		AAB073F1221B89F1B9D0816C /* Core.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 514C6A786251DDEC6B3DFF77 /* Core.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		ACB85617600FDF45A2F8F44E /* TeenFeature.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BB2646C3DD29AA965863AA05 /* TeenFeature.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B493D067AC897BE439C631AC /* Data.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8AF7E105F5FEC83A7A47F2E7 /* Data.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		B7783CBC622651CE88EB4889 /* SocketIO.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = AE21244D6450872A6C15B5D2 /* SocketIO.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		BC253706FB28F093D091FFBC /* FeatureDependency.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A9432DE0287E5923CB65DC49 /* FeatureDependency.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C49B2DF707EB376C480679EA /* NetworkService.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 792CA40B8758B40F19BCB0F0 /* NetworkService.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CD3D28CEB3C78065EA97AB47 /* AppDelegate+Register.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11D47AAA862A0C2842F76094 /* AppDelegate+Register.swift */; };
@@ -67,6 +68,7 @@
 				6815E78E3CB81D6FD709874B /* RankingFeature.framework in Embed Frameworks */,
 				9E68636922D1DB3F98CBD482 /* ReportFeature.framework in Embed Frameworks */,
 				57A4C34D3B42E3AFDD8356D3 /* SnapKit.framework in Embed Frameworks */,
+				B7783CBC622651CE88EB4889 /* SocketIO.framework in Embed Frameworks */,
 				ACB85617600FDF45A2F8F44E /* TeenFeature.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -98,6 +100,7 @@
 		95D529DAAF6A9D59C44D9D68 /* TuistAssets+App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TuistAssets+App.swift"; sourceTree = "<group>"; };
 		96A4317EA46CFE41AA8C2B44 /* AlertFeature.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AlertFeature.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A9432DE0287E5923CB65DC49 /* FeatureDependency.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FeatureDependency.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AE21244D6450872A6C15B5D2 /* SocketIO.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SocketIO.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B9C41BF65550E887A8163688 /* Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
 		BB2646C3DD29AA965863AA05 /* TeenFeature.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TeenFeature.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C18188B8ACFCCDD1AA3522A2 /* AppFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFactory.swift; sourceTree = "<group>"; };
@@ -249,6 +252,7 @@
 				DB424A280C12994EE13C6934 /* RankingFeature.framework */,
 				EC2619E61EDDEEC39EB30054 /* ReportFeature.framework */,
 				0DE442BA1C87E9CF5D190ED8 /* SnapKit.framework */,
+				AE21244D6450872A6C15B5D2 /* SocketIO.framework */,
 				BB2646C3DD29AA965863AA05 /* TeenFeature.framework */,
 			);
 			name = Products;
@@ -352,7 +356,7 @@
 				CLANG_ENABLE_MODULE_DEBUGGING = YES;
 				CODE_SIGN_IDENTITY = "$(CODE_SIGN_IDENTITY)";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 2024.08.13.16.07;
+				CURRENT_PROJECT_VERSION = 2024.08.10.21.55;
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				INFOPLIST_FILE = "Derived/InfoPlists/App-Info.plist";
@@ -442,7 +446,7 @@
 				CLANG_ENABLE_MODULE_DEBUGGING = YES;
 				CODE_SIGN_IDENTITY = "$(CODE_SIGN_IDENTITY)";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 2024.08.13.16.07;
+				CURRENT_PROJECT_VERSION = 2024.08.10.21.55;
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				INFOPLIST_FILE = "Derived/InfoPlists/App-Info.plist";

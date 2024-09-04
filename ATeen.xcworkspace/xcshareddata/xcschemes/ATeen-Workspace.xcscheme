@@ -280,6 +280,34 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
+               BlueprintIdentifier = "FCE5E9F1575D2ECAAB454C55"
+               BuildableName = "SocketIO.framework"
+               BlueprintName = "SocketIO"
+               ReferencedContainer = "container:Tuist/.build/tuist-derived/SocketIO/SocketIO.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "49B615F8242FEFCF783EC8F0"
+               BuildableName = "Starscream.framework"
+               BlueprintName = "Starscream"
+               ReferencedContainer = "container:Tuist/.build/tuist-derived/Starscream/Starscream.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
                BlueprintIdentifier = "9C91576F6825D949139A7E88"
                BuildableName = "TeenFeature.framework"
                BlueprintName = "TeenFeature"

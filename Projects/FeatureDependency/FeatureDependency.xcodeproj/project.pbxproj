@@ -11,6 +11,7 @@
 		14F1780EAAE718E8D1753EEF /* Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB983D791EF444CC0D5743FB /* Navigation.swift */; };
 		1F40C285259449366B062F3A /* DesignSystem.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85F2AEFD97774332C0860EDA /* DesignSystem.framework */; };
 		237E51A31BE4EEEC256D1ACF /* ParentCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECE18CE2A8FAE3CB29284865 /* ParentCoordinator.swift */; };
+		508245171590EA6FA380E0C1 /* SocketIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 653A2D8FB3F4B050D7301CE5 /* SocketIO.framework */; };
 		76E24D656AC4D1200E53A511 /* NavigationImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88129F417957DB056A1EDD0D /* NavigationImp.swift */; };
 		7BCD024C0C7BCA2BB4D7E2D8 /* Domain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8763176478CF17417DDB83C /* Domain.framework */; };
 		A5BBD8B6D50A72D68D68A99A /* ProfileDetailCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939F3779A22132EC7A7DB6BB /* ProfileDetailCoordinator.swift */; };
@@ -39,6 +40,7 @@
 		27772529B4AF993ACCF03969 /* FactoryProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactoryProvider.swift; sourceTree = "<group>"; };
 		28676409D4301666744F397E /* Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
 		4A89129054D3C68F35AD3285 /* NavigationImp+UIAdaptivePresentationControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NavigationImp+UIAdaptivePresentationControllerDelegate.swift"; sourceTree = "<group>"; };
+		653A2D8FB3F4B050D7301CE5 /* SocketIO.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SocketIO.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7165894E1415D1FDA533C4AF /* FeatureDependency.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FeatureDependency.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		85F2AEFD97774332C0860EDA /* DesignSystem.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DesignSystem.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		88129F417957DB056A1EDD0D /* NavigationImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationImp.swift; sourceTree = "<group>"; };
@@ -61,6 +63,7 @@
 				E3B5163B8FEB63D6E9D0A12C /* Common.framework in Frameworks */,
 				1F40C285259449366B062F3A /* DesignSystem.framework in Frameworks */,
 				7BCD024C0C7BCA2BB4D7E2D8 /* Domain.framework in Frameworks */,
+				508245171590EA6FA380E0C1 /* SocketIO.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -123,6 +126,7 @@
 				85F2AEFD97774332C0860EDA /* DesignSystem.framework */,
 				F8763176478CF17417DDB83C /* Domain.framework */,
 				7165894E1415D1FDA533C4AF /* FeatureDependency.framework */,
+				653A2D8FB3F4B050D7301CE5 /* SocketIO.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
