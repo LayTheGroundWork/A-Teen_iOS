@@ -40,6 +40,12 @@ public enum AppLocalized {
     
     // MARK: - Chat
     public static let chatModalTitle = "신고 및 차단하기"
+    public static let chatWarning = """
+                                전화번호, 주소 등 개인 정보 요구를 주의해주시기 바랍니다.
+                                개인정보를 요구 받을 경우 신고 또는 차단해주시기 바랍니다.
+                                운영정책을 위반한 메시지로 신고 접수 시
+                                """
+    public static let chatWarning2 = "에이틴 이용에 제한이 있을수 있습니다."
     
     // MARK: - LogInViewController
     public static let signupTitle = "가입하기"

@@ -99,21 +99,21 @@ public final class ChatViewController: UIViewController {
     
     private func configLayout() {
         chatTableView.snp.makeConstraints { make in
-            make.top.equalTo(searchTextField.snp.bottom).offset(20)
+            make.top.equalTo(searchTextField.snp.bottom).offset(ViewValues.height * 0.01)
             make.leading.equalToSuperview()
             make.trailing.equalToSuperview()
             make.bottom.equalToSuperview().offset(-85)
         }
         
         searchTextField.snp.makeConstraints { make in
-            make.top.equalTo(titleLabel.snp.bottom).offset(40)
+            make.top.equalTo(titleLabel.snp.bottom).offset(ViewValues.height * 0.04)
             make.leading.equalToSuperview().offset(ViewValues.defaultPadding)
             make.trailing.equalToSuperview().offset(-ViewValues.defaultPadding)
             make.height.equalTo(50)
         }
         
         titleLabel.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(60)
+            make.top.equalToSuperview().offset(ViewValues.height * 0.07)
             make.leading.equalToSuperview().offset(ViewValues.defaultPadding)
         }
     }
@@ -163,6 +163,7 @@ extension ChatViewController: UITableViewDataSource {
             let chatRoom = viewModel.filteredChatRooms[indexPath.row]
             cell.configure(chatRoom)
         }
+        
         return cell
     }
 }

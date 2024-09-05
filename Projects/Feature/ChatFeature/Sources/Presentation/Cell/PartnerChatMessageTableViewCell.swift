@@ -1,5 +1,5 @@
 //
-//  PartnerChatMessageViewCell.swift
+//  PartnerChatMessageTableViewCell.swift
 //  ChatFeature
 //
 //  Created by 김명현 on 7/19/24.
@@ -7,15 +7,17 @@
 //
 
 import Common
+import DesignSystem
 import UIKit
 
-public final class PartnerChatMessageViewCell: UITableViewCell {
+public final class PartnerChatMessageTableViewCell: UITableViewCell {
+    // MARK: - Private properties
     private lazy var profileImage: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "dog")
+        imageView.image = DesignSystemAsset.blackGlass.image
         imageView.contentMode = .scaleToFill
         imageView.clipsToBounds = true
-        imageView.layer.cornerRadius = 15
+        imageView.layer.cornerRadius = 12
         
         return imageView
     }()
@@ -23,9 +25,9 @@ public final class PartnerChatMessageViewCell: UITableViewCell {
     private lazy var chatMessage: UIView = {
         let view = UIView()
         view.backgroundColor = .systemGray5
-        view.layer.cornerRadius = 25
+        view.layer.cornerRadius = 15
         view.layer.maskedCorners = CACornerMask(
-            arrayLiteral: [.layerMinXMinYCorner,
+            arrayLiteral: [.layerMinXMaxYCorner,
                            .layerMaxXMinYCorner,
                            .layerMaxXMaxYCorner]
         )
@@ -34,13 +36,15 @@ public final class PartnerChatMessageViewCell: UITableViewCell {
         label.numberOfLines = 0
         label.setLineSpacing(spacing: 7)
         label.font = .systemFont(ofSize: 12, weight: .regular)
+        label.textColor = .black
         
         view.addSubview(label)
         
         label.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(8)
             make.leading.equalToSuperview().offset(24)
-            
+            make.trailing.equalToSuperview().offset(-24)
+            make.bottom.equalToSuperview().offset(-8)  // 기본 여백
         }
         
         return view
@@ -48,13 +52,8 @@ public final class PartnerChatMessageViewCell: UITableViewCell {
     
     private lazy var timeLable: UILabel = {
         let lable = UILabel()
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "HH:mm"
-        let currentTime = dateFormatter.string(from: Date())
-        
         lable.textColor = .systemGray
         lable.font = .systemFont(ofSize: 12, weight: .regular)
-        lable.text = currentTime
         
         return lable
     }()
@@ -66,6 +65,7 @@ public final class PartnerChatMessageViewCell: UITableViewCell {
         configLayout()
     }
     
+    // MARK: - Life Cycle
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -76,19 +76,19 @@ public final class PartnerChatMessageViewCell: UITableViewCell {
         contentView.addSubview(timeLable)
     }
     
+    // MARK: - Helpers
     private func configLayout() {
         profileImage.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(78)
+            make.top.equalTo(chatMessage)
             make.leading.equalToSuperview().offset(ViewValues.defaultPadding)
             make.width.equalTo(28)
             make.height.equalTo(33)
         }
         
         chatMessage.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(78)
-            make.leading.equalTo(profileImage.snp.trailing).offset(6)
-            make.width.equalTo(216)
-            make.height.equalTo(52)
+            make.top.equalToSuperview().offset(5)
+            make.width.lessThanOrEqualTo(216)
+            make.bottom.equalToSuperview()
         }
         
         timeLable.snp.makeConstraints { make in
@@ -97,16 +97,37 @@ public final class PartnerChatMessageViewCell: UITableViewCell {
         }
     }
     
-    func setMessage(_ message: String, _ time: String, _ isHiddenTimeLabel: Bool) {
-        // chatMessage 뷰 내의 UILabel의 텍스트를 설정합니다.
+    func setMessage(_ message: String, time: String, isHiddenTimeLabel: Bool, isHiddenProfileImage: Bool) {
         if let label = chatMessage.subviews.first as? UILabel {
             label.text = message
             label.sizeToFit()
         }
         timeLable.text = time
         timeLable.isHidden = isHiddenTimeLabel
+        
+        profileImage.isHidden = isHiddenProfileImage
+        
+        // 프로필 이미지가 숨겨졌을 때 chatMessage의 위치 조정
+        if isHiddenProfileImage {
+            chatMessage.snp.remakeConstraints { make in
+                make.top.equalToSuperview().offset(5)
+                make.leading.equalToSuperview().offset(ViewValues.defaultPadding + 28 + 6)
+                make.width.lessThanOrEqualTo(216)
+                make.bottom.equalToSuperview()
+            }
+        } else {
+            chatMessage.snp.remakeConstraints { make in
+                make.top.equalToSuperview().offset(5)
+                make.leading.equalTo(profileImage.snp.trailing).offset(6)
+                make.width.lessThanOrEqualTo(216)
+                make.bottom.equalToSuperview()
+            }
+        }
+        
+        layoutIfNeeded()
     }
 }
 
-extension PartnerChatMessageViewCell: Reusable { }
+// MARK: - Extensions here
+extension PartnerChatMessageTableViewCell: Reusable { }
 

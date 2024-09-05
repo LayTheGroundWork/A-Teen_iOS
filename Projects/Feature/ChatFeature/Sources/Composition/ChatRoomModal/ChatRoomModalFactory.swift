@@ -20,6 +20,7 @@ public struct ChatRoomModalFactoryImp: ChatRoomModalFactory {
     
     public func makeChatRoomModalViewController(coordinator: ChatRoomModalViewControllerCoordinator) -> UIViewController {
         let controller = ChatRoomModalViewController(coordinator: coordinator)
+        
         return controller
     }
 }

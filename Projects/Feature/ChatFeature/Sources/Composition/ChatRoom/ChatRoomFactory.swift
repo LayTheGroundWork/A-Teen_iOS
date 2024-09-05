@@ -17,6 +17,12 @@ public protocol ChatRoomFactory {
         delegate: ChatRoomModalCoordinatorDelegate,
         childCoordinators: [Coordinator]
     ) -> ChatRoomModalCoordinator
+    func makeOperatingPolicyWebViewCoordinator(
+        navigation: Navigation,
+        parentCoordinator: ParentCoordinator,
+        delegate: OperatingPolicyModalCoordinatorDelegate,
+        childCoordinators: [Coordinator]
+    ) -> OperatingPolicyWebViewCoordinator
 }
 
 public struct ChatRoomFactoryImp: ChatRoomFactory {
@@ -39,6 +45,21 @@ public struct ChatRoomFactoryImp: ChatRoomFactory {
     ) -> ChatRoomModalCoordinator {
         let factory = ChatRoomModalFactoryImp()
         let coordinator = ChatRoomModalCoordinator(
+            navigation: navigation,
+            factory: factory,
+            delegate: delegate
+        )
+        return coordinator
+    }
+    
+    public func makeOperatingPolicyWebViewCoordinator(
+        navigation: Navigation,
+        parentCoordinator: ParentCoordinator,
+        delegate: OperatingPolicyModalCoordinatorDelegate,
+        childCoordinators: [Coordinator]
+    ) -> OperatingPolicyWebViewCoordinator {
+        let factory = OperatingPolicyWebViewFactoryImp()
+        let coordinator = OperatingPolicyWebViewCoordinator(
             navigation: navigation,
             factory: factory,
             delegate: delegate

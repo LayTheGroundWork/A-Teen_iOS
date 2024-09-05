@@ -10,6 +10,7 @@ import DesignSystem
 import UIKit
 
 public final class ChatRoomCell: UITableViewCell {
+    // MARK: - Private properties
     private lazy var profileImage: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleToFill
@@ -63,6 +64,7 @@ public final class ChatRoomCell: UITableViewCell {
         return background
     }()
     
+    // MARK: - Life cycle
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
@@ -75,6 +77,7 @@ public final class ChatRoomCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - Helpers
     private func confingUserInterFace() {
         contentView.addSubview(profileImage)
         contentView.addSubview(nameLabel)
@@ -125,6 +128,7 @@ public final class ChatRoomCell: UITableViewCell {
     }
 }
 
+// MARK: - Extensions here
 extension ChatRoomCell: Reusable { }
 
 

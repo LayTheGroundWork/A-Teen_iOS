@@ -8,6 +8,7 @@
 
 import Foundation
 import FeatureDependency
+import SafariServices
 
 extension ChatRoomCoordinator: ChatRoomViewControllerCoordinator {
     public func configTabbarState(view: ChatFeatureViewNames) {
@@ -26,7 +27,15 @@ extension ChatRoomCoordinator: ChatRoomViewControllerCoordinator {
             childCoordinators: childCoordinators)
         
         addChildCoordinatorStart(chatRoomModalCoordinator)
-        chatRoomModalCoordinator.start()
+    }
+    
+    public func presentOperatingPolicyWebView() {
+        let operatingPolicyCoordinator = factory.makeOperatingPolicyWebViewCoordinator(
+            navigation: navigation,
+            parentCoordinator: self,
+            delegate: self,
+            childCoordinators: childCoordinators)
         
+        addChildCoordinatorStart(operatingPolicyCoordinator)
     }
 }
