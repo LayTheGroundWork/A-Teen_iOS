@@ -13,16 +13,23 @@ import DesignSystem
 import UIKit
 
 public class CustomLinkView: UIView {
+    lazy var oneBackgroundView: UIView = makeBackgroundView()
     lazy var oneLinkImageView: UIImageView = makeLinkImageView()
     lazy var oneLinkLabel: UILabel = makeLinkLabel()
     
+    lazy var twoBackgroundView: UIView = makeBackgroundView()
     lazy var twoLinkImageView: UIImageView = makeLinkImageView()
     lazy var twoLinkLabel: UILabel = makeLinkLabel()
     
+    lazy var threeBackgroundView: UIView = makeBackgroundView()
     lazy var threeLinkImageView: UIImageView = makeLinkImageView()
     lazy var threeLinkLabel: UILabel = makeLinkLabel()
     
-    public init(frame: CGRect, linkList: [(link: String, title: String?)]) {
+    lazy var fourBackgroundView: UIView = makeBackgroundView()
+    lazy var fourLinkImageView: UIImageView = makeLinkImageView()
+    lazy var fourLinkLabel: UILabel = makeLinkLabel()
+    
+    public init(frame: CGRect, linkList: [(Int, String)]) {
         super.init(frame: frame)
         configUserInterface(linkList: linkList)
     }
@@ -34,9 +41,17 @@ public class CustomLinkView: UIView {
 
 // MARK: - Properties
 extension CustomLinkView {
+    func makeBackgroundView() -> UIView {
+        let view = UIView()
+        view.layer.borderWidth = 2.0
+        view.layer.cornerRadius = 10
+        view.layer.borderColor = DesignSystemAsset.gray03.color.cgColor
+        return view
+    }
+    
     func makeLinkImageView() -> UIImageView {
         let imageView = UIImageView()
-        imageView.image = DesignSystemAsset.linkIcon.image
+        imageView.contentMode = .scaleAspectFit
         return imageView
     }
     
@@ -53,32 +68,43 @@ extension CustomLinkView {
 
 // MARK: - UI
 extension CustomLinkView {
-    func configUserInterface(linkList: [(link: String, title: String?)]) {
-        self.backgroundColor = DesignSystemAsset.gray03.color
-        self.layer.masksToBounds = true
-        self.layer.cornerRadius = 20
+    func configUserInterface(linkList: [(Int, String)]) {
+//        self.backgroundColor = DesignSystemAsset.gray03.color
+//        self.layer.masksToBounds = true
+//        self.layer.cornerRadius = 20
         
         for (index, linkInfo) in linkList.enumerated() {
             switch index {
             case 0:
                 setProperties(
+                    linkBackgroundView: oneBackgroundView,
                     linkImageView: oneLinkImageView,
                     linkLabel: oneLinkLabel,
-                    beforeImageView: nil,
+                    beforeBackgroundView: nil,
                     linkInfo: linkInfo)
                 
             case 1:
                 setProperties(
+                    linkBackgroundView: twoBackgroundView,
                     linkImageView: twoLinkImageView,
                     linkLabel: twoLinkLabel,
-                    beforeImageView: oneLinkImageView,
+                    beforeBackgroundView: oneBackgroundView,
                     linkInfo: linkInfo)
                 
             case 2:
                 setProperties(
+                    linkBackgroundView: threeBackgroundView,
                     linkImageView: threeLinkImageView,
                     linkLabel: threeLinkLabel,
-                    beforeImageView: twoLinkImageView,
+                    beforeBackgroundView: twoBackgroundView,
+                    linkInfo: linkInfo)
+                
+            case 3:
+                setProperties(
+                    linkBackgroundView: fourBackgroundView,
+                    linkImageView: fourLinkImageView,
+                    linkLabel: fourLinkLabel,
+                    beforeBackgroundView: threeBackgroundView,
                     linkInfo: linkInfo)
                 
             default:
@@ -88,55 +114,67 @@ extension CustomLinkView {
     }
     
     func setProperties(
+        linkBackgroundView: UIView,
         linkImageView: UIImageView,
         linkLabel: UILabel,
-        beforeImageView: UIImageView?,
-        linkInfo: (link: String, title: String?)
+        beforeBackgroundView: UIView?,
+        linkInfo: (Int, String)
     ) {
-        if let title = linkInfo.title {
-            let text = "\(title) | \(linkInfo.link)"
-            let attributedStr = NSMutableAttributedString(string: text)
-            attributedStr.addAttribute(.foregroundColor,
-                                       value: DesignSystemAsset.gray01.color,
-                                       range: (text as NSString).range(of: "|"))
-            linkLabel.attributedText = attributedStr
-        } else {
-            linkLabel.text = linkInfo.link
+        switch linkInfo.0 {
+        case 0: linkImageView.image = DesignSystemAsset.instagramLogo.image
+        case 1: linkImageView.image = DesignSystemAsset.xLogo.image
+        case 2: linkImageView.image = DesignSystemAsset.tikTokLogo.image
+        case 3: linkImageView.image = DesignSystemAsset.youtubeLogo.image
+        default:
+            break
         }
         
-        self.addSubview(linkImageView)
-        self.addSubview(linkLabel)
+        linkLabel.text = linkInfo.1
+        
+        self.addSubview(linkBackgroundView)
+        
+        linkBackgroundView.addSubview(linkImageView)
+        linkBackgroundView.addSubview(linkLabel)
         
         configLabelLayout(
+            linkBackgroundView: linkBackgroundView,
             linkImageView: linkImageView,
             linkLabel: linkLabel,
-            beforeImageView: beforeImageView)
+            beforeBackgroundView: beforeBackgroundView)
     }
 }
 
 // MARK: - Layout
 extension CustomLinkView {
     func configLabelLayout(
+        linkBackgroundView: UIView,
         linkImageView: UIImageView,
         linkLabel: UILabel,
-        beforeImageView: UIImageView?
+        beforeBackgroundView: UIView?
     ) {
-        if let beforeImageView = beforeImageView {
-            linkImageView.snp.makeConstraints { make in
-                make.leading.equalToSuperview().offset(ViewValues.defaultPadding)
-                make.top.equalTo(beforeImageView.snp.bottom).offset(10)
-                make.width.height.equalTo(24)
+        if let beforeBackgroundView = beforeBackgroundView {
+            linkBackgroundView.snp.makeConstraints { make in
+                make.leading.trailing.equalToSuperview()
+                make.top.equalTo(beforeBackgroundView.snp.bottom).offset(10)
+                make.height.equalTo(48)
             }
         } else {
-            linkImageView.snp.makeConstraints { make in
-                make.leading.equalToSuperview().offset(ViewValues.defaultPadding)
+            linkBackgroundView.snp.makeConstraints { make in
+                make.leading.trailing.equalToSuperview()
                 make.top.equalToSuperview().offset(18)
-                make.width.height.equalTo(24)
+                make.height.equalTo(48)
             }
         }
         
+        linkImageView.snp.makeConstraints { make in
+            make.leading.equalToSuperview().offset(14)
+            make.top.equalToSuperview().offset(12)
+            make.bottom.equalToSuperview().offset(-12)
+            make.width.equalTo(24)
+        }
+        
         linkLabel.snp.makeConstraints { make in
-            make.leading.equalTo(linkImageView.snp.trailing).offset(4)
+            make.leading.equalTo(linkImageView.snp.trailing).offset(8)
             make.trailing.equalToSuperview().offset(-ViewValues.defaultPadding)
             make.top.equalTo(linkImageView.snp.top)
             make.height.equalTo(24)

@@ -10,15 +10,17 @@ import Common
 import DesignSystem
 import UIKit
 
-public class ProfileViewModel: ObservableObject{
-    @Published var userLinks: [(link: String, title: String?)] = []
-    
+public class ProfileViewModel {
     var userName: String = "김 에스더"
     var userImage: UIImage = DesignSystemAsset.blackGlass.image
     var userSchoolName: String = "서울 중학교"
     var userAge: Int = 17
     var userMBTI: String = "INFJ"
     var userIntroduce: String = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+    
+    var userLinks: [String] = ["", "", "", ""]
+    var changeLinks: [String] = []
+    var filterLinks: [(Int, String)] = []
     
     var questionList: [Question] = [
         .init(
@@ -47,4 +49,34 @@ public class ProfileViewModel: ObservableObject{
             """
         ),
     ]
+}
+
+// MARK: - Link
+extension ProfileViewModel {
+    func checkChangeLinks(tag: Int, text: String) -> Bool {
+        changeLinks[tag] = text
+        
+        if userLinks == changeLinks {
+            return true
+        } else {
+            return false
+        }
+    }
+    
+    func filteringLinks() {
+        filterLinks.removeAll()
+        
+        userLinks.enumerated().forEach { (tag, link) in
+            if !link.isEmpty {
+                filterLinks.append((tag, link))
+            }
+        }
+    }
+    
+    func saveUserLinks() {
+        // TODO: 서버 저장 로직
+        userLinks = changeLinks
+        
+        filteringLinks()
+    }
 }

@@ -220,7 +220,7 @@ public final class ProfileViewController: UIViewController {
     }()
     
     private lazy var linkView: CustomLinkView = {
-        let view = CustomLinkView(frame: .zero, linkList: viewModel.userLinks)
+        let view = CustomLinkView(frame: .zero, linkList: viewModel.filterLinks)
         return view
     }()
     
@@ -360,15 +360,13 @@ public final class ProfileViewController: UIViewController {
     public override func viewWillAppear(_ animated: Bool) {
         guard let coordinator = coordinator else { return }
         coordinator.configTabbarState(view: .profile)
-        self.navigationItem.titleView =  CustomNaviView(
-            frame: CGRect(
-                x: 0,
-                y: 0,
-                width: ViewValues.width,
-                height: 40
+        self.navigationItem.titleView = CustomNaviView(
+            frame: CGRect(x: 0, y: 0, width: ViewValues.width, height: 40
             ),
             delegate: coordinator
         )
+        
+        viewModel.filteringLinks()
     }
     
     public init(
@@ -541,7 +539,7 @@ public final class ProfileViewController: UIViewController {
         linkBackView.addSubview(linkRightButton)
         linkBackView.addSubview(linkTitleLabel)
         
-        if viewModel.userLinks.count == 0 {
+        if viewModel.filterLinks.isEmpty {
             linkBackView.addSubview(linkEmptyTextLabel)
         } else {
             linkBackView.addSubview(linkView)
@@ -571,11 +569,11 @@ public final class ProfileViewController: UIViewController {
             make.height.equalTo(24)
         }
         
-        addLinkView()
+        addLinkView(count: viewModel.filterLinks.count)
     }
     
-    private func addLinkView() {
-        if viewModel.userLinks.count == 0 {
+    private func addLinkView(count: Int) {
+        if count == 0 {
             if self.linkEmptyTextLabel.superview == nil {
                 self.linkBackView.addSubview(self.linkEmptyTextLabel)
             }
@@ -597,19 +595,13 @@ public final class ProfileViewController: UIViewController {
             
             self.view.layoutIfNeeded()
             
-            let height = self.linkView.oneLinkImageView.frame.height
+            let height = Int(self.linkView.oneBackgroundView.frame.height) + 10
 
             self.linkView.snp.makeConstraints { make in
                 make.top.equalTo(self.linkTitleLabel.snp.bottom).offset(22)
                 make.leading.equalToSuperview().offset(ViewValues.defaultPadding)
                 make.trailing.equalToSuperview().offset(-ViewValues.defaultPadding)
-                if viewModel.userLinks.count == 1 {
-                    make.height.equalTo(height + 36)
-                } else if viewModel.userLinks.count == 2 {
-                    make.height.equalTo(height * 2 + 46)
-                } else {
-                    make.height.equalTo(height * 3 + 56)
-                }
+                make.height.equalTo(height * count + 26)
             }
             
             self.view.layoutIfNeeded()
@@ -939,8 +931,6 @@ extension ProfileViewController {
 
 extension ProfileViewController: ProfileViewControllerDelegate {
     public func didTabBackButtonFromLinksDialogViewController() {
-        //TODO: viewModel에 userLinks 값을 서버로 보내주는 로직(겸 로티) -> 완료시 밑에 실행
-        
         for subview in self.linkView.subviews {
             subview.removeFromSuperview()
         }
@@ -950,9 +940,9 @@ extension ProfileViewController: ProfileViewControllerDelegate {
         self.linkEmptyTextLabel.removeFromSuperview()
         self.linkView.removeFromSuperview()
         
-        self.linkView.configUserInterface(linkList: viewModel.userLinks)
+        self.linkView.configUserInterface(linkList: viewModel.filterLinks)
         
-        self.addLinkView()
+        self.addLinkView(count: viewModel.filterLinks.count)
         
         self.view.layoutIfNeeded()
         
