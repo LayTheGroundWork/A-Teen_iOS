@@ -11,32 +11,44 @@ import UIKit
 
 public protocol ProfileFactory {
     func makeProfileViewController(coordinator: ProfileViewControllerCoordinator) -> UIViewController
+    
     func makeSettingCoordinator(
         navigation: Navigation,
         parentCoordinator: ParentCoordinator,
         delegate: SettingsCoordinatorDelegate,
         childCoordinators: [Coordinator]
     ) -> Coordinator
+    
     func makeLinksDialogCoordinator(
         delegate: LinksDialogCoordinatorDelegate
     ) -> Coordinator
+    
     func makeIntroduceCoordinator(
         navigation: Navigation,
         parentCoordinator: ParentCoordinator,
         delegate: IntroduceCoordinatorDelegate,
         childCoordinators: [Coordinator]
     ) -> Coordinator
+    
     func makeQuestionsCoordinator(
         navigation: Navigation,
         parentCoordinator: ParentCoordinator,
         delegate: QuestionsCoordinatorDelegate,
         childCoordinators: [Coordinator]
     ) -> Coordinator
+    
     func makeEditMyPhotoCoordinator(
         navigation: Navigation,
         coordinatorProvider: CoordinatorProvider,
         childCoordinators: [Coordinator],
         delegate: EditMyPhotoCoordinatorDelegate
+    ) -> Coordinator
+    
+    func makeEditUserNameCoordinator(
+        navigation: Navigation,
+        parentCoordinator: ParentCoordinator,
+        delegate: EditUserNameCoordinatorDelegate,
+        childCoordinators: [Coordinator]
     ) -> Coordinator
 }
 
@@ -127,4 +139,18 @@ public struct ProfileFactoryImp: ProfileFactory {
         return coordinator
     }
     
+    public func makeEditUserNameCoordinator(
+        navigation: Navigation,
+        parentCoordinator: ParentCoordinator,
+        delegate: EditUserNameCoordinatorDelegate,
+        childCoordinators: [Coordinator]
+    ) -> Coordinator {
+        let factory = EditUserNameFactoryImp(userName: viewModel.userName)
+        let coordinator = EditUserNameCoordinator(
+            navigation: navigation,
+            factory: factory,
+            delegate: delegate,
+            childCoordinators: childCoordinators)
+        return coordinator
+    }
 }

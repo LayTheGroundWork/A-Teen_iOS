@@ -125,7 +125,7 @@ public final class QuestionsViewController: UIViewController {
     
     public override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        coordinator?.configTabbarState(view: .introduce)
+        coordinator?.configTabbarState(view: .another)
     }
     
     public init(

@@ -96,7 +96,7 @@ final class EditMyPhotoViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        coordinator?.configTabbarState(view: .editPhoto)
+        coordinator?.configTabbarState(view: .another)
     }
     
     init(

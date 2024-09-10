@@ -14,6 +14,7 @@ import UIKit
 public protocol ProfileViewControllerCoordinator: AnyObject {
     func didTabSettingButton()
     func didTabEditMyPhotoButton()
+    func didTabEditUserNameButton()
     func didTabLinkButton()
     func didTabIntroduceButton()
     func didTabQuestionButton()
@@ -63,7 +64,7 @@ public final class ProfileViewController: UIViewController {
         let label = UILabel()
         label.text = "\(viewModel.userName) 님\n오늘도 좋은 하루 보내세요!"
         label.textColor = UIColor.black
-        label.font = .customFont(forTextStyle: .callout, weight: .bold)
+        label.font = .customFont(forTextStyle: .body, weight: .bold)
         label.numberOfLines = 2
 
         if let text = label.text {
@@ -77,9 +78,19 @@ public final class ProfileViewController: UIViewController {
         return label
     }()
     
-    private lazy var updateImageButton: UIButton = {
+    private lazy var editImageButton: UIButton = {
         let button = UIButton()
         button.setTitle("사진 수정", for: .normal)
+        button.setTitleColor(DesignSystemAsset.gray01.color, for: .normal)
+        button.setTitleColor(UIColor.black.withAlphaComponent(0.2), for: .highlighted)
+        button.titleLabel?.font = .customFont(forTextStyle: .footnote, weight: .regular)
+        button.isEnabled = true
+        return button
+    }()
+    
+    private lazy var editUserNameButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("닉네임 수정", for: .normal)
         button.setTitleColor(DesignSystemAsset.gray01.color, for: .normal)
         button.setTitleColor(UIColor.black.withAlphaComponent(0.2), for: .highlighted)
         button.titleLabel?.font = .customFont(forTextStyle: .footnote, weight: .regular)
@@ -436,7 +447,8 @@ public final class ProfileViewController: UIViewController {
         
         informationView.addSubview(userImageContainerView)
         informationView.addSubview(userNameLabel)
-        informationView.addSubview(updateImageButton)
+        informationView.addSubview(editImageButton)
+        informationView.addSubview(editUserNameButton)
         
         userImageContainerView.addSubview(userImageView)
         
@@ -458,10 +470,16 @@ public final class ProfileViewController: UIViewController {
             make.trailing.equalTo(userImageContainerView.snp.leading).offset(-ViewValues.defaultPadding)
         }
         
-        updateImageButton.snp.makeConstraints { make in
+        editImageButton.snp.makeConstraints { make in
             make.leading.equalToSuperview().offset(ViewValues.defaultPadding)
             make.bottom.equalTo(userImageContainerView.snp.bottom)
             make.width.equalTo(49)
+        }
+        
+        editUserNameButton.snp.makeConstraints { make in
+            make.leading.equalTo(editImageButton.snp.trailing).offset(13)
+            make.bottom.equalTo(userImageContainerView.snp.bottom)
+            make.width.equalTo(60)
         }
         
         userImageView.snp.makeConstraints { make in
@@ -824,9 +842,13 @@ public final class ProfileViewController: UIViewController {
     }
 
     private func setupActions() {
-        updateImageButton.addTarget(
+        editImageButton.addTarget(
             self,
-            action: #selector(clickUpdateImageButton(_:)),
+            action: #selector(clickEditImageButton(_:)),
+            for: .touchUpInside)
+        editUserNameButton.addTarget(
+            self,
+            action: #selector(clickEditUserNameButton(_:)),
             for: .touchUpInside)
         infoSettingButton.addTarget(
             self,
@@ -856,8 +878,12 @@ public final class ProfileViewController: UIViewController {
     }
     
     // MARK: - Actions
-    @objc private func clickUpdateImageButton(_ sender: UIButton) {
+    @objc private func clickEditImageButton(_ sender: UIButton) {
         coordinator?.didTabEditMyPhotoButton()
+    }
+    
+    @objc private func clickEditUserNameButton(_ sender: UIButton) {
+        coordinator?.didTabEditUserNameButton()
     }
     
     @objc private func clickSettingsButton(_ sender: UIButton) {

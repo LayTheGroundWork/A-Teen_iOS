@@ -21,7 +21,7 @@ extension MainTabCoordinator: ProfileCoordinatorDelegate {
         case .profile:
             tab.showTabbar()
             
-        case .introduce, .question, .editPhoto:
+        case .another:
             tab.hideTabbar()
         }
     }

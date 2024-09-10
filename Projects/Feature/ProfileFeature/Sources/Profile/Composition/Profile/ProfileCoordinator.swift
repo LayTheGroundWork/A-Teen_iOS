@@ -10,9 +10,7 @@ import UIKit
 
 public enum ProfileFeatureViewNames {
     case profile
-    case introduce
-    case question
-    case editPhoto
+    case another
 }
 
 public protocol ProfileCoordinatorDelegate: AnyObject {
