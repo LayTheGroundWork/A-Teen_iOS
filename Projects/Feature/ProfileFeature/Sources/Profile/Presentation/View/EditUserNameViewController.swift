@@ -107,7 +107,7 @@ public final class EditUserNameViewController: UIViewController {
     
     private lazy var saveButton: UIButton = {
         let button = UIButton()
-        button.titleLabel?.font = .customFont(forTextStyle: .subheadline, weight: .regular)
+        button.titleLabel?.font = .customFont(forTextStyle: .callout, weight: .regular)
         button.setTitle(AppLocalized.completeEdit, for: .normal)
         button.setTitle(AppLocalized.completeEdit, for: .disabled)
         button.setTitleColor(UIColor.white, for: .normal)

@@ -62,11 +62,13 @@ public final class IntroduceViewController: UIViewController {
     
     private lazy var nextAndSaveButton: UIButton = {
         let button = UIButton()
+        button.titleLabel?.font = .customFont(forTextStyle: .callout, weight: .regular)
         button.setTitle("건너뛰기", for: .normal)
+        button.setTitle(AppLocalized.completeEdit, for: .disabled)
         button.setTitleColor(UIColor.white, for: .normal)
+        button.setTitleColor(DesignSystemAsset.gray02.color, for: .disabled)
         button.backgroundColor = UIColor.black
-        button.titleLabel?.font = .customFont(forTextStyle: .subheadline, weight: .regular)
-        button.layer.cornerRadius = 20
+        button.layer.cornerRadius = ViewValues.defaultRadius
         button.addTarget(self, action: #selector(clickNextAndSaveButton(_:)), for: .touchUpInside)
         return button
     }()
@@ -129,6 +131,30 @@ public final class IntroduceViewController: UIViewController {
         }
     }
     
+    private func changeMbtiCell() {
+        nextAndSaveButton.setTitle("건너뛰기", for: .normal)
+        nextAndSaveButton.backgroundColor = UIColor.black
+        nextAndSaveButton.isEnabled = true
+    }
+    
+    private func changeWriteCell() {
+        nextAndSaveButton.setTitle(AppLocalized.completeEdit, for: .normal)
+        
+        checkChangeIntroduce()
+        
+        collectionView.scrollToItem(at: IndexPath(item: 0, section: 1), at: .centeredHorizontally, animated: true)
+    }
+    
+    private func checkChangeIntroduce() {
+        if viewModel.checkChangeIntroduce() {
+            nextAndSaveButton.isEnabled = true
+            nextAndSaveButton.backgroundColor = UIColor.black
+        } else {
+            nextAndSaveButton.isEnabled = false
+            nextAndSaveButton.backgroundColor = DesignSystemAsset.gray03.color
+        }
+    }
+    
     // MARK: - Actions
     @objc private func clickBackButton(_ sender: UIBarButtonItem) {
         if nextAndSaveButton.titleLabel?.text == "건너뛰기" {
@@ -136,20 +162,17 @@ public final class IntroduceViewController: UIViewController {
         } else {
             guard let cell = collectionView.cellForItem(at: IndexPath(item: 0, section: 1)) as? IntroduceWritingCollectionViewCell else { return }
             cell.writingTextView.endEditing(true)
-            nextAndSaveButton.setTitle("건너뛰기", for: .normal)
+            changeMbtiCell()
             collectionView.scrollToItem(at: IndexPath(item: 0, section: 0), at: .centeredHorizontally, animated: true)
         }
     }
     
     @objc private func clickNextAndSaveButton(_ sender: UIButton) {
         if nextAndSaveButton.titleLabel?.text == "건너뛰기" {
-            nextAndSaveButton.setTitle("완료", for: .normal)
-            collectionView.scrollToItem(at: IndexPath(item: 0, section: 1), at: .centeredHorizontally, animated: true)
+            changeWriteCell()
         } else {
-            viewModel.saveChangeValue { success in
-                if success {
-                    self.coordinator?.didTabBackButton()     //일단 첨으로 가게 해놨음
-                }
+            viewModel.saveChangeValue {
+                self.coordinator?.didTabBackButton()
             }
         }
     }
@@ -175,6 +198,10 @@ extension IntroduceViewController: UICollectionViewDataSource {
                 return UICollectionViewCell()
             }
             cell.setProperties(viewModel: viewModel)
+            
+            cell.textViewAction = {
+                self.checkChangeIntroduce()
+            }
             return cell
         }
     }

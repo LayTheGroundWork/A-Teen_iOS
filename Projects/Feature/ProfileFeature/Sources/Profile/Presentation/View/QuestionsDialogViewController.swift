@@ -14,7 +14,7 @@ import FeatureDependency
 import UIKit
 
 public protocol QuestionsDialogViewControllerCoordinator: AnyObject {
-    func didFinish()
+    func didFinish(changeValue: Bool)
 }
 
 open class QuestionsDialogViewController: UIViewController {
@@ -259,7 +259,7 @@ extension QuestionsDialogViewController {
     }
     
     @objc func clickCloseButton(_ sender: UIButton) {
-        coordinator?.didFinish()
+        coordinator?.didFinish(changeValue: false)
     }
 }
 
@@ -301,7 +301,7 @@ extension QuestionsDialogViewController: UITableViewDelegate {
                     title: viewModel.sampleQuestionList[indexPath.row],
                     text: AppLocalized.textViewPlaceHolder)
             )
-            coordinator?.didFinish()
+            coordinator?.didFinish(changeValue: true)
         }
     }
     

@@ -7,7 +7,7 @@
 //
 
 extension QuestionsDialogCoordinator: QuestionsDialogViewControllerCoordinator {
-    public func didFinish() {
-        delegate?.didFinish(childCoordinator: self)
+    public func didFinish(changeValue: Bool) {
+        delegate?.didFinish(childCoordinator: self, changeValue: changeValue)
     }
 }

@@ -26,8 +26,28 @@ public class QuestionsViewModel {
         "긴거 실험용입니다~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
     ]
     
-    var questionList: [Question] = [Question(title: "실험용", text: "ㅁㄴㅇㅁㅇㄴㅇㄴ")]
+    var questionList: [Question]
     var changeQuestionList: [Question] = []
+    
+    public init(questionList: [Question]) {
+        self.questionList = questionList
+        self.changeQuestionList = questionList
+    }
+}
+
+extension QuestionsViewModel {
+    func checkChangeQuestion() -> Bool {
+        if questionList == changeQuestionList {
+            return true
+        }
+        
+        for questionList in changeQuestionList {
+            if questionList.text == AppLocalized.textViewPlaceHolder {
+                return true
+            }
+        }
+        return false
+    }
     
     func saveChangeValue(completion: @escaping(Bool, SaveError?) -> Void) {
         if questionList != changeQuestionList {

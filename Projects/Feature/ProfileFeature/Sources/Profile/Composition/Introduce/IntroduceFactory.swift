@@ -15,10 +15,15 @@ public protocol IntroduceFactory {
 }
 
 public struct IntroduceFactoryImp: IntroduceFactory {
+    private (set) var myMbti: [String]
+    private (set) var myWriting: String
+    
     public func makeIntroduceViewController(
         coordinator: IntroduceViewControllerCoordinator
     ) -> UIViewController {
-        let viewModel = IntroduceViewModel()
+        let viewModel = IntroduceViewModel(
+            myMbti: myMbti,
+            myWriting: myWriting)
         let controller = IntroduceViewController(
             viewModel: viewModel,
             coordinator: coordinator)

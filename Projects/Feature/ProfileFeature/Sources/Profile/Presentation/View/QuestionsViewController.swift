@@ -76,7 +76,6 @@ public final class QuestionsViewController: UIViewController {
         scrollView.showsVerticalScrollIndicator = false
         scrollView.clipsToBounds = true
         scrollView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 84, right: 0)
-        //scrollView.delegate = self
         return scrollView
     }()
     
@@ -107,11 +106,14 @@ public final class QuestionsViewController: UIViewController {
     
     private lazy var saveButton: UIButton = {
         let button = UIButton()
-        button.setTitle("저장", for: .normal)
+        button.titleLabel?.font = UIFont.customFont(forTextStyle: .callout,
+                                                    weight: .regular)
+        button.setTitle(AppLocalized.completeEdit, for: .normal)
+        button.setTitle(AppLocalized.completeEdit, for: .disabled)
         button.setTitleColor(UIColor.white, for: .normal)
-        button.backgroundColor = UIColor.black
-        button.titleLabel?.font = .customFont(forTextStyle: .subheadline, weight: .regular)
-        button.layer.cornerRadius = 20
+        button.setTitleColor(DesignSystemAsset.gray02.color, for: .disabled)
+        button.backgroundColor = DesignSystemAsset.gray03.color
+        button.layer.cornerRadius = ViewValues.defaultRadius
         button.addTarget(self, action: #selector(clickSaveButton(_:)), for: .touchUpInside)
         return button
     }()
@@ -126,6 +128,7 @@ public final class QuestionsViewController: UIViewController {
     public override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         coordinator?.configTabbarState(view: .another)
+        changeCheckQuestion()
     }
     
     public init(
@@ -135,10 +138,9 @@ public final class QuestionsViewController: UIViewController {
         self.viewModel = viewModel
         self.coordinator = coordinator
         
-        viewModel.changeQuestionList = viewModel.questionList
         super.init(nibName: nil, bundle: nil)
     }
-
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -214,24 +216,57 @@ public final class QuestionsViewController: UIViewController {
             make.top.equalTo(tableView.snp.bottom).offset(19)
             make.height.equalTo(44)
         }
-
+        
         changeHeight()
     }
     
-    func changeHeight() {
-        prepareToGetCellHeight()
+    private func calculateLabelHeight(for label: UILabel, width: CGFloat) -> CGFloat {
+        guard let text = label.text, let font = label.font else {
+            return 0
+        }
+        
+        let maxSize = CGSize(width: width, height: .greatestFiniteMagnitude)
+        let attributes: [NSAttributedString.Key: Any] = [.font: font]
+        let boundingBox = text.boundingRect(
+            with: maxSize,
+            options: [.usesLineFragmentOrigin, .usesFontLeading],
+            attributes: attributes,
+            context: nil
+        )
+        return boundingBox.height
+    }
+    
+    private func changeHeight() {
+        changeTotalViewHeight(height: tableView.frame.height + 20)
         
         self.view.layoutIfNeeded()
-        var height: CGFloat = 0.0
         
-        for index in 0..<viewModel.changeQuestionList.count {
-            guard let cell = tableView.cellForRow(at: IndexPath(row: index, section: 0)) as?
-                    QuestionsTableViewCell else { break }
-            
-            print(cell.questionBackgroundView.frame.height)
-            height += cell.questionBackgroundView.frame.height
+        guard let cell = tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? QuestionsTableViewCell else {
+            changeTotalViewHeight(height: 0)
+            return
         }
-
+        
+        let titleLabel = UILabel()
+        titleLabel.font = UIFont.customFont(forTextStyle: .subheadline, weight: .bold)
+        titleLabel.numberOfLines = 0
+        
+        let textLabelHeight = cell.questionTextLabel.frame.height
+        
+        var totalHeight: CGFloat = 0.0
+        
+        viewModel.changeQuestionList.forEach { question in
+            titleLabel.text = question.title
+            
+            let height = calculateLabelHeight(for: titleLabel, width: ViewValues.width - 96) + textLabelHeight + 43
+            totalHeight += height
+        }
+        
+        changeTotalViewHeight(height: totalHeight)
+    }
+    
+    private func changeTotalViewHeight(height: CGFloat) {
+        self.view.layoutIfNeeded()
+        
         tableViewHeightAnchor?.update(offset: height)
         
         self.view.layoutIfNeeded()
@@ -245,26 +280,19 @@ public final class QuestionsViewController: UIViewController {
             height: backgroundView.frame.height)
     }
     
-    func prepareToGetCellHeight() {
-        //self.tableView.reloadData()
-        self.view.layoutIfNeeded()
-
-        tableViewHeightAnchor?.update(offset: tableView.frame.height + 20)
-        
-        self.view.layoutIfNeeded()
-        
-        backgroundViewHeightAnchor?.update(offset: tableView.frame.height + selectQuestionButton.frame.height + 19)
-        
-        self.view.layoutIfNeeded()
-        
-        self.scrollView.contentSize = CGSize(
-            width: self.view.frame.width,
-            height: backgroundView.frame.height)
-    }
-    
-    func animationOfTableview() {
+    private func animationOfTableview() {
         UIView.animate(withDuration: 0.3, delay: 0, options: .showHideTransitionViews) {
             self.changeHeight()
+        }
+    }
+    
+    private func changeCheckQuestion() {
+        if viewModel.checkChangeQuestion() {
+            saveButton.isEnabled = false
+            saveButton.backgroundColor = DesignSystemAsset.gray03.color
+        } else {
+            saveButton.isEnabled = true
+            saveButton.backgroundColor = UIColor.black
         }
     }
     
@@ -313,6 +341,7 @@ extension QuestionsViewController: UITableViewDataSource {
                 self.viewModel.changeQuestionList.remove(at: indexPath.row)
                 tableView.deleteRows(at: [indexPath], with: .automatic)
                 animationOfTableview()
+                changeCheckQuestion()
             }
         }
         return cell

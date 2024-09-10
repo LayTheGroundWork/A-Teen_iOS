@@ -25,7 +25,14 @@ public protocol QuestionsFactory {
 }
 
 public struct QuestionsFactoryImp: QuestionsFactory {
-    let viewModel = QuestionsViewModel()
+    private (set) var questionList: [Question]
+    
+    let viewModel: QuestionsViewModel
+    
+    public init(questionList: [Question]) {
+        self.questionList = questionList
+        viewModel =  QuestionsViewModel(questionList: questionList)
+    }
     
     public func makeQuestionsViewController(
         coordinator: QuestionsViewControllerCoordinator

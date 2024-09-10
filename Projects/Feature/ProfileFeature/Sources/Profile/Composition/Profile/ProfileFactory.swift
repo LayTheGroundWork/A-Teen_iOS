@@ -99,7 +99,10 @@ public struct ProfileFactoryImp: ProfileFactory {
         delegate: IntroduceCoordinatorDelegate,
         childCoordinators: [Coordinator]
     ) -> Coordinator {
-        let factory = IntroduceFactoryImp()
+        let mbti = viewModel.userMBTI.map { String($0) }
+        let factory = IntroduceFactoryImp(
+            myMbti: mbti,
+            myWriting: viewModel.userIntroduce)
         let coordinator = IntroduceCoordinator(
             navigation: navigation,
             factory: factory,
@@ -114,7 +117,7 @@ public struct ProfileFactoryImp: ProfileFactory {
         delegate: QuestionsCoordinatorDelegate,
         childCoordinators: [Coordinator]
     ) -> Coordinator {
-        let factory = QuestionsFactoryImp()
+        let factory = QuestionsFactoryImp(questionList: viewModel.questionList)
         let coordinator = QuestionsCoordinator(
             navigation: navigation,
             factory: factory,

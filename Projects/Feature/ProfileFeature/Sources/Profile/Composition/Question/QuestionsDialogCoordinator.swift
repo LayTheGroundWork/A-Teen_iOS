@@ -10,7 +10,7 @@ import FeatureDependency
 import UIKit
 
 public protocol QuestionsDialogCoordinatorDelegate: AnyObject {
-    func didFinish(childCoordinator: Coordinator)
+    func didFinish(childCoordinator: Coordinator, changeValue: Bool)
 }
 
 public final class QuestionsDialogCoordinator: Coordinator {
