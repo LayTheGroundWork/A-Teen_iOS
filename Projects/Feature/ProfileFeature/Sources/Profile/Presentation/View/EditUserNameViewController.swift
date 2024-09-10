@@ -211,7 +211,6 @@ public final class EditUserNameViewController: UIViewController {
             saveButton.isEnabled = false
             saveButton.backgroundColor = DesignSystemAsset.gray03.color
             textField.layer.borderColor = UIColor.red.cgColor
-            charCountLabel.text = "\(text.count)\(AppLocalized.userNameCount)"
             
             if text.count < 2 {
                 errorMessageLabel.text = AppLocalized.userNameNumberErrrorMessage
@@ -227,6 +226,7 @@ public final class EditUserNameViewController: UIViewController {
                 }
             }
         }
+        charCountLabel.text = "\(text.count)\(AppLocalized.userNameCount)"
     }
     
     // MARK: - Actions
@@ -241,7 +241,8 @@ public final class EditUserNameViewController: UIViewController {
     }
     
     @objc private func clickSaveButton(_ sender: UIButton) {
-        print(viewModel.changeUserName)
+        // TODO: 서버 저장 로직 필요
+        coordinator?.didTabBackButton()
     }
 }
 
@@ -265,7 +266,6 @@ extension EditUserNameViewController: UITextFieldDelegate {
         shouldChangeCharactersIn range: NSRange,
         replacementString string: String
     ) -> Bool {
-        print("123")
         if string.isEmpty { return true }
         guard let currentText = textField.text else { return true }
         let updatedText = (currentText as NSString).replacingCharacters(in: range, with: string)
