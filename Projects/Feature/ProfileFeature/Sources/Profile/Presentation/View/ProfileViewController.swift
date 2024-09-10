@@ -595,13 +595,14 @@ public final class ProfileViewController: UIViewController {
             
             self.view.layoutIfNeeded()
             
-            let height = Int(self.linkView.oneBackgroundView.frame.height) + 10
+            let linkHeight = Int(self.linkView.oneLinkImageView.frame.height) * count
+            let linkPadding = (count - 1) * 28
 
             self.linkView.snp.makeConstraints { make in
                 make.top.equalTo(self.linkTitleLabel.snp.bottom).offset(22)
                 make.leading.equalToSuperview().offset(ViewValues.defaultPadding)
                 make.trailing.equalToSuperview().offset(-ViewValues.defaultPadding)
-                make.height.equalTo(height * count + 26)
+                make.height.equalTo(linkHeight + linkPadding + 36)
             }
             
             self.view.layoutIfNeeded()
