@@ -15,6 +15,7 @@ public protocol ProfileViewControllerCoordinator: AnyObject {
     func didTabSettingButton()
     func didTabEditMyPhotoButton()
     func didTabEditUserNameButton()
+    func didTabBadgeButton()
     func didTabLinkButton()
     func didTabIntroduceButton()
     func didTabQuestionButton()
@@ -891,7 +892,7 @@ public final class ProfileViewController: UIViewController {
     }
     
     @objc private func clickBadgeButton(_ sender: UIButton) {
-        print("배지 버튼 클릭")
+        coordinator?.didTabBadgeButton()
     }
     
     @objc private func clickTournamentButton(_ sender: UIButton) {

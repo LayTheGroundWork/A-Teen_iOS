@@ -62,6 +62,8 @@ public struct ViewValues {
     // profile
     public static let editMyPhotoCollectionViewCellWidth = (width - 48) / 2
     public static let editMyPhotoCollectionViewCellHeight = editMyPhotoCollectionViewCellWidth * 1.16
+    public static let myBadgeCollectionViewCellwidth = (width - 80) / 3
+    public static let myBadgeCollectionViewCellHeight = myBadgeCollectionViewCellwidth * 1.32
     
     // MARK: - CornerRadius
     public static let defaultRadius: CGFloat = 20

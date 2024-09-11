@@ -13,6 +13,7 @@
 		280707E54AEFA2A7DA2650EB /* String+Contraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEE98649F065A0BDE45EED71 /* String+Contraints.swift */; };
 		2AB0F9ED51BBDC9373BDDFF2 /* AppLocalized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 170170CE0C43F0B37C75808F /* AppLocalized.swift */; };
 		4043066FDA1D66C0826483A6 /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E981128731E287F70D41FC5 /* Question.swift */; };
+		47D825F5998991D65FC4DCBA /* BadgeType.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB46466ABC3BB239BD262C34 /* BadgeType.swift */; };
 		4BFF6DAF726DD208666270E4 /* SpinnerDisplayable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA225B41A556B6629B92DCBD /* SpinnerDisplayable.swift */; };
 		50A60507DBC78EC7BB8CCCA8 /* CategoryType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7953C495FF4288845D4E69B4 /* CategoryType.swift */; };
 		51DF4E18342ED9EC34A9EBE8 /* TodayTeen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712D368CA33D5EB13A4BBDBA /* TodayTeen.swift */; };
@@ -73,6 +74,7 @@
 		C03B37E51C7C476802065B23 /* PhotoAuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoAuthService.swift; sourceTree = "<group>"; };
 		C0E93D6A592CC58F27504DAC /* BaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
 		CB1744A0E6D22DAAF822DBEA /* ProfileCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCategory.swift; sourceTree = "<group>"; };
+		DB46466ABC3BB239BD262C34 /* BadgeType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgeType.swift; sourceTree = "<group>"; };
 		E4906F43F6A038295B5589D3 /* ViewValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewValues.swift; sourceTree = "<group>"; };
 		E5A27B319BAA53136B0907C5 /* StateController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateController.swift; sourceTree = "<group>"; };
 		E81A216314320B2606E3AEC3 /* CustomDialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDialog.swift; sourceTree = "<group>"; };
@@ -147,6 +149,7 @@
 				895CEBF9131539C3F94BC451 /* AlbumType.swift */,
 				878FDF405C052006C4AA2688 /* AlertDialogType.swift */,
 				6AE1134CEE040274D4E1D68F /* AssetInfo.swift */,
+				DB46466ABC3BB239BD262C34 /* BadgeType.swift */,
 				7953C495FF4288845D4E69B4 /* CategoryType.swift */,
 				EED8FBB7E6BA564519AA6407 /* Debouncer.swift */,
 				B7E28589EB048B9F540E6C97 /* MediaType.swift */,
@@ -349,6 +352,7 @@
 				F19A11CF97A8237CDA4B8E19 /* AlbumType.swift in Sources */,
 				53BD92714B0C3B78781D3513 /* AlertDialogType.swift in Sources */,
 				5F01EB50F693B3D47824FDF2 /* AssetInfo.swift in Sources */,
+				47D825F5998991D65FC4DCBA /* BadgeType.swift in Sources */,
 				50A60507DBC78EC7BB8CCCA8 /* CategoryType.swift in Sources */,
 				C62C2C499AE8058EC46454E9 /* Debouncer.swift in Sources */,
 				C7327928996CA0A97E1DB6E5 /* MediaType.swift in Sources */,

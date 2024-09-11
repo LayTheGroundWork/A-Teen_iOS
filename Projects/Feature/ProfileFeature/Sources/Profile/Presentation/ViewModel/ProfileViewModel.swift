@@ -15,6 +15,9 @@ public class ProfileViewModel {
     var userImage: UIImage = DesignSystemAsset.blackGlass.image
     var userSchoolName: String = "서울 중학교"
     var userAge: Int = 17
+    var userBadge: [BadgeType] = [
+        .badge1, .badge2, .badge3, .badge4, .badge5, .badge6, .badge7, .badge8, .badge9, .badge10, .badge11, .badge12
+    ]
     var userMBTI: String = "INFJ"
     var userIntroduce: String = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
     

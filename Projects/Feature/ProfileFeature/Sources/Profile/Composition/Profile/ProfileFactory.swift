@@ -19,6 +19,13 @@ public protocol ProfileFactory {
         childCoordinators: [Coordinator]
     ) -> Coordinator
     
+    func makeMyBadgeCoordinator(
+        navigation: Navigation,
+        parentCoordinator: ParentCoordinator,
+        delegate: MyBadgeCoordinatorDelegate,
+        childCoordinators: [Coordinator]
+    ) -> Coordinator
+    
     func makeLinksDialogCoordinator(
         delegate: LinksDialogCoordinatorDelegate
     ) -> Coordinator
@@ -72,6 +79,21 @@ public struct ProfileFactoryImp: ProfileFactory {
     ) -> Coordinator {
         let factory = SettingsFactoryImp()
         let coordinator = SettingsCoordinator(
+            navigation: navigation,
+            factory: factory,
+            delegate: delegate,
+            childCoordinators: childCoordinators)
+        return coordinator
+    }
+    
+    public func makeMyBadgeCoordinator(
+        navigation: Navigation,
+        parentCoordinator:ParentCoordinator,
+        delegate: MyBadgeCoordinatorDelegate,
+        childCoordinators: [Coordinator]
+    ) -> Coordinator {
+        let factory = MyBadgeFactoryImp(badgeList: viewModel.userBadge)
+        let coordinator = MyBadgeCoordinator(
             navigation: navigation,
             factory: factory,
             delegate: delegate,
