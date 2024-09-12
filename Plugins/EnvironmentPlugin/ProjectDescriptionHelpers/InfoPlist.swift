@@ -45,6 +45,7 @@ public extension [String: Plist.Value] {
                 "NSAllowsArbitraryLoads": true
             ],
         "UILaunchStoryboardName": "LaunchScreen.storyboard",
+        "UIUserInterfaceStyle": "Light",
         "UISupportedInterfaceOrientations":
             [
                 "UIInterfaceOrientationPortrait",
