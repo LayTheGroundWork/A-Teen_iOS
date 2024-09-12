@@ -16,12 +16,12 @@ public final class CustomClearXmarkTextField: UITextField {
         padding.origin.x -= 14
         return padding
     }
-    
-    // 복사해서 붙여넣기 방지
-    public override func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {
-        if action == #selector(UIResponderStandardEditActions.paste(_:)) {
-            return false
-        }
-        return super.canPerformAction(action, withSender: sender)
-    }
+   
+//    // 복사해서 붙여넣기 방지
+//    public override func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {
+//        if action == #selector(UIResponderStandardEditActions.paste(_:)) {
+//            return false
+//        }
+//        return super.canPerformAction(action, withSender: sender)
+//    }
 }

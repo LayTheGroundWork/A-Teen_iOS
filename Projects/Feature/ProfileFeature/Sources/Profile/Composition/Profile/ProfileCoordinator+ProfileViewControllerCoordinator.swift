@@ -35,6 +35,15 @@ extension ProfileCoordinator: ProfileViewControllerCoordinator {
         addChildCoordinatorStart(coordinator)
     }
     
+    public func didTabSchoolButton() {
+        let coordinator = factory.makeEditSchoolCoordinator(
+            navigation: navigation,
+            parentCoordinator: self,
+            delegate: self,
+            childCoordinators: childCoordinators)
+        addChildCoordinatorStart(coordinator)
+    }
+    
     public func didTabBadgeButton() {
         let coordinator = factory.makeMyBadgeCoordinator(
             navigation: navigation,

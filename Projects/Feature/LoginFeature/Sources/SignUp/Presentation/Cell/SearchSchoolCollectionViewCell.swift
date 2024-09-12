@@ -210,7 +210,6 @@ final class SearchSchoolCollectionViewCell: UICollectionViewCell {
         if !text.isEmpty {
             changeTextFieldRigthView(view: .clearImage)
         }
-        
     }
     
     @objc private func didSelectClearTextButton(_ sender: UIButton) {

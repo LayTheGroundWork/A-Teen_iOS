@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 55;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -11,6 +11,7 @@
 		18685FA42291823E8E083BF7 /* QuestionsDialogCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 687B19A705EB0B12FB42F5AC /* QuestionsDialogCoordinator.swift */; };
 		1AF2769C08BB127855B1AAF0 /* SettingsViewNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1413DD890A39C746AB537CAD /* SettingsViewNavigation.swift */; };
 		1D34015903FDEA9D60557488 /* IntroduceWritingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C0D32AAEED5B693EDBC860B /* IntroduceWritingCollectionViewCell.swift */; };
+		1E5A99F2607A64DAFC414DE7 /* EditSchoolCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C18BDF74BE388AE73083625A /* EditSchoolCoordinator.swift */; };
 		23A9D4DEB961BA5A80640B24 /* ProfileCoordinator+IntroduceCoordinatorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0CFC63F0F34EC7E92641957 /* ProfileCoordinator+IntroduceCoordinatorDelegate.swift */; };
 		293D2B97656E4CB9C100C1B1 /* MyBadgeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E224FA47A52867E5A97AB323 /* MyBadgeCoordinator.swift */; };
 		2D5C6EF39A882655333C1568 /* ProfileCoordinator+EditMyPhotoCoordinatorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DD8EA8B7B99BE3D946CC830 /* ProfileCoordinator+EditMyPhotoCoordinatorDelegate.swift */; };
@@ -26,11 +27,13 @@
 		432DBA5B46B128FA01483F9F /* QuestionDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 552C0F820240F74D5B5CD0C6 /* QuestionDetailViewController.swift */; };
 		43D8E785C38AB333878D3606 /* QuestionDetailCoordinator+QuestionDetailViewControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C651EC81FFF3D65C45693E9A /* QuestionDetailCoordinator+QuestionDetailViewControllerCoordinator.swift */; };
 		4CAF14D1DB7D632923AE9427 /* ProfileCoordinator+EditUserNameCoordinatorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 616C49F340C729992E8C4FA6 /* ProfileCoordinator+EditUserNameCoordinatorDelegate.swift */; };
+		4DB85321E07520C7F547EDE1 /* EditSchoolCoordinator+EditSchoolViewControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB0619B688B307950072CE1 /* EditSchoolCoordinator+EditSchoolViewControllerCoordinator.swift */; };
 		4E3981718945AFC595F63300 /* EditUserNameFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CB07B63179C5D652285340C /* EditUserNameFactory.swift */; };
 		50C7EBDFF11158934C9027D2 /* SettingsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2FF38E5388DAF2F177352A /* SettingsCoordinator.swift */; };
 		54D815A8ED5D98E835C77659 /* EditMyPhotoCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC01A7AE75454E2CC9948591 /* EditMyPhotoCoordinator.swift */; };
 		559389EA1E1EB714F4E3B8B4 /* EditUserNameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E013464A66F82A4112ED75D /* EditUserNameViewModel.swift */; };
 		55FE9E485CF63075412F9235 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93A8444F9FE80E07A61F92F5 /* SettingsViewModel.swift */; };
+		59182DEC034E3E247E3AB2BC /* EditSchoolViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AFECEBAD23D841A3A5A19BE /* EditSchoolViewModel.swift */; };
 		5BB80EFC84503C494DD440F1 /* FeatureDependency.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 641BBD2F2133A809547B278F /* FeatureDependency.framework */; };
 		62CEB656EA00ED27DFFE73BA /* ProfileCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95CD7EDD3CB71F59D7233E1 /* ProfileCoordinator.swift */; };
 		63BDA75A1AA7DDA1953C3C58 /* ProfileFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B29ED001E6746F907D671D7 /* ProfileFactory.swift */; };
@@ -38,8 +41,6 @@
 		70DE0EAAF4F6C57528A97416 /* EditMyPhotoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BFA407D1318C8EBC50CDFF /* EditMyPhotoViewModel.swift */; };
 		717AE04B63F351AA24127857 /* MyBadgeFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39592BE852D57BACE8732F0E /* MyBadgeFactory.swift */; };
 		73363EAD433C000C18AB3FB2 /* EditMyPhotoCoordinator+EditMyPhotoViewControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC5F977CBCBAED8782A95D49 /* EditMyPhotoCoordinator+EditMyPhotoViewControllerCoordinator.swift */; };
-		7389760D2C92C801008330F3 /* EditSchoolViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7389760C2C92C801008330F3 /* EditSchoolViewController.swift */; };
-		7389760F2C92C80C008330F3 /* EditSchoolViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7389760E2C92C80C008330F3 /* EditSchoolViewModel.swift */; };
 		755BE18E11E861FDDF150DEF /* CustomNaviView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E49EF055D5905E6493CCEF /* CustomNaviView.swift */; };
 		778FEA0055B7D693A3C63559 /* EditMyPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73515D0C838BE4DC8FF4402E /* EditMyPhotoViewController.swift */; };
 		7CAA33AA6E8AE2FF55738646 /* EditUserNameCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 559C11EB17F02E4ADE5CC78E /* EditUserNameCoordinator.swift */; };
@@ -47,7 +48,6 @@
 		80B240D6510E88A94B547027 /* MyBadgeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30ED18B1A955B309970DE60F /* MyBadgeCollectionViewCell.swift */; };
 		82D6398E5EA99B4CB2D33E13 /* UserConfigurationFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7A14D63C33266DECE68E15D /* UserConfigurationFactory.swift */; };
 		84F190EE865F1BE143AEE321 /* IntroduceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D952084FA7936F875A1DB685 /* IntroduceViewController.swift */; };
-		8A98CED0067FEF0B0859573B /* CustomLinkAddButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D0F25CA220C48D63B514FE /* CustomLinkAddButton.swift */; };
 		8B346E18C8519296F391B661 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B8D902E7152C60B8C958FB /* ProfileViewController.swift */; };
 		8C653FA7AB9EDC5418D06C0A /* ProfileCoordinator+QuestionsCoordinatorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35B693A350CF2F8158ED8F1 /* ProfileCoordinator+QuestionsCoordinatorDelegate.swift */; };
 		931830C9843BE86EA3E55A9F /* ProfileCoordinator+ProfileViewControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DDD70D31242BB8DFC682928 /* ProfileCoordinator+ProfileViewControllerCoordinator.swift */; };
@@ -63,21 +63,24 @@
 		ABB9084AC0D96500769ACED8 /* QuestionsCoordinator+QuestionsViewControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4CC6EB29FB062E68722982 /* QuestionsCoordinator+QuestionsViewControllerCoordinator.swift */; };
 		AE376E5D75BF9251AEF369A1 /* QuestionDetailFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A091001E376CAEC51119784 /* QuestionDetailFactory.swift */; };
 		B4A48BCC23735BBD33F95FDC /* EditUserNameCoordinator+EditUserNameViewControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59A80BD548DD6EED2C6D76A5 /* EditUserNameCoordinator+EditUserNameViewControllerCoordinator.swift */; };
-		B62968261FB465C9CB558474 /* CustomMbtiButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881A6CF6D1DA006BCB78DB81 /* CustomMbtiButton.swift */; };
 		B878F46F5D147FA6A0C328A4 /* ItemSettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EEA74C36988904F75753C22 /* ItemSettingViewModel.swift */; };
 		BFADE4B2D1576800E307DAFE /* CustomLinkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523B8D3545600E5D39B2D2B5 /* CustomLinkView.swift */; };
 		C06241105876ED5A18CE8E3A /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0047357D2E6C44164FCE4A37 /* SettingsViewController.swift */; };
 		CC286220C6A3FAAF1496B521 /* QuestionsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F6590180222333CA02BD1AA /* QuestionsTableViewCell.swift */; };
 		CDC83D3C9B2A75C822DC9EFB /* QuestionsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2897B59F95384EB6B1D3A5D8 /* QuestionsCoordinator.swift */; };
 		CDCB94943487827A45EFF46C /* MyBadgeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD99AD43F0848BC3905A9C2C /* MyBadgeViewModel.swift */; };
+		CE686FD26519953001DBE5D3 /* EditSchoolFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = E310CC1DF36469628C9AA471 /* EditSchoolFactory.swift */; };
 		CF31723F1111CE1D7B7868F7 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A67824CBC94EB926F41E23B /* ProfileViewModel.swift */; };
 		D9B2E9D367082525E2957208 /* MyBadgeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A82EA3AC854D030D44C983EB /* MyBadgeViewController.swift */; };
 		DACAD6A2C03A97065E842288 /* IntroduceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F33F76681A8564608F3DE7 /* IntroduceViewModel.swift */; };
 		DCC6F7A653A199060A77C5FA /* QuestionsDialogFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B169FB2C0F16DEBD8458F7E /* QuestionsDialogFactory.swift */; };
 		E26DE4296CE0EE35791A7B04 /* QuestionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328B1195AB0B5C831268D97D /* QuestionsViewController.swift */; };
+		E6F1D0911F2FE80117713310 /* EditSchoolViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB73E283B32AF373B54C3B87 /* EditSchoolViewController.swift */; };
+		E96CA4DB1F146BA8D75B521A /* ProfileCoordinator+EditSchoolCoordinatorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3BC4521FA2D9E5D57F3F1EC /* ProfileCoordinator+EditSchoolCoordinatorDelegate.swift */; };
 		E9F5D9EE4DDCE7081B7FE62B /* ProfileCoordinator+LinksDialogCoordinatorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9F5AEB209AF9FB4F345AE4 /* ProfileCoordinator+LinksDialogCoordinatorDelegate.swift */; };
 		EA1D03DBB574905F4E854A74 /* IntroduceCoordinator+IntroduceViewControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D8FE7FDE10EABF538CE143 /* IntroduceCoordinator+IntroduceViewControllerCoordinator.swift */; };
 		F06AB05FD871A3409C383F32 /* QuestionsFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68FE91B2CC4851213851ACE2 /* QuestionsFactory.swift */; };
+		F3C46EDE951CE0FF815A9B4D /* CustomSchoolButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186EEC95220C5ED9FCC4BFC3 /* CustomSchoolButton.swift */; };
 		F50BE5345691F5EB0B8E641F /* ProfileCoordinator+SettingsCoordinatorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C09B1A3162D825A31E6D2A9 /* ProfileCoordinator+SettingsCoordinatorDelegate.swift */; };
 		F5C6B3B03FF9E0E536323DAE /* EditUserNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7003FAC9D51A07D9EEA2DD4D /* EditUserNameViewController.swift */; };
 		F84EB88CC95A5BE8CAE73CD4 /* LinksDialogFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = D57D6431AC9E73AB0466B0B6 /* LinksDialogFactory.swift */; };
@@ -106,10 +109,12 @@
 		05B8D902E7152C60B8C958FB /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		07142B8944576C8E05F10FEB /* LinksDialogCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinksDialogCoordinator.swift; sourceTree = "<group>"; };
 		087243634A26307538522694 /* QuestionsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionsViewModel.swift; sourceTree = "<group>"; };
+		0AB0619B688B307950072CE1 /* EditSchoolCoordinator+EditSchoolViewControllerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EditSchoolCoordinator+EditSchoolViewControllerCoordinator.swift"; sourceTree = "<group>"; };
 		0DD8EA8B7B99BE3D946CC830 /* ProfileCoordinator+EditMyPhotoCoordinatorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProfileCoordinator+EditMyPhotoCoordinatorDelegate.swift"; sourceTree = "<group>"; };
 		0F6590180222333CA02BD1AA /* QuestionsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionsTableViewCell.swift; sourceTree = "<group>"; };
 		1298EB832CDBC9AB1150C4E8 /* IntroduceCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroduceCoordinator.swift; sourceTree = "<group>"; };
 		1413DD890A39C746AB537CAD /* SettingsViewNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewNavigation.swift; sourceTree = "<group>"; };
+		186EEC95220C5ED9FCC4BFC3 /* CustomSchoolButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSchoolButton.swift; sourceTree = "<group>"; };
 		18E21E786AD27740AF2FBB59 /* QuestionsDialogCoordinator+QuestionsDialogViewControllerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "QuestionsDialogCoordinator+QuestionsDialogViewControllerCoordinator.swift"; sourceTree = "<group>"; };
 		1B169FB2C0F16DEBD8458F7E /* QuestionsDialogFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionsDialogFactory.swift; sourceTree = "<group>"; };
 		1CC31044E1AB78EF985832B8 /* QuestionsDialogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionsDialogViewController.swift; sourceTree = "<group>"; };
@@ -118,7 +123,6 @@
 		2897B59F95384EB6B1D3A5D8 /* QuestionsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionsCoordinator.swift; sourceTree = "<group>"; };
 		2A091001E376CAEC51119784 /* QuestionDetailFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionDetailFactory.swift; sourceTree = "<group>"; };
 		30BFA407D1318C8EBC50CDFF /* EditMyPhotoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditMyPhotoViewModel.swift; sourceTree = "<group>"; };
-		30D0F25CA220C48D63B514FE /* CustomLinkAddButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLinkAddButton.swift; sourceTree = "<group>"; };
 		30ED18B1A955B309970DE60F /* MyBadgeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyBadgeCollectionViewCell.swift; sourceTree = "<group>"; };
 		328B1195AB0B5C831268D97D /* QuestionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionsViewController.swift; sourceTree = "<group>"; };
 		35AEF625E9EB80A53BF3D7F9 /* LinksDialogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinksDialogViewController.swift; sourceTree = "<group>"; };
@@ -146,11 +150,9 @@
 		6DDD70D31242BB8DFC682928 /* ProfileCoordinator+ProfileViewControllerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProfileCoordinator+ProfileViewControllerCoordinator.swift"; sourceTree = "<group>"; };
 		7003FAC9D51A07D9EEA2DD4D /* EditUserNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditUserNameViewController.swift; sourceTree = "<group>"; };
 		73515D0C838BE4DC8FF4402E /* EditMyPhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditMyPhotoViewController.swift; sourceTree = "<group>"; };
-		7389760C2C92C801008330F3 /* EditSchoolViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditSchoolViewController.swift; sourceTree = "<group>"; };
-		7389760E2C92C80C008330F3 /* EditSchoolViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditSchoolViewModel.swift; sourceTree = "<group>"; };
 		78F33F76681A8564608F3DE7 /* IntroduceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroduceViewModel.swift; sourceTree = "<group>"; };
+		7AFECEBAD23D841A3A5A19BE /* EditSchoolViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditSchoolViewModel.swift; sourceTree = "<group>"; };
 		7D75411655BD7C1F2248A03D /* ProfileFeature.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ProfileFeature.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		881A6CF6D1DA006BCB78DB81 /* CustomMbtiButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomMbtiButton.swift; sourceTree = "<group>"; };
 		93A8444F9FE80E07A61F92F5 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		98B302CFEB01395BB58D43B7 /* MyBadgeCoordinator+MyBadgeViewControllerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MyBadgeCoordinator+MyBadgeViewControllerCoordinator.swift"; sourceTree = "<group>"; };
 		9ACE8CAF734090465D7B89D5 /* Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
@@ -161,9 +163,12 @@
 		A82EA3AC854D030D44C983EB /* MyBadgeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyBadgeViewController.swift; sourceTree = "<group>"; };
 		AE4DDD779755E55385FF7ADF /* EditMyPhotoFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditMyPhotoFactory.swift; sourceTree = "<group>"; };
 		B0913E9F158A7764CA30B252 /* ProfileFeature-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "ProfileFeature-Info.plist"; sourceTree = "<group>"; };
+		B3BC4521FA2D9E5D57F3F1EC /* ProfileCoordinator+EditSchoolCoordinatorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProfileCoordinator+EditSchoolCoordinatorDelegate.swift"; sourceTree = "<group>"; };
 		B8D8FE7FDE10EABF538CE143 /* IntroduceCoordinator+IntroduceViewControllerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "IntroduceCoordinator+IntroduceViewControllerCoordinator.swift"; sourceTree = "<group>"; };
 		BAF80EE55293ECE0A8225772 /* CustomSelectQuestionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSelectQuestionButton.swift; sourceTree = "<group>"; };
+		BB73E283B32AF373B54C3B87 /* EditSchoolViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditSchoolViewController.swift; sourceTree = "<group>"; };
 		BC01A7AE75454E2CC9948591 /* EditMyPhotoCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditMyPhotoCoordinator.swift; sourceTree = "<group>"; };
+		C18BDF74BE388AE73083625A /* EditSchoolCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditSchoolCoordinator.swift; sourceTree = "<group>"; };
 		C651EC81FFF3D65C45693E9A /* QuestionDetailCoordinator+QuestionDetailViewControllerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "QuestionDetailCoordinator+QuestionDetailViewControllerCoordinator.swift"; sourceTree = "<group>"; };
 		C670D099F7F3EDC5E439D26D /* IntroduceMbtiCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroduceMbtiCollectionViewCell.swift; sourceTree = "<group>"; };
 		D0CFC63F0F34EC7E92641957 /* ProfileCoordinator+IntroduceCoordinatorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProfileCoordinator+IntroduceCoordinatorDelegate.swift"; sourceTree = "<group>"; };
@@ -177,6 +182,7 @@
 		DE346145CD9601D3DCA3792E /* LinksDialogCoordinator+LinksDialogViewControllerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LinksDialogCoordinator+LinksDialogViewControllerCoordinator.swift"; sourceTree = "<group>"; };
 		E0B905510F51974CF81A2A3C /* QuestionsCoordinator+QuestionsDialogCoordinatorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "QuestionsCoordinator+QuestionsDialogCoordinatorDelegate.swift"; sourceTree = "<group>"; };
 		E224FA47A52867E5A97AB323 /* MyBadgeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyBadgeCoordinator.swift; sourceTree = "<group>"; };
+		E310CC1DF36469628C9AA471 /* EditSchoolFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditSchoolFactory.swift; sourceTree = "<group>"; };
 		E95CD7EDD3CB71F59D7233E1 /* ProfileCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCoordinator.swift; sourceTree = "<group>"; };
 		EC6FB62618C3E6E1535D893E /* QuestionsCoordinator+QuestionDetailCoordinatorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "QuestionsCoordinator+QuestionDetailCoordinatorDelegate.swift"; sourceTree = "<group>"; };
 		F35B693A350CF2F8158ED8F1 /* ProfileCoordinator+QuestionsCoordinatorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProfileCoordinator+QuestionsCoordinatorDelegate.swift"; sourceTree = "<group>"; };
@@ -211,8 +217,8 @@
 			isa = PBXGroup;
 			children = (
 				73515D0C838BE4DC8FF4402E /* EditMyPhotoViewController.swift */,
+				BB73E283B32AF373B54C3B87 /* EditSchoolViewController.swift */,
 				7003FAC9D51A07D9EEA2DD4D /* EditUserNameViewController.swift */,
-				7389760C2C92C801008330F3 /* EditSchoolViewController.swift */,
 				D952084FA7936F875A1DB685 /* IntroduceViewController.swift */,
 				35AEF625E9EB80A53BF3D7F9 /* LinksDialogViewController.swift */,
 				A82EA3AC854D030D44C983EB /* MyBadgeViewController.swift */,
@@ -251,6 +257,7 @@
 			isa = PBXGroup;
 			children = (
 				6D87F8B7D47DCE27E61637B0 /* EditMyPhoto */,
+				51B0605C7880F3F23B0BBE57 /* EditSchool */,
 				F3B232AB76805AC75CF8C682 /* EditUserName */,
 				3E6465A0CECA42E1B055124E /* Introduce */,
 				0A8BDDBA5C234DD14B6A6874 /* Link */,
@@ -289,6 +296,16 @@
 			name = Project;
 			sourceTree = "<group>";
 		};
+		51B0605C7880F3F23B0BBE57 /* EditSchool */ = {
+			isa = PBXGroup;
+			children = (
+				C18BDF74BE388AE73083625A /* EditSchoolCoordinator.swift */,
+				0AB0619B688B307950072CE1 /* EditSchoolCoordinator+EditSchoolViewControllerCoordinator.swift */,
+				E310CC1DF36469628C9AA471 /* EditSchoolFactory.swift */,
+			);
+			path = EditSchool;
+			sourceTree = "<group>";
+		};
 		6184C217E37EB701C2FF95DD /* Derived */ = {
 			isa = PBXGroup;
 			children = (
@@ -301,8 +318,8 @@
 			isa = PBXGroup;
 			children = (
 				30BFA407D1318C8EBC50CDFF /* EditMyPhotoViewModel.swift */,
+				7AFECEBAD23D841A3A5A19BE /* EditSchoolViewModel.swift */,
 				9E013464A66F82A4112ED75D /* EditUserNameViewModel.swift */,
-				7389760E2C92C80C008330F3 /* EditSchoolViewModel.swift */,
 				78F33F76681A8564608F3DE7 /* IntroduceViewModel.swift */,
 				FD99AD43F0848BC3905A9C2C /* MyBadgeViewModel.swift */,
 				4A67824CBC94EB926F41E23B /* ProfileViewModel.swift */,
@@ -333,10 +350,9 @@
 		72F7BC80C489E3448FF9AFB7 /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				30D0F25CA220C48D63B514FE /* CustomLinkAddButton.swift */,
 				523B8D3545600E5D39B2D2B5 /* CustomLinkView.swift */,
-				881A6CF6D1DA006BCB78DB81 /* CustomMbtiButton.swift */,
 				A5E49EF055D5905E6493CCEF /* CustomNaviView.swift */,
+				186EEC95220C5ED9FCC4BFC3 /* CustomSchoolButton.swift */,
 				BAF80EE55293ECE0A8225772 /* CustomSelectQuestionButton.swift */,
 			);
 			path = Components;
@@ -420,6 +436,7 @@
 			children = (
 				E95CD7EDD3CB71F59D7233E1 /* ProfileCoordinator.swift */,
 				0DD8EA8B7B99BE3D946CC830 /* ProfileCoordinator+EditMyPhotoCoordinatorDelegate.swift */,
+				B3BC4521FA2D9E5D57F3F1EC /* ProfileCoordinator+EditSchoolCoordinatorDelegate.swift */,
 				616C49F340C729992E8C4FA6 /* ProfileCoordinator+EditUserNameCoordinatorDelegate.swift */,
 				D0CFC63F0F34EC7E92641957 /* ProfileCoordinator+IntroduceCoordinatorDelegate.swift */,
 				9C9F5AEB209AF9FB4F345AE4 /* ProfileCoordinator+LinksDialogCoordinatorDelegate.swift */,
@@ -499,6 +516,8 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
 				ORGANIZATIONNAME = ATeen;
+				TargetAttributes = {
+				};
 			};
 			buildConfigurationList = 820D491C7A089E9609C5577D /* Build configuration list for PBXProject "ProfileFeature" */;
 			compatibilityVersion = "Xcode 14.0";
@@ -535,7 +554,6 @@
 			files = (
 				9A66A7C60A02BE8DC358B9F8 /* SettingsCoordinator+SettingsViewControllerCoordinator.swift in Sources */,
 				FBBDC5A8AF21B30E8F2ED784 /* SettingsCoordinator+UserConfigurationCoordinatorDelegate.swift in Sources */,
-				7389760D2C92C801008330F3 /* EditSchoolViewController.swift in Sources */,
 				50C7EBDFF11158934C9027D2 /* SettingsCoordinator.swift in Sources */,
 				FD3E2FA7C3E0DA9EEDA147B7 /* SettingsFactory.swift in Sources */,
 				651C0C41583A7362A1DA6298 /* UserConfigurationCoordinator.swift in Sources */,
@@ -546,16 +564,17 @@
 				55FE9E485CF63075412F9235 /* SettingsViewModel.swift in Sources */,
 				1AF2769C08BB127855B1AAF0 /* SettingsViewNavigation.swift in Sources */,
 				F921C7F56F471F3B4DF17FCC /* UserConfigurationViewController.swift in Sources */,
-				8A98CED0067FEF0B0859573B /* CustomLinkAddButton.swift in Sources */,
 				BFADE4B2D1576800E307DAFE /* CustomLinkView.swift in Sources */,
-				7389760F2C92C80C008330F3 /* EditSchoolViewModel.swift in Sources */,
-				B62968261FB465C9CB558474 /* CustomMbtiButton.swift in Sources */,
 				755BE18E11E861FDDF150DEF /* CustomNaviView.swift in Sources */,
+				F3C46EDE951CE0FF815A9B4D /* CustomSchoolButton.swift in Sources */,
 				95BC236C36ABBA77349D9B34 /* CustomSelectQuestionButton.swift in Sources */,
 				130D661FE6C4DA29D6C1F5D7 /* EditMyPhotoCoordinator+AlbumCoordinatorDelegate.swift in Sources */,
 				73363EAD433C000C18AB3FB2 /* EditMyPhotoCoordinator+EditMyPhotoViewControllerCoordinator.swift in Sources */,
 				54D815A8ED5D98E835C77659 /* EditMyPhotoCoordinator.swift in Sources */,
 				2F2CEA64BF582C4D10F2026D /* EditMyPhotoFactory.swift in Sources */,
+				4DB85321E07520C7F547EDE1 /* EditSchoolCoordinator+EditSchoolViewControllerCoordinator.swift in Sources */,
+				1E5A99F2607A64DAFC414DE7 /* EditSchoolCoordinator.swift in Sources */,
+				CE686FD26519953001DBE5D3 /* EditSchoolFactory.swift in Sources */,
 				B4A48BCC23735BBD33F95FDC /* EditUserNameCoordinator+EditUserNameViewControllerCoordinator.swift in Sources */,
 				7CAA33AA6E8AE2FF55738646 /* EditUserNameCoordinator.swift in Sources */,
 				4E3981718945AFC595F63300 /* EditUserNameFactory.swift in Sources */,
@@ -569,6 +588,7 @@
 				293D2B97656E4CB9C100C1B1 /* MyBadgeCoordinator.swift in Sources */,
 				717AE04B63F351AA24127857 /* MyBadgeFactory.swift in Sources */,
 				2D5C6EF39A882655333C1568 /* ProfileCoordinator+EditMyPhotoCoordinatorDelegate.swift in Sources */,
+				E96CA4DB1F146BA8D75B521A /* ProfileCoordinator+EditSchoolCoordinatorDelegate.swift in Sources */,
 				4CAF14D1DB7D632923AE9427 /* ProfileCoordinator+EditUserNameCoordinatorDelegate.swift in Sources */,
 				23A9D4DEB961BA5A80640B24 /* ProfileCoordinator+IntroduceCoordinatorDelegate.swift in Sources */,
 				E9F5D9EE4DDCE7081B7FE62B /* ProfileCoordinator+LinksDialogCoordinatorDelegate.swift in Sources */,
@@ -596,6 +616,7 @@
 				7DEDC755211F4A29597FFAC4 /* QuestionsDialogTableViewCell.swift in Sources */,
 				CC286220C6A3FAAF1496B521 /* QuestionsTableViewCell.swift in Sources */,
 				778FEA0055B7D693A3C63559 /* EditMyPhotoViewController.swift in Sources */,
+				E6F1D0911F2FE80117713310 /* EditSchoolViewController.swift in Sources */,
 				F5C6B3B03FF9E0E536323DAE /* EditUserNameViewController.swift in Sources */,
 				84F190EE865F1BE143AEE321 /* IntroduceViewController.swift in Sources */,
 				30C7883EC5C80AFFCCFE5A72 /* LinksDialogViewController.swift in Sources */,
@@ -605,6 +626,7 @@
 				3A480E1F26D6029058F0BC75 /* QuestionsDialogViewController.swift in Sources */,
 				E26DE4296CE0EE35791A7B04 /* QuestionsViewController.swift in Sources */,
 				70DE0EAAF4F6C57528A97416 /* EditMyPhotoViewModel.swift in Sources */,
+				59182DEC034E3E247E3AB2BC /* EditSchoolViewModel.swift in Sources */,
 				559389EA1E1EB714F4E3B8B4 /* EditUserNameViewModel.swift in Sources */,
 				DACAD6A2C03A97065E842288 /* IntroduceViewModel.swift in Sources */,
 				CDCB94943487827A45EFF46C /* MyBadgeViewModel.swift in Sources */,
@@ -748,10 +770,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					"-ObjC",
-				);
+				OTHER_LDFLAGS = "$(inherited) -ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ATeen.ATeen.ProfileFeature;
 				PRODUCT_NAME = ProfileFeature;
 				SDKROOT = iphoneos;
@@ -759,7 +778,10 @@
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = (
+					"$(inherited)",
+					DEBUG,
+				);
 				SWIFT_COMPILATION_MODE = singlefile;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -789,10 +811,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					"-ObjC",
-				);
+				OTHER_LDFLAGS = "$(inherited) -ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ATeen.ATeen.ProfileFeature;
 				PRODUCT_NAME = ProfileFeature;
 				SDKROOT = iphoneos;

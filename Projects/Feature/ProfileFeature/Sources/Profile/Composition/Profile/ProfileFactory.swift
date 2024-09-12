@@ -57,6 +57,13 @@ public protocol ProfileFactory {
         delegate: EditUserNameCoordinatorDelegate,
         childCoordinators: [Coordinator]
     ) -> Coordinator
+    
+    func makeEditSchoolCoordinator(
+        navigation: Navigation,
+        parentCoordinator: ParentCoordinator,
+        delegate: EditSchoolCoordinatorDelegate,
+        childCoordinators: [Coordinator]
+    ) -> Coordinator
 }
 
 public struct ProfileFactoryImp: ProfileFactory {
@@ -172,6 +179,21 @@ public struct ProfileFactoryImp: ProfileFactory {
     ) -> Coordinator {
         let factory = EditUserNameFactoryImp(userName: viewModel.userName)
         let coordinator = EditUserNameCoordinator(
+            navigation: navigation,
+            factory: factory,
+            delegate: delegate,
+            childCoordinators: childCoordinators)
+        return coordinator
+    }
+    
+    public func makeEditSchoolCoordinator(
+        navigation: Navigation,
+        parentCoordinator: ParentCoordinator,
+        delegate: EditSchoolCoordinatorDelegate,
+        childCoordinators: [Coordinator]
+    ) -> Coordinator {
+        let factory = EditSchoolFactoryImp(schoolData: viewModel.userSchool)
+        let coordinator = EditSchoolCoordinator(
             navigation: navigation,
             factory: factory,
             delegate: delegate,

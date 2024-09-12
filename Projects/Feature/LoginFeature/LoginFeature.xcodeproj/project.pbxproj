@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		0F52C4BC7D28185E049D59AA /* PhoneNumberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D87D38BC4A72521BF8C99CCE /* PhoneNumberViewController.swift */; };
-		1802A091B7C6E15CC613E123 /* CustomClearXmarkTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7A569F07A02E670B199B5E6 /* CustomClearXmarkTextField.swift */; };
 		1CAA94B5E855F37ADF4F8D01 /* SignUpCoordinator+CelebrateCoordinatorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01B1FF8B4D105FFC34E2CDA2 /* SignUpCoordinator+CelebrateCoordinatorDelegate.swift */; };
 		1CC48D15126F3679055F79C1 /* CelebrateCoordinator+CelebrateViewControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B857F577CDD7D5BABB747324 /* CelebrateCoordinator+CelebrateViewControllerCoordinator.swift */; };
 		1EA970F7C0B97A2FE935ED0B /* CustomLoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01AF3C01EE7A192D2EBB23D6 /* CustomLoginButton.swift */; };
@@ -121,7 +120,6 @@
 		D87D38BC4A72521BF8C99CCE /* PhoneNumberViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberViewController.swift; sourceTree = "<group>"; };
 		E101F835260912FBFF740758 /* PhoneNumberFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberFactory.swift; sourceTree = "<group>"; };
 		E7215B932546B5897BE8FF7C /* LogInCoordinator+LogInViewControllerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LogInCoordinator+LogInViewControllerCoordinator.swift"; sourceTree = "<group>"; };
-		E7A569F07A02E670B199B5E6 /* CustomClearXmarkTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomClearXmarkTextField.swift; sourceTree = "<group>"; };
 		F0635FB907648B99234ED111 /* CustomServiceButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomServiceButton.swift; sourceTree = "<group>"; };
 		F2350A966587011EBA120FC9 /* SignUpCoordinator+AlbumCoordinatorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SignUpCoordinator+AlbumCoordinatorDelegate.swift"; sourceTree = "<group>"; };
 		F5354149FB59E493237D98EA /* CelebrateCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CelebrateCoordinator.swift; sourceTree = "<group>"; };
@@ -167,14 +165,6 @@
 			name = Project;
 			sourceTree = "<group>";
 		};
-		0D42B8DE13D9325B2DF708B1 /* Components */ = {
-			isa = PBXGroup;
-			children = (
-				E7A569F07A02E670B199B5E6 /* CustomClearXmarkTextField.swift */,
-			);
-			path = Components;
-			sourceTree = "<group>";
-		};
 		141A8097D79B04FD25243AE3 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -205,7 +195,6 @@
 			isa = PBXGroup;
 			children = (
 				2EEEF05159C9768FE8169895 /* Cell */,
-				0D42B8DE13D9325B2DF708B1 /* Components */,
 				44D557B2F861E1FA23A436B7 /* View */,
 			);
 			path = Presentation;
@@ -549,7 +538,6 @@
 				777BA59CDB367184A1314B12 /* PhoneNumberFactory.swift in Sources */,
 				2D4E4569F63F4E50CE315CB2 /* CertificationCodeCollectionViewCell.swift in Sources */,
 				BA16A9F1F4BAFCE925DA1CA8 /* PhoneNumberCollectionViewCell.swift in Sources */,
-				1802A091B7C6E15CC613E123 /* CustomClearXmarkTextField.swift in Sources */,
 				0F52C4BC7D28185E049D59AA /* PhoneNumberViewController.swift in Sources */,
 				8E977FEA43F18A8A273635E6 /* CustomBirthButton.swift in Sources */,
 				6DB3572BF2561F53A02AA1BF /* CustomLineView.swift in Sources */,

@@ -7,13 +7,16 @@
 //
 
 import Common
+import Domain
 import DesignSystem
 import UIKit
 
 public class ProfileViewModel {
     var userName: String = "김 에스더"
     var userImage: UIImage = DesignSystemAsset.blackGlass.image
-    var userSchoolName: String = "서울 중학교"
+    var userSchool: SchoolData = .init(
+        schoolName: "남서울중학교",
+        schoolLocation: "서울특별시 관악구 남부순환로172길 97")
     var userAge: Int = 17
     var userBadge: [BadgeType] = [
         .badge1, .badge2, .badge3, .badge4, .badge5, .badge6, .badge7, .badge8, .badge9, .badge10, .badge11, .badge12

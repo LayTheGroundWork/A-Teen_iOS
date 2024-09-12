@@ -15,6 +15,7 @@ public protocol ProfileViewControllerCoordinator: AnyObject {
     func didTabSettingButton()
     func didTabEditMyPhotoButton()
     func didTabEditUserNameButton()
+    func didTabSchoolButton()
     func didTabBadgeButton()
     func didTabLinkButton()
     func didTabIntroduceButton()
@@ -120,37 +121,11 @@ public final class ProfileViewController: UIViewController {
         return imageView
     }()
     
-    private lazy var userInfoView: UIView = {
-        let view = UIView()
-        view.backgroundColor = DesignSystemAsset.gray03.color
-        view.clipsToBounds = true
-        view.layer.cornerRadius = ViewValues.defaultRadius
-        return view
-    }()
-    
-    private lazy var schoolLabel: UILabel = {
-        let label = UILabel()
-        label.text = viewModel.userSchoolName
-        label.textColor = UIColor.black
-        label.textAlignment = .left
-        label.font = .customFont(forTextStyle: .callout, weight: .regular)
-        return label
-    }()
-    
-    private lazy var ageLabel: UILabel = {
-        let label = UILabel()
-        label.text = "\(viewModel.userAge)세"
-        label.textColor = DesignSystemAsset.gray01.color
-        label.textAlignment = .left
-        label.font = .customFont(forTextStyle: .footnote, weight: .regular)
-        return label
-    }()
-    
-    private lazy var infoSettingButton: UIButton = {
-        let button = UIButton()
-        button.setImage(DesignSystemAsset.rightGrayIcon.image, for: .normal)
-        button.tintColor = DesignSystemAsset.gray01.color
-        button.isEnabled = true
+    private lazy var schoolButton: CustomSchoolButton = {
+        let button = CustomSchoolButton(
+            frame: .zero,
+            schoolName: viewModel.userSchool.schoolName,
+            age: viewModel.userAge)
         return button
     }()
     
@@ -491,37 +466,14 @@ public final class ProfileViewController: UIViewController {
     }
     
     private func addUserInfoComponent() {
-        informationView.addSubview(userInfoView)
+        informationView.addSubview(schoolButton)
         
-        userInfoView.addSubview(infoSettingButton)
-        userInfoView.addSubview(schoolLabel)
-        userInfoView.addSubview(ageLabel)
-        
-        userInfoView.snp.makeConstraints { make in
+        schoolButton.snp.makeConstraints { make in
             make.top.equalTo(userImageContainerView.snp.bottom).offset(24)
             make.leading.equalToSuperview().offset(ViewValues.defaultPadding)
             make.trailing.equalToSuperview().offset(-ViewValues.defaultPadding)
             make.height.equalTo(74)
         }
-        
-        infoSettingButton.snp.makeConstraints { make in
-            make.centerY.equalToSuperview()
-            make.trailing.equalToSuperview().offset(-ViewValues.defaultPadding)
-            make.width.height.equalTo(24)
-        }
-        
-        schoolLabel.snp.makeConstraints { make in
-            make.bottom.equalTo(userInfoView.snp.centerY).offset(-1)
-            make.leading.equalToSuperview().offset(ViewValues.defaultPadding)
-            make.trailing.equalTo(infoSettingButton.snp.leading).offset(-ViewValues.defaultPadding)
-        }
-        
-        ageLabel.snp.makeConstraints { make in
-            make.top.equalTo(userInfoView.snp.centerY).offset(1)
-            make.leading.equalToSuperview().offset(ViewValues.defaultPadding)
-            make.trailing.equalTo(infoSettingButton.snp.leading).offset(-ViewValues.defaultPadding)
-        }
-        
         addUserBadgeComponent()
     }
     
@@ -540,7 +492,7 @@ public final class ProfileViewController: UIViewController {
         }
         
         badgeAndTournamentStack.snp.makeConstraints { make in
-            make.top.equalTo(userInfoView.snp.bottom).offset(ViewValues.defaultPadding)
+            make.top.equalTo(schoolButton.snp.bottom).offset(ViewValues.defaultPadding)
             make.leading.equalToSuperview().offset(ViewValues.defaultPadding)
             make.trailing.equalToSuperview().offset(-ViewValues.defaultPadding)
             make.height.equalTo(97)
@@ -548,7 +500,7 @@ public final class ProfileViewController: UIViewController {
         
         self.view.layoutIfNeeded()
         informationViewHeightAnchor?.update(
-            offset: userImageContainerView.frame.height + userInfoView.frame.height + badgeAndTournamentStack.frame.height + 95)
+            offset: userImageContainerView.frame.height + schoolButton.frame.height + badgeAndTournamentStack.frame.height + 95)
     }
     
     private func addLinkComponent() {
@@ -851,9 +803,9 @@ public final class ProfileViewController: UIViewController {
             self,
             action: #selector(clickEditUserNameButton(_:)),
             for: .touchUpInside)
-        infoSettingButton.addTarget(
+        schoolButton.addTarget(
             self,
-            action: #selector(clickSettingsButton(_:)),
+            action: #selector(clickSchoolButton(_:)),
             for: .touchUpInside)
         badgeButton.addTarget(
             self,
@@ -889,6 +841,10 @@ public final class ProfileViewController: UIViewController {
     
     @objc private func clickSettingsButton(_ sender: UIButton) {
         print("세팅 아이콘 버튼 클릭")
+    }
+    
+    @objc private func clickSchoolButton(_ sender: UIButton) {
+        coordinator?.didTabSchoolButton()
     }
     
     @objc private func clickBadgeButton(_ sender: UIButton) {
