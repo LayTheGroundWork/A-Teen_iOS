@@ -10,7 +10,7 @@ import Domain
 import DesignSystem
 import UIKit
 
-final class SearchSchoolResultTableViewCell: UITableViewCell {
+public final class SearchSchoolResultTableViewCell: UITableViewCell {
     private lazy var schoolNameLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .left
@@ -42,6 +42,11 @@ final class SearchSchoolResultTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    public override func prepareForReuse() {
+        lineView.isHidden = false
+        schoolNameLabel.font = UIFont.customFont(forTextStyle: .callout, weight: .regular)
+    }
+    
     private func configUserInterface() {
         self.selectionStyle = .none
         
@@ -68,19 +73,14 @@ final class SearchSchoolResultTableViewCell: UITableViewCell {
         }
     }
     
-    override func prepareForReuse() {
-        lineView.isHidden = false
-        schoolNameLabel.font = UIFont.customFont(forTextStyle: .callout, weight: .regular)
-    }
-    
-    func fontChange(schoolData: SchoolData?, isBold: Bool) {
+    public func fontChange(schoolData: SchoolData?, isBold: Bool) {
         guard let schoolData = schoolData else { return }
         schoolNameLabel.text = schoolData.schoolName
         schoolNameLabel.font = isBold ? UIFont.customFont(forTextStyle: .callout, weight: .bold) : UIFont.customFont(forTextStyle: .callout, weight: .regular)
         schoolAddressLabel.text = schoolData.schoolLocation
     }
     
-    func hiddenLineView(row: Int, lastIndex: Int) {
+    public func hiddenLineView(row: Int, lastIndex: Int) {
         if row == lastIndex {
             lineView.isHidden = true
         }

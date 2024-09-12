@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		12CB705402E4127A285C7D1C /* SpinnerDisplayable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 446B3DF68D777459DF78D819 /* SpinnerDisplayable.swift */; };
+		199491A7273569B2A1F12C00 /* SearchSchoolResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A22D563A28568EEB07DB08B2 /* SearchSchoolResultTableViewCell.swift */; };
 		28B8C6913CE7FAF386D00351 /* PhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2683CC5C4689C6FF07AA9C7 /* PhotoCollectionViewCell.swift */; };
 		2AE2442457DCECCC55C49611 /* UIView+Layer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9347F19E7CA63054E643E5C /* UIView+Layer.swift */; };
 		32E85901F7A04A4096C803EB /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9005F43599E3AE2CCB247B4F /* SnapKit.framework */; };
@@ -59,6 +60,7 @@
 		9005F43599E3AE2CCB247B4F /* SnapKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SnapKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		91A68140F7B39D12A54351B0 /* UIViewController+TouchGesture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+TouchGesture.swift"; sourceTree = "<group>"; };
 		920DA469DBBE73FF7D4216D5 /* UIView+ImageRender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+ImageRender.swift"; sourceTree = "<group>"; };
+		A22D563A28568EEB07DB08B2 /* SearchSchoolResultTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchSchoolResultTableViewCell.swift; sourceTree = "<group>"; };
 		A5263BC75B281154AC0B5A7B /* TuistAssets+DesignSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TuistAssets+DesignSystem.swift"; sourceTree = "<group>"; };
 		A85CAE797083F72B19BA5031 /* UIView+Constraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Constraints.swift"; sourceTree = "<group>"; };
 		B9347F19E7CA63054E643E5C /* UIView+Layer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Layer.swift"; sourceTree = "<group>"; };
@@ -189,6 +191,7 @@
 			isa = PBXGroup;
 			children = (
 				E2683CC5C4689C6FF07AA9C7 /* PhotoCollectionViewCell.swift */,
+				A22D563A28568EEB07DB08B2 /* SearchSchoolResultTableViewCell.swift */,
 				8E9DB4A292851700BF0C6DEC /* TeenCollectionViewCell.swift */,
 				D4EF6BE0491455A8516B7E3C /* TeenTableViewCell.swift */,
 			);
@@ -280,6 +283,7 @@
 				ABB14811E13F7B1ECCF8B086 /* TuistAssets+DesignSystem.swift in Sources */,
 				F6018B5F7748E322214C52D6 /* TuistBundle+DesignSystem.swift in Sources */,
 				28B8C6913CE7FAF386D00351 /* PhotoCollectionViewCell.swift in Sources */,
+				199491A7273569B2A1F12C00 /* SearchSchoolResultTableViewCell.swift in Sources */,
 				E11CFE60442FBC5B848011D8 /* TeenCollectionViewCell.swift in Sources */,
 				7A74F05268085075D27FBD1D /* TeenTableViewCell.swift in Sources */,
 				7A0C54B5DEB0870B0D784605 /* CustomClearXmarkTextField.swift in Sources */,

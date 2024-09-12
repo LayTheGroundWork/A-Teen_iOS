@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 55;
+	objectVersion = 56;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -38,6 +38,8 @@
 		70DE0EAAF4F6C57528A97416 /* EditMyPhotoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BFA407D1318C8EBC50CDFF /* EditMyPhotoViewModel.swift */; };
 		717AE04B63F351AA24127857 /* MyBadgeFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39592BE852D57BACE8732F0E /* MyBadgeFactory.swift */; };
 		73363EAD433C000C18AB3FB2 /* EditMyPhotoCoordinator+EditMyPhotoViewControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC5F977CBCBAED8782A95D49 /* EditMyPhotoCoordinator+EditMyPhotoViewControllerCoordinator.swift */; };
+		7389760D2C92C801008330F3 /* EditSchoolViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7389760C2C92C801008330F3 /* EditSchoolViewController.swift */; };
+		7389760F2C92C80C008330F3 /* EditSchoolViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7389760E2C92C80C008330F3 /* EditSchoolViewModel.swift */; };
 		755BE18E11E861FDDF150DEF /* CustomNaviView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E49EF055D5905E6493CCEF /* CustomNaviView.swift */; };
 		778FEA0055B7D693A3C63559 /* EditMyPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73515D0C838BE4DC8FF4402E /* EditMyPhotoViewController.swift */; };
 		7CAA33AA6E8AE2FF55738646 /* EditUserNameCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 559C11EB17F02E4ADE5CC78E /* EditUserNameCoordinator.swift */; };
@@ -144,6 +146,8 @@
 		6DDD70D31242BB8DFC682928 /* ProfileCoordinator+ProfileViewControllerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProfileCoordinator+ProfileViewControllerCoordinator.swift"; sourceTree = "<group>"; };
 		7003FAC9D51A07D9EEA2DD4D /* EditUserNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditUserNameViewController.swift; sourceTree = "<group>"; };
 		73515D0C838BE4DC8FF4402E /* EditMyPhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditMyPhotoViewController.swift; sourceTree = "<group>"; };
+		7389760C2C92C801008330F3 /* EditSchoolViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditSchoolViewController.swift; sourceTree = "<group>"; };
+		7389760E2C92C80C008330F3 /* EditSchoolViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditSchoolViewModel.swift; sourceTree = "<group>"; };
 		78F33F76681A8564608F3DE7 /* IntroduceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroduceViewModel.swift; sourceTree = "<group>"; };
 		7D75411655BD7C1F2248A03D /* ProfileFeature.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ProfileFeature.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		881A6CF6D1DA006BCB78DB81 /* CustomMbtiButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomMbtiButton.swift; sourceTree = "<group>"; };
@@ -208,6 +212,7 @@
 			children = (
 				73515D0C838BE4DC8FF4402E /* EditMyPhotoViewController.swift */,
 				7003FAC9D51A07D9EEA2DD4D /* EditUserNameViewController.swift */,
+				7389760C2C92C801008330F3 /* EditSchoolViewController.swift */,
 				D952084FA7936F875A1DB685 /* IntroduceViewController.swift */,
 				35AEF625E9EB80A53BF3D7F9 /* LinksDialogViewController.swift */,
 				A82EA3AC854D030D44C983EB /* MyBadgeViewController.swift */,
@@ -297,6 +302,7 @@
 			children = (
 				30BFA407D1318C8EBC50CDFF /* EditMyPhotoViewModel.swift */,
 				9E013464A66F82A4112ED75D /* EditUserNameViewModel.swift */,
+				7389760E2C92C80C008330F3 /* EditSchoolViewModel.swift */,
 				78F33F76681A8564608F3DE7 /* IntroduceViewModel.swift */,
 				FD99AD43F0848BC3905A9C2C /* MyBadgeViewModel.swift */,
 				4A67824CBC94EB926F41E23B /* ProfileViewModel.swift */,
@@ -493,8 +499,6 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
 				ORGANIZATIONNAME = ATeen;
-				TargetAttributes = {
-				};
 			};
 			buildConfigurationList = 820D491C7A089E9609C5577D /* Build configuration list for PBXProject "ProfileFeature" */;
 			compatibilityVersion = "Xcode 14.0";
@@ -531,6 +535,7 @@
 			files = (
 				9A66A7C60A02BE8DC358B9F8 /* SettingsCoordinator+SettingsViewControllerCoordinator.swift in Sources */,
 				FBBDC5A8AF21B30E8F2ED784 /* SettingsCoordinator+UserConfigurationCoordinatorDelegate.swift in Sources */,
+				7389760D2C92C801008330F3 /* EditSchoolViewController.swift in Sources */,
 				50C7EBDFF11158934C9027D2 /* SettingsCoordinator.swift in Sources */,
 				FD3E2FA7C3E0DA9EEDA147B7 /* SettingsFactory.swift in Sources */,
 				651C0C41583A7362A1DA6298 /* UserConfigurationCoordinator.swift in Sources */,
@@ -543,6 +548,7 @@
 				F921C7F56F471F3B4DF17FCC /* UserConfigurationViewController.swift in Sources */,
 				8A98CED0067FEF0B0859573B /* CustomLinkAddButton.swift in Sources */,
 				BFADE4B2D1576800E307DAFE /* CustomLinkView.swift in Sources */,
+				7389760F2C92C80C008330F3 /* EditSchoolViewModel.swift in Sources */,
 				B62968261FB465C9CB558474 /* CustomMbtiButton.swift in Sources */,
 				755BE18E11E861FDDF150DEF /* CustomNaviView.swift in Sources */,
 				95BC236C36ABBA77349D9B34 /* CustomSelectQuestionButton.swift in Sources */,
@@ -742,7 +748,10 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				OTHER_LDFLAGS = "$(inherited) -ObjC";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ATeen.ATeen.ProfileFeature;
 				PRODUCT_NAME = ProfileFeature;
 				SDKROOT = iphoneos;
@@ -750,10 +759,7 @@
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = (
-					"$(inherited)",
-					DEBUG,
-				);
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG";
 				SWIFT_COMPILATION_MODE = singlefile;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -783,7 +789,10 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				OTHER_LDFLAGS = "$(inherited) -ObjC";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ATeen.ATeen.ProfileFeature;
 				PRODUCT_NAME = ProfileFeature;
 				SDKROOT = iphoneos;

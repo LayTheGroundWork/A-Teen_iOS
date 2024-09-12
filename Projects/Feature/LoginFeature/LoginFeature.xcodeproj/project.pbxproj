@@ -55,7 +55,6 @@
 		DF01319474891E767834707C /* FeatureDependency.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC856D9CBCFC1A7BCB2C3150 /* FeatureDependency.framework */; };
 		E8D0DCDF3045B40C469C2CB7 /* SelectBirthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF99BF7EEB9C8D285FF18D2 /* SelectBirthViewController.swift */; };
 		EB5AD433292BE171A2D7530F /* UserBirthCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34F77941C65FDD2BE5055BE6 /* UserBirthCollectionViewCell.swift */; };
-		EC59603D9890FCFD4DACF066 /* SearchSchoolResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00D5C715A60CA859EF1680C /* SearchSchoolResultTableViewCell.swift */; };
 		F209D038464EB564A47E72D1 /* PhoneNumberCoordinator+PhoneNumberViewControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB9BE718E7B7F73BB64C145 /* PhoneNumberCoordinator+PhoneNumberViewControllerCoordinator.swift */; };
 		FDBE36C01AE4E6DD991FFF87 /* SignUpCoordinator+AlbumCoordinatorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2350A966587011EBA120FC9 /* SignUpCoordinator+AlbumCoordinatorDelegate.swift */; };
 /* End PBXBuildFile section */
@@ -112,7 +111,6 @@
 		A34E03EEB828285E9D65A1B8 /* LoginFeature.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = LoginFeature.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A362F7E45E3D955366345900 /* TermsOfUseCoordinator+TermsOfUseViewControllerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TermsOfUseCoordinator+TermsOfUseViewControllerCoordinator.swift"; sourceTree = "<group>"; };
 		AEA701135A68E2F9250CD6D6 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
-		B00D5C715A60CA859EF1680C /* SearchSchoolResultTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchSchoolResultTableViewCell.swift; sourceTree = "<group>"; };
 		B0C621C84CC71BBA1A73FCC4 /* PhoneNumberViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberViewModel.swift; sourceTree = "<group>"; };
 		B67BE68D4D9159CC81144BAF /* Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
 		B857F577CDD7D5BABB747324 /* CelebrateCoordinator+CelebrateViewControllerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CelebrateCoordinator+CelebrateViewControllerCoordinator.swift"; sourceTree = "<group>"; };
@@ -433,7 +431,6 @@
 			children = (
 				8A5D42B0DB60AE18A13D05B5 /* CategoryButtonCollectionViewCell.swift */,
 				CC2F0F661319F4B69ED62AB3 /* SearchSchoolCollectionViewCell.swift */,
-				B00D5C715A60CA859EF1680C /* SearchSchoolResultTableViewCell.swift */,
 				BD8A4E6186BDABB400F50448 /* SelectCategoryCollectionViewCell.swift */,
 				3BF9E852E87EB82262B93633 /* SelectPhotoCollectionViewCell.swift */,
 				34F77941C65FDD2BE5055BE6 /* UserBirthCollectionViewCell.swift */,
@@ -568,7 +565,6 @@
 				55B2726C834A17D59ED33962 /* SignUpFactory.swift in Sources */,
 				996DF81B9C17A212C916FABE /* CategoryButtonCollectionViewCell.swift in Sources */,
 				252DEED5BA048C197FD80759 /* SearchSchoolCollectionViewCell.swift in Sources */,
-				EC59603D9890FCFD4DACF066 /* SearchSchoolResultTableViewCell.swift in Sources */,
 				6412F48189B7D868B320FC0C /* SelectCategoryCollectionViewCell.swift in Sources */,
 				2FF6CCB7FCB510F428F6A3FB /* SelectPhotoCollectionViewCell.swift in Sources */,
 				EB5AD433292BE171A2D7530F /* UserBirthCollectionViewCell.swift in Sources */,
