@@ -65,11 +65,11 @@ final class MyBadgeCollectionViewCell: UICollectionViewCell {
     }
     
     func setProperties(badge: BadgeType) {
-        badgeImageView.image = changeStringToImage(badge)
+        badgeImageView.image = changeBadgeToImage(badge)
         badgeLabel.text = badge.rawValue
     }
     
-    private func changeStringToImage(_ badgeType: BadgeType) -> UIImage {
+    private func changeBadgeToImage(_ badgeType: BadgeType) -> UIImage {
         switch badgeType {
         case .badge1:
             DesignSystemAsset.badge1.image

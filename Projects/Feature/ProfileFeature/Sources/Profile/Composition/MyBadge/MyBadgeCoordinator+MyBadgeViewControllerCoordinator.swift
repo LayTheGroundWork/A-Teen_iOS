@@ -17,7 +17,12 @@ extension MyBadgeCoordinator: MyBadgeViewControllerCoordinator {
         delegate?.configTabbarState(view: .another)
     }
     
-    public func didSelectCell(badge: BadgeType) {
-        print(badge)
+    public func didSelectCell(badge: Badge) {
+        let coordinator = factory.makeMyBadgeDetailCoordinator(delegate: self, badge: badge)
+        addChildCoordinatorStart(coordinator)
+        
+        navigation.present(
+            coordinator.navigation.rootViewController,
+            animated: false)
     }
 }

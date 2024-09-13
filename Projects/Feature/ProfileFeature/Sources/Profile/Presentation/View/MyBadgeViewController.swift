@@ -15,7 +15,7 @@ import UIKit
 public protocol MyBadgeViewControllerCoordinator: AnyObject {
     func didTabBackButton()
     func configTabbarState(view: ProfileFeatureViewNames)
-    func didSelectCell(badge: BadgeType)
+    func didSelectCell(badge: Badge)
 }
 
 final class MyBadgeViewController: UIViewController {
@@ -117,7 +117,7 @@ extension MyBadgeViewController: UICollectionViewDataSource {
         else {
             return UICollectionViewCell()
         }
-        cell.setProperties(badge: viewModel.badgeList[indexPath.item])
+        cell.setProperties(badge: viewModel.badgeList[indexPath.item].type)
         return cell
     }
 }

@@ -9,9 +9,9 @@
 import Common
 
 public class MyBadgeViewModel {
-    var badgeList: [BadgeType]
+    var badgeList: [Badge]
     
-    public init(badgeList: [BadgeType]) {
+    public init(badgeList: [Badge]) {
         self.badgeList = badgeList
     }
 }
