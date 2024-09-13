@@ -5,23 +5,27 @@
 //  Created by 김명현 on 7/28/24.
 //
 
-import AlertFeature
 import Common
 import DesignSystem
 import UIKit
-import SnapKit
 
 public protocol ChatViewControllerCoordinator: AnyObject {
     func configTabbarState(view: ChatFeatureViewNames)
     func didTapCell(userID: ChatModel)
+    func didTapLeaveButton(for indexPath: IndexPath)
+}
+
+public protocol ChatViewControllerDelegate: AnyObject {
+    func updateChatList()
 }
 
 public final class ChatViewController: UIViewController {
     // MARK: - Private properties
+    public var selectIndexPath: IndexPath?
+    
     private var viewModel: ChatViewModel
-    private var deleteIndexPath: IndexPath?
     private weak var coordinator: ChatViewControllerCoordinator?
-     
+    
     private lazy var chatTableView: UITableView = {
         let tableView = UITableView()
         tableView.dataSource = self
@@ -118,26 +122,20 @@ public final class ChatViewController: UIViewController {
         }
     }
     
-    private func showLeaveAlert() {
-        let alertVC = TwoButtonDialogViewController(
-            dialogTitle: "채팅방에서 나가시겠습니까?",
-            titleColor: .black,
-            titleNumberOfLine: 1,
-            titleFont: UIFont.systemFont(ofSize: 16,weight: .bold),
-            dialogMessage: nil,
-            messageColor: .gray,
-            messageNumberOfLine: 2,
-            messageFont: UIFont.systemFont(ofSize: 14),
-            leftButtonText: "취소",
-            leftButtonColor: .gray,
-            rightButtonText: "나가기",
-            rightButtonColor: .red,
-            coordinator: self)
-        alertVC.modalPresentationStyle = .overFullScreen
-        alertVC.modalTransitionStyle = .crossDissolve
-        present(alertVC, animated: true, completion: nil)
+    public func leaveChatRoom(at indexPath: IndexPath) {
+        let chatRoomRemove = viewModel.filteredChatRooms[indexPath.row]
+        
+        if let indexInChatRooms = viewModel.chatRooms.firstIndex(where: { $0.name == chatRoomRemove.name }) {
+            viewModel.chatRooms.remove(at: indexInChatRooms)
+        }
+        viewModel.filteredChatRooms.remove(at: indexPath.row)
+        chatTableView.deleteRows(at: [indexPath], with: .automatic)
+//        dump(chatTableView)
+        print(viewModel.filteredChatRooms.count)
+        selectIndexPath = nil
     }
     
+    // MARK: - Actions
     @objc func searchTextChanged() {
         if let searchText = searchTextField.text, !searchText.isEmpty {
             viewModel.filteredChatRooms = viewModel.chatRooms.filter { $0.name.contains(searchText) }
@@ -159,6 +157,7 @@ extension ChatViewController: UITableViewDataSource {
             withIdentifier: ChatRoomCell.reuseIdentifier,
             for: indexPath
         ) as? ChatRoomCell else { return UITableViewCell() }
+        
         if indexPath.row < viewModel.filteredChatRooms.count {
             let chatRoom = viewModel.filteredChatRooms[indexPath.row]
             cell.configure(chatRoom)
@@ -174,12 +173,14 @@ extension ChatViewController: UITableViewDelegate {
     }
     
     public func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let leaveAction = UIContextualAction(style: .destructive, title: "") { (action, view, completionHandler) in
-            // trailingSwipeButton 눌렀을때 액션
-            self.showLeaveAlert()
+        let leaveAction = UIContextualAction(style: .destructive, title: "") { [weak self] (action, view, completionHandler) in
+            // trailing Swipe Button 눌렀을때 action
+            self?.selectIndexPath = indexPath
+            print("selectIndexPath set to: \(indexPath)")
+            self?.coordinator?.didTapLeaveButton(for: indexPath)
             completionHandler(true)
         }
-        self.deleteIndexPath = indexPath
+        self.selectIndexPath = indexPath
         
         let leaveButtonView = LeaveButtonView(frame: CGRect(x: 0, y: 0, width: 80, height: 85))
         leaveAction.backgroundColor = .white
@@ -196,30 +197,31 @@ extension ChatViewController: UITableViewDelegate {
     }
 }
 
+// MARK: - Extensions here
 extension ChatViewController: UITextFieldDelegate {
     public func textFieldDidBeginEditing(_ textField: UITextField) {
         textField.placeholder = ""
     }
 }
 
-extension ChatViewController: AlertViewControllerCoordinator {
-    public func didSelectButton() {
-        dismiss(animated: true)
-    }
-    
-    public func didSelectSecondButton() {
-        guard let indexPath = deleteIndexPath else { return }
-        let chatRoomRemove = viewModel.filteredChatRooms[indexPath.row]
-        
-        if let indexInChatRooms = viewModel.chatRooms.firstIndex(where: { $0.name == chatRoomRemove.name }) {
-            viewModel.chatRooms.remove(at: indexInChatRooms)
-        }
-        viewModel.filteredChatRooms.remove(at: indexPath.row)
-        chatTableView.deleteRows(at: [indexPath], with: .automatic)
-        
-        dismiss(animated: true)
-    }
-}
+//extension ChatViewController: AlertViewControllerCoordinator {
+//    public func didSelectButton() {
+//        dismiss(animated: true)
+//    }
+//
+//    public func didSelectSecondButton() {
+//        guard let indexPath = selectIndexPath else { return }
+//        let chatRoomRemove = viewModel.filteredChatRooms[indexPath.row]
+//
+//        if let indexInChatRooms = viewModel.chatRooms.firstIndex(where: { $0.name == chatRoomRemove.name }) {
+//            viewModel.chatRooms.remove(at: indexInChatRooms)
+//        }
+//        viewModel.filteredChatRooms.remove(at: indexPath.row)
+//        chatTableView.deleteRows(at: [indexPath], with: .automatic)
+//
+//        dismiss(animated: true)
+//    }
+//}
 
 
 

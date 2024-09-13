@@ -68,3 +68,19 @@ extension CoordinatorProviderImp {
             coordinatorProvider: self)
     }
 }
+
+extension CoordinatorProviderImp {
+    func makeReportDialogCoordinator(
+        navigation: Navigation,
+        delegate: ReportDialogCoordinatorDelegate,
+        childCoordinator: [Coordinator],
+        dialogType: ReportDialogType
+    ) -> Coordinator {
+        factoryProvider.makeReportDialogCoordinator(
+            navigation: navigation,
+            delegate: delegate,
+            childCoordinator: childCoordinator,
+            coordinatorProvider: self,
+            dialogType: dialogType)
+    }
+}

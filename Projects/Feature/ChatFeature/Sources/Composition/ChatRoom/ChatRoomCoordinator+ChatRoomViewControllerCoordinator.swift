@@ -15,27 +15,34 @@ extension ChatRoomCoordinator: ChatRoomViewControllerCoordinator {
         delegate?.configTabbarState(view: view)
     }
     
-    public func didFinish() {
+    public func didTapBackButton() {
         delegate?.didFinish(childCoordinator: self)
     }
     
-    public func presentChatRoomModal() {
+    public func didTapOptionButton() {
         let chatRoomModalCoordinator = factory.makeChatRoomModalCoordinator(
-            navigation: navigation,
             parentCoordinator: self,
             delegate: self,
-            childCoordinators: childCoordinators)
+            childCoordinators: childCoordinators,
+            factoryProvider: factoryProvider,
+            coordinatorProvider: coordinatorProvider)
         
         addChildCoordinatorStart(chatRoomModalCoordinator)
+        
+        navigation.present(
+            chatRoomModalCoordinator.navigation.rootViewController,
+            animated: false)
     }
     
-    public func presentOperatingPolicyWebView() {
+    public func didTapOperatingPolicyButton() {
         let operatingPolicyCoordinator = factory.makeOperatingPolicyWebViewCoordinator(
-            navigation: navigation,
             parentCoordinator: self,
-            delegate: self,
-            childCoordinators: childCoordinators)
+            delegate: self)
         
         addChildCoordinatorStart(operatingPolicyCoordinator)
+        
+        navigation.present(
+            operatingPolicyCoordinator.navigation.rootViewController,
+            animated: true)
     }
 }

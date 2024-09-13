@@ -8,16 +8,20 @@
 
 import Common
 import DesignSystem
+import FeatureDependency
 import SnapKit
 import UIKit
 
 public protocol ChatRoomModalViewControllerCoordinator: AnyObject {
+    func didTapLeaveButton()
+    func didTapReportButton()
     func didFinish()
 }
 
 public final class ChatRoomModalViewController: UIViewController {
     // MARK: - Private properties
     weak var coordinator: ChatRoomModalViewControllerCoordinator?
+    private var modalViewHeightAnchor: Constraint?
     
     private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .insetGrouped)
@@ -34,8 +38,17 @@ public final class ChatRoomModalViewController: UIViewController {
         tableView.contentInset = UIEdgeInsets(top: -35, left: 0, bottom: 0, right: 0)
         tableView.sectionHeaderHeight = 5
         tableView.sectionFooterHeight = 10
+        tableView.isUserInteractionEnabled = true
         
         return tableView
+    }()
+    
+    private lazy var modalView: UIView = {
+        let view = UIView()
+        view.backgroundColor = UIColor.white
+        view.layer.cornerRadius = ViewValues.defaultRadius
+        view.isUserInteractionEnabled = true
+        return view
     }()
     
     private lazy var swipeIndicator: UIView = {
@@ -46,34 +59,48 @@ public final class ChatRoomModalViewController: UIViewController {
     }()
     
     // MARK: - Life Cycle
-    public init(coordinator: ChatRoomModalViewControllerCoordinator) {
+    public init(
+        coordinator: ChatRoomModalViewControllerCoordinator
+    ) {
         self.coordinator = coordinator
         super.init(nibName: nil, bundle: nil)
         modalPresentationStyle = .custom
-        transitioningDelegate = self
+        //        transitioningDelegate = self
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    
     public override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = DesignSystemAsset.backgroundColor.color
-        view.layer.cornerRadius = ViewValues.defaultRadius
         
         configUserInterface()
         configLayout()
+        configTapGesture()
+    }
+    
+    public override func viewDidAppear(_ animated: Bool) {
+        animateView()
     }
     
     // MARK: - Helpers
     private func configUserInterface() {
-        view.addSubview(swipeIndicator)
-        view.addSubview(tableView)
+        view.backgroundColor = UIColor.black.withAlphaComponent(0.5)
+        view.layer.cornerRadius = ViewValues.defaultRadius
+        
+        view.addSubview(modalView)
+        modalView.addSubview(swipeIndicator)
+        modalView.addSubview(tableView)
     }
     
     private func configLayout() {
+        modalView.snp.makeConstraints { make in
+            make.leading.trailing.bottom.equalToSuperview()
+            
+            self.modalViewHeightAnchor = make.height.equalTo(0).constraint
+        }
+        
         swipeIndicator.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(20)
             make.centerX.equalToSuperview()
@@ -86,7 +113,61 @@ public final class ChatRoomModalViewController: UIViewController {
             make.leading.trailing.bottom.equalToSuperview()
         }
     }
+    
+    private func configTapGesture() {
+        //탭 제스처
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(didSelectBackView(_:)))
+        view.addGestureRecognizer(tapGesture)
+        
+        let modalTapGesture = UITapGestureRecognizer(target: self, action: #selector(didSelectTouchView(_:)))
+        modalView.addGestureRecognizer(modalTapGesture)
+        
+        let tableViewTap = UITapGestureRecognizer(target: self, action: #selector(handleTableViewTap(_:)))
+           tableViewTap.cancelsTouchesInView = false
+           tableView.addGestureRecognizer(tableViewTap)
+    }
+    
+    func animateView() {
+        UIView.animate(withDuration: 0.4, delay: 0, options: .showHideTransitionViews) {
+            self.modalViewHeightAnchor?.update(offset: 260)
+            
+            self.view.layoutIfNeeded()
+        }
+    }
+    
+    func closeAnimation(didSelectBirth: Bool) {
+        UIView.animate(withDuration: 0.4, delay: 0, options: .showHideTransitionViews) {
+            self.modalViewHeightAnchor?.update(offset: 0)
+            self.view.layoutIfNeeded()
+        } completion: { _ in
+            self.coordinator?.didFinish()
+        }
+    }
+    
+    // MARK: - Actions
+    @objc func didSelectTouchView(_ sender: Any) {
+        self.modalView.endEditing(true)
+        
+    }
+    
+    @objc func didSelectBackView(_ sender: Any) {
+        closeAnimation(didSelectBirth: false)
+    }
+    
+    @objc func handleTableViewTap(_ gesture: UITapGestureRecognizer) {
+        let location = gesture.location(in: tableView)
+        if let indexPath = tableView.indexPathForRow(at: location) {
+            // 셀을 탭한 경우 테이블 뷰의 기본 동작을 수행
+            tableView(tableView, didSelectRowAt: indexPath)
+        } else {
+            // 셀 외의 영역을 탭한 경우 모달을 닫음
+            closeAnimation(didSelectBirth: false)
+        }
+    }
 }
+
+
+
 
 // MARK: - Extensions here
 extension ChatRoomModalViewController: UITableViewDelegate {
@@ -97,14 +178,12 @@ extension ChatRoomModalViewController: UITableViewDelegate {
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 0 {
             if indexPath.row == 0 {
-                print("신고하기")
+                coordinator?.didTapReportButton()
             } else if indexPath.row == 1 {
                 print("차단하기")
             }
         } else if indexPath.section == 1 {
-            print("방나가기")
-            coordinator?.didFinish()
-            dismiss(animated: true, completion: nil)
+            coordinator?.didTapLeaveButton()
         }
     }
 }
@@ -117,6 +196,7 @@ extension ChatRoomModalViewController: UITableViewDataSource {
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return section == 0 ? 2 : 1
     }
+    
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: ChatRoomModalTableViewCell.reuseIdentifier, for: indexPath) as? ChatRoomModalTableViewCell else {
             return UITableViewCell()
@@ -136,8 +216,8 @@ extension ChatRoomModalViewController: UITableViewDataSource {
     }
 }
 
-extension ChatRoomModalViewController: UIViewControllerTransitioningDelegate {
-    public func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
-        return ChatRoomPresentationController(presentedViewController: presented, presenting: presenting)
-    }
-}
+//extension ChatRoomModalViewController: UIViewControllerTransitioningDelegate {
+//    public func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
+//        return ChatRoomPresentationController(presentedViewController: presented, presenting: presenting)
+//    }
+//}

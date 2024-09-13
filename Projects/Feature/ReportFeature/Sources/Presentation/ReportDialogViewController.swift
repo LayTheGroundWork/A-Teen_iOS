@@ -20,6 +20,8 @@ public protocol ReportDialogViewControllerCoordinator: AnyObject {
 // 신고 사유 정리되면 사유 텍스트 수정 필요
 final class ReportDialogViewController: UIViewController {
     // MARK: - Private properties
+    private var dialogType: ReportDialogType
+    
     private weak var coordinator: ReportDialogViewControllerCoordinator?
     
     private lazy var dialogView: UIView = {
@@ -50,7 +52,7 @@ final class ReportDialogViewController: UIViewController {
             imageName: DesignSystemAsset.circleButton.name,
             selectedImageName: DesignSystemAsset.clickedCircleButton.name,
             imageColor: DesignSystemAsset.gray03.color,
-            labelText: AppLocalized.reportDialogViolenceReason)
+            labelText: dialogType == .profile ?  AppLocalized.reportDialogViolenceReason : AppLocalized.reportDialogViolenceReasonInChat)
         button.tag = 1
         button.isSelected = false
         return button
@@ -61,7 +63,7 @@ final class ReportDialogViewController: UIViewController {
             imageName: DesignSystemAsset.circleButton.name,
             selectedImageName: DesignSystemAsset.clickedCircleButton.name,
             imageColor: DesignSystemAsset.gray03.color,
-            labelText: AppLocalized.reportDialogAdReason)
+            labelText: dialogType == .profile ? AppLocalized.reportDialogAdReason : AppLocalized.reportDialogAdReasonInChat)
         button.tag = 2
         button.isSelected = false
         return button
@@ -142,8 +144,12 @@ final class ReportDialogViewController: UIViewController {
         return button
     }()
     
-    init(coordinator: ReportDialogViewControllerCoordinator) {
+    init(
+        coordinator: ReportDialogViewControllerCoordinator,
+        dialogType: ReportDialogType
+    ) {
         self.coordinator = coordinator
+        self.dialogType = dialogType
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -154,6 +160,7 @@ final class ReportDialogViewController: UIViewController {
     // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+    
         configUserInterface()
         configLayout()
         setupActions()
@@ -161,6 +168,7 @@ final class ReportDialogViewController: UIViewController {
     
     // MARK: - Helpers
     private func configUserInterface() {
+        self.navigationItem.setHidesBackButton(true, animated: true)
         view.backgroundColor = UIColor.black.withAlphaComponent(0.5)
         
         // 키보드 내리기

@@ -5,6 +5,7 @@
 //  Created by phang on 6/2/24.
 //
 
+import Common
 import FeatureDependency
 import UIKit
 
@@ -19,7 +20,8 @@ extension ReportPopoverCoordinator: ReportPopoverViewControllerCoordinator {
             navigation: navigation,
             childCoordinators: childCoordinators,
             delegate: self,
-            coordinatorProvider: coordinatorProvider)
+            coordinatorProvider: coordinatorProvider,
+            dialogType: .profile)
         
         addChildCoordinatorStart(reportDialogCoordinator)
     }

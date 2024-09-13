@@ -11,9 +11,9 @@ import UIKit
 
 public protocol ChatRoomViewControllerCoordinator: AnyObject {
     func configTabbarState(view: ChatFeatureViewNames)
-    func didFinish()
-    func presentChatRoomModal()
-    func presentOperatingPolicyWebView()
+    func didTapBackButton()
+    func didTapOptionButton()
+    func didTapOperatingPolicyButton()
 }
 
 public final class ChatRoomViewController: UIViewController {
@@ -246,11 +246,11 @@ public final class ChatRoomViewController: UIViewController {
     
     // MARK: - Actions
     @objc func tappedBackButton(_ sender: UIButton) {
-        coordinator?.didFinish()
+        coordinator?.didTapBackButton()
     }
     
     @objc func tappedMoreOptionsButton(_ sender: UIButton) {
-        coordinator?.presentChatRoomModal()
+        coordinator?.didTapOptionButton()
     }
     
     @objc func tappedMessageSendButton(_ sender: UIButton) {
@@ -318,7 +318,7 @@ extension ChatRoomViewController: UITableViewDataSource {
             
             cell.operatingPolicyButtonButtonAction = { [weak self] in
                 guard let self = self else { return }
-                self.coordinator?.presentOperatingPolicyWebView()
+                self.coordinator?.didTapOperatingPolicyButton()
             }
             
             cell.selectionStyle = .none
@@ -432,13 +432,6 @@ extension ChatRoomViewController: UITextViewDelegate {
         return newText.count <= 300
     }
 }
-
-extension ChatRoomViewController: ChatRoomModalViewControllerCoordinator {
-    public func didFinish() {
-        coordinator?.didFinish()
-    }
-}
-
 
 extension UIButton {
     // 버튼 언더라인 만들기

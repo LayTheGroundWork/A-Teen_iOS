@@ -3,11 +3,12 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 55;
+	objectVersion = 56;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		0078C7A7E769769FB8DEBDDD /* Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AD12D17FEFCE8C52B86D2A4 /* Reusable.swift */; };
+		04804E572C91778300C4062C /* ReportDialogType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04804E562C91778300C4062C /* ReportDialogType.swift */; };
 		24F5061ECC00125F3693E096 /* ViewValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4906F43F6A038295B5589D3 /* ViewValues.swift */; };
 		2754EE32C637ABD22C607FAD /* PhotoAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C03B37E51C7C476802065B23 /* PhotoAuthService.swift */; };
 		280707E54AEFA2A7DA2650EB /* String+Contraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEE98649F065A0BDE45EED71 /* String+Contraints.swift */; };
@@ -49,6 +50,7 @@
 
 /* Begin PBXFileReference section */
 		001A25FFDF0BDDCF6CD12BD7 /* Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
+		04804E562C91778300C4062C /* ReportDialogType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportDialogType.swift; sourceTree = "<group>"; };
 		0AD12D17FEFCE8C52B86D2A4 /* Reusable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reusable.swift; sourceTree = "<group>"; };
 		0F8A3BC8FA7F59A2E0A515B0 /* CMTime+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CMTime+Utils.swift"; sourceTree = "<group>"; };
 		115B67997FED4CB9FDCD3DC3 /* UIImage+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Utils.swift"; sourceTree = "<group>"; };
@@ -148,6 +150,7 @@
 				FA225B41A556B6629B92DCBD /* SpinnerDisplayable.swift */,
 				E5A27B319BAA53136B0907C5 /* StateController.swift */,
 				3340828570C9B92AFBFE3309 /* TextFieldRightViewType.swift */,
+				04804E562C91778300C4062C /* ReportDialogType.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -291,8 +294,6 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
 				ORGANIZATIONNAME = ATeen;
-				TargetAttributes = {
-				};
 			};
 			buildConfigurationList = 7A960902591CDB4F68854742 /* Build configuration list for PBXProject "Common" */;
 			compatibilityVersion = "Xcode 14.0";
@@ -344,6 +345,7 @@
 				5F01EB50F693B3D47824FDF2 /* AssetInfo.swift in Sources */,
 				C62C2C499AE8058EC46454E9 /* Debouncer.swift in Sources */,
 				C7327928996CA0A97E1DB6E5 /* MediaType.swift in Sources */,
+				04804E572C91778300C4062C /* ReportDialogType.swift in Sources */,
 				55E4FC1F94DD90C91BF7B82F /* SignType.swift in Sources */,
 				4BFF6DAF726DD208666270E4 /* SpinnerDisplayable.swift in Sources */,
 				7712312CB8750FE22EA04331 /* StateController.swift in Sources */,
@@ -378,7 +380,10 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				OTHER_LDFLAGS = "$(inherited) -ObjC";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ATeen.ATeen.Common;
 				PRODUCT_NAME = Common;
 				SDKROOT = iphoneos;
@@ -474,7 +479,10 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				OTHER_LDFLAGS = "$(inherited) -ObjC";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ATeen.ATeen.Common;
 				PRODUCT_NAME = Common;
 				SDKROOT = iphoneos;
@@ -482,10 +490,7 @@
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = (
-					"$(inherited)",
-					DEBUG,
-				);
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG";
 				SWIFT_COMPILATION_MODE = singlefile;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;

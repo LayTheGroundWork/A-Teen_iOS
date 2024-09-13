@@ -5,6 +5,7 @@
 //  Created by phang on 6/2/24.
 //
 
+import Common
 import FeatureDependency
 import UIKit
 
@@ -18,7 +19,8 @@ public protocol ReportPopoverFactory {
         navigation: Navigation,
         childCoordinators: [Coordinator],
         delegate: ReportDialogCoordinatorDelegate,
-        coordinatorProvider: CoordinatorProvider
+        coordinatorProvider: CoordinatorProvider,
+        dialogType: ReportDialogType
     ) -> Coordinator
 }
 
@@ -40,13 +42,15 @@ public struct ReportPopoverFactoryImp: ReportPopoverFactory {
         navigation: Navigation,
         childCoordinators: [Coordinator],
         delegate: ReportDialogCoordinatorDelegate,
-        coordinatorProvider: CoordinatorProvider
+        coordinatorProvider: CoordinatorProvider,
+        dialogType: ReportDialogType
     ) -> Coordinator {
         let factory = ReportDialogFactoryImp()
         return ReportDialogCoordinator(
             navigation: navigation,
             childCoordinators: childCoordinators,
             factory: factory,
+            dialogType: dialogType,
             delegate: delegate,
             coordinatorProvider: coordinatorProvider)
     }

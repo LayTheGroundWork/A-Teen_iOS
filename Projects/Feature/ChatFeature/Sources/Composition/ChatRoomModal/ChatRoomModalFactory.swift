@@ -18,8 +18,11 @@ public protocol ChatRoomModalFactory {
 public struct ChatRoomModalFactoryImp: ChatRoomModalFactory {
     public init() {}
     
-    public func makeChatRoomModalViewController(coordinator: ChatRoomModalViewControllerCoordinator) -> UIViewController {
-        let controller = ChatRoomModalViewController(coordinator: coordinator)
+    public func makeChatRoomModalViewController(
+        coordinator: ChatRoomModalViewControllerCoordinator
+    ) -> UIViewController {
+        let controller = ChatRoomModalViewController(
+            coordinator: coordinator)
         
         return controller
     }

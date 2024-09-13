@@ -26,17 +26,21 @@ public protocol MainTabFactory {
         rankingDelegate: RankingCoordinatorDelegate,
         teenDelegate: TeenCoordinatorDelegate,
         chatDelegate: ChatCoordinatorDelegate,
-        coordinatorProvider: CoordinatorProvider
-    ) -> [Coordinator] 
+        coordinatorProvider: CoordinatorProvider,
+        factoryProvider: FactoryProvider
+    ) -> [Coordinator]
 }
 
 public struct MainTabFactoryImp: MainTabFactory {
     public let coordinatorProvider: CoordinatorProvider
+    public let factoryProvider: FactoryProvider
     
     public init(
-        coordinatorProvider: CoordinatorProvider
+        coordinatorProvider: CoordinatorProvider,
+        factoryProvider: FactoryProvider
     ) {
         self.coordinatorProvider = coordinatorProvider
+        self.factoryProvider = factoryProvider
     }
     public func makeMainTabController() -> UITabBarController {
         let mainTabController = MainTabController()
@@ -63,13 +67,17 @@ public struct MainTabFactoryImp: MainTabFactory {
         rankingDelegate: RankingCoordinatorDelegate,
         teenDelegate: TeenCoordinatorDelegate,
         chatDelegate: ChatCoordinatorDelegate,
-        coordinatorProvider: CoordinatorProvider
+        coordinatorProvider: CoordinatorProvider,
+        factoryProvider: FactoryProvider
     ) -> [Coordinator] {
         let mainCoordinator = makeMainCoordinator(delegate: mainDelegate,
                                                   coordinatorProvider: coordinatorProvider)
         let rankingCoordinator = makeRankingCoordinator(delegate: rankingDelegate)
         let teenCoordinator = makeTeenCoordinator(delegate: teenDelegate)
-        let chatCoordinator = makeChatCoordinator(delegate: chatDelegate)
+        let chatCoordinator = makeChatCoordinator(
+            delegate: chatDelegate,
+            factoryProvider: factoryProvider,
+            coordinatorProvider: coordinatorProvider)
         let profileCoordinator = makeProfileCoordinator(delegate: profileDelegate)
         
         return [mainCoordinator,
@@ -117,12 +125,19 @@ public struct MainTabFactoryImp: MainTabFactory {
             coordinatorProvider: coordinatorProvider)
     }
     
-    private func makeChatCoordinator(delegate: ChatCoordinatorDelegate) -> Coordinator {
+    private func makeChatCoordinator(
+        delegate: ChatCoordinatorDelegate,
+        factoryProvider: FactoryProvider,
+        coordinatorProvider: CoordinatorProvider
+    ) -> Coordinator {
         let factory = ChatFactoryImp()
         let navigation = NavigationImp(rootViewController: UINavigationController())
         return ChatCoordinator(
             navigation: navigation,
-            factory: factory, delegate: delegate)
+            factory: factory,
+            delegate: delegate,
+            factoryProvider: factoryProvider,
+            coordinatorProvider: coordinatorProvider)
     }
     
     private func makeProfileCoordinator(delegate: ProfileCoordinatorDelegate) -> Coordinator {

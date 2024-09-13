@@ -19,6 +19,7 @@ public final class MainTabCoordinator: Coordinator {
     
     let factory: MainTabFactory
     public let coordinatorProvider: CoordinatorProvider
+    public let factoryProvider: FactoryProvider
 
     lazy var navigationTab: UITabBarController = {
         var navigationTab = UITabBarController()
@@ -30,12 +31,14 @@ public final class MainTabCoordinator: Coordinator {
         navigation: Navigation,
         delegate: MainTabCoordinatorDelegate,
         factory: MainTabFactory,
-        coordinatorProvider: CoordinatorProvider
+        coordinatorProvider: CoordinatorProvider,
+        factoryProvider: FactoryProvider
     ) {
         self.navigation = navigation
         self.delegate = delegate
         self.factory = factory
         self.coordinatorProvider = coordinatorProvider
+        self.factoryProvider = factoryProvider
     }
     
     public func start() {
@@ -48,7 +51,8 @@ public final class MainTabCoordinator: Coordinator {
             rankingDelegate: self, 
             teenDelegate: self,
             chatDelegate: self,
-            coordinatorProvider: coordinatorProvider
+            coordinatorProvider: coordinatorProvider,
+            factoryProvider: factoryProvider
         )
         let childNavigation = childCoordinators.map { $0.navigation.rootViewController }
         childCoordinators.forEach { $0.start() }

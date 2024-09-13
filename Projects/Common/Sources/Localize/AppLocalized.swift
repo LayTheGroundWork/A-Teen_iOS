@@ -104,11 +104,14 @@ public enum AppLocalized {
     public static let existingUserDialogMessage = "바로 로그인 할까요?"
     public static let invalidCodeNumberDialogTitle = "인증번호가 틀렸어요!"
     
-    // MARK: - MainView / Report
+    // MARK: - Report
     public static let reportDialogTitle = "신고 사유"
     public static let reportDialogViolenceReason = "폭력성 또는 선정적인 프로필"
+    public static let reportDialogViolenceReasonInChat = "폭력성 또는 선정적인 메세지"
     public static let reportDialogAdReason = "광고 게시물 또는 프로필"
+    public static let reportDialogAdReasonInChat = "광고 메세지"
     public static let reportDialogImpersonationReason = "타인을 사칭한 프로필"
+    public static let reportDialogImpersonationReasonInChat = "타인을 사칭한 메세지"
     public static let reportDialogETCReason = "기타"
     public static let reportDialogPlaceholderText = "신고 사유를 작성해주세요."
     public static let reportDialogBlockButtonText = "해당 프로필 다시는 보지 않기"

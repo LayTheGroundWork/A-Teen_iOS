@@ -14,7 +14,8 @@ protocol AppFactory {
     func makeMainTabCoordinator(
         navigation: Navigation,
         delegate: MainTabCoordinatorDelegate,
-        coordinatorProvider: CoordinatorProvider
+        coordinatorProvider: CoordinatorProvider,
+        factoryProvider: FactoryProvider
     ) -> Coordinator
 }
 
@@ -23,16 +24,19 @@ struct AppFactoryImp: AppFactory {
     func makeMainTabCoordinator(
         navigation: Navigation,
         delegate: MainTabCoordinatorDelegate,
-        coordinatorProvider: CoordinatorProvider
+        coordinatorProvider: CoordinatorProvider,
+        factoryProvider: FactoryProvider
     ) -> Coordinator {
         let factory = MainTabFactoryImp(
-            coordinatorProvider: coordinatorProvider
+            coordinatorProvider: coordinatorProvider,
+            factoryProvider: factoryProvider
         )
         
         return MainTabCoordinator(
             navigation: navigation,
-            delegate: delegate, 
+            delegate: delegate,
             factory: factory,
-            coordinatorProvider: coordinatorProvider)
+            coordinatorProvider: coordinatorProvider,
+            factoryProvider: factoryProvider)
     }
 }

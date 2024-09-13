@@ -23,16 +23,22 @@ public final class ChatCoordinator: Coordinator {
     public var navigation: Navigation
     public var factory: ChatFactory
     public var childCoordinators: [Coordinator] = []
-    weak var delegate: ChatConfigTabbarStateDelegate?
+    public var factoryProvider: FactoryProvider
+    public var coordinatorProvider: CoordinatorProvider
+    weak var delegate: ChatCoordinatorDelegate?
     
     public init(
         navigation: Navigation,
         factory: ChatFactory,
-        delegate: ChatCoordinatorDelegate
+        delegate: ChatCoordinatorDelegate,
+        factoryProvider: FactoryProvider,
+        coordinatorProvider: CoordinatorProvider
     ) {
         self.navigation = navigation
         self.factory = factory
         self.delegate = delegate
+        self.factoryProvider = factoryProvider
+        self.coordinatorProvider = coordinatorProvider
     }
     
     public func start() {
