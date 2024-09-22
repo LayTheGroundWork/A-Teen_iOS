@@ -84,7 +84,6 @@
 		F3BE6050A0C10BC33871F757 /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
 		F4202B36EB996E66B6AA4F4A /* TournamentCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TournamentCategory.swift; sourceTree = "<group>"; };
 		F6E67776B079891DB7B0921A /* UIImageView+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Utils.swift"; sourceTree = "<group>"; };
-		FA225B41A556B6629B92DCBD /* SpinnerDisplayable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinnerDisplayable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -157,7 +156,6 @@
 				EED8FBB7E6BA564519AA6407 /* Debouncer.swift */,
 				B7E28589EB048B9F540E6C97 /* MediaType.swift */,
 				82D7601C0DA86991BE4509BC /* SignType.swift */,
-				FA225B41A556B6629B92DCBD /* SpinnerDisplayable.swift */,
 				E5A27B319BAA53136B0907C5 /* StateController.swift */,
 				3340828570C9B92AFBFE3309 /* TextFieldRightViewType.swift */,
 			);
@@ -359,7 +357,6 @@
 				C62C2C499AE8058EC46454E9 /* Debouncer.swift in Sources */,
 				C7327928996CA0A97E1DB6E5 /* MediaType.swift in Sources */,
 				55E4FC1F94DD90C91BF7B82F /* SignType.swift in Sources */,
-				4BFF6DAF726DD208666270E4 /* SpinnerDisplayable.swift in Sources */,
 				7712312CB8750FE22EA04331 /* StateController.swift in Sources */,
 				5D39428DAD315E13B2601B5B /* TextFieldRightViewType.swift in Sources */,
 				DA0376CBDFA9631AC9159BFD /* BaseViewModel.swift in Sources */,

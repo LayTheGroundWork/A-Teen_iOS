@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 55;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -69,6 +69,7 @@
 		AE376E5D75BF9251AEF369A1 /* QuestionDetailFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A091001E376CAEC51119784 /* QuestionDetailFactory.swift */; };
 		B4A48BCC23735BBD33F95FDC /* EditUserNameCoordinator+EditUserNameViewControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59A80BD548DD6EED2C6D76A5 /* EditUserNameCoordinator+EditUserNameViewControllerCoordinator.swift */; };
 		B878F46F5D147FA6A0C328A4 /* ItemSettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EEA74C36988904F75753C22 /* ItemSettingViewModel.swift */; };
+		BE94B61B2040760205DA45B5 /* EditMyPhotoCoordinator+AlbumCoordinatorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B854C7AC400411C4D2B5459D /* EditMyPhotoCoordinator+AlbumCoordinatorDelegate.swift */; };
 		BFADE4B2D1576800E307DAFE /* CustomLinkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523B8D3545600E5D39B2D2B5 /* CustomLinkView.swift */; };
 		C06241105876ED5A18CE8E3A /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0047357D2E6C44164FCE4A37 /* SettingsViewController.swift */; };
 		CC286220C6A3FAAF1496B521 /* QuestionsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F6590180222333CA02BD1AA /* QuestionsTableViewCell.swift */; };
@@ -531,6 +532,8 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
 				ORGANIZATIONNAME = ATeen;
+				TargetAttributes = {
+				};
 			};
 			buildConfigurationList = 820D491C7A089E9609C5577D /* Build configuration list for PBXProject "ProfileFeature" */;
 			compatibilityVersion = "Xcode 14.0";
@@ -788,10 +791,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					"-ObjC",
-				);
+				OTHER_LDFLAGS = "$(inherited) -ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ATeen.ATeen.ProfileFeature;
 				PRODUCT_NAME = ProfileFeature;
 				SDKROOT = iphoneos;
@@ -799,7 +799,10 @@
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = (
+					"$(inherited)",
+					DEBUG,
+				);
 				SWIFT_COMPILATION_MODE = singlefile;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -829,10 +832,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					"-ObjC",
-				);
+				OTHER_LDFLAGS = "$(inherited) -ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ATeen.ATeen.ProfileFeature;
 				PRODUCT_NAME = ProfileFeature;
 				SDKROOT = iphoneos;

@@ -5,7 +5,6 @@
 //  Created by 김명현 on 7/28/24.
 //
 
-import AlertFeature
 import Common
 import DesignSystem
 import UIKit
@@ -118,26 +117,6 @@ public final class ChatViewController: UIViewController {
         }
     }
     
-    private func showLeaveAlert() {
-        let alertVC = TwoButtonDialogViewController(
-            dialogTitle: "채팅방에서 나가시겠습니까?",
-            titleColor: .black,
-            titleNumberOfLine: 1,
-            titleFont: UIFont.systemFont(ofSize: 16,weight: .bold),
-            dialogMessage: nil,
-            messageColor: .gray,
-            messageNumberOfLine: 2,
-            messageFont: UIFont.systemFont(ofSize: 14),
-            leftButtonText: "취소",
-            leftButtonColor: .gray,
-            rightButtonText: "나가기",
-            rightButtonColor: .red,
-            coordinator: self)
-        alertVC.modalPresentationStyle = .overFullScreen
-        alertVC.modalTransitionStyle = .crossDissolve
-        present(alertVC, animated: true, completion: nil)
-    }
-    
     @objc func searchTextChanged() {
         if let searchText = searchTextField.text, !searchText.isEmpty {
             viewModel.filteredChatRooms = viewModel.chatRooms.filter { $0.name.contains(searchText) }
@@ -175,14 +154,12 @@ extension ChatViewController: UITableViewDelegate {
     public func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let leaveAction = UIContextualAction(style: .destructive, title: "") { (action, view, completionHandler) in
             // trailingSwipeButton 눌렀을때 액션
-            self.showLeaveAlert()
             completionHandler(true)
         }
         self.deleteIndexPath = indexPath
         
         let leaveButtonView = LeaveButtonView(frame: CGRect(x: 0, y: 0, width: 80, height: 85))
         leaveAction.backgroundColor = .white
-        leaveAction.image = leaveButtonView.asImage()
         
         let configuration = UISwipeActionsConfiguration(actions: [leaveAction])
         configuration.performsFirstActionWithFullSwipe = false
@@ -198,25 +175,6 @@ extension ChatViewController: UITableViewDelegate {
 extension ChatViewController: UITextFieldDelegate {
     public func textFieldDidBeginEditing(_ textField: UITextField) {
         textField.placeholder = ""
-    }
-}
-
-extension ChatViewController: AlertViewControllerCoordinator {
-    public func didSelectButton() {
-        dismiss(animated: true)
-    }
-    
-    public func didSelectSecondButton() {
-        guard let indexPath = deleteIndexPath else { return }
-        let chatRoomRemove = viewModel.filteredChatRooms[indexPath.row]
-        
-        if let indexInChatRooms = viewModel.chatRooms.firstIndex(where: { $0.name == chatRoomRemove.name }) {
-            viewModel.chatRooms.remove(at: indexInChatRooms)
-        }
-        viewModel.filteredChatRooms.remove(at: indexPath.row)
-        chatTableView.deleteRows(at: [indexPath], with: .automatic)
-        
-        dismiss(animated: true)
     }
 }
 
