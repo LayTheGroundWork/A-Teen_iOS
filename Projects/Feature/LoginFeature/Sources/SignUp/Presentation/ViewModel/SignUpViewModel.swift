@@ -51,13 +51,11 @@ public final class SignUpViewModel {
         .etc
     ]
     
-    
     //SelectPhoto
     var selectPhotoList: [AlbumType] = [.init(image: nil), .init(image: nil)]
     
     private let authService = MyPhotoAuthService()
     
-
     // MARK: - Helpers
     public func searchSchoolData(completion: @escaping () -> Void) {
         state.send(.loading)
@@ -85,9 +83,24 @@ public final class SignUpViewModel {
     }
     
     func signUp() {
-        /*
-         signUseCase.signUp(request: <#T##SignUpRequest#>, completion: <#T##(Result<LogInResponse, Error>) -> Void#>)
-         */
+        signUseCase.signUp(
+            request: .init(
+                phoneNumber: phoneNumber,
+                userId: userId,
+                userName: userName,
+                birthDate: "\(year)-\(month)-\(day)",
+                schoolData: schoolData,
+                category: category.rawValue,
+                tournamentJoin: true
+            )) { result in
+                switch result {
+                case .success(let success):
+                    print(success)
+                case .failure(let error):
+                    self.state.send(.fail(error: error.localizedDescription))
+                }
+            }
+         
     }
 }
 

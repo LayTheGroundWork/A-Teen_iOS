@@ -7,6 +7,7 @@
 
 import Core
 import Common
+import Combine
 import Domain
 
 public final class PhoneNumberViewModel {
@@ -18,6 +19,8 @@ public final class PhoneNumberViewModel {
     public var phoneNumber: String = .empty
     
     public var verificationCode: String = .empty
+
+    var state = PassthroughSubject<StateController, Never>()
 
     func requestCode(completion: @escaping () -> Void) {
         useCase.requestCode(
@@ -36,11 +39,21 @@ public final class PhoneNumberViewModel {
     }
     
     func signIn() {
-        /*
-         useCase.signIn(request: <#T##LogInRequest#>) { <#Result<LogInResponse, Error>#> in
-            <#code#>
+        useCase.signIn(
+            request: .init(
+                phoneNumber: phoneNumber,
+                verificationCode: verificationCode
+            )
+        ) { result in
+            switch result {
+            case .success(let success):
+                print(success)
+            case .failure(let error):
+                self.state.send(.fail(error: error.localizedDescription))
+
+            }
         }
-        */
+        
     }
     
     func changeSignType(signType: SignType) {

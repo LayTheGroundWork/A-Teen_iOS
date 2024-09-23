@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 55;
+	objectVersion = 56;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -13,8 +13,10 @@
 		2405CEBB75D3A316A75D6994 /* SchoolDataResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D160BBBDBAADD18EC4B667FB /* SchoolDataResponse.swift */; };
 		337435614E3EF754DF8C5FCC /* VerificationCodeRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4220232C6D323CEE154173C8 /* VerificationCodeRequest.swift */; };
 		3CD20E63F5B08BA33A48403C /* SchoolDataRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432D1265802A2173DE408F5E /* SchoolDataRequest.swift */; };
-		4412DD94E9BE92B437216169 /* ImageDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C9895B94482D7F1DCACB8C /* ImageDataRepository.swift */; };
-		67B020A5ED1B6DE1F1FD34EA /* SignRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ACB320B7ABCFA6BA58774D5 /* SignRepository.swift */; };
+		415FA71E2CA1544300AD6ED1 /* SignService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 415FA71D2CA1544300AD6ED1 /* SignService.swift */; };
+		415FA7222CA1556200AD6ED1 /* SignUpRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 415FA7212CA1556200AD6ED1 /* SignUpRepository.swift */; };
+		415FA7262CA15A6300AD6ED1 /* RemoteImageDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 415FA7252CA15A6300AD6ED1 /* RemoteImageDataRepository.swift */; };
+		67B020A5ED1B6DE1F1FD34EA /* SignInRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ACB320B7ABCFA6BA58774D5 /* SignInRepository.swift */; };
 		77EEC29764D1D277B000EE29 /* ImageDataUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451ACE222BE8C01F4B361381 /* ImageDataUseCase.swift */; };
 		7AAA57308202A4BD6289377E /* SearchUseCaseImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2631E3BA481483BAEA9EF018 /* SearchUseCaseImp.swift */; };
 		83315DB61E2BEAE20B3C84D1 /* LogInRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22DCAB38E8D379041D948C4 /* LogInRequest.swift */; };
@@ -23,11 +25,10 @@
 		9034909F680164DCD97B8693 /* PhoneNumberAuthRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE981DCC0E95880B9118AF74 /* PhoneNumberAuthRequest.swift */; };
 		968DA3475B63B63D4443BD7A /* SignUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97F7B0D49B77A55DE5D9C86 /* SignUseCase.swift */; };
 		A8028D84E0D0F2854CF15466 /* VerificateService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56E8CD602282F300A04747E2 /* VerificateService.swift */; };
-		B0C22C92EC8095B547DD462C /* LocalDataImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E9CE89DF975B0D0D64ABC25 /* LocalDataImageService.swift */; };
+		B0C22C92EC8095B547DD462C /* ImageDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E9CE89DF975B0D0D64ABC25 /* ImageDataService.swift */; };
 		B9FF2C939FADA82E2B18048F /* Common.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A017294042D1AF1C824ECFAC /* Common.framework */; };
 		C8094BE4D30D193A2265DD54 /* SignUpRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C45740FE1495C2E2F9F123BE /* SignUpRequest.swift */; };
 		EF762BFB8212220D77FB806C /* SearchUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635E9CCB12A7F469B1A7A221 /* SearchUseCase.swift */; };
-		FD8012E98124D92D747B27F9 /* RemoteImageDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8065638094E74645B658ADB0 /* RemoteImageDataService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -45,18 +46,19 @@
 
 /* Begin PBXFileReference section */
 		0466867E7CA24A7196EB9339 /* LogInResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInResponse.swift; sourceTree = "<group>"; };
-		09C9895B94482D7F1DCACB8C /* ImageDataRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDataRepository.swift; sourceTree = "<group>"; };
 		2631E3BA481483BAEA9EF018 /* SearchUseCaseImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchUseCaseImp.swift; sourceTree = "<group>"; };
 		3A4620A0019C901EC7C993A2 /* Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
+		415FA71D2CA1544300AD6ED1 /* SignService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignService.swift; sourceTree = "<group>"; };
+		415FA7212CA1556200AD6ED1 /* SignUpRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpRepository.swift; sourceTree = "<group>"; };
+		415FA7252CA15A6300AD6ED1 /* RemoteImageDataRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteImageDataRepository.swift; sourceTree = "<group>"; };
 		4220232C6D323CEE154173C8 /* VerificationCodeRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationCodeRequest.swift; sourceTree = "<group>"; };
 		432D1265802A2173DE408F5E /* SchoolDataRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolDataRequest.swift; sourceTree = "<group>"; };
 		451ACE222BE8C01F4B361381 /* ImageDataUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDataUseCase.swift; sourceTree = "<group>"; };
-		4E9CE89DF975B0D0D64ABC25 /* LocalDataImageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalDataImageService.swift; sourceTree = "<group>"; };
+		4E9CE89DF975B0D0D64ABC25 /* ImageDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDataService.swift; sourceTree = "<group>"; };
 		56E8CD602282F300A04747E2 /* VerificateService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificateService.swift; sourceTree = "<group>"; };
 		635E9CCB12A7F469B1A7A221 /* SearchUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchUseCase.swift; sourceTree = "<group>"; };
-		6ACB320B7ABCFA6BA58774D5 /* SignRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignRepository.swift; sourceTree = "<group>"; };
+		6ACB320B7ABCFA6BA58774D5 /* SignInRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInRepository.swift; sourceTree = "<group>"; };
 		7616981B4BB1B2D11994DCC8 /* ImageDataUseCaseImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDataUseCaseImp.swift; sourceTree = "<group>"; };
-		8065638094E74645B658ADB0 /* RemoteImageDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteImageDataService.swift; sourceTree = "<group>"; };
 		839C089244517B59E39817A4 /* VerificationCodeResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationCodeResponse.swift; sourceTree = "<group>"; };
 		A017294042D1AF1C824ECFAC /* Common.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Common.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A97F7B0D49B77A55DE5D9C86 /* SignUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUseCase.swift; sourceTree = "<group>"; };
@@ -152,9 +154,10 @@
 		4394E698057673598FF09CFD /* RepositoryInterface */ = {
 			isa = PBXGroup;
 			children = (
-				09C9895B94482D7F1DCACB8C /* ImageDataRepository.swift */,
 				B3D5166F9BAE202703C8ADDB /* SchoolDataRepository.swift */,
-				6ACB320B7ABCFA6BA58774D5 /* SignRepository.swift */,
+				6ACB320B7ABCFA6BA58774D5 /* SignInRepository.swift */,
+				415FA7212CA1556200AD6ED1 /* SignUpRepository.swift */,
+				415FA7252CA15A6300AD6ED1 /* RemoteImageDataRepository.swift */,
 			);
 			path = RepositoryInterface;
 			sourceTree = "<group>";
@@ -172,9 +175,9 @@
 		679765B2495BA9696862366E /* Service */ = {
 			isa = PBXGroup;
 			children = (
-				4E9CE89DF975B0D0D64ABC25 /* LocalDataImageService.swift */,
-				8065638094E74645B658ADB0 /* RemoteImageDataService.swift */,
+				4E9CE89DF975B0D0D64ABC25 /* ImageDataService.swift */,
 				56E8CD602282F300A04747E2 /* VerificateService.swift */,
+				415FA71D2CA1544300AD6ED1 /* SignService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -248,8 +251,6 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
 				ORGANIZATIONNAME = ATeen;
-				TargetAttributes = {
-				};
 			};
 			buildConfigurationList = 5B17347D429F14C389327C78 /* Build configuration list for PBXProject "Domain" */;
 			compatibilityVersion = "Xcode 14.0";
@@ -287,16 +288,17 @@
 				83315DB61E2BEAE20B3C84D1 /* LogInRequest.swift in Sources */,
 				9034909F680164DCD97B8693 /* PhoneNumberAuthRequest.swift in Sources */,
 				3CD20E63F5B08BA33A48403C /* SchoolDataRequest.swift in Sources */,
+				415FA7222CA1556200AD6ED1 /* SignUpRepository.swift in Sources */,
 				C8094BE4D30D193A2265DD54 /* SignUpRequest.swift in Sources */,
 				337435614E3EF754DF8C5FCC /* VerificationCodeRequest.swift in Sources */,
+				415FA7262CA15A6300AD6ED1 /* RemoteImageDataRepository.swift in Sources */,
 				150D6995E52A32B29DBA855E /* LogInResponse.swift in Sources */,
 				2405CEBB75D3A316A75D6994 /* SchoolDataResponse.swift in Sources */,
+				415FA71E2CA1544300AD6ED1 /* SignService.swift in Sources */,
 				0B18DF21FFE477910B74B1B6 /* VerificationCodeResponse.swift in Sources */,
-				4412DD94E9BE92B437216169 /* ImageDataRepository.swift in Sources */,
 				23E6F0300D0F5577048F6B53 /* SchoolDataRepository.swift in Sources */,
-				67B020A5ED1B6DE1F1FD34EA /* SignRepository.swift in Sources */,
-				B0C22C92EC8095B547DD462C /* LocalDataImageService.swift in Sources */,
-				FD8012E98124D92D747B27F9 /* RemoteImageDataService.swift in Sources */,
+				67B020A5ED1B6DE1F1FD34EA /* SignInRepository.swift in Sources */,
+				B0C22C92EC8095B547DD462C /* ImageDataService.swift in Sources */,
 				A8028D84E0D0F2854CF15466 /* VerificateService.swift in Sources */,
 				77EEC29764D1D277B000EE29 /* ImageDataUseCase.swift in Sources */,
 				EF762BFB8212220D77FB806C /* SearchUseCase.swift in Sources */,
@@ -383,7 +385,10 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				OTHER_LDFLAGS = "$(inherited) -ObjC";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ATeen.ATeen.Domain;
 				PRODUCT_NAME = Domain;
 				SDKROOT = iphoneos;
@@ -479,7 +484,10 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				OTHER_LDFLAGS = "$(inherited) -ObjC";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ATeen.ATeen.Domain;
 				PRODUCT_NAME = Domain;
 				SDKROOT = iphoneos;
@@ -487,10 +495,7 @@
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = (
-					"$(inherited)",
-					DEBUG,
-				);
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG";
 				SWIFT_COMPILATION_MODE = singlefile;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;

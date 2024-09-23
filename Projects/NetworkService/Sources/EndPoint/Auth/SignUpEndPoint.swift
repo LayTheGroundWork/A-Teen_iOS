@@ -33,7 +33,9 @@ public struct SignUpEndPoint: EndPoint {
             "uniqueId": request.userId,
             "nickName": request.userName,
             "birthDay": request.birthDate,
-            "schoolData": request.schoolData
+            "schoolData": request.schoolData,
+            "category": request.category,
+            "tournamentJoin": request.tournamentJoin
         ]
     }
     

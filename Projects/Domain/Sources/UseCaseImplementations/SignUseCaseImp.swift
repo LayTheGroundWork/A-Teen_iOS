@@ -10,43 +10,43 @@ import Foundation
 
 public struct SignUseCaseImp: SignUseCase {
 
-    private let repository: SignRepository
-    public let service: VerificateService
+    private let signService: SignService
+    public let verificateService: VerificateService
  
     public init(
-        repository: SignRepository,
-        service: VerificateService
+        signService: SignService,
+        verificateService: VerificateService
     ) {
-        self.repository = repository
-        self.service = service
+        self.signService = signService
+        self.verificateService = verificateService
     }
     
     public func signIn(
         request: LogInRequest,
         completion: @escaping (Result<LogInResponse, Error>) -> Void
     ) {
-        repository.signIn(request: request, completion: completion)
+        signService.signIn(request: request, completion: completion)
     }
     
     public func signUp(
         request: SignUpRequest,
         completion: @escaping (Result<LogInResponse, Error>) -> Void
     ) {
-        repository.signUp(request: request, completion: completion)
+        signService.signUp(request: request, completion: completion)
     }
     
     public func requestCode(
         request: VerificationCodeRequest,
         completion: @escaping () -> Void
     ) {
-        service.requestCode(request: request, completion: completion)
+        verificateService.requestCode(request: request, completion: completion)
     }
     
     public func verificateCode(
         request: PhoneNumberAuthRequest,
         completion: @escaping (Result<VerificationCodeResponse, Error>) -> Void
     ) {
-        service.verificateCode(request: request, completion: completion)
+        verificateService.verificateCode(request: request, completion: completion)
     }
    
 }

@@ -10,7 +10,7 @@ import Domain
 import NetworkService
 import Foundation
 
-public final class SignRepositoryImp: NSObject, SignRepository {
+public struct SignInRepositoryImp: SignInRepository {
     private let apiClientService: ApiClientService
     
     public init(

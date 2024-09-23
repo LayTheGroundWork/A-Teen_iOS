@@ -4,6 +4,8 @@
 //
 //  Created by 최동호 on 5/15/24.
 //
+import Foundation
+
 public protocol SessionCheckAuth {
     var isSessionActive: Bool { get }
 }
@@ -17,23 +19,29 @@ public protocol LogOutAuth {
 }
 
 public final class Auth {
-    private var session = false
+    private let sessionKey = "isSessionActive"
+    
+    private var session: UserDefaults
+
+    public init(session: UserDefaults = .standard) {
+        self.session = session
+    }
 }
 
 extension Auth: SessionCheckAuth {
     public var isSessionActive: Bool {
-        session
+        return session.bool(forKey: sessionKey)
     }
 }
 
 extension Auth: LogInAuth {
     public func logIn() {
-        session = true
+        session.set(true, forKey: sessionKey)
     }
 }
 
 extension Auth: LogOutAuth {
     public func logOut() {
-        session = false
+        session.set(false, forKey: sessionKey)
     }
 }
