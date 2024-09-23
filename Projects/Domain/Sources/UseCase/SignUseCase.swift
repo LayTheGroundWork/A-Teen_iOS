@@ -5,8 +5,6 @@
 //  Created by 최동호 on 6/28/24.
 //  Copyright © 2024 ATeen. All rights reserved.
 //
-
-
 import Foundation
 
 public protocol SignUseCase {
@@ -22,9 +20,18 @@ public protocol SignUseCase {
         request: VerificationCodeRequest,
         completion: @escaping () -> Void
     )
-    func verificateCode(
+    func verificareCode(
         request: PhoneNumberAuthRequest,
-        completion: @escaping (Result<VerificationCodeResponse, Error>) -> Void
+        completion: @escaping (String?) -> Void
+    )
+    
+    func searchSchool(
+        request: SchoolDataRequest,
+        completion: @escaping ([SchoolData]) -> Void
+    )
+    
+    func duplicationCheck(
+        request: DuplicationCheckRequest,
+        completion: @escaping (Bool) -> Void
     )
 }
-

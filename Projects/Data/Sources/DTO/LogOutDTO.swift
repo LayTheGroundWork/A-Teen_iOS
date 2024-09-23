@@ -11,12 +11,12 @@ import Foundation
 
 struct LogOutDTO: Decodable {
     public let status: String
-    public let data: String
+    public let data: String?
     public let message: String
 }
 
 extension LogOutDTO {
-    func toDomain() -> LogOutResponse {
+    func toDomain() -> DefaultResponse {
         return .init(
             status: status,
             data: data,

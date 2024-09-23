@@ -24,7 +24,7 @@ public final class SignUpViewModel {
     public var searchUseCase: SearchUseCase
     
     var state = PassthroughSubject<StateController, Never>()
-
+    
     // phoneNumber
     public var phoneNumber: String = .empty
     public var userId: String = .empty
@@ -44,7 +44,7 @@ public final class SignUpViewModel {
     
     //Category
     public var category: CategoryType = CategoryType.none
-   
+    
     let categoryExplain: [CategoryType] = [
         .beauty,
         .exercise,
@@ -62,24 +62,16 @@ public final class SignUpViewModel {
     // MARK: - Helpers
     public func searchSchoolData(completion: @escaping () -> Void) {
         state.send(.loading)
-        searchUseCase.searchSchool(request: SchoolDataRequest(schoolName: searchSchoolText)) { result in
-            switch result {
-            case .success(let schoolDataResponses):
-                self.filteredSchools = schoolDataResponses.map {
-                    .init(
-                        schoolName: $0.name,
-                        schoolLocation: $0.address
-                    )
-                }
-                self.state.send(.success)
-                
-                if !self.filteredSchools.isEmpty {
-                    completion()
-                }
-                
-            case .failure(let error):
-                self.state.send(.fail(error: error.localizedDescription))
-            }
+        signUseCase.searchSchool(request: SchoolDataRequest(schoolName: searchSchoolText)) { filteredSchools in
+            self.filteredSchools = filteredSchools
+            self.state.send(.success)
+            completion()
+        }
+    }
+    
+    func duplicationCheck(completion: @escaping (Bool) -> Void) {
+        signUseCase.duplicationCheck(request: .init(uniqueId: userId)) { check in
+            completion(check)
         }
     }
     
@@ -183,7 +175,7 @@ extension SignUpViewModel {
     public func extractImageFromVideo(asset: AVAsset, completion: @escaping(UIImage) -> Void) {
         let imageGenerator = AVAssetImageGenerator(asset: asset)
         imageGenerator.appliesPreferredTrackTransform = true // 비디오의 회전을 반영
-
+        
         do {
             // 요청된 시간에서 이미지를 생성
             let cgImage = try imageGenerator.copyCGImage(

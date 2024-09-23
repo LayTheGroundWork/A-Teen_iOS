@@ -21,9 +21,9 @@ extension AppDelegate {
         // sign
         let signInRepository: SignInRepository = SignInRepositoryImp(apiClientService: apiClientService)
         let signUpRepository: SignUpRepository = SignUpRepositoryImp(apiClientService: apiClientService)
-        
+        let duplicationCheckRepository: DuplictaionCheckRepository = DuplicationCheckRepositoryImp(apiClientService: apiClientService)
         let requestCodeRepository: RequestCodeRepository = RequestCodeRepositoryImp(apiClientService: apiClientService)
-        let verificateCodeRepository: VerificateCodeRepository = VerificateCodeRepositoryImp(apiClientService: apiClientService)
+        let verificationCodeRepository: VerificationCodeRepository = VerificationCodeRepositoryImp(apiClientService: apiClientService)
         
         // school
         let schoolDataRepository: SchoolDataRepository = SchoolDataRepositoryImp(apiClientService: apiClientService)
@@ -34,21 +34,19 @@ extension AppDelegate {
         // MARK: - Service
         let signService: SignService = SignServiceImp(
             signInRepository: signInRepository,
-            signUpRepository: signUpRepository
-        )
-        
-        let verificateService: VerificateService = VerificateServiceImp(
+            signUpRepository: signUpRepository,
+            duplicationCheckRepository: duplicationCheckRepository,
             requestCodeRepository: requestCodeRepository,
-            verificateCodeRepository: verificateCodeRepository
-        )
+            verificationCodeRepository: verificationCodeRepository)
+
+        let searchService: SearchSchoolService = SearchSchoolServiceImp(schoolDataRepository: schoolDataRepository)
         
         let imageDataService: ImageDataService = ImageDataServiceImp(remoteImageDataRepository: remoteImageDataRepository)
         
-        
         // MARK: - UseCase
         let signUseCase: SignUseCase = SignUseCaseImp(
-            signService: signService,
-            verificateService: verificateService
+            signService: signService, 
+            searchService: searchService
         )
 
         let imageDataUseCase: ImageDataUseCase = ImageDataUseCaseImp(imageDataService: imageDataService)

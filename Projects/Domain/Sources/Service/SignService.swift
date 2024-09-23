@@ -17,4 +17,17 @@ public protocol SignService {
         request: SignUpRequest,
         completion: @escaping (Result<LogInResponse, Error>) -> Void
     )
+    func requestCode(
+        request: VerificationCodeRequest,
+        completion: @escaping () -> Void
+    )
+    func verificareCode(
+        request: PhoneNumberAuthRequest,
+        completion: @escaping (String?) -> Void
+    )
+    
+    func duplicationCheck(
+        request: DuplicationCheckRequest,
+        completion: @escaping (Bool) -> Void
+    )
 }

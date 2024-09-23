@@ -111,6 +111,7 @@ public enum AppLocalized {
     public static let userIDNumberOfCharactersErrrorMessage = "4자 이상 입력해주세요."
     public static let userIDLowercaseLetterOrNumberErrrorMessage = "영어 소문자 또는 숫자만 입력 해주세요."
     public static let userIDCount = "/11"
+    public static let userIDDuplicationCheckErrorMessage = "중복된 아이디입니다."
     public static let userNameNumberErrrorMessage = "2자 이상 입력해주세요."
     public static let userNameIncorrectKoreanErrorMessage = "한글을 바르게 입력해주세요."
     public static let userNameCount = "/8"
