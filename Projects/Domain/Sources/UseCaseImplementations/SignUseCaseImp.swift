@@ -9,9 +9,8 @@
 import Foundation
 
 public struct SignUseCaseImp: SignUseCase {
-
     private let signService: SignService
-    public let verificateService: VerificateService
+    private let verificateService: VerificateService
  
     public init(
         signService: SignService,

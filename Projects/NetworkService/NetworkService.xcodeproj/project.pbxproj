@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		036B6550D85D013E9E45D716 /* ApiError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26DF9FED1221312C46C36A20 /* ApiError.swift */; };
 		0422C1E028807B6222269C0E /* HttpResponseStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = D14C05E4D710518F379088FD /* HttpResponseStatus.swift */; };
+		3ABC1C37BC738A4E0B60E939 /* ReissueEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEF134EE57A5BC5E99B5C34C /* ReissueEndPoint.swift */; };
 		4A25E8BE1156684357DAC52F /* LogInEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE9987B527C6D0232D055D1 /* LogInEndPoint.swift */; };
 		4E73CAAA79D1BE736AD3B7FA /* VerificationCodeEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BA75336359A120CBA17BA7D /* VerificationCodeEndPoint.swift */; };
 		5CD81B418DCC7667165005CA /* ApiClientServiceImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE374FAFF5AD8033061042B6 /* ApiClientServiceImp.swift */; };
@@ -19,6 +20,7 @@
 		C2D528B369D066456ADFD047 /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30B8FE33444F24DC3915A82C /* HTTPMethod.swift */; };
 		C4B30C7C31F170EE6B5031C4 /* SchoolDataEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96A12936168FB570D38EB471 /* SchoolDataEndPoint.swift */; };
 		CD593DB7F1E285C350370335 /* SignUpEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76A9F67BDB9E1485D6AEA416 /* SignUpEndPoint.swift */; };
+		E49761BCFD373FD6A8B61A23 /* LogOutEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B3BAB3E928E61A2F4D92A4F /* LogOutEndPoint.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -44,12 +46,14 @@
 		39E9564068243164AE0397F4 /* EndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPoint.swift; sourceTree = "<group>"; };
 		423A93F1015E6C9CF4DB82B2 /* Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
 		564371F685EE5EF450EB138A /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
+		6B3BAB3E928E61A2F4D92A4F /* LogOutEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogOutEndPoint.swift; sourceTree = "<group>"; };
 		76A9F67BDB9E1485D6AEA416 /* SignUpEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpEndPoint.swift; sourceTree = "<group>"; };
 		96A12936168FB570D38EB471 /* SchoolDataEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolDataEndPoint.swift; sourceTree = "<group>"; };
 		ADC9183B12D666BFB5351F52 /* NetworkService.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = NetworkService.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD5312BF635CBE4D99FAE162 /* Domain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Domain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C463F8FAE8AE26DF76BDB73C /* NetworkService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "NetworkService-Info.plist"; sourceTree = "<group>"; };
 		D14C05E4D710518F379088FD /* HttpResponseStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpResponseStatus.swift; sourceTree = "<group>"; };
+		DEF134EE57A5BC5E99B5C34C /* ReissueEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReissueEndPoint.swift; sourceTree = "<group>"; };
 		FE374FAFF5AD8033061042B6 /* ApiClientServiceImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiClientServiceImp.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -98,7 +102,9 @@
 			isa = PBXGroup;
 			children = (
 				0EE9987B527C6D0232D055D1 /* LogInEndPoint.swift */,
+				6B3BAB3E928E61A2F4D92A4F /* LogOutEndPoint.swift */,
 				226E662994065E6F77D84AA1 /* PhoneNumberAuthEndPoint.swift */,
+				DEF134EE57A5BC5E99B5C34C /* ReissueEndPoint.swift */,
 				76A9F67BDB9E1485D6AEA416 /* SignUpEndPoint.swift */,
 				2BA75336359A120CBA17BA7D /* VerificationCodeEndPoint.swift */,
 			);
@@ -259,7 +265,9 @@
 			files = (
 				759753D185FBA434CB7A41B8 /* ApiClientService.swift in Sources */,
 				4A25E8BE1156684357DAC52F /* LogInEndPoint.swift in Sources */,
+				E49761BCFD373FD6A8B61A23 /* LogOutEndPoint.swift in Sources */,
 				7A4C181A2942A2CA8F105272 /* PhoneNumberAuthEndPoint.swift in Sources */,
+				3ABC1C37BC738A4E0B60E939 /* ReissueEndPoint.swift in Sources */,
 				CD593DB7F1E285C350370335 /* SignUpEndPoint.swift in Sources */,
 				4E73CAAA79D1BE736AD3B7FA /* VerificationCodeEndPoint.swift in Sources */,
 				BF7B74B2497062943DAB0D72 /* EndPoint.swift in Sources */,

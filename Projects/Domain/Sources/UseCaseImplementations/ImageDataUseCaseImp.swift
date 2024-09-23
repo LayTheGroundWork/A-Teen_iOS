@@ -6,7 +6,6 @@
 //  Copyright © 2024 ATeen. All rights reserved.
 //
 
-import Common
 import Foundation
 
 public struct ImageDataUseCaseImp: ImageDataUseCase {

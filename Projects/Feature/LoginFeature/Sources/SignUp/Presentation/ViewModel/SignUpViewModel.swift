@@ -14,6 +14,9 @@ import Photos
 import UIKit
 
 public final class SignUpViewModel {
+    @Injected(Auth.self)
+    public var auth: Auth
+    
     @Injected(SignUseCase.self)
     public var signUseCase: SignUseCase
     
@@ -68,8 +71,6 @@ public final class SignUpViewModel {
                         schoolLocation: $0.address
                     )
                 }
-                print(self.filteredSchools)
-                print(self.filteredSchools.count)
                 self.state.send(.success)
                 
                 if !self.filteredSchools.isEmpty {
@@ -94,13 +95,15 @@ public final class SignUpViewModel {
                 tournamentJoin: true
             )) { result in
                 switch result {
-                case .success(let success):
-                    print(success)
+                case .success(let tokenData):
+                    self.auth.setAccessToken(tokenData.authToken)
+                    self.auth.setRefreshToken(tokenData.refreshToken)
+                    self.auth.logIn()
+                    self.state.send(.success)
                 case .failure(let error):
                     self.state.send(.fail(error: error.localizedDescription))
                 }
             }
-         
     }
 }
 

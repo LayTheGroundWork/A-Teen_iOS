@@ -11,6 +11,9 @@ import Combine
 import Domain
 
 public final class PhoneNumberViewModel {
+    @Injected(Auth.self)
+    public var auth: Auth
+    
     @Injected(SignUseCase.self)
     public var useCase: SignUseCase
     
@@ -46,11 +49,13 @@ public final class PhoneNumberViewModel {
             )
         ) { result in
             switch result {
-            case .success(let success):
-                print(success)
+            case .success(let tokenData):
+                self.auth.setAccessToken(tokenData.authToken)
+                self.auth.setRefreshToken(tokenData.refreshToken)
+                self.auth.logIn()
+                self.state.send(.success)
             case .failure(let error):
                 self.state.send(.fail(error: error.localizedDescription))
-
             }
         }
         

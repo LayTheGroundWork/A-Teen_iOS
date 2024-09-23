@@ -10,53 +10,29 @@ import Domain
 import NetworkService
 import Foundation
 
-final public class VerificateServiceImp: NSObject, VerificateService {
-    private let apiClientService: ApiClientService
+public struct VerificateServiceImp: VerificateService {
+    private let requestCodeRepository: RequestCodeRepository
+    private let verificateCodeRepository: VerificateCodeRepository
     
     public init(
-        apiClientService: ApiClientService
+        requestCodeRepository: RequestCodeRepository,
+        verificateCodeRepository: VerificateCodeRepository
     ) {
-        self.apiClientService = apiClientService
+        self.requestCodeRepository = requestCodeRepository
+        self.verificateCodeRepository = verificateCodeRepository
     }
     
     public func requestCode(
         request: VerificationCodeRequest,
         completion: @escaping () -> Void
     ) {
-        Task {
-            do {
-                let endPoint = VerificationCodeEndPoint(request: request)
-                guard let urlRequest = endPoint.toURLRequest else {
-                    throw ApiError.errorInUrl
-                }
-                try await apiClientService.request(request: urlRequest)
-                completion()
-            } catch {
-                print("인증코드 요청 오류: ", error.localizedDescription)
-            }
-        }
+        requestCodeRepository.requestCode(request: request, completion: completion)
     }
     
     public func verificateCode(
         request: PhoneNumberAuthRequest,
         completion: @escaping (Result<VerificationCodeResponse, Error>) -> Void
     ) {
-        Task {
-            do {
-                let endPoint = PhoneNumberAuthEndPoint(request: request)
-                guard let urlRequest = endPoint.toURLRequest else {
-                    throw ApiError.errorInUrl
-                }
-                try await apiClientService.request(request: urlRequest)
-                completion(.success(.availablePhoneNumber))
-            } catch {
-                if let apiError = error as? ApiError, apiError == .existedUserError {
-                            completion(.success(.existedUser))
-                } else {
-                    print("인증코드 인증 오류: ", error.localizedDescription)
-                    completion(.failure(error))
-                }
-            }
-        }
+        verificateCodeRepository.verificateCode(request: request, completion: completion)
     }
 }

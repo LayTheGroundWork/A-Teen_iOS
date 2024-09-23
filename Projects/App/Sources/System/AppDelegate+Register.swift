@@ -18,11 +18,12 @@ extension AppDelegate {
         let apiClientService: ApiClientService = ApiClientServiceImp()
         
         // MARK: - Repository
-        
         // sign
         let signInRepository: SignInRepository = SignInRepositoryImp(apiClientService: apiClientService)
         let signUpRepository: SignUpRepository = SignUpRepositoryImp(apiClientService: apiClientService)
-        let verificateService: VerificateService = VerificateServiceImp(apiClientService: apiClientService)
+        
+        let requestCodeRepository: RequestCodeRepository = RequestCodeRepositoryImp(apiClientService: apiClientService)
+        let verificateCodeRepository: VerificateCodeRepository = VerificateCodeRepositoryImp(apiClientService: apiClientService)
         
         // school
         let schoolDataRepository: SchoolDataRepository = SchoolDataRepositoryImp(apiClientService: apiClientService)
@@ -36,7 +37,13 @@ extension AppDelegate {
             signUpRepository: signUpRepository
         )
         
+        let verificateService: VerificateService = VerificateServiceImp(
+            requestCodeRepository: requestCodeRepository,
+            verificateCodeRepository: verificateCodeRepository
+        )
+        
         let imageDataService: ImageDataService = ImageDataServiceImp(remoteImageDataRepository: remoteImageDataRepository)
+        
         
         // MARK: - UseCase
         let signUseCase: SignUseCase = SignUseCaseImp(
