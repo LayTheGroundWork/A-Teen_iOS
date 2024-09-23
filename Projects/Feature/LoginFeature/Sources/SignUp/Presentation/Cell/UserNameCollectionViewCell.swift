@@ -204,11 +204,14 @@ extension UserNameCollectionViewCell: UITextFieldDelegate {
     }
     
     func textFieldDidChangeSelection(_ textField: UITextField) {
-        guard let text = textField.text else { return }
-        if checkRegex(text),
+        guard let text = textField.text,
+              let viewModel = viewModel else {
+            return
+        }
+        if viewModel.checkRegex(text),
            text.count >= 2,
            text.count <= 8,
-           !isIncompleteKoreanWord(text) {
+           !viewModel.isIncompleteKoreanWord(text) {
             textField.layer.borderColor = DesignSystemAsset.mainColor.color.cgColor
             delegate?.updateNextButtonState(true)
             errorMessageLabel.text = ""
@@ -244,44 +247,21 @@ extension UserNameCollectionViewCell: UITextFieldDelegate {
                 return false
             }
             
-            guard checkRegex(string) else { return false }
+            guard let viewModel = viewModel,
+                  viewModel.checkRegex(string) else { return false }
             return true
         }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         guard let text = textField.text,
-              checkRegex(text),
+              let viewModel = viewModel,
+              viewModel.checkRegex(text),
               text.count >= 2,
               text.count <= 8 else {
             return false
         }
         delegate?.didTapNextButtonInKeyboard()
         return true
-    }
-    
-    // 영어 & 한글 & 숫자
-    private func checkRegex(_ text: String) -> Bool {
-        let characterRegex = ATeenRegex.characterAndNumber
-        let range = NSRange(location: 0, length: text.utf16.count)
-        let regex = try! NSRegularExpression(pattern: characterRegex)
-        let result = regex.firstMatch(in: text, options: [], range: range) != nil
-        return result
-    }
-    
-    /// 불완전한 한글 단어 확인
-    /// ex. ㅅㅏ, ㄹㅏㅇ, ㅐㅎ
-    private func isIncompleteKoreanWord(_ text: String) -> Bool {
-        let completeKoreanRegex = ATeenRegex.completeKorean
-        let incompleteKoreanRegex = ATeenRegex.incompleteKorean
-        
-        let completeRegex = try! NSRegularExpression(pattern: completeKoreanRegex)
-        let incompleteRegex = try! NSRegularExpression(pattern: incompleteKoreanRegex)
-        
-        let range = NSRange(location: 0, length: text.utf16.count)
-        
-        let isCompleteKorean = completeRegex.firstMatch(in: text, options: [], range: range) != nil
-        let hasIncompleteKorean = incompleteRegex.firstMatch(in: text, options: [], range: range) != nil
-        return !isCompleteKorean && hasIncompleteKorean
     }
 }
 

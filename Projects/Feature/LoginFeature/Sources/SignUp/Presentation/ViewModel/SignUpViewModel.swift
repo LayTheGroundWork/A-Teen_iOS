@@ -91,6 +91,34 @@ public final class SignUpViewModel {
     }
 }
 
+// MARK: - UserName
+extension SignUpViewModel {
+    // 영어 & 한글 & 숫자
+    public func checkRegex(_ text: String) -> Bool {
+        let characterRegex = ATeenRegex.characterAndNumber
+        let range = NSRange(location: 0, length: text.utf16.count)
+        let regex = try! NSRegularExpression(pattern: characterRegex)
+        let result = regex.firstMatch(in: text, options: [], range: range) != nil
+        return result
+    }
+    
+    /// 불완전한 한글 단어 확인
+    /// ex. ㅅㅏ, ㄹㅏㅇ, ㅐㅎ
+    public func isIncompleteKoreanWord(_ text: String) -> Bool {
+        let completeKoreanRegex = ATeenRegex.completeKorean
+        let incompleteKoreanRegex = ATeenRegex.incompleteKorean
+        
+        let completeRegex = try! NSRegularExpression(pattern: completeKoreanRegex)
+        let incompleteRegex = try! NSRegularExpression(pattern: incompleteKoreanRegex)
+        
+        let range = NSRange(location: 0, length: text.utf16.count)
+        
+        let isCompleteKorean = completeRegex.firstMatch(in: text, options: [], range: range) != nil
+        let hasIncompleteKorean = incompleteRegex.firstMatch(in: text, options: [], range: range) != nil
+        return !isCompleteKorean && hasIncompleteKorean
+    }
+}
+
 // MARK: - UserBirth
 extension SignUpViewModel {
     public func changeMonthState() -> Int {

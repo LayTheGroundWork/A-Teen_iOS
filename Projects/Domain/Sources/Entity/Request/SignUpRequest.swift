@@ -43,4 +43,12 @@ public struct SchoolData {
         self.schoolLocation = schoolLocation
     }
 }
+
+infix operator == : ComparisonPrecedence
+
+extension SchoolData {
+    public static func == (lhs: SchoolData, rhs: SchoolData) -> Bool {
+        lhs.schoolName == rhs.schoolName && lhs.schoolLocation == rhs.schoolLocation
+    }
+}
 // Date 변환하는 로직 core에 추가 후 여기서 처리 필요

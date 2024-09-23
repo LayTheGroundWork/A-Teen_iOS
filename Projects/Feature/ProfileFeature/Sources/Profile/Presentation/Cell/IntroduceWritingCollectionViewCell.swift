@@ -15,6 +15,8 @@ import UIKit
 final class IntroduceWritingCollectionViewCell: UICollectionViewCell {
     private var viewModel: IntroduceViewModel?
     
+    var textViewAction: (() -> Void)?
+    
     private let textViewPlaceHolder = "간단한 자기 소개글을 작성해주세요\nex) 저의 취미는 운동이에요"
     
     // MARK: - Private properties
@@ -100,6 +102,8 @@ extension IntroduceWritingCollectionViewCell: UITextViewDelegate {
     
     func textViewDidChange(_ textView: UITextView) {
         viewModel?.changeWriting = textView.text
+        
+        textViewAction?()
     }
     
     func textViewDidEndEditing(_ textView: UITextView) {

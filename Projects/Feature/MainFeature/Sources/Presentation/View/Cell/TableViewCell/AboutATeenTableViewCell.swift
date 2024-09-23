@@ -94,7 +94,7 @@ class AboutATeenTableViewCell: UITableViewCell {
     
     lazy var grayLine: UIView = {
         let view = UIView()
-        view.backgroundColor = DesignSystemAsset.grayLineColor.color
+        view.backgroundColor = DesignSystemAsset.gray04.color
         return view
     }()
     

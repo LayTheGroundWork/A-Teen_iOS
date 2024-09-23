@@ -14,6 +14,7 @@ import UIKit
 
 public protocol QuestionsViewControllerCoordinator: AnyObject {
     func didTabBackButton()
+    func didTabCell(index: Int)
     func didTabSelectQuestionButton()
     func configTabbarState(view: ProfileFeatureViewNames)
 }
@@ -43,7 +44,7 @@ public final class QuestionsViewController: UIViewController {
     
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
-        label.text = "10문 10답 정보 수정"
+        label.text = "자문자답 정보 수정"
         label.textColor = UIColor.black
         label.textAlignment = .left
         label.font = .customFont(forTextStyle: .title3, weight: .bold)
@@ -74,8 +75,7 @@ public final class QuestionsViewController: UIViewController {
         scrollView.backgroundColor = UIColor.systemBackground
         scrollView.showsVerticalScrollIndicator = false
         scrollView.clipsToBounds = true
-        scrollView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 100, right: 0)
-        //scrollView.delegate = self
+        scrollView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 84, right: 0)
         return scrollView
     }()
     
@@ -88,7 +88,8 @@ public final class QuestionsViewController: UIViewController {
     
     lazy var tableView: UITableView = {
         let tableView = UITableView()
-        tableView.separatorStyle = .none
+        tableView.backgroundColor = DesignSystemAsset.gray03.color
+        tableView.layer.cornerRadius = 10
         tableView.showsVerticalScrollIndicator = false
         tableView.isScrollEnabled = false
         tableView.dataSource = self
@@ -103,14 +104,16 @@ public final class QuestionsViewController: UIViewController {
         return button
     }()
     
-    
     private lazy var saveButton: UIButton = {
         let button = UIButton()
-        button.setTitle("저장", for: .normal)
+        button.titleLabel?.font = UIFont.customFont(forTextStyle: .callout,
+                                                    weight: .regular)
+        button.setTitle(AppLocalized.completeEdit, for: .normal)
+        button.setTitle(AppLocalized.completeEdit, for: .disabled)
         button.setTitleColor(UIColor.white, for: .normal)
-        button.backgroundColor = UIColor.black
-        button.titleLabel?.font = .customFont(forTextStyle: .subheadline, weight: .regular)
-        button.layer.cornerRadius = 20
+        button.setTitleColor(DesignSystemAsset.gray02.color, for: .disabled)
+        button.backgroundColor = DesignSystemAsset.gray03.color
+        button.layer.cornerRadius = ViewValues.defaultRadius
         button.addTarget(self, action: #selector(clickSaveButton(_:)), for: .touchUpInside)
         return button
     }()
@@ -124,7 +127,8 @@ public final class QuestionsViewController: UIViewController {
     
     public override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        coordinator?.configTabbarState(view: .introduce)
+        coordinator?.configTabbarState(view: .another)
+        changeCheckQuestion()
     }
     
     public init(
@@ -134,10 +138,9 @@ public final class QuestionsViewController: UIViewController {
         self.viewModel = viewModel
         self.coordinator = coordinator
         
-        viewModel.changeQuestionList = viewModel.questionList
         super.init(nibName: nil, bundle: nil)
     }
-
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -191,7 +194,7 @@ public final class QuestionsViewController: UIViewController {
         scrollView.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview()
             make.top.equalTo(questionsLabel.snp.bottom).offset(42)
-            make.bottom.equalTo(saveButton.snp.top)
+            make.bottom.equalTo(saveButton.snp.top).offset(-ViewValues.defaultPadding)
         }
         
         backgroundView.snp.makeConstraints { make in
@@ -217,9 +220,54 @@ public final class QuestionsViewController: UIViewController {
         changeHeight()
     }
     
-    func changeHeight() {
+    private func calculateLabelHeight(for label: UILabel, width: CGFloat) -> CGFloat {
+        guard let text = label.text, let font = label.font else {
+            return 0
+        }
+        
+        let maxSize = CGSize(width: width, height: .greatestFiniteMagnitude)
+        let attributes: [NSAttributedString.Key: Any] = [.font: font]
+        let boundingBox = text.boundingRect(
+            with: maxSize,
+            options: [.usesLineFragmentOrigin, .usesFontLeading],
+            attributes: attributes,
+            context: nil
+        )
+        return boundingBox.height
+    }
+    
+    private func changeHeight() {
+        changeTotalViewHeight(height: tableView.frame.height + 20)
+        
         self.view.layoutIfNeeded()
-        tableViewHeightAnchor?.update(offset: viewModel.changeQuestionList.count * 220)
+        
+        guard let cell = tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? QuestionsTableViewCell else {
+            changeTotalViewHeight(height: 0)
+            return
+        }
+        
+        let titleLabel = UILabel()
+        titleLabel.font = UIFont.customFont(forTextStyle: .subheadline, weight: .bold)
+        titleLabel.numberOfLines = 0
+        
+        let textLabelHeight = cell.questionTextLabel.frame.height
+        
+        var totalHeight: CGFloat = 0.0
+        
+        viewModel.changeQuestionList.forEach { question in
+            titleLabel.text = question.title
+            
+            let height = calculateLabelHeight(for: titleLabel, width: ViewValues.width - 96) + textLabelHeight + 43
+            totalHeight += height
+        }
+        
+        changeTotalViewHeight(height: totalHeight)
+    }
+    
+    private func changeTotalViewHeight(height: CGFloat) {
+        self.view.layoutIfNeeded()
+        
+        tableViewHeightAnchor?.update(offset: height)
         
         self.view.layoutIfNeeded()
         
@@ -230,6 +278,22 @@ public final class QuestionsViewController: UIViewController {
         self.scrollView.contentSize = CGSize(
             width: self.view.frame.width,
             height: backgroundView.frame.height)
+    }
+    
+    private func animationOfTableview() {
+        UIView.animate(withDuration: 0.3, delay: 0, options: .showHideTransitionViews) {
+            self.changeHeight()
+        }
+    }
+    
+    private func changeCheckQuestion() {
+        if viewModel.checkChangeQuestion() {
+            saveButton.isEnabled = false
+            saveButton.backgroundColor = DesignSystemAsset.gray03.color
+        } else {
+            saveButton.isEnabled = true
+            saveButton.backgroundColor = UIColor.black
+        }
     }
     
     // MARK: - Actions
@@ -269,13 +333,17 @@ extension QuestionsViewController: UITableViewDataSource {
         else {
             return UITableViewCell()
         }
-        cell.setProperties(viewModel: viewModel, index: indexPath.row)
+        cell.setProperties(question: viewModel.changeQuestionList[indexPath.row])
         cell.deleteButtonAction = { [weak self] in
-            self?.viewModel.changeQuestionList.remove(at: indexPath.row)
-            self?.changeHeight()
-            self?.tableView.reloadData()
+            guard let self = self else { return }
+            
+            if let indexPath = tableView.indexPath(for: cell) {
+                self.viewModel.changeQuestionList.remove(at: indexPath.row)
+                tableView.deleteRows(at: [indexPath], with: .automatic)
+                animationOfTableview()
+                changeCheckQuestion()
+            }
         }
-        
         return cell
     }
     
@@ -286,13 +354,17 @@ extension QuestionsViewController: UITableViewDataSource {
 
 extension QuestionsViewController: UITableViewDelegate {
     public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        220
+        UITableView.automaticDimension
+    }
+    
+    public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        coordinator?.didTabCell(index: indexPath.row)
     }
 }
 
 extension QuestionsViewController: QuestionsViewControllerDelegate {
     public func didTabBackButtonFromQuestionsDialogViewController() {
-        changeHeight()
-        tableView.reloadData()
+        self.tableView.reloadData()
+        animationOfTableview()
     }
 }
