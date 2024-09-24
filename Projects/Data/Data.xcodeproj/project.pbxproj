@@ -13,6 +13,8 @@
 		0F5010ECFBB208D0E8695C02 /* DuplicationCheckRepositoryImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C71555F2786000CC02D4FA6 /* DuplicationCheckRepositoryImp.swift */; };
 		269FDE67B48834948BE8CFEB /* ImageDataServiceImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D69ADC6424D5E413891FE6D /* ImageDataServiceImp.swift */; };
 		280D3245D317C47ABF10ABF9 /* SignInRepositoryImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37EA6AE52F156E244C89349 /* SignInRepositoryImp.swift */; };
+		419252B62CA2AB1D005730CC /* MyPageDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419252B52CA2AB1D005730CC /* MyPageDTO.swift */; };
+		419252BF2CA2AEA4005730CC /* GetMyPageDataRepositoryImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419252BE2CA2AEA4005730CC /* GetMyPageDataRepositoryImp.swift */; };
 		47D2F7C7B037FED0A08E803C /* RequestCodeRepositoryImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011CD3D8C40423C4BEF323A3 /* RequestCodeRepositoryImp.swift */; };
 		4F93D6FFD9F1C0146122EC23 /* LogOutDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = F01B3235E340CC3BF868ABD3 /* LogOutDTO.swift */; };
 		50F14E7B0701EF6F91B36332 /* SignServiceImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4E02BD664565FEC69E1BC72 /* SignServiceImp.swift */; };
@@ -45,6 +47,8 @@
 		033B57EACF093CA22F91EAB9 /* Data-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Data-Info.plist"; sourceTree = "<group>"; };
 		10CC6BE88C268EFCC46770E8 /* DuplicationCheckDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DuplicationCheckDTO.swift; sourceTree = "<group>"; };
 		1FC1CEEDD52C7BB886491216 /* VerificationCodeRepositoryImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationCodeRepositoryImp.swift; sourceTree = "<group>"; };
+		419252B52CA2AB1D005730CC /* MyPageDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageDTO.swift; sourceTree = "<group>"; };
+		419252BE2CA2AEA4005730CC /* GetMyPageDataRepositoryImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetMyPageDataRepositoryImp.swift; sourceTree = "<group>"; };
 		4E75197C294DE74F5162FAA7 /* Data.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Data.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		53044F93EF0D12264A1F4044 /* SignUpRepositoryImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpRepositoryImp.swift; sourceTree = "<group>"; };
 		73A06AFE9B4DF92FD9348D91 /* SchoolDataDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolDataDTO.swift; sourceTree = "<group>"; };
@@ -108,6 +112,7 @@
 				F01B3235E340CC3BF868ABD3 /* LogOutDTO.swift */,
 				73A06AFE9B4DF92FD9348D91 /* SchoolDataDTO.swift */,
 				74E87E9420A6B0A4D0B04A69 /* VerificationCodeDTO.swift */,
+				419252B52CA2AB1D005730CC /* MyPageDTO.swift */,
 			);
 			path = DTO;
 			sourceTree = "<group>";
@@ -118,6 +123,7 @@
 				3BF69E35B1136C495B7AECA9 /* Sign */,
 				F89D170C59CF96280A916924 /* RemoteImageDataRepositoryImp.swift */,
 				FB672E162D8CD9924D89491D /* SchoolDataRepositoryImp.swift */,
+				419252BE2CA2AEA4005730CC /* GetMyPageDataRepositoryImp.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -259,8 +265,10 @@
 				0F5010ECFBB208D0E8695C02 /* DuplicationCheckRepositoryImp.swift in Sources */,
 				0AEA963F8B42D73715E05DDB /* ReissueRepositoryImp.swift in Sources */,
 				47D2F7C7B037FED0A08E803C /* RequestCodeRepositoryImp.swift in Sources */,
+				419252BF2CA2AEA4005730CC /* GetMyPageDataRepositoryImp.swift in Sources */,
 				280D3245D317C47ABF10ABF9 /* SignInRepositoryImp.swift in Sources */,
 				5A405916EBDE84CC7D4F0A1A /* SignOutRepositoryImp.swift in Sources */,
+				419252B62CA2AB1D005730CC /* MyPageDTO.swift in Sources */,
 				D9CCDBFECF829DB34D205C50 /* SignUpRepositoryImp.swift in Sources */,
 				E847D128F8EC000A6B5B7F61 /* VerificationCodeRepositoryImp.swift in Sources */,
 				269FDE67B48834948BE8CFEB /* ImageDataServiceImp.swift in Sources */,

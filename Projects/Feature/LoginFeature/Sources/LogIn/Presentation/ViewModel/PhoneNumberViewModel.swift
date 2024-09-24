@@ -39,7 +39,7 @@ public final class PhoneNumberViewModel {
             completion: completion)
     }
     
-    func signIn() {
+    func signIn(completion: @escaping () -> Void) {
         useCase.signIn(
             request: .init(
                 phoneNumber: phoneNumber,
@@ -51,9 +51,10 @@ public final class PhoneNumberViewModel {
                 self.auth.setAccessToken(tokenData.authToken)
                 self.auth.setRefreshToken(tokenData.refreshToken)
                 self.auth.logIn()
-                self.state.send(.success)
+                completion()
             case .failure(let error):
-                self.state.send(.fail(error: error.localizedDescription))
+                print("로그인 실패:", error.localizedDescription)
+                completion()
             }
         }
         

@@ -211,15 +211,28 @@ extension PhoneNumberViewController: PhoneNumberCollectionViewCellDelegate {
 
 extension PhoneNumberViewController: CertificationCodeCollectionViewCellDelegate {
     public func didSelectNextButton(registrationStatus: RegistrationStatus) {
-        switch registrationStatus {
-        case .signedUp:
-            self.coordinator?.openExistingUserLoginDialog()
-
-        case .notSignedUp:
-            self.coordinator?.openVerificationCompleteDialog()
-
-        case .inValidCodeNumber:
-            self.coordinator?.openInValidCodeNumberDialog()
+        switch viewModel.signType{
+        case .signIn:
+            switch registrationStatus {
+            case .signedUp:
+                print("로그인 성공")
+            case .notSignedUp:
+                print("가입되지 않은 번호")
+            case .inValidCodeNumber:
+                self.coordinator?.openInValidCodeNumberDialog()
+            }
+        case .signUp:
+            switch registrationStatus {
+            case .signedUp:
+                self.coordinator?.openExistingUserLoginDialog()
+                
+            case .notSignedUp:
+                self.coordinator?.openVerificationCompleteDialog()
+                
+            case .inValidCodeNumber:
+                self.coordinator?.openInValidCodeNumberDialog()
+            }
         }
+        
     }
 }

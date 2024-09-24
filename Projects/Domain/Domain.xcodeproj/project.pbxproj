@@ -16,6 +16,9 @@
 		30A9A12EAAB824CB847A8F55 /* SearchSchoolService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49451361217E78799DEB15E /* SearchSchoolService.swift */; };
 		33DCF949EEBC3A2BD32B7BBF /* VerificationCodeRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4379208B31B7C01AB4F9897D /* VerificationCodeRequest.swift */; };
 		3CD20E63F5B08BA33A48403C /* SchoolDataRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432D1265802A2173DE408F5E /* SchoolDataRequest.swift */; };
+		419252B82CA2AC18005730CC /* MyPageResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419252B72CA2AC18005730CC /* MyPageResponse.swift */; };
+		419252BD2CA2AD67005730CC /* MyPageRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419252BC2CA2AD67005730CC /* MyPageRequest.swift */; };
+		419252C12CA2AEB1005730CC /* GetMyPageDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419252C02CA2AEB1005730CC /* GetMyPageDataRepository.swift */; };
 		46FFF702E799485168786812 /* ReissueRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612D6B6422F772C1E2D6F5C0 /* ReissueRepository.swift */; };
 		54245B85066C204827A163A8 /* LogInRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DB203B60AC0D1DC139D0787 /* LogInRequest.swift */; };
 		5AACBF8F2CA31275CAF2BC75 /* DuplicationCodeResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8308C6071C68612B62C5393 /* DuplicationCodeResponse.swift */; };
@@ -59,6 +62,9 @@
 		2F38D8BFB5238DE851C69B24 /* ReissueRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReissueRequest.swift; sourceTree = "<group>"; };
 		3854105DDC9CDA62E56A09EF /* SignInRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInRepository.swift; sourceTree = "<group>"; };
 		3A4620A0019C901EC7C993A2 /* Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
+		419252B72CA2AC18005730CC /* MyPageResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageResponse.swift; sourceTree = "<group>"; };
+		419252BC2CA2AD67005730CC /* MyPageRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageRequest.swift; sourceTree = "<group>"; };
+		419252C02CA2AEB1005730CC /* GetMyPageDataRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetMyPageDataRepository.swift; sourceTree = "<group>"; };
 		432D1265802A2173DE408F5E /* SchoolDataRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolDataRequest.swift; sourceTree = "<group>"; };
 		4379208B31B7C01AB4F9897D /* VerificationCodeRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationCodeRequest.swift; sourceTree = "<group>"; };
 		451ACE222BE8C01F4B361381 /* ImageDataUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDataUseCase.swift; sourceTree = "<group>"; };
@@ -181,6 +187,7 @@
 				A5B80CC6583FC5B42E58E61D /* Sign */,
 				0D0E7625A5F57D7EC04CB5C6 /* RemoteImageDataRepository.swift */,
 				B3D5166F9BAE202703C8ADDB /* SchoolDataRepository.swift */,
+				419252C02CA2AEB1005730CC /* GetMyPageDataRepository.swift */,
 			);
 			path = RepositoryInterface;
 			sourceTree = "<group>";
@@ -190,6 +197,7 @@
 			children = (
 				37D971C84589EEBE00E797EE /* Sign */,
 				D160BBBDBAADD18EC4B667FB /* SchoolDataResponse.swift */,
+				419252B72CA2AC18005730CC /* MyPageResponse.swift */,
 			);
 			path = Response;
 			sourceTree = "<group>";
@@ -233,6 +241,7 @@
 			children = (
 				71570DB0B446D2F0F2779EAB /* Sign */,
 				432D1265802A2173DE408F5E /* SchoolDataRequest.swift */,
+				419252BC2CA2AD67005730CC /* MyPageRequest.swift */,
 			);
 			path = Request;
 			sourceTree = "<group>";
@@ -341,6 +350,7 @@
 				C54D083201D9E2316E0E0CEB /* SignUpRequest.swift in Sources */,
 				33DCF949EEBC3A2BD32B7BBF /* VerificationCodeRequest.swift in Sources */,
 				2405CEBB75D3A316A75D6994 /* SchoolDataResponse.swift in Sources */,
+				419252B82CA2AC18005730CC /* MyPageResponse.swift in Sources */,
 				5AACBF8F2CA31275CAF2BC75 /* DuplicationCodeResponse.swift in Sources */,
 				8658AE87AB971BFA9120C146 /* LogInResponse.swift in Sources */,
 				D20F7F19A4CF44FAEDF669C1 /* DefaultResponse.swift in Sources */,
@@ -356,7 +366,9 @@
 				ADE46DB026DD08F36838B2E8 /* ImageDataService.swift in Sources */,
 				30A9A12EAAB824CB847A8F55 /* SearchSchoolService.swift in Sources */,
 				8323AECB90EFE773F20B7248 /* SignService.swift in Sources */,
+				419252C12CA2AEB1005730CC /* GetMyPageDataRepository.swift in Sources */,
 				77EEC29764D1D277B000EE29 /* ImageDataUseCase.swift in Sources */,
+				419252BD2CA2AD67005730CC /* MyPageRequest.swift in Sources */,
 				EF762BFB8212220D77FB806C /* SearchUseCase.swift in Sources */,
 				968DA3475B63B63D4443BD7A /* SignUseCase.swift in Sources */,
 				83D7B4EF66F988EE6F958100 /* ImageDataUseCaseImp.swift in Sources */,

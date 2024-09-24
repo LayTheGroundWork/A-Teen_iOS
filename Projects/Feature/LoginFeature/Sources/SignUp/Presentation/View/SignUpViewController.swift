@@ -168,7 +168,14 @@ final class SignUpViewController: UIViewController {
     // MARK: - Actions
     @objc private func didSelectNextButton(_ sender: UIButton) {
         guard currentIndexPath.section < collectionView.numberOfSections - 1 else {
-            coordinator?.didSelectService()
+            viewModel.signUp() { [weak self] in
+                guard let self = self else { return }
+                if self.viewModel.auth.isSessionActive {
+                    self.coordinator?.didSelectService()
+                } else {
+                    print("회원가입 실패")
+                }
+            }
             return
         }
         
