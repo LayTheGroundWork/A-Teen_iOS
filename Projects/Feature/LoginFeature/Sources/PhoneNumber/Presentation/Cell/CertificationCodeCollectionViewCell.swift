@@ -198,22 +198,23 @@ public final class CertificationCodeCollectionViewCell: UICollectionViewCell {
                 self.delegate?.didSelectNextButton(registrationStatus: .notSignedUp)
             }
             
-            //            //TODO: 나중에 인증된 전화번호가 있을 경우 테스트하기
-            //            if let _ = data {
-            //                //TODO: 기존 사용자인지 확인 필요
-            //                DispatchQueue.main.async {
-            //                    self.delegate?.didSelectNextButton(registrationStatus: .notSignedUp)
-            //                }
-            //
-            //              기존 사용자
-            //              DispatchQueue.main.async {
-            //                  self.delegate?.didSelectNextButton(registrationStatus: .signedUp)
-            //              }
-            //            } else {
-            //                DispatchQueue.main.async {
-            //                    self.delegate?.didSelectNextButton(registrationStatus: .inValidCodeNumber)
-            //                }
-            //            }
+            //TODO: 나중에 인증된 전화번호가 있을 경우 테스트하기
+//            if let _ = data {
+//                //TODO: 기존 사용자인지 확인 필요
+//                DispatchQueue.main.async {
+//                    self.delegate?.didSelectNextButton(registrationStatus: .notSignedUp)
+//                }
+//                
+//                // 기존 사용자
+//                DispatchQueue.main.async {
+//                    self.delegate?.didSelectNextButton(registrationStatus: .signedUp)
+//                }
+//                
+//            } else {
+//                DispatchQueue.main.async {
+//                    self.delegate?.didSelectNextButton(registrationStatus: .inValidCodeNumber)
+//                }
+//            }
         }
     }
     

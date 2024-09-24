@@ -75,7 +75,7 @@ public final class SignUpViewModel {
         }
     }
     
-    func signUp(completion: @escaping () -> Void) {
+    func signUp(completion: @escaping (Bool) -> Void) {
         signUseCase.signUp(
             request: .init(
                 phoneNumber: phoneNumber,
@@ -91,10 +91,10 @@ public final class SignUpViewModel {
                     self.auth.setAccessToken(tokenData.authToken)
                     self.auth.setRefreshToken(tokenData.refreshToken)
                     self.auth.logIn()
-                    completion()
+                    completion(self.auth.isSessionActive)
                 case .failure(let error):
                     print("회원가입 실패:", error.localizedDescription)
-                    completion()
+                    completion(false)
                 }
             }
     }

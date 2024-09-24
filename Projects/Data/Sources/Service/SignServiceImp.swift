@@ -73,8 +73,8 @@ public struct SignServiceImp: SignService {
     ) {
         duplicationCheckRepository.duplicationCheck(request: request) { result in
             switch result {
-            case .success(_):
-                completion(true)
+            case .success(let response):
+                completion(!response.data)
             case .failure(let error):
                 print(error.localizedDescription)
                 completion(false)

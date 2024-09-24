@@ -9,20 +9,24 @@
 import Foundation
 
 public struct MyPageResponse: Decodable {
-    public let id: Int
-    public let profileImages: [String]
-    public let likeCount: Int
-    public let nickName: String
-    public let uniqueId: String
-    public let birthDay: String
-    public let location: String
-    public let schoolName: String
-    public let snsLinks: [String]
-    public let category: String
-    public let question: [String: String]
+    let id: Int
+    let notificationToken: String
+    let profileImages: [String]
+    let likeCount: Int
+    let nickName: String
+    let uniqueId: String
+    let birthDay: String
+    let location: String
+    let schoolName: String
+    let mbti: String
+    let introduce: String
+    let snsLinks: [SnsLinkData]
+    let category: String
+    let questions: [QuestionData]
     
     public init(
         id: Int,
+        notificationToken: String,
         profileImages: [String],
         likeCount: Int,
         nickName: String,
@@ -30,11 +34,14 @@ public struct MyPageResponse: Decodable {
         birthDay: String,
         location: String,
         schoolName: String,
-        snsLinks: [String],
+        mbti: String,
+        introduce: String,
+        snsLinks: [SnsLinkData],
         category: String,
-        question: [String : String]
+        questions: [QuestionData]
     ) {
         self.id = id
+        self.notificationToken = notificationToken
         self.profileImages = profileImages
         self.likeCount = likeCount
         self.nickName = nickName
@@ -42,8 +49,20 @@ public struct MyPageResponse: Decodable {
         self.birthDay = birthDay
         self.location = location
         self.schoolName = schoolName
+        self.mbti = mbti
+        self.introduce = introduce
         self.snsLinks = snsLinks
         self.category = category
-        self.question = question
+        self.questions = questions
     }
+}
+
+public struct SnsLinkData: Decodable {
+    let snsName: String
+    let snsId: String
+}
+
+public struct QuestionData: Decodable{
+    let title: String
+    let answer: String
 }

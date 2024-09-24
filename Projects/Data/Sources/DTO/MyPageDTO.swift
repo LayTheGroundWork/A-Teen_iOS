@@ -17,6 +17,7 @@ struct MyPageDTO: Decodable {
 
 struct MyPageData: Decodable {
     let id: Int
+    let notificationToken: String
     let profileImages: [String]
     let likeCount: Int
     let nickName: String
@@ -24,15 +25,18 @@ struct MyPageData: Decodable {
     let birthDay: String
     let location: String
     let schoolName: String
-    let snsLinks: [String]
+    let mbti: String
+    let introduce: String
+    let snsLinks: [SnsLinkData]
     let category: String
-    let question: [String: String]
+    let questions: [QuestionData]
 }
 
 extension MyPageDTO {
     func toDomain() -> MyPageResponse {
         .init(
             id: data.id,
+            notificationToken: data.notificationToken,
             profileImages: data.profileImages,
             likeCount: data.likeCount,
             nickName: data.nickName,
@@ -40,9 +44,11 @@ extension MyPageDTO {
             birthDay: data.birthDay,
             location: data.location,
             schoolName: data.schoolName,
+            mbti: data.mbti,
+            introduce: data.introduce,
             snsLinks: data.snsLinks,
             category: data.category,
-            question: data.question
+            questions: data.questions
         )
     }
 }

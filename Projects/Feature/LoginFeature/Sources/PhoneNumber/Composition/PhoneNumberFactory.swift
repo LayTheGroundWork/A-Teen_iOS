@@ -5,6 +5,7 @@
 //  Created by 최동호 on 5/31/24.
 //
 
+import Common
 import FeatureDependency
 import UIKit
 
@@ -24,12 +25,16 @@ public protocol PhoneNumberFactory {
 public struct PhoneNumberFactoryImp: PhoneNumberFactory {
     
     public let coordinatorProvider: CoordinatorProvider
+    public let signType: SignType
     
     public init(
-        coordinatorProvider: CoordinatorProvider
+        coordinatorProvider: CoordinatorProvider,
+        signType: SignType
     ) {
         self.coordinatorProvider = coordinatorProvider
+        self.signType = signType
     }
+    
     public func makePhoneNumberViewController(
         coordinator: PhoneNumberViewControllerCoordinator,
         viewModel: PhoneNumberViewModel

@@ -41,7 +41,10 @@ public struct LogInFactoryImp: LogInFactory {
         childCoordinators: [Coordinator],
         delegate: PhoneNumberCoordinatorDelegate
     ) -> Coordinator {
-        let factory = PhoneNumberFactoryImp(coordinatorProvider: coordinatorProvider)
+        let factory = PhoneNumberFactoryImp(
+            coordinatorProvider: coordinatorProvider,
+            signType: viewModel.signType
+        )
         return PhoneNumberCoordinator(
             navigation: navigation,
             factory: factory,

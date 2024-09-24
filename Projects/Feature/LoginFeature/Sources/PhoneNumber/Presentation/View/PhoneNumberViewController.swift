@@ -13,8 +13,10 @@ import UIKit
 
 public protocol PhoneNumberViewControllerCoordinator: AnyObject {
     func didFinish()
+    func closeSheet()
     func openVerificationCompleteDialog()
     func openExistingUserLoginDialog()
+    func openNoneExistingUserDialog()
     func openInValidCodeNumberDialog()
 }
 
@@ -215,9 +217,22 @@ extension PhoneNumberViewController: CertificationCodeCollectionViewCellDelegate
         case .signIn:
             switch registrationStatus {
             case .signedUp:
-                print("로그인 성공")
+                self.viewModel.signIn { [weak self] result in
+                    guard let self = self else { return }
+                    switch result {
+                    case true:
+                        DispatchQueue.main.async {
+                            self.coordinator?.closeSheet()
+                        }
+                    case false:
+                        DispatchQueue.main.async {
+                            self.coordinator?.closeSheet()
+                        }
+                        print("로그인 실패")
+                    }
+                }
             case .notSignedUp:
-                print("가입되지 않은 번호")
+                self.coordinator?.openNoneExistingUserDialog()
             case .inValidCodeNumber:
                 self.coordinator?.openInValidCodeNumberDialog()
             }

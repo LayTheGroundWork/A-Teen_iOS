@@ -168,11 +168,12 @@ final class SignUpViewController: UIViewController {
     // MARK: - Actions
     @objc private func didSelectNextButton(_ sender: UIButton) {
         guard currentIndexPath.section < collectionView.numberOfSections - 1 else {
-            viewModel.signUp() { [weak self] in
+            viewModel.signUp() { [weak self] result in
                 guard let self = self else { return }
-                if self.viewModel.auth.isSessionActive {
+                switch result {
+                case true:
                     self.coordinator?.didSelectService()
-                } else {
+                case false:
                     print("회원가입 실패")
                 }
             }
@@ -183,7 +184,7 @@ final class SignUpViewController: UIViewController {
         case 0:
             viewModel.duplicationCheck { [weak self] check in
                 guard let self = self else { return }
-                
+                print(check)
                 DispatchQueue.main.async {
                     if check {
                         self.changeNextCell()
@@ -191,7 +192,6 @@ final class SignUpViewController: UIViewController {
                         
                         guard let cell = self.collectionView.cellForItem(at: IndexPath(item: 0, section: 0)) as? UserIdCollectionViewCell else { return }
                         cell.changeLabelByDuplicationCheck()
-                        
                     }
                 }
             }
