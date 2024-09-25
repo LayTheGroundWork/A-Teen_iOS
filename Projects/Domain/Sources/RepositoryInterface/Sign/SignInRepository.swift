@@ -1,5 +1,5 @@
 //
-//  SignRepository.swift
+//  SignInRepository.swift
 //  Domain
 //
 //  Created by 최동호 on 6/29/24.
@@ -8,13 +8,9 @@
 
 import Foundation
 
-public protocol SignRepository {
+public protocol SignInRepository {
     func signIn(
         request: LogInRequest,
-        completion: @escaping (Result<LogInResponse, Error>) -> Void
-    )
-    func signUp(
-        request: SignUpRequest,
         completion: @escaping (Result<LogInResponse, Error>) -> Void
     )
 }

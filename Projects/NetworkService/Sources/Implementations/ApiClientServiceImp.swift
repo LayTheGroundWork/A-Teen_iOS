@@ -31,11 +31,6 @@ public struct ApiClientServiceImp: ApiClientService {
             throw ApiError.unknownError
         }
         
-        print(httpResponse)
-        
-        print(httpResponse.statusCode)
-        print(httpResponse.allHeaderFields)
-        
         switch httpResponse.statusCode {
         case HttpResponseStatus.ok:
             return
@@ -76,6 +71,12 @@ public struct ApiClientServiceImp: ApiClientService {
     }
     
     private func decodeModel<T: Decodable>(data: Data) throws -> T {
+        if let jsonString = String(data: data, encoding: .utf8) {
+            print("Raw JSON response: \(jsonString)")
+        } else {
+            print("Failed to convert data to string.")
+        }
+        
         let decoder = JSONDecoder()
         let model = try? decoder.decode(T.self, from: data)
         guard let model = model else { throw ApiError.errorDecoding }

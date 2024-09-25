@@ -15,6 +15,12 @@ extension PhoneNumberCoordinator: PhoneNumberViewControllerCoordinator {
         delegate?.didFinish(childCoordinator: self)
     }
     
+    public func closeSheet() {
+        navigateToLoginViewController()
+        
+        closeLoginSheet()
+    }
+    
     public func openVerificationCompleteDialog() {
         let coordinator = coordinatorProvider.makeAlertCoordinator(
             dialogType: .oneButton,
@@ -62,6 +68,31 @@ extension PhoneNumberCoordinator: PhoneNumberViewControllerCoordinator {
                 titleNumberOfLine: 1,
                 titleFont: .customFont(forTextStyle: .callout, weight: .bold),
                 dialogMessage: AppLocalized.existingUserDialogMessage,
+                messageColor: DesignSystemAsset.gray02.color,
+                messageNumberOfLine: 1,
+                messageFont: .customFont(forTextStyle: .footnote, weight: .regular),
+                buttonText: AppLocalized.noButton,
+                buttonColor: DesignSystemAsset.gray01.color,
+                secondButtonText: AppLocalized.okGoodButton,
+                secondButtonColor: DesignSystemAsset.mainColor.color))
+        addChildCoordinatorStart(coordinator)
+        
+        navigation.present(
+            coordinator.navigation.rootViewController,
+            animated: false)
+    }
+    
+    public func openNoneExistingUserDialog() {
+        let coordinator = coordinatorProvider.makeAlertCoordinator(
+            dialogType: .twoButton,
+            delegate: self,
+            dialogData: CustomDialog(
+                dialogImage: UIImage(),
+                dialogTitle: AppLocalized.noneExistingUserDialogTitle,
+                titleColor: .black,
+                titleNumberOfLine: 1,
+                titleFont: .customFont(forTextStyle: .callout, weight: .bold),
+                dialogMessage: AppLocalized.noneExistingUserDialogMessage,
                 messageColor: DesignSystemAsset.gray02.color,
                 messageNumberOfLine: 1,
                 messageFont: .customFont(forTextStyle: .footnote, weight: .regular),

@@ -94,7 +94,10 @@ public enum AppLocalized {
                                                 """
     public static let existingUserDialogTitle = "이미 가입된 사용자에요!"
     public static let existingUserDialogMessage = "바로 로그인 할까요?"
+    public static let noneExistingUserDialogTitle = "가입되지 않은 사용자에요!"
+    public static let noneExistingUserDialogMessage = "바로 회원가입 할까요?"
     public static let invalidCodeNumberDialogTitle = "인증번호가 틀렸어요!"
+    
     
     // MARK: - MainView / Report
     public static let reportDialogTitle = "신고 사유"
@@ -111,6 +114,7 @@ public enum AppLocalized {
     public static let userIDNumberOfCharactersErrrorMessage = "4자 이상 입력해주세요."
     public static let userIDLowercaseLetterOrNumberErrrorMessage = "영어 소문자 또는 숫자만 입력 해주세요."
     public static let userIDCount = "/11"
+    public static let userIDDuplicationCheckErrorMessage = "중복된 아이디입니다."
     public static let userNameNumberErrrorMessage = "2자 이상 입력해주세요."
     public static let userNameIncorrectKoreanErrorMessage = "한글을 바르게 입력해주세요."
     public static let userNameCount = "/8"

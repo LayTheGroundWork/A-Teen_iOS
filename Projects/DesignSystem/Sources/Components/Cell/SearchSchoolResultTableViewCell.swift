@@ -7,7 +7,6 @@
 
 import Common
 import Domain
-import DesignSystem
 import UIKit
 
 public final class SearchSchoolResultTableViewCell: UITableViewCell {

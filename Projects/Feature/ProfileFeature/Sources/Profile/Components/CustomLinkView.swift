@@ -122,7 +122,7 @@ extension CustomLinkView {
         switch linkInfo.0 {
         case 0: linkImageView.image = DesignSystemAsset.instagramLogo.image
         case 1: linkImageView.image = DesignSystemAsset.xLogo.image
-        case 2: linkImageView.image = DesignSystemAsset.tiktokLogo.image
+        case 2: linkImageView.image = DesignSystemAsset.tikTokLogo.image
         case 3: linkImageView.image = DesignSystemAsset.youtubeLogo.image
         default:
             break

@@ -208,14 +208,16 @@ final class SearchSchoolCollectionViewCell: UICollectionViewCell {
         guard let text = schoolTextField.text else { return }
         self.viewModel?.searchSchoolText = text
         if !text.isEmpty {
-            changeTextFieldRigthView(view: .clearImage)
+            changeTextFieldRightView(view: .clearImage)
+        } else {
+            changeTextFieldRightView(view: .searchImage)
         }
     }
     
     @objc private func didSelectClearTextButton(_ sender: UIButton) {
         schoolTextField.text?.removeAll()
         self.viewModel?.searchSchoolText = .empty
-        changeTextFieldRigthView(view: .searchImage)
+        changeTextFieldRightView(view: .searchImage)
         closeSearchScoolTableView()
     }
     
@@ -279,7 +281,7 @@ final class SearchSchoolCollectionViewCell: UICollectionViewCell {
         }
     }
     
-    public func changeTextFieldRigthView(view: TextFieldRightViewType) {
+    public func changeTextFieldRightView(view: TextFieldRightViewType) {
         switch view {
         case .spinner:
             schoolTextField.rightView = spinner

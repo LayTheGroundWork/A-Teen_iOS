@@ -13,8 +13,10 @@ import UIKit
 
 public protocol PhoneNumberViewControllerCoordinator: AnyObject {
     func didFinish()
+    func closeSheet()
     func openVerificationCompleteDialog()
     func openExistingUserLoginDialog()
+    func openNoneExistingUserDialog()
     func openInValidCodeNumberDialog()
 }
 
@@ -211,15 +213,41 @@ extension PhoneNumberViewController: PhoneNumberCollectionViewCellDelegate {
 
 extension PhoneNumberViewController: CertificationCodeCollectionViewCellDelegate {
     public func didSelectNextButton(registrationStatus: RegistrationStatus) {
-        switch registrationStatus {
-        case .signedUp:
-            self.coordinator?.openExistingUserLoginDialog()
-
-        case .notSignedUp:
-            self.coordinator?.openVerificationCompleteDialog()
-
-        case .inValidCodeNumber:
-            self.coordinator?.openInValidCodeNumberDialog()
+        switch viewModel.signType{
+        case .signIn:
+            switch registrationStatus {
+            case .signedUp:
+                self.viewModel.signIn { [weak self] result in
+                    guard let self = self else { return }
+                    switch result {
+                    case true:
+                        DispatchQueue.main.async {
+                            self.coordinator?.closeSheet()
+                        }
+                    case false:
+                        DispatchQueue.main.async {
+                            self.coordinator?.closeSheet()
+                        }
+                        print("로그인 실패")
+                    }
+                }
+            case .notSignedUp:
+                self.coordinator?.openNoneExistingUserDialog()
+            case .inValidCodeNumber:
+                self.coordinator?.openInValidCodeNumberDialog()
+            }
+        case .signUp:
+            switch registrationStatus {
+            case .signedUp:
+                self.coordinator?.openExistingUserLoginDialog()
+                
+            case .notSignedUp:
+                self.coordinator?.openVerificationCompleteDialog()
+                
+            case .inValidCodeNumber:
+                self.coordinator?.openInValidCodeNumberDialog()
+            }
         }
+        
     }
 }

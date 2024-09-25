@@ -53,7 +53,7 @@ final class LinksDialogViewController: UIViewController {
     
     private lazy var instagramTextField = makeTextField(tag: 0, image: DesignSystemAsset.instagramLogo.image)
     private lazy var xTextField = makeTextField(tag: 1, image: DesignSystemAsset.xLogo.image)
-    private lazy var tiktokTextField = makeTextField(tag: 2, image: DesignSystemAsset.tiktokLogo.image)
+    private lazy var tiktokTextField = makeTextField(tag: 2, image: DesignSystemAsset.tikTokLogo.image)
     private lazy var youtubeTextField = makeTextField(tag: 3, image: DesignSystemAsset.youtubeLogo.image)
     
     private lazy var stackView: UIStackView = {

@@ -164,23 +164,43 @@ final class SignUpViewController: UIViewController {
             }.store(in: &cancellable)
     }
     
+    
     // MARK: - Actions
     @objc private func didSelectNextButton(_ sender: UIButton) {
         guard currentIndexPath.section < collectionView.numberOfSections - 1 else {
-            coordinator?.didSelectService()
+            viewModel.signUp() { [weak self] result in
+                guard let self = self else { return }
+                switch result {
+                case true:
+                    self.coordinator?.didSelectService()
+                case false:
+                    print("회원가입 실패")
+                }
+            }
             return
         }
         
-        currentIndexPath.section += 1
-        progressView.setProgress(progressView.progress + ViewValues.signUpProgress, animated: true)
-        collectionView.scrollToItem(
-            at: currentIndexPath,
-            at: .centeredHorizontally,
-            animated: true
-        )
-        nextButton.isEnabled = false
-        nextButton.backgroundColor = DesignSystemAsset.gray03.color
-        view.endEditing(true)
+        switch currentIndexPath.section {
+        case 0:
+            viewModel.duplicationCheck { [weak self] check in
+                guard let self = self else { return }
+                print(check)
+                DispatchQueue.main.async {
+                    if check {
+                        self.changeNextCell()
+                    } else {
+                        
+                        guard let cell = self.collectionView.cellForItem(at: IndexPath(item: 0, section: 0)) as? UserIdCollectionViewCell else { return }
+                        cell.changeLabelByDuplicationCheck()
+                    }
+                }
+            }
+        case 1, 2, 3, 4, 5:
+            changeNextCell()
+            
+        default:
+            break
+        }
     }
     
     @objc private func didSelectBackButton(_ sender: UIBarButtonItem) {
@@ -189,30 +209,30 @@ final class SignUpViewController: UIViewController {
             return
         }
         switch currentIndexPath.section {
-        // 유저 아이디
+            // 유저 이름
         case 1:
             let cell = collectionView.cellForItem(at: currentIndexPath) as? UserNameCollectionViewCell
             cell?.textField.text = .empty
             cell?.contentView.endEditing(true)
-        // 생년월일
+            // 생년월일
         case 2:
             let cell = collectionView.cellForItem(at: currentIndexPath) as? UserBirthCollectionViewCell
             cell?.birthButton.customLabel.attributedText = nil
             cell?.birthButton.customLabel.text = AppLocalized.userBirthSelectButton
             break
-        // 학교 선택
+            // 학교 선택
         case 3:
             let cell = collectionView.cellForItem(at: currentIndexPath) as? SearchSchoolCollectionViewCell
             cell?.schoolTextField.text = .empty
             cell?.tableBackgroundView.isHidden = true
             cell?.contentView.endEditing(true)
             break
-        // 카테고리 선택
+            // 카테고리 선택
         case 4:
             let cell = collectionView.cellForItem(at: currentIndexPath) as? SelectCategoryCollectionViewCell
             cell?.contentView.endEditing(true)
             break
-        // 사진 선택
+            // 사진 선택
         case 5:
             let cell = collectionView.cellForItem(at: currentIndexPath) as? SelectPhotoCollectionViewCell
             cell?.contentView.endEditing(true)
@@ -230,6 +250,20 @@ final class SignUpViewController: UIViewController {
         nextButton.isEnabled = true
         nextButton.backgroundColor = .black
     }
+    
+    func changeNextCell() {
+        currentIndexPath.section += 1
+        progressView.setProgress(progressView.progress + ViewValues.signUpProgress, animated: true)
+        collectionView.scrollToItem(
+            at: currentIndexPath,
+            at: .centeredHorizontally,
+            animated: true
+        )
+        nextButton.isEnabled = false
+        nextButton.backgroundColor = DesignSystemAsset.gray03.color
+        view.endEditing(true)
+    }
+    
 }
 
 // MARK: - Extensions here
@@ -249,12 +283,12 @@ extension SignUpViewController: UICollectionViewDataSource {
         cellForItemAt indexPath: IndexPath
     ) -> UICollectionViewCell {
         switch indexPath.section {
-
+            
         case 0:
             guard
                 let cell = collectionView.dequeueReusableCell(
-                withReuseIdentifier: UserIdCollectionViewCell.reuseIdentifier,
-                for: indexPath) as? UserIdCollectionViewCell
+                    withReuseIdentifier: UserIdCollectionViewCell.reuseIdentifier,
+                    for: indexPath) as? UserIdCollectionViewCell
             else {
                 return UICollectionViewCell()
             }
@@ -267,8 +301,8 @@ extension SignUpViewController: UICollectionViewDataSource {
         case 1:
             guard
                 let cell = collectionView.dequeueReusableCell(
-                withReuseIdentifier: UserNameCollectionViewCell.reuseIdentifier,
-                for: indexPath) as? UserNameCollectionViewCell
+                    withReuseIdentifier: UserNameCollectionViewCell.reuseIdentifier,
+                    for: indexPath) as? UserNameCollectionViewCell
             else {
                 return UICollectionViewCell()
             }
@@ -281,8 +315,8 @@ extension SignUpViewController: UICollectionViewDataSource {
         case 2:
             guard
                 let cell = collectionView.dequeueReusableCell(
-                withReuseIdentifier: UserBirthCollectionViewCell.reuseIdentifier,
-                for: indexPath) as? UserBirthCollectionViewCell
+                    withReuseIdentifier: UserBirthCollectionViewCell.reuseIdentifier,
+                    for: indexPath) as? UserBirthCollectionViewCell
             else {
                 return UICollectionViewCell()
             }
@@ -295,12 +329,12 @@ extension SignUpViewController: UICollectionViewDataSource {
             )
             
             return cell
-   
+            
         case 3:
             guard
                 let cell = collectionView.dequeueReusableCell(
-                withReuseIdentifier: SearchSchoolCollectionViewCell.reuseIdentifier,
-                for: indexPath) as? SearchSchoolCollectionViewCell
+                    withReuseIdentifier: SearchSchoolCollectionViewCell.reuseIdentifier,
+                    for: indexPath) as? SearchSchoolCollectionViewCell
             else {
                 return UICollectionViewCell()
             }
@@ -314,8 +348,8 @@ extension SignUpViewController: UICollectionViewDataSource {
         case 4:
             guard
                 let cell = collectionView.dequeueReusableCell(
-                withReuseIdentifier: SelectCategoryCollectionViewCell.reuseIdentifier,
-                for: indexPath) as? SelectCategoryCollectionViewCell
+                    withReuseIdentifier: SelectCategoryCollectionViewCell.reuseIdentifier,
+                    for: indexPath) as? SelectCategoryCollectionViewCell
             else {
                 return UICollectionViewCell()
             }
@@ -329,12 +363,12 @@ extension SignUpViewController: UICollectionViewDataSource {
         case 5:
             guard
                 let cell = collectionView.dequeueReusableCell(
-                withReuseIdentifier: SelectPhotoCollectionViewCell.reuseIdentifier,
-                for: indexPath) as? SelectPhotoCollectionViewCell
+                    withReuseIdentifier: SelectPhotoCollectionViewCell.reuseIdentifier,
+                    for: indexPath) as? SelectPhotoCollectionViewCell
             else {
                 return UICollectionViewCell()
             }
-
+            
             delegate = cell
             cell.setProperties(
                 coordinator: coordinator,
@@ -342,7 +376,7 @@ extension SignUpViewController: UICollectionViewDataSource {
             )
             
             return cell
-
+            
         default:
             return UICollectionViewCell()
         }
@@ -390,7 +424,7 @@ extension SignUpViewController {
     private func showSpinnerSchoolCollectionViewCell() {
         for cell in collectionView.visibleCells {
             if let searchSchoolCell = cell as? SearchSchoolCollectionViewCell {
-                searchSchoolCell.changeTextFieldRigthView(view: .spinner)
+                searchSchoolCell.changeTextFieldRightView(view: .spinner)
                 break
             }
         }
@@ -399,7 +433,7 @@ extension SignUpViewController {
     private func hideSpinnerSchoolCollectionViewCell() {
         for cell in collectionView.visibleCells {
             if let searchSchoolCell = cell as? SearchSchoolCollectionViewCell {
-                searchSchoolCell.changeTextFieldRigthView(view: .clearImage)
+                searchSchoolCell.changeTextFieldRightView(view: .clearImage)
                 break
             }
         }

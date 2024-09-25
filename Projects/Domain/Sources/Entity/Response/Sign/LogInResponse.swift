@@ -19,5 +19,4 @@ public struct LogInResponse: Decodable {
         self.authToken = authToken
         self.refreshToken = refreshToken
     }
-    
 }

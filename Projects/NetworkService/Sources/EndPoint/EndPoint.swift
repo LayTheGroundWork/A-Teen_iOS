@@ -27,7 +27,7 @@ extension EndPoint {
     }
     
     public var host: String {
-        Bundle.main.object(forInfoDictionaryKey: "HOST_VALUE") as? String ?? .empty
+        Bundle.main.object(forInfoDictionaryKey: "HOST_VALUE") as? String ?? ""
     }
     
     public var toURLRequest: URLRequest? {

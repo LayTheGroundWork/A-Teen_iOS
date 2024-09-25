@@ -6,25 +6,20 @@
 //  Copyright © 2024 ATeen. All rights reserved.
 //
 
-import Common
 import Foundation
 
 public struct ImageDataUseCaseImp: ImageDataUseCase {
-    private(set) var imageDataRepository: ImageDataRepository
-    
+    private(set) var imageDataService: ImageDataService
+        
     public init(
-        imageDataRepository: ImageDataRepository
+        imageDataService: ImageDataService
     ) {
-        self.imageDataRepository = imageDataRepository
+        self.imageDataService = imageDataService
     }
     
     public func getData(url: String?) async -> Data? {
         let convertUrl = convertToURL(url: url)
-        return await imageDataRepository.fetchData(url: convertUrl)
-    }
-    
-    public func getDataFromCache(url: String?) -> Data? {
-        imageDataRepository.getFromCache(url: url)
+        return await imageDataService.fetchData(url: convertUrl)
     }
     
     private func convertToURL(url: String?) -> URL? {

@@ -5,48 +5,59 @@
 //  Created by 최동호 on 6/28/24.
 //  Copyright © 2024 ATeen. All rights reserved.
 //
-
 import Foundation
 
 public struct SignUseCaseImp: SignUseCase {
-
-    private let repository: SignRepository
-    public let service: VerificateService
- 
+    private let signService: SignService
+    private let searchService: SearchSchoolService
+    
     public init(
-        repository: SignRepository,
-        service: VerificateService
+        signService: SignService,
+        searchService: SearchSchoolService
     ) {
-        self.repository = repository
-        self.service = service
+        self.signService = signService
+        self.searchService = searchService
     }
     
     public func signIn(
         request: LogInRequest,
         completion: @escaping (Result<LogInResponse, Error>) -> Void
     ) {
-        repository.signIn(request: request, completion: completion)
+        signService.signIn(request: request, completion: completion)
     }
     
     public func signUp(
         request: SignUpRequest,
         completion: @escaping (Result<LogInResponse, Error>) -> Void
     ) {
-        repository.signUp(request: request, completion: completion)
+        signService.signUp(request: request, completion: completion)
     }
     
     public func requestCode(
         request: VerificationCodeRequest,
         completion: @escaping () -> Void
     ) {
-        service.requestCode(request: request, completion: completion)
+        signService.requestCode(request: request, completion: completion)
     }
     
-    public func verificateCode(
+    public func verificareCode(
         request: PhoneNumberAuthRequest,
-        completion: @escaping (Result<VerificationCodeResponse, Error>) -> Void
+        completion: @escaping (String?) -> Void
     ) {
-        service.verificateCode(request: request, completion: completion)
+        signService.verificareCode(request: request, completion: completion)
+    }
+    
+    public func searchSchool(
+        request: SchoolDataRequest,
+        completion: @escaping ([SchoolData]) -> Void
+    ) {
+        searchService.searchSchool(request: request, completion: completion)
     }
    
+    public func duplicationCheck(
+        request: DuplicationCheckRequest,
+        completion: @escaping (Bool) -> Void
+    ) {
+        signService.duplicationCheck(request: request, completion: completion)
+    }
 }

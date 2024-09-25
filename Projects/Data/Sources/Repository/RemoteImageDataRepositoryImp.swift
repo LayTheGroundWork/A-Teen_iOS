@@ -1,5 +1,5 @@
 //
-//  RemoteImageDataServiceImp.swift
+//  RemoteImageDataRepositoryImp.swift
 //  Data
 //
 //  Created by 최동호 on 7/1/24.
@@ -10,16 +10,17 @@ import Domain
 import NetworkService
 import Foundation
 
-public struct RemoteImageDataServiceImp: RemoteImageDataService {
+public struct RemoteImageDataRepositoryImp: RemoteImageDataRepository {
     private let apiClientService: ApiClientService
-    
+
     public init(
         apiClientService: ApiClientService
     ) {
         self.apiClientService = apiClientService
     }
-
-    public func request(url: URL?) async -> Data? {
-        await apiClientService.request(url: url)
+        
+    public func getImageData(url: URL?) async -> Data? {
+        let data = await apiClientService.request(url: url)
+        return data
     }
 }

@@ -75,7 +75,7 @@ public enum DesignSystemAsset {
   public static let teenBadgeImage = DesignSystemImages(name: "teenBadgeImage")
   public static let instagramLogo = DesignSystemImages(name: "instagramLogo")
   public static let mainLogo = DesignSystemImages(name: "mainLogo")
-  public static let tiktokLogo = DesignSystemImages(name: "tiktokLogo")
+  public static let tikTokLogo = DesignSystemImages(name: "tikTokLogo")
   public static let xLogo = DesignSystemImages(name: "xLogo")
   public static let youtubeLogo = DesignSystemImages(name: "youtubeLogo")
   public static let grayButtonColor = DesignSystemColors(name: "grayButtonColor")
