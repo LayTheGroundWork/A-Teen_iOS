@@ -13,7 +13,7 @@ extension ChatRoomCoordinator: ReportDialogCoordinatorDelegate {
     public func didFinish(childCoordinator: Coordinator) {
         childCoordinator.navigation.dismiss(animated: false)
         removeChildCoordinator(childCoordinator)
-        navigation.popViewController(animated: false)
+        navigation.dismiss(animated: false)
     }
     
     public func didReport() {

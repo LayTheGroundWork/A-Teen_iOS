@@ -12,11 +12,15 @@ import UIKit
 
 extension ChatRoomModalCoordinator: ChatRoomModalViewControllerCoordinator {
     public func didTapLeaveButton() {
-        delegate?.didTappedLeaveButton(childCoordinator: self)
+        delegate?.didTapLeaveButton(childCoordinator: self)
     }
     
     public func didTapReportButton() {
-        let reportDialogCoordinator = coordinatorProvider.makeReportDialogCoordinator(navigation: navigation, delegate: self, childCoordinator: childCoordinators, dialogType: .chat)
+        let reportDialogCoordinator = coordinatorProvider.makeReportDialogCoordinator(
+            navigation: navigation,
+            delegate: self,
+            childCoordinator: childCoordinators,
+            dialogType: .chat)
         
         addChildCoordinatorStart(reportDialogCoordinator)
     }

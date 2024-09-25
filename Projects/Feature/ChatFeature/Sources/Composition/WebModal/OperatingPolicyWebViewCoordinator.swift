@@ -32,7 +32,7 @@ public final class OperatingPolicyWebViewCoordinator: NSObject, Coordinator {
     
     public func start() {
         guard let controller = factory.makeOperatingPolicyWbViewController(coordinator: self) else { return }
-        controller.delegate = self
+
         navigation.viewControllers = [controller]
     }
 }

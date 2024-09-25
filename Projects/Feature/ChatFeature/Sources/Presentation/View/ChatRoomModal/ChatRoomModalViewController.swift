@@ -45,7 +45,7 @@ public final class ChatRoomModalViewController: UIViewController {
     
     private lazy var modalView: UIView = {
         let view = UIView()
-        view.backgroundColor = UIColor.white
+        view.backgroundColor = DesignSystemAsset.backgroundColor.color
         view.layer.cornerRadius = ViewValues.defaultRadius
         view.isUserInteractionEnabled = true
         return view
@@ -116,6 +116,9 @@ public final class ChatRoomModalViewController: UIViewController {
     
     private func configTapGesture() {
         //탭 제스처
+        let handleGesture = UIPanGestureRecognizer(target: self, action: #selector(handleGesture(_:)))
+            modalView.addGestureRecognizer(handleGesture)
+        
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(didSelectBackView(_:)))
         view.addGestureRecognizer(tapGesture)
         
@@ -123,8 +126,8 @@ public final class ChatRoomModalViewController: UIViewController {
         modalView.addGestureRecognizer(modalTapGesture)
         
         let tableViewTap = UITapGestureRecognizer(target: self, action: #selector(handleTableViewTap(_:)))
-           tableViewTap.cancelsTouchesInView = false
-           tableView.addGestureRecognizer(tableViewTap)
+        tableViewTap.cancelsTouchesInView = false
+        tableView.addGestureRecognizer(tableViewTap)
     }
     
     func animateView() {
@@ -135,7 +138,7 @@ public final class ChatRoomModalViewController: UIViewController {
         }
     }
     
-    func closeAnimation(didSelectBirth: Bool) {
+    func closeAnimation() {
         UIView.animate(withDuration: 0.4, delay: 0, options: .showHideTransitionViews) {
             self.modalViewHeightAnchor?.update(offset: 0)
             self.view.layoutIfNeeded()
@@ -151,7 +154,7 @@ public final class ChatRoomModalViewController: UIViewController {
     }
     
     @objc func didSelectBackView(_ sender: Any) {
-        closeAnimation(didSelectBirth: false)
+        closeAnimation()
     }
     
     @objc func handleTableViewTap(_ gesture: UITapGestureRecognizer) {
@@ -161,7 +164,29 @@ public final class ChatRoomModalViewController: UIViewController {
             tableView(tableView, didSelectRowAt: indexPath)
         } else {
             // 셀 외의 영역을 탭한 경우 모달을 닫음
-            closeAnimation(didSelectBirth: false)
+            closeAnimation()
+        }
+    }
+    
+    @objc private func handleGesture(_ sender: UIPanGestureRecognizer) {
+        // 스와이프 제스쳐로 modal dismiss
+        let translation = sender.translation(in: modalView)
+        
+        switch sender.state {
+        case .changed:
+            if translation.y > 0 {
+                modalView.transform = CGAffineTransform(translationX: 0, y: translation.y)
+            }
+        case .ended:
+            if translation.y > 60 {
+                closeAnimation()
+            } else {
+                UIView.animate(withDuration: 0.3) {
+                    self.modalView.transform = .identity
+                }
+            }
+        default:
+            break
         }
     }
 }

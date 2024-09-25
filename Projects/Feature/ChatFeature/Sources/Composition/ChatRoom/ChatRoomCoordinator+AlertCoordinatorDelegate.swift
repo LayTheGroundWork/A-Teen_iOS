@@ -10,7 +10,6 @@ import Foundation
 import FeatureDependency
 
 extension ChatRoomCoordinator: AlertCoordinatorDelegate {
-    
     public func didFinish(childCoordinator: Coordinator, selectIndex: Int) {
         removeChildCoordinator(childCoordinator)
         navigation.dismiss(animated: false)

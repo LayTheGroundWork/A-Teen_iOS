@@ -16,6 +16,7 @@ public final class ReportDialogCoordinator: Coordinator {
     var dialogType: ReportDialogType
     weak var delegate: ReportDialogCoordinatorDelegate?
     public let coordinatorProvider: CoordinatorProvider
+    public var rootViewController: UIViewController?
     
     public init(
         navigation: Navigation,
@@ -38,7 +39,6 @@ public final class ReportDialogCoordinator: Coordinator {
             coordinator: self,
             dialogType: dialogType
         )
-        
         self.navigation.pushViewController(controller, animated: false)
     }
 }

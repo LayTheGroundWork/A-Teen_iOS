@@ -11,8 +11,7 @@ import UIKit
 
 public protocol ChatRoomModalCoordinatorDelegate: AnyObject {
     func didFinishChatRoomModal(childCoordinator: Coordinator)
-    func didTappedReportButton(childCoordinator: Coordinator)
-    func didTappedLeaveButton(childCoordinator: Coordinator)
+    func didTapLeaveButton(childCoordinator: Coordinator)
 }
 
 public final class ChatRoomModalCoordinator: Coordinator {

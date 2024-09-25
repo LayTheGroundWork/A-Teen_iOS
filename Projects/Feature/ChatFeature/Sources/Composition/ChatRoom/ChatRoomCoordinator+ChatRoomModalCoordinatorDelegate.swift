@@ -18,17 +18,7 @@ extension ChatRoomCoordinator: ChatRoomModalCoordinatorDelegate {
         navigation.dismiss(animated: false)
     }
     
-    public func didTappedReportButton(childCoordinator: Coordinator) {
-        childCoordinator.navigation.dismissNavigation = nil
-        removeChildCoordinator(childCoordinator)
-        navigation.dismiss(animated: false)
-        
-        let reportDialogCoordinator = coordinatorProvider.makeReportDialogCoordinator(navigation: navigation, delegate: self, childCoordinator: childCoordinators, dialogType: .chat)
-        
-        addChildCoordinatorStart(reportDialogCoordinator)
-    }
-    
-    public func didTappedLeaveButton(childCoordinator: Coordinator) {
+    public func didTapLeaveButton(childCoordinator: Coordinator) {
         childCoordinator.navigation.dismissNavigation = nil
         removeChildCoordinator(childCoordinator)
         navigation.dismiss(animated: false)
