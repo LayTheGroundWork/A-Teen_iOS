@@ -49,7 +49,7 @@ enum TournamentRound: String, CaseIterable {
     }
 }
 
-public protocol TournamentViewControllerCoordinator: AnyObject { 
+public protocol TournamentViewControllerCoordinator: AnyObject {
     func quitTournament()
     func finishTournament(sector: String, session: String)
     func openQuitDialog()
@@ -167,7 +167,7 @@ public final class TournamentViewController: UIViewController {
         let indexPath = IndexPath(item: 0, section: index)
         collectionView.scrollToItem(at: indexPath,
                                     at: .centeredHorizontally,
-                                    animated: true)
+                                    animated: false)
     }
 }
 
@@ -243,6 +243,5 @@ extension TournamentViewController: TournamentRoundCollectionViewCellDelegate {
         case .end:
             break
         }
-        collectionView.reloadData()
     }
 }

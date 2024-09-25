@@ -103,11 +103,11 @@ final class TournamentRoundCollectionViewCell: UICollectionViewCell {
     }
     
     // MARK: - Actions
-    private func scrollToPage(at index: Int, animated: Bool = true) {
+    private func scrollToPage(at index: Int) {
         let indexPath = IndexPath(item: 0, section: index - 1)
         collectionView.scrollToItem(at: indexPath,
                                     at: .centeredHorizontally,
-                                    animated: animated)
+                                    animated: false)
     }
 }
 
@@ -142,29 +142,35 @@ extension TournamentRoundCollectionViewCell: UICollectionViewDataSource {
 }
 
 extension TournamentRoundCollectionViewCell: UICollectionViewDelegate {
-    func collectionView(
-        _ collectionView: UICollectionView,
-        didSelectItemAt indexPath: IndexPath
-    ) {
-        // TODO: - 유저 cell 선택 시, 동작
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        guard let cell = cell as? TournamentUserCollectionViewCell else { return }
+        
+        cell.startAnimation()
     }
 }
 
 extension TournamentRoundCollectionViewCell: TournamentUserCollectionViewCellDelegate {
-    func didTapSelectButton() {
-        if currentMatch == round?.matches {
-            currentMatch = 1
-            scrollToPage(at: currentMatch, animated: false)
-            roundDelegate?.nextRound()
-        } else {
-            currentMatch += 1
-            scrollToPage(at: currentMatch)
-            UIView.animate(withDuration: 0.25) { [self] in
-                progressView.setProgress(
-                    progressView.progress + (self.round?.progress ?? 0),
-                    animated: true)
+    func didTapSelectButton(tag: Int) {
+        guard let cell = collectionView.cellForItem(at: IndexPath(item: 0, section: currentMatch - 1)) as? TournamentUserCollectionViewCell else {
+            return
+        }
+        
+        cell.selectAnimation(tag: tag) {
+            if self.currentMatch == self.round?.matches {
+                self.currentMatch = 1
+                self.scrollToPage(at: self.currentMatch)
+                self.roundDelegate?.nextRound()
+            } else {
+                self.currentMatch += 1
+                self.scrollToPage(at: self.currentMatch)
+                UIView.animate(withDuration: 0.25) { [weak self] in
+                    guard let self = self else { return }
+                    
+                    progressView.setProgress(
+                        progressView.progress + (self.round?.progress ?? 0),
+                        animated: true)
+                }
             }
-            collectionView.reloadData()
         }
     }
 }
