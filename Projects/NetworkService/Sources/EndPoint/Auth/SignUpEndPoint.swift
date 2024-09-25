@@ -12,6 +12,10 @@ import Foundation
 public struct SignUpEndPoint: EndPoint {
     private let request: SignUpRequest
         
+    public var port: String {
+        ""
+    }
+    
     public var path: String = "/v1/api/user/sign-up"
     
     public var query: [String: String] = [:]
@@ -29,7 +33,9 @@ public struct SignUpEndPoint: EndPoint {
             "uniqueId": request.userId,
             "nickName": request.userName,
             "birthDay": request.birthDate,
-            "schoolData": request.schoolData
+            "schoolData": request.schoolData,
+            "category": request.category,
+            "tournamentJoin": request.tournamentJoin
         ]
     }
     

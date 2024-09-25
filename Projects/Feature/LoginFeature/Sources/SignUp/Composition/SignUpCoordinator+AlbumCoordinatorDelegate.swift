@@ -10,9 +10,13 @@ import FeatureDependency
 import Foundation
 
 extension SignUpCoordinator: AlbumCoordinatorDelegate {
-    public func didFinish(childCoordinator: Coordinator) {
+    public func didFinishAlbum(childCoordinator: Coordinator) {
         childCoordinator.navigation.dismissNavigation = nil
+        childCoordinator.navigation.dismissNavigationFromAlbum = nil
         removeChildCoordinator(childCoordinator)
-        navigation.dismiss(animated: true)
+        childCoordinator.navigation.dismiss(animated: true)
+        
+        guard let childCoordinator = childCoordinator as? ParentCoordinator else { return }
+        childCoordinator.clearAllChildsCoordinator()
     }
 }

@@ -31,8 +31,6 @@
 	</dict>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>사진 라이브러리에 접근하여 이미지를 업로드합니다.</string>
-	<key>PORT_NUMBER</key>
-	<string>$(PORT_NUMBER)</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
@@ -67,5 +65,7 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>UIUserInterfaceStyle</key>
+	<string>Light</string>
 </dict>
 </plist>

@@ -11,10 +11,10 @@ import DesignSystem
 import UIKit
 
 public class IntroduceViewModel {
-    var myMbti: [String] = ["I", "N", "F", "P"]                   //나중에 서버에 있는 값 넣기(원시값)
-    var changeMbti: [String] = Array(repeating: "", count: 4)     //수정되는 값(초기값은 서버의 값과 동일하게)
-    var myWriting: String = "자기소개임~"                            //나중에 서버에 있는 값 넣기(원시값)
-    var changeWriting: String = ""                                //수정되는 값(초기값은 서버의 값과 동일하게)
+    var myMbti: [String]
+    var myWriting: String
+    var changeMbti: [String] = []
+    var changeWriting: String = ""
     
     let mbtiExplain: [(String, String)] = [
         ("E", "외향형"),
@@ -27,6 +27,19 @@ public class IntroduceViewModel {
         ("P", "인식형 (융통성)")
     ]
     
+    public init(
+        myMbti: [String],
+        myWriting: String
+    ) {
+        self.myMbti = myMbti
+        self.myWriting = myWriting
+        
+        self.changeMbti = myMbti
+        self.changeWriting = myWriting
+    }
+}
+
+extension IntroduceViewModel {
     func changeMyMbti(index: Int, completion: (Int) -> Void) {
         var clearIndex = -1
         switch index {
@@ -60,13 +73,17 @@ public class IntroduceViewModel {
         completion(clearIndex)
     }
     
-    func saveChangeValue(completion: @escaping(Bool) -> Void) {
+    func checkChangeIntroduce() -> Bool {
+        if myMbti != changeMbti || myWriting != changeWriting {
+            return true
+        }
+        return false
+    }
+    
+    func saveChangeValue(completion: @escaping() -> Void) {
         if myMbti != changeMbti || myWriting != changeWriting {
             //TODO: 서버 저장 로직(mbti 완성 안됬을떄랑 소개글 비었을때 생갹해야됨)
-            completion(true)
-        } else {
-            print("변경사항 없음")
-            completion(false)
+            completion()
         }
     }
 }

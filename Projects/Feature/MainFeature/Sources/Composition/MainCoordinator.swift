@@ -19,6 +19,7 @@ public final class MainCoordinator: Coordinator {
     public let factory: MainFactory
     public var childCoordinators: [Coordinator] = []
     weak var delegate: MainCoordinatorDelegate?
+    weak var mainViewControllerDelegate: MainViewControllerDelegate?
     public let coordinatorProvider: CoordinatorProvider
     
     public init(
@@ -35,6 +36,7 @@ public final class MainCoordinator: Coordinator {
     
     public func start() {
         let controller = factory.makeMainViewController(coordinator: self)
+        mainViewControllerDelegate = controller as? any MainViewControllerDelegate
         navigation.pushViewController(controller, animated: true)
     }
     

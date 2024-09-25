@@ -144,7 +144,8 @@ public struct MainTabFactoryImp: MainTabFactory {
         let factory = ProfileFactoryImp()
         let navigation = NavigationImp(rootViewController: UINavigationController())
         return ProfileCoordinator(
-            navigation: navigation,
+            navigation: navigation, 
+            coordinatorProvider: coordinatorProvider,
             factory: factory,
             delegate: delegate)
     }

@@ -10,5 +10,4 @@ import Foundation
 
 public protocol ImageDataUseCase {
     func getData(url: String?) async -> Data?
-    func getDataFromCache(url: String?) -> Data?
 }

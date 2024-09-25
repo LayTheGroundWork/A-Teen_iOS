@@ -16,7 +16,7 @@ public final class ProfileDetailCoordinatorImp: ProfileDetailCoordinator {
     public var navigation: Navigation
     public var childCoordinators: [Coordinator]
     
-    private weak var delegate: ProfileDetailCoordinatorDelegate?
+    weak var delegate: ProfileDetailCoordinatorDelegate?
     
     public init(
         factory: ProfileDetailFactory,
@@ -40,11 +40,4 @@ public final class ProfileDetailCoordinatorImp: ProfileDetailCoordinator {
         navigation.viewControllers = [controller]
     }
 }
-
-extension ProfileDetailCoordinatorImp: ProfileDetailViewControllerCoordinator {
-    public func didFinishFlow() {
-        delegate?.didFinish(childCoordinator: self)
-    }
-}
-
 extension ProfileDetailCoordinatorImp: ParentCoordinator { }

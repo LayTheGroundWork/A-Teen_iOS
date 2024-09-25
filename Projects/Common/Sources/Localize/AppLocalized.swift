@@ -13,6 +13,7 @@ public enum AppLocalized {
     
     public static let showMoreButton = "더보기"
     
+    public static let startButton = "시작하기"
     public static let publicRelations = "자기 소개"
     public static let tenQuestions = "10문 10답"
     public static let voteButton = "투표하기"
@@ -102,8 +103,11 @@ public enum AppLocalized {
                                                 """
     public static let existingUserDialogTitle = "이미 가입된 사용자에요!"
     public static let existingUserDialogMessage = "바로 로그인 할까요?"
+    public static let noneExistingUserDialogTitle = "가입되지 않은 사용자에요!"
+    public static let noneExistingUserDialogMessage = "바로 회원가입 할까요?"
     public static let invalidCodeNumberDialogTitle = "인증번호가 틀렸어요!"
     
+
     // MARK: - Report
     public static let reportDialogTitle = "신고 사유"
     public static let reportDialogViolenceReason = "폭력성 또는 선정적인 프로필"
@@ -122,6 +126,7 @@ public enum AppLocalized {
     public static let userIDNumberOfCharactersErrrorMessage = "4자 이상 입력해주세요."
     public static let userIDLowercaseLetterOrNumberErrrorMessage = "영어 소문자 또는 숫자만 입력 해주세요."
     public static let userIDCount = "/11"
+    public static let userIDDuplicationCheckErrorMessage = "중복된 아이디입니다."
     public static let userNameNumberErrrorMessage = "2자 이상 입력해주세요."
     public static let userNameIncorrectKoreanErrorMessage = "한글을 바르게 입력해주세요."
     public static let userNameCount = "/8"
@@ -129,16 +134,24 @@ public enum AppLocalized {
     public static let userBirthSelectButton = "태어난 날을 선택해주세요"
     public static let userBirthServiceTermsButton = "서비스 약관 바로 보기"
     public static let searchSchoolTitle = "다니고 있는\n학교를 알려주세요"
-    
+    public static let selectCategoryTitle = """
+                                            TEEN에서 자랑할 나만의
+                                            카테고리를 골라주세요!
+                                            """
+    public static let categoryMaximumText = "하나의 카테고리를 선택할 수 있어요!"
     // MARK: - Login / SelectPhoto
     public static let insertMediaText = "TEEN에서 자랑할\n사진이나 동영상을 추가해보세요"
     public static let maxInsertMediaCountText = "*최대 10개을 등록할 수 있어요"
+    public static let photoGuideButton = "사진 가이드를 참고해주세요"
     
     // MARK: - MediaEditor
     public static let accessMediaText = "A - TEEN은 사용자가 선택한 사진만 엑세스할 수 있습니다."
     public static let selectPhotoCategoryText = "자랑할 사진의 카테고리를 선택해보세요!"
     public static let selectVideoCategoryText = "자랑할 영상의 카테고리를 선택해보세요!"
     public static let maxVideoTimeText = "영상의 길이는 최대 10초까지만 사용 가능해요"
+    
+    // MARK: - Celebrate
+    public static let celebrateTitle = "등록이 완료되었어요!\n이제 A-TEEN을 시작해보세요 :)"
     
     // MARK: - Ranking
     public static let rankingTitleLabel = "Ranking"
@@ -148,6 +161,13 @@ public enum AppLocalized {
     public static let teenTextLabel = "친구들의 프로필을\n구경해보세요!"
     public static let teenSubTitleLabel = "오늘의 TEEN"
     public static let teenDetailTextLabel = "투표 수가 많은 Teen"
+    
+    // MARK: - Profile
+    public static let editMyPhotoTitle = "사진 수정"
+    public static let photoGuideTextLabel = "*사진, 동영상 포함 최대 10장을 등록할 수 있어요"
+    public static let completeEdit = "수정 완료"
+    public static let textViewPlaceHolder = "질문에 관한 간단한 답을 작성해주세요"
+    public static let myBadgeTitle = "내 배지"
 }
 
 // MARK: - Regex 모음

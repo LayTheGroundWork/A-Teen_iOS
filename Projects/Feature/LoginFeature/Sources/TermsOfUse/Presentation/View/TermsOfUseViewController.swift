@@ -88,12 +88,12 @@ public final class TermsOfUseViewController: UIViewController {
     }()
     
     private lazy var showServiceDetailButton: CustomShowDetailButton = {
-        let button = CustomShowDetailButton()
+        let button = CustomShowDetailButton(labelText: AppLocalized.showDetailsButton)
         return button
     }()
     
     private lazy var showInformationDetailButton: CustomShowDetailButton = {
-        let button = CustomShowDetailButton()
+        let button = CustomShowDetailButton(labelText: AppLocalized.showDetailsButton)
         return button
     }()
     

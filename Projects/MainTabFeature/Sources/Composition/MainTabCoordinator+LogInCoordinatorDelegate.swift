@@ -17,6 +17,7 @@ extension MainTabCoordinator: LogInCoordinatorDelegate {
         
         guard let childCoordinator = childCoordinator as? ParentCoordinator else { return }
         childCoordinator.clearAllChildsCoordinator()
+        
         //clearAllChildsCoordinator()
         //delegate?.didFinish()
     }

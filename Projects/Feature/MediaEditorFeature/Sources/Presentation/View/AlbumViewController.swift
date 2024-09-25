@@ -189,8 +189,8 @@ final class AlbumViewController: UIViewController {
     }
     
     private func loadImages() {
-        viewModel.loadAsset {
-            self.collectionView.reloadData()
+        viewModel.loadAsset { [weak self] in
+            self?.collectionView.reloadData()
         }
     }
     
@@ -234,11 +234,11 @@ extension AlbumViewController: UICollectionViewDelegate {
             viewModel.fetchVideo(
                 phAsset: viewModel.photos[indexPath.item].phAsset,
                 size: CGSize(width: ViewValues.width, height: ViewValues.height / 2)
-            ) { asset, _ in
+            ) { [weak self] asset, _ in
                 DispatchQueue.main.async {
                     guard let asset = asset else { return }
-                    self.hideSpinner()
-                    self.coordinator?.didSelectVideo(asset: asset)
+                    self?.hideSpinner()
+                    self?.coordinator?.didSelectVideo(asset: asset)
                 }
             }
         } else {
@@ -247,10 +247,10 @@ extension AlbumViewController: UICollectionViewDelegate {
                 size: CGSize(width: ViewValues.width, height: ViewValues.height),
                 contentMode: .default,
                 version: .current
-            ) { _, image in
+            ) { [weak self] _, image in
                 DispatchQueue.main.async {
-                    self.hideSpinner()
-                    self.coordinator?.didSelectPhoto(selectImage: image)
+                    self?.hideSpinner()
+                    self?.coordinator?.didSelectPhoto(selectImage: image)
                 }
             }
         }

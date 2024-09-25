@@ -5,11 +5,11 @@
 //  Created by 노주영 on 5/30/24.
 //
 
+import Common
 import FeatureDependency
 import Foundation
 
 extension SignUpCoordinator: SignUpViewControllerCoordinator {
-
     public func didFinish() {
         delegate?.didFinish(childCoordinator: self)
     }
@@ -24,14 +24,13 @@ extension SignUpCoordinator: SignUpViewControllerCoordinator {
         navigation.present(
             selectBirthCoordinator.navigation.rootViewController,
             animated: false)
-        
-        selectBirthCoordinator.navigation.dismissNavigation = { [weak self] in
-            self?.removeChildCoordinator(selectBirthCoordinator)
-        }
     }
     
     public func didSelectService() {
-        print("123421412")
+        let celebrateCoordinator = factory.makeCelebrateCoordinator(
+            navigation: navigation,
+            delegate: self)
+        addChildCoordinatorStart(celebrateCoordinator)
     }
     
     func didSelectCell(item: Int) {
@@ -41,10 +40,11 @@ extension SignUpCoordinator: SignUpViewControllerCoordinator {
         navigation.present(
             albumCoordinator.navigation.rootViewController,
             animated: true)
-        albumCoordinator.navigation.dismissNavigation = { [weak self] in
-            self?.removeChildCoordinator(albumCoordinator)
+        
+        albumCoordinator.navigation.dismissNavigationFromAlbum = { [weak self] album in
+            self?.didFinishAlbum(childCoordinator: albumCoordinator)
+            self?.signUpViewControllerDelegate?.updateImage(index: item, selectItem: album)
         }
     }
-    
 }
 

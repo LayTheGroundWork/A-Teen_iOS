@@ -13,6 +13,7 @@ public enum Scheme: String {
 }
 
 public protocol EndPoint {
+    var port: String { get }
     var path: String { get }
     var query: [String: String] { get }
     var header: [String: String] { get }
@@ -26,11 +27,7 @@ extension EndPoint {
     }
     
     public var host: String {
-        Bundle.main.object(forInfoDictionaryKey: "HOST_VALUE") as? String ?? .empty
-    }
-    
-    public var port: String {
-        Bundle.main.object(forInfoDictionaryKey: "PORT_NUMBER") as? String ?? .empty
+        Bundle.main.object(forInfoDictionaryKey: "HOST_VALUE") as? String ?? ""
     }
     
     public var toURLRequest: URLRequest? {

@@ -22,7 +22,7 @@ public final class LogInCoordinator: Coordinator {
     public init(
         navigation: Navigation,
         factory: LogInFactory,
-        delegate: LogInCoordinatorDelegate? = nil,
+        delegate: LogInCoordinatorDelegate,
         coordinatorProvider: CoordinatorProvider
     ) {
         self.navigation = navigation

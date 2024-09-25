@@ -7,60 +7,92 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0375F1212C26E168412375A2 /* MyBadgeCoordinator+MyBadgeDetailCoordinatorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BBB35D1BF6D9D21B84F1BF7 /* MyBadgeCoordinator+MyBadgeDetailCoordinatorDelegate.swift */; };
+		130D661FE6C4DA29D6C1F5D7 /* EditMyPhotoCoordinator+AlbumCoordinatorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0526780B1279690F2786B38C /* EditMyPhotoCoordinator+AlbumCoordinatorDelegate.swift */; };
+		18685FA42291823E8E083BF7 /* QuestionsDialogCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 687B19A705EB0B12FB42F5AC /* QuestionsDialogCoordinator.swift */; };
 		1AF2769C08BB127855B1AAF0 /* SettingsViewNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1413DD890A39C746AB537CAD /* SettingsViewNavigation.swift */; };
 		1D34015903FDEA9D60557488 /* IntroduceWritingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C0D32AAEED5B693EDBC860B /* IntroduceWritingCollectionViewCell.swift */; };
-		1F3B43E6A5A54543E49661D3 /* ProfileCoordinator+LinksDialogCoordinatorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFBC6A99BD5AEF5A4F240BB6 /* ProfileCoordinator+LinksDialogCoordinatorDelegate.swift */; };
-		219B3EBC5E815DEA41F36A75 /* QuestionsCoordinator+QuestionsViewControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B854E47250B7F0759FD475 /* QuestionsCoordinator+QuestionsViewControllerCoordinator.swift */; };
-		2FDA4DB82F6B97790A75DA23 /* QuestionsDialogCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8A6E4BFE0D267FED044D78 /* QuestionsDialogCoordinator.swift */; };
+		1E5A99F2607A64DAFC414DE7 /* EditSchoolCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C18BDF74BE388AE73083625A /* EditSchoolCoordinator.swift */; };
+		23A9D4DEB961BA5A80640B24 /* ProfileCoordinator+IntroduceCoordinatorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0CFC63F0F34EC7E92641957 /* ProfileCoordinator+IntroduceCoordinatorDelegate.swift */; };
+		23B3EC454B0AB9F7C8DAC74B /* MyBadgeDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E33041A65FDF4B20DC460328 /* MyBadgeDetailViewController.swift */; };
+		293D2B97656E4CB9C100C1B1 /* MyBadgeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E224FA47A52867E5A97AB323 /* MyBadgeCoordinator.swift */; };
+		2D5C6EF39A882655333C1568 /* ProfileCoordinator+EditMyPhotoCoordinatorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DD8EA8B7B99BE3D946CC830 /* ProfileCoordinator+EditMyPhotoCoordinatorDelegate.swift */; };
+		2F2CEA64BF582C4D10F2026D /* EditMyPhotoFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4DDD779755E55385FF7ADF /* EditMyPhotoFactory.swift */; };
 		30C7883EC5C80AFFCCFE5A72 /* LinksDialogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35AEF625E9EB80A53BF3D7F9 /* LinksDialogViewController.swift */; };
+		3565A23244CA4DADCC6C28CD /* QuestionsCoordinator+QuestionDetailCoordinatorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6FB62618C3E6E1535D893E /* QuestionsCoordinator+QuestionDetailCoordinatorDelegate.swift */; };
+		380666B3922B133EE56AD689 /* QuestionsDialogCoordinator+QuestionsDialogViewControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E21E786AD27740AF2FBB59 /* QuestionsDialogCoordinator+QuestionsDialogViewControllerCoordinator.swift */; };
+		3869417234C72B96909C7A02 /* MyBadgeDetailCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EAEF31D62698CD447C34756 /* MyBadgeDetailCoordinator.swift */; };
 		3A480E1F26D6029058F0BC75 /* QuestionsDialogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC31044E1AB78EF985832B8 /* QuestionsDialogViewController.swift */; };
+		3C0E26671072CA6379BE227F /* LinksDialogCoordinator+LinksDialogViewControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE346145CD9601D3DCA3792E /* LinksDialogCoordinator+LinksDialogViewControllerCoordinator.swift */; };
 		3C18489A1B8F90BB85A66ACC /* QuestionsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 087243634A26307538522694 /* QuestionsViewModel.swift */; };
-		4AFD0F9D8DF425434B63259A /* AddLinkCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F747AB2A08BCECA60C35CF12 /* AddLinkCollectionViewCell.swift */; };
+		3D179F40BF1B8A740254DD25 /* IntroduceCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1298EB832CDBC9AB1150C4E8 /* IntroduceCoordinator.swift */; };
+		41B9697C27BD03C202A793C0 /* MyBadgeCoordinator+MyBadgeViewControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B302CFEB01395BB58D43B7 /* MyBadgeCoordinator+MyBadgeViewControllerCoordinator.swift */; };
+		432DBA5B46B128FA01483F9F /* QuestionDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 552C0F820240F74D5B5CD0C6 /* QuestionDetailViewController.swift */; };
+		43D8E785C38AB333878D3606 /* QuestionDetailCoordinator+QuestionDetailViewControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C651EC81FFF3D65C45693E9A /* QuestionDetailCoordinator+QuestionDetailViewControllerCoordinator.swift */; };
+		4CAF14D1DB7D632923AE9427 /* ProfileCoordinator+EditUserNameCoordinatorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 616C49F340C729992E8C4FA6 /* ProfileCoordinator+EditUserNameCoordinatorDelegate.swift */; };
+		4DB85321E07520C7F547EDE1 /* EditSchoolCoordinator+EditSchoolViewControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB0619B688B307950072CE1 /* EditSchoolCoordinator+EditSchoolViewControllerCoordinator.swift */; };
+		4E3981718945AFC595F63300 /* EditUserNameFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CB07B63179C5D652285340C /* EditUserNameFactory.swift */; };
 		50C7EBDFF11158934C9027D2 /* SettingsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2FF38E5388DAF2F177352A /* SettingsCoordinator.swift */; };
+		54D815A8ED5D98E835C77659 /* EditMyPhotoCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC01A7AE75454E2CC9948591 /* EditMyPhotoCoordinator.swift */; };
+		559389EA1E1EB714F4E3B8B4 /* EditUserNameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E013464A66F82A4112ED75D /* EditUserNameViewModel.swift */; };
 		55FE9E485CF63075412F9235 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93A8444F9FE80E07A61F92F5 /* SettingsViewModel.swift */; };
+		59182DEC034E3E247E3AB2BC /* EditSchoolViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AFECEBAD23D841A3A5A19BE /* EditSchoolViewModel.swift */; };
 		5BB80EFC84503C494DD440F1 /* FeatureDependency.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 641BBD2F2133A809547B278F /* FeatureDependency.framework */; };
+		62CEB656EA00ED27DFFE73BA /* ProfileCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95CD7EDD3CB71F59D7233E1 /* ProfileCoordinator.swift */; };
+		63BDA75A1AA7DDA1953C3C58 /* ProfileFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B29ED001E6746F907D671D7 /* ProfileFactory.swift */; };
 		651C0C41583A7362A1DA6298 /* UserConfigurationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DBA6AE9367F8E0930D17190 /* UserConfigurationCoordinator.swift */; };
-		6753CE3620A26AD3322960E8 /* LinksDialogCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 004DE565F155364550DB4A46 /* LinksDialogCoordinator.swift */; };
-		70895A41B1F0B0B5B100D0B0 /* LinkTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB0D2929363226C93B98E4C /* LinkTableViewCell.swift */; };
-		7437742AB548604B9D645E25 /* ProfileCoordinator+SettingsCoordinatorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE52768296FE8ED09EDCF5E3 /* ProfileCoordinator+SettingsCoordinatorDelegate.swift */; };
-		7503FD6D25B276BACE138BE7 /* LinksCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46B648E1C1E5A399E3BF63E9 /* LinksCollectionViewCell.swift */; };
+		70DE0EAAF4F6C57528A97416 /* EditMyPhotoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BFA407D1318C8EBC50CDFF /* EditMyPhotoViewModel.swift */; };
+		717AE04B63F351AA24127857 /* MyBadgeFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39592BE852D57BACE8732F0E /* MyBadgeFactory.swift */; };
+		73363EAD433C000C18AB3FB2 /* EditMyPhotoCoordinator+EditMyPhotoViewControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC5F977CBCBAED8782A95D49 /* EditMyPhotoCoordinator+EditMyPhotoViewControllerCoordinator.swift */; };
 		755BE18E11E861FDDF150DEF /* CustomNaviView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E49EF055D5905E6493CCEF /* CustomNaviView.swift */; };
+		778FEA0055B7D693A3C63559 /* EditMyPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73515D0C838BE4DC8FF4402E /* EditMyPhotoViewController.swift */; };
+		7CAA33AA6E8AE2FF55738646 /* EditUserNameCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 559C11EB17F02E4ADE5CC78E /* EditUserNameCoordinator.swift */; };
 		7DEDC755211F4A29597FFAC4 /* QuestionsDialogTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8EB52A99D4CBBAC7D995CA9 /* QuestionsDialogTableViewCell.swift */; };
+		80B240D6510E88A94B547027 /* MyBadgeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30ED18B1A955B309970DE60F /* MyBadgeCollectionViewCell.swift */; };
 		82D6398E5EA99B4CB2D33E13 /* UserConfigurationFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7A14D63C33266DECE68E15D /* UserConfigurationFactory.swift */; };
 		84F190EE865F1BE143AEE321 /* IntroduceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D952084FA7936F875A1DB685 /* IntroduceViewController.swift */; };
-		884C0B8B51D014E5907A6A02 /* IntroduceCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5466D3C6C8A47436F09CC20 /* IntroduceCoordinator.swift */; };
-		8A98CED0067FEF0B0859573B /* CustomLinkAddButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D0F25CA220C48D63B514FE /* CustomLinkAddButton.swift */; };
 		8B346E18C8519296F391B661 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B8D902E7152C60B8C958FB /* ProfileViewController.swift */; };
+		8C653FA7AB9EDC5418D06C0A /* ProfileCoordinator+QuestionsCoordinatorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35B693A350CF2F8158ED8F1 /* ProfileCoordinator+QuestionsCoordinatorDelegate.swift */; };
+		931830C9843BE86EA3E55A9F /* ProfileCoordinator+ProfileViewControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DDD70D31242BB8DFC682928 /* ProfileCoordinator+ProfileViewControllerCoordinator.swift */; };
 		9334EDDB692BA398EC302C76 /* IntroduceMbtiButtonCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5DE40BFB4D377B1E561DAA5 /* IntroduceMbtiButtonCollectionViewCell.swift */; };
-		93EC267EF72DC6D8BE42017C /* IntroduceFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4450F46FC039ADA18CB5649 /* IntroduceFactory.swift */; };
+		9578432787970184FFA1B206 /* MyBadgeDetailCoordinator+MyBadgeDetailViewControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80AECADF6D0B6D418A18E52B /* MyBadgeDetailCoordinator+MyBadgeDetailViewControllerCoordinator.swift */; };
 		95BC236C36ABBA77349D9B34 /* CustomSelectQuestionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAF80EE55293ECE0A8225772 /* CustomSelectQuestionButton.swift */; };
+		99355073D0B05AD9790D0DAD /* IntroduceFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27F7C519BD4287E93F0B78F6 /* IntroduceFactory.swift */; };
 		9A66A7C60A02BE8DC358B9F8 /* SettingsCoordinator+SettingsViewControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A021C9386BA2E61F34B01B1 /* SettingsCoordinator+SettingsViewControllerCoordinator.swift */; };
-		9DC0756BE25C16A875E5F6B3 /* QuestionsDialogCoordinator+QuestionsDialogViewControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F95F0E8781B67004AB20C27 /* QuestionsDialogCoordinator+QuestionsDialogViewControllerCoordinator.swift */; };
+		9BC1D5DFDC96A9B004756B6C /* QuestionDetailCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B98E0626BEFB31E64FB5F0 /* QuestionDetailCoordinator.swift */; };
 		A035510A4A6EE163CA4B8A67 /* IntroduceMbtiCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C670D099F7F3EDC5E439D26D /* IntroduceMbtiCollectionViewCell.swift */; };
-		A84231931BFBC9A0E1E7D8C9 /* QuestionsFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4BFD11C9B12400672E424F6 /* QuestionsFactory.swift */; };
-		AA6C5B85743DD784AFE990D1 /* ProfileCoordinator+QuestionsCoordinatorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51773E00ED871B91A95B60A /* ProfileCoordinator+QuestionsCoordinatorDelegate.swift */; };
+		A2366D2ED1A40ED864B84B24 /* LinksDialogCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07142B8944576C8E05F10FEB /* LinksDialogCoordinator.swift */; };
+		AA94E1F84B848B6EF789EED0 /* QuestionsCoordinator+QuestionsDialogCoordinatorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0B905510F51974CF81A2A3C /* QuestionsCoordinator+QuestionsDialogCoordinatorDelegate.swift */; };
 		AB5925C31F9634BD20280D83 /* ExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D6BD7FF19595E3D572390D1 /* ExampleViewController.swift */; };
-		B62968261FB465C9CB558474 /* CustomMbtiButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881A6CF6D1DA006BCB78DB81 /* CustomMbtiButton.swift */; };
+		ABB9084AC0D96500769ACED8 /* QuestionsCoordinator+QuestionsViewControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4CC6EB29FB062E68722982 /* QuestionsCoordinator+QuestionsViewControllerCoordinator.swift */; };
+		AE376E5D75BF9251AEF369A1 /* QuestionDetailFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A091001E376CAEC51119784 /* QuestionDetailFactory.swift */; };
+		B4A48BCC23735BBD33F95FDC /* EditUserNameCoordinator+EditUserNameViewControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59A80BD548DD6EED2C6D76A5 /* EditUserNameCoordinator+EditUserNameViewControllerCoordinator.swift */; };
 		B878F46F5D147FA6A0C328A4 /* ItemSettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EEA74C36988904F75753C22 /* ItemSettingViewModel.swift */; };
 		BFADE4B2D1576800E307DAFE /* CustomLinkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523B8D3545600E5D39B2D2B5 /* CustomLinkView.swift */; };
 		C06241105876ED5A18CE8E3A /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0047357D2E6C44164FCE4A37 /* SettingsViewController.swift */; };
-		C2A87FEAC54A3B99E63DB817 /* ProfileCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3441A2CD70C4802BB06608C3 /* ProfileCoordinator.swift */; };
-		C8175EE7AAE3E0C0B3A45CCC /* LinksDialogFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 729B89851D11E20937F47A6E /* LinksDialogFactory.swift */; };
 		CC286220C6A3FAAF1496B521 /* QuestionsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F6590180222333CA02BD1AA /* QuestionsTableViewCell.swift */; };
+		CDC83D3C9B2A75C822DC9EFB /* QuestionsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2897B59F95384EB6B1D3A5D8 /* QuestionsCoordinator.swift */; };
+		CDCB94943487827A45EFF46C /* MyBadgeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD99AD43F0848BC3905A9C2C /* MyBadgeViewModel.swift */; };
+		CE686FD26519953001DBE5D3 /* EditSchoolFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = E310CC1DF36469628C9AA471 /* EditSchoolFactory.swift */; };
 		CF31723F1111CE1D7B7868F7 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A67824CBC94EB926F41E23B /* ProfileViewModel.swift */; };
-		D2160F01621D3DBB9F0B3877 /* ProfileCoordinator+IntroduceCoordinatorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 795ABA557C83383D98BF7228 /* ProfileCoordinator+IntroduceCoordinatorDelegate.swift */; };
+		D9B2E9D367082525E2957208 /* MyBadgeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A82EA3AC854D030D44C983EB /* MyBadgeViewController.swift */; };
 		DACAD6A2C03A97065E842288 /* IntroduceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F33F76681A8564608F3DE7 /* IntroduceViewModel.swift */; };
-		DB5FC79A2A35D69A18839684 /* QuestionsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B787AA2B300EEB573020337 /* QuestionsCoordinator.swift */; };
-		DEFF6D70F7D6DB2A67103B18 /* LinksDialogCoordinator+LinksDialogViewControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD99243CC94000D81C7F43F /* LinksDialogCoordinator+LinksDialogViewControllerCoordinator.swift */; };
-		E032D8884F7D05DCF70FFE4B /* QuestionsCoordinator+QuestionsDialogCoordinatorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1189D08F6204C2385B0D7C6 /* QuestionsCoordinator+QuestionsDialogCoordinatorDelegate.swift */; };
+		DCC6F7A653A199060A77C5FA /* QuestionsDialogFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B169FB2C0F16DEBD8458F7E /* QuestionsDialogFactory.swift */; };
 		E26DE4296CE0EE35791A7B04 /* QuestionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 328B1195AB0B5C831268D97D /* QuestionsViewController.swift */; };
-		EB4CDD951E2FB2A7F20B2192 /* ProfileFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1D889A2FB2244033060C6D4 /* ProfileFactory.swift */; };
-		EF45F4D9378FA1A827A7B736 /* IntroduceCoordinator+IntroduceViewControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 737994A55C1FB491A5A83C8C /* IntroduceCoordinator+IntroduceViewControllerCoordinator.swift */; };
-		F5311B514F7744F501D594C6 /* QuestionsDialogFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E7C5274F794A02F231B0ACB /* QuestionsDialogFactory.swift */; };
+		E6F1D0911F2FE80117713310 /* EditSchoolViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB73E283B32AF373B54C3B87 /* EditSchoolViewController.swift */; };
+		E96CA4DB1F146BA8D75B521A /* ProfileCoordinator+EditSchoolCoordinatorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3BC4521FA2D9E5D57F3F1EC /* ProfileCoordinator+EditSchoolCoordinatorDelegate.swift */; };
+		E9F5D9EE4DDCE7081B7FE62B /* ProfileCoordinator+LinksDialogCoordinatorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9F5AEB209AF9FB4F345AE4 /* ProfileCoordinator+LinksDialogCoordinatorDelegate.swift */; };
+		EA1D03DBB574905F4E854A74 /* IntroduceCoordinator+IntroduceViewControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D8FE7FDE10EABF538CE143 /* IntroduceCoordinator+IntroduceViewControllerCoordinator.swift */; };
+		EF9767B52C57C91CC1F01CFB /* MyBadgeDetailFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55A6C52B0B4C21E2F1BE9DD7 /* MyBadgeDetailFactory.swift */; };
+		F06AB05FD871A3409C383F32 /* QuestionsFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68FE91B2CC4851213851ACE2 /* QuestionsFactory.swift */; };
+		F3C46EDE951CE0FF815A9B4D /* CustomSchoolButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186EEC95220C5ED9FCC4BFC3 /* CustomSchoolButton.swift */; };
+		F50BE5345691F5EB0B8E641F /* ProfileCoordinator+SettingsCoordinatorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C09B1A3162D825A31E6D2A9 /* ProfileCoordinator+SettingsCoordinatorDelegate.swift */; };
+		F5C6B3B03FF9E0E536323DAE /* EditUserNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7003FAC9D51A07D9EEA2DD4D /* EditUserNameViewController.swift */; };
+		F84EB88CC95A5BE8CAE73CD4 /* LinksDialogFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = D57D6431AC9E73AB0466B0B6 /* LinksDialogFactory.swift */; };
 		F921C7F56F471F3B4DF17FCC /* UserConfigurationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C01D72B7494D5394ADD666F /* UserConfigurationViewController.swift */; };
 		FBBDC5A8AF21B30E8F2ED784 /* SettingsCoordinator+UserConfigurationCoordinatorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C93CF9A2566ADD6453D07B /* SettingsCoordinator+UserConfigurationCoordinatorDelegate.swift */; };
-		FC3205877C44FCF45F11158A /* ProfileCoordinator+ProfileViewControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 731A11DA88A7ABACFE37E26C /* ProfileCoordinator+ProfileViewControllerCoordinator.swift */; };
 		FD3E2FA7C3E0DA9EEDA147B7 /* SettingsFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A132978DEDA4EA526FE0A4 /* SettingsFactory.swift */; };
+		FF9DB13DC57CB0C1F0D5A44C /* ProfileCoordinator+MyBadgeCoordinatorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BC6A01E84E5DCB63E570A6 /* ProfileCoordinator+MyBadgeCoordinatorDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -78,63 +110,95 @@
 
 /* Begin PBXFileReference section */
 		0047357D2E6C44164FCE4A37 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
-		004DE565F155364550DB4A46 /* LinksDialogCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinksDialogCoordinator.swift; sourceTree = "<group>"; };
+		0526780B1279690F2786B38C /* EditMyPhotoCoordinator+AlbumCoordinatorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EditMyPhotoCoordinator+AlbumCoordinatorDelegate.swift"; sourceTree = "<group>"; };
 		05B8D902E7152C60B8C958FB /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		07142B8944576C8E05F10FEB /* LinksDialogCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinksDialogCoordinator.swift; sourceTree = "<group>"; };
 		087243634A26307538522694 /* QuestionsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionsViewModel.swift; sourceTree = "<group>"; };
-		0BB0D2929363226C93B98E4C /* LinkTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkTableViewCell.swift; sourceTree = "<group>"; };
+		0AB0619B688B307950072CE1 /* EditSchoolCoordinator+EditSchoolViewControllerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EditSchoolCoordinator+EditSchoolViewControllerCoordinator.swift"; sourceTree = "<group>"; };
+		0DD8EA8B7B99BE3D946CC830 /* ProfileCoordinator+EditMyPhotoCoordinatorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProfileCoordinator+EditMyPhotoCoordinatorDelegate.swift"; sourceTree = "<group>"; };
+		0EAEF31D62698CD447C34756 /* MyBadgeDetailCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyBadgeDetailCoordinator.swift; sourceTree = "<group>"; };
 		0F6590180222333CA02BD1AA /* QuestionsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionsTableViewCell.swift; sourceTree = "<group>"; };
+		1298EB832CDBC9AB1150C4E8 /* IntroduceCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroduceCoordinator.swift; sourceTree = "<group>"; };
 		1413DD890A39C746AB537CAD /* SettingsViewNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewNavigation.swift; sourceTree = "<group>"; };
+		186EEC95220C5ED9FCC4BFC3 /* CustomSchoolButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSchoolButton.swift; sourceTree = "<group>"; };
+		18E21E786AD27740AF2FBB59 /* QuestionsDialogCoordinator+QuestionsDialogViewControllerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "QuestionsDialogCoordinator+QuestionsDialogViewControllerCoordinator.swift"; sourceTree = "<group>"; };
+		1B169FB2C0F16DEBD8458F7E /* QuestionsDialogFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionsDialogFactory.swift; sourceTree = "<group>"; };
 		1CC31044E1AB78EF985832B8 /* QuestionsDialogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionsDialogViewController.swift; sourceTree = "<group>"; };
 		1DBA6AE9367F8E0930D17190 /* UserConfigurationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserConfigurationCoordinator.swift; sourceTree = "<group>"; };
-		30D0F25CA220C48D63B514FE /* CustomLinkAddButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLinkAddButton.swift; sourceTree = "<group>"; };
+		27F7C519BD4287E93F0B78F6 /* IntroduceFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroduceFactory.swift; sourceTree = "<group>"; };
+		2897B59F95384EB6B1D3A5D8 /* QuestionsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionsCoordinator.swift; sourceTree = "<group>"; };
+		2A091001E376CAEC51119784 /* QuestionDetailFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionDetailFactory.swift; sourceTree = "<group>"; };
+		30BFA407D1318C8EBC50CDFF /* EditMyPhotoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditMyPhotoViewModel.swift; sourceTree = "<group>"; };
+		30ED18B1A955B309970DE60F /* MyBadgeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyBadgeCollectionViewCell.swift; sourceTree = "<group>"; };
 		328B1195AB0B5C831268D97D /* QuestionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionsViewController.swift; sourceTree = "<group>"; };
-		3441A2CD70C4802BB06608C3 /* ProfileCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCoordinator.swift; sourceTree = "<group>"; };
 		35AEF625E9EB80A53BF3D7F9 /* LinksDialogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinksDialogViewController.swift; sourceTree = "<group>"; };
+		39592BE852D57BACE8732F0E /* MyBadgeFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyBadgeFactory.swift; sourceTree = "<group>"; };
 		3A021C9386BA2E61F34B01B1 /* SettingsCoordinator+SettingsViewControllerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SettingsCoordinator+SettingsViewControllerCoordinator.swift"; sourceTree = "<group>"; };
 		3C01D72B7494D5394ADD666F /* UserConfigurationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserConfigurationViewController.swift; sourceTree = "<group>"; };
 		3C0D32AAEED5B693EDBC860B /* IntroduceWritingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroduceWritingCollectionViewCell.swift; sourceTree = "<group>"; };
-		46B648E1C1E5A399E3BF63E9 /* LinksCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinksCollectionViewCell.swift; sourceTree = "<group>"; };
 		47A6CE17EA77D71FB5B6272E /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
 		4A67824CBC94EB926F41E23B /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
+		4C09B1A3162D825A31E6D2A9 /* ProfileCoordinator+SettingsCoordinatorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProfileCoordinator+SettingsCoordinatorDelegate.swift"; sourceTree = "<group>"; };
 		4D6BD7FF19595E3D572390D1 /* ExampleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleViewController.swift; sourceTree = "<group>"; };
 		4EEA74C36988904F75753C22 /* ItemSettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemSettingViewModel.swift; sourceTree = "<group>"; };
 		523B8D3545600E5D39B2D2B5 /* CustomLinkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLinkView.swift; sourceTree = "<group>"; };
+		552C0F820240F74D5B5CD0C6 /* QuestionDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionDetailViewController.swift; sourceTree = "<group>"; };
+		559C11EB17F02E4ADE5CC78E /* EditUserNameCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditUserNameCoordinator.swift; sourceTree = "<group>"; };
+		55A6C52B0B4C21E2F1BE9DD7 /* MyBadgeDetailFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyBadgeDetailFactory.swift; sourceTree = "<group>"; };
+		59A80BD548DD6EED2C6D76A5 /* EditUserNameCoordinator+EditUserNameViewControllerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EditUserNameCoordinator+EditUserNameViewControllerCoordinator.swift"; sourceTree = "<group>"; };
+		5B29ED001E6746F907D671D7 /* ProfileFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileFactory.swift; sourceTree = "<group>"; };
 		5B2FF38E5388DAF2F177352A /* SettingsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCoordinator.swift; sourceTree = "<group>"; };
+		5BBB35D1BF6D9D21B84F1BF7 /* MyBadgeCoordinator+MyBadgeDetailCoordinatorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MyBadgeCoordinator+MyBadgeDetailCoordinatorDelegate.swift"; sourceTree = "<group>"; };
+		616C49F340C729992E8C4FA6 /* ProfileCoordinator+EditUserNameCoordinatorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProfileCoordinator+EditUserNameCoordinatorDelegate.swift"; sourceTree = "<group>"; };
 		641BBD2F2133A809547B278F /* FeatureDependency.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FeatureDependency.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		729B89851D11E20937F47A6E /* LinksDialogFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinksDialogFactory.swift; sourceTree = "<group>"; };
-		731A11DA88A7ABACFE37E26C /* ProfileCoordinator+ProfileViewControllerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProfileCoordinator+ProfileViewControllerCoordinator.swift"; sourceTree = "<group>"; };
-		737994A55C1FB491A5A83C8C /* IntroduceCoordinator+IntroduceViewControllerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "IntroduceCoordinator+IntroduceViewControllerCoordinator.swift"; sourceTree = "<group>"; };
+		687B19A705EB0B12FB42F5AC /* QuestionsDialogCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionsDialogCoordinator.swift; sourceTree = "<group>"; };
+		68FE91B2CC4851213851ACE2 /* QuestionsFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionsFactory.swift; sourceTree = "<group>"; };
+		6B4CC6EB29FB062E68722982 /* QuestionsCoordinator+QuestionsViewControllerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "QuestionsCoordinator+QuestionsViewControllerCoordinator.swift"; sourceTree = "<group>"; };
+		6CB07B63179C5D652285340C /* EditUserNameFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditUserNameFactory.swift; sourceTree = "<group>"; };
+		6DDD70D31242BB8DFC682928 /* ProfileCoordinator+ProfileViewControllerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProfileCoordinator+ProfileViewControllerCoordinator.swift"; sourceTree = "<group>"; };
+		7003FAC9D51A07D9EEA2DD4D /* EditUserNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditUserNameViewController.swift; sourceTree = "<group>"; };
+		73515D0C838BE4DC8FF4402E /* EditMyPhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditMyPhotoViewController.swift; sourceTree = "<group>"; };
 		78F33F76681A8564608F3DE7 /* IntroduceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroduceViewModel.swift; sourceTree = "<group>"; };
-		795ABA557C83383D98BF7228 /* ProfileCoordinator+IntroduceCoordinatorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProfileCoordinator+IntroduceCoordinatorDelegate.swift"; sourceTree = "<group>"; };
-		7B787AA2B300EEB573020337 /* QuestionsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionsCoordinator.swift; sourceTree = "<group>"; };
+		7AFECEBAD23D841A3A5A19BE /* EditSchoolViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditSchoolViewModel.swift; sourceTree = "<group>"; };
 		7D75411655BD7C1F2248A03D /* ProfileFeature.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ProfileFeature.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		7E7C5274F794A02F231B0ACB /* QuestionsDialogFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionsDialogFactory.swift; sourceTree = "<group>"; };
-		881A6CF6D1DA006BCB78DB81 /* CustomMbtiButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomMbtiButton.swift; sourceTree = "<group>"; };
-		8F95F0E8781B67004AB20C27 /* QuestionsDialogCoordinator+QuestionsDialogViewControllerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "QuestionsDialogCoordinator+QuestionsDialogViewControllerCoordinator.swift"; sourceTree = "<group>"; };
+		80AECADF6D0B6D418A18E52B /* MyBadgeDetailCoordinator+MyBadgeDetailViewControllerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MyBadgeDetailCoordinator+MyBadgeDetailViewControllerCoordinator.swift"; sourceTree = "<group>"; };
 		93A8444F9FE80E07A61F92F5 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
+		98B302CFEB01395BB58D43B7 /* MyBadgeCoordinator+MyBadgeViewControllerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MyBadgeCoordinator+MyBadgeViewControllerCoordinator.swift"; sourceTree = "<group>"; };
 		9ACE8CAF734090465D7B89D5 /* Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
-		A5466D3C6C8A47436F09CC20 /* IntroduceCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroduceCoordinator.swift; sourceTree = "<group>"; };
+		9C9F5AEB209AF9FB4F345AE4 /* ProfileCoordinator+LinksDialogCoordinatorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProfileCoordinator+LinksDialogCoordinatorDelegate.swift"; sourceTree = "<group>"; };
+		9E013464A66F82A4112ED75D /* EditUserNameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditUserNameViewModel.swift; sourceTree = "<group>"; };
 		A5E49EF055D5905E6493CCEF /* CustomNaviView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNaviView.swift; sourceTree = "<group>"; };
 		A7A14D63C33266DECE68E15D /* UserConfigurationFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserConfigurationFactory.swift; sourceTree = "<group>"; };
-		AAD99243CC94000D81C7F43F /* LinksDialogCoordinator+LinksDialogViewControllerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LinksDialogCoordinator+LinksDialogViewControllerCoordinator.swift"; sourceTree = "<group>"; };
-		AFBC6A99BD5AEF5A4F240BB6 /* ProfileCoordinator+LinksDialogCoordinatorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProfileCoordinator+LinksDialogCoordinatorDelegate.swift"; sourceTree = "<group>"; };
+		A82EA3AC854D030D44C983EB /* MyBadgeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyBadgeViewController.swift; sourceTree = "<group>"; };
+		AE4DDD779755E55385FF7ADF /* EditMyPhotoFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditMyPhotoFactory.swift; sourceTree = "<group>"; };
 		B0913E9F158A7764CA30B252 /* ProfileFeature-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "ProfileFeature-Info.plist"; sourceTree = "<group>"; };
-		B1D889A2FB2244033060C6D4 /* ProfileFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileFactory.swift; sourceTree = "<group>"; };
-		B4BFD11C9B12400672E424F6 /* QuestionsFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionsFactory.swift; sourceTree = "<group>"; };
+		B3BC4521FA2D9E5D57F3F1EC /* ProfileCoordinator+EditSchoolCoordinatorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProfileCoordinator+EditSchoolCoordinatorDelegate.swift"; sourceTree = "<group>"; };
+		B8D8FE7FDE10EABF538CE143 /* IntroduceCoordinator+IntroduceViewControllerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "IntroduceCoordinator+IntroduceViewControllerCoordinator.swift"; sourceTree = "<group>"; };
 		BAF80EE55293ECE0A8225772 /* CustomSelectQuestionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSelectQuestionButton.swift; sourceTree = "<group>"; };
-		BE52768296FE8ED09EDCF5E3 /* ProfileCoordinator+SettingsCoordinatorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProfileCoordinator+SettingsCoordinatorDelegate.swift"; sourceTree = "<group>"; };
-		C1189D08F6204C2385B0D7C6 /* QuestionsCoordinator+QuestionsDialogCoordinatorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "QuestionsCoordinator+QuestionsDialogCoordinatorDelegate.swift"; sourceTree = "<group>"; };
+		BB73E283B32AF373B54C3B87 /* EditSchoolViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditSchoolViewController.swift; sourceTree = "<group>"; };
+		BC01A7AE75454E2CC9948591 /* EditMyPhotoCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditMyPhotoCoordinator.swift; sourceTree = "<group>"; };
+		C18BDF74BE388AE73083625A /* EditSchoolCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditSchoolCoordinator.swift; sourceTree = "<group>"; };
+		C651EC81FFF3D65C45693E9A /* QuestionDetailCoordinator+QuestionDetailViewControllerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "QuestionDetailCoordinator+QuestionDetailViewControllerCoordinator.swift"; sourceTree = "<group>"; };
 		C670D099F7F3EDC5E439D26D /* IntroduceMbtiCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroduceMbtiCollectionViewCell.swift; sourceTree = "<group>"; };
-		CB8A6E4BFE0D267FED044D78 /* QuestionsDialogCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionsDialogCoordinator.swift; sourceTree = "<group>"; };
-		D2B854E47250B7F0759FD475 /* QuestionsCoordinator+QuestionsViewControllerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "QuestionsCoordinator+QuestionsViewControllerCoordinator.swift"; sourceTree = "<group>"; };
+		D0CFC63F0F34EC7E92641957 /* ProfileCoordinator+IntroduceCoordinatorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProfileCoordinator+IntroduceCoordinatorDelegate.swift"; sourceTree = "<group>"; };
 		D2C93CF9A2566ADD6453D07B /* SettingsCoordinator+UserConfigurationCoordinatorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SettingsCoordinator+UserConfigurationCoordinatorDelegate.swift"; sourceTree = "<group>"; };
+		D57D6431AC9E73AB0466B0B6 /* LinksDialogFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinksDialogFactory.swift; sourceTree = "<group>"; };
 		D5DE40BFB4D377B1E561DAA5 /* IntroduceMbtiButtonCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroduceMbtiButtonCollectionViewCell.swift; sourceTree = "<group>"; };
 		D7A132978DEDA4EA526FE0A4 /* SettingsFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsFactory.swift; sourceTree = "<group>"; };
+		D7BC6A01E84E5DCB63E570A6 /* ProfileCoordinator+MyBadgeCoordinatorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProfileCoordinator+MyBadgeCoordinatorDelegate.swift"; sourceTree = "<group>"; };
 		D8EB52A99D4CBBAC7D995CA9 /* QuestionsDialogTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionsDialogTableViewCell.swift; sourceTree = "<group>"; };
 		D952084FA7936F875A1DB685 /* IntroduceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroduceViewController.swift; sourceTree = "<group>"; };
-		E4450F46FC039ADA18CB5649 /* IntroduceFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroduceFactory.swift; sourceTree = "<group>"; };
-		E51773E00ED871B91A95B60A /* ProfileCoordinator+QuestionsCoordinatorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProfileCoordinator+QuestionsCoordinatorDelegate.swift"; sourceTree = "<group>"; };
-		F747AB2A08BCECA60C35CF12 /* AddLinkCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddLinkCollectionViewCell.swift; sourceTree = "<group>"; };
+		DE346145CD9601D3DCA3792E /* LinksDialogCoordinator+LinksDialogViewControllerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LinksDialogCoordinator+LinksDialogViewControllerCoordinator.swift"; sourceTree = "<group>"; };
+		E0B905510F51974CF81A2A3C /* QuestionsCoordinator+QuestionsDialogCoordinatorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "QuestionsCoordinator+QuestionsDialogCoordinatorDelegate.swift"; sourceTree = "<group>"; };
+		E224FA47A52867E5A97AB323 /* MyBadgeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyBadgeCoordinator.swift; sourceTree = "<group>"; };
+		E310CC1DF36469628C9AA471 /* EditSchoolFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditSchoolFactory.swift; sourceTree = "<group>"; };
+		E33041A65FDF4B20DC460328 /* MyBadgeDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyBadgeDetailViewController.swift; sourceTree = "<group>"; };
+		E95CD7EDD3CB71F59D7233E1 /* ProfileCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCoordinator.swift; sourceTree = "<group>"; };
+		EC6FB62618C3E6E1535D893E /* QuestionsCoordinator+QuestionDetailCoordinatorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "QuestionsCoordinator+QuestionDetailCoordinatorDelegate.swift"; sourceTree = "<group>"; };
+		F35B693A350CF2F8158ED8F1 /* ProfileCoordinator+QuestionsCoordinatorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProfileCoordinator+QuestionsCoordinatorDelegate.swift"; sourceTree = "<group>"; };
+		F5B98E0626BEFB31E64FB5F0 /* QuestionDetailCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionDetailCoordinator.swift; sourceTree = "<group>"; };
+		FC5F977CBCBAED8782A95D49 /* EditMyPhotoCoordinator+EditMyPhotoViewControllerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EditMyPhotoCoordinator+EditMyPhotoViewControllerCoordinator.swift"; sourceTree = "<group>"; };
+		FD99AD43F0848BC3905A9C2C /* MyBadgeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyBadgeViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,12 +213,28 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0A8BDDBA5C234DD14B6A6874 /* Link */ = {
+			isa = PBXGroup;
+			children = (
+				07142B8944576C8E05F10FEB /* LinksDialogCoordinator.swift */,
+				DE346145CD9601D3DCA3792E /* LinksDialogCoordinator+LinksDialogViewControllerCoordinator.swift */,
+				D57D6431AC9E73AB0466B0B6 /* LinksDialogFactory.swift */,
+			);
+			path = Link;
+			sourceTree = "<group>";
+		};
 		177308DFAC1834BC037DF8A3 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				73515D0C838BE4DC8FF4402E /* EditMyPhotoViewController.swift */,
+				BB73E283B32AF373B54C3B87 /* EditSchoolViewController.swift */,
+				7003FAC9D51A07D9EEA2DD4D /* EditUserNameViewController.swift */,
 				D952084FA7936F875A1DB685 /* IntroduceViewController.swift */,
 				35AEF625E9EB80A53BF3D7F9 /* LinksDialogViewController.swift */,
+				E33041A65FDF4B20DC460328 /* MyBadgeDetailViewController.swift */,
+				A82EA3AC854D030D44C983EB /* MyBadgeViewController.swift */,
 				05B8D902E7152C60B8C958FB /* ProfileViewController.swift */,
+				552C0F820240F74D5B5CD0C6 /* QuestionDetailViewController.swift */,
 				1CC31044E1AB78EF985832B8 /* QuestionsDialogViewController.swift */,
 				328B1195AB0B5C831268D97D /* QuestionsViewController.swift */,
 			);
@@ -174,12 +254,10 @@
 		1C75827064F8C27BCAF9E944 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				F747AB2A08BCECA60C35CF12 /* AddLinkCollectionViewCell.swift */,
 				D5DE40BFB4D377B1E561DAA5 /* IntroduceMbtiButtonCollectionViewCell.swift */,
 				C670D099F7F3EDC5E439D26D /* IntroduceMbtiCollectionViewCell.swift */,
 				3C0D32AAEED5B693EDBC860B /* IntroduceWritingCollectionViewCell.swift */,
-				46B648E1C1E5A399E3BF63E9 /* LinksCollectionViewCell.swift */,
-				0BB0D2929363226C93B98E4C /* LinkTableViewCell.swift */,
+				30ED18B1A955B309970DE60F /* MyBadgeCollectionViewCell.swift */,
 				D8EB52A99D4CBBAC7D995CA9 /* QuestionsDialogTableViewCell.swift */,
 				0F6590180222333CA02BD1AA /* QuestionsTableViewCell.swift */,
 			);
@@ -189,26 +267,14 @@
 		2830116AFEC227D5B23017BE /* Composition */ = {
 			isa = PBXGroup;
 			children = (
-				A5466D3C6C8A47436F09CC20 /* IntroduceCoordinator.swift */,
-				737994A55C1FB491A5A83C8C /* IntroduceCoordinator+IntroduceViewControllerCoordinator.swift */,
-				E4450F46FC039ADA18CB5649 /* IntroduceFactory.swift */,
-				004DE565F155364550DB4A46 /* LinksDialogCoordinator.swift */,
-				AAD99243CC94000D81C7F43F /* LinksDialogCoordinator+LinksDialogViewControllerCoordinator.swift */,
-				729B89851D11E20937F47A6E /* LinksDialogFactory.swift */,
-				3441A2CD70C4802BB06608C3 /* ProfileCoordinator.swift */,
-				795ABA557C83383D98BF7228 /* ProfileCoordinator+IntroduceCoordinatorDelegate.swift */,
-				AFBC6A99BD5AEF5A4F240BB6 /* ProfileCoordinator+LinksDialogCoordinatorDelegate.swift */,
-				731A11DA88A7ABACFE37E26C /* ProfileCoordinator+ProfileViewControllerCoordinator.swift */,
-				E51773E00ED871B91A95B60A /* ProfileCoordinator+QuestionsCoordinatorDelegate.swift */,
-				BE52768296FE8ED09EDCF5E3 /* ProfileCoordinator+SettingsCoordinatorDelegate.swift */,
-				B1D889A2FB2244033060C6D4 /* ProfileFactory.swift */,
-				7B787AA2B300EEB573020337 /* QuestionsCoordinator.swift */,
-				C1189D08F6204C2385B0D7C6 /* QuestionsCoordinator+QuestionsDialogCoordinatorDelegate.swift */,
-				D2B854E47250B7F0759FD475 /* QuestionsCoordinator+QuestionsViewControllerCoordinator.swift */,
-				CB8A6E4BFE0D267FED044D78 /* QuestionsDialogCoordinator.swift */,
-				8F95F0E8781B67004AB20C27 /* QuestionsDialogCoordinator+QuestionsDialogViewControllerCoordinator.swift */,
-				7E7C5274F794A02F231B0ACB /* QuestionsDialogFactory.swift */,
-				B4BFD11C9B12400672E424F6 /* QuestionsFactory.swift */,
+				6D87F8B7D47DCE27E61637B0 /* EditMyPhoto */,
+				51B0605C7880F3F23B0BBE57 /* EditSchool */,
+				F3B232AB76805AC75CF8C682 /* EditUserName */,
+				3E6465A0CECA42E1B055124E /* Introduce */,
+				0A8BDDBA5C234DD14B6A6874 /* Link */,
+				F47BAAEFB7AF589FF42615F4 /* MyBadge */,
+				C47CD8CB0263CCE1A5415102 /* Profile */,
+				DA1718088B9228A46A5FDB38 /* Question */,
 			);
 			path = Composition;
 			sourceTree = "<group>";
@@ -221,6 +287,16 @@
 			);
 			sourceTree = "<group>";
 		};
+		3E6465A0CECA42E1B055124E /* Introduce */ = {
+			isa = PBXGroup;
+			children = (
+				1298EB832CDBC9AB1150C4E8 /* IntroduceCoordinator.swift */,
+				B8D8FE7FDE10EABF538CE143 /* IntroduceCoordinator+IntroduceViewControllerCoordinator.swift */,
+				27F7C519BD4287E93F0B78F6 /* IntroduceFactory.swift */,
+			);
+			path = Introduce;
+			sourceTree = "<group>";
+		};
 		46CD4FFB106A01D9912F0624 /* Project */ = {
 			isa = PBXGroup;
 			children = (
@@ -229,6 +305,16 @@
 				90666643827C8F0AB521673E /* Sources */,
 			);
 			name = Project;
+			sourceTree = "<group>";
+		};
+		51B0605C7880F3F23B0BBE57 /* EditSchool */ = {
+			isa = PBXGroup;
+			children = (
+				C18BDF74BE388AE73083625A /* EditSchoolCoordinator.swift */,
+				0AB0619B688B307950072CE1 /* EditSchoolCoordinator+EditSchoolViewControllerCoordinator.swift */,
+				E310CC1DF36469628C9AA471 /* EditSchoolFactory.swift */,
+			);
+			path = EditSchool;
 			sourceTree = "<group>";
 		};
 		6184C217E37EB701C2FF95DD /* Derived */ = {
@@ -242,11 +328,26 @@
 		669B2F4830F983396D5EF1F2 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				30BFA407D1318C8EBC50CDFF /* EditMyPhotoViewModel.swift */,
+				7AFECEBAD23D841A3A5A19BE /* EditSchoolViewModel.swift */,
+				9E013464A66F82A4112ED75D /* EditUserNameViewModel.swift */,
 				78F33F76681A8564608F3DE7 /* IntroduceViewModel.swift */,
+				FD99AD43F0848BC3905A9C2C /* MyBadgeViewModel.swift */,
 				4A67824CBC94EB926F41E23B /* ProfileViewModel.swift */,
 				087243634A26307538522694 /* QuestionsViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		6D87F8B7D47DCE27E61637B0 /* EditMyPhoto */ = {
+			isa = PBXGroup;
+			children = (
+				BC01A7AE75454E2CC9948591 /* EditMyPhotoCoordinator.swift */,
+				0526780B1279690F2786B38C /* EditMyPhotoCoordinator+AlbumCoordinatorDelegate.swift */,
+				FC5F977CBCBAED8782A95D49 /* EditMyPhotoCoordinator+EditMyPhotoViewControllerCoordinator.swift */,
+				AE4DDD779755E55385FF7ADF /* EditMyPhotoFactory.swift */,
+			);
+			path = EditMyPhoto;
 			sourceTree = "<group>";
 		};
 		6DEBA1DFE42D1B1B41921CC8 /* InfoPlists */ = {
@@ -260,10 +361,9 @@
 		72F7BC80C489E3448FF9AFB7 /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				30D0F25CA220C48D63B514FE /* CustomLinkAddButton.swift */,
 				523B8D3545600E5D39B2D2B5 /* CustomLinkView.swift */,
-				881A6CF6D1DA006BCB78DB81 /* CustomMbtiButton.swift */,
 				A5E49EF055D5905E6493CCEF /* CustomNaviView.swift */,
+				186EEC95220C5ED9FCC4BFC3 /* CustomSchoolButton.swift */,
 				BAF80EE55293ECE0A8225772 /* CustomSelectQuestionButton.swift */,
 			);
 			path = Components;
@@ -340,6 +440,66 @@
 			);
 			name = Config;
 			path = ../../../Config;
+			sourceTree = "<group>";
+		};
+		C47CD8CB0263CCE1A5415102 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				E95CD7EDD3CB71F59D7233E1 /* ProfileCoordinator.swift */,
+				0DD8EA8B7B99BE3D946CC830 /* ProfileCoordinator+EditMyPhotoCoordinatorDelegate.swift */,
+				B3BC4521FA2D9E5D57F3F1EC /* ProfileCoordinator+EditSchoolCoordinatorDelegate.swift */,
+				616C49F340C729992E8C4FA6 /* ProfileCoordinator+EditUserNameCoordinatorDelegate.swift */,
+				D0CFC63F0F34EC7E92641957 /* ProfileCoordinator+IntroduceCoordinatorDelegate.swift */,
+				9C9F5AEB209AF9FB4F345AE4 /* ProfileCoordinator+LinksDialogCoordinatorDelegate.swift */,
+				D7BC6A01E84E5DCB63E570A6 /* ProfileCoordinator+MyBadgeCoordinatorDelegate.swift */,
+				6DDD70D31242BB8DFC682928 /* ProfileCoordinator+ProfileViewControllerCoordinator.swift */,
+				F35B693A350CF2F8158ED8F1 /* ProfileCoordinator+QuestionsCoordinatorDelegate.swift */,
+				4C09B1A3162D825A31E6D2A9 /* ProfileCoordinator+SettingsCoordinatorDelegate.swift */,
+				5B29ED001E6746F907D671D7 /* ProfileFactory.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		DA1718088B9228A46A5FDB38 /* Question */ = {
+			isa = PBXGroup;
+			children = (
+				F5B98E0626BEFB31E64FB5F0 /* QuestionDetailCoordinator.swift */,
+				C651EC81FFF3D65C45693E9A /* QuestionDetailCoordinator+QuestionDetailViewControllerCoordinator.swift */,
+				2A091001E376CAEC51119784 /* QuestionDetailFactory.swift */,
+				2897B59F95384EB6B1D3A5D8 /* QuestionsCoordinator.swift */,
+				EC6FB62618C3E6E1535D893E /* QuestionsCoordinator+QuestionDetailCoordinatorDelegate.swift */,
+				E0B905510F51974CF81A2A3C /* QuestionsCoordinator+QuestionsDialogCoordinatorDelegate.swift */,
+				6B4CC6EB29FB062E68722982 /* QuestionsCoordinator+QuestionsViewControllerCoordinator.swift */,
+				687B19A705EB0B12FB42F5AC /* QuestionsDialogCoordinator.swift */,
+				18E21E786AD27740AF2FBB59 /* QuestionsDialogCoordinator+QuestionsDialogViewControllerCoordinator.swift */,
+				1B169FB2C0F16DEBD8458F7E /* QuestionsDialogFactory.swift */,
+				68FE91B2CC4851213851ACE2 /* QuestionsFactory.swift */,
+			);
+			path = Question;
+			sourceTree = "<group>";
+		};
+		F3B232AB76805AC75CF8C682 /* EditUserName */ = {
+			isa = PBXGroup;
+			children = (
+				559C11EB17F02E4ADE5CC78E /* EditUserNameCoordinator.swift */,
+				59A80BD548DD6EED2C6D76A5 /* EditUserNameCoordinator+EditUserNameViewControllerCoordinator.swift */,
+				6CB07B63179C5D652285340C /* EditUserNameFactory.swift */,
+			);
+			path = EditUserName;
+			sourceTree = "<group>";
+		};
+		F47BAAEFB7AF589FF42615F4 /* MyBadge */ = {
+			isa = PBXGroup;
+			children = (
+				E224FA47A52867E5A97AB323 /* MyBadgeCoordinator.swift */,
+				5BBB35D1BF6D9D21B84F1BF7 /* MyBadgeCoordinator+MyBadgeDetailCoordinatorDelegate.swift */,
+				98B302CFEB01395BB58D43B7 /* MyBadgeCoordinator+MyBadgeViewControllerCoordinator.swift */,
+				0EAEF31D62698CD447C34756 /* MyBadgeDetailCoordinator.swift */,
+				80AECADF6D0B6D418A18E52B /* MyBadgeDetailCoordinator+MyBadgeDetailViewControllerCoordinator.swift */,
+				55A6C52B0B4C21E2F1BE9DD7 /* MyBadgeDetailFactory.swift */,
+				39592BE852D57BACE8732F0E /* MyBadgeFactory.swift */,
+			);
+			path = MyBadge;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -419,45 +579,77 @@
 				55FE9E485CF63075412F9235 /* SettingsViewModel.swift in Sources */,
 				1AF2769C08BB127855B1AAF0 /* SettingsViewNavigation.swift in Sources */,
 				F921C7F56F471F3B4DF17FCC /* UserConfigurationViewController.swift in Sources */,
-				8A98CED0067FEF0B0859573B /* CustomLinkAddButton.swift in Sources */,
 				BFADE4B2D1576800E307DAFE /* CustomLinkView.swift in Sources */,
-				B62968261FB465C9CB558474 /* CustomMbtiButton.swift in Sources */,
 				755BE18E11E861FDDF150DEF /* CustomNaviView.swift in Sources */,
+				F3C46EDE951CE0FF815A9B4D /* CustomSchoolButton.swift in Sources */,
 				95BC236C36ABBA77349D9B34 /* CustomSelectQuestionButton.swift in Sources */,
-				EF45F4D9378FA1A827A7B736 /* IntroduceCoordinator+IntroduceViewControllerCoordinator.swift in Sources */,
-				884C0B8B51D014E5907A6A02 /* IntroduceCoordinator.swift in Sources */,
-				93EC267EF72DC6D8BE42017C /* IntroduceFactory.swift in Sources */,
-				DEFF6D70F7D6DB2A67103B18 /* LinksDialogCoordinator+LinksDialogViewControllerCoordinator.swift in Sources */,
-				6753CE3620A26AD3322960E8 /* LinksDialogCoordinator.swift in Sources */,
-				C8175EE7AAE3E0C0B3A45CCC /* LinksDialogFactory.swift in Sources */,
-				D2160F01621D3DBB9F0B3877 /* ProfileCoordinator+IntroduceCoordinatorDelegate.swift in Sources */,
-				1F3B43E6A5A54543E49661D3 /* ProfileCoordinator+LinksDialogCoordinatorDelegate.swift in Sources */,
-				FC3205877C44FCF45F11158A /* ProfileCoordinator+ProfileViewControllerCoordinator.swift in Sources */,
-				AA6C5B85743DD784AFE990D1 /* ProfileCoordinator+QuestionsCoordinatorDelegate.swift in Sources */,
-				7437742AB548604B9D645E25 /* ProfileCoordinator+SettingsCoordinatorDelegate.swift in Sources */,
-				C2A87FEAC54A3B99E63DB817 /* ProfileCoordinator.swift in Sources */,
-				EB4CDD951E2FB2A7F20B2192 /* ProfileFactory.swift in Sources */,
-				E032D8884F7D05DCF70FFE4B /* QuestionsCoordinator+QuestionsDialogCoordinatorDelegate.swift in Sources */,
-				219B3EBC5E815DEA41F36A75 /* QuestionsCoordinator+QuestionsViewControllerCoordinator.swift in Sources */,
-				DB5FC79A2A35D69A18839684 /* QuestionsCoordinator.swift in Sources */,
-				9DC0756BE25C16A875E5F6B3 /* QuestionsDialogCoordinator+QuestionsDialogViewControllerCoordinator.swift in Sources */,
-				2FDA4DB82F6B97790A75DA23 /* QuestionsDialogCoordinator.swift in Sources */,
-				F5311B514F7744F501D594C6 /* QuestionsDialogFactory.swift in Sources */,
-				A84231931BFBC9A0E1E7D8C9 /* QuestionsFactory.swift in Sources */,
-				4AFD0F9D8DF425434B63259A /* AddLinkCollectionViewCell.swift in Sources */,
+				130D661FE6C4DA29D6C1F5D7 /* EditMyPhotoCoordinator+AlbumCoordinatorDelegate.swift in Sources */,
+				73363EAD433C000C18AB3FB2 /* EditMyPhotoCoordinator+EditMyPhotoViewControllerCoordinator.swift in Sources */,
+				54D815A8ED5D98E835C77659 /* EditMyPhotoCoordinator.swift in Sources */,
+				2F2CEA64BF582C4D10F2026D /* EditMyPhotoFactory.swift in Sources */,
+				4DB85321E07520C7F547EDE1 /* EditSchoolCoordinator+EditSchoolViewControllerCoordinator.swift in Sources */,
+				1E5A99F2607A64DAFC414DE7 /* EditSchoolCoordinator.swift in Sources */,
+				CE686FD26519953001DBE5D3 /* EditSchoolFactory.swift in Sources */,
+				B4A48BCC23735BBD33F95FDC /* EditUserNameCoordinator+EditUserNameViewControllerCoordinator.swift in Sources */,
+				7CAA33AA6E8AE2FF55738646 /* EditUserNameCoordinator.swift in Sources */,
+				4E3981718945AFC595F63300 /* EditUserNameFactory.swift in Sources */,
+				EA1D03DBB574905F4E854A74 /* IntroduceCoordinator+IntroduceViewControllerCoordinator.swift in Sources */,
+				3D179F40BF1B8A740254DD25 /* IntroduceCoordinator.swift in Sources */,
+				99355073D0B05AD9790D0DAD /* IntroduceFactory.swift in Sources */,
+				3C0E26671072CA6379BE227F /* LinksDialogCoordinator+LinksDialogViewControllerCoordinator.swift in Sources */,
+				A2366D2ED1A40ED864B84B24 /* LinksDialogCoordinator.swift in Sources */,
+				F84EB88CC95A5BE8CAE73CD4 /* LinksDialogFactory.swift in Sources */,
+				0375F1212C26E168412375A2 /* MyBadgeCoordinator+MyBadgeDetailCoordinatorDelegate.swift in Sources */,
+				41B9697C27BD03C202A793C0 /* MyBadgeCoordinator+MyBadgeViewControllerCoordinator.swift in Sources */,
+				293D2B97656E4CB9C100C1B1 /* MyBadgeCoordinator.swift in Sources */,
+				9578432787970184FFA1B206 /* MyBadgeDetailCoordinator+MyBadgeDetailViewControllerCoordinator.swift in Sources */,
+				3869417234C72B96909C7A02 /* MyBadgeDetailCoordinator.swift in Sources */,
+				EF9767B52C57C91CC1F01CFB /* MyBadgeDetailFactory.swift in Sources */,
+				717AE04B63F351AA24127857 /* MyBadgeFactory.swift in Sources */,
+				2D5C6EF39A882655333C1568 /* ProfileCoordinator+EditMyPhotoCoordinatorDelegate.swift in Sources */,
+				E96CA4DB1F146BA8D75B521A /* ProfileCoordinator+EditSchoolCoordinatorDelegate.swift in Sources */,
+				4CAF14D1DB7D632923AE9427 /* ProfileCoordinator+EditUserNameCoordinatorDelegate.swift in Sources */,
+				23A9D4DEB961BA5A80640B24 /* ProfileCoordinator+IntroduceCoordinatorDelegate.swift in Sources */,
+				E9F5D9EE4DDCE7081B7FE62B /* ProfileCoordinator+LinksDialogCoordinatorDelegate.swift in Sources */,
+				FF9DB13DC57CB0C1F0D5A44C /* ProfileCoordinator+MyBadgeCoordinatorDelegate.swift in Sources */,
+				931830C9843BE86EA3E55A9F /* ProfileCoordinator+ProfileViewControllerCoordinator.swift in Sources */,
+				8C653FA7AB9EDC5418D06C0A /* ProfileCoordinator+QuestionsCoordinatorDelegate.swift in Sources */,
+				F50BE5345691F5EB0B8E641F /* ProfileCoordinator+SettingsCoordinatorDelegate.swift in Sources */,
+				62CEB656EA00ED27DFFE73BA /* ProfileCoordinator.swift in Sources */,
+				63BDA75A1AA7DDA1953C3C58 /* ProfileFactory.swift in Sources */,
+				43D8E785C38AB333878D3606 /* QuestionDetailCoordinator+QuestionDetailViewControllerCoordinator.swift in Sources */,
+				9BC1D5DFDC96A9B004756B6C /* QuestionDetailCoordinator.swift in Sources */,
+				AE376E5D75BF9251AEF369A1 /* QuestionDetailFactory.swift in Sources */,
+				3565A23244CA4DADCC6C28CD /* QuestionsCoordinator+QuestionDetailCoordinatorDelegate.swift in Sources */,
+				AA94E1F84B848B6EF789EED0 /* QuestionsCoordinator+QuestionsDialogCoordinatorDelegate.swift in Sources */,
+				ABB9084AC0D96500769ACED8 /* QuestionsCoordinator+QuestionsViewControllerCoordinator.swift in Sources */,
+				CDC83D3C9B2A75C822DC9EFB /* QuestionsCoordinator.swift in Sources */,
+				380666B3922B133EE56AD689 /* QuestionsDialogCoordinator+QuestionsDialogViewControllerCoordinator.swift in Sources */,
+				18685FA42291823E8E083BF7 /* QuestionsDialogCoordinator.swift in Sources */,
+				DCC6F7A653A199060A77C5FA /* QuestionsDialogFactory.swift in Sources */,
+				F06AB05FD871A3409C383F32 /* QuestionsFactory.swift in Sources */,
 				9334EDDB692BA398EC302C76 /* IntroduceMbtiButtonCollectionViewCell.swift in Sources */,
 				A035510A4A6EE163CA4B8A67 /* IntroduceMbtiCollectionViewCell.swift in Sources */,
 				1D34015903FDEA9D60557488 /* IntroduceWritingCollectionViewCell.swift in Sources */,
-				70895A41B1F0B0B5B100D0B0 /* LinkTableViewCell.swift in Sources */,
-				7503FD6D25B276BACE138BE7 /* LinksCollectionViewCell.swift in Sources */,
+				80B240D6510E88A94B547027 /* MyBadgeCollectionViewCell.swift in Sources */,
 				7DEDC755211F4A29597FFAC4 /* QuestionsDialogTableViewCell.swift in Sources */,
 				CC286220C6A3FAAF1496B521 /* QuestionsTableViewCell.swift in Sources */,
+				778FEA0055B7D693A3C63559 /* EditMyPhotoViewController.swift in Sources */,
+				E6F1D0911F2FE80117713310 /* EditSchoolViewController.swift in Sources */,
+				F5C6B3B03FF9E0E536323DAE /* EditUserNameViewController.swift in Sources */,
 				84F190EE865F1BE143AEE321 /* IntroduceViewController.swift in Sources */,
 				30C7883EC5C80AFFCCFE5A72 /* LinksDialogViewController.swift in Sources */,
+				23B3EC454B0AB9F7C8DAC74B /* MyBadgeDetailViewController.swift in Sources */,
+				D9B2E9D367082525E2957208 /* MyBadgeViewController.swift in Sources */,
 				8B346E18C8519296F391B661 /* ProfileViewController.swift in Sources */,
+				432DBA5B46B128FA01483F9F /* QuestionDetailViewController.swift in Sources */,
 				3A480E1F26D6029058F0BC75 /* QuestionsDialogViewController.swift in Sources */,
 				E26DE4296CE0EE35791A7B04 /* QuestionsViewController.swift in Sources */,
+				70DE0EAAF4F6C57528A97416 /* EditMyPhotoViewModel.swift in Sources */,
+				59182DEC034E3E247E3AB2BC /* EditSchoolViewModel.swift in Sources */,
+				559389EA1E1EB714F4E3B8B4 /* EditUserNameViewModel.swift in Sources */,
 				DACAD6A2C03A97065E842288 /* IntroduceViewModel.swift in Sources */,
+				CDCB94943487827A45EFF46C /* MyBadgeViewModel.swift in Sources */,
 				CF31723F1111CE1D7B7868F7 /* ProfileViewModel.swift in Sources */,
 				3C18489A1B8F90BB85A66ACC /* QuestionsViewModel.swift in Sources */,
 			);

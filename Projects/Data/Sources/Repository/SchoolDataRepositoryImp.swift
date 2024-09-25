@@ -11,7 +11,6 @@ import NetworkService
 import Foundation
 
 public struct SchoolDataRepositoryImp: SchoolDataRepository {
-    
     let apiClientService: ApiClientService
     
     public init(

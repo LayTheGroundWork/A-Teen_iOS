@@ -376,7 +376,5 @@ final class TrimVideoControlViewController: UIViewController {
                 endTime: trimmer.selectedRange.end
             )
         )
-//        self.navigationController?.pushViewController(SelectCategoryVideoViewController(asset: trimVideoAsset()), animated: true)
     }
-    
 }

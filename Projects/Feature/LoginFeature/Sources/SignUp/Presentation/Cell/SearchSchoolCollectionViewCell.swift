@@ -21,7 +21,7 @@ final class SearchSchoolCollectionViewCell: UICollectionViewCell {
     private var debouncer: Debouncer?
     private weak var delegate: SearchSchoolCollectionViewCellDelegate?
     private var viewModel: SignUpViewModel?
-
+    
     var customIndicatorViewTopAnchor: Constraint?
     var customIndicatorViewBottomAnchor: Constraint?
     var customIndicatorViewHeightAnchor: Constraint?
@@ -167,7 +167,7 @@ final class SearchSchoolCollectionViewCell: UICollectionViewCell {
         customIndicatorBackgroudView.snp.makeConstraints { make in
             make.trailing.equalToSuperview().offset(-ViewValues.defaultPadding)
             make.top.equalToSuperview().offset(22)
-            make.bottom.equalToSuperview().offset(-12)
+            make.bottom.equalToSuperview().offset(-22)
             make.width.equalTo(5)
         }
         
@@ -187,8 +187,8 @@ final class SearchSchoolCollectionViewCell: UICollectionViewCell {
     
     private func setupActions() {
         schoolTextField.addTarget(self,
-                            action: #selector(textFieldDidChange),
-                            for: .editingChanged)
+                                  action: #selector(textFieldDidChange),
+                                  for: .editingChanged)
         
         clearTextButton.addTarget(self,
                                   action: #selector(didSelectClearTextButton(_:)),
@@ -208,22 +208,24 @@ final class SearchSchoolCollectionViewCell: UICollectionViewCell {
         guard let text = schoolTextField.text else { return }
         self.viewModel?.searchSchoolText = text
         if !text.isEmpty {
-            changeTextFieldRigthView(view: .clearImage)
+            changeTextFieldRightView(view: .clearImage)
+        } else {
+            changeTextFieldRightView(view: .searchImage)
         }
-        
     }
     
     @objc private func didSelectClearTextButton(_ sender: UIButton) {
         schoolTextField.text?.removeAll()
         self.viewModel?.searchSchoolText = .empty
-        changeTextFieldRigthView(view: .searchImage)
+        changeTextFieldRightView(view: .searchImage)
         closeSearchScoolTableView()
     }
     
     @objc func handlePanGesture(_ gestureRecognizer: UIPanGestureRecognizer) {
         let translation = gestureRecognizer.translation(in: customIndicatorView)
         
-        if gestureRecognizer.state == .changed {
+        switch gestureRecognizer.state {
+        case .changed:
             initialCenter = customIndicatorView.center
             customIndicatorView.center = CGPoint(
                 x: initialCenter.x,
@@ -234,11 +236,11 @@ final class SearchSchoolCollectionViewCell: UICollectionViewCell {
             tableView.contentOffset.y += offsetY
             gestureRecognizer.setTranslation(CGPoint.zero, in: customIndicatorView)
             
-        } else if gestureRecognizer.state == .ended {
+        case .ended, .cancelled:
             let frame = customIndicatorView.frame
             let contentHeight = tableView.contentSize.height
-            let visibleHeight = tableView.frame.height
-            let indicatorHeight = (visibleHeight / contentHeight) * (visibleHeight - 34) - 22
+            let visibleHeight = customIndicatorBackgroudView.frame.height
+            let indicatorHeight = tableView.frame.height / contentHeight * visibleHeight
             
             UIView.animate(
                 withDuration: 0.2,
@@ -252,15 +254,20 @@ final class SearchSchoolCollectionViewCell: UICollectionViewCell {
                         at: .top,
                         animated: true)
                     
-                } else if frame.origin.y + indicatorHeight > self.tableBackgroundView.frame.height - 12 {
+                } else if frame.origin.y + indicatorHeight > self.tableBackgroundView.frame.height - 22 {
                     self.tableView.scrollToRow(
-                        at: IndexPath(row: (self.viewModel?.filteredSchools.count ?? 0) - 1, section: 0),
+                        at: IndexPath(
+                            row: (self.viewModel?.filteredSchools.count ?? 0) - 1,
+                            section: 0),
                         at: .bottom,
                         animated: true)
                 }
             }
             gestureRecognizer.setTranslation(.zero, in: customIndicatorView)
             initialCenter = CGPoint.zero
+            
+        default:
+            break
         }
     }
     
@@ -274,7 +281,7 @@ final class SearchSchoolCollectionViewCell: UICollectionViewCell {
         }
     }
     
-    public func changeTextFieldRigthView(view: TextFieldRightViewType) {
+    public func changeTextFieldRightView(view: TextFieldRightViewType) {
         switch view {
         case .spinner:
             schoolTextField.rightView = spinner
@@ -287,7 +294,7 @@ final class SearchSchoolCollectionViewCell: UICollectionViewCell {
     
     private func openSearchScoolTableView() {
         tableBackgroundView.isHidden = false
-
+        
         if viewModel?.filteredSchools.count ?? 0 < 6 {
             tableBackgroundViewHeightAnchor?.update(offset: (viewModel?.filteredSchools.count ?? 0) * 59)
             tableView.reloadData()
@@ -319,10 +326,10 @@ final class SearchSchoolCollectionViewCell: UICollectionViewCell {
         self.layoutIfNeeded()
         
         let contentHeight = tableView.contentSize.height
-        let visibleHeight = tableView.frame.height
-        let indicatorHeight = (visibleHeight / contentHeight) * visibleHeight - 34
-        let yOffset = (tableView.contentOffset.y / contentHeight * visibleHeight) + 22
-        let bottomLine = self.tableBackgroundView.frame.height - 12
+        let visibleHeight = customIndicatorBackgroudView.frame.height
+        let bottomLine = self.tableBackgroundView.frame.height - 22
+        let yOffset = tableView.contentOffset.y / contentHeight * visibleHeight + 22
+        let indicatorHeight = tableView.frame.height / contentHeight * visibleHeight
         
         if contentHeight == 0 {
             self.customIndicatorViewTopAnchor?.update(offset: 22)
@@ -367,9 +374,7 @@ extension SearchSchoolCollectionViewCell: UITableViewDataSource {
         else {
             return UITableViewCell()
         }
-    
-        print("count, ", viewModel?.filteredSchools.count ?? 0)
-        print("index, ", indexPath.row)
+
         cell.fontChange(
             schoolData: viewModel?.filteredSchools[indexPath.row],
             isBold: indexPath == viewModel?.selectIndexPath)
@@ -435,12 +440,15 @@ extension SearchSchoolCollectionViewCell: UITextFieldDelegate {
         debouncer?.call { [weak self] in
             guard let self = self else { return }
             if viewModel?.searchSchoolText.count != .zero {
-                viewModel?.searchSchoolData()
+                viewModel?.searchSchoolData {
+                    DispatchQueue.main.async {
+                        self.tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: false)
+                    }
+                }
             } else {
                 closeSearchScoolTableView()
             }
         }
-       
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

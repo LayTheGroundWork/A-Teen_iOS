@@ -96,7 +96,7 @@ final class PhoneNumberCollectionViewCell: UICollectionViewCell {
         textField.snp.makeConstraints { make in
             make.top.equalTo(inputNumberLabel.snp.bottom).offset(38)
             make.leading.trailing.equalToSuperview().inset(ViewValues.defaultPadding)
-            make.height.equalTo(44)
+            make.height.equalTo(50)
         }
         
         certificateButton.snp.makeConstraints { make in

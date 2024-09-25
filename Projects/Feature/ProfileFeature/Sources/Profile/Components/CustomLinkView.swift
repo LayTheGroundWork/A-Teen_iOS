@@ -12,7 +12,7 @@ import Common
 import DesignSystem
 import UIKit
 
-class CustomLinkView: UIView {
+public class CustomLinkView: UIView {
     lazy var oneLinkImageView: UIImageView = makeLinkImageView()
     lazy var oneLinkLabel: UILabel = makeLinkLabel()
     
@@ -22,7 +22,14 @@ class CustomLinkView: UIView {
     lazy var threeLinkImageView: UIImageView = makeLinkImageView()
     lazy var threeLinkLabel: UILabel = makeLinkLabel()
     
-    init(frame: CGRect, linkList: [(link: String, title: String?)]) {
+    lazy var fourLinkImageView: UIImageView = makeLinkImageView()
+    lazy var fourLinkLabel: UILabel = makeLinkLabel()
+    
+    lazy var oneLineView: UIView = makeLineView()
+    lazy var twoLineView: UIView = makeLineView()
+    lazy var threeLineView: UIView = makeLineView()
+    
+    public init(frame: CGRect, linkList: [(Int, String)]) {
         super.init(frame: frame)
         configUserInterface(linkList: linkList)
     }
@@ -36,7 +43,7 @@ class CustomLinkView: UIView {
 extension CustomLinkView {
     func makeLinkImageView() -> UIImageView {
         let imageView = UIImageView()
-        imageView.image = DesignSystemAsset.linkIcon.image
+        imageView.contentMode = .scaleAspectFit
         return imageView
     }
     
@@ -49,11 +56,18 @@ extension CustomLinkView {
         label.font = UIFont.customFont(forTextStyle: .footnote, weight: .regular)
         return label
     }
+    
+    func makeLineView() -> UIView {
+        let view = UIView()
+        view.backgroundColor = DesignSystemAsset.grayLineColor.color
+        view.layer.cornerRadius = 0.5
+        return view
+    }
 }
 
 // MARK: - UI
 extension CustomLinkView {
-    func configUserInterface(linkList: [(link: String, title: String?)]) {
+    func configUserInterface(linkList: [(Int, String)]) {
         self.backgroundColor = DesignSystemAsset.gray03.color
         self.layer.masksToBounds = true
         self.layer.cornerRadius = 20
@@ -64,6 +78,7 @@ extension CustomLinkView {
                 setProperties(
                     linkImageView: oneLinkImageView,
                     linkLabel: oneLinkLabel,
+                    linkLineView: nil,
                     beforeImageView: nil,
                     linkInfo: linkInfo)
                 
@@ -71,6 +86,7 @@ extension CustomLinkView {
                 setProperties(
                     linkImageView: twoLinkImageView,
                     linkLabel: twoLinkLabel,
+                    linkLineView: oneLineView,
                     beforeImageView: oneLinkImageView,
                     linkInfo: linkInfo)
                 
@@ -78,7 +94,16 @@ extension CustomLinkView {
                 setProperties(
                     linkImageView: threeLinkImageView,
                     linkLabel: threeLinkLabel,
+                    linkLineView: twoLineView,
                     beforeImageView: twoLinkImageView,
+                    linkInfo: linkInfo)
+                
+            case 3:
+                setProperties(
+                    linkImageView: fourLinkImageView,
+                    linkLabel: fourLinkLabel,
+                    linkLineView: threeLineView,
+                    beforeImageView: threeLinkImageView,
                     linkInfo: linkInfo)
                 
             default:
@@ -90,26 +115,32 @@ extension CustomLinkView {
     func setProperties(
         linkImageView: UIImageView,
         linkLabel: UILabel,
+        linkLineView: UIView?,
         beforeImageView: UIImageView?,
-        linkInfo: (link: String, title: String?)
+        linkInfo: (Int, String)
     ) {
-        if let title = linkInfo.title {
-            let text = "\(title) | \(linkInfo.link)"
-            let attributedStr = NSMutableAttributedString(string: text)
-            attributedStr.addAttribute(.foregroundColor,
-                                       value: DesignSystemAsset.gray01.color,
-                                       range: (text as NSString).range(of: "|"))
-            linkLabel.attributedText = attributedStr
-        } else {
-            linkLabel.text = linkInfo.link
+        switch linkInfo.0 {
+        case 0: linkImageView.image = DesignSystemAsset.instagramLogo.image
+        case 1: linkImageView.image = DesignSystemAsset.xLogo.image
+        case 2: linkImageView.image = DesignSystemAsset.tikTokLogo.image
+        case 3: linkImageView.image = DesignSystemAsset.youtubeLogo.image
+        default:
+            break
         }
+        
+        linkLabel.text = linkInfo.1
         
         self.addSubview(linkImageView)
         self.addSubview(linkLabel)
         
+        if let linkLineView = linkLineView {
+            self.addSubview(linkLineView)
+        }
+        
         configLabelLayout(
             linkImageView: linkImageView,
             linkLabel: linkLabel,
+            linkLineView: linkLineView,
             beforeImageView: beforeImageView)
     }
 }
@@ -119,12 +150,21 @@ extension CustomLinkView {
     func configLabelLayout(
         linkImageView: UIImageView,
         linkLabel: UILabel,
+        linkLineView: UIView?,
         beforeImageView: UIImageView?
     ) {
-        if let beforeImageView = beforeImageView {
+        if let beforeImageView = beforeImageView, 
+            let linkLineView = linkLineView {
+            linkLineView.snp.makeConstraints { make in
+                make.leading.equalToSuperview().offset(ViewValues.defaultPadding)
+                make.trailing.equalToSuperview().offset(-ViewValues.defaultPadding)
+                make.top.equalTo(beforeImageView.snp.bottom).offset(13)
+                make.height.equalTo(1)
+            }
+            
             linkImageView.snp.makeConstraints { make in
                 make.leading.equalToSuperview().offset(ViewValues.defaultPadding)
-                make.top.equalTo(beforeImageView.snp.bottom).offset(10)
+                make.top.equalTo(linkLineView.snp.bottom).offset(14)
                 make.width.height.equalTo(24)
             }
         } else {
@@ -136,7 +176,7 @@ extension CustomLinkView {
         }
         
         linkLabel.snp.makeConstraints { make in
-            make.leading.equalTo(linkImageView.snp.trailing).offset(4)
+            make.leading.equalTo(linkImageView.snp.trailing).offset(8)
             make.trailing.equalToSuperview().offset(-ViewValues.defaultPadding)
             make.top.equalTo(linkImageView.snp.top)
             make.height.equalTo(24)

@@ -34,9 +34,9 @@ final class CustomLineView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        self.addSubview(secondColorLineView)
         self.addSubview(firstColorLineView)
         self.addSubview(thirdColorLineView)
+        self.addSubview(secondColorLineView)
     }
     
     required init?(coder: NSCoder) {
@@ -48,19 +48,21 @@ final class CustomLineView: UIView {
 extension CustomLineView {
     override func layoutSubviews() {
         super.layoutSubviews()
-        secondColorLineView.snp.makeConstraints { make in
-            make.centerX.top.bottom.equalToSuperview()
-            make.width.equalTo(ViewValues.componentPickerWidth)
-        }
         
         firstColorLineView.snp.makeConstraints { make in
             make.leading.top.bottom.equalToSuperview()
-            make.trailing.equalTo(self.secondColorLineView.snp.leading).offset(-10)
+            make.width.equalTo(ViewValues.componentPickerWidth - 20)
         }
         
         thirdColorLineView.snp.makeConstraints { make in
             make.trailing.top.bottom.equalToSuperview()
-            make.leading.equalTo(self.secondColorLineView.snp.trailing).offset(10)
+            make.width.equalTo(ViewValues.componentPickerWidth - 10)
+        }
+        
+        secondColorLineView.snp.makeConstraints { make in
+            make.top.bottom.equalToSuperview()
+            make.leading.equalTo(firstColorLineView.snp.trailing).offset(20)
+            make.trailing.equalTo(thirdColorLineView.snp.leading).offset(-20)
         }
     }
 }

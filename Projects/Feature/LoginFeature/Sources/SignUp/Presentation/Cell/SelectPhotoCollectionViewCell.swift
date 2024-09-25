@@ -12,6 +12,10 @@ import Common
 import DesignSystem
 import UIKit
 
+protocol SelectPhotoCollectionViewCellDelegate: AnyObject {
+    func updatePhotoList(index: Int, selectItem: AlbumType)
+}
+
 final class SelectPhotoCollectionViewCell: UICollectionViewCell {
     // MARK: - Private properties
     private var coordinator: SignUpViewControllerCoordinator?
@@ -35,13 +39,18 @@ final class SelectPhotoCollectionViewCell: UICollectionViewCell {
         return label
     }()
     
+    private lazy var photoGuideButton: UIButton = {
+        let button = CustomShowDetailButton(labelText: AppLocalized.photoGuideButton)
+        return button
+    }()
+    
     private lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         layout.sectionInset = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
         layout.minimumLineSpacing = 16
         layout.minimumInteritemSpacing = 16
-        layout.itemSize = CGSize(width: ViewValues.selectPhotoCellWidth, height: ViewValues.cellHeight)
+        layout.itemSize = CGSize(width: ViewValues.selectPhotoCellWidth, height: ViewValues.selectPhotoCellHeight)
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.dataSource = self
@@ -68,6 +77,7 @@ final class SelectPhotoCollectionViewCell: UICollectionViewCell {
         contentView.addSubview(titleLabel)
         contentView.addSubview(subTitleLabel)
         contentView.addSubview(collectionView)
+        contentView.addSubview(photoGuideButton)
     }
     
     private func configLayout() {
@@ -84,13 +94,24 @@ final class SelectPhotoCollectionViewCell: UICollectionViewCell {
         }
         
         collectionView.snp.makeConstraints { make in
-            make.leading.trailing.bottom.equalToSuperview()
-            make.top.equalTo(subTitleLabel.snp.bottom).offset(31)
+            make.leading.trailing.equalToSuperview()
+            make.top.equalTo(subTitleLabel.snp.bottom).offset(26)
+            make.height.equalTo(ViewValues.selectPhotoCellHeight)
+        }
+        
+        photoGuideButton.snp.makeConstraints { make in
+            make.leading.equalToSuperview().offset(ViewValues.defaultPadding)
+            make.top.equalTo(collectionView.snp.bottom).offset(26)
+            make.width.equalTo(177)
+            make.height.equalTo(24)
         }
     }
 
     // MARK: - Actions
-    func setProperties(coordinator: SignUpViewControllerCoordinator?, viewModel: SignUpViewModel) {
+    func setProperties(
+        coordinator: SignUpViewControllerCoordinator?,
+        viewModel: SignUpViewModel
+    ) {
         self.coordinator = coordinator
         self.viewModel = viewModel
     }
@@ -99,17 +120,41 @@ final class SelectPhotoCollectionViewCell: UICollectionViewCell {
 // MARK: - UICollectionViewDataSource
 extension SelectPhotoCollectionViewCell: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        guard let count = viewModel?.selectPhotoAsset.count else { return 0 }
-        return count
+        guard let count = viewModel?.selectPhotoList.count else { return 0 }
+        if count == 10 {
+            return count
+        } else {
+            return count + 1
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PhotoCollectionViewCell.reuseIdentifier, for: indexPath) as? PhotoCollectionViewCell,
             let viewModel = viewModel
-        else { return UICollectionViewCell() }
-        cell.setProperties(viewModel: viewModel)
-        cell.setCellCustom(item: indexPath.item)
+        else {
+            return UICollectionViewCell()
+        }
+
+        let itemIndex = indexPath.item
+        let maxPhotoCount = 10
+        
+        cell.setCellCustom(item: itemIndex)
+        
+        guard itemIndex < viewModel.selectPhotoList.count || viewModel.selectPhotoList.count == maxPhotoCount else {
+            return cell
+        }
+
+        let selectedItem = viewModel.selectPhotoList[itemIndex]
+
+        if let image = selectedItem.image {
+            cell.setImage(image: image)
+        } else if let asset = selectedItem.avAsset {
+            viewModel.extractImageFromVideo(asset: asset) { [weak cell] image in
+                cell?.setImage(image: image)
+            }
+        }
+
         return cell
     }
 }
@@ -117,7 +162,15 @@ extension SelectPhotoCollectionViewCell: UICollectionViewDataSource {
 // MARK: - UICollectionViewDelegate
 extension SelectPhotoCollectionViewCell: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("인증완료")
+        coordinator?.didSelectCell(item: indexPath.item)
+    }
+}
+
+extension SelectPhotoCollectionViewCell: SelectPhotoCollectionViewCellDelegate {
+    func updatePhotoList(index: Int, selectItem: AlbumType) {
+        viewModel?.addAlbumItem(index: index, albumType: selectItem) {
+            collectionView.reloadData()
+        }
     }
 }
 

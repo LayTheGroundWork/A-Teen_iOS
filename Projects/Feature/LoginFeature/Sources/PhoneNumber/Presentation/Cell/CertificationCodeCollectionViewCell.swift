@@ -29,7 +29,7 @@ public final class CertificationCodeCollectionViewCell: UICollectionViewCell {
     private weak var timer: Timer?
     private var totalTime = 180
     private var viewModel: PhoneNumberViewModel?
-
+    
     private lazy var inputCodeLabel: UILabel = {
         let label = UILabel()
         label.text = AppLocalized.inputCodeText
@@ -162,8 +162,8 @@ public final class CertificationCodeCollectionViewCell: UICollectionViewCell {
         nextButton.snp.makeConstraints { make in
             make.trailing.equalToSuperview().offset(-ViewValues.defaultPadding)
             make.bottom.equalToSuperview().offset(-50)
-            make.width.equalTo(ViewValues.signUpNextButtonWidth)
-            make.height.equalTo(ViewValues.signUpNextButtonHeight)
+            make.width.equalTo(ViewValues.defaultButtonWidth)
+            make.height.equalTo(ViewValues.defaultButtonHeight)
         }
         
         timerLabel.snp.makeConstraints { make in
@@ -188,27 +188,33 @@ public final class CertificationCodeCollectionViewCell: UICollectionViewCell {
     
     // MARK: - Actions
     @objc private func didSelectNextButton(_ sender: UIButton) {
-        
         convertVerificationCode()
         
         // TODO: - 다음으로 이동할때, 가입된 사용자인지 검증 후 보내주기
-        viewModel?.verificationCode { [weak self] result in
+        viewModel?.verificationCode { [weak self] data in
             guard let self = self else { return }
-            switch result {
-            case .success(.availablePhoneNumber):
-                self.stopTimer()
-                DispatchQueue.main.async {
-                    self.delegate?.didSelectNextButton(registrationStatus: .notSignedUp)
-                }
-            case .success(.existedUser):
-                DispatchQueue.main.async {
-                    self.delegate?.didSelectNextButton(registrationStatus: .signedUp)
-                }
-            case .failure(_):
-                DispatchQueue.main.async {
-                    self.delegate?.didSelectNextButton(registrationStatus: .inValidCodeNumber)
-                }
+            
+            DispatchQueue.main.async {
+                self.delegate?.didSelectNextButton(registrationStatus: .notSignedUp)
             }
+            
+            //TODO: 나중에 인증된 전화번호가 있을 경우 테스트하기
+//            if let _ = data {
+//                //TODO: 기존 사용자인지 확인 필요
+//                DispatchQueue.main.async {
+//                    self.delegate?.didSelectNextButton(registrationStatus: .notSignedUp)
+//                }
+//                
+//                // 기존 사용자
+//                DispatchQueue.main.async {
+//                    self.delegate?.didSelectNextButton(registrationStatus: .signedUp)
+//                }
+//                
+//            } else {
+//                DispatchQueue.main.async {
+//                    self.delegate?.didSelectNextButton(registrationStatus: .inValidCodeNumber)
+//                }
+//            }
         }
     }
     
@@ -229,7 +235,7 @@ public final class CertificationCodeCollectionViewCell: UICollectionViewCell {
             // TODO: - 시간 다 되었을 때, 상황에 맞춰 로직 추가 필요
         }
     }
-
+    
     // 모든 텍스트 필드가 채워졌는지 확인하고 **다음으로** 버튼을 활성화 또는 비활성화
     private func updateNextButtonState() {
         let allFieldsFilled = textFields.allSatisfy { $0.text?.count == 1 }
@@ -386,12 +392,12 @@ extension CertificationCodeCollectionViewCell: Reusable { }
 class WeakTimerTarget {
     weak var target: NSObjectProtocol?
     let selector: Selector
-
+    
     init(target: NSObjectProtocol, selector: Selector) {
         self.target = target
         self.selector = selector
     }
-
+    
     @objc func timerDidFire(_ timer: Timer) {
         target?.perform(selector)
     }

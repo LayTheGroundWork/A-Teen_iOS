@@ -13,24 +13,13 @@ import UIKit
 
 class TodayTeenTableViewCell: UITableViewCell {
     weak var delegate: MainViewControllerCoordinator?
-    
     var viewModel: MainViewModel = .init()
     
-    lazy var categoryCollectionView: UICollectionView = {
-        let layout = UICollectionViewFlowLayout()
-        let width: CGFloat = 100
-        layout.scrollDirection = .horizontal
-        layout.minimumLineSpacing = 10
-        layout.minimumInteritemSpacing = 0
-        layout.sectionInset = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
-        layout.itemSize = CGSize(width: width, height: 47)
-        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.backgroundColor = UIColor.white
-        collectionView.showsHorizontalScrollIndicator = false
-        return collectionView
-    }()
+    // MARK: - Private properties
+    private var currentTeenIndexPath: IndexPath = .init(row: 0, section: 0)
+    private var teenCollectionViewAutoScrollTimer: Timer?
     
-    lazy var titleLabel: UILabel = {
+    private lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.text = AppLocalized.todaysTeen
         label.textAlignment = .left
@@ -38,7 +27,7 @@ class TodayTeenTableViewCell: UITableViewCell {
         return label
     }()
     
-    lazy var teenCollectionView: UICollectionView = {
+    private lazy var teenCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         layout.minimumLineSpacing = 16
@@ -48,32 +37,50 @@ class TodayTeenTableViewCell: UITableViewCell {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.backgroundColor = UIColor.white
         collectionView.showsHorizontalScrollIndicator = false
+        collectionView.isPagingEnabled = false
+        collectionView.decelerationRate = .fast
         return collectionView
     }()
     
-    lazy var grayLine: UIView = {
+    private lazy var grayLine: UIView = {
         let view = UIView()
-        view.backgroundColor = DesignSystemAsset.grayLineColor.color
+        view.backgroundColor = DesignSystemAsset.gray04.color
         return view
     }()
     
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?){
+    // MARK: - Life Cycle
+    override init(
+        style: UITableViewCell.CellStyle,
+        reuseIdentifier: String?
+    ){
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         registerDelegate()
-        
-        contentView.addSubview(categoryCollectionView)
+        configUserInterface()
+        configLayout()
+        // 유저 카드 셀 자동 페이징 시작
+        startAutoScroll()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    // MARK: - Helpers
+    private func registerDelegate(){
+        self.teenCollectionView.dataSource = self
+        self.teenCollectionView.delegate = self
+        self.teenCollectionView.register(TeenCollectionViewCell.self, forCellWithReuseIdentifier: TeenCollectionViewCell.reuseIdentifier)
+    }
+    
+    private func configUserInterface() {
         contentView.addSubview(titleLabel)
         contentView.addSubview(teenCollectionView)
         contentView.addSubview(grayLine)
-        
-        self.categoryCollectionView.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(20)
-            make.leading.trailing.equalToSuperview()
-            make.height.equalTo(50)
-        }
-        
+    }
+    
+    private func configLayout() {
         self.titleLabel.snp.makeConstraints { make in
-            make.top.equalTo(self.categoryCollectionView.snp.bottom).offset(20)
+            make.top.equalToSuperview().offset(20)
             make.leading.equalToSuperview().offset(16)
             make.trailing.equalToSuperview().offset(-16)
             make.height.equalTo(24)
@@ -92,115 +99,157 @@ class TodayTeenTableViewCell: UITableViewCell {
         }
     }
     
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    // 자동 스크롤 시작
+    func startAutoScroll() {
+        teenCollectionViewAutoScrollTimer?.invalidate() // 중복 실행 방지
+        teenCollectionViewAutoScrollTimer = Timer.scheduledTimer(
+            timeInterval: 4.0,
+            target: self,
+            selector: #selector(scrollToNextItem),
+            userInfo: nil,
+            repeats: true
+        )
     }
     
-    private func registerDelegate(){
-        self.categoryCollectionView.dataSource = self
-        self.categoryCollectionView.delegate = self
-        self.categoryCollectionView.register(CategoryTodayCollectionViewCell.self, forCellWithReuseIdentifier: CategoryTodayCollectionViewCell.reuseIdentifier)
-        
-        self.teenCollectionView.dataSource = self
-        self.teenCollectionView.delegate = self
-        self.teenCollectionView.register(TeenCollectionViewCell.self, forCellWithReuseIdentifier: TeenCollectionViewCell.reuseIdentifier)
+    // 자동 스크롤 정지
+    private func stopAutoScroll() {
+        teenCollectionViewAutoScrollTimer?.invalidate()
+        teenCollectionViewAutoScrollTimer = nil
+    }
+    
+    // 자동 스크롤 : 다음 cell 로 페이징 스크롤
+    @objc private func scrollToNextItem() {
+        var nextItem = currentTeenIndexPath.item + 1
+        if nextItem >= viewModel.todayTeenList.count {
+            nextItem = 0
+        }
+        currentTeenIndexPath = IndexPath(item: nextItem,
+                                         section: currentTeenIndexPath.section)
+        self.teenCollectionView.scrollToItem(at: currentTeenIndexPath,
+                                             at: .centeredHorizontally,
+                                             animated: true)
     }
 }
 
 // MARK: - UICollectionViewDataSource
 extension TodayTeenTableViewCell: UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        switch collectionView {
-        case self.categoryCollectionView:
-            guard
-                let cell = collectionView.dequeueReusableCell(
-                withReuseIdentifier: CategoryTodayCollectionViewCell.reuseIdentifier,
-                for: indexPath) as? CategoryTodayCollectionViewCell
-            else {
-                return UICollectionViewCell()
-            }
-            
-            cell.setButton(category: viewModel.getCategoryItemMainViewModel(row: indexPath.row))
-            return cell
-            
-        case self.teenCollectionView:
-            guard
-                let cell = collectionView.dequeueReusableCell(
-                    withReuseIdentifier: TeenCollectionViewCell.reuseIdentifier,
-                    for: indexPath) as? TeenCollectionViewCell
-            else {
-                return UICollectionViewCell()
-            }
-            
-            cell.setCell(teen: viewModel.getTodayTeenItemMainViewModel(row: indexPath.row))
-            
-            cell.chatButtonAction = { [weak self] in
-                guard let self = self else { return }
-                self.delegate?.didSelectTodayTeenChattingButton()
-            }
-            
-            cell.heartButtonAction = { [weak self] in
-                guard let self = self else { return }
-                self.viewModel.didSelectTodayTeenHeartButton()
-            }
-            
-            cell.menuButtonAction = { [weak self] in
-                guard let self = self else { return }
-                cell.layoutIfNeeded()
-                guard let tableViewCell = self.superview,
-                      let tableView = tableViewCell.superview,
-                      let mainView = tableView.superview,
-                      let appView = mainView.superview
-                else { return }
-                
-                let cellPosition = cell.convert(cell.bounds, to: appView)
-                let menuButtonPosition = CGRect(
-                    x: cellPosition.maxX,
-                    y: cellPosition.minY,
-                    width: cellPosition.width,
-                    height: cellPosition.height)
-                self.delegate?.didSelectMenuButton(popoverPosition: menuButtonPosition)
-            }
-            
-            return cell
-            
-        default:
+    func collectionView(
+        _ collectionView: UICollectionView,
+        cellForItemAt indexPath: IndexPath
+    ) -> UICollectionViewCell {
+        guard
+            let cell = collectionView.dequeueReusableCell(
+                withReuseIdentifier: TeenCollectionViewCell.reuseIdentifier,
+                for: indexPath) as? TeenCollectionViewCell
+        else {
             return UICollectionViewCell()
         }
-    }
-
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        switch collectionView {
-        case self.categoryCollectionView:
-            return viewModel.categoryList.count
-        case self.teenCollectionView:
-            return viewModel.todayTeenList.count
-        default:
-            return 0
+        
+        cell.setCell(teen: viewModel.getTodayTeenItemMainViewModel(row: indexPath.row))
+        
+        cell.chatButtonAction = { [weak self] in
+            guard let self = self else { return }
+            stopAutoScroll()
+            self.delegate?.didSelectTodayTeenChattingButton()
         }
+        
+        cell.heartButtonAction = { [weak self] in
+            guard let self = self else { return }
+            self.viewModel.didSelectTodayTeenHeartButton()
+        }
+        
+        cell.menuButtonAction = { [weak self] in
+            guard let self = self else { return }
+            stopAutoScroll()
+            cell.layoutIfNeeded()
+            guard let tableViewCell = self.superview,
+                  let tableView = tableViewCell.superview,
+                  let mainView = tableView.superview,
+                  let appView = mainView.superview
+            else { return }
+            
+            let cellPosition = cell.convert(cell.bounds, to: appView)
+            let menuButtonPosition = CGRect(
+                x: cellPosition.maxX,
+                y: cellPosition.minY,
+                width: cellPosition.width,
+                height: cellPosition.height)
+            self.delegate?.didSelectMenuButton(popoverPosition: menuButtonPosition)
+        }
+        
+        return cell
+    }
+    
+    func collectionView(
+        _ collectionView: UICollectionView,
+        numberOfItemsInSection section: Int
+    ) -> Int {
+        viewModel.todayTeenList.count
     }
 }
 
 // MARK: - UICollectionViewDelegate
 extension TodayTeenTableViewCell: UICollectionViewDelegate {
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        switch collectionView {
-        case self.categoryCollectionView:
-            //self.categoryCollectionView.scrollToItem(at: indexPath, at: .left, animated: true)
-            viewModel.didSelectCategoryCell(row: indexPath.row)
-            collectionView.reloadData()
-            
-        case self.teenCollectionView:
-            guard let cellClicked = collectionView.cellForItem(at: indexPath),
-                  let frame = cellClicked.superview?.convert(cellClicked.frame, to: nil)
-            else { return }
-            
-            delegate?.didSelectTodayTeenImage(
-                frame: frame,
-                todayTeen: viewModel.getTodayTeenItemMainViewModel(row: indexPath.row))
-        default:
-            break
+    func collectionView(
+        _ collectionView: UICollectionView,
+        didSelectItemAt indexPath: IndexPath
+    ) {
+        guard let cellClicked = collectionView.cellForItem(at: indexPath),
+              let frame = cellClicked.superview?.convert(cellClicked.frame, to: nil)
+        else { return }
+        stopAutoScroll()
+        delegate?.didSelectTodayTeenImage(
+            frame: frame,
+            todayTeen: viewModel.getTodayTeenItemMainViewModel(row: indexPath.row))
+    }
+}
+
+extension TodayTeenTableViewCell: UICollectionViewDelegateFlowLayout {
+    // 페이징 로직
+    func scrollViewWillEndDragging(
+        _ scrollView: UIScrollView,
+        withVelocity velocity: CGPoint,
+        targetContentOffset: UnsafeMutablePointer<CGPoint>
+    ) {
+        // 셀 크기
+        let cellWidth = ViewValues.todayTeenImageWidth + 16
+        // 현재 페이지 위치
+        let currentPage = scrollView.contentOffset.x / cellWidth
+        // 스크롤 속도
+        let speed = velocity.x
+        // 스크롤 속도 고려한, 실제 페이지 위치
+        var nextPage: CGFloat = currentPage
+        // nextPage 계산
+        if speed < 0 {
+            nextPage = ceil(currentPage - 1)
+        } else if speed > 0 {
+            nextPage = floor(currentPage + 1)
+        } else {
+            nextPage = round(currentPage)
         }
+        // 맨 앞
+        if nextPage <= 0 {
+            nextPage = 0
+        }
+        // 맨 뒤
+        if Int(nextPage) >= viewModel.todayTeenList.count {
+            nextPage -= 1
+        }
+        // 현재 페이지 IndexPath 설정
+        currentTeenIndexPath = IndexPath(item: Int(nextPage),
+                                         section: currentTeenIndexPath.section)
+        // 최종 페이지 offset 설정
+        targetContentOffset.pointee = CGPoint(
+            x: (nextPage * cellWidth) - scrollView.contentInset.left,
+            y: scrollView.contentInset.top)
+    }
+    
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        startAutoScroll()
+    }
+    
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        startAutoScroll()
     }
 }
 

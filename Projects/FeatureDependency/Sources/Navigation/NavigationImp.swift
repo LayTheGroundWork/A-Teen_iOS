@@ -5,11 +5,13 @@
 //  Created by 최동호 on 5/21/24.
 //
 
+import Common
 import UIKit
 
 public final class NavigationImp: NSObject {
     public var rootViewController: UINavigationController
     public var dismissNavigation: (() -> Void)?
+    public var dismissNavigationFromAlbum: ((AlbumType) -> Void)?
     
     public var backCompletions: [UIViewController: () -> Void] = [:]
     

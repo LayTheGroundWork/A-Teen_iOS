@@ -130,7 +130,6 @@ public final class ChatViewController: UIViewController {
         }
         viewModel.filteredChatRooms.remove(at: indexPath.row)
         chatTableView.deleteRows(at: [indexPath], with: .automatic)
-//        dump(chatTableView)
         print(viewModel.filteredChatRooms.count)
         selectIndexPath = nil
     }
@@ -178,13 +177,13 @@ extension ChatViewController: UITableViewDelegate {
             self?.selectIndexPath = indexPath
             print("selectIndexPath set to: \(indexPath)")
             self?.coordinator?.didTapLeaveButton(for: indexPath)
+
             completionHandler(true)
         }
         self.selectIndexPath = indexPath
         
         let leaveButtonView = LeaveButtonView(frame: CGRect(x: 0, y: 0, width: 80, height: 85))
         leaveAction.backgroundColor = .white
-        leaveAction.image = leaveButtonView.asImage()
         
         let configuration = UISwipeActionsConfiguration(actions: [leaveAction])
         configuration.performsFirstActionWithFullSwipe = false
@@ -204,24 +203,6 @@ extension ChatViewController: UITextFieldDelegate {
     }
 }
 
-//extension ChatViewController: AlertViewControllerCoordinator {
-//    public func didSelectButton() {
-//        dismiss(animated: true)
-//    }
-//
-//    public func didSelectSecondButton() {
-//        guard let indexPath = selectIndexPath else { return }
-//        let chatRoomRemove = viewModel.filteredChatRooms[indexPath.row]
-//
-//        if let indexInChatRooms = viewModel.chatRooms.firstIndex(where: { $0.name == chatRoomRemove.name }) {
-//            viewModel.chatRooms.remove(at: indexInChatRooms)
-//        }
-//        viewModel.filteredChatRooms.remove(at: indexPath.row)
-//        chatTableView.deleteRows(at: [indexPath], with: .automatic)
-//
-//        dismiss(animated: true)
-//    }
-//}
 
 
 

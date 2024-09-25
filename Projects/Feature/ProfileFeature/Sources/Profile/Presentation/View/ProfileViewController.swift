@@ -13,6 +13,10 @@ import UIKit
 
 public protocol ProfileViewControllerCoordinator: AnyObject {
     func didTabSettingButton()
+    func didTabEditMyPhotoButton()
+    func didTabEditUserNameButton()
+    func didTabSchoolButton()
+    func didTabBadgeButton()
     func didTabLinkButton()
     func didTabIntroduceButton()
     func didTabQuestionButton()
@@ -62,7 +66,7 @@ public final class ProfileViewController: UIViewController {
         let label = UILabel()
         label.text = "\(viewModel.userName) 님\n오늘도 좋은 하루 보내세요!"
         label.textColor = UIColor.black
-        label.font = .customFont(forTextStyle: .callout, weight: .bold)
+        label.font = .customFont(forTextStyle: .body, weight: .bold)
         label.numberOfLines = 2
 
         if let text = label.text {
@@ -76,9 +80,19 @@ public final class ProfileViewController: UIViewController {
         return label
     }()
     
-    private lazy var updateImageButton: UIButton = {
+    private lazy var editImageButton: UIButton = {
         let button = UIButton()
         button.setTitle("사진 수정", for: .normal)
+        button.setTitleColor(DesignSystemAsset.gray01.color, for: .normal)
+        button.setTitleColor(UIColor.black.withAlphaComponent(0.2), for: .highlighted)
+        button.titleLabel?.font = .customFont(forTextStyle: .footnote, weight: .regular)
+        button.isEnabled = true
+        return button
+    }()
+    
+    private lazy var editUserNameButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("닉네임 수정", for: .normal)
         button.setTitleColor(DesignSystemAsset.gray01.color, for: .normal)
         button.setTitleColor(UIColor.black.withAlphaComponent(0.2), for: .highlighted)
         button.titleLabel?.font = .customFont(forTextStyle: .footnote, weight: .regular)
@@ -107,37 +121,11 @@ public final class ProfileViewController: UIViewController {
         return imageView
     }()
     
-    private lazy var userInfoView: UIView = {
-        let view = UIView()
-        view.backgroundColor = DesignSystemAsset.gray03.color
-        view.clipsToBounds = true
-        view.layer.cornerRadius = ViewValues.defaultRadius
-        return view
-    }()
-    
-    private lazy var schoolLabel: UILabel = {
-        let label = UILabel()
-        label.text = viewModel.userSchoolName
-        label.textColor = UIColor.black
-        label.textAlignment = .left
-        label.font = .customFont(forTextStyle: .callout, weight: .regular)
-        return label
-    }()
-    
-    private lazy var ageLabel: UILabel = {
-        let label = UILabel()
-        label.text = "\(viewModel.userAge)세"
-        label.textColor = DesignSystemAsset.gray01.color
-        label.textAlignment = .left
-        label.font = .customFont(forTextStyle: .footnote, weight: .regular)
-        return label
-    }()
-    
-    private lazy var infoSettingButton: UIButton = {
-        let button = UIButton()
-        button.setImage(DesignSystemAsset.rightGrayIcon.image, for: .normal)
-        button.tintColor = DesignSystemAsset.gray01.color
-        button.isEnabled = true
+    private lazy var schoolButton: CustomSchoolButton = {
+        let button = CustomSchoolButton(
+            frame: .zero,
+            schoolName: viewModel.userSchool.schoolName,
+            age: viewModel.userAge)
         return button
     }()
     
@@ -219,7 +207,7 @@ public final class ProfileViewController: UIViewController {
     }()
     
     private lazy var linkView: CustomLinkView = {
-        let view = CustomLinkView(frame: .zero, linkList: viewModel.userLinks)
+        let view = CustomLinkView(frame: .zero, linkList: viewModel.filterLinks)
         return view
     }()
     
@@ -359,15 +347,13 @@ public final class ProfileViewController: UIViewController {
     public override func viewWillAppear(_ animated: Bool) {
         guard let coordinator = coordinator else { return }
         coordinator.configTabbarState(view: .profile)
-        self.navigationItem.titleView =  CustomNaviView(
-            frame: CGRect(
-                x: 0,
-                y: 0,
-                width: ViewValues.width,
-                height: 40
+        self.navigationItem.titleView = CustomNaviView(
+            frame: CGRect(x: 0, y: 0, width: ViewValues.width, height: 40
             ),
             delegate: coordinator
         )
+        
+        viewModel.filteringLinks()
     }
     
     public init(
@@ -437,7 +423,8 @@ public final class ProfileViewController: UIViewController {
         
         informationView.addSubview(userImageContainerView)
         informationView.addSubview(userNameLabel)
-        informationView.addSubview(updateImageButton)
+        informationView.addSubview(editImageButton)
+        informationView.addSubview(editUserNameButton)
         
         userImageContainerView.addSubview(userImageView)
         
@@ -459,10 +446,16 @@ public final class ProfileViewController: UIViewController {
             make.trailing.equalTo(userImageContainerView.snp.leading).offset(-ViewValues.defaultPadding)
         }
         
-        updateImageButton.snp.makeConstraints { make in
+        editImageButton.snp.makeConstraints { make in
             make.leading.equalToSuperview().offset(ViewValues.defaultPadding)
             make.bottom.equalTo(userImageContainerView.snp.bottom)
             make.width.equalTo(49)
+        }
+        
+        editUserNameButton.snp.makeConstraints { make in
+            make.leading.equalTo(editImageButton.snp.trailing).offset(13)
+            make.bottom.equalTo(userImageContainerView.snp.bottom)
+            make.width.equalTo(60)
         }
         
         userImageView.snp.makeConstraints { make in
@@ -473,37 +466,14 @@ public final class ProfileViewController: UIViewController {
     }
     
     private func addUserInfoComponent() {
-        informationView.addSubview(userInfoView)
+        informationView.addSubview(schoolButton)
         
-        userInfoView.addSubview(infoSettingButton)
-        userInfoView.addSubview(schoolLabel)
-        userInfoView.addSubview(ageLabel)
-        
-        userInfoView.snp.makeConstraints { make in
+        schoolButton.snp.makeConstraints { make in
             make.top.equalTo(userImageContainerView.snp.bottom).offset(24)
             make.leading.equalToSuperview().offset(ViewValues.defaultPadding)
             make.trailing.equalToSuperview().offset(-ViewValues.defaultPadding)
             make.height.equalTo(74)
         }
-        
-        infoSettingButton.snp.makeConstraints { make in
-            make.centerY.equalToSuperview()
-            make.trailing.equalToSuperview().offset(-ViewValues.defaultPadding)
-            make.width.height.equalTo(24)
-        }
-        
-        schoolLabel.snp.makeConstraints { make in
-            make.bottom.equalTo(userInfoView.snp.centerY).offset(-1)
-            make.leading.equalToSuperview().offset(ViewValues.defaultPadding)
-            make.trailing.equalTo(infoSettingButton.snp.leading).offset(-ViewValues.defaultPadding)
-        }
-        
-        ageLabel.snp.makeConstraints { make in
-            make.top.equalTo(userInfoView.snp.centerY).offset(1)
-            make.leading.equalToSuperview().offset(ViewValues.defaultPadding)
-            make.trailing.equalTo(infoSettingButton.snp.leading).offset(-ViewValues.defaultPadding)
-        }
-        
         addUserBadgeComponent()
     }
     
@@ -522,7 +492,7 @@ public final class ProfileViewController: UIViewController {
         }
         
         badgeAndTournamentStack.snp.makeConstraints { make in
-            make.top.equalTo(userInfoView.snp.bottom).offset(ViewValues.defaultPadding)
+            make.top.equalTo(schoolButton.snp.bottom).offset(ViewValues.defaultPadding)
             make.leading.equalToSuperview().offset(ViewValues.defaultPadding)
             make.trailing.equalToSuperview().offset(-ViewValues.defaultPadding)
             make.height.equalTo(97)
@@ -530,7 +500,7 @@ public final class ProfileViewController: UIViewController {
         
         self.view.layoutIfNeeded()
         informationViewHeightAnchor?.update(
-            offset: userImageContainerView.frame.height + userInfoView.frame.height + badgeAndTournamentStack.frame.height + 95)
+            offset: userImageContainerView.frame.height + schoolButton.frame.height + badgeAndTournamentStack.frame.height + 95)
     }
     
     private func addLinkComponent() {
@@ -540,7 +510,7 @@ public final class ProfileViewController: UIViewController {
         linkBackView.addSubview(linkRightButton)
         linkBackView.addSubview(linkTitleLabel)
         
-        if viewModel.userLinks.count == 0 {
+        if viewModel.filterLinks.isEmpty {
             linkBackView.addSubview(linkEmptyTextLabel)
         } else {
             linkBackView.addSubview(linkView)
@@ -570,11 +540,11 @@ public final class ProfileViewController: UIViewController {
             make.height.equalTo(24)
         }
         
-        addLinkView()
+        addLinkView(count: viewModel.filterLinks.count)
     }
     
-    private func addLinkView() {
-        if viewModel.userLinks.count == 0 {
+    private func addLinkView(count: Int) {
+        if count == 0 {
             if self.linkEmptyTextLabel.superview == nil {
                 self.linkBackView.addSubview(self.linkEmptyTextLabel)
             }
@@ -596,19 +566,14 @@ public final class ProfileViewController: UIViewController {
             
             self.view.layoutIfNeeded()
             
-            let height = self.linkView.oneLinkImageView.frame.height
+            let linkHeight = Int(self.linkView.oneLinkImageView.frame.height) * count
+            let linkPadding = (count - 1) * 28
 
             self.linkView.snp.makeConstraints { make in
                 make.top.equalTo(self.linkTitleLabel.snp.bottom).offset(22)
                 make.leading.equalToSuperview().offset(ViewValues.defaultPadding)
                 make.trailing.equalToSuperview().offset(-ViewValues.defaultPadding)
-                if viewModel.userLinks.count == 1 {
-                    make.height.equalTo(height + 36)
-                } else if viewModel.userLinks.count == 2 {
-                    make.height.equalTo(height * 2 + 46)
-                } else {
-                    make.height.equalTo(height * 3 + 56)
-                }
+                make.height.equalTo(linkHeight + linkPadding + 36)
             }
             
             self.view.layoutIfNeeded()
@@ -830,13 +795,17 @@ public final class ProfileViewController: UIViewController {
     }
 
     private func setupActions() {
-        updateImageButton.addTarget(
+        editImageButton.addTarget(
             self,
-            action: #selector(clickUpdateImageButton(_:)),
+            action: #selector(clickEditImageButton(_:)),
             for: .touchUpInside)
-        infoSettingButton.addTarget(
+        editUserNameButton.addTarget(
             self,
-            action: #selector(clickSettingsButton(_:)),
+            action: #selector(clickEditUserNameButton(_:)),
+            for: .touchUpInside)
+        schoolButton.addTarget(
+            self,
+            action: #selector(clickSchoolButton(_:)),
             for: .touchUpInside)
         badgeButton.addTarget(
             self,
@@ -862,16 +831,24 @@ public final class ProfileViewController: UIViewController {
     }
     
     // MARK: - Actions
-    @objc private func clickUpdateImageButton(_ sender: UIButton) {
-        print("사진 수정 버튼 클릭")
+    @objc private func clickEditImageButton(_ sender: UIButton) {
+        coordinator?.didTabEditMyPhotoButton()
+    }
+    
+    @objc private func clickEditUserNameButton(_ sender: UIButton) {
+        coordinator?.didTabEditUserNameButton()
     }
     
     @objc private func clickSettingsButton(_ sender: UIButton) {
         print("세팅 아이콘 버튼 클릭")
     }
     
+    @objc private func clickSchoolButton(_ sender: UIButton) {
+        coordinator?.didTabSchoolButton()
+    }
+    
     @objc private func clickBadgeButton(_ sender: UIButton) {
-        print("배지 버튼 클릭")
+        coordinator?.didTabBadgeButton()
     }
     
     @objc private func clickTournamentButton(_ sender: UIButton) {
@@ -938,8 +915,6 @@ extension ProfileViewController {
 
 extension ProfileViewController: ProfileViewControllerDelegate {
     public func didTabBackButtonFromLinksDialogViewController() {
-        //TODO: viewModel에 userLinks 값을 서버로 보내주는 로직(겸 로티) -> 완료시 밑에 실행
-        
         for subview in self.linkView.subviews {
             subview.removeFromSuperview()
         }
@@ -949,9 +924,9 @@ extension ProfileViewController: ProfileViewControllerDelegate {
         self.linkEmptyTextLabel.removeFromSuperview()
         self.linkView.removeFromSuperview()
         
-        self.linkView.configUserInterface(linkList: viewModel.userLinks)
+        self.linkView.configUserInterface(linkList: viewModel.filterLinks)
         
-        self.addLinkView()
+        self.addLinkView(count: viewModel.filterLinks.count)
         
         self.view.layoutIfNeeded()
         
