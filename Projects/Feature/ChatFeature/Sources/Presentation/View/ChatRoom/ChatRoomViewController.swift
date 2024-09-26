@@ -373,8 +373,9 @@ extension ChatRoomViewController: UITableViewDataSource {
 
 extension ChatRoomViewController: UITableViewDelegate {
     public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        // chatRoomWarningTableViewCell 밑에서부터 채팅Cell 나와야해서 채팅 시작 높이 조절
         if indexPath.section == 0 {
-            return 150 // 경고 셀의 높이
+            return 100
         }
         return UITableView.automaticDimension
     }
@@ -385,12 +386,8 @@ extension ChatRoomViewController: UITableViewDelegate {
             return UIView()
         }
         chatHeader.configure(headerType: .today)
+      
         return chatHeader
-    }
-    
-    public func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        // chatRoomWarningTableViewCell 밑에서부터 채팅Cell 나와야해서 높이 조절
-        return section == 0 ? 30 : 90
     }
 }
 

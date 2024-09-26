@@ -17,6 +17,6 @@ extension ChatRoomModalCoordinator: ReportDialogCoordinatorDelegate {
     }
     
     public func didReport() {
-
+        self.didFinish(childCoordinator: self)
     }
 }

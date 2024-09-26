@@ -175,14 +175,15 @@ extension ChatViewController: UITableViewDelegate {
         let leaveAction = UIContextualAction(style: .destructive, title: "") { [weak self] (action, view, completionHandler) in
             // trailing Swipe Button 눌렀을때 action
             self?.selectIndexPath = indexPath
-            print("selectIndexPath set to: \(indexPath)")
             self?.coordinator?.didTapLeaveButton(for: indexPath)
-
+            
             completionHandler(true)
         }
         self.selectIndexPath = indexPath
         
-        let leaveButtonView = LeaveButtonView(frame: CGRect(x: 0, y: 0, width: 80, height: 85))
+        let leaveButtonView = LeaveButtonView(frame: CGRect(x: 0, y: 0, width: 100, height: 85))
+        
+        leaveAction.image = leaveButtonView.asImage()
         leaveAction.backgroundColor = .white
         
         let configuration = UISwipeActionsConfiguration(actions: [leaveAction])
