@@ -3,10 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 55;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0AFE3731F57B40E7DBAC5795 /* GetMyPageDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F8D741161F90AD17B4F7E5 /* GetMyPageDataRepository.swift */; };
 		116185E01828926E1AE2948D /* RemoteImageDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D0E7625A5F57D7EC04CB5C6 /* RemoteImageDataRepository.swift */; };
 		1340D6467BAD87D0C897C462 /* SignInRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3854105DDC9CDA62E56A09EF /* SignInRepository.swift */; };
 		15A579A05BCD026926A33790 /* LogOutRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5300EDFD229D6293593CDB12 /* LogOutRequest.swift */; };
@@ -16,30 +17,29 @@
 		30A9A12EAAB824CB847A8F55 /* SearchSchoolService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49451361217E78799DEB15E /* SearchSchoolService.swift */; };
 		33DCF949EEBC3A2BD32B7BBF /* VerificationCodeRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4379208B31B7C01AB4F9897D /* VerificationCodeRequest.swift */; };
 		3CD20E63F5B08BA33A48403C /* SchoolDataRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432D1265802A2173DE408F5E /* SchoolDataRequest.swift */; };
-		419252B82CA2AC18005730CC /* MyPageResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419252B72CA2AC18005730CC /* MyPageResponse.swift */; };
-		419252BD2CA2AD67005730CC /* MyPageRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419252BC2CA2AD67005730CC /* MyPageRequest.swift */; };
-		419252C12CA2AEB1005730CC /* GetMyPageDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419252C02CA2AEB1005730CC /* GetMyPageDataRepository.swift */; };
 		46FFF702E799485168786812 /* ReissueRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612D6B6422F772C1E2D6F5C0 /* ReissueRepository.swift */; };
 		54245B85066C204827A163A8 /* LogInRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DB203B60AC0D1DC139D0787 /* LogInRequest.swift */; };
 		5AACBF8F2CA31275CAF2BC75 /* DuplicationCodeResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8308C6071C68612B62C5393 /* DuplicationCodeResponse.swift */; };
 		6FF40068FE38C2FAB9E666E4 /* ReissueRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F38D8BFB5238DE851C69B24 /* ReissueRequest.swift */; };
+		7620640D51C31ED6AE202A3D /* MyPageRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 388A6FE76A64EA0F80A258F2 /* MyPageRequest.swift */; };
 		77EEC29764D1D277B000EE29 /* ImageDataUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451ACE222BE8C01F4B361381 /* ImageDataUseCase.swift */; };
 		7AAA57308202A4BD6289377E /* SearchUseCaseImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2631E3BA481483BAEA9EF018 /* SearchUseCaseImp.swift */; };
+		7C85BB4F7A711E9187128773 /* DefaultResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66735F24EDA58B2CE469F30 /* DefaultResponse.swift */; };
 		8323AECB90EFE773F20B7248 /* SignService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710F7C147A43E62A5D8CDFB6 /* SignService.swift */; };
 		83D7B4EF66F988EE6F958100 /* ImageDataUseCaseImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7616981B4BB1B2D11994DCC8 /* ImageDataUseCaseImp.swift */; };
 		8658AE87AB971BFA9120C146 /* LogInResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 930527EF52E62AD0CB816D2B /* LogInResponse.swift */; };
 		86E271BA4DD4D6FDA1618ACD /* PhoneNumberAuthRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5697AC77D598034365D6A652 /* PhoneNumberAuthRequest.swift */; };
 		8F82A8BB68E309F441F21D31 /* SignUseCaseImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC9D0548A4DB530E9B7F3EE0 /* SignUseCaseImp.swift */; };
+		931A16AFD8D3FF10A1DD3B97 /* VerificationCodeRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77D3BD52B440E6A9AD8B7C0B /* VerificationCodeRepository.swift */; };
 		968DA3475B63B63D4443BD7A /* SignUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97F7B0D49B77A55DE5D9C86 /* SignUseCase.swift */; };
 		99CD6DA9824F88BDCB6342FE /* DuplicationCheckRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 556A34C8BA55D82986ADD6CA /* DuplicationCheckRequest.swift */; };
 		AB6FBDD9EEDC697F20206F85 /* SignOutRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84056B1C20BD8AB114402AF /* SignOutRepository.swift */; };
 		ADE46DB026DD08F36838B2E8 /* ImageDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCAFDEA13881228AC3ACE0A9 /* ImageDataService.swift */; };
+		B7B515EA02FFC77723202149 /* MyPageResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F203B488676169CD077A8FBF /* MyPageResponse.swift */; };
 		C54D083201D9E2316E0E0CEB /* SignUpRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB47865804E063CF2820CF8 /* SignUpRequest.swift */; };
-		D20F7F19A4CF44FAEDF669C1 /* DefaultResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF2567DB33E37181B5B4DA3 /* DefaultResponse.swift */; };
 		DFF8EC9EC21377641608EBCA /* SignUpRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52322FBE6CCBD4EC164281FF /* SignUpRepository.swift */; };
 		EB418175EBD284B055113D0C /* DuplictaionCheckRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF02CC704DF7A69F3955F70 /* DuplictaionCheckRepository.swift */; };
 		EF762BFB8212220D77FB806C /* SearchUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635E9CCB12A7F469B1A7A221 /* SearchUseCase.swift */; };
-		F80FA5075E7814C24EECD7F0 /* VerificationCodeRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = D259CB7F281DE7B9901E4E24 /* VerificationCodeRepository.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -61,10 +61,8 @@
 		2E1BC0816B627CC5A5ACCF40 /* RequestCodeRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestCodeRepository.swift; sourceTree = "<group>"; };
 		2F38D8BFB5238DE851C69B24 /* ReissueRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReissueRequest.swift; sourceTree = "<group>"; };
 		3854105DDC9CDA62E56A09EF /* SignInRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInRepository.swift; sourceTree = "<group>"; };
+		388A6FE76A64EA0F80A258F2 /* MyPageRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageRequest.swift; sourceTree = "<group>"; };
 		3A4620A0019C901EC7C993A2 /* Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
-		419252B72CA2AC18005730CC /* MyPageResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageResponse.swift; sourceTree = "<group>"; };
-		419252BC2CA2AD67005730CC /* MyPageRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageRequest.swift; sourceTree = "<group>"; };
-		419252C02CA2AEB1005730CC /* GetMyPageDataRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetMyPageDataRepository.swift; sourceTree = "<group>"; };
 		432D1265802A2173DE408F5E /* SchoolDataRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolDataRequest.swift; sourceTree = "<group>"; };
 		4379208B31B7C01AB4F9897D /* VerificationCodeRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationCodeRequest.swift; sourceTree = "<group>"; };
 		451ACE222BE8C01F4B361381 /* ImageDataUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDataUseCase.swift; sourceTree = "<group>"; };
@@ -79,6 +77,7 @@
 		635E9CCB12A7F469B1A7A221 /* SearchUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchUseCase.swift; sourceTree = "<group>"; };
 		710F7C147A43E62A5D8CDFB6 /* SignService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignService.swift; sourceTree = "<group>"; };
 		7616981B4BB1B2D11994DCC8 /* ImageDataUseCaseImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDataUseCaseImp.swift; sourceTree = "<group>"; };
+		77D3BD52B440E6A9AD8B7C0B /* VerificationCodeRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationCodeRepository.swift; sourceTree = "<group>"; };
 		930527EF52E62AD0CB816D2B /* LogInResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInResponse.swift; sourceTree = "<group>"; };
 		A49451361217E78799DEB15E /* SearchSchoolService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchSchoolService.swift; sourceTree = "<group>"; };
 		A97F7B0D49B77A55DE5D9C86 /* SignUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUseCase.swift; sourceTree = "<group>"; };
@@ -88,10 +87,11 @@
 		B84056B1C20BD8AB114402AF /* SignOutRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignOutRepository.swift; sourceTree = "<group>"; };
 		BD15A37E85BAE3A36B2CE72C /* Domain-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Domain-Info.plist"; sourceTree = "<group>"; };
 		D160BBBDBAADD18EC4B667FB /* SchoolDataResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolDataResponse.swift; sourceTree = "<group>"; };
-		D259CB7F281DE7B9901E4E24 /* VerificationCodeRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationCodeRepository.swift; sourceTree = "<group>"; };
 		DCAFDEA13881228AC3ACE0A9 /* ImageDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDataService.swift; sourceTree = "<group>"; };
-		DCF2567DB33E37181B5B4DA3 /* DefaultResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultResponse.swift; sourceTree = "<group>"; };
+		E4F8D741161F90AD17B4F7E5 /* GetMyPageDataRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetMyPageDataRepository.swift; sourceTree = "<group>"; };
 		EC9D0548A4DB530E9B7F3EE0 /* SignUseCaseImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUseCaseImp.swift; sourceTree = "<group>"; };
+		F203B488676169CD077A8FBF /* MyPageResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageResponse.swift; sourceTree = "<group>"; };
+		F66735F24EDA58B2CE469F30 /* DefaultResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultResponse.swift; sourceTree = "<group>"; };
 		FD49F277B86481D3D105FAC8 /* Domain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Domain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -174,9 +174,9 @@
 		37D971C84589EEBE00E797EE /* Sign */ = {
 			isa = PBXGroup;
 			children = (
+				F66735F24EDA58B2CE469F30 /* DefaultResponse.swift */,
 				B8308C6071C68612B62C5393 /* DuplicationCodeResponse.swift */,
 				930527EF52E62AD0CB816D2B /* LogInResponse.swift */,
-				DCF2567DB33E37181B5B4DA3 /* DefaultResponse.swift */,
 			);
 			path = Sign;
 			sourceTree = "<group>";
@@ -185,9 +185,9 @@
 			isa = PBXGroup;
 			children = (
 				A5B80CC6583FC5B42E58E61D /* Sign */,
+				E4F8D741161F90AD17B4F7E5 /* GetMyPageDataRepository.swift */,
 				0D0E7625A5F57D7EC04CB5C6 /* RemoteImageDataRepository.swift */,
 				B3D5166F9BAE202703C8ADDB /* SchoolDataRepository.swift */,
-				419252C02CA2AEB1005730CC /* GetMyPageDataRepository.swift */,
 			);
 			path = RepositoryInterface;
 			sourceTree = "<group>";
@@ -196,8 +196,8 @@
 			isa = PBXGroup;
 			children = (
 				37D971C84589EEBE00E797EE /* Sign */,
+				F203B488676169CD077A8FBF /* MyPageResponse.swift */,
 				D160BBBDBAADD18EC4B667FB /* SchoolDataResponse.swift */,
-				419252B72CA2AC18005730CC /* MyPageResponse.swift */,
 			);
 			path = Response;
 			sourceTree = "<group>";
@@ -240,8 +240,8 @@
 			isa = PBXGroup;
 			children = (
 				71570DB0B446D2F0F2779EAB /* Sign */,
+				388A6FE76A64EA0F80A258F2 /* MyPageRequest.swift */,
 				432D1265802A2173DE408F5E /* SchoolDataRequest.swift */,
-				419252BC2CA2AD67005730CC /* MyPageRequest.swift */,
 			);
 			path = Request;
 			sourceTree = "<group>";
@@ -255,7 +255,7 @@
 				3854105DDC9CDA62E56A09EF /* SignInRepository.swift */,
 				B84056B1C20BD8AB114402AF /* SignOutRepository.swift */,
 				52322FBE6CCBD4EC164281FF /* SignUpRepository.swift */,
-				D259CB7F281DE7B9901E4E24 /* VerificationCodeRepository.swift */,
+				77D3BD52B440E6A9AD8B7C0B /* VerificationCodeRepository.swift */,
 			);
 			path = Sign;
 			sourceTree = "<group>";
@@ -307,6 +307,8 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
 				ORGANIZATIONNAME = ATeen;
+				TargetAttributes = {
+				};
 			};
 			buildConfigurationList = 5B17347D429F14C389327C78 /* Build configuration list for PBXProject "Domain" */;
 			compatibilityVersion = "Xcode 14.0";
@@ -341,6 +343,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7620640D51C31ED6AE202A3D /* MyPageRequest.swift in Sources */,
 				3CD20E63F5B08BA33A48403C /* SchoolDataRequest.swift in Sources */,
 				99CD6DA9824F88BDCB6342FE /* DuplicationCheckRequest.swift in Sources */,
 				54245B85066C204827A163A8 /* LogInRequest.swift in Sources */,
@@ -349,11 +352,12 @@
 				6FF40068FE38C2FAB9E666E4 /* ReissueRequest.swift in Sources */,
 				C54D083201D9E2316E0E0CEB /* SignUpRequest.swift in Sources */,
 				33DCF949EEBC3A2BD32B7BBF /* VerificationCodeRequest.swift in Sources */,
+				B7B515EA02FFC77723202149 /* MyPageResponse.swift in Sources */,
 				2405CEBB75D3A316A75D6994 /* SchoolDataResponse.swift in Sources */,
-				419252B82CA2AC18005730CC /* MyPageResponse.swift in Sources */,
+				7C85BB4F7A711E9187128773 /* DefaultResponse.swift in Sources */,
 				5AACBF8F2CA31275CAF2BC75 /* DuplicationCodeResponse.swift in Sources */,
 				8658AE87AB971BFA9120C146 /* LogInResponse.swift in Sources */,
-				D20F7F19A4CF44FAEDF669C1 /* DefaultResponse.swift in Sources */,
+				0AFE3731F57B40E7DBAC5795 /* GetMyPageDataRepository.swift in Sources */,
 				116185E01828926E1AE2948D /* RemoteImageDataRepository.swift in Sources */,
 				23E6F0300D0F5577048F6B53 /* SchoolDataRepository.swift in Sources */,
 				EB418175EBD284B055113D0C /* DuplictaionCheckRepository.swift in Sources */,
@@ -362,13 +366,11 @@
 				1340D6467BAD87D0C897C462 /* SignInRepository.swift in Sources */,
 				AB6FBDD9EEDC697F20206F85 /* SignOutRepository.swift in Sources */,
 				DFF8EC9EC21377641608EBCA /* SignUpRepository.swift in Sources */,
-				F80FA5075E7814C24EECD7F0 /* VerificationCodeRepository.swift in Sources */,
+				931A16AFD8D3FF10A1DD3B97 /* VerificationCodeRepository.swift in Sources */,
 				ADE46DB026DD08F36838B2E8 /* ImageDataService.swift in Sources */,
 				30A9A12EAAB824CB847A8F55 /* SearchSchoolService.swift in Sources */,
 				8323AECB90EFE773F20B7248 /* SignService.swift in Sources */,
-				419252C12CA2AEB1005730CC /* GetMyPageDataRepository.swift in Sources */,
 				77EEC29764D1D277B000EE29 /* ImageDataUseCase.swift in Sources */,
-				419252BD2CA2AD67005730CC /* MyPageRequest.swift in Sources */,
 				EF762BFB8212220D77FB806C /* SearchUseCase.swift in Sources */,
 				968DA3475B63B63D4443BD7A /* SignUseCase.swift in Sources */,
 				83D7B4EF66F988EE6F958100 /* ImageDataUseCaseImp.swift in Sources */,
@@ -453,10 +455,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					"-ObjC",
-				);
+				OTHER_LDFLAGS = "$(inherited) -ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ATeen.ATeen.Domain;
 				PRODUCT_NAME = Domain;
 				SDKROOT = iphoneos;
@@ -552,10 +551,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					"-ObjC",
-				);
+				OTHER_LDFLAGS = "$(inherited) -ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ATeen.ATeen.Domain;
 				PRODUCT_NAME = Domain;
 				SDKROOT = iphoneos;
@@ -563,7 +559,10 @@
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = (
+					"$(inherited)",
+					DEBUG,
+				);
 				SWIFT_COMPILATION_MODE = singlefile;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
