@@ -11,34 +11,16 @@ import DesignSystem
 import UIKit
 
 final class TournamentUserView: UIView {
-    let colors: [CGColor] = [
-        UIColor.black.withAlphaComponent(0.5).cgColor,
-        UIColor.black.withAlphaComponent(0).cgColor
-    ]
     let width = ViewValues.height * 0.35 * 0.86
     let height = ViewValues.height * 0.35
     var image: UIImage?
     weak var delegate: TournamentUserCollectionViewCellDelegate?
     
     // MARK: - Private properties
-    private lazy var bottomGradientLayer: CAGradientLayer = {
-        let layer = CAGradientLayer()
-        layer.frame = CGRect(x: 0,
-                             y: height / 2,
-                             width: width,
-                             height: height / 2)
-        layer.colors = colors
-        layer.startPoint = CGPoint(x: 0.5, y: 1.0)
-        layer.endPoint = CGPoint(x: 0.5, y: 0.0)
-        layer.locations = [0.0, 0.44, 1.0]
-        return layer
-    }()
-    
     private lazy var imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = image
         imageView.contentMode = .scaleAspectFill
-        imageView.layer.addSublayer(bottomGradientLayer)
         return imageView
     }()
     
@@ -56,12 +38,16 @@ final class TournamentUserView: UIView {
     // MARK: - Life Cycle
     init(
         frame: CGRect,
+        tag: Int,
         image: UIImage,
         delegate: TournamentUserCollectionViewCellDelegate
     ) {
         self.image = image
         self.delegate = delegate
         super.init(frame: frame)
+        
+        self.tag = tag
+        
         configUserInterface()
         configShadow()
         setupActions()
@@ -88,7 +74,6 @@ final class TournamentUserView: UIView {
                                     opacity: 0.25,
                                     radius: 4,
                                     offset: CGSize(width: 0, height: 4))
-//        selectButton.addInnerXYShadowToButton()
     }
     
     private func setupActions() {
@@ -97,9 +82,9 @@ final class TournamentUserView: UIView {
                                for: .touchUpInside)
     }
     
-    // MARK: - Actions    
+    // MARK: - Actions
     @objc private func didTapSelectButton(_ sender: UIButton) {
-        delegate?.didTapSelectButton()
+        delegate?.didTapSelectButton(tag: self.tag)
     }
 }
 
