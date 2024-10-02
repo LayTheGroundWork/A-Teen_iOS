@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		026CC214C2542178135EF0B4 /* UserChatMessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 623113FD3FEFC96CE21938A0 /* UserChatMessageTableViewCell.swift */; };
+		04E51E2E2CA69C4600EE09A3 /* OpertaingPolicyModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E51E2D2CA69C4600EE09A3 /* OpertaingPolicyModalViewController.swift */; };
+		04E51E302CA6A42400EE09A3 /* OperatingPolicyWebViewCoordinator+OpertaingPolicyModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E51E2F2CA6A42400EE09A3 /* OperatingPolicyWebViewCoordinator+OpertaingPolicyModalViewController.swift */; };
 		07AF370519CD695ADCF1432B /* ChatRoomModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48004408112FCD4C90D382D /* ChatRoomModalViewController.swift */; };
 		0B8429B8635F09C5E2CF2D84 /* OperatingPolicyWebViewFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB7833BA2BF9825B5E85FB63 /* OperatingPolicyWebViewFactory.swift */; };
 		20E22A4DA538B4FC3DA8D52B /* ChatCoordinator+ChatViewControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E71061B94CCA13A2833F0D8 /* ChatCoordinator+ChatViewControllerCoordinator.swift */; };
@@ -18,7 +20,7 @@
 		28C9964E5B51DFDE96382A5B /* ChatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46380539475A5259D33F7F2 /* ChatViewModel.swift */; };
 		37E36F7998553B42970D89A7 /* ChatRoomCoordinator+ChatRoomModalCoordinatorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8799A36BEE3D87422419E2 /* ChatRoomCoordinator+ChatRoomModalCoordinatorDelegate.swift */; };
 		44CB624789D399E95831DDE9 /* ChatCoordinator+ChatRoomCoordinatorDelegate .swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B14975C3E188113D01C5C65 /* ChatCoordinator+ChatRoomCoordinatorDelegate .swift */; };
-		47A754581B4F6685D024105A /* OperatingPolicyCoordinator+SFSafariViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDFEF9B9744616F7F304754E /* OperatingPolicyCoordinator+SFSafariViewControllerDelegate.swift */; };
+		47A754581B4F6685D024105A /* OperatingPolicyCoordinator+WKNavigationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDFEF9B9744616F7F304754E /* OperatingPolicyCoordinator+WKNavigationDelegate.swift */; };
 		5456FEBB2F413C6384E8E23F /* ChatCoordinator+AlertCoordinatorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278A57AAB103E413EA035ECD /* ChatCoordinator+AlertCoordinatorDelegate.swift */; };
 		554E3EF727A5CB6C969C0F02 /* FeatureDependency.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B6F1FC0AE38C9F2256C30FC /* FeatureDependency.framework */; };
 		5A8197ECDF6EE034FC2AC750 /* LeaveButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C926D01773ED6DA626B4928D /* LeaveButtonView.swift */; };
@@ -57,6 +59,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		04E51E2D2CA69C4600EE09A3 /* OpertaingPolicyModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpertaingPolicyModalViewController.swift; sourceTree = "<group>"; };
+		04E51E2F2CA6A42400EE09A3 /* OperatingPolicyWebViewCoordinator+OpertaingPolicyModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OperatingPolicyWebViewCoordinator+OpertaingPolicyModalViewController.swift"; sourceTree = "<group>"; };
 		11ADF59C0267B2D34961074B /* ChatMessageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMessageModel.swift; sourceTree = "<group>"; };
 		14DB597359E5BC86745E9BAE /* ChatRoomModalCoordinator+ReportDialogCoordinatorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ChatRoomModalCoordinator+ReportDialogCoordinatorDelegate.swift"; sourceTree = "<group>"; };
 		2735D9F6B05793A1C3ABAEE4 /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
@@ -81,7 +85,7 @@
 		9B14975C3E188113D01C5C65 /* ChatCoordinator+ChatRoomCoordinatorDelegate .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ChatCoordinator+ChatRoomCoordinatorDelegate .swift"; sourceTree = "<group>"; };
 		A6509C0B265133FB0B45D5CC /* ChatRoomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomCell.swift; sourceTree = "<group>"; };
 		BB456CE92159BAFF2A52F873 /* OperatingPolicyWebViewCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperatingPolicyWebViewCoordinator.swift; sourceTree = "<group>"; };
-		BDFEF9B9744616F7F304754E /* OperatingPolicyCoordinator+SFSafariViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OperatingPolicyCoordinator+SFSafariViewControllerDelegate.swift"; sourceTree = "<group>"; };
+		BDFEF9B9744616F7F304754E /* OperatingPolicyCoordinator+WKNavigationDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OperatingPolicyCoordinator+WKNavigationDelegate.swift"; sourceTree = "<group>"; };
 		BEC5C08493285FF561B64931 /* ChatRoomCoordinator+AlertCoordinatorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ChatRoomCoordinator+AlertCoordinatorDelegate.swift"; sourceTree = "<group>"; };
 		C46380539475A5259D33F7F2 /* ChatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewModel.swift; sourceTree = "<group>"; };
 		C926D01773ED6DA626B4928D /* LeaveButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaveButtonView.swift; sourceTree = "<group>"; };
@@ -109,6 +113,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		04E51E2A2CA6881500EE09A3 /* WebModal */ = {
+			isa = PBXGroup;
+			children = (
+				04E51E2D2CA69C4600EE09A3 /* OpertaingPolicyModalViewController.swift */,
+			);
+			path = WebModal;
+			sourceTree = "<group>";
+		};
 		17941DE1984B6E4735E8E0E8 /* Chat */ = {
 			isa = PBXGroup;
 			children = (
@@ -155,8 +167,9 @@
 		3178A5E4229A9079C4DF51A5 /* WebModal */ = {
 			isa = PBXGroup;
 			children = (
-				BDFEF9B9744616F7F304754E /* OperatingPolicyCoordinator+SFSafariViewControllerDelegate.swift */,
 				BB456CE92159BAFF2A52F873 /* OperatingPolicyWebViewCoordinator.swift */,
+				BDFEF9B9744616F7F304754E /* OperatingPolicyCoordinator+WKNavigationDelegate.swift */,
+				04E51E2F2CA6A42400EE09A3 /* OperatingPolicyWebViewCoordinator+OpertaingPolicyModalViewController.swift */,
 				DB7833BA2BF9825B5E85FB63 /* OperatingPolicyWebViewFactory.swift */,
 			);
 			path = WebModal;
@@ -168,6 +181,7 @@
 				3858E671292F225A8164C159 /* Chat */,
 				996BA31AF586990CA6B64F48 /* ChatRoom */,
 				2FC60CD5CA6722832D9636D6 /* ChatRoomModal */,
+				04E51E2A2CA6881500EE09A3 /* WebModal */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -392,13 +406,15 @@
 				87CA8F1B8244C41AB75C8187 /* ChatRoomCoordinator+OperatingPolicyModalCoordinatorDelegate.swift in Sources */,
 				E0BC4D0398E4E0ED7D7DB693 /* ChatRoomCoordinator.swift in Sources */,
 				FB7CCFA1295B74904F5E8D3E /* ChatRoomFactory.swift in Sources */,
+				04E51E302CA6A42400EE09A3 /* OperatingPolicyWebViewCoordinator+OpertaingPolicyModalViewController.swift in Sources */,
 				A191FC98621B77240E137470 /* ChatRoomModalCoordinator+ ChatRoomModalViewControllerCoordinator.swift in Sources */,
 				E752CFFD592CB7E679471733 /* ChatRoomModalCoordinator+ReportDialogCoordinatorDelegate.swift in Sources */,
 				7FD7D4DEB7687A0C7397F7D9 /* ChatRoomModalCoordinator.swift in Sources */,
 				B086464C212A93613CC90AA6 /* ChatRoomModalFactory.swift in Sources */,
-				47A754581B4F6685D024105A /* OperatingPolicyCoordinator+SFSafariViewControllerDelegate.swift in Sources */,
+				47A754581B4F6685D024105A /* OperatingPolicyCoordinator+WKNavigationDelegate.swift in Sources */,
 				229C66D66269D8BF5F30BD1D /* OperatingPolicyWebViewCoordinator.swift in Sources */,
 				0B8429B8635F09C5E2CF2D84 /* OperatingPolicyWebViewFactory.swift in Sources */,
+				04E51E2E2CA69C4600EE09A3 /* OpertaingPolicyModalViewController.swift in Sources */,
 				CDFD8696BA4B025B3EC4AB5F /* ChatRoomCell.swift in Sources */,
 				E5771FE1A0C703DA5D6CA1F1 /* ChatRoomWarningTableViewCell.swift in Sources */,
 				AF0EABDB5EF003995366E193 /* PartnerChatMessageTableViewCell.swift in Sources */,

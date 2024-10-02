@@ -22,7 +22,6 @@ public protocol ChatViewControllerDelegate: AnyObject {
 public final class ChatViewController: UIViewController {
     // MARK: - Private properties
     public var selectIndexPath: IndexPath?
-    
     private var viewModel: ChatViewModel
     private weak var coordinator: ChatViewControllerCoordinator?
     

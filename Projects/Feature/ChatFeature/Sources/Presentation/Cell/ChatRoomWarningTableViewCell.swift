@@ -54,7 +54,7 @@ public final class ChatRoomWarningTableViewCell: UITableViewCell {
     
     private lazy var chatWarningOperatingPolicyButton: UIButton = {
         let button = UIButton()
-        button.setTitle("운영정책 보기", for: .normal)
+        button.setTitle(AppLocalized.operatingPolicy, for: .normal)
         button.titleLabel?.font = .customFont(forTextStyle: .footnote, weight: .bold)
         button.setUnderline()
         button.isUserInteractionEnabled = true

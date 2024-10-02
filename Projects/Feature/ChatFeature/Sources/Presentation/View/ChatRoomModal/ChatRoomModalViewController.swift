@@ -65,7 +65,6 @@ public final class ChatRoomModalViewController: UIViewController {
         self.coordinator = coordinator
         super.init(nibName: nil, bundle: nil)
         modalPresentationStyle = .custom
-        //        transitioningDelegate = self
     }
     
     required init?(coder: NSCoder) {
@@ -150,7 +149,6 @@ public final class ChatRoomModalViewController: UIViewController {
     // MARK: - Actions
     @objc func didSelectTouchView(_ sender: Any) {
         self.modalView.endEditing(true)
-        
     }
     
     @objc func didSelectBackView(_ sender: Any) {
@@ -190,9 +188,6 @@ public final class ChatRoomModalViewController: UIViewController {
         }
     }
 }
-
-
-
 
 // MARK: - Extensions here
 extension ChatRoomModalViewController: UITableViewDelegate {
@@ -234,15 +229,9 @@ extension ChatRoomModalViewController: UITableViewDataSource {
                 cell.configure(title: AppLocalized.blockButton, image: DesignSystemAsset.blockIcon.image, color: .black)
             }
         } else if indexPath.section == 1 {
-            cell.configure(title: "채팅방 나가기", image: UIImage(systemName: "rectangle.portrait.and.arrow.right"), color: .red)
+            cell.configure(title: AppLocalized.exitChatRoom, image: UIImage(systemName: "rectangle.portrait.and.arrow.right"), color: .red)
         }
         
         return cell
     }
 }
-
-//extension ChatRoomModalViewController: UIViewControllerTransitioningDelegate {
-//    public func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
-//        return ChatRoomPresentationController(presentedViewController: presented, presenting: presenting)
-//    }
-//}

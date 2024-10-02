@@ -42,14 +42,12 @@ extension ChatRoomCoordinator: ChatRoomModalCoordinatorDelegate {
                 secondButtonColor: .red
             )
         )
-        
         addChildCoordinatorStart(alertCoordinator)
         
         navigation.present(
             alertCoordinator.navigation.rootViewController,
             animated: false)
     }
-    
 }
 
 

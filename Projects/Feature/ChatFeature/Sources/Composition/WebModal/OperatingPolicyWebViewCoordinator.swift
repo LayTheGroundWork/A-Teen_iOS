@@ -8,7 +8,7 @@
 
 import FeatureDependency
 import UIKit
-import SafariServices
+import WebKit
 
 public protocol OperatingPolicyModalCoordinatorDelegate: AnyObject {
     func didFinishWebViewModal(childCoordinator: Coordinator)
@@ -19,6 +19,7 @@ public final class OperatingPolicyWebViewCoordinator: NSObject, Coordinator {
     public var factory: OperatingPolicyWebViewFactory
     public var childCoordinators: [Coordinator] = []
     weak var delegate: OperatingPolicyModalCoordinatorDelegate?
+    weak var webViewController: OpertaingPolicyModalViewController?
     
     public init(
         navigation: Navigation,
@@ -31,8 +32,10 @@ public final class OperatingPolicyWebViewCoordinator: NSObject, Coordinator {
     }
     
     public func start() {
-        guard let controller = factory.makeOperatingPolicyWbViewController(coordinator: self) else { return }
-
+        guard let controller = factory.makeOperatingPolicyWbViewController(coordinator: self) as? OpertaingPolicyModalViewController else { return }
+        webViewController = controller
+        controller.webView?.navigationDelegate = self
+        
         navigation.viewControllers = [controller]
     }
 }

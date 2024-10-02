@@ -47,6 +47,8 @@ public enum AppLocalized {
                                 운영정책을 위반한 메시지로 신고 접수 시
                                 """
     public static let chatWarning2 = "에이틴 이용에 제한이 있을수 있습니다."
+    public static let operatingPolicy = "운영정책 보기"
+    public static let exitChatRoom = "채팅방 나가기"
     
     // MARK: - LogInViewController
     public static let signupTitle = "가입하기"

@@ -10,7 +10,7 @@ import Foundation
 import FeatureDependency
 
 extension ChatRoomCoordinator: OperatingPolicyModalCoordinatorDelegate {
-    public func didFinishWebViewModal(childCoordinator: FeatureDependency.Coordinator) {
+    public func didFinishWebViewModal(childCoordinator: Coordinator) {
         removeChildCoordinator(childCoordinator)
     }
 }
