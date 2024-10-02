@@ -268,8 +268,6 @@ public final class ChatRoomViewController: UIViewController {
         let newMessage = ChatMessageModel(text: text, messageType: .user, time: currentTime)
         userMessageArray.append(newMessage)
         
-        UIView.setAnimationsEnabled(false)
-        
         // 테이블 뷰 업데이트
         let newIndexPath = IndexPath(row: userMessageArray.count - 1, section: 1)
         chatRoomTableView.insertRows(at: [newIndexPath], with: .none)
@@ -378,6 +376,13 @@ extension ChatRoomViewController: UITableViewDelegate {
             return 100
         }
         return UITableView.automaticDimension
+    }
+    
+    public func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        if section == 0 {
+            return 30  // 첫 번째 섹션의 헤더 높이를 0으로 설정
+        }
+        return UITableView.automaticDimension  // 다른 섹션은 자동 크기 조정
     }
     
     public func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
