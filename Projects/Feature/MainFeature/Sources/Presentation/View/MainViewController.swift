@@ -132,6 +132,7 @@ public final class MainViewController: UIViewController {
     // MARK: - Actions
     @objc private func updateTableView(_ notification: Notification) {
         print("LogOut/LogIn -> Reload Data")
+        print(viewModel.auth.isSessionActive)
         tableView.reloadData()
         reStartTimer()
     }

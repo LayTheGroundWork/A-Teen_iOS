@@ -10,11 +10,11 @@ import Foundation
 public protocol SignUseCase {
     func signIn(
         request: LogInRequest,
-        completion: @escaping (Result<LogInResponse, Error>) -> Void
+        completion: @escaping (LogInData?) -> Void
     )
     func signUp(
         request: SignUpRequest,
-        completion: @escaping (Result<LogInResponse, Error>) -> Void
+        completion: @escaping (LogInData?) -> Void
     )
     func requestCode(
         request: VerificationCodeRequest,

@@ -12,8 +12,7 @@ import DesignSystem
 import UIKit
 
 public enum RegistrationStatus {
-    case signedUp
-    case notSignedUp
+    case completeValidCode
     case inValidCodeNumber
 }
 
@@ -191,26 +190,18 @@ public final class CertificationCodeCollectionViewCell: UICollectionViewCell {
         convertVerificationCode()
         
         // TODO: - 다음으로 이동할때, 가입된 사용자인지 검증 후 보내주기
-        viewModel?.verificationCode { [weak self] data in
+        viewModel?.verificationCode { [weak self] result in
             guard let self = self else { return }
             
-            DispatchQueue.main.async {
-                self.delegate?.didSelectNextButton(registrationStatus: .notSignedUp)
-            }
+            self.delegate?.didSelectNextButton(registrationStatus: .completeValidCode)
             
-            //TODO: 나중에 인증된 전화번호가 있을 경우 테스트하기
-//            if let _ = data {
-//                //TODO: 기존 사용자인지 확인 필요
+            //TODO: 인증된 번호 있으면 위에 코드 이걸로 바꿔주기
+//            switch result {
+//            case true:
 //                DispatchQueue.main.async {
-//                    self.delegate?.didSelectNextButton(registrationStatus: .notSignedUp)
+//                    self.delegate?.didSelectNextButton(registrationStatus: .completeValidCode)
 //                }
-//                
-//                // 기존 사용자
-//                DispatchQueue.main.async {
-//                    self.delegate?.didSelectNextButton(registrationStatus: .signedUp)
-//                }
-//                
-//            } else {
+//            case false:
 //                DispatchQueue.main.async {
 //                    self.delegate?.didSelectNextButton(registrationStatus: .inValidCodeNumber)
 //                }

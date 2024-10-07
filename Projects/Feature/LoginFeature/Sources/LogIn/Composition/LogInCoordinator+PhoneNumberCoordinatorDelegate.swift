@@ -15,7 +15,7 @@ extension LogInCoordinator: PhoneNumberCoordinatorDelegate {
     
     public func navigateToMainViewController() {
         // login coordinator 지우기
-        delegate?.didFinishLogin(childCoordinator: self)
+        navigation.dismissNavigation?()
         navigation.dismiss(animated: true)
     }
 }

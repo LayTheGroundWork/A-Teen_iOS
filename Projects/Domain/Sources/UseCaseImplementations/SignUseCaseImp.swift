@@ -21,14 +21,14 @@ public struct SignUseCaseImp: SignUseCase {
     
     public func signIn(
         request: LogInRequest,
-        completion: @escaping (Result<LogInResponse, Error>) -> Void
+        completion: @escaping (LogInData?) -> Void
     ) {
         signService.signIn(request: request, completion: completion)
     }
     
     public func signUp(
         request: SignUpRequest,
-        completion: @escaping (Result<LogInResponse, Error>) -> Void
+        completion: @escaping (LogInData?) -> Void
     ) {
         signService.signUp(request: request, completion: completion)
     }

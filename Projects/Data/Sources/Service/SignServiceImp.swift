@@ -10,7 +10,6 @@ import Domain
 import Foundation
 
 public struct SignServiceImp: SignService {
-    
     private let signInRepository: SignInRepository
     private let signUpRepository: SignUpRepository
     private let duplicationCheckRepository: DuplictaionCheckRepository
@@ -33,16 +32,32 @@ public struct SignServiceImp: SignService {
     
     public func signIn(
         request: LogInRequest,
-        completion: @escaping (Result<LogInResponse, Error>) -> Void
+        completion: @escaping (LogInData?) -> Void
     ) {
-        signInRepository.signIn(request: request, completion: completion)
+        signInRepository.signIn(request: request) { result in
+            switch result {
+            case .success(let response):
+                completion(response.data)
+            case .failure(let error):
+                print(error.localizedDescription)
+                completion(nil)
+            }
+        }
     }
     
     public func signUp(
         request: SignUpRequest,
-        completion: @escaping (Result<LogInResponse, Error>) -> Void
+        completion: @escaping (LogInData?) -> Void
     ) {
-        signUpRepository.signUp(request: request, completion: completion)
+        signUpRepository.signUp(request: request) { result in
+            switch result {
+            case .success(let response):
+                completion(response.data)
+            case .failure(let error):
+                print(error.localizedDescription)
+                completion(nil)
+            }
+        }
     }
     
     public func requestCode(
@@ -62,7 +77,7 @@ public struct SignServiceImp: SignService {
                 completion(response.data)
             case .failure(let error):
                 print(error.localizedDescription)
-                completion("")
+                completion(nil)
             }
         }
     }

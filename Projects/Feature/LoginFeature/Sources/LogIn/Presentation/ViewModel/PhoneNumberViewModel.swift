@@ -18,54 +18,73 @@ public final class PhoneNumberViewModel {
     public var useCase: SignUseCase
     
     public var signType: SignType = .signUp
-
     public var phoneNumber: String = .empty
-    
     public var verificationCode: String = .empty
+    
+    public var temporaryTokenData: LogInData?
 
     var state = PassthroughSubject<StateController, Never>()
-    
+}
+
+// MARK: - 인증
+extension PhoneNumberViewModel {
     func requestCode(completion: @escaping () -> Void) {
         useCase.requestCode(
-            request: VerificationCodeRequest(phoneNumber: self.phoneNumber)
-        ) {
-            completion()
-        }
-    }
-    
-    func verificationCode(completion: @escaping (String?) -> Void) {
-        useCase.verificareCode(
-            request: .init(phoneNumber: phoneNumber, verificationCode: verificationCode),
+            request: VerificationCodeRequest(phoneNumber: self.phoneNumber),
             completion: completion)
     }
     
-    func signIn(completion: @escaping (Bool) -> Void) {
-        useCase.signIn(
-            request: .init(
-                phoneNumber: phoneNumber,
-                verificationCode: verificationCode
-            )
-        ) { result in
-            switch result {
-            case .success(let tokenData):
-                self.auth.setAccessToken(tokenData.authToken)
-                self.auth.setRefreshToken(tokenData.refreshToken)
-                self.auth.logIn()
-                completion(self.auth.isSessionActive)
-            case .failure(let error):
-                print("로그인 실패:", error.localizedDescription)
+    func verificationCode(completion: @escaping (Bool) -> Void) {
+        print("asd\(auth.isSessionActive)")
+        useCase.verificareCode(request: .init(phoneNumber: phoneNumber, verificationCode: verificationCode)) { data in
+            if let _ = data {
+                completion(true)
+            } else {
                 completion(false)
             }
         }
-        
     }
-    
+}
+
+// MARK: - 회원가입 및 로그인
+extension PhoneNumberViewModel {
     func changeSignType(signType: SignType) {
         switch signType {
         case .signIn:
             self.signType = .signIn
         case .signUp:
             self.signType = .signUp
+        }
+    }
+    
+    func setAuth(_ tokenData: LogInData, completion: () -> Void) {
+        self.auth.setAccessToken(tokenData.accessToken)
+        self.auth.setRefreshToken(tokenData.refreshToken)
+        self.auth.logIn()
+        
+        completion()
+    }
+    
+    func signIn(completion: @escaping (Bool) -> Void) {
+        useCase.signIn(request: .init(phoneNumber: phoneNumber)) { data in
+            if let tokenData = data {
+                self.setAuth(tokenData) {
+                    completion(true)
+                }
+            } else {
+                completion(false)
+            }
+        }
+    }
+    
+    func signUp(completion: @escaping (Bool) -> Void) {
+        useCase.signIn(request: .init(phoneNumber: phoneNumber)) { data in
+            if let tokenData = data {
+                self.temporaryTokenData = tokenData
+                completion(false)
+            } else {
+                completion(true)
+            }
         }
     }
 }

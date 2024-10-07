@@ -76,27 +76,24 @@ public final class SignUpViewModel {
     }
     
     func signUp(completion: @escaping (Bool) -> Void) {
-        signUseCase.signUp(
-            request: .init(
-                phoneNumber: phoneNumber,
-                userId: userId,
-                userName: userName,
-                birthDate: "\(year)-\(month)-\(day)",
-                schoolData: schoolData,
-                category: category.rawValue,
-                tournamentJoin: true
-            )) { result in
-                switch result {
-                case .success(let tokenData):
-                    self.auth.setAccessToken(tokenData.authToken)
-                    self.auth.setRefreshToken(tokenData.refreshToken)
-                    self.auth.logIn()
-                    completion(self.auth.isSessionActive)
-                case .failure(let error):
-                    print("회원가입 실패:", error.localizedDescription)
-                    completion(false)
-                }
+        signUseCase.signUp(request: .init(
+            phoneNumber: phoneNumber,
+            userId: userId,
+            userName: userName,
+            birthDate: "\(year)-\(month)-\(day)",
+            schoolData: schoolData,
+            category: category.rawValue,
+            tournamentJoin: true)
+        ) { data in
+            if let tokenData = data {
+                self.auth.setAccessToken(tokenData.accessToken)
+                self.auth.setRefreshToken(tokenData.refreshToken)
+                self.auth.logIn()
+                completion(true)
+            } else {
+                completion(false)
             }
+        }
     }
 }
 

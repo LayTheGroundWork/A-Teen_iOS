@@ -196,7 +196,6 @@ extension PhoneNumberViewController: UICollectionViewDataSource {
 }
 
 extension PhoneNumberViewController: PhoneNumberCollectionViewCellDelegate {
-
     func didSelectCertificateButton() {
         currentIndexPath.section += 1
         DispatchQueue.main.async { [weak self] in
@@ -213,10 +212,11 @@ extension PhoneNumberViewController: PhoneNumberCollectionViewCellDelegate {
 
 extension PhoneNumberViewController: CertificationCodeCollectionViewCellDelegate {
     public func didSelectNextButton(registrationStatus: RegistrationStatus) {
+        print(viewModel.signType)
         switch viewModel.signType{
         case .signIn:
             switch registrationStatus {
-            case .signedUp:
+            case .completeValidCode:
                 self.viewModel.signIn { [weak self] result in
                     guard let self = self else { return }
                     switch result {
@@ -226,24 +226,31 @@ extension PhoneNumberViewController: CertificationCodeCollectionViewCellDelegate
                         }
                     case false:
                         DispatchQueue.main.async {
-                            self.coordinator?.closeSheet()
+                            self.coordinator?.openNoneExistingUserDialog()
                         }
-                        print("로그인 실패")
                     }
                 }
-            case .notSignedUp:
-                self.coordinator?.openNoneExistingUserDialog()
             case .inValidCodeNumber:
                 self.coordinator?.openInValidCodeNumberDialog()
             }
         case .signUp:
             switch registrationStatus {
-            case .signedUp:
-                self.coordinator?.openExistingUserLoginDialog()
-                
-            case .notSignedUp:
-                self.coordinator?.openVerificationCompleteDialog()
-                
+            case .completeValidCode:
+                self.viewModel.signUp { [weak self] result in
+                    guard let self = self else { return }
+                    switch result {
+                    case true:
+                        //기존 사용자 x
+                        DispatchQueue.main.async {
+                            self.coordinator?.openVerificationCompleteDialog()
+                        }
+                    case false:
+                        //기존 사용자
+                        DispatchQueue.main.async {
+                            self.coordinator?.openExistingUserLoginDialog()
+                        }
+                    }
+                }
             case .inValidCodeNumber:
                 self.coordinator?.openInValidCodeNumberDialog()
             }

@@ -33,12 +33,21 @@ extension PhoneNumberCoordinator: AlertCoordinatorDelegate {
             case 0:
                 closeDialog(childCoordinator: childCoordinator)
             case 1:
-                // 다이얼로그 닫기
-                closeDialog(childCoordinator: childCoordinator)
-                // 인증 화면 -> 로그인 : 뒤로가기
-                navigateToLoginViewController()
-                // 로그인 시트 닫기
-                closeLoginSheet()
+                guard let tokenData = viewModel.temporaryTokenData else {
+                    closeDialog(childCoordinator: childCoordinator)
+                    return
+                }
+                
+                viewModel.setAuth(tokenData) {
+                    viewModel.temporaryTokenData = nil
+                    
+                    // 다이얼로그 닫기
+                    closeDialog(childCoordinator: childCoordinator)
+                    // 인증 화면 -> 로그인 : 뒤로가기
+                    navigateToLoginViewController()
+                    // 로그인 시트 닫기
+                    closeLoginSheet()
+                }
             default:
                 break
             }

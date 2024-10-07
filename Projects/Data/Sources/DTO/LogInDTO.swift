@@ -10,11 +10,11 @@ import Foundation
 
 struct LogInDTO: Decodable {
     public let status: String
-    public let data: LogInData
+    public let data: LogInDetailData?
     public let message: String
 }
 
-struct LogInData: Decodable {
+struct LogInDetailData: Decodable {
     public let grantType: String
     public let accessToken: String
     public let accessTokenExpiresIn: Int
@@ -23,9 +23,16 @@ struct LogInData: Decodable {
 
 extension LogInDTO {
     func toDomain() -> LogInResponse {
-        .init(
-            authToken: data.accessToken,
-            refreshToken: data.refreshToken
-        )
+        guard let data = data else {
+            return .init(data: nil)
+        }
+        
+        let loginData: LogInData = .init(
+            grantType: data.grantType,
+            accessToken: data.accessToken,
+            accessTokenExpiresIn: data.accessTokenExpiresIn,
+            refreshToken: data.refreshToken)
+        
+        return .init(data: loginData)
     }
 }
