@@ -30,7 +30,7 @@ public final class LeaveButtonView: UIView {
     private func setupView() {
         backgroundColor = .red
         addSubview(label)
-
+        
         // 레이아웃 설정
         label.snp.makeConstraints { make in
             make.edges.equalToSuperview()
@@ -39,7 +39,7 @@ public final class LeaveButtonView: UIView {
     
     public override func layoutSubviews() {
         super.layoutSubviews()
-//        // 오른쪽 변만 cornerRadius 주기
+        // 오른쪽 변만 cornerRadius 주기
         let path = UIBezierPath(roundedRect: self.bounds, byRoundingCorners: [.topRight, .bottomRight], cornerRadii: CGSize(width: 12, height: 12))
         let mask = CAShapeLayer()
         

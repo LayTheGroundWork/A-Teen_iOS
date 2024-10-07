@@ -7,10 +7,12 @@
 //
 
 import Common
-import UIKit
 import DesignSystem
+import UIKit
 
-public final class UserChatMessageViewCell: UITableViewCell {
+
+public final class UserChatMessageTableViewCell: UITableViewCell {
+    // MARK: - Private properties
     private lazy var chatMessage: UIView = {
         let view = UIView()
         view.backgroundColor = DesignSystemAsset.mainColor.color
@@ -47,6 +49,7 @@ public final class UserChatMessageViewCell: UITableViewCell {
         return lable
     }()
     
+    // MARK: - Life Cycle
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
@@ -58,7 +61,7 @@ public final class UserChatMessageViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    
+    // MARK: - Helpers
     private func configUserInterFace() {
         contentView.addSubview(chatMessage)
         contentView.addSubview(timeLable)
@@ -89,5 +92,6 @@ public final class UserChatMessageViewCell: UITableViewCell {
     }
 }
 
-extension UserChatMessageViewCell: Reusable { }
+// MARK: - Extensions here
+extension UserChatMessageTableViewCell: Reusable { }
 

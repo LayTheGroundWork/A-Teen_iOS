@@ -30,6 +30,13 @@ public protocol CoordinatorProvider {
         popoverPosition: CGRect,
         delegate: ReportPopoverCoordinatorDelegate
     ) -> Coordinator
+    
+    func makeReportDialogCoordinator(
+        navigation: Navigation,
+        delegate: ReportDialogCoordinatorDelegate,
+        childCoordinator: [Coordinator],
+        dialogType: ReportDialogType
+    ) -> Coordinator
 }
 
 public protocol ProfileDetailCoordinatorDelegate: AnyObject {
@@ -41,10 +48,15 @@ public protocol AlbumCoordinatorDelegate: AnyObject {
 }
 
 public protocol AlertCoordinatorDelegate: AnyObject {
-    func didFinish(childCoordinator: Coordinator, selectIndex: Int) 
+    func didFinish(childCoordinator: Coordinator, selectIndex: Int)
 }
 
 public protocol ReportPopoverCoordinatorDelegate: AnyObject {
+    func didFinish(childCoordinator: Coordinator)
+    func didReport()
+}
+
+public protocol ReportDialogCoordinatorDelegate: AnyObject {
     func didFinish(childCoordinator: Coordinator)
     func didReport()
 }

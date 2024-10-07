@@ -16,7 +16,9 @@ public protocol ChatFactory {
         parentCoordinator: ParentCoordinator,
         delegate: ChatRoomCoordinatorDelegate,
         childCoordinators: [Coordinator],
-        userID: ChatModel
+        userID: ChatModel,
+        factoryProvider: FactoryProvider,
+        coordinatorProvider: CoordinatorProvider
     ) -> Coordinator
 }
 
@@ -34,13 +36,22 @@ public struct ChatFactoryImp: ChatFactory {
         parentCoordinator:  FeatureDependency.ParentCoordinator,
         delegate: ChatRoomCoordinatorDelegate,
         childCoordinators: [FeatureDependency.Coordinator],
-        userID: ChatModel
+        userID: ChatModel,
+        factoryProvider: FactoryProvider,
+        coordinatorProvider: CoordinatorProvider
     ) -> FeatureDependency.Coordinator {
-        let factory = ChatRoomFactoryImp(userID: userID)
+        let factory = ChatRoomFactoryImp(
+            userID: userID,
+            factoryProvider: factoryProvider,
+            coordinatorProvider: coordinatorProvider
+        )
+        
         let coordinator = ChatRoomCoordinator(
             navigation: navigation,
             factory: factory,
             childCoordinator: childCoordinators,
+            factoryProvider: factoryProvider,
+            coordinatorProvider: coordinatorProvider,
             delegate: delegate
         )
         return coordinator

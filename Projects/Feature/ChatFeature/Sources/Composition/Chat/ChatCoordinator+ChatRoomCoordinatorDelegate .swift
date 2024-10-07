@@ -10,7 +10,7 @@ import Foundation
 import FeatureDependency
 
 extension ChatCoordinator: ChatRoomCoordinatorDelegate {
-    public func didFinish(childCoordinator: FeatureDependency.Coordinator) {
+    public func didFinish(childCoordinator: Coordinator) {
         childCoordinator.navigation.dismissNavigation = nil
         removeChildCoordinator(childCoordinator)
         navigation.popViewController(animated: true)

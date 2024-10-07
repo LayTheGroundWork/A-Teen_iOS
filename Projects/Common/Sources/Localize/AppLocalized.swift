@@ -39,6 +39,17 @@ public enum AppLocalized {
     public static let chatText = "채팅을 통해 친구들과 소통해보세요!"
     public static let myTeenText = "나만의의 프로필을 등록해보세요!"
     
+    // MARK: - Chat
+    public static let chatModalTitle = "신고 및 차단하기"
+    public static let chatWarning = """
+                                전화번호, 주소 등 개인 정보 요구를 주의해주시기 바랍니다.
+                                개인정보를 요구 받을 경우 신고 또는 차단해주시기 바랍니다.
+                                운영정책을 위반한 메시지로 신고 접수 시
+                                """
+    public static let chatWarning2 = "에이틴 이용에 제한이 있을수 있습니다."
+    public static let operatingPolicy = "운영정책 보기"
+    public static let exitChatRoom = "채팅방 나가기"
+    
     // MARK: - LogInViewController
     public static let signupTitle = "가입하기"
     public static let signupSubTitle = """
@@ -98,12 +109,15 @@ public enum AppLocalized {
     public static let noneExistingUserDialogMessage = "바로 회원가입 할까요?"
     public static let invalidCodeNumberDialogTitle = "인증번호가 틀렸어요!"
     
-    
-    // MARK: - MainView / Report
+
+    // MARK: - Report
     public static let reportDialogTitle = "신고 사유"
     public static let reportDialogViolenceReason = "폭력성 또는 선정적인 프로필"
+    public static let reportDialogViolenceReasonInChat = "폭력성 또는 선정적인 메세지"
     public static let reportDialogAdReason = "광고 게시물 또는 프로필"
+    public static let reportDialogAdReasonInChat = "광고 메세지"
     public static let reportDialogImpersonationReason = "타인을 사칭한 프로필"
+    public static let reportDialogImpersonationReasonInChat = "타인을 사칭한 메세지"
     public static let reportDialogETCReason = "기타"
     public static let reportDialogPlaceholderText = "신고 사유를 작성해주세요."
     public static let reportDialogBlockButtonText = "해당 프로필 다시는 보지 않기"

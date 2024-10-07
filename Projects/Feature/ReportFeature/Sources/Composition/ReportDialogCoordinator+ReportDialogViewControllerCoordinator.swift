@@ -13,6 +13,7 @@ import UIKit
 extension ReportDialogCoordinator: ReportDialogViewControllerCoordinator {
     public func didFinish() {
         delegate?.didFinish(childCoordinator: self)
+        print("123")
     }
     
     public func didReport() {

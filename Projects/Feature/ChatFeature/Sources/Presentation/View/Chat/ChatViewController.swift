@@ -8,17 +8,21 @@
 import Common
 import DesignSystem
 import UIKit
-import SnapKit
 
 public protocol ChatViewControllerCoordinator: AnyObject {
     func configTabbarState(view: ChatFeatureViewNames)
     func didTapCell(userID: ChatModel)
+    func didTapLeaveButton(for indexPath: IndexPath)
+}
+
+public protocol ChatViewControllerDelegate: AnyObject {
+    func updateChatList()
 }
 
 public final class ChatViewController: UIViewController {
     // MARK: - Private properties
+    public var selectIndexPath: IndexPath?
     private var viewModel: ChatViewModel
-    private var deleteIndexPath: IndexPath?
     private weak var coordinator: ChatViewControllerCoordinator?
     
     private lazy var chatTableView: UITableView = {
@@ -63,7 +67,6 @@ public final class ChatViewController: UIViewController {
     }()
     
     // MARK: - Life Cycle
-    
     public init(coordinator: ChatViewControllerCoordinator, viewModel: ChatViewModel) {
         self.coordinator = coordinator
         self.viewModel = viewModel
@@ -90,6 +93,7 @@ public final class ChatViewController: UIViewController {
         navigationController?.isNavigationBarHidden = true
     }
     
+    // MARK: - Helpers
     private func configUserInterFace() {
         view.addSubview(chatTableView)
         view.addSubview(searchTextField)
@@ -98,25 +102,38 @@ public final class ChatViewController: UIViewController {
     
     private func configLayout() {
         chatTableView.snp.makeConstraints { make in
-            make.top.equalTo(searchTextField.snp.bottom).offset(20)
+            make.top.equalTo(searchTextField.snp.bottom).offset(ViewValues.height * 0.01)
             make.leading.equalToSuperview()
             make.trailing.equalToSuperview()
             make.bottom.equalToSuperview().offset(-85)
         }
         
         searchTextField.snp.makeConstraints { make in
-            make.top.equalTo(titleLabel.snp.bottom).offset(40)
+            make.top.equalTo(titleLabel.snp.bottom).offset(ViewValues.height * 0.04)
             make.leading.equalToSuperview().offset(ViewValues.defaultPadding)
             make.trailing.equalToSuperview().offset(-ViewValues.defaultPadding)
             make.height.equalTo(50)
         }
         
         titleLabel.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(60)
+            make.top.equalToSuperview().offset(ViewValues.height * 0.07)
             make.leading.equalToSuperview().offset(ViewValues.defaultPadding)
         }
     }
     
+    public func leaveChatRoom(at indexPath: IndexPath) {
+        let chatRoomRemove = viewModel.filteredChatRooms[indexPath.row]
+        
+        if let indexInChatRooms = viewModel.chatRooms.firstIndex(where: { $0.name == chatRoomRemove.name }) {
+            viewModel.chatRooms.remove(at: indexInChatRooms)
+        }
+        viewModel.filteredChatRooms.remove(at: indexPath.row)
+        chatTableView.deleteRows(at: [indexPath], with: .automatic)
+        print(viewModel.filteredChatRooms.count)
+        selectIndexPath = nil
+    }
+    
+    // MARK: - Actions
     @objc func searchTextChanged() {
         if let searchText = searchTextField.text, !searchText.isEmpty {
             viewModel.filteredChatRooms = viewModel.chatRooms.filter { $0.name.contains(searchText) }
@@ -138,10 +155,12 @@ extension ChatViewController: UITableViewDataSource {
             withIdentifier: ChatRoomCell.reuseIdentifier,
             for: indexPath
         ) as? ChatRoomCell else { return UITableViewCell() }
+        
         if indexPath.row < viewModel.filteredChatRooms.count {
             let chatRoom = viewModel.filteredChatRooms[indexPath.row]
             cell.configure(chatRoom)
         }
+        
         return cell
     }
 }
@@ -152,13 +171,18 @@ extension ChatViewController: UITableViewDelegate {
     }
     
     public func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let leaveAction = UIContextualAction(style: .destructive, title: "") { (action, view, completionHandler) in
-            // trailingSwipeButton 눌렀을때 액션
+        let leaveAction = UIContextualAction(style: .destructive, title: "") { [weak self] (action, view, completionHandler) in
+            // trailing Swipe Button 눌렀을때 action
+            self?.selectIndexPath = indexPath
+            self?.coordinator?.didTapLeaveButton(for: indexPath)
+            
             completionHandler(true)
         }
-        self.deleteIndexPath = indexPath
+        self.selectIndexPath = indexPath
         
-        let leaveButtonView = LeaveButtonView(frame: CGRect(x: 0, y: 0, width: 80, height: 85))
+        let leaveButtonView = LeaveButtonView(frame: CGRect(x: 0, y: 0, width: 100, height: 85))
+        
+        leaveAction.image = leaveButtonView.asImage()
         leaveAction.backgroundColor = .white
         
         let configuration = UISwipeActionsConfiguration(actions: [leaveAction])
@@ -172,11 +196,13 @@ extension ChatViewController: UITableViewDelegate {
     }
 }
 
+// MARK: - Extensions here
 extension ChatViewController: UITextFieldDelegate {
     public func textFieldDidBeginEditing(_ textField: UITextField) {
         textField.placeholder = ""
     }
 }
+
 
 
 

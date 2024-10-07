@@ -33,7 +33,7 @@ final class FactoryProviderImp: FactoryProvider {
             childCoordinators: [],
             delegate: delegate)
     }
-
+    
     func makeAlbumCoordinator(
         coordinatorProvider: CoordinatorProvider,
         delegate: AlbumCoordinatorDelegate
@@ -84,6 +84,24 @@ final class FactoryProviderImp: FactoryProvider {
             childCoordinators: [],
             factory: factory,
             popoverPosition: popoverPosition,
+            delegate: delegate,
+            coordinatorProvider: coordinatorProvider
+        )
+    }
+    
+    func makeReportDialogCoordinator(
+        navigation: Navigation,
+        delegate: ReportDialogCoordinatorDelegate,
+        childCoordinator: [Coordinator],
+        coordinatorProvider: CoordinatorProvider,
+        dialogType: ReportDialogType
+    ) -> Coordinator {
+        let factory = ReportDialogFactoryImp()
+        return ReportDialogCoordinator(
+            navigation: navigation,
+            childCoordinators: childCoordinator,
+            factory: factory,
+            dialogType: dialogType,
             delegate: delegate,
             coordinatorProvider: coordinatorProvider
         )

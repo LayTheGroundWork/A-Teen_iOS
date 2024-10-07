@@ -78,8 +78,7 @@ public final class ChatHeaderView: UITableViewHeaderFooterView {
         headerLabel.snp.makeConstraints { make in
             make.edges.equalToSuperview().inset(UIEdgeInsets(top: 0, left: 26, bottom: 0, right: 26))
         }
-    }
-    
+    } 
 }
 
 extension ChatHeaderView: Reusable { }

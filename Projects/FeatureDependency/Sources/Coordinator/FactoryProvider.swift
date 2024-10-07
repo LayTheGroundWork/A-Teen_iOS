@@ -32,4 +32,12 @@ public protocol FactoryProvider {
         delegate: ReportPopoverCoordinatorDelegate,
         coordinatorProvider: CoordinatorProvider
     ) -> Coordinator
+    
+    func makeReportDialogCoordinator(
+        navigation: Navigation,
+        delegate: ReportDialogCoordinatorDelegate,
+        childCoordinator: [Coordinator],
+        coordinatorProvider: CoordinatorProvider,
+        dialogType: ReportDialogType
+    ) -> Coordinator
 }
