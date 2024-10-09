@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		026CC214C2542178135EF0B4 /* UserChatMessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 623113FD3FEFC96CE21938A0 /* UserChatMessageTableViewCell.swift */; };
 		07AF370519CD695ADCF1432B /* ChatRoomModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48004408112FCD4C90D382D /* ChatRoomModalViewController.swift */; };
+		119CFDEED93F2878B3A04D85 /* OpertaingPolicyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D561B36680DF7120AAE71B6C /* OpertaingPolicyViewController.swift */; };
 		20E22A4DA538B4FC3DA8D52B /* ChatCoordinator+ChatViewControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E71061B94CCA13A2833F0D8 /* ChatCoordinator+ChatViewControllerCoordinator.swift */; };
 		23ACE27AB02358A4D3E023EE /* ChatHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 741E6BCB0140ACED41156889 /* ChatHeaderView.swift */; };
 		25801A38909A8BB97989AFBE /* ChatRoomCoordinator+ChatRoomViewControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDDB8E4E3975CC5C069C04C7 /* ChatRoomCoordinator+ChatRoomViewControllerCoordinator.swift */; };
@@ -16,11 +17,10 @@
 		28C9964E5B51DFDE96382A5B /* ChatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46380539475A5259D33F7F2 /* ChatViewModel.swift */; };
 		37E36F7998553B42970D89A7 /* ChatRoomCoordinator+ChatRoomModalCoordinatorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8799A36BEE3D87422419E2 /* ChatRoomCoordinator+ChatRoomModalCoordinatorDelegate.swift */; };
 		44CB624789D399E95831DDE9 /* ChatCoordinator+ChatRoomCoordinatorDelegate .swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B14975C3E188113D01C5C65 /* ChatCoordinator+ChatRoomCoordinatorDelegate .swift */; };
-		5221558B8DC6E810712B94ED /* OperatingPolicyCoordinator+WKNavigationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C33666A2A6D15966326AC230 /* OperatingPolicyCoordinator+WKNavigationDelegate.swift */; };
 		5456FEBB2F413C6384E8E23F /* ChatCoordinator+AlertCoordinatorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278A57AAB103E413EA035ECD /* ChatCoordinator+AlertCoordinatorDelegate.swift */; };
 		554E3EF727A5CB6C969C0F02 /* FeatureDependency.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B6F1FC0AE38C9F2256C30FC /* FeatureDependency.framework */; };
 		5A8197ECDF6EE034FC2AC750 /* LeaveButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C926D01773ED6DA626B4928D /* LeaveButtonView.swift */; };
-		731254973849563588C9D23D /* OperatingPolicyWebViewFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4504931E51C592173013AD62 /* OperatingPolicyWebViewFactory.swift */; };
+		73AFC4C3B05910DD02821F83 /* OperatingPolicyFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC222A16C4EE70147D67DD2F /* OperatingPolicyFactory.swift */; };
 		7FD7D4DEB7687A0C7397F7D9 /* ChatRoomModalCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F6BA4C1A0653428AA32844E /* ChatRoomModalCoordinator.swift */; };
 		87CA8F1B8244C41AB75C8187 /* ChatRoomCoordinator+OperatingPolicyModalCoordinatorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6734A7D026373AF78D94EBB2 /* ChatRoomCoordinator+OperatingPolicyModalCoordinatorDelegate.swift */; };
 		87DDD8C84D9244A7ADEB17A7 /* ChatModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47237B770DFD640BB7A8D51A /* ChatModel.swift */; };
@@ -28,8 +28,9 @@
 		8DFAE08C8064F79278220138 /* ChatRoomCoordinator+AlertCoordinatorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC5C08493285FF561B64931 /* ChatRoomCoordinator+AlertCoordinatorDelegate.swift */; };
 		9DA0A78CE8593184E182D4D0 /* ChatRoomModalTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 696FA1E8CF8280E02786C60B /* ChatRoomModalTableViewCell.swift */; };
 		A191FC98621B77240E137470 /* ChatRoomModalCoordinator+ ChatRoomModalViewControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A43214A6E8685F0B6B72AB /* ChatRoomModalCoordinator+ ChatRoomModalViewControllerCoordinator.swift */; };
-		A323B2414F37E913A0B2F9CD /* OperatingPolicyWebViewCoordinator+OpertaingPolicyModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB72DC57A4ED8EBDFF8D1B45 /* OperatingPolicyWebViewCoordinator+OpertaingPolicyModalViewController.swift */; };
 		A4358AB1C9EEF1D07F24CD95 /* ChatCoordinator+ChatConfigTabbarStateDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F8D87B1164E1E2247C65A03 /* ChatCoordinator+ChatConfigTabbarStateDelegate.swift */; };
+		AD8F7BA5AC7880C08E9CDA17 /* OperatingPolicyCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B28539676A2B25DCA11BE8DE /* OperatingPolicyCoordinator.swift */; };
+		AECD8B0CF239C31174F671D8 /* OperatingPolicyCoordinator+OpertaingPolicyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C019789B4A6FB069FD96692 /* OperatingPolicyCoordinator+OpertaingPolicyViewController.swift */; };
 		AF0EABDB5EF003995366E193 /* PartnerChatMessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E90AA54A83EF1D4E56658A /* PartnerChatMessageTableViewCell.swift */; };
 		B086464C212A93613CC90AA6 /* ChatRoomModalFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = E34E2464C7510A32F5C6722D /* ChatRoomModalFactory.swift */; };
 		B196FE2CE0EB3E9D65752D5C /* ChatCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70C23FA2DB20208BBE874DB4 /* ChatCoordinator.swift */; };
@@ -38,8 +39,6 @@
 		E5771FE1A0C703DA5D6CA1F1 /* ChatRoomWarningTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D267D78C772A8AAA7EB3860E /* ChatRoomWarningTableViewCell.swift */; };
 		E752CFFD592CB7E679471733 /* ChatRoomModalCoordinator+ReportDialogCoordinatorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14DB597359E5BC86745E9BAE /* ChatRoomModalCoordinator+ReportDialogCoordinatorDelegate.swift */; };
 		E9F8B34D067D96502F712D7D /* CustomSendButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6F4581E4175CD9AB3617E05 /* CustomSendButton.swift */; };
-		EC6F8D32C5C62F51F1AE441E /* OperatingPolicyWebViewCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DDB302ABEB9C4436089D018 /* OperatingPolicyWebViewCoordinator.swift */; };
-		ED026BA71EF55E4CE4E2DACA /* OpertaingPolicyModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A6CD7243E713A6BA4FB7785 /* OpertaingPolicyModalViewController.swift */; };
 		FB7CCFA1295B74904F5E8D3E /* ChatRoomFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C8CDC69FA57554A344101D /* ChatRoomFactory.swift */; };
 		FCA54286F92D000A848AD1BC /* ChatMessageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11ADF59C0267B2D34961074B /* ChatMessageModel.swift */; };
 		FD4501538C57CCD8513A7B4F /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 597F2F84153DF4E0F8161AF9 /* ChatViewController.swift */; };
@@ -65,35 +64,34 @@
 		278A57AAB103E413EA035ECD /* ChatCoordinator+AlertCoordinatorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ChatCoordinator+AlertCoordinatorDelegate.swift"; sourceTree = "<group>"; };
 		2B6F1FC0AE38C9F2256C30FC /* FeatureDependency.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FeatureDependency.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3DADA4555C4DC50292CB7054 /* ChatFeature-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "ChatFeature-Info.plist"; sourceTree = "<group>"; };
-		4504931E51C592173013AD62 /* OperatingPolicyWebViewFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperatingPolicyWebViewFactory.swift; sourceTree = "<group>"; };
 		45FBF282B85A752B78928B6D /* ChatRoomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomViewController.swift; sourceTree = "<group>"; };
 		47237B770DFD640BB7A8D51A /* ChatModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatModel.swift; sourceTree = "<group>"; };
 		4F6BA4C1A0653428AA32844E /* ChatRoomModalCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomModalCoordinator.swift; sourceTree = "<group>"; };
 		57E90AA54A83EF1D4E56658A /* PartnerChatMessageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartnerChatMessageTableViewCell.swift; sourceTree = "<group>"; };
 		597F2F84153DF4E0F8161AF9 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
-		5A6CD7243E713A6BA4FB7785 /* OpertaingPolicyModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpertaingPolicyModalViewController.swift; sourceTree = "<group>"; };
 		5E71061B94CCA13A2833F0D8 /* ChatCoordinator+ChatViewControllerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ChatCoordinator+ChatViewControllerCoordinator.swift"; sourceTree = "<group>"; };
 		5F8D87B1164E1E2247C65A03 /* ChatCoordinator+ChatConfigTabbarStateDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ChatCoordinator+ChatConfigTabbarStateDelegate.swift"; sourceTree = "<group>"; };
 		623113FD3FEFC96CE21938A0 /* UserChatMessageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserChatMessageTableViewCell.swift; sourceTree = "<group>"; };
 		658589C0CB71245DCB75A16A /* Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
 		6734A7D026373AF78D94EBB2 /* ChatRoomCoordinator+OperatingPolicyModalCoordinatorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ChatRoomCoordinator+OperatingPolicyModalCoordinatorDelegate.swift"; sourceTree = "<group>"; };
 		696FA1E8CF8280E02786C60B /* ChatRoomModalTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomModalTableViewCell.swift; sourceTree = "<group>"; };
-		6DDB302ABEB9C4436089D018 /* OperatingPolicyWebViewCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperatingPolicyWebViewCoordinator.swift; sourceTree = "<group>"; };
 		70C23FA2DB20208BBE874DB4 /* ChatCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatCoordinator.swift; sourceTree = "<group>"; };
 		741E6BCB0140ACED41156889 /* ChatHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatHeaderView.swift; sourceTree = "<group>"; };
 		78052102EE9CA0BA84BF186D /* ChatFeature.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ChatFeature.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		86C8CDC69FA57554A344101D /* ChatRoomFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomFactory.swift; sourceTree = "<group>"; };
 		9B14975C3E188113D01C5C65 /* ChatCoordinator+ChatRoomCoordinatorDelegate .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ChatCoordinator+ChatRoomCoordinatorDelegate .swift"; sourceTree = "<group>"; };
+		9C019789B4A6FB069FD96692 /* OperatingPolicyCoordinator+OpertaingPolicyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OperatingPolicyCoordinator+OpertaingPolicyViewController.swift"; sourceTree = "<group>"; };
 		A6509C0B265133FB0B45D5CC /* ChatRoomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomCell.swift; sourceTree = "<group>"; };
-		BB72DC57A4ED8EBDFF8D1B45 /* OperatingPolicyWebViewCoordinator+OpertaingPolicyModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OperatingPolicyWebViewCoordinator+OpertaingPolicyModalViewController.swift"; sourceTree = "<group>"; };
+		AC222A16C4EE70147D67DD2F /* OperatingPolicyFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperatingPolicyFactory.swift; sourceTree = "<group>"; };
+		B28539676A2B25DCA11BE8DE /* OperatingPolicyCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperatingPolicyCoordinator.swift; sourceTree = "<group>"; };
 		BEC5C08493285FF561B64931 /* ChatRoomCoordinator+AlertCoordinatorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ChatRoomCoordinator+AlertCoordinatorDelegate.swift"; sourceTree = "<group>"; };
-		C33666A2A6D15966326AC230 /* OperatingPolicyCoordinator+WKNavigationDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OperatingPolicyCoordinator+WKNavigationDelegate.swift"; sourceTree = "<group>"; };
 		C46380539475A5259D33F7F2 /* ChatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewModel.swift; sourceTree = "<group>"; };
 		C926D01773ED6DA626B4928D /* LeaveButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaveButtonView.swift; sourceTree = "<group>"; };
 		CB8799A36BEE3D87422419E2 /* ChatRoomCoordinator+ChatRoomModalCoordinatorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ChatRoomCoordinator+ChatRoomModalCoordinatorDelegate.swift"; sourceTree = "<group>"; };
 		CDDB8E4E3975CC5C069C04C7 /* ChatRoomCoordinator+ChatRoomViewControllerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ChatRoomCoordinator+ChatRoomViewControllerCoordinator.swift"; sourceTree = "<group>"; };
 		D267D78C772A8AAA7EB3860E /* ChatRoomWarningTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomWarningTableViewCell.swift; sourceTree = "<group>"; };
 		D3A43214A6E8685F0B6B72AB /* ChatRoomModalCoordinator+ ChatRoomModalViewControllerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ChatRoomModalCoordinator+ ChatRoomModalViewControllerCoordinator.swift"; sourceTree = "<group>"; };
+		D561B36680DF7120AAE71B6C /* OpertaingPolicyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpertaingPolicyViewController.swift; sourceTree = "<group>"; };
 		E34E2464C7510A32F5C6722D /* ChatRoomModalFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomModalFactory.swift; sourceTree = "<group>"; };
 		E3B560FF5AF66461963266C6 /* ChatRoomCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomCoordinator.swift; sourceTree = "<group>"; };
 		E6F4581E4175CD9AB3617E05 /* CustomSendButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSendButton.swift; sourceTree = "<group>"; };
@@ -162,7 +160,7 @@
 				3858E671292F225A8164C159 /* Chat */,
 				996BA31AF586990CA6B64F48 /* ChatRoom */,
 				2FC60CD5CA6722832D9636D6 /* ChatRoomModal */,
-				50F1A082640130C53D550C29 /* WebModal */,
+				BAEC650AA92704B5CB0B5F25 /* OpertaingPolicy */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -183,14 +181,6 @@
 			path = InfoPlists;
 			sourceTree = "<group>";
 		};
-		50F1A082640130C53D550C29 /* WebModal */ = {
-			isa = PBXGroup;
-			children = (
-				5A6CD7243E713A6BA4FB7785 /* OpertaingPolicyModalViewController.swift */,
-			);
-			path = WebModal;
-			sourceTree = "<group>";
-		};
 		51FF7037BCDF5F5AB4F547EF /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -198,6 +188,16 @@
 				2B6F1FC0AE38C9F2256C30FC /* FeatureDependency.framework */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		59F593F5DB993D8DEE9E7929 /* OperatingPolicy */ = {
+			isa = PBXGroup;
+			children = (
+				B28539676A2B25DCA11BE8DE /* OperatingPolicyCoordinator.swift */,
+				9C019789B4A6FB069FD96692 /* OperatingPolicyCoordinator+OpertaingPolicyViewController.swift */,
+				AC222A16C4EE70147D67DD2F /* OperatingPolicyFactory.swift */,
+			);
+			path = OperatingPolicy;
 			sourceTree = "<group>";
 		};
 		66B8647889D54B2DBC6DF866 /* ViewModel */ = {
@@ -256,7 +256,7 @@
 				17941DE1984B6E4735E8E0E8 /* Chat */,
 				8739BE4EB099B84F419664F7 /* ChatRoom */,
 				27DAD1861D2354694F3D6572 /* ChatRoomModal */,
-				D8F904B0D9523E0540F1FFBF /* WebModal */,
+				59F593F5DB993D8DEE9E7929 /* OperatingPolicy */,
 			);
 			path = Composition;
 			sourceTree = "<group>";
@@ -278,23 +278,20 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		BAEC650AA92704B5CB0B5F25 /* OpertaingPolicy */ = {
+			isa = PBXGroup;
+			children = (
+				D561B36680DF7120AAE71B6C /* OpertaingPolicyViewController.swift */,
+			);
+			path = OpertaingPolicy;
+			sourceTree = "<group>";
+		};
 		D12EB5F8AA62B4591C423CD4 /* Derived */ = {
 			isa = PBXGroup;
 			children = (
 				3877CDF27471C773DA75D160 /* InfoPlists */,
 			);
 			path = Derived;
-			sourceTree = "<group>";
-		};
-		D8F904B0D9523E0540F1FFBF /* WebModal */ = {
-			isa = PBXGroup;
-			children = (
-				C33666A2A6D15966326AC230 /* OperatingPolicyCoordinator+WKNavigationDelegate.swift */,
-				6DDB302ABEB9C4436089D018 /* OperatingPolicyWebViewCoordinator.swift */,
-				BB72DC57A4ED8EBDFF8D1B45 /* OperatingPolicyWebViewCoordinator+OpertaingPolicyModalViewController.swift */,
-				4504931E51C592173013AD62 /* OperatingPolicyWebViewFactory.swift */,
-			);
-			path = WebModal;
 			sourceTree = "<group>";
 		};
 		E8FAD9E4D90B2221C93177A1 /* Sources */ = {
@@ -412,10 +409,9 @@
 				E752CFFD592CB7E679471733 /* ChatRoomModalCoordinator+ReportDialogCoordinatorDelegate.swift in Sources */,
 				7FD7D4DEB7687A0C7397F7D9 /* ChatRoomModalCoordinator.swift in Sources */,
 				B086464C212A93613CC90AA6 /* ChatRoomModalFactory.swift in Sources */,
-				5221558B8DC6E810712B94ED /* OperatingPolicyCoordinator+WKNavigationDelegate.swift in Sources */,
-				A323B2414F37E913A0B2F9CD /* OperatingPolicyWebViewCoordinator+OpertaingPolicyModalViewController.swift in Sources */,
-				EC6F8D32C5C62F51F1AE441E /* OperatingPolicyWebViewCoordinator.swift in Sources */,
-				731254973849563588C9D23D /* OperatingPolicyWebViewFactory.swift in Sources */,
+				AECD8B0CF239C31174F671D8 /* OperatingPolicyCoordinator+OpertaingPolicyViewController.swift in Sources */,
+				AD8F7BA5AC7880C08E9CDA17 /* OperatingPolicyCoordinator.swift in Sources */,
+				73AFC4C3B05910DD02821F83 /* OperatingPolicyFactory.swift in Sources */,
 				CDFD8696BA4B025B3EC4AB5F /* ChatRoomCell.swift in Sources */,
 				E5771FE1A0C703DA5D6CA1F1 /* ChatRoomWarningTableViewCell.swift in Sources */,
 				AF0EABDB5EF003995366E193 /* PartnerChatMessageTableViewCell.swift in Sources */,
@@ -426,7 +422,7 @@
 				28B16BD45A61E10AFAA8C931 /* ChatRoomViewController.swift in Sources */,
 				9DA0A78CE8593184E182D4D0 /* ChatRoomModalTableViewCell.swift in Sources */,
 				07AF370519CD695ADCF1432B /* ChatRoomModalViewController.swift in Sources */,
-				ED026BA71EF55E4CE4E2DACA /* OpertaingPolicyModalViewController.swift in Sources */,
+				119CFDEED93F2878B3A04D85 /* OpertaingPolicyViewController.swift in Sources */,
 				28C9964E5B51DFDE96382A5B /* ChatViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

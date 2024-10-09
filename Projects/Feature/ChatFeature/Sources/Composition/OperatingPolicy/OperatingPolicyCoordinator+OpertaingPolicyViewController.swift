@@ -1,5 +1,5 @@
 //
-//  OperatingPolicyWebViewCoordinator+OpertaingPolicyModalViewController.swift
+//  OperatingPolicyCoordinator+OpertaingPolicyViewController.swift
 //  ChatFeature
 //
 //  Created by 김명현 on 9/27/24.
@@ -10,7 +10,7 @@ import Common
 import FeatureDependency
 import UIKit
 
-extension OperatingPolicyWebViewCoordinator: OpertaingPolicyModalViewControllerCoordinator {
+extension OperatingPolicyCoordinator: OpertaingPolicyViewControllerCoordinator {
     public func didFinish() {
         self.delegate?.didFinishWebViewModal(childCoordinator: self)
     }

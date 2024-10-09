@@ -9,8 +9,10 @@
 import Foundation
 import FeatureDependency
 
-extension ChatRoomCoordinator: OperatingPolicyModalCoordinatorDelegate {
+extension ChatRoomCoordinator: OperatingPolicyCoordinatorDelegate {
     public func didFinishWebViewModal(childCoordinator: Coordinator) {
+        childCoordinator.navigation.dismissNavigation = nil
         removeChildCoordinator(childCoordinator)
+        navigation.dismiss(animated: true)
     }
 }
