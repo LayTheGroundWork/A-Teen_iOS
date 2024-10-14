@@ -255,7 +255,7 @@ public final class QuestionsViewController: UIViewController {
         var totalHeight: CGFloat = 0.0
         
         viewModel.changeQuestionList.forEach { question in
-            titleLabel.text = question.title
+            titleLabel.text = question.question
             
             let height = calculateLabelHeight(for: titleLabel, width: ViewValues.width - 96) + textLabelHeight + 43
             totalHeight += height

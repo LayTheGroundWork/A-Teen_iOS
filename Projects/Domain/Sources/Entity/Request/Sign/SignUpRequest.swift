@@ -37,7 +37,7 @@ public struct SignUpRequest {
 }
 
 
-public struct SchoolData {
+public struct SchoolData: Encodable {
     public let schoolName: String
     public let schoolLocation: String
     

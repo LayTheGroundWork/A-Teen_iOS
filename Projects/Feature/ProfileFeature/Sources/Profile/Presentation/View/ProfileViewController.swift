@@ -64,7 +64,7 @@ public final class ProfileViewController: UIViewController {
     
     private lazy var userNameLabel: UILabel = {
         let label = UILabel()
-        label.text = "\(viewModel.userName) 님\n오늘도 좋은 하루 보내세요!"
+        label.text = "\(viewModel.user.nickName) 님\n오늘도 좋은 하루 보내세요!"
         label.textColor = UIColor.black
         label.font = .customFont(forTextStyle: .body, weight: .bold)
         label.numberOfLines = 2
@@ -74,7 +74,7 @@ public final class ProfileViewController: UIViewController {
             attributeString.addAttribute(
                 .foregroundColor,
                 value: DesignSystemAsset.mainColor.color,
-                range: (text as NSString).range(of: "\(viewModel.userName)"))
+                range: (text as NSString).range(of: "\(viewModel.user.nickName)"))
             label.attributedText = attributeString
         }
         return label
@@ -114,7 +114,8 @@ public final class ProfileViewController: UIViewController {
     
     private lazy var userImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = viewModel.userImage
+        // TODO: 나중에 이미지 url로 바꾸기
+        imageView.image = DesignSystemAsset.blackGlass.image
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
         imageView.layer.cornerRadius = 10
@@ -124,8 +125,8 @@ public final class ProfileViewController: UIViewController {
     private lazy var schoolButton: CustomSchoolButton = {
         let button = CustomSchoolButton(
             frame: .zero,
-            schoolName: viewModel.userSchool.schoolName,
-            age: viewModel.userAge)
+            schoolName: viewModel.user.schoolName,
+            age: viewModel.getUserAge())
         return button
     }()
     
@@ -253,7 +254,7 @@ public final class ProfileViewController: UIViewController {
     
     private lazy var introduceMbtiLabel: UILabel = {
         let label = UILabel()
-        label.text = viewModel.userMBTI
+        label.text = viewModel.user.mbti
         label.textColor = DesignSystemAsset.gray02.color
         label.textAlignment = .center
         label.font = .customFont(forTextStyle: .footnote, weight: .regular)
@@ -262,7 +263,7 @@ public final class ProfileViewController: UIViewController {
     
     private lazy var introduceTextLabel: UILabel = {
         let label = UILabel()
-        label.text = viewModel.userIntroduce
+        label.text = viewModel.user.introduction
         label.font = .customFont(forTextStyle: .footnote, weight: .regular)
         label.textColor = DesignSystemAsset.gray02.color
         label.numberOfLines = 0
@@ -287,7 +288,7 @@ public final class ProfileViewController: UIViewController {
     
     private lazy var questionTitleLabel: UILabel = {
         let label = UILabel()
-        label.text = viewModel.questionList.isEmpty ? "10문 10답" : "\(viewModel.questionList.count)문 \(viewModel.questionList.count)답"
+        label.text = "자문자답"
         label.textColor = UIColor.black
         label.textAlignment = .left
         label.font = UIFont.customFont(forTextStyle: .title3, weight: .bold)
@@ -302,7 +303,7 @@ public final class ProfileViewController: UIViewController {
     }()
     
     private lazy var questionTextView: CustomQuestionView = {
-        let view = CustomQuestionView(frame: .zero, questionList: viewModel.questionList)
+        let view = CustomQuestionView(frame: .zero, questionList: viewModel.user.questions)
         return view
     }()
     
@@ -340,8 +341,15 @@ public final class ProfileViewController: UIViewController {
     // MARK: - Life Cycle
     public override func viewDidLoad() {
         super.viewDidLoad()
-        configUserInterfaceAndLayout()
-        setupActions()
+        viewModel.getMyPageData { [weak self] result in
+            guard let self = self else { return }
+            if result {
+                DispatchQueue.main.async {
+                    self.configUserInterfaceAndLayout()
+                    self.setupActions()
+                }
+            }
+        }
     }
     
     public override func viewWillAppear(_ animated: Bool) {
@@ -352,8 +360,6 @@ public final class ProfileViewController: UIViewController {
             ),
             delegate: coordinator
         )
-        
-        viewModel.filteringLinks()
     }
     
     public init(
@@ -591,13 +597,11 @@ public final class ProfileViewController: UIViewController {
         introduceView.addSubview(introduceTitleLabel)
         introduceView.addSubview(introduceMbtiView)
         
-        if viewModel.userIntroduce == "" {
+        if viewModel.user.introduction == nil {
             introduceView.addSubview(introduceEmptyTextLabel)
         } else {
             introduceView.addSubview(introduceTextLabel)
         }
-        
-        introduceMbtiView.addSubview(introduceMbtiLabel)
         
         divider2.snp.makeConstraints { make in
             make.top.equalTo(linkBackView.snp.bottom)
@@ -627,18 +631,32 @@ public final class ProfileViewController: UIViewController {
             make.top.equalTo(introduceTitleLabel.snp.bottom).offset(ViewValues.defaultPadding)
             make.leading.equalToSuperview().offset(ViewValues.defaultPadding)
             make.width.equalTo(74)
-            make.height.equalTo(26)
+            
+            if viewModel.user.mbti == nil {
+                make.height.equalTo(0)
+            } else {
+                make.height.equalTo(26)
+            }
         }
         
-        introduceMbtiLabel.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
+        if viewModel.user.mbti != nil {
+            introduceMbtiView.addSubview(introduceMbtiLabel)
+            
+            introduceMbtiLabel.snp.makeConstraints { make in
+                make.edges.equalToSuperview()
+            }
         }
         
-        if viewModel.userIntroduce == "" {
+        if viewModel.user.introduction == nil {
             introduceEmptyTextLabel.snp.makeConstraints { make in
-                make.top.equalTo(introduceMbtiView.snp.bottom).offset(7)
                 make.leading.equalToSuperview().offset(ViewValues.defaultPadding)
                 make.trailing.equalToSuperview().offset(-ViewValues.defaultPadding)
+                
+                if viewModel.user.mbti == nil {
+                    make.top.equalTo(introduceTitleLabel.snp.bottom).offset(ViewValues.defaultPadding)
+                } else {
+                    make.top.equalTo(introduceMbtiView.snp.bottom).offset(7)
+                }
             }
             
             self.view.layoutIfNeeded()
@@ -647,9 +665,14 @@ public final class ProfileViewController: UIViewController {
                 offset: introduceTitleLabel.frame.height + introduceMbtiView.frame.height + introduceEmptyTextLabel.frame.height + 102)
         } else {
             introduceTextLabel.snp.makeConstraints { make in
-                make.top.equalTo(introduceMbtiView.snp.bottom).offset(7)
                 make.leading.equalToSuperview().offset(ViewValues.defaultPadding)
                 make.trailing.equalToSuperview().offset(-ViewValues.defaultPadding)
+                
+                if viewModel.user.mbti == nil {
+                    make.top.equalTo(introduceTitleLabel.snp.bottom).offset(ViewValues.defaultPadding)
+                } else {
+                    make.top.equalTo(introduceMbtiView.snp.bottom).offset(7)
+                }
             }
             
             self.view.layoutIfNeeded()
@@ -666,7 +689,7 @@ public final class ProfileViewController: UIViewController {
         questionView.addSubview(questionRightButton)
         questionView.addSubview(questionTitleLabel)
         
-        if viewModel.questionList.count == 0 {
+        if viewModel.user.questions.count == 0 {
             questionView.addSubview(questionEmptyTextLabel)
         } else {
             questionView.addSubview(questionTextView)
@@ -696,7 +719,7 @@ public final class ProfileViewController: UIViewController {
             make.height.equalTo(24)
         }
 
-        if viewModel.questionList.count == 0 {
+        if viewModel.user.questions.count == 0 {
             questionEmptyTextLabel.snp.makeConstraints { make in
                 make.top.equalTo(questionTitleLabel.snp.bottom).offset(10)
                 make.leading.equalToSuperview().offset(ViewValues.defaultPadding)
@@ -715,10 +738,10 @@ public final class ProfileViewController: UIViewController {
                 make.leading.equalToSuperview().offset(ViewValues.defaultPadding)
                 make.trailing.equalToSuperview().offset(-ViewValues.defaultPadding)
                 make.top.equalTo(self.questionTitleLabel.snp.bottom).offset(22)
-                if self.viewModel.questionList.count > 2 {
+                if self.viewModel.user.questions.count > 2 {
                     self.questionTextViewHeightAnchor = make.height.equalTo(height + 44).constraint
                 } else {
-                    if self.viewModel.questionList.count == 1 {
+                    if self.viewModel.user.questions.count == 1 {
                         self.questionTextViewHeightAnchor = make.height.equalTo(height + 37).constraint
                     } else {
                         self.questionTextViewHeightAnchor = make.height.equalTo(height + 59).constraint
@@ -728,7 +751,7 @@ public final class ProfileViewController: UIViewController {
             
             self.view.layoutIfNeeded()
             
-            if viewModel.questionList.count > 2 {
+            if viewModel.user.questions.count > 2 {
                 self.questionViewHeightAnchor?.update(offset: questionTitleLabel.frame.height + questionTextView.frame.height + 210)
                 
                 addMoreBackgroundViewComponentView()

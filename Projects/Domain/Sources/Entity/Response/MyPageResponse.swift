@@ -9,60 +9,87 @@
 import Foundation
 
 public struct MyPageResponse: Decodable {
-    let id: Int
-    let notificationToken: String
-    let profileImages: [String]
-    let likeCount: Int
-    let nickName: String
-    let uniqueId: String
-    let birthDay: String
-    let location: String
-    let schoolName: String
-    let mbti: String
-    let introduce: String
-    let snsLinks: [SnsLinkData]
-    let category: String
-    let questions: [QuestionData]
+    public let data: MyPageData?
+    
+    public init(data: MyPageData?) {
+        self.data = data
+    }
+}
+
+public struct MyPageData: Decodable {
+    public let id: Int
+    public let profileImages: [String]
+    public let likeCount: Int
+    public let nickName: String
+    public let uniqueId: String
+    public let mbti: String?
+    public let introduction: String?
+    public let birthDay: String
+    public let location: String
+    public let schoolName: String
+    public var snsPlatform: SnsLinkData?
+    public let category: String
+    public let questions: [QuestionData]
     
     public init(
         id: Int,
-        notificationToken: String,
         profileImages: [String],
         likeCount: Int,
         nickName: String,
         uniqueId: String,
+        mbti: String?,
+        introduction: String?,
         birthDay: String,
         location: String,
         schoolName: String,
-        mbti: String,
-        introduce: String,
-        snsLinks: [SnsLinkData],
+        snsPlatform: SnsLinkData?,
         category: String,
         questions: [QuestionData]
     ) {
         self.id = id
-        self.notificationToken = notificationToken
         self.profileImages = profileImages
         self.likeCount = likeCount
         self.nickName = nickName
         self.uniqueId = uniqueId
+        self.mbti = mbti
+        self.introduction = introduction
         self.birthDay = birthDay
         self.location = location
         self.schoolName = schoolName
-        self.mbti = mbti
-        self.introduce = introduce
-        self.snsLinks = snsLinks
+        self.snsPlatform = snsPlatform
         self.category = category
         self.questions = questions
     }
 }
 
-public struct SnsLinkData: Decodable {
-    let snsName: String
-    let snsId: String
+public struct SnsLinkData: Codable {
+    public var instagram: String
+    public var x: String
+    public var tiktok: String
+    public var youtube: String
+    
+    public init(
+        instagram: String,
+        x: String,
+        tiktok: String,
+        youtube: String
+    ) {
+        self.instagram = instagram
+        self.x = x
+        self.tiktok = tiktok
+        self.youtube = youtube
+    }
 }
 
-public struct QuestionData: Decodable{
-    let title: String
-    let answer: String
+public struct QuestionData: Codable, Equatable {
+    public var question: String
+    public var answer: String
+    
+    public init(
+        question: String,
+        answer: String
+    ) {
+        self.question = question
+        self.answer = answer
+    }
 }

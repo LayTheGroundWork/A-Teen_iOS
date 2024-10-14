@@ -6,18 +6,34 @@
 //  Copyright © 2024 ATeen. All rights reserved.
 //
 
+import Core
 import Common
 import Domain
 import DesignSystem
 import UIKit
 
 public class ProfileViewModel {
-    var userName: String = "김 에스더"
-    var userImage: UIImage = DesignSystemAsset.blackGlass.image
-    var userSchool: SchoolData = .init(
-        schoolName: "남서울중학교",
-        schoolLocation: "서울특별시 관악구 남부순환로172길 97")
-    var userAge: Int = 17
+    @Injected(Auth.self)
+    public var auth: Auth
+    
+    @Injected(MyPageUseCase.self)
+    public var useCase: MyPageUseCase
+    
+    var user: MyPageData = .init(
+        id: 0,
+        profileImages: [],
+        likeCount: 15,
+        nickName: "철수",
+        uniqueId: "",
+        mbti: nil,
+        introduction: nil,
+        birthDay: "1997-09-01",
+        location: "서울",
+        schoolName: "서울고등학교",
+        snsPlatform: nil,
+        category: "",
+        questions: [])
+    
     var userBadge: [Badge] = [
         .init(type: .badge1, explain: "처음 가입하면 이 배지를 획득할 수 있어요\n새로운 시작을 축하해요!"),
         .init(type: .badge2, explain: "프로필 사진, 기본 정보, 10문 10답을 모두 작성하면 첫인상이 확 달라질 거예요!"),
@@ -32,44 +48,51 @@ public class ProfileViewModel {
         .init(type: .badge11, explain: "4주 연속 토너먼트에 참여한 끈기를 보여주셨군요\n꾸준함이 빛을 발할 거예요!"),
         .init(type: .badge12, explain: "다른 사람에게 좋아요 50번 넘게 주셨네요\n따뜻한 마음이 여기저기 퍼져나가고 있어요! "),
     ]
-    var userMBTI: String = "INFJ"
-    var userIntroduce: String = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
     
     var userLinks: [String] = ["", "", "", ""]
     var changeLinks: [String] = []
     var filterLinks: [(Int, String)] = []
-    
-    var questionList: [Question] = [
-        .init(
-            title: "Lorem ipsum dolor",
-            text: """
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            """
-        ),
-        .init(
-            title: "Lorem ipsum dolor sit amet, Lorem ipsum dolor sit amet?",
-            text: """
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            """
-        ),
-        .init(
-            title: "Lorem ipsum dolor sit amet, Lorem ipsum dolor sit amet?",
-            text: """
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            """
-        ),
-    ]
+}
+
+// MARK: - birthday
+extension ProfileViewModel {
+    func getUserAge() -> Int {
+        let currentDate = Date()
+
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy"
+        
+        guard let currentYear = Int(dateFormatter.string(from: currentDate)),
+              let birthYearString = user.birthDay.components(separatedBy: "-").first,
+              let birthYear = Int(birthYearString)
+        else { return 0 }
+
+        return currentYear - birthYear + 1
+    }
 }
 
 // MARK: - Link
 extension ProfileViewModel {
+    func getMyPageData(completion: @escaping (Bool) -> Void) {
+        guard let token = auth.getAccessToken() else { return }
+        useCase.getMyPageData(request: .init(authorization: token)) { data in
+            if let data = data {
+                self.user = data
+                self.filteringLinks()
+                completion(true)
+            } else {
+                completion(false)
+            }
+        }
+    }
+    
+    func changeArrayFromSnsData() {
+        userLinks[0] = user.snsPlatform?.instagram ?? ""
+        userLinks[1] = user.snsPlatform?.x ?? ""
+        userLinks[2] = user.snsPlatform?.tiktok ?? ""
+        userLinks[3] = user.snsPlatform?.youtube ?? ""
+    }
+    
     func checkChangeLinks(tag: Int, text: String) -> Bool {
         changeLinks[tag] = text
         
@@ -82,6 +105,7 @@ extension ProfileViewModel {
     
     func filteringLinks() {
         filterLinks.removeAll()
+        changeArrayFromSnsData()
         
         userLinks.enumerated().forEach { (tag, link) in
             if !link.isEmpty {
@@ -90,10 +114,37 @@ extension ProfileViewModel {
         }
     }
     
-    func saveUserLinks() {
+    func saveUserLinks(completion: @escaping () -> Void) {
         // TODO: 서버 저장 로직
-        userLinks = changeLinks
+        guard let token = auth.getAccessToken() else { return }
         
-        filteringLinks()
+        var snsLink: SnsLinkData? = nil
+        
+        if changeLinks.contains(where: { $0 != "" }) {
+            snsLink = .init(
+                instagram: self.changeLinks[0],
+                x: self.changeLinks[1],
+                tiktok: self.changeLinks[2],
+                youtube: self.changeLinks[3])
+        }
+
+        useCase.editMyPage(
+            request: .init(
+                authorization: token,
+                nickName: user.nickName,
+                schoolData: .init(
+                    schoolName: user.schoolName,
+                    schoolLocation: user.location),
+                snsPlatform: snsLink,
+                mbti: user.mbti,
+                introduction: user.introduction,
+                questions: user.questions)
+        ) { data in
+            if let _ = data {
+                self.user.snsPlatform = snsLink
+                self.filteringLinks()
+                completion()
+            }
+        }
     }
 }

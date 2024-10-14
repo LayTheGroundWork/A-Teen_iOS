@@ -191,8 +191,12 @@ final class LinksDialogViewController: UIViewController {
     }
     
     @objc private func clickCheckButton(_ sender: UIButton) {
-        viewModel.saveUserLinks()
-        coordinator?.didFinish()
+        viewModel.saveUserLinks { [weak self] in
+            guard let self = self else { return }
+            DispatchQueue.main.async {
+                self.coordinator?.didFinish()
+            }
+        }
     }
     
     @objc private func clickClearTextButton(_ sender: UIButton) {

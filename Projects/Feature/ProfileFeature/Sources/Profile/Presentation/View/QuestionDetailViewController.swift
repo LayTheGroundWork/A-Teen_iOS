@@ -10,11 +10,12 @@ import SnapKit
 
 import Common
 import DesignSystem
+import Domain
 import UIKit
 
 public protocol QuestionDetailViewControllerCoordinator: AnyObject {
     func didTabBackButton(
-        question: Question,
+        question: QuestionData,
         index: Int)
 }
 
@@ -22,7 +23,7 @@ public final class QuestionDetailViewController: UIViewController {
     // MARK: - Private properties
     private weak var coordinator: QuestionDetailViewControllerCoordinator?
     
-    var question: Question
+    var question: QuestionData
     var index: Int
     
     private lazy var backButton: UIBarButtonItem = {
@@ -37,7 +38,7 @@ public final class QuestionDetailViewController: UIViewController {
     
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
-        label.text = question.title
+        label.text = question.question
         label.textColor = UIColor.black
         label.textAlignment = .left
         label.font = .customFont(forTextStyle: .title3, weight: .bold)
@@ -47,7 +48,7 @@ public final class QuestionDetailViewController: UIViewController {
     
     lazy var writingTextView: UITextView = {
         let textView = UITextView()
-        textView.text = question.text
+        textView.text = question.answer
         textView.textContainerInset = UIEdgeInsets(top: 13.0, left: 16.0, bottom: 13.0, right: 16.0)
         textView.font = .customFont(forTextStyle: .callout, weight: .regular)
         textView.showsVerticalScrollIndicator = false
@@ -60,7 +61,7 @@ public final class QuestionDetailViewController: UIViewController {
     
     public init(
         coordinator: QuestionDetailViewControllerCoordinator,
-        question: Question,
+        question: QuestionData,
         index: Int
     ) {
         self.coordinator = coordinator
@@ -108,7 +109,7 @@ public final class QuestionDetailViewController: UIViewController {
     }
     
     private func changeTextViewUserInterface() {
-        if question.text == "" || question.text == AppLocalized.textViewPlaceHolder {
+        if question.answer == "" || question.answer == AppLocalized.textViewPlaceHolder {
             writingTextView.layer.borderColor = UIColor.red.cgColor
             writingTextView.textColor = DesignSystemAsset.gray01.color
         } else {
@@ -136,7 +137,7 @@ extension QuestionDetailViewController: UITextViewDelegate {
     }
     
     public func textViewDidChange(_ textView: UITextView) {
-        question.text = textView.text
+        question.answer = textView.text
         
         changeTextViewUserInterface()
     }

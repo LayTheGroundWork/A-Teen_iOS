@@ -289,7 +289,7 @@ extension QuestionsDialogViewController: UITableViewDelegate {
     }
     
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if let index = viewModel.changeQuestionList.firstIndex(where: { $0.title == viewModel.sampleQuestionList[indexPath.row] }) {
+        if let index = viewModel.changeQuestionList.firstIndex(where: { $0.question == viewModel.sampleQuestionList[indexPath.row] }) {
             viewModel.changeQuestionList.remove(at: index)
             
             guard let cell = tableView.cellForRow(at: indexPath) as? QuestionsDialogTableViewCell else { return }
@@ -298,8 +298,8 @@ extension QuestionsDialogViewController: UITableViewDelegate {
         } else {
             viewModel.changeQuestionList.append(
                 .init(
-                    title: viewModel.sampleQuestionList[indexPath.row],
-                    text: AppLocalized.textViewPlaceHolder)
+                    question: viewModel.sampleQuestionList[indexPath.row],
+                    answer: AppLocalized.textViewPlaceHolder)
             )
             coordinator?.didFinish(changeValue: true)
         }

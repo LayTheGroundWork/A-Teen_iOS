@@ -14,10 +14,12 @@ import Foundation
 
 extension AppDelegate {
     func registerDependencies() {
-        let auth: Auth = Auth()
         let apiClientService: ApiClientService = ApiClientServiceImp()
         
         // MARK: - Repository
+        // userDefaults
+        let tokenStorage: TokenStorage = TokenStorage()
+        
         // sign
         let signInRepository: SignInRepository = SignInRepositoryImp(apiClientService: apiClientService)
         let signUpRepository: SignUpRepository = SignUpRepositoryImp(apiClientService: apiClientService)
@@ -31,6 +33,10 @@ extension AppDelegate {
         // image
         let remoteImageDataRepository: RemoteImageDataRepository = RemoteImageDataRepositoryImp(apiClientService: apiClientService)
         
+        // mypage
+        let myPageRepository: MyPageRepository = MyPageRepositoryImp(apiClientService: apiClientService)
+        let myPageEditRepository: MyPageEditRepository = MyPageEditRepositoryImp(apiClientService: apiClientService)
+        
         // MARK: - Service
         let signService: SignService = SignServiceImp(
             signInRepository: signInRepository,
@@ -43,7 +49,13 @@ extension AppDelegate {
         
         let imageDataService: ImageDataService = ImageDataServiceImp(remoteImageDataRepository: remoteImageDataRepository)
         
+        let myPageService: MyPageService = MyPageServiceImp(
+            myPageRepository: myPageRepository,
+            myPageEditRepository: myPageEditRepository)
+        
         // MARK: - UseCase
+        let auth: Auth = Auth(tokenHandler: tokenStorage)
+        
         let signUseCase: SignUseCase = SignUseCaseImp(
             signService: signService, 
             searchService: searchService
@@ -52,6 +64,8 @@ extension AppDelegate {
         let imageDataUseCase: ImageDataUseCase = ImageDataUseCaseImp(imageDataService: imageDataService)
         
         let searchUseCase: SearchUseCase = SearchUseCaseImp(schoolDataRepository: schoolDataRepository)
+        
+        let myPageUseCase: MyPageUseCase = MyPageUseCaseImp(myPageService: myPageService)
         
         // MARK: - Register
         AppContainer.register(
@@ -70,5 +84,9 @@ extension AppDelegate {
         AppContainer.register(
             type: SearchUseCase.self,
             searchUseCase)
+        
+        AppContainer.register(
+            type: MyPageUseCase.self,
+            myPageUseCase)
     }
 }

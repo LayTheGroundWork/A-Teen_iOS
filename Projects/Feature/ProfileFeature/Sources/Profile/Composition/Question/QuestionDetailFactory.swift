@@ -8,6 +8,7 @@
 
 import Core
 import Common
+import Domain
 import FeatureDependency
 import UIKit
 
@@ -18,11 +19,11 @@ public protocol QuestionDetailFactory {
 }
 
 public struct QuestionDetailFactoryImp: QuestionDetailFactory {
-    private(set) var question: Question
+    private(set) var question: QuestionData
     private(set) var index: Int
     
     public init(
-        question: Question,
+        question: QuestionData,
         index: Int
     ) {
         self.question = question

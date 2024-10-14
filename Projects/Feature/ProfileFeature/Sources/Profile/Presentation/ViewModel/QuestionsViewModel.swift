@@ -7,6 +7,7 @@
 //
 
 import Common
+import Domain
 
 enum SaveError {
     case notChange, textNil
@@ -26,10 +27,10 @@ public class QuestionsViewModel {
         "긴거 실험용입니다~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
     ]
     
-    var questionList: [Question]
-    var changeQuestionList: [Question] = []
+    var questionList: [QuestionData]
+    var changeQuestionList: [QuestionData] = []
     
-    public init(questionList: [Question]) {
+    public init(questionList: [QuestionData]) {
         self.questionList = questionList
         self.changeQuestionList = questionList
     }
@@ -42,7 +43,7 @@ extension QuestionsViewModel {
         }
         
         for questionList in changeQuestionList {
-            if questionList.text == AppLocalized.textViewPlaceHolder {
+            if questionList.answer == AppLocalized.textViewPlaceHolder {
                 return true
             }
         }
@@ -51,7 +52,7 @@ extension QuestionsViewModel {
     
     func saveChangeValue(completion: @escaping(Bool, SaveError?) -> Void) {
         if questionList != changeQuestionList {
-            if changeQuestionList.contains(where: { $0.text == "" }) {
+            if changeQuestionList.contains(where: { $0.answer == "" }) {
                 completion(false, .textNil)
             } else {
                 //TODO: 서버 저장 로직

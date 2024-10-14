@@ -7,13 +7,14 @@
 //
 
 import Common
+import Domain
 import FeatureDependency
 import UIKit
 
 public protocol QuestionDetailCoordinatorDelegate: AnyObject {
     func didFinishQuestionDetailViewController(
         childCoordinator: Coordinator,
-        question: Question,
+        question: QuestionData,
         index: Int
     )
 }

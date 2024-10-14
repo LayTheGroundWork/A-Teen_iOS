@@ -8,8 +8,9 @@
 import SnapKit
 
 import Common
-import FeatureDependency
 import DesignSystem
+import Domain
+import FeatureDependency
 import UIKit
 
 public class ProfileDetailViewController: UIViewController {
@@ -18,20 +19,20 @@ public class ProfileDetailViewController: UIViewController {
         .init(red: 0, green: 0, blue: 0, alpha: 0)
     ]
     
-    let questionList: [Question] = [
+    let questionList: [QuestionData] = [
         .init(
-            title: "Lorem ipsum dolor sit amet?",
-            text: """
+            question: "Lorem ipsum dolor sit amet?",
+            answer: """
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
             """),
         .init(
-            title: "Lorem ipsum dolor sit amet?",
-            text: """
+            question: "Lorem ipsum dolor sit amet?",
+            answer: """
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
             """),
         .init(
-            title: "Lorem ipsum dolor sit amet, Lorem ipsum dolor sit amet?",
-            text: """
+            question: "Lorem ipsum dolor sit amet, Lorem ipsum dolor sit amet?",
+            answer: """
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.

@@ -128,10 +128,10 @@ public struct ProfileFactoryImp: ProfileFactory {
         delegate: IntroduceCoordinatorDelegate,
         childCoordinators: [Coordinator]
     ) -> Coordinator {
-        let mbti = viewModel.userMBTI.map { String($0) }
+        let mbti = viewModel.user.mbti?.map { String($0) } ?? ["", "", "", ""]
         let factory = IntroduceFactoryImp(
             myMbti: mbti,
-            myWriting: viewModel.userIntroduce)
+            myWriting: viewModel.user.introduction ?? "")
         let coordinator = IntroduceCoordinator(
             navigation: navigation,
             factory: factory,
@@ -146,7 +146,7 @@ public struct ProfileFactoryImp: ProfileFactory {
         delegate: QuestionsCoordinatorDelegate,
         childCoordinators: [Coordinator]
     ) -> Coordinator {
-        let factory = QuestionsFactoryImp(questionList: viewModel.questionList)
+        let factory = QuestionsFactoryImp(questionList: viewModel.user.questions)
         let coordinator = QuestionsCoordinator(
             navigation: navigation,
             factory: factory,
@@ -177,7 +177,7 @@ public struct ProfileFactoryImp: ProfileFactory {
         delegate: EditUserNameCoordinatorDelegate,
         childCoordinators: [Coordinator]
     ) -> Coordinator {
-        let factory = EditUserNameFactoryImp(userName: viewModel.userName)
+        let factory = EditUserNameFactoryImp(userName: viewModel.user.nickName)
         let coordinator = EditUserNameCoordinator(
             navigation: navigation,
             factory: factory,
@@ -192,7 +192,10 @@ public struct ProfileFactoryImp: ProfileFactory {
         delegate: EditSchoolCoordinatorDelegate,
         childCoordinators: [Coordinator]
     ) -> Coordinator {
-        let factory = EditSchoolFactoryImp(schoolData: viewModel.userSchool)
+        let factory = EditSchoolFactoryImp(
+            schoolData: .init(
+                schoolName: viewModel.user.schoolName,
+                schoolLocation: viewModel.user.location))
         let coordinator = EditSchoolCoordinator(
             navigation: navigation,
             factory: factory,

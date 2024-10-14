@@ -9,6 +9,7 @@
 import SnapKit
 
 import Common
+import Domain
 import DesignSystem
 import UIKit
 
@@ -87,9 +88,9 @@ class QuestionsTableViewCell: UITableViewCell {
         super.prepareForReuse()
     }
     
-    func setProperties(question: Question) {
-        self.questionLabel.text = question.title
-        self.questionTextLabel.text = question.text
+    func setProperties(question: QuestionData) {
+        self.questionLabel.text = question.question
+        self.questionTextLabel.text = question.answer
     }
 }
 

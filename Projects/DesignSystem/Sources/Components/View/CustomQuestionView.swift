@@ -9,6 +9,7 @@
 import SnapKit
 
 import Common
+import Domain
 import UIKit
 
 public class CustomQuestionView: UIView {
@@ -43,7 +44,7 @@ public class CustomQuestionView: UIView {
     lazy var tenTextLabel: UILabel = makeTextLabel()
 
     
-    public init(frame: CGRect, questionList: [Question]) {
+    public init(frame: CGRect, questionList: [QuestionData]) {
         super.init(frame: frame)
         configUserInterface(questionList: questionList)
     }
@@ -76,7 +77,7 @@ extension CustomQuestionView {
 
 // MARK: - UI
 extension CustomQuestionView {
-    func configUserInterface(questionList: [Question]) {
+    func configUserInterface(questionList: [QuestionData]) {
         self.backgroundColor = DesignSystemAsset.gray03.color
         self.layer.masksToBounds = true
         self.layer.cornerRadius = 20
@@ -163,9 +164,9 @@ extension CustomQuestionView {
         }
     }
     
-    func setLabel(titleLabel: UILabel, textLabel: UILabel, beforeLabel: UILabel?, question: Question) {
-        titleLabel.text = question.title
-        textLabel.text = question.text
+    func setLabel(titleLabel: UILabel, textLabel: UILabel, beforeLabel: UILabel?, question: QuestionData) {
+        titleLabel.text = question.question
+        textLabel.text = question.answer
         
         self.addSubview(titleLabel)
         self.addSubview(textLabel)

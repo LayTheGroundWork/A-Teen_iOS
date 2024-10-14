@@ -8,6 +8,7 @@
 
 import Core
 import Common
+import Domain
 import FeatureDependency
 import UIKit
 
@@ -25,11 +26,11 @@ public protocol QuestionsFactory {
 }
 
 public struct QuestionsFactoryImp: QuestionsFactory {
-    private (set) var questionList: [Question]
+    private (set) var questionList: [QuestionData]
     
     let viewModel: QuestionsViewModel
     
-    public init(questionList: [Question]) {
+    public init(questionList: [QuestionData]) {
         self.questionList = questionList
         viewModel =  QuestionsViewModel(questionList: questionList)
     }
