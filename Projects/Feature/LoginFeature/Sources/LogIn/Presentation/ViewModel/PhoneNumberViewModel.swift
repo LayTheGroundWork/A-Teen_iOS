@@ -21,7 +21,7 @@ public final class PhoneNumberViewModel {
     public var phoneNumber: String = .empty
     public var verificationCode: String = .empty
     
-    public var temporaryTokenData: LogInData?
+    public var temporaryTokenData: (String, String)?
 
     var state = PassthroughSubject<StateController, Never>()
 }
@@ -57,34 +57,47 @@ extension PhoneNumberViewModel {
         }
     }
     
-    func setAuth(_ tokenData: LogInData, completion: () -> Void) {
-        self.auth.setAccessToken(tokenData.accessToken)
-        self.auth.setRefreshToken(tokenData.refreshToken)
+    func setAuth(
+        accessToken: String,
+        refreshToken: String,
+        completion: () -> Void
+    ) {
+        self.auth.setAccessToken(accessToken)
+        self.auth.setRefreshToken(refreshToken)
         self.auth.logIn()
         
         completion()
     }
     
     func signIn(completion: @escaping (Bool) -> Void) {
-        useCase.signIn(request: .init(phoneNumber: phoneNumber)) { data in
-            if let tokenData = data {
-                self.setAuth(tokenData) {
-                    completion(true)
-                }
-            } else {
+        useCase.signIn(request: .init(phoneNumber: phoneNumber)) { response in
+            guard let response = response,
+                  let _ = response.1.data,
+                  let accessToken = response.0.value(forHTTPHeaderField: "authorization"),
+                  let refreshToken = response.0.value(forHTTPHeaderField: "refresh")
+            else {
                 completion(false)
+                return
+            }
+            
+            self.setAuth(accessToken: accessToken, refreshToken: refreshToken) {
+                completion(true)
             }
         }
     }
     
     func signUp(completion: @escaping (Bool) -> Void) {
-        useCase.signIn(request: .init(phoneNumber: phoneNumber)) { data in
-            if let tokenData = data {
-                self.temporaryTokenData = tokenData
-                completion(false)
-            } else {
+        useCase.signIn(request: .init(phoneNumber: phoneNumber)) { response in
+            guard let response = response,
+                  let _ = response.1.data,
+                  let accessToken = response.0.value(forHTTPHeaderField: "authorization"),
+                  let refreshToken = response.0.value(forHTTPHeaderField: "refresh")
+            else {
                 completion(true)
+                return
             }
+            self.temporaryTokenData = (accessToken, refreshToken)
+            completion(false)
         }
     }
 }

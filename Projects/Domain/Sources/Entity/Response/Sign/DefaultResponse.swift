@@ -7,12 +7,12 @@
 //
 
 public struct DefaultResponse {
-    public let status: String
+    public let status: Int
     public let data: String?
     public let message: String
     
     public init(
-        status: String,
+        status: Int,
         data: String?,
         message: String
     ) {

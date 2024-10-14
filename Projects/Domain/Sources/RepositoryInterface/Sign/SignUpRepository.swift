@@ -11,6 +11,6 @@ import Foundation
 public protocol SignUpRepository {
     func signUp(
         request: SignUpRequest,
-        completion: @escaping (Result<LogInResponse, Error>) -> Void
+        completion: @escaping (Result<(HTTPURLResponse, DefaultResponse), Error>) -> Void
     )
 }

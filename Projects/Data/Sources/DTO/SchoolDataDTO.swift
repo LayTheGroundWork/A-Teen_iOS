@@ -10,7 +10,7 @@ import Domain
 import Foundation
 
 public struct SchoolDataDTO: Decodable {
-    public let status: String
+    public let status: Int
     public let data: [SchoolDetailData]
     public let message: String
 }

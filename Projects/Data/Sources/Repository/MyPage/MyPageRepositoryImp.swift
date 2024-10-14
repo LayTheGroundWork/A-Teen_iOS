@@ -1,5 +1,5 @@
 //
-//  GetMyPageDataRepositoryImp.swift
+//  MyPageRepositoryImp.swift
 //  Data
 //
 //  Created by 최동호 on 9/24/24.
@@ -10,7 +10,7 @@ import Domain
 import NetworkService
 import Foundation
 
-public struct GetMyPageDataRepositoryImp: GetMyPageDataRepository {
+public struct MyPageRepositoryImp: MyPageRepository {
     private let apiClientService: ApiClientService
     
     public init(

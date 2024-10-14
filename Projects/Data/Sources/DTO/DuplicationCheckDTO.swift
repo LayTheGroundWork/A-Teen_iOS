@@ -10,12 +10,12 @@ import Domain
 import Foundation
 
 public struct DuplicationCheckDTO: Decodable {
-    public let status: String
+    public let status: Int
     public let data: Bool
     public let message: String
     
     public init(
-        status: String,
+        status: Int,
         data: Bool,
         message: String
     ) {

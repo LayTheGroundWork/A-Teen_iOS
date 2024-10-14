@@ -86,9 +86,9 @@ public final class SignUpViewModel {
             tournamentJoin: true)
         ) { data in
             if let tokenData = data {
-                self.auth.setAccessToken(tokenData.accessToken)
-                self.auth.setRefreshToken(tokenData.refreshToken)
-                self.auth.logIn()
+//                self.auth.setAccessToken(tokenData.accessToken)
+//                self.auth.setRefreshToken(tokenData.refreshToken)
+//                self.auth.logIn()
                 completion(true)
             } else {
                 completion(false)

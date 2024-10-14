@@ -9,13 +9,13 @@ import Domain
 import Foundation
 
 struct LogInDTO: Decodable {
-    public let status: String
-    public let data: LogInData?
+    public let status: Int
+    public let data: String?
     public let message: String
 }
 
 extension LogInDTO {
-    func toDomain() -> LogInResponse {
-        .init(data: data)
+    func toDomain() -> DefaultResponse {
+        .init(status: status, data: data, message: message)
     }
 }

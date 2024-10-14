@@ -1,5 +1,5 @@
 //
-//  GetMyPageDataRepository.swift
+//  MyPageRepository.swift
 //  Domain
 //
 //  Created by 최동호 on 9/24/24.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-public protocol GetMyPageDataRepository {
+public protocol MyPageRepository {
     func getMyPageData(
         request: MyPageRequest,
         completion: @escaping (Result<MyPageResponse, Error>) -> Void

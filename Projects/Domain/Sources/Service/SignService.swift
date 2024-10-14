@@ -11,11 +11,11 @@ import Foundation
 public protocol SignService {
     func signIn(
         request: LogInRequest,
-        completion: @escaping (LogInData?) -> Void
+        completion: @escaping ((HTTPURLResponse, DefaultResponse)?) -> Void
     )
     func signUp(
         request: SignUpRequest,
-        completion: @escaping (LogInData?) -> Void
+        completion: @escaping ((HTTPURLResponse, DefaultResponse)?) -> Void
     )
     func requestCode(
         request: VerificationCodeRequest,

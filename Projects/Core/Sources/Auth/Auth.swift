@@ -24,41 +24,39 @@ public protocol TokenHandler {
     func setAccessToken(_ accessToken: String)
     func getRefreshToken() -> String?
     func setRefreshToken(_ refreshToken: String)
+    func deleteToken()
 }
 
 public final class Auth {
-    private let accessTokenKey = "accessToken"
-    private let refreshTokenKey = "refreshToken"
-    
     private var session = false
-    private var userDefaults: UserDefaults
+    private let tokenHandler: TokenHandler
     
-    public init(userDefaults: UserDefaults = .standard) {
-        self.userDefaults = userDefaults
+    public init(tokenHandler: TokenHandler) {
+        self.tokenHandler = tokenHandler
+    }
+}
+
+extension Auth {
+    public func getAccessToken() -> String? {
+        return tokenHandler.getAccessToken()
+    }
+    
+    public func setAccessToken(_ accessToken: String) {
+        tokenHandler.setAccessToken(accessToken)
+    }
+    
+    public func getRefreshToken() -> String? {
+        return tokenHandler.getRefreshToken()
+    }
+    
+    public func setRefreshToken(_ refreshToken: String) {
+        tokenHandler.setRefreshToken(refreshToken)
     }
 }
 
 extension Auth: SessionCheckAuth {
     public var isSessionActive: Bool {
         session
-    }
-}
-
-extension Auth: TokenHandler {
-    public func getAccessToken() -> String? {
-        return userDefaults.string(forKey: accessTokenKey)
-    }
-    
-    public func setAccessToken(_ accessToken: String) {
-        userDefaults.set(accessToken, forKey: accessTokenKey)
-    }
-    
-    public func getRefreshToken() -> String? {
-        return userDefaults.string(forKey: refreshTokenKey)
-    }
-    
-    public func setRefreshToken(_ refreshToken: String) {
-        userDefaults.set(refreshToken, forKey: refreshTokenKey)
     }
 }
 
@@ -71,7 +69,6 @@ extension Auth: LogInAuth {
 extension Auth: LogOutAuth {
     public func logOut() {
         session = false
-        userDefaults.removeObject(forKey: accessTokenKey)
-        userDefaults.removeObject(forKey: refreshTokenKey)
+        tokenHandler.deleteToken()
     }
 }

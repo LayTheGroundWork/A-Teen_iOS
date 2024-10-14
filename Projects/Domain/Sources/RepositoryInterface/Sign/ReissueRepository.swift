@@ -11,6 +11,6 @@ import Foundation
 public protocol ReissueRepository {
     func reissueToken(
         request: ReissueRequest,
-        completion: @escaping (Result<LogInResponse, Error>) -> Void
+        completion: @escaping (Result<DefaultResponse, Error>) -> Void
     )
 }

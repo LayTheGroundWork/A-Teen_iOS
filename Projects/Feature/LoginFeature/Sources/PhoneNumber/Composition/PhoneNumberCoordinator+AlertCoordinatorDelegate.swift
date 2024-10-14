@@ -38,7 +38,7 @@ extension PhoneNumberCoordinator: AlertCoordinatorDelegate {
                     return
                 }
                 
-                viewModel.setAuth(tokenData) {
+                viewModel.setAuth(accessToken: tokenData.0, refreshToken: tokenData.1) {
                     viewModel.temporaryTokenData = nil
                     
                     // 다이얼로그 닫기

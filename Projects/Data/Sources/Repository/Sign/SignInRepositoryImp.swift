@@ -21,7 +21,7 @@ public struct SignInRepositoryImp: SignInRepository {
     
     public func signIn(
         request: LogInRequest,
-        completion: @escaping (Result<LogInResponse, Error>) -> Void
+        completion: @escaping (Result<(HTTPURLResponse, DefaultResponse), Error>) -> Void
     ) {
         Task {
             do {
@@ -29,26 +29,10 @@ public struct SignInRepositoryImp: SignInRepository {
                 guard let urlRequest = endPoint.toURLRequest else {
                     throw ApiError.errorInUrl
                 }
-                let response: LogInResponse = try await apiClientService.request(request: urlRequest, type: LogInDTO.self).toDomain()
-                completion(.success(response))
-            } catch {
-                completion(.failure(error))
-            }
-        }
-    }
-    
-    public func signUp(
-        request: SignUpRequest,
-        completion: @escaping (Result<LogInResponse, Error>) -> Void
-    ) {
-        Task {
-            do {
-                let endPoint = SignUpEndPoint(request: request)
-                guard let urlRequest = endPoint.toURLRequest else {
-                    throw ApiError.errorInUrl
-                }
-                let response: Domain.LogInResponse = try await apiClientService.request(request: urlRequest, type: LogInDTO.self).toDomain()
-                completion(.success(response))
+                let result = try await apiClientService.requestToken(request: urlRequest, type: LogInDTO.self)
+                let response: DefaultResponse = result.1.toDomain()
+                
+                completion(.success((result.0, response)))
             } catch {
                 completion(.failure(error))
             }

@@ -10,7 +10,7 @@ import Domain
 import Foundation
 
 struct LogOutDTO: Decodable {
-    public let status: String
+    public let status: Int
     public let data: String?
     public let message: String
 }

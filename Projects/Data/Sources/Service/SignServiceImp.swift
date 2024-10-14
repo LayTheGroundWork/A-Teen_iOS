@@ -32,12 +32,12 @@ public struct SignServiceImp: SignService {
     
     public func signIn(
         request: LogInRequest,
-        completion: @escaping (LogInData?) -> Void
+        completion: @escaping ((HTTPURLResponse, DefaultResponse)?) -> Void
     ) {
         signInRepository.signIn(request: request) { result in
             switch result {
             case .success(let response):
-                completion(response.data)
+                completion(response)
             case .failure(let error):
                 print(error.localizedDescription)
                 completion(nil)
@@ -47,12 +47,12 @@ public struct SignServiceImp: SignService {
     
     public func signUp(
         request: SignUpRequest,
-        completion: @escaping (LogInData?) -> Void
+        completion: @escaping ((HTTPURLResponse, DefaultResponse)?) -> Void
     ) {
         signUpRepository.signUp(request: request) { result in
             switch result {
             case .success(let response):
-                completion(response.data)
+                completion(response)
             case .failure(let error):
                 print(error.localizedDescription)
                 completion(nil)
