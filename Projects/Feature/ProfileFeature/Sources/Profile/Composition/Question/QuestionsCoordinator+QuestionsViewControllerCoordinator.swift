@@ -6,11 +6,12 @@
 //  Copyright © 2024 ATeen. All rights reserved.
 //
 
+import Domain
 import FeatureDependency
 
 extension QuestionsCoordinator: QuestionsViewControllerCoordinator {
-    public func didTabBackButton() {
-        delegate?.didFinishQuestionsViewController(childCoordinator: self)
+    public func didTabBackButton(user: MyPageData) {
+        delegate?.didFinishQuestionsViewController(childCoordinator: self, user: user)
     }
     
     public func didTabCell(index: Int) {

@@ -26,13 +26,10 @@ public protocol QuestionsFactory {
 }
 
 public struct QuestionsFactoryImp: QuestionsFactory {
-    private (set) var questionList: [QuestionData]
-    
     let viewModel: QuestionsViewModel
     
-    public init(questionList: [QuestionData]) {
-        self.questionList = questionList
-        viewModel =  QuestionsViewModel(questionList: questionList)
+    public init(user: MyPageData) {
+        viewModel = QuestionsViewModel(user: user)
     }
     
     public func makeQuestionsViewController(

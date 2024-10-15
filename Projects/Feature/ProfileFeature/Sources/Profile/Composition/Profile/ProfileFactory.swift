@@ -146,7 +146,7 @@ public struct ProfileFactoryImp: ProfileFactory {
         delegate: QuestionsCoordinatorDelegate,
         childCoordinators: [Coordinator]
     ) -> Coordinator {
-        let factory = QuestionsFactoryImp(questionList: viewModel.user.questions)
+        let factory = QuestionsFactoryImp(user: viewModel.user)
         let coordinator = QuestionsCoordinator(
             navigation: navigation,
             factory: factory,

@@ -10,10 +10,11 @@ import SnapKit
 
 import Common
 import DesignSystem
+import Domain
 import UIKit
 
 public protocol QuestionsViewControllerCoordinator: AnyObject {
-    func didTabBackButton()
+    func didTabBackButton(user: MyPageData)
     func didTabCell(index: Int)
     func didTabSelectQuestionButton()
     func configTabbarState(view: ProfileFeatureViewNames)
@@ -298,7 +299,7 @@ public final class QuestionsViewController: UIViewController {
     
     // MARK: - Actions
     @objc private func clickBackButton(_ sender: UIBarButtonItem) {
-        coordinator?.didTabBackButton()
+        coordinator?.didTabBackButton(user: viewModel.user)
     }
     
     @objc private func clickSelectQuestionButton(_ sender: UIButton) {
@@ -306,9 +307,12 @@ public final class QuestionsViewController: UIViewController {
     }
     
     @objc private func clickSaveButton(_ sender: UIButton) {
-        viewModel.saveChangeValue { success, error in
+        viewModel.saveChangeValue { [weak self] success, error in
+            guard let self = self else { return }
             if success {
-                self.coordinator?.didTabBackButton()     //일단 끝나면 뒤로 처리
+                DispatchQueue.main.async {
+                    self.coordinator?.didTabBackButton(user: self.viewModel.user)
+                }
             } else {
                 switch error {
                 case .notChange:

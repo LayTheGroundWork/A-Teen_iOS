@@ -6,12 +6,14 @@
 //  Copyright © 2024 ATeen. All rights reserved.
 //
 
+import Domain
 import FeatureDependency
 
 extension ProfileCoordinator: QuestionsCoordinatorDelegate {
-    public func didFinishQuestionsViewController(childCoordinator: FeatureDependency.Coordinator) {
+    public func didFinishQuestionsViewController(childCoordinator: Coordinator, user: MyPageData) {
         childCoordinator.navigation.dismissNavigation = nil
         removeChildCoordinator(childCoordinator)
         navigation.popViewController(animated: true)
+        profileViewControllerDelegate?.didTabBackButtonFromQuestionsViewController(user: user)
     }
 }

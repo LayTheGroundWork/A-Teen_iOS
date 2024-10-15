@@ -29,7 +29,7 @@ public struct MyPageData: Decodable {
     public let schoolName: String
     public var snsPlatform: SnsLinkData?
     public let category: String
-    public let questions: [QuestionData]
+    public var questions: [QuestionData]
     
     public init(
         id: Int,

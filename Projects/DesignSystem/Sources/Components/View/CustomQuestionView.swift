@@ -77,13 +77,15 @@ extension CustomQuestionView {
 
 // MARK: - UI
 extension CustomQuestionView {
-    func configUserInterface(questionList: [QuestionData]) {
+    public func configUserInterface(questionList: [QuestionData]) {
         self.backgroundColor = DesignSystemAsset.gray03.color
         self.layer.masksToBounds = true
         self.layer.cornerRadius = 20
         
         if questionList.count > 2 {
             self.layer.maskedCorners = CACornerMask(arrayLiteral: [.layerMinXMinYCorner, .layerMaxXMinYCorner])
+        } else {
+            self.layer.maskedCorners = CACornerMask(arrayLiteral: [.layerMinXMinYCorner, .layerMaxXMinYCorner, .layerMinXMaxYCorner, .layerMaxXMaxYCorner])
         }
         
         for (index, question) in questionList.enumerated() {

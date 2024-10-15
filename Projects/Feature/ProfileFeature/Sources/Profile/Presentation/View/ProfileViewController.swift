@@ -9,6 +9,7 @@ import SnapKit
 
 import Common
 import DesignSystem
+import Domain
 import UIKit
 
 public protocol ProfileViewControllerCoordinator: AnyObject {
@@ -25,6 +26,7 @@ public protocol ProfileViewControllerCoordinator: AnyObject {
 
 public protocol ProfileViewControllerDelegate: AnyObject {
     func didTabBackButtonFromLinksDialogViewController()
+    func didTabBackButtonFromQuestionsViewController(user: MyPageData)
 }
 
 public final class ProfileViewController: UIViewController {
@@ -689,12 +691,6 @@ public final class ProfileViewController: UIViewController {
         questionView.addSubview(questionRightButton)
         questionView.addSubview(questionTitleLabel)
         
-        if viewModel.user.questions.count == 0 {
-            questionView.addSubview(questionEmptyTextLabel)
-        } else {
-            questionView.addSubview(questionTextView)
-        }
-        
         divider3.snp.makeConstraints { make in
             make.top.equalTo(introduceView.snp.bottom)
             make.leading.trailing.equalToSuperview()
@@ -719,7 +715,13 @@ public final class ProfileViewController: UIViewController {
             make.height.equalTo(24)
         }
 
-        if viewModel.user.questions.count == 0 {
+        addQuestionTextView()
+    }
+    
+    private func addQuestionTextView() {
+        if viewModel.user.questions.isEmpty {
+            questionView.addSubview(questionEmptyTextLabel)
+            
             questionEmptyTextLabel.snp.makeConstraints { make in
                 make.top.equalTo(questionTitleLabel.snp.bottom).offset(10)
                 make.leading.equalToSuperview().offset(ViewValues.defaultPadding)
@@ -730,9 +732,11 @@ public final class ProfileViewController: UIViewController {
 
             self.questionViewHeightAnchor?.update(offset: questionTitleLabel.frame.height + questionEmptyTextLabel.frame.height + 129)
         } else {
+            questionView.addSubview(questionTextView)
+            
             self.view.layoutIfNeeded()
             
-            let height = questionTextView.oneTitleLabel.frame.height + questionTextView.oneTextLabel.frame.height + questionTextView.twoTitleLabel.frame.height + questionTextView.twoTextLabel.frame.height
+            let height = Int(questionTextView.oneTitleLabel.frame.height + questionTextView.oneTextLabel.frame.height) * min(2, viewModel.user.questions.count)
             
             questionTextView.snp.makeConstraints { make in
                 make.leading.equalToSuperview().offset(ViewValues.defaultPadding)
@@ -938,18 +942,52 @@ extension ProfileViewController {
 
 extension ProfileViewController: ProfileViewControllerDelegate {
     public func didTabBackButtonFromLinksDialogViewController() {
-        for subview in self.linkView.subviews {
-            subview.removeFromSuperview()
+        linkView.subviews.forEach {
+            $0.removeFromSuperview()
+            $0.snp.removeConstraints()
         }
         
-        self.linkEmptyTextLabel.snp.removeConstraints()
-        self.linkView.snp.removeConstraints()
-        self.linkEmptyTextLabel.removeFromSuperview()
-        self.linkView.removeFromSuperview()
+        linkEmptyTextLabel.snp.removeConstraints()
+        linkView.snp.removeConstraints()
+        linkEmptyTextLabel.removeFromSuperview()
+        linkView.removeFromSuperview()
         
-        self.linkView.configUserInterface(linkList: viewModel.filterLinks)
+        linkView.configUserInterface(linkList: viewModel.filterLinks)
         
-        self.addLinkView(count: viewModel.filterLinks.count)
+        addLinkView(count: viewModel.filterLinks.count)
+        
+        view.layoutIfNeeded()
+        
+        backgroundViewHeightAnchor?.update(offset: informationView.frame.height + linkBackView.frame.height + introduceView.frame.height + questionView.frame.height + 21)
+        
+        view.layoutIfNeeded()
+        
+        scrollView.contentSize = CGSize(width: view.frame.width, height: backgroundView.frame.height)
+    }
+    
+    public func didTabBackButtonFromQuestionsViewController(user: MyPageData) {
+        viewModel.user = user
+        
+        questionTextView.subviews.forEach {
+            $0.removeFromSuperview()
+            $0.snp.removeConstraints()
+        }
+        
+        moreBackgroundView.subviews.forEach {
+            $0.removeFromSuperview()
+            $0.snp.removeConstraints()
+        }
+        
+        [questionEmptyTextLabel, questionTextView, moreBackgroundView].forEach {
+            $0.removeFromSuperview()
+            $0.snp.removeConstraints()
+        }
+        
+        questionTextView.configUserInterface(questionList: user.questions)
+        
+        addQuestionTextView()
+        
+        moreButton.setTitle("펼쳐서 보기", for: .normal)
         
         self.view.layoutIfNeeded()
         
