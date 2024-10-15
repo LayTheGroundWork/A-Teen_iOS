@@ -22,8 +22,8 @@ public struct MyPageData: Decodable {
     public let likeCount: Int
     public let nickName: String
     public let uniqueId: String
-    public let mbti: String?
-    public let introduction: String?
+    public var mbti: String?
+    public var introduction: String?
     public let birthDay: String
     public let location: String
     public let schoolName: String

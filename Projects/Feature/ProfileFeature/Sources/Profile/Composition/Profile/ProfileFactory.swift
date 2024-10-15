@@ -128,10 +128,7 @@ public struct ProfileFactoryImp: ProfileFactory {
         delegate: IntroduceCoordinatorDelegate,
         childCoordinators: [Coordinator]
     ) -> Coordinator {
-        let mbti = viewModel.user.mbti?.map { String($0) } ?? ["", "", "", ""]
-        let factory = IntroduceFactoryImp(
-            myMbti: mbti,
-            myWriting: viewModel.user.introduction ?? "")
+        let factory = IntroduceFactoryImp(user: viewModel.user)
         let coordinator = IntroduceCoordinator(
             navigation: navigation,
             factory: factory,

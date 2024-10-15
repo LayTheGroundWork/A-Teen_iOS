@@ -6,11 +6,12 @@
 //  Copyright © 2024 ATeen. All rights reserved.
 //
 
+import Domain
 import FeatureDependency
 import UIKit
 
 public protocol IntroduceCoordinatorDelegate: AnyObject {
-    func didFinishIntroduceViewController(childCoordinator: Coordinator)
+    func didFinishIntroduceViewController(childCoordinator: Coordinator, user: MyPageData)
     func configTabbarState(view: ProfileFeatureViewNames)
 }
 

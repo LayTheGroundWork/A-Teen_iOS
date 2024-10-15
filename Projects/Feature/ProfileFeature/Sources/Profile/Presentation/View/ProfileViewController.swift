@@ -27,6 +27,7 @@ public protocol ProfileViewControllerCoordinator: AnyObject {
 public protocol ProfileViewControllerDelegate: AnyObject {
     func didTabBackButtonFromLinksDialogViewController()
     func didTabBackButtonFromQuestionsViewController(user: MyPageData)
+    func didTabBackButtonFromIntroduceViewController(user: MyPageData)
 }
 
 public final class ProfileViewController: UIViewController {
@@ -597,13 +598,6 @@ public final class ProfileViewController: UIViewController {
         
         introduceView.addSubview(introduceRightButton)
         introduceView.addSubview(introduceTitleLabel)
-        introduceView.addSubview(introduceMbtiView)
-        
-        if viewModel.user.introduction == nil {
-            introduceView.addSubview(introduceEmptyTextLabel)
-        } else {
-            introduceView.addSubview(introduceTextLabel)
-        }
         
         divider2.snp.makeConstraints { make in
             make.top.equalTo(linkBackView.snp.bottom)
@@ -627,6 +621,17 @@ public final class ProfileViewController: UIViewController {
             make.leading.equalToSuperview().offset(ViewValues.defaultPadding)
             make.trailing.equalTo(introduceRightButton.snp.leading).offset(-ViewValues.defaultPadding)
             make.height.equalTo(24)
+        }
+        addIntroduceTextView()
+    }
+    
+    private func addIntroduceTextView() {
+        introduceView.addSubview(introduceMbtiView)
+        
+        if viewModel.user.introduction == nil {
+            introduceView.addSubview(introduceEmptyTextLabel)
+        } else {
+            introduceView.addSubview(introduceTextLabel)
         }
         
         introduceMbtiView.snp.makeConstraints { make in
@@ -657,14 +662,14 @@ public final class ProfileViewController: UIViewController {
                 if viewModel.user.mbti == nil {
                     make.top.equalTo(introduceTitleLabel.snp.bottom).offset(ViewValues.defaultPadding)
                 } else {
-                    make.top.equalTo(introduceMbtiView.snp.bottom).offset(7)
+                    make.top.equalTo(introduceMbtiView.snp.bottom).offset(10)
                 }
             }
             
             self.view.layoutIfNeeded()
             
             self.introduceViewHeightAnchor?.update(
-                offset: introduceTitleLabel.frame.height + introduceMbtiView.frame.height + introduceEmptyTextLabel.frame.height + 102)
+                offset: introduceTitleLabel.frame.height + introduceMbtiView.frame.height + introduceEmptyTextLabel.frame.height + 105)
         } else {
             introduceTextLabel.snp.makeConstraints { make in
                 make.leading.equalToSuperview().offset(ViewValues.defaultPadding)
@@ -673,14 +678,14 @@ public final class ProfileViewController: UIViewController {
                 if viewModel.user.mbti == nil {
                     make.top.equalTo(introduceTitleLabel.snp.bottom).offset(ViewValues.defaultPadding)
                 } else {
-                    make.top.equalTo(introduceMbtiView.snp.bottom).offset(7)
+                    make.top.equalTo(introduceMbtiView.snp.bottom).offset(10)
                 }
             }
             
             self.view.layoutIfNeeded()
             
             self.introduceViewHeightAnchor?.update(
-                offset: introduceTitleLabel.frame.height + introduceMbtiView.frame.height + introduceTextLabel.frame.height + 102)
+                offset: introduceTitleLabel.frame.height + introduceMbtiView.frame.height + introduceTextLabel.frame.height + 105)
         }
     }
     
@@ -820,6 +825,16 @@ public final class ProfileViewController: UIViewController {
             make.height.equalTo(17)
         }
     }
+    
+    private func changeScrollViewSize() {
+        view.layoutIfNeeded()
+        
+        backgroundViewHeightAnchor?.update(offset: informationView.frame.height + linkBackView.frame.height + introduceView.frame.height + questionView.frame.height + 21)
+        
+        view.layoutIfNeeded()
+        
+        scrollView.contentSize = CGSize(width: view.frame.width, height: backgroundView.frame.height)
+    }
 
     private func setupActions() {
         editImageButton.addTarget(
@@ -910,12 +925,7 @@ extension ProfileViewController {
                 self.view.layoutIfNeeded()
                 self.questionViewHeightAnchor?.update(offset: self.questionTitleLabel.frame.height + self.questionTextView.frame.height + 210)
                 
-                self.view.layoutIfNeeded()
-                self.backgroundViewHeightAnchor?.update(offset: self.informationView.frame.height + self.linkBackView.frame.height + self.introduceView.frame.height + self.questionView.frame.height + 21)
-                
-                self.view.layoutIfNeeded()
-                self.scrollView.contentSize = CGSize(width: self.view.frame.width, height: self.backgroundView.frame.height)
-                
+                self.changeScrollViewSize()
                 sender.setTitle("접기", for: .normal)
             }
         } else {
@@ -928,12 +938,7 @@ extension ProfileViewController {
                 self.view.layoutIfNeeded()
                 self.questionViewHeightAnchor?.update(offset: self.questionTitleLabel.frame.height + self.questionTextView.frame.height + 210)
                 
-                self.view.layoutIfNeeded()
-                self.backgroundViewHeightAnchor?.update(offset: self.informationView.frame.height + self.linkBackView.frame.height + self.introduceView.frame.height + self.questionView.frame.height + 21)
-                
-                self.view.layoutIfNeeded()
-                self.scrollView.contentSize = CGSize(width: self.view.frame.width, height: self.backgroundView.frame.height)
-                
+                self.changeScrollViewSize()
                 sender.setTitle("펼쳐서 보기", for: .normal)
             }
         }
@@ -955,14 +960,22 @@ extension ProfileViewController: ProfileViewControllerDelegate {
         linkView.configUserInterface(linkList: viewModel.filterLinks)
         
         addLinkView(count: viewModel.filterLinks.count)
+        changeScrollViewSize()
+    }
+    
+    public func didTabBackButtonFromIntroduceViewController(user: MyPageData) {
+        viewModel.user = user
         
-        view.layoutIfNeeded()
+        [introduceMbtiView, introduceMbtiLabel, introduceTextLabel, introduceEmptyTextLabel].forEach {
+            $0.removeFromSuperview()
+            $0.snp.removeConstraints()
+        }
         
-        backgroundViewHeightAnchor?.update(offset: informationView.frame.height + linkBackView.frame.height + introduceView.frame.height + questionView.frame.height + 21)
+        introduceMbtiLabel.text = viewModel.user.mbti ?? ""
+        introduceTextLabel.text = viewModel.user.introduction ?? ""
         
-        view.layoutIfNeeded()
-        
-        scrollView.contentSize = CGSize(width: view.frame.width, height: backgroundView.frame.height)
+        addIntroduceTextView()
+        changeScrollViewSize()
     }
     
     public func didTabBackButtonFromQuestionsViewController(user: MyPageData) {
@@ -986,15 +999,6 @@ extension ProfileViewController: ProfileViewControllerDelegate {
         questionTextView.configUserInterface(questionList: user.questions)
         
         addQuestionTextView()
-        
-        moreButton.setTitle("펼쳐서 보기", for: .normal)
-        
-        self.view.layoutIfNeeded()
-        
-        self.backgroundViewHeightAnchor?.update(offset: self.informationView.frame.height + self.linkBackView.frame.height + self.introduceView.frame.height + self.questionView.frame.height + 21)
-        
-        self.view.layoutIfNeeded()
-        
-        self.scrollView.contentSize = CGSize(width: self.view.frame.width, height: self.backgroundView.frame.height)
+        changeScrollViewSize()
     }
 }

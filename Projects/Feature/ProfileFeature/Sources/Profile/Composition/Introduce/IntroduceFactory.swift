@@ -7,6 +7,7 @@
 //
 
 import Core
+import Domain
 import FeatureDependency
 import UIKit
 
@@ -15,15 +16,13 @@ public protocol IntroduceFactory {
 }
 
 public struct IntroduceFactoryImp: IntroduceFactory {
-    private (set) var myMbti: [String]
-    private (set) var myWriting: String
+    private (set) var user: MyPageData
     
     public func makeIntroduceViewController(
         coordinator: IntroduceViewControllerCoordinator
     ) -> UIViewController {
         let viewModel = IntroduceViewModel(
-            myMbti: myMbti,
-            myWriting: myWriting)
+            user: user)
         let controller = IntroduceViewController(
             viewModel: viewModel,
             coordinator: coordinator)
