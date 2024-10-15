@@ -174,7 +174,7 @@ public struct ProfileFactoryImp: ProfileFactory {
         delegate: EditUserNameCoordinatorDelegate,
         childCoordinators: [Coordinator]
     ) -> Coordinator {
-        let factory = EditUserNameFactoryImp(userName: viewModel.user.nickName)
+        let factory = EditUserNameFactoryImp(user: viewModel.user)
         let coordinator = EditUserNameCoordinator(
             navigation: navigation,
             factory: factory,

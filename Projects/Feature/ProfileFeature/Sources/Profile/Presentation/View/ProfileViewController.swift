@@ -26,8 +26,9 @@ public protocol ProfileViewControllerCoordinator: AnyObject {
 
 public protocol ProfileViewControllerDelegate: AnyObject {
     func didTabBackButtonFromLinksDialogViewController()
-    func didTabBackButtonFromQuestionsViewController(user: MyPageData)
+    func didTabBackButtonFromEditUserNameViewController(user: MyPageData)
     func didTabBackButtonFromIntroduceViewController(user: MyPageData)
+    func didTabBackButtonFromQuestionsViewController(user: MyPageData)
 }
 
 public final class ProfileViewController: UIViewController {
@@ -946,6 +947,20 @@ extension ProfileViewController {
 }
 
 extension ProfileViewController: ProfileViewControllerDelegate {
+    public func didTabBackButtonFromEditUserNameViewController(user: MyPageData) {
+        viewModel.user = user
+        userNameLabel.text = "\(user.nickName) 님\n오늘도 좋은 하루 보내세요!"
+       
+        if let text = userNameLabel.text {
+            let attributeString = NSMutableAttributedString(string: text)
+            attributeString.addAttribute(
+                .foregroundColor,
+                value: DesignSystemAsset.mainColor.color,
+                range: (text as NSString).range(of: user.nickName))
+            userNameLabel.attributedText = attributeString
+        }
+    }
+    
     public func didTabBackButtonFromLinksDialogViewController() {
         linkView.subviews.forEach {
             $0.removeFromSuperview()

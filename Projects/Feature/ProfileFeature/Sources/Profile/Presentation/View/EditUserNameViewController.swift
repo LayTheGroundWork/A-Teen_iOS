@@ -10,10 +10,11 @@ import SnapKit
 
 import Common
 import DesignSystem
+import Domain
 import UIKit
 
 public protocol EditUserNameViewControllerCoordinator: AnyObject {
-    func didTabBackButton()
+    func didTabBackButton(user: MyPageData)
     func configTabbarState(view: ProfileFeatureViewNames)
 }
 
@@ -216,7 +217,7 @@ public final class EditUserNameViewController: UIViewController {
                 errorMessageLabel.text = AppLocalized.userNameNumberErrrorMessage
                 errorMessageLabelHeight?.update(offset: 16)
             } else {
-                if viewModel.userName == text {
+                if viewModel.user.nickName == text {
                     textField.layer.borderColor = DesignSystemAsset.mainColor.color.cgColor
                     errorMessageLabel.text = ""
                     errorMessageLabelHeight?.update(offset: 0)
@@ -231,7 +232,7 @@ public final class EditUserNameViewController: UIViewController {
     
     // MARK: - Actions
     @objc private func clickBackButton(_ sender: UIBarButtonItem) {
-        coordinator?.didTabBackButton()
+        coordinator?.didTabBackButton(user: viewModel.user)
     }
     
     @objc private func didSelectClearTextButton(_ sender: UIButton) {
@@ -242,7 +243,12 @@ public final class EditUserNameViewController: UIViewController {
     
     @objc private func clickSaveButton(_ sender: UIButton) {
         // TODO: 서버 저장 로직 필요
-        coordinator?.didTabBackButton()
+        viewModel.saveChangeValue { [weak self] in
+            guard let self = self else { return }
+            DispatchQueue.main.async {
+                self.coordinator?.didTabBackButton(user: self.viewModel.user)
+            }
+        }
     }
 }
 

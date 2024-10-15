@@ -20,7 +20,7 @@ public struct MyPageData: Decodable {
     public let id: Int
     public let profileImages: [String]
     public let likeCount: Int
-    public let nickName: String
+    public var nickName: String
     public let uniqueId: String
     public var mbti: String?
     public var introduction: String?
