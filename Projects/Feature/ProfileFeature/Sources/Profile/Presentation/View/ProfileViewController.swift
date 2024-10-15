@@ -27,6 +27,7 @@ public protocol ProfileViewControllerCoordinator: AnyObject {
 public protocol ProfileViewControllerDelegate: AnyObject {
     func didTabBackButtonFromLinksDialogViewController()
     func didTabBackButtonFromEditUserNameViewController(user: MyPageData)
+    func didTabBackButtonFromEditSchoolViewController(user: MyPageData)
     func didTabBackButtonFromIntroduceViewController(user: MyPageData)
     func didTabBackButtonFromQuestionsViewController(user: MyPageData)
 }
@@ -959,6 +960,11 @@ extension ProfileViewController: ProfileViewControllerDelegate {
                 range: (text as NSString).range(of: user.nickName))
             userNameLabel.attributedText = attributeString
         }
+    }
+    
+    public func didTabBackButtonFromEditSchoolViewController(user: MyPageData) {
+        viewModel.user = user
+        schoolButton.changeText(text: user.schoolName)
     }
     
     public func didTabBackButtonFromLinksDialogViewController() {

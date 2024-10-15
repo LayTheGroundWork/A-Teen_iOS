@@ -189,10 +189,7 @@ public struct ProfileFactoryImp: ProfileFactory {
         delegate: EditSchoolCoordinatorDelegate,
         childCoordinators: [Coordinator]
     ) -> Coordinator {
-        let factory = EditSchoolFactoryImp(
-            schoolData: .init(
-                schoolName: viewModel.user.schoolName,
-                schoolLocation: viewModel.user.location))
+        let factory = EditSchoolFactoryImp(user: viewModel.user)
         let coordinator = EditSchoolCoordinator(
             navigation: navigation,
             factory: factory,

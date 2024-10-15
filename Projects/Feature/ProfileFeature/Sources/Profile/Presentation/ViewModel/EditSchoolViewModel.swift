@@ -13,8 +13,11 @@ import Domain
 import UIKit
 
 public final class EditSchoolViewModel {
-    @Injected(SignUseCase.self)
-    public var signUseCase: SignUseCase
+    @Injected(Auth.self)
+    public var auth: Auth
+    
+    @Injected(MyPageUseCase.self)
+    public var myPageUseCase: MyPageUseCase
     
     @Injected(SearchUseCase.self)
     public var searchUseCase: SearchUseCase
@@ -23,12 +26,14 @@ public final class EditSchoolViewModel {
     
     var filteredSchools: [SchoolData] = []
     
+    var user: MyPageData
     var originSchool: SchoolData
     var changeSchool: SchoolData
     var searchSchoolText: String
     
-    public init(originSchool: SchoolData) {
-        self.originSchool = originSchool
+    public init(user: MyPageData) {
+        self.user = user
+        self.originSchool = .init(schoolName: user.schoolName, schoolLocation: user.location)
         self.changeSchool = originSchool
         self.searchSchoolText = originSchool.schoolName
     }
@@ -61,6 +66,27 @@ extension EditSchoolViewModel {
                 
             case .failure(let error):
                 self.state.send(.fail(error: error.localizedDescription))
+            }
+        }
+    }
+    
+    func saveChangeValue(completion: @escaping() -> Void) {
+        guard let token = auth.getAccessToken() else { return }
+        
+        myPageUseCase.editMyPage(
+            request: .init(
+                authorization: token,
+                nickName: user.nickName,
+                schoolData: changeSchool,
+                snsPlatform: user.snsPlatform,
+                mbti: user.mbti,
+                introduction: user.introduction,
+                questions: user.questions)
+        ) { data in
+            if let _ = data {
+                self.user.schoolName = self.changeSchool.schoolName
+                self.user.location = self.changeSchool.schoolLocation
+                completion()
             }
         }
     }

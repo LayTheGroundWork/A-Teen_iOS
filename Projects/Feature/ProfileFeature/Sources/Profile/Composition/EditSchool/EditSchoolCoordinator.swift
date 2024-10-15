@@ -7,11 +7,12 @@
 //
 
 import Common
+import Domain
 import FeatureDependency
 import UIKit
 
 public protocol EditSchoolCoordinatorDelegate: AnyObject {
-    func didFinishEditSchoolViewController(childCoordinator: Coordinator)
+    func didFinishEditSchoolViewController(childCoordinator: Coordinator, user: MyPageData)
     func configTabbarState(view: ProfileFeatureViewNames)
 }
 

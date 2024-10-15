@@ -6,9 +6,11 @@
 //  Copyright © 2024 ATeen. All rights reserved.
 //
 
+import Domain
+
 extension EditSchoolCoordinator: EditSchoolViewControllerCoordinator {
-    public func didTabBackButton() {
-        delegate?.didFinishEditSchoolViewController(childCoordinator: self)
+    public func didTabBackButton(user: MyPageData) {
+        delegate?.didFinishEditSchoolViewController(childCoordinator: self, user: user)
     }
     
     public func configTabbarState(view: ProfileFeatureViewNames) {

@@ -25,8 +25,8 @@ public struct MyPageData: Decodable {
     public var mbti: String?
     public var introduction: String?
     public let birthDay: String
-    public let location: String
-    public let schoolName: String
+    public var location: String
+    public var schoolName: String
     public var snsPlatform: SnsLinkData?
     public let category: String
     public var questions: [QuestionData]
