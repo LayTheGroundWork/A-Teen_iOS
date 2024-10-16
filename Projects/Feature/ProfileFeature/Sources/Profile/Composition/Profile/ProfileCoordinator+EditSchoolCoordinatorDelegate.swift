@@ -14,5 +14,6 @@ extension ProfileCoordinator: EditSchoolCoordinatorDelegate {
         childCoordinator.navigation.dismissNavigation = nil
         removeChildCoordinator(childCoordinator)
         navigation.popViewController(animated: true)
+        profileViewControllerDelegate?.didTabBackButtonFromEditSchoolViewController(user: user)
     }
 }
