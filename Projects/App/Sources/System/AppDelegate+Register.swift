@@ -20,6 +20,10 @@ extension AppDelegate {
         // userDefaults
         let tokenStorage: TokenStorage = TokenStorage()
         
+        // user
+        let allUserFindRepository: AllUserFindRepository = AllUserFindRepositoryImp(apiClientService: apiClientService)
+        let categoryUserFindRepository: CategoryUserFindRepository = CategoryUserFindRepositoryImp(apiClientService: apiClientService)
+        
         // sign
         let signInRepository: SignInRepository = SignInRepositoryImp(apiClientService: apiClientService)
         let signUpRepository: SignUpRepository = SignUpRepositoryImp(apiClientService: apiClientService)
@@ -38,6 +42,10 @@ extension AppDelegate {
         let myPageEditRepository: MyPageEditRepository = MyPageEditRepositoryImp(apiClientService: apiClientService)
         
         // MARK: - Service
+        let userService: UserService = UserServiceImp(
+            allUserFindRepository: allUserFindRepository,
+            categoryUserFindRepository: categoryUserFindRepository)
+        
         let signService: SignService = SignServiceImp(
             signInRepository: signInRepository,
             signUpRepository: signUpRepository,
@@ -56,6 +64,8 @@ extension AppDelegate {
         // MARK: - UseCase
         let auth: Auth = Auth(tokenHandler: tokenStorage)
         
+        let userUseCase: UserUseCase = UserUseCaseImp(userService: userService)
+        
         let signUseCase: SignUseCase = SignUseCaseImp(
             signService: signService, 
             searchService: searchService
@@ -71,6 +81,10 @@ extension AppDelegate {
         AppContainer.register(
             type: Auth.self,
             auth)
+        
+        AppContainer.register(
+            type: UserUseCase.self,
+            userUseCase)
         
         AppContainer.register(
             type: SignUseCase.self,

@@ -6,6 +6,7 @@
 //
 
 import Common
+import Domain
 import FeatureDependency
 import UIKit
 
@@ -21,20 +22,25 @@ public protocol ProfileDetailFactory {
 
 public struct ProfileDetailFactoryImp: ProfileDetailFactory {
     private(set) var frame: CGRect
-    private(set) var todayTeen: TodayTeen
+    private(set) var todayTeen: UserData
+    private(set) var todayTeenFirstImage: UIImage
     
-    public init(frame: CGRect, todayTeen: TodayTeen) {
+    public init(
+        frame: CGRect,
+        todayTeen: UserData,
+        todayTeenFirstImage: UIImage
+    ) {
         self.frame = frame
         self.todayTeen = todayTeen
+        self.todayTeenFirstImage = todayTeenFirstImage
     }
     
     public func makeProfileDetailViewController(coordinator: ProfileDetailViewControllerCoordinator) -> UIViewController {
-        let viewModel = ProfileDetailViewModel()
+        let viewModel = ProfileDetailViewModel(uniqueId: todayTeen.uniqueId, todayTeenImages: [todayTeenFirstImage])
         let controller = ProfileDetailViewController(
             viewModel: viewModel,
             coordinator: coordinator,
-            frame: frame,
-            todayTeen: todayTeen)
+            frame: frame)
         
         controller.modalPresentationStyle = .overFullScreen
         

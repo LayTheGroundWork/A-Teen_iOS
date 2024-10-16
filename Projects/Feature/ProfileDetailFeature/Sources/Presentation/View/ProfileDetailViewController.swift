@@ -19,35 +19,8 @@ public class ProfileDetailViewController: UIViewController {
         .init(red: 0, green: 0, blue: 0, alpha: 0)
     ]
     
-    let questionList: [QuestionData] = [
-        .init(
-            question: "Lorem ipsum dolor sit amet?",
-            answer: """
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            """),
-        .init(
-            question: "Lorem ipsum dolor sit amet?",
-            answer: """
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            """),
-        .init(
-            question: "Lorem ipsum dolor sit amet, Lorem ipsum dolor sit amet?",
-            answer: """
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            """),
-    ]
-    
     private var viewModel: ProfileDetailViewModel
     private weak var coordinator: ProfileDetailViewControllerCoordinator?
-    
-    var todayTeen: TodayTeen?
     
     var frame: CGRect?
     var topAnchor: Constraint?
@@ -63,13 +36,11 @@ public class ProfileDetailViewController: UIViewController {
     public init(
         viewModel: ProfileDetailViewModel,
         coordinator: ProfileDetailViewControllerCoordinator,
-        frame: CGRect,
-        todayTeen: TodayTeen
+        frame: CGRect
     ) {
         self.viewModel = viewModel
         self.coordinator = coordinator
         self.frame = frame
-        self.todayTeen = todayTeen
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -199,7 +170,7 @@ public class ProfileDetailViewController: UIViewController {
     
     lazy var nameLabel: UILabel = {
         let label = UILabel()
-        label.text = self.todayTeen?.name
+        label.text = viewModel.todayTeen?.nickName
         label.textColor = .black
         label.textAlignment = .left
         label.font = UIFont.customFont(forTextStyle: .largeTitle, weight: .bold)
@@ -215,7 +186,7 @@ public class ProfileDetailViewController: UIViewController {
     
     lazy var schoolLabel: UILabel = {
         let label = UILabel()
-        label.text = "인덕원고등학교, 18세"
+        label.text = "\(viewModel.todayTeen?.schoolName), 18세"
         label.textColor = DesignSystemAsset.gray01.color
         label.textAlignment = .left
         label.font = UIFont.customFont(forTextStyle: .footnote, weight: .regular)
@@ -255,7 +226,7 @@ public class ProfileDetailViewController: UIViewController {
     
     lazy var mbtiLabel: UILabel = {
         let label = UILabel()
-        label.text = "INFP"
+        label.text = viewModel.todayTeen?.mbti
         label.textColor = DesignSystemAsset.gray02.color
         label.textAlignment = .center
         label.font = UIFont.customFont(forTextStyle: .footnote, weight: .regular)
@@ -267,9 +238,7 @@ public class ProfileDetailViewController: UIViewController {
     
     lazy var aboutMeTextLabel: UILabel = {
         let label = UILabel()
-        label.text = """
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-        """
+        label.text = viewModel.todayTeen?.introduction
         label.textColor = DesignSystemAsset.gray02.color
         label.textAlignment = .left
         label.numberOfLines = 0
@@ -295,7 +264,7 @@ public class ProfileDetailViewController: UIViewController {
     }()
     
     lazy var questionTextView: CustomQuestionView = {
-        let view = CustomQuestionView(frame: .zero, questionList: self.questionList)
+        let view = CustomQuestionView(frame: .zero, questionList: viewModel.todayTeen?.questions ?? [])
         return view
     }()
     
@@ -578,10 +547,10 @@ extension ProfileDetailViewController {
             make.leading.equalToSuperview().offset(16)
             make.trailing.equalToSuperview().offset(-16)
             make.top.equalTo(self.questionTitleLabel.snp.bottom).offset(22)
-            if self.questionList.count > 2 {
+            if viewModel.todayTeen?.questions.count ?? 0 > 2 {
                 self.questionTextViewHeightAnchor = make.height.equalTo(height + 44).constraint
             } else {
-                if self.questionList.count == 1 {
+                if viewModel.todayTeen?.questions.count ?? 0 == 1 {
                     self.questionTextViewHeightAnchor = make.height.equalTo(height + 37).constraint
                 } else {
                     self.questionTextViewHeightAnchor = make.height.equalTo(height + 59).constraint
@@ -591,7 +560,7 @@ extension ProfileDetailViewController {
         
         self.view.layoutIfNeeded()
         
-        if self.questionList.count > 2 {
+        if viewModel.todayTeen?.questions.count ?? 0 > 2 {
             self.questionViewHeightAnchor?.update(offset: questionTitleLabel.frame.height + questionTextView.frame.height + 210)
             
             addMoreBackgroundViewComponentView()
@@ -677,11 +646,10 @@ extension ProfileDetailViewController {
     
     private func addSampleImages() {
         for _ in 0..<9 {
-            self.todayTeen?.images.append(DesignSystemAsset.blackGlass.image)
+            viewModel.todayTeenImages.append(DesignSystemAsset.badge2.image)
         }
         
-        guard let imagesCount = self.todayTeen?.images.count else { return }
-        
+        let imagesCount = viewModel.todayTeenImages.count
         pageControl.pages = imagesCount
         
         if imagesCount <= 5 {
@@ -706,7 +674,8 @@ extension ProfileDetailViewController {
             
             self.teenCollectionView.collectionViewLayout = self.setCollectionViewLayout(
                 width: self.view.frame.width,
-                height: self.view.frame.height)
+                height: self.view.frame.width * 1.16)
+
             
             self.scrollView.layer.cornerRadius = 0
             self.backgroundView.layer.cornerRadius = 0
@@ -751,6 +720,8 @@ extension ProfileDetailViewController {
         self.heartButton.alpha = 0
         self.barView.alpha = 0
         
+        guard let cell = teenCollectionView.cellForItem(at: IndexPath(row: 0, section: 0)) as? TeenImageCellCollectionViewCell else { return }
+        
         UIView.animate(withDuration: 0.3, delay: 0, options: .showHideTransitionViews) {
             if let frame = self.frame {
                 self.topAnchor?.update(offset: frame.origin.y)
@@ -761,6 +732,8 @@ extension ProfileDetailViewController {
                 self.teenCollectionView.collectionViewLayout = self.setCollectionViewLayout(
                     width: frame.width,
                     height: frame.height)
+                
+                cell.teenImageView.contentMode = .scaleAspectFill
                 
                 self.view.layoutIfNeeded()
             }
@@ -831,17 +804,17 @@ extension ProfileDetailViewController: UICollectionViewDataSource {
         guard
             let cell = collectionView.dequeueReusableCell(
                 withReuseIdentifier: TeenImageCellCollectionViewCell.reuseIdentifier,
-                for: indexPath) as? TeenImageCellCollectionViewCell, let todayTeen = self.todayTeen
+                for: indexPath) as? TeenImageCellCollectionViewCell, let todayTeen = viewModel.todayTeen
         else {
             return UICollectionViewCell()
         }
-        cell.setImage(image: todayTeen.images[indexPath.row])
+        cell.setImage(image: viewModel.todayTeenImages[indexPath.row])
         
         return cell
     }
 
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        self.todayTeen?.images.count ?? 1
+        viewModel.todayTeenImages.count
     }
 }
 

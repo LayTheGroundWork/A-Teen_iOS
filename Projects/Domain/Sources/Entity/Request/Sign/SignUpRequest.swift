@@ -37,7 +37,7 @@ public struct SignUpRequest {
 }
 
 
-public struct SchoolData: Encodable {
+public struct SchoolData: Codable {
     public let schoolName: String
     public let schoolLocation: String
     
@@ -47,6 +47,11 @@ public struct SchoolData: Encodable {
     ) {
         self.schoolName = schoolName
         self.schoolLocation = schoolLocation
+    }
+    
+    enum CodingKeys: String, CodingKey {
+        case schoolName = "SCHUL_NM"
+        case schoolLocation = "ORG_RDNMA"
     }
 }
 

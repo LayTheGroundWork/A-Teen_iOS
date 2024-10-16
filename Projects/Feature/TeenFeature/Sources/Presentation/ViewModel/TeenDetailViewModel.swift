@@ -9,18 +9,46 @@
 import Core
 import Common
 import DesignSystem
+import Domain
 import UIKit
 
 public final class TeenDetailViewModel {
-    var teenList: [TodayTeen] = [
-        TodayTeen(name: "검은 애", images: [DesignSystemAsset.blackGlass.image]),
-        TodayTeen(name: "드레스 입은 애", images: [DesignSystemAsset.dressGlass.image]),
-        TodayTeen(name: "밤에 찍은 애", images: [DesignSystemAsset.nightGlass.image]),
-        TodayTeen(name: "파란 애", images: [DesignSystemAsset.skyGlass.image]),
-        TodayTeen(name: "하얀 애", images: [DesignSystemAsset.whiteGlass.image]),
+    var teenList: [UserData] = [
+        .init(
+            id: 0,
+            uniqueId: "tester1",
+            profileImages: "thumbnail_testKey",
+            nickName: "노주영",
+            location: "안양",
+            schoolName: "인덕원고둥학교",
+            likeStatus: false),
+        .init(
+            id: 1,
+            uniqueId: "tester1",
+            profileImages: "thumbnail_testKey",
+            nickName: "최동호",
+            location: "부산",
+            schoolName: "대연고등학교",
+            likeStatus: true),
+        .init(
+            id: 2,
+            uniqueId: "tester1",
+            profileImages: "thumbnail_testKey",
+            nickName: "김명현",
+            location: "부산",
+            schoolName: "센텀고등학교",
+            likeStatus: true),
+        .init(
+            id: 3,
+            uniqueId: "tester1",
+            profileImages: "thumbnail_testKey",
+            nickName: "이창준",
+            location: "서울",
+            schoolName: "에이틴고등학교",
+            likeStatus: true)
     ]
     
-    func getTeenItemTeenViewModel(row: Int) -> TodayTeen {
+    func getTeenItemTeenViewModel(row: Int) -> UserData {
         teenList[row]
     }
     

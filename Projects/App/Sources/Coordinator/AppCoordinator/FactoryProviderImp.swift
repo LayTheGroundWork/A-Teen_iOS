@@ -7,6 +7,7 @@
 //
 
 import Common
+import Domain
 import FeatureDependency
 import AlertFeature
 import ProfileDetailFeature
@@ -18,13 +19,14 @@ final class FactoryProviderImp: FactoryProvider {
     func makeProfileDetailCoordinator(
         delegate: ProfileDetailCoordinatorDelegate,
         frame: CGRect,
-        todayTeen: TodayTeen
+        todayTeen: UserData,
+        todayTeenFirstImage: UIImage
     ) -> Coordinator {
         let navigationController = UINavigationController()
         navigationController.modalPresentationStyle = .overFullScreen
         navigationController.view.backgroundColor = UIColor.clear
         let navigation = NavigationImp(rootViewController: navigationController)
-        let factory = ProfileDetailFactoryImp(frame: frame, todayTeen: todayTeen)
+        let factory = ProfileDetailFactoryImp(frame: frame, todayTeen: todayTeen, todayTeenFirstImage: todayTeenFirstImage)
         return ProfileDetailCoordinatorImp(
             factory: factory,
             frame: frame,

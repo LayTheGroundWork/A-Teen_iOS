@@ -9,6 +9,7 @@
 import SnapKit
 
 import Common
+import Domain
 import UIKit
 
 public final class TeenTableViewCell: UITableViewCell {
@@ -120,10 +121,16 @@ public final class TeenTableViewCell: UITableViewCell {
         setButtonActions()
     }
  
-    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
         
+    }
+    
+    public override func prepareForReuse() {
+        titleImageView.image = nil
+        schoolLabel.text = ""
+        nameLabel.text = ""
+        idLabel.text = ""
     }
     
     // MARK: - Helpers
@@ -139,7 +146,6 @@ public final class TeenTableViewCell: UITableViewCell {
     }
     
     private func configLayout() {
-        
         self.titleImageView.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(16)
             make.bottom.equalToSuperview()
@@ -196,9 +202,31 @@ public final class TeenTableViewCell: UITableViewCell {
         menuButton.addTarget(self, action: #selector(clickMenuButton(_:)), for: .touchUpInside)
     }
     
-    public func setCell(teen: TodayTeen) {
-        titleImageView.image = teen.images[0]
-        nameLabel.text = teen.name
+    public func setCell(teen: UserData) {
+        if teen.profileImages == "" || teen.profileImages == "thumbnail_testKey" {
+            switch teen.id {
+            case 0:
+                titleImageView.image = DesignSystemAsset.badge1.image
+            case 1:
+                titleImageView.image = DesignSystemAsset.badge2.image
+            case 2:
+                titleImageView.image = DesignSystemAsset.badge3.image
+            case 3:
+                titleImageView.image = DesignSystemAsset.badge4.image
+            default:
+                titleImageView.image = DesignSystemAsset.badge4.image
+            }
+        } else {
+            //TODO: url로 사진 가져오기
+            titleImageView.image = DesignSystemAsset.badge4.image
+        }
+        schoolLabel.text = teen.schoolName
+        nameLabel.text = teen.nickName
+        idLabel.text = teen.uniqueId
+    }
+    
+    public func getImage() -> UIImage {
+        titleImageView.image ?? UIImage()
     }
     
     // MARK: - Actions

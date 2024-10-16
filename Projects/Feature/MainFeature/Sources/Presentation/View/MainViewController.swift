@@ -9,16 +9,17 @@ import SnapKit
 
 import Common
 import DesignSystem
+import Domain
 import UIKit
 
 public protocol MainViewControllerCoordinator: AnyObject {
-    func didSelectTodayTeenImage(frame: CGRect, todayTeen: TodayTeen)
+    func didSelectTodayTeenImage(frame: CGRect, todayTeen: UserData, todayTeenFirstImage: UIImage)
     func didSelectTodayTeenChattingButton()
     func didSelectMenuButton(popoverPosition: CGRect)
     func didSelectAboutATeenCell(tag: TabTag)
     func didSelectTournamentImage(collectionView: UICollectionView, indexPath: IndexPath)
     func didSelectTournamentMoreButton()
-    func didSelectAnotherTeenCell(frame: CGRect, todayTeen: TodayTeen)
+    func didSelectAnotherTeenCell(frame: CGRect, todayTeen: UserData, todayTeenFirstImage: UIImage)
 }
 
 protocol MainViewControllerDelegate: AnyObject {
@@ -48,6 +49,9 @@ public final class MainViewController: UIViewController {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.backgroundColor = UIColor.white
         collectionView.showsHorizontalScrollIndicator = false
+        collectionView.dataSource = self
+        collectionView.delegate = self
+        collectionView.register(CategoryTodayCollectionViewCell.self, forCellWithReuseIdentifier: CategoryTodayCollectionViewCell.reuseIdentifier)
         return collectionView
     }()
     
@@ -82,23 +86,21 @@ public final class MainViewController: UIViewController {
     
     public override func viewDidLoad() {
         super.viewDidLoad()
-        registerDelegate()
-        configUserInterface()
-        configLayout()
-        
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(updateTableView(_:)),
-                                               name: .completeLogin,
-                                               object: nil)
+        viewModel.findAllUser { [weak self] in
+            guard let self = self else { return }
+            DispatchQueue.main.async {
+                self.configUserInterface()
+                self.configLayout()
+                
+                NotificationCenter.default.addObserver(self,
+                                                       selector: #selector(self.updateTableView(_:)),
+                                                       name: .completeLogin,
+                                                       object: nil)
+            }
+        }
     }
     
     // MARK: - Helpers
-    private func registerDelegate() {
-        self.categoryCollectionView.dataSource = self
-        self.categoryCollectionView.delegate = self
-        self.categoryCollectionView.register(CategoryTodayCollectionViewCell.self, forCellWithReuseIdentifier: CategoryTodayCollectionViewCell.reuseIdentifier)
-    }
-    
     private func configUserInterface() {
         self.navigationController?.isNavigationBarHidden = true
         
@@ -133,8 +135,15 @@ public final class MainViewController: UIViewController {
     @objc private func updateTableView(_ notification: Notification) {
         print("LogOut/LogIn -> Reload Data")
         print(viewModel.auth.isSessionActive)
-        tableView.reloadData()
-        reStartTimer()
+        viewModel.findAllUser { [weak self] in
+            guard let self = self else { return }
+            DispatchQueue.main.async {
+                guard let cell = self.tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? TodayTeenTableViewCell else { return }
+                cell.teenCollectionView.reloadData()
+                self.tableView.reloadData()
+                self.reStartTimer()
+            }
+        }
     }
 }
 
@@ -288,7 +297,7 @@ extension MainViewController: UITableViewDelegate {
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.section {
         case 4:
-            guard let cellClicked = tableView.cellForRow(at: indexPath),
+            guard let cellClicked = tableView.cellForRow(at: indexPath) as? TeenTableViewCell,
                   let frame = cellClicked.superview?.convert(
                     CGRect(
                         x: 16,
@@ -300,7 +309,8 @@ extension MainViewController: UITableViewDelegate {
             
             coordinator?.didSelectAnotherTeenCell(
                 frame: frame,
-                todayTeen: viewModel.getTodayTeenItemMainViewModel(row: indexPath.row))
+                todayTeen: viewModel.getTodayTeenItemMainViewModel(row: indexPath.row), 
+                todayTeenFirstImage: cellClicked.getImage())
         default:
             break
         }

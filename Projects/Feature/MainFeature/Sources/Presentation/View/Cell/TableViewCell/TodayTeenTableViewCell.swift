@@ -27,7 +27,7 @@ class TodayTeenTableViewCell: UITableViewCell {
         return label
     }()
     
-    private lazy var teenCollectionView: UICollectionView = {
+    public lazy var teenCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         layout.minimumLineSpacing = 16
@@ -194,13 +194,14 @@ extension TodayTeenTableViewCell: UICollectionViewDelegate {
         _ collectionView: UICollectionView,
         didSelectItemAt indexPath: IndexPath
     ) {
-        guard let cellClicked = collectionView.cellForItem(at: indexPath),
+        guard let cellClicked = collectionView.cellForItem(at: indexPath) as? TeenCollectionViewCell,
               let frame = cellClicked.superview?.convert(cellClicked.frame, to: nil)
         else { return }
         stopAutoScroll()
         delegate?.didSelectTodayTeenImage(
             frame: frame,
-            todayTeen: viewModel.getTodayTeenItemMainViewModel(row: indexPath.row))
+            todayTeen: viewModel.getTodayTeenItemMainViewModel(row: indexPath.row), 
+            todayTeenFirstImage: cellClicked.getImage())
     }
 }
 

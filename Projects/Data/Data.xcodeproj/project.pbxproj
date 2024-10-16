@@ -13,6 +13,7 @@
 		0F5010ECFBB208D0E8695C02 /* DuplicationCheckRepositoryImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C71555F2786000CC02D4FA6 /* DuplicationCheckRepositoryImp.swift */; };
 		218D8E8B39E1F9A9B826BFC7 /* MyPageServiceImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28DE77FCC1F646270392DF2 /* MyPageServiceImp.swift */; };
 		269FDE67B48834948BE8CFEB /* ImageDataServiceImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D69ADC6424D5E413891FE6D /* ImageDataServiceImp.swift */; };
+		273374D9B724F74D13FBD7BE /* UserFindDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE65804CFC3119FAF5EE307D /* UserFindDTO.swift */; };
 		280D3245D317C47ABF10ABF9 /* SignInRepositoryImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37EA6AE52F156E244C89349 /* SignInRepositoryImp.swift */; };
 		43E140ABA31D8C975F27CC5D /* TokenStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD13451B610373272A24E936 /* TokenStorage.swift */; };
 		47D2F7C7B037FED0A08E803C /* RequestCodeRepositoryImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011CD3D8C40423C4BEF323A3 /* RequestCodeRepositoryImp.swift */; };
@@ -26,10 +27,13 @@
 		811E132B6F39024EB106B257 /* LogInDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = F236624AC5E8597B137B48CF /* LogInDTO.swift */; };
 		85A2FA4C6E365BDCDE873DB5 /* DuplicationCheckDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C7C54502732E0F6BA44010 /* DuplicationCheckDTO.swift */; };
 		8B60346AFFA2E09A64974D7D /* VerificationCodeRepositoryImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8FC649E8938EE57402066D8 /* VerificationCodeRepositoryImp.swift */; };
+		981C377EC720640804E1138E /* CategoryUserFindRepositoryImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8943772A18C5185AB97BD7 /* CategoryUserFindRepositoryImp.swift */; };
 		98876A096FE2913D7B1223F8 /* MyPageDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC093CC574F33E283E3E5201 /* MyPageDTO.swift */; };
+		ACDF35AF9D6FEB2A809A8FEE /* UserServiceImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F4594D992F594AC7A7D8191 /* UserServiceImp.swift */; };
 		C95817D3823F9FA0F3B90647 /* SchoolDataRepositoryImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB672E162D8CD9924D89491D /* SchoolDataRepositoryImp.swift */; };
 		D35894226EDF568B3A83FCB6 /* SearchSchoolServiceImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBAFBEBD1A165F75FAA04A2 /* SearchSchoolServiceImp.swift */; };
 		D9CCDBFECF829DB34D205C50 /* SignUpRepositoryImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53044F93EF0D12264A1F4044 /* SignUpRepositoryImp.swift */; };
+		DAF4C3923319F860BCDCF27E /* AllUserFindRepositoryImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDCC80E2080EFD74C7AC2B5C /* AllUserFindRepositoryImp.swift */; };
 		E15BCA1558059EB1705D9856 /* SchoolDataDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73A06AFE9B4DF92FD9348D91 /* SchoolDataDTO.swift */; };
 /* End PBXBuildFile section */
 
@@ -55,18 +59,22 @@
 		73A06AFE9B4DF92FD9348D91 /* SchoolDataDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolDataDTO.swift; sourceTree = "<group>"; };
 		74E87E9420A6B0A4D0B04A69 /* VerificationCodeDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationCodeDTO.swift; sourceTree = "<group>"; };
 		7C71555F2786000CC02D4FA6 /* DuplicationCheckRepositoryImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DuplicationCheckRepositoryImp.swift; sourceTree = "<group>"; };
+		7F4594D992F594AC7A7D8191 /* UserServiceImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserServiceImp.swift; sourceTree = "<group>"; };
 		8D69ADC6424D5E413891FE6D /* ImageDataServiceImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDataServiceImp.swift; sourceTree = "<group>"; };
 		8E03696A5DFB18A0EE60C2E7 /* MyPageEditRepositoryImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageEditRepositoryImp.swift; sourceTree = "<group>"; };
 		AA67D62008DA242B2931D9BA /* MyPageRepositoryImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageRepositoryImp.swift; sourceTree = "<group>"; };
 		AD13451B610373272A24E936 /* TokenStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenStorage.swift; sourceTree = "<group>"; };
 		ADD9E5A245A84B3D23B8243C /* SignOutRepositoryImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignOutRepositoryImp.swift; sourceTree = "<group>"; };
 		B284CD75BAD317D668DD797D /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
+		BDCC80E2080EFD74C7AC2B5C /* AllUserFindRepositoryImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllUserFindRepositoryImp.swift; sourceTree = "<group>"; };
 		C6C7C54502732E0F6BA44010 /* DuplicationCheckDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DuplicationCheckDTO.swift; sourceTree = "<group>"; };
 		CC093CC574F33E283E3E5201 /* MyPageDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageDTO.swift; sourceTree = "<group>"; };
+		CE8943772A18C5185AB97BD7 /* CategoryUserFindRepositoryImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryUserFindRepositoryImp.swift; sourceTree = "<group>"; };
 		CEBAFBEBD1A165F75FAA04A2 /* SearchSchoolServiceImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchSchoolServiceImp.swift; sourceTree = "<group>"; };
 		D1F87B0388BF607A3F82CF10 /* ReissueRepositoryImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReissueRepositoryImp.swift; sourceTree = "<group>"; };
 		D28DE77FCC1F646270392DF2 /* MyPageServiceImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageServiceImp.swift; sourceTree = "<group>"; };
 		D4E02BD664565FEC69E1BC72 /* SignServiceImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignServiceImp.swift; sourceTree = "<group>"; };
+		DE65804CFC3119FAF5EE307D /* UserFindDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserFindDTO.swift; sourceTree = "<group>"; };
 		E1457F5C26408BE9EBAC27CA /* Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
 		E8FC649E8938EE57402066D8 /* VerificationCodeRepositoryImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationCodeRepositoryImp.swift; sourceTree = "<group>"; };
 		F01B3235E340CC3BF868ABD3 /* LogOutDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogOutDTO.swift; sourceTree = "<group>"; };
@@ -129,6 +137,7 @@
 				CC093CC574F33E283E3E5201 /* MyPageDTO.swift */,
 				28598391817B268ABE4F5045 /* MyPageEditDTO.swift */,
 				73A06AFE9B4DF92FD9348D91 /* SchoolDataDTO.swift */,
+				DE65804CFC3119FAF5EE307D /* UserFindDTO.swift */,
 				74E87E9420A6B0A4D0B04A69 /* VerificationCodeDTO.swift */,
 			);
 			path = DTO;
@@ -139,6 +148,7 @@
 			children = (
 				B841D2145A5E8CB52D62CCA8 /* MyPage */,
 				3BF69E35B1136C495B7AECA9 /* Sign */,
+				E64020F8EE38D534A7EB5C69 /* User */,
 				3869DCDD4898AB5A45EB86D7 /* UserDefaults */,
 				F89D170C59CF96280A916924 /* RemoteImageDataRepositoryImp.swift */,
 				FB672E162D8CD9924D89491D /* SchoolDataRepositoryImp.swift */,
@@ -179,6 +189,7 @@
 				D28DE77FCC1F646270392DF2 /* MyPageServiceImp.swift */,
 				CEBAFBEBD1A165F75FAA04A2 /* SearchSchoolServiceImp.swift */,
 				D4E02BD664565FEC69E1BC72 /* SignServiceImp.swift */,
+				7F4594D992F594AC7A7D8191 /* UserServiceImp.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -208,6 +219,15 @@
 				B119E31677D59F7802A67D11 /* Service */,
 			);
 			path = Sources;
+			sourceTree = "<group>";
+		};
+		E64020F8EE38D534A7EB5C69 /* User */ = {
+			isa = PBXGroup;
+			children = (
+				BDCC80E2080EFD74C7AC2B5C /* AllUserFindRepositoryImp.swift */,
+				CE8943772A18C5185AB97BD7 /* CategoryUserFindRepositoryImp.swift */,
+			);
+			path = User;
 			sourceTree = "<group>";
 		};
 		EF3121301A12FEB266E0B923 /* Project */ = {
@@ -291,6 +311,7 @@
 				98876A096FE2913D7B1223F8 /* MyPageDTO.swift in Sources */,
 				71A25B6AD47A47C5397DC78E /* MyPageEditDTO.swift in Sources */,
 				E15BCA1558059EB1705D9856 /* SchoolDataDTO.swift in Sources */,
+				273374D9B724F74D13FBD7BE /* UserFindDTO.swift in Sources */,
 				0E72D32CC7317B0025CEFDD3 /* VerificationCodeDTO.swift in Sources */,
 				60DC4531DF0967A512AE1618 /* MyPageEditRepositoryImp.swift in Sources */,
 				56B7ABC6DB0674D83F8BC91E /* MyPageRepositoryImp.swift in Sources */,
@@ -303,11 +324,14 @@
 				5A405916EBDE84CC7D4F0A1A /* SignOutRepositoryImp.swift in Sources */,
 				D9CCDBFECF829DB34D205C50 /* SignUpRepositoryImp.swift in Sources */,
 				8B60346AFFA2E09A64974D7D /* VerificationCodeRepositoryImp.swift in Sources */,
+				DAF4C3923319F860BCDCF27E /* AllUserFindRepositoryImp.swift in Sources */,
+				981C377EC720640804E1138E /* CategoryUserFindRepositoryImp.swift in Sources */,
 				43E140ABA31D8C975F27CC5D /* TokenStorage.swift in Sources */,
 				269FDE67B48834948BE8CFEB /* ImageDataServiceImp.swift in Sources */,
 				218D8E8B39E1F9A9B826BFC7 /* MyPageServiceImp.swift in Sources */,
 				D35894226EDF568B3A83FCB6 /* SearchSchoolServiceImp.swift in Sources */,
 				50F14E7B0701EF6F91B36332 /* SignServiceImp.swift in Sources */,
+				ACDF35AF9D6FEB2A809A8FEE /* UserServiceImp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -7,18 +7,21 @@
 
 import Common
 import DesignSystem
+import Domain
 import FeatureDependency
 import UIKit
 
 extension MainCoordinator: MainViewControllerCoordinator {
     public func didSelectTodayTeenImage(
         frame: CGRect,
-        todayTeen: TodayTeen
+        todayTeen: UserData,
+        todayTeenFirstImage: UIImage
     ) {
         let profileDetailCoordinator = coordinatorProvider.makeProfileDetailCoordinator(
             delegate: self,
             frame: frame,
-            todayTeen: todayTeen)
+            todayTeen: todayTeen, 
+            todayTeenFirstImage: todayTeenFirstImage)
         
         addChildCoordinatorStart(profileDetailCoordinator)
         
@@ -61,12 +64,14 @@ extension MainCoordinator: MainViewControllerCoordinator {
     
     public func didSelectAnotherTeenCell(
         frame: CGRect,
-        todayTeen: TodayTeen
+        todayTeen: UserData,
+        todayTeenFirstImage: UIImage
     ) {
         let profileDetailCoordinator = coordinatorProvider.makeProfileDetailCoordinator(
             delegate: self,
             frame: frame,
-            todayTeen: todayTeen)
+            todayTeen: todayTeen, 
+            todayTeenFirstImage: todayTeenFirstImage)
         
         addChildCoordinatorStart(profileDetailCoordinator)
         

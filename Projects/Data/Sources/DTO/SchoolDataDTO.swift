@@ -11,18 +11,8 @@ import Foundation
 
 public struct SchoolDataDTO: Decodable {
     public let status: Int
-    public let data: [SchoolDetailData]
+    public let data: [SchoolData]
     public let message: String
-}
-
-public struct SchoolDetailData: Decodable {
-    public let schoolName: String
-    public let schoolRegion: String
-    
-    enum CodingKeys: String, CodingKey {
-        case schoolName = "SCHUL_NM"
-        case schoolRegion = "ORG_RDNMA"
-    }
 }
 
 extension SchoolDataDTO {
@@ -30,7 +20,7 @@ extension SchoolDataDTO {
         var tmp: [SchoolDataResponse] = []
         data.forEach { schoolData in
             let name = schoolData.schoolName
-            let address = schoolData.schoolRegion
+            let address = schoolData.schoolLocation
             
             tmp.append(.init(name: name, address: address))
         }

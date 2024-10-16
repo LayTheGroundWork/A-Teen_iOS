@@ -8,11 +8,15 @@
 import Core
 import Common
 import DesignSystem
+import Domain
 import UIKit
 
 class MainViewModel {
     @Injected(Auth.self)
     public var auth: Auth
+    
+    @Injected(UserUseCase.self)
+    public var userUseCase: UserUseCase
     
     var categoryList: [ProfileCategory] = [
         ProfileCategory(title: "전체", isSelect: true),
@@ -23,25 +27,51 @@ class MainViewModel {
         ProfileCategory(title: "노래", isSelect: false)
     ]
     
-    var todayTeenList: [TodayTeen] = [
-        TodayTeen(name: "검은 애", images: [DesignSystemAsset.blackGlass.image]),
-        TodayTeen(name: "드레스 입은 애", images: [DesignSystemAsset.dressGlass.image]),
-        TodayTeen(name: "밤에 찍은 애", images: [DesignSystemAsset.nightGlass.image]),
-        TodayTeen(name: "파란 애", images: [DesignSystemAsset.skyGlass.image]),
-        TodayTeen(name: "하얀 애", images: [DesignSystemAsset.whiteGlass.image]),
+    var todayTeenList: [UserData] = [
+        .init(
+            id: 0,
+            uniqueId: "tester1",
+            profileImages: "thumbnail_testKey",
+            nickName: "노주영",
+            location: "안양",
+            schoolName: "인덕원고둥학교",
+            likeStatus: false),
+        .init(
+            id: 1,
+            uniqueId: "tester1",
+            profileImages: "thumbnail_testKey",
+            nickName: "최동호",
+            location: "부산",
+            schoolName: "대연고등학교",
+            likeStatus: true),
+        .init(
+            id: 2,
+            uniqueId: "tester1",
+            profileImages: "thumbnail_testKey",
+            nickName: "김명현",
+            location: "부산",
+            schoolName: "센텀고등학교",
+            likeStatus: true),
+        .init(
+            id: 3,
+            uniqueId: "tester1",
+            profileImages: "thumbnail_testKey",
+            nickName: "이창준",
+            location: "서울",
+            schoolName: "에이틴고등학교",
+            likeStatus: true)
     ]
-    
+}
+
+extension MainViewModel {
     func getCategoryItemMainViewModel(row: Int) -> ProfileCategory {
         categoryList[row]
     }
     
-    func getTodayTeenItemMainViewModel(row: Int) -> TodayTeen {
+    func getTodayTeenItemMainViewModel(row: Int) -> UserData {
         todayTeenList[row]
     }
-}
-
-// MARK: - Section 1
-extension MainViewModel {
+    
     func didSelectCategoryCell(row: Int) {
         guard let beforeIndex = categoryList.firstIndex(where: { $0.isSelect == true }) else {
             return
@@ -55,5 +85,24 @@ extension MainViewModel {
     
     func didSelectTodayTeenHeartButton() {
         print("HeartButton")
+    }
+    
+    func findAllUser(completion: @escaping () -> Void) {
+        guard let token = auth.getAccessToken(),
+              auth.isSessionActive
+        else { 
+            completion()
+            return
+        }
+        
+        userUseCase.findAllUser(request: .init(authorization: token)) { teenList in
+            self.todayTeenList.removeAll()
+            self.todayTeenList = teenList
+            completion()
+        }
+    }
+    
+    func findCategoryUser() {
+        
     }
 }

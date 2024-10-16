@@ -7,6 +7,7 @@
 //
 
 import Common
+import Domain
 import FeatureDependency
 import MainFeature
 
@@ -21,12 +22,14 @@ extension CoordinatorProviderImp {
     func makeProfileDetailCoordinator(
         delegate: ProfileDetailCoordinatorDelegate,
         frame: CGRect,
-        todayTeen: TodayTeen
+        todayTeen: UserData,
+        todayTeenFirstImage: UIImage
     ) -> Coordinator {
         factoryProvider.makeProfileDetailCoordinator(
             delegate: delegate,
             frame: frame,
-            todayTeen: todayTeen)
+            todayTeen: todayTeen,
+            todayTeenFirstImage: todayTeenFirstImage)
     }
 }
 

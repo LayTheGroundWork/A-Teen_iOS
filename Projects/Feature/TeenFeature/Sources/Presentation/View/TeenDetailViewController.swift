@@ -10,13 +10,15 @@ import SnapKit
 
 import Common
 import DesignSystem
+import Domain
 import UIKit
 
 public protocol TeenDetailViewControllerCoordinator: AnyObject {
     func didTapBackButton()
     func didSelectTeenImage(
         frame: CGRect,
-        teen: TodayTeen)
+        teen: UserData,
+        todayTeenFirstImage: UIImage)
     func didSelectTeenChattingButton()
     func didSelectMenuButton(popoverPosition: CGRect)
     func configTabbarState(view: TeenFeatureViewNames)
@@ -177,7 +179,7 @@ extension TeenDetailViewController: UITableViewDataSource {
 
 extension TeenDetailViewController: UITableViewDelegate {
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let cellClicked = tableView.cellForRow(at: indexPath),
+        guard let cellClicked = tableView.cellForRow(at: indexPath) as? TeenTableViewCell,
               let frame = cellClicked.superview?.convert(
                 CGRect(
                     x: 16,
@@ -189,7 +191,8 @@ extension TeenDetailViewController: UITableViewDelegate {
 
         coordinator?.didSelectTeenImage(
             frame: frame,
-            teen: viewModel.getTeenItemTeenViewModel(row: indexPath.row))
+            teen: viewModel.getTeenItemTeenViewModel(row: indexPath.row),
+            todayTeenFirstImage: cellClicked.getImage())
     }
 
     public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
