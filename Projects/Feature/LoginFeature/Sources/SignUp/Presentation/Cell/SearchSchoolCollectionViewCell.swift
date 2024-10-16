@@ -317,8 +317,6 @@ final class SearchSchoolCollectionViewCell: UICollectionViewCell {
     private func closeSearchScoolTableView() {
         tableBackgroundView.isHidden = true
         viewModel?.selectIndexPath = nil
-        viewModel?.schoolData = .init(schoolName: .empty,
-                                      schoolLocation: .empty)
         viewModel?.filteredSchools = []
     }
     
@@ -400,15 +398,19 @@ extension SearchSchoolCollectionViewCell: UITableViewDelegate {
             }
         }
         
-        if let selectedCell = tableView.cellForRow(at: indexPath) as? SearchSchoolResultTableViewCell {
+        if let selectedCell = tableView.cellForRow(at: indexPath) as? SearchSchoolResultTableViewCell,
+           let viewModel = viewModel
+        {
             selectedCell.fontChange(
-                schoolData: viewModel?.filteredSchools[indexPath.row],
+                schoolData: viewModel.filteredSchools[indexPath.row],
                 isBold: true)
             
-            viewModel?.searchSchoolText = .empty
-            viewModel?.selectIndexPath = indexPath
-            viewModel?.schoolData = viewModel?.filteredSchools[indexPath.row] ?? .init(schoolName: .empty, schoolLocation: .empty)
-            schoolTextField.text = viewModel?.filteredSchools[indexPath.row].schoolName
+            viewModel.schoolData = viewModel.filteredSchools[indexPath.row]
+            schoolTextField.text = viewModel.filteredSchools[indexPath.row].schoolName
+            viewModel.selectIndexPath = indexPath
+            viewModel.searchSchoolText = .empty
+            
+            print("학교 데이터 \(viewModel.schoolData)")
             // '다음으로' 버튼 활성화
             delegate?.updateNextButtonState(true)
             // 키보드 닫기

@@ -47,4 +47,3 @@ public struct MyPageEditEndPoint: EndPoint {
         self.request = request
     }
 }
-

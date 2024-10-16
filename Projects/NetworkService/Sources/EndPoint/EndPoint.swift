@@ -40,8 +40,12 @@ extension EndPoint {
         urlComponent.path = path
         
         if !query.isEmpty {
-            urlComponent.queryItems = query.map {
-                .init(name: $0.key, value: $0.value)
+            if query is [String: [String]] {
+                
+            } else {
+                urlComponent.queryItems = query.map {
+                    .init(name: $0.key, value: $0.value)
+                }
             }
             
             print("urlComponent.queryItems: \(urlComponent.queryItems)")

@@ -19,7 +19,7 @@ public struct UserFindResponse: Decodable {
 public struct UserData: Decodable {
     public let id: Int
     public let uniqueId: String
-    public let profileImages: String
+    public let profileImages: String?
     public let nickName: String
     public let location: String
     public let schoolName: String
@@ -28,7 +28,7 @@ public struct UserData: Decodable {
     public init(
         id: Int,
         uniqueId: String,
-        profileImages: String,
+        profileImages: String?,
         nickName: String,
         location: String,
         schoolName: String,

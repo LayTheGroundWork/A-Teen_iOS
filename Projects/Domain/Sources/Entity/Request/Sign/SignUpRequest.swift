@@ -9,6 +9,7 @@
 import Foundation
 
 public struct SignUpRequest {
+    public let profileImageKeys: [String] = []
     public let phoneNumber: String
     public let userId: String
     public let userName: String
@@ -49,9 +50,21 @@ public struct SchoolData: Codable {
         self.schoolLocation = schoolLocation
     }
     
-    enum CodingKeys: String, CodingKey {
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: DefaultKeys.self)
+        try container.encode(schoolName, forKey: .schoolName)
+        try container.encode(schoolLocation, forKey: .schoolLocation)
+    }
+    
+    private enum CodingKeys: String, CodingKey {
         case schoolName = "SCHUL_NM"
         case schoolLocation = "ORG_RDNMA"
+    }
+    
+    // 기본 키를 사용하기 위한 CodingKey
+    private enum DefaultKeys: String, CodingKey {
+        case schoolName
+        case schoolLocation
     }
 }
 

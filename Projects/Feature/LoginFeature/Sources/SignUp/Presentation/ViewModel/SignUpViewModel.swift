@@ -80,12 +80,12 @@ public final class SignUpViewModel {
             phoneNumber: phoneNumber,
             userId: userId,
             userName: userName,
-            birthDate: "\(year)-\(month)-\(day)",
+            birthDate: "\(year)-\(month.count == 1 ? "0\(month)" : month)-\(day.count == 1 ? "0\(day)" : day)",
             schoolData: schoolData,
             category: category.rawValue,
             tournamentJoin: true)
         ) { data in
-            if let tokenData = data {
+            if let _ = data {
 //                self.auth.setAccessToken(tokenData.accessToken)
 //                self.auth.setRefreshToken(tokenData.refreshToken)
 //                self.auth.logIn()

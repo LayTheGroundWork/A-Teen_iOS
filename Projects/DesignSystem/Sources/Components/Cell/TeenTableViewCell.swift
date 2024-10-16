@@ -204,7 +204,7 @@ public final class TeenTableViewCell: UITableViewCell {
     }
     
     public func setCell(teen: UserData) {
-        if teen.profileImages == "" || teen.profileImages == "thumbnail_testKey" {
+        if teen.profileImages == nil || teen.profileImages == "thumbnail_testKey" {
             switch teen.id {
             case 0:
                 titleImageView.image = DesignSystemAsset.badge1.image
