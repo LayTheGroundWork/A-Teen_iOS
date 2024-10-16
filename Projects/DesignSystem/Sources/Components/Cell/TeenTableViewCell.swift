@@ -131,6 +131,7 @@ public final class TeenTableViewCell: UITableViewCell {
         schoolLabel.text = ""
         nameLabel.text = ""
         idLabel.text = ""
+        heartButton.setImage(DesignSystemAsset.heartIcon.image, for: .normal)
     }
     
     // MARK: - Helpers
@@ -208,13 +209,23 @@ public final class TeenTableViewCell: UITableViewCell {
             case 0:
                 titleImageView.image = DesignSystemAsset.badge1.image
             case 1:
-                titleImageView.image = DesignSystemAsset.badge2.image
+                titleImageView.image = DesignSystemAsset.badge8.image
             case 2:
-                titleImageView.image = DesignSystemAsset.badge3.image
+                titleImageView.image = DesignSystemAsset.badge7.image
             case 3:
                 titleImageView.image = DesignSystemAsset.badge4.image
+            case 4:
+                titleImageView.image = DesignSystemAsset.badge5.image
+            case 5:
+                titleImageView.image = DesignSystemAsset.badge3.image
+            case 6:
+                titleImageView.image = DesignSystemAsset.badge9.image
+            case 7:
+                titleImageView.image = DesignSystemAsset.badge6.image
+            case 8:
+                titleImageView.image = DesignSystemAsset.badge10.image
             default:
-                titleImageView.image = DesignSystemAsset.badge4.image
+                titleImageView.image = DesignSystemAsset.badge2.image
             }
         } else {
             //TODO: url로 사진 가져오기
@@ -223,6 +234,7 @@ public final class TeenTableViewCell: UITableViewCell {
         schoolLabel.text = teen.schoolName
         nameLabel.text = teen.nickName
         idLabel.text = teen.uniqueId
+        teen.likeStatus ? heartButton.setImage(DesignSystemAsset.heartFillIcon.image, for: .normal) :  heartButton.setImage(DesignSystemAsset.heartIcon.image, for: .normal)
     }
     
     public func getImage() -> UIImage {

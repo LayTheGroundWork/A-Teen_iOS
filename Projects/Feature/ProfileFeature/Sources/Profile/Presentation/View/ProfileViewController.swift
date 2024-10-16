@@ -120,7 +120,7 @@ public final class ProfileViewController: UIViewController {
     private lazy var userImageView: UIImageView = {
         let imageView = UIImageView()
         // TODO: 나중에 이미지 url로 바꾸기
-        imageView.image = DesignSystemAsset.blackGlass.image
+        imageView.image = DesignSystemAsset.badge7.image
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
         imageView.layer.cornerRadius = 10

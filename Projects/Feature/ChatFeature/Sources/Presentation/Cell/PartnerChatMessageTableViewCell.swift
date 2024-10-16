@@ -14,7 +14,7 @@ public final class PartnerChatMessageTableViewCell: UITableViewCell {
     // MARK: - Private properties
     private lazy var profileImage: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = DesignSystemAsset.blackGlass.image
+        imageView.image = DesignSystemAsset.badge5.image
         imageView.contentMode = .scaleToFill
         imageView.clipsToBounds = true
         imageView.layer.cornerRadius = 12

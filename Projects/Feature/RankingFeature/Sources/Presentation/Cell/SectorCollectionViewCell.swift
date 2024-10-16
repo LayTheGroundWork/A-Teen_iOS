@@ -24,7 +24,7 @@ final class SectorCollectionViewCell: UICollectionViewCell {
     
     private lazy var imageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = DesignSystemAsset.whiteGlass.image
+        imageView.image = DesignSystemAsset.badge3.image
         imageView.contentMode = .scaleAspectFill
         
         return imageView

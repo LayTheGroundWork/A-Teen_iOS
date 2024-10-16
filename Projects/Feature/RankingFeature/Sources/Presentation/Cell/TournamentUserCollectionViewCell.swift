@@ -32,12 +32,12 @@ final class TournamentUserCollectionViewCell: UICollectionViewCell {
     // MARK: - Private properties
     private lazy var aUserView = TournamentUserView(frame: .zero,
                                                     tag: 0,
-                                                    image: DesignSystemAsset.dressGlass.image,
+                                                    image: DesignSystemAsset.badge2.image,
                                                     delegate: self)
     
     private lazy var bUserView = TournamentUserView(frame: .zero,
                                                     tag: 1,
-                                                    image: DesignSystemAsset.skyGlass.image,
+                                                    image: DesignSystemAsset.badge6.image,
                                                     delegate: self)
     // MARK: - Life Cycle
     override init(frame: CGRect) {
