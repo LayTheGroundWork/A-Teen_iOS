@@ -16,6 +16,7 @@
 		6E603AA8BBD6517702881483 /* Domain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD5312BF635CBE4D99FAE162 /* Domain.framework */; };
 		759753D185FBA434CB7A41B8 /* ApiClientService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17754DA0A8AF217686219AFF /* ApiClientService.swift */; };
 		7A4C181A2942A2CA8F105272 /* PhoneNumberAuthEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226E662994065E6F77D84AA1 /* PhoneNumberAuthEndPoint.swift */; };
+		ACACD3512631434B2DF7844F /* UserDetailEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5F0D8F3733FF1E80D04A98 /* UserDetailEndPoint.swift */; };
 		AD73BA42E8039790C431AA21 /* MyPageEditEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B0CE67A9252733A1EADA6D0 /* MyPageEditEndPoint.swift */; };
 		BF7B74B2497062943DAB0D72 /* EndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39E9564068243164AE0397F4 /* EndPoint.swift */; };
 		C2D528B369D066456ADFD047 /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30B8FE33444F24DC3915A82C /* HTTPMethod.swift */; };
@@ -61,6 +62,7 @@
 		ADC9183B12D666BFB5351F52 /* NetworkService.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = NetworkService.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD5312BF635CBE4D99FAE162 /* Domain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Domain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C463F8FAE8AE26DF76BDB73C /* NetworkService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "NetworkService-Info.plist"; sourceTree = "<group>"; };
+		CE5F0D8F3733FF1E80D04A98 /* UserDetailEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailEndPoint.swift; sourceTree = "<group>"; };
 		D14C05E4D710518F379088FD /* HttpResponseStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpResponseStatus.swift; sourceTree = "<group>"; };
 		DEF134EE57A5BC5E99B5C34C /* ReissueEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReissueEndPoint.swift; sourceTree = "<group>"; };
 		F06488193E372026C49A0017 /* CategoryUserFindEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryUserFindEndPoint.swift; sourceTree = "<group>"; };
@@ -113,6 +115,7 @@
 			children = (
 				078CFF338C0767EDC8EE7F07 /* AllUserFindEndPoint.swift */,
 				F06488193E372026C49A0017 /* CategoryUserFindEndPoint.swift */,
+				CE5F0D8F3733FF1E80D04A98 /* UserDetailEndPoint.swift */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -308,6 +311,7 @@
 				C4B30C7C31F170EE6B5031C4 /* SchoolDataEndPoint.swift in Sources */,
 				E5FA1DB4AC5C809C4BB8C351 /* AllUserFindEndPoint.swift in Sources */,
 				D740F503237078B97DA47FF8 /* CategoryUserFindEndPoint.swift in Sources */,
+				ACACD3512631434B2DF7844F /* UserDetailEndPoint.swift in Sources */,
 				036B6550D85D013E9E45D716 /* ApiError.swift in Sources */,
 				C2D528B369D066456ADFD047 /* HTTPMethod.swift in Sources */,
 				5CD81B418DCC7667165005CA /* ApiClientServiceImp.swift in Sources */,

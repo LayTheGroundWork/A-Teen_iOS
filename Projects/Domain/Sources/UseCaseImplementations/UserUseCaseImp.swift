@@ -22,4 +22,8 @@ public struct UserUseCaseImp: UserUseCase {
     public func findCategoryUser(request: CategoryUserFindRequest, completion: @escaping ([UserData]) -> Void) {
         userService.findCategoryUser(request: request, completion: completion)
     }
+    
+    public func getUserDetailData(request: UserDetailRequest, completion: @escaping (UserDetailData) -> Void) {
+        userService.getUserDetailData(request: request, completion: completion)
+    }
 }

@@ -23,6 +23,7 @@ extension AppDelegate {
         // user
         let allUserFindRepository: AllUserFindRepository = AllUserFindRepositoryImp(apiClientService: apiClientService)
         let categoryUserFindRepository: CategoryUserFindRepository = CategoryUserFindRepositoryImp(apiClientService: apiClientService)
+        let userDetailRepository: UserDetailRepository = UserDetailRepositoryImp(apiClientService: apiClientService)
         
         // sign
         let signInRepository: SignInRepository = SignInRepositoryImp(apiClientService: apiClientService)
@@ -44,7 +45,8 @@ extension AppDelegate {
         // MARK: - Service
         let userService: UserService = UserServiceImp(
             allUserFindRepository: allUserFindRepository,
-            categoryUserFindRepository: categoryUserFindRepository)
+            categoryUserFindRepository: categoryUserFindRepository,
+            userDetailRepository: userDetailRepository)
         
         let signService: SignService = SignServiceImp(
             signInRepository: signInRepository,

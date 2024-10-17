@@ -11,11 +11,13 @@ import Foundation
 public protocol UserService {
     func findAllUser(
         request: AllUserFindRequest,
-        completion: @escaping ([UserData]) -> Void
-    )
+        completion: @escaping ([UserData]) -> Void)
     
     func findCategoryUser(
         request: CategoryUserFindRequest,
-        completion: @escaping ([UserData]) -> Void
-    )
+        completion: @escaping ([UserData]) -> Void)
+    
+    func getUserDetailData(
+        request: UserDetailRequest,
+        completion: @escaping (UserDetailData) -> Void)
 }

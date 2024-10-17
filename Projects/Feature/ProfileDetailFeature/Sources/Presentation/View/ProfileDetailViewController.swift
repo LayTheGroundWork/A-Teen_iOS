@@ -190,8 +190,8 @@ public class ProfileDetailViewController: UIViewController {
     
     lazy var schoolImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(systemName: "graduationcap.fill")
-        imageView.tintColor = DesignSystemAsset.gray01.color
+        imageView.image = DesignSystemAsset.schoolGrayIcon.image
+        imageView.contentMode = .scaleAspectFill
         return imageView
     }()
     
@@ -338,7 +338,13 @@ public class ProfileDetailViewController: UIViewController {
 
     public override func viewDidLoad() {
         super.viewDidLoad()
-        setUI()
+        viewModel.getUserDetailData { [weak self] in
+            guard let self = self else { return }
+            
+            DispatchQueue.main.async {
+                self.setUI()
+            }
+        }
     }
     
     public override func viewWillAppear(_ animated: Bool) {
@@ -520,7 +526,7 @@ extension ProfileDetailViewController {
         schoolLabel.snp.makeConstraints { make in
             make.trailing.equalToSuperview().offset(-16)
             make.leading.equalTo(self.schoolImageView.snp.trailing).offset(2)
-            make.bottom.equalTo(self.nameLabel.snp.bottom)
+            make.centerY.equalTo(self.schoolImageView).offset(2)
         }
         
         badgeButton.snp.makeConstraints { make in
@@ -770,8 +776,10 @@ extension ProfileDetailViewController {
     }
     
     private func addSampleImages() {
-        for _ in 0..<9 {
-            viewModel.todayTeenImages.append(DesignSystemAsset.badge2.image)
+        if viewModel.user.profileImages.count > 1 {
+            for _ in 0..<viewModel.user.profileImages.count - 1 {
+                viewModel.todayTeenImages.append(DesignSystemAsset.badge2.image)
+            }
         }
         
         let imagesCount = viewModel.todayTeenImages.count

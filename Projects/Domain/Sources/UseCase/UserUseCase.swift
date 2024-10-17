@@ -16,5 +16,10 @@ public protocol UserUseCase {
         request: CategoryUserFindRequest,
         completion: @escaping ([UserData]) -> Void
     )
+    
+    func getUserDetailData(
+        request: UserDetailRequest,
+        completion: @escaping (UserDetailData) -> Void
+    )
 }
 
