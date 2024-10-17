@@ -54,6 +54,7 @@ public enum DesignSystemAsset {
   public static let reportIcon = DesignSystemImages(name: "reportIcon")
   public static let rightGrayIcon = DesignSystemImages(name: "rightGrayIcon")
   public static let rightIcon = DesignSystemImages(name: "rightIcon")
+  public static let schoolGrayIcon = DesignSystemImages(name: "schoolGrayIcon")
   public static let schoolIcon = DesignSystemImages(name: "schoolIcon")
   public static let sendIcon = DesignSystemImages(name: "sendIcon")
   public static let settingIcon = DesignSystemImages(name: "settingIcon")
