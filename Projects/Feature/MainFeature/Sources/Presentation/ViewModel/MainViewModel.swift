@@ -22,9 +22,10 @@ class MainViewModel {
         ProfileCategory(title: "전체", isSelect: true),
         ProfileCategory(title: "뷰티", isSelect: false),
         ProfileCategory(title: "운동", isSelect: false),
-        ProfileCategory(title: "요리", isSelect: false),
-        ProfileCategory(title: "춤", isSelect: false),
-        ProfileCategory(title: "노래", isSelect: false)
+        ProfileCategory(title: "공부", isSelect: false),
+        ProfileCategory(title: "예술", isSelect: false),
+        ProfileCategory(title: "게임", isSelect: false),
+        ProfileCategory(title: "기타", isSelect: false)
     ]
     
     var todayTeenList: [UserData] = [
@@ -120,25 +121,14 @@ extension MainViewModel {
         todayTeenList[row]
     }
     
-    func didSelectCategoryCell(row: Int) {
-        guard let beforeIndex = categoryList.firstIndex(where: { $0.isSelect == true }) else {
-            return
-        }
-        
-        if beforeIndex != row {
-            categoryList[beforeIndex].isSelect = false
-            categoryList[row].isSelect = true
-        }
-    }
-    
     func didSelectTodayTeenHeartButton() {
         print("HeartButton")
     }
     
     func findAllUser(completion: @escaping () -> Void) {
         guard let token = auth.getAccessToken(),
-              auth.isSessionActive
-        else { 
+              auth.isSessionActive      //앱 팅겨서 임시로 넣어놓음
+        else {
             completion()
             return
         }
@@ -150,7 +140,29 @@ extension MainViewModel {
         }
     }
     
-    func findCategoryUser() {
+    func findCategoryUser(row: Int, completion: @escaping () -> Void) {
+        guard let token = auth.getAccessToken(),
+              auth.isSessionActive      //앱 팅겨서 임시로 넣어놓음
+        else {
+            completion()
+            return
+        }
         
+        userUseCase.findCategoryUser(request: .init(authorization: token, category: categoryList[row].title)) { teenList in
+            self.todayTeenList.removeAll()
+            self.todayTeenList = teenList
+            completion()
+        }
+    }
+    
+    func didSelectCategoryCell(row: Int) {
+        guard let beforeIndex = categoryList.firstIndex(where: { $0.isSelect == true }),
+              beforeIndex != row
+        else {
+            return
+        }
+        
+        categoryList[beforeIndex].isSelect = false
+        categoryList[row].isSelect = true
     }
 }

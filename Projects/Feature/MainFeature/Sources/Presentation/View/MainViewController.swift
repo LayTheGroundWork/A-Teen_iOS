@@ -131,17 +131,70 @@ public final class MainViewController: UIViewController {
         }
     }
     
+    private func updateUI(isScroll: Bool) {
+        DispatchQueue.main.async {
+            // 카테고리 선택할 떄
+            if isScroll {
+                self.tableView.scrollToRow(
+                    at: IndexPath(row: 0, section: 0),
+                    at: .top,
+                    animated: true)
+                
+                self.customNaviView.isHidden = false
+                
+                UIView.animate(withDuration: 0.2, delay: 0, options: .showHideTransitionViews) {
+                    self.naviHeightAnchor?.update(offset: 40)
+                    
+                    self.view.layoutIfNeeded()
+                }
+            }
+            
+            for subview in self.tableView.subviews {
+                if let cell = subview as? TodayTeenTableViewCell {
+                    if cell.teenCollectionView.numberOfItems(inSection: 0) > 0 {
+                        cell.teenCollectionView.scrollToItem(
+                            at: IndexPath(item: 0, section: 0),
+                            at: .centeredHorizontally,
+                            animated: true)
+                        cell.currentTeenIndexPath = .init(item: 0, section: 0)
+                    }
+                    
+                    cell.teenCollectionView.reloadData()
+                    self.tableView.reloadData()
+                    
+                    print(cell.teenCollectionView.numberOfItems(inSection: 0))
+                    if cell.teenCollectionView.numberOfItems(inSection: 0) > 0 {
+                        self.reStartTimer()
+                    } else {
+                        cell.stopAutoScroll()
+                    }
+                    break
+                }
+            }
+        }
+    }
+    
     // MARK: - Actions
     @objc private func updateTableView(_ notification: Notification) {
         print("LogOut/LogIn -> Reload Data")
         print(viewModel.auth.isSessionActive)
-        viewModel.findAllUser { [weak self] in
-            guard let self = self else { return }
-            DispatchQueue.main.async {
-                guard let cell = self.tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? TodayTeenTableViewCell else { return }
-                cell.teenCollectionView.reloadData()
-                self.tableView.reloadData()
-                self.reStartTimer()
+        
+        for (index, category) in viewModel.categoryList.enumerated() {
+            if category.isSelect {
+                if index == 0 {
+                    viewModel.findAllUser { [weak self] in
+                        guard let self = self else { return }
+                        self.updateUI(isScroll: false)
+                    }
+                } else {
+                    viewModel.findCategoryUser(row: index) { [weak self] in
+                        guard let self = self else { return }
+                        DispatchQueue.main.async {
+                            self.updateUI(isScroll: false)
+                        }
+                    }
+                }
+                break
             }
         }
     }
@@ -387,12 +440,29 @@ extension MainViewController: UICollectionViewDelegate {
         
         viewModel.didSelectCategoryCell(row: indexPath.row)
         collectionView.reloadData()
+        
+        if indexPath.row == 0 {
+            viewModel.findAllUser { [weak self] in
+                guard let self = self else { return }
+                self.updateUI(isScroll: true)
+            }
+        } else {
+            viewModel.findCategoryUser(row: indexPath.row) { [weak self] in
+                guard let self = self else { return }
+                DispatchQueue.main.async {
+                    self.updateUI(isScroll: true)
+                }
+            }
+        }
     }
 }
 
 extension MainViewController: MainViewControllerDelegate {
     func reStartTimer() {
-        guard let cell = tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? TodayTeenTableViewCell else { return }
-        cell.startAutoScroll()
+        for subview in tableView.subviews {
+            if let cell = subview as? TodayTeenTableViewCell {
+                cell.startAutoScroll()
+            }
+        }
     }
 }

@@ -16,7 +16,7 @@ class TodayTeenTableViewCell: UITableViewCell {
     var viewModel: MainViewModel = .init()
     
     // MARK: - Private properties
-    private var currentTeenIndexPath: IndexPath = .init(row: 0, section: 0)
+    var currentTeenIndexPath: IndexPath = .init(row: 0, section: 0)
     private var teenCollectionViewAutoScrollTimer: Timer?
     
     private lazy var titleLabel: UILabel = {
@@ -112,7 +112,7 @@ class TodayTeenTableViewCell: UITableViewCell {
     }
     
     // 자동 스크롤 정지
-    private func stopAutoScroll() {
+    func stopAutoScroll() {
         teenCollectionViewAutoScrollTimer?.invalidate()
         teenCollectionViewAutoScrollTimer = nil
     }
