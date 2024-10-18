@@ -23,7 +23,7 @@ public struct UserData: Decodable {
     public let nickName: String
     public let location: String
     public let schoolName: String
-    public let likeStatus: Bool
+    public var likeStatus: Bool
     
     public init(
         id: Int,

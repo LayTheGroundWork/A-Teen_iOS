@@ -121,8 +121,30 @@ extension MainViewModel {
         todayTeenList[row]
     }
     
-    func didSelectTodayTeenHeartButton() {
-        print("HeartButton")
+    func didSelectTodayTeenHeartButton(row: Int, completion: @escaping () -> Void) {
+        guard let token = auth.getAccessToken(),
+              auth.isSessionActive      //앱 팅겨서 임시로 넣어놓음
+        else {
+            completion()
+            return
+        }
+        
+        switch todayTeenList[row].likeStatus {
+        case true:
+            userUseCase.cancelUserLikeStatus(request: .init(authorization: token, id: todayTeenList[row].id)) { data in
+                if let _ = data {
+                    self.todayTeenList[row].likeStatus.toggle()
+                    completion()
+                }
+            }
+        case false:
+            userUseCase.updateUserLikeStatus(request: .init(authorization: token, id: todayTeenList[row].id)) { data in
+                if let _ = data {
+                    self.todayTeenList[row].likeStatus.toggle()
+                    completion()
+                }
+            }
+        }
     }
     
     func findAllUser(completion: @escaping () -> Void) {

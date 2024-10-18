@@ -20,4 +20,14 @@ public protocol UserService {
     func getUserDetailData(
         request: UserDetailRequest,
         completion: @escaping (UserDetailData) -> Void)
+    
+    func updateUserLikeStatus(
+        request: UserLikeRequest,
+        completion: @escaping (String?) -> Void
+    )
+    
+    func cancelUserLikeStatus(
+        request: UserLikeRequest,
+        completion: @escaping (String?) -> Void
+    )
 }

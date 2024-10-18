@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		00149FC1B870802F79A844F2 /* UserLikeCancelRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00825F1528267ED1ECA29A5 /* UserLikeCancelRepository.swift */; };
 		016537623338C62C47BE43CB /* UserDetailResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4494DD45277F60A4F4A10BD /* UserDetailResponse.swift */; };
 		01F8C303BA7E7480F4464468 /* MyPageRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 305B73859E470278CF75C23B /* MyPageRepository.swift */; };
 		0BE09AB43FCD5DC82351B508 /* MyPageRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F154F3B95D4EB80DAE20FA58 /* MyPageRequest.swift */; };
@@ -15,19 +16,21 @@
 		15A579A05BCD026926A33790 /* LogOutRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5300EDFD229D6293593CDB12 /* LogOutRequest.swift */; };
 		168BF7311229C821CB540C9B /* CategoryUserFindRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 972BC3AECB5DC82D43441A78 /* CategoryUserFindRepository.swift */; };
 		1E328C1D7D92A70D6142311A /* RequestCodeRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E1BC0816B627CC5A5ACCF40 /* RequestCodeRepository.swift */; };
+		2500BF61DE5C0E2BE486E162 /* UserLikeRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF331E89DE74BA7D9F8F62C3 /* UserLikeRepository.swift */; };
 		30A9A12EAAB824CB847A8F55 /* SearchSchoolService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49451361217E78799DEB15E /* SearchSchoolService.swift */; };
 		33DCF949EEBC3A2BD32B7BBF /* VerificationCodeRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4379208B31B7C01AB4F9897D /* VerificationCodeRequest.swift */; };
 		3D657B9ECD0624182B20B930 /* UserDetailRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED0A566217AED812986D0CF2 /* UserDetailRepository.swift */; };
 		46FFF702E799485168786812 /* ReissueRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612D6B6422F772C1E2D6F5C0 /* ReissueRepository.swift */; };
 		4B8EC7D2C9769F6023CC4475 /* SchoolDataResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E706264EE7208D0CEE3472 /* SchoolDataResponse.swift */; };
+		4F0E4152653E65AA94070895 /* UserLikeRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F7E20649795CE869B561CE8 /* UserLikeRequest.swift */; };
 		53F62693E37D8E68F56AF139 /* MyPageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D583C45BA24EA5F279216A5F /* MyPageService.swift */; };
 		54245B85066C204827A163A8 /* LogInRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DB203B60AC0D1DC139D0787 /* LogInRequest.swift */; };
 		5AACBF8F2CA31275CAF2BC75 /* DuplicationCodeResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8308C6071C68612B62C5393 /* DuplicationCodeResponse.swift */; };
+		5F91AF7D6B0308938FCAF2FF /* DefaultResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DA43F19140408AF5002EC6 /* DefaultResponse.swift */; };
 		6FF40068FE38C2FAB9E666E4 /* ReissueRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F38D8BFB5238DE851C69B24 /* ReissueRequest.swift */; };
 		77EEC29764D1D277B000EE29 /* ImageDataUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451ACE222BE8C01F4B361381 /* ImageDataUseCase.swift */; };
 		7AAA57308202A4BD6289377E /* SearchUseCaseImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2631E3BA481483BAEA9EF018 /* SearchUseCaseImp.swift */; };
 		7C4AF6D0AE4C261F7D520694 /* AllUserFindRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2DFFA8FC6456E305F4BC4B4 /* AllUserFindRepository.swift */; };
-		7C85BB4F7A711E9187128773 /* DefaultResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66735F24EDA58B2CE469F30 /* DefaultResponse.swift */; };
 		7CCA7B41D2B2CAA9A02E0647 /* UserUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261679B89057804E12EBBCC2 /* UserUseCase.swift */; };
 		8323AECB90EFE773F20B7248 /* SignService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710F7C147A43E62A5D8CDFB6 /* SignService.swift */; };
 		835D36BCD25786D8D5207735 /* UserUseCaseImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75372B5C13D99F8B2A7AE5E7 /* UserUseCaseImp.swift */; };
@@ -77,6 +80,7 @@
 		12BB015FF8CFDE00B6A6003F /* UserDetailRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailRequest.swift; sourceTree = "<group>"; };
 		261679B89057804E12EBBCC2 /* UserUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserUseCase.swift; sourceTree = "<group>"; };
 		2631E3BA481483BAEA9EF018 /* SearchUseCaseImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchUseCaseImp.swift; sourceTree = "<group>"; };
+		29DA43F19140408AF5002EC6 /* DefaultResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultResponse.swift; sourceTree = "<group>"; };
 		2DDB17E7865D360F33A52903 /* MyPageEditRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageEditRequest.swift; sourceTree = "<group>"; };
 		2E1BC0816B627CC5A5ACCF40 /* RequestCodeRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestCodeRepository.swift; sourceTree = "<group>"; };
 		2F38D8BFB5238DE851C69B24 /* ReissueRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReissueRequest.swift; sourceTree = "<group>"; };
@@ -98,6 +102,7 @@
 		612D6B6422F772C1E2D6F5C0 /* ReissueRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReissueRepository.swift; sourceTree = "<group>"; };
 		62A4711A7C08A7C98E2ECBDD /* MyPageUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageUseCase.swift; sourceTree = "<group>"; };
 		635E9CCB12A7F469B1A7A221 /* SearchUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchUseCase.swift; sourceTree = "<group>"; };
+		6F7E20649795CE869B561CE8 /* UserLikeRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLikeRequest.swift; sourceTree = "<group>"; };
 		710F7C147A43E62A5D8CDFB6 /* SignService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignService.swift; sourceTree = "<group>"; };
 		75372B5C13D99F8B2A7AE5E7 /* UserUseCaseImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserUseCaseImp.swift; sourceTree = "<group>"; };
 		7616981B4BB1B2D11994DCC8 /* ImageDataUseCaseImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDataUseCaseImp.swift; sourceTree = "<group>"; };
@@ -115,15 +120,16 @@
 		C4494DD45277F60A4F4A10BD /* UserDetailResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailResponse.swift; sourceTree = "<group>"; };
 		C6A890C29EF31D1E2258209C /* SchoolDataRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolDataRequest.swift; sourceTree = "<group>"; };
 		CACFF99D244DE4C70AE796EF /* UserFindResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserFindResponse.swift; sourceTree = "<group>"; };
+		D00825F1528267ED1ECA29A5 /* UserLikeCancelRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLikeCancelRepository.swift; sourceTree = "<group>"; };
 		D50C4A68B380C6F561FFF5A3 /* SchoolDataRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolDataRepository.swift; sourceTree = "<group>"; };
 		D583C45BA24EA5F279216A5F /* MyPageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageService.swift; sourceTree = "<group>"; };
 		DCAFDEA13881228AC3ACE0A9 /* ImageDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDataService.swift; sourceTree = "<group>"; };
 		E327D8D4868DB89EFE9E2B12 /* MyPageEditRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageEditRepository.swift; sourceTree = "<group>"; };
 		EC9D0548A4DB530E9B7F3EE0 /* SignUseCaseImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUseCaseImp.swift; sourceTree = "<group>"; };
 		ED0A566217AED812986D0CF2 /* UserDetailRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailRepository.swift; sourceTree = "<group>"; };
+		EF331E89DE74BA7D9F8F62C3 /* UserLikeRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLikeRepository.swift; sourceTree = "<group>"; };
 		F154F3B95D4EB80DAE20FA58 /* MyPageRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageRequest.swift; sourceTree = "<group>"; };
 		F2DFFA8FC6456E305F4BC4B4 /* AllUserFindRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllUserFindRepository.swift; sourceTree = "<group>"; };
-		F66735F24EDA58B2CE469F30 /* DefaultResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultResponse.swift; sourceTree = "<group>"; };
 		FD49F277B86481D3D105FAC8 /* Domain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Domain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -216,7 +222,6 @@
 		37D971C84589EEBE00E797EE /* Sign */ = {
 			isa = PBXGroup;
 			children = (
-				F66735F24EDA58B2CE469F30 /* DefaultResponse.swift */,
 				B8308C6071C68612B62C5393 /* DuplicationCodeResponse.swift */,
 				930527EF52E62AD0CB816D2B /* LogInResponse.swift */,
 			);
@@ -229,6 +234,8 @@
 				F2DFFA8FC6456E305F4BC4B4 /* AllUserFindRepository.swift */,
 				972BC3AECB5DC82D43441A78 /* CategoryUserFindRepository.swift */,
 				ED0A566217AED812986D0CF2 /* UserDetailRepository.swift */,
+				D00825F1528267ED1ECA29A5 /* UserLikeCancelRepository.swift */,
+				EF331E89DE74BA7D9F8F62C3 /* UserLikeRepository.swift */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -248,6 +255,7 @@
 		5F19E3F651E9BB799AF06CFF /* Response */ = {
 			isa = PBXGroup;
 			children = (
+				9147AE2EB7C9EC8C39D333ED /* Default */,
 				21B63D96A7D168BC080E0B75 /* MyPage */,
 				B5B75ECA0DAF578276DF48D0 /* School */,
 				37D971C84589EEBE00E797EE /* Sign */,
@@ -305,6 +313,7 @@
 				4E19B92956A3C595168A242F /* AllUserFindRequest.swift */,
 				49D2BEE257FCC359726E442C /* CategoryUserFindRequest.swift */,
 				12BB015FF8CFDE00B6A6003F /* UserDetailRequest.swift */,
+				6F7E20649795CE869B561CE8 /* UserLikeRequest.swift */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -317,6 +326,14 @@
 				28B694539E22431DAF52B883 /* Sources */,
 			);
 			name = Project;
+			sourceTree = "<group>";
+		};
+		9147AE2EB7C9EC8C39D333ED /* Default */ = {
+			isa = PBXGroup;
+			children = (
+				29DA43F19140408AF5002EC6 /* DefaultResponse.swift */,
+			);
+			path = Default;
 			sourceTree = "<group>";
 		};
 		9B01FFB670AE4FD4FB6C2819 /* Request */ = {
@@ -476,9 +493,10 @@
 				88A959294BF68E752832E6A8 /* AllUserFindRequest.swift in Sources */,
 				A4FE1498C2C8FD30F507B7DF /* CategoryUserFindRequest.swift in Sources */,
 				EFFDA97C6DFF686E06018F8F /* UserDetailRequest.swift in Sources */,
+				4F0E4152653E65AA94070895 /* UserLikeRequest.swift in Sources */,
+				5F91AF7D6B0308938FCAF2FF /* DefaultResponse.swift in Sources */,
 				A4A7F4890AA76417F5D501A1 /* MyPageResponse.swift in Sources */,
 				4B8EC7D2C9769F6023CC4475 /* SchoolDataResponse.swift in Sources */,
-				7C85BB4F7A711E9187128773 /* DefaultResponse.swift in Sources */,
 				5AACBF8F2CA31275CAF2BC75 /* DuplicationCodeResponse.swift in Sources */,
 				8658AE87AB971BFA9120C146 /* LogInResponse.swift in Sources */,
 				016537623338C62C47BE43CB /* UserDetailResponse.swift in Sources */,
@@ -497,6 +515,8 @@
 				7C4AF6D0AE4C261F7D520694 /* AllUserFindRepository.swift in Sources */,
 				168BF7311229C821CB540C9B /* CategoryUserFindRepository.swift in Sources */,
 				3D657B9ECD0624182B20B930 /* UserDetailRepository.swift in Sources */,
+				00149FC1B870802F79A844F2 /* UserLikeCancelRepository.swift in Sources */,
+				2500BF61DE5C0E2BE486E162 /* UserLikeRepository.swift in Sources */,
 				ADE46DB026DD08F36838B2E8 /* ImageDataService.swift in Sources */,
 				53F62693E37D8E68F56AF139 /* MyPageService.swift in Sources */,
 				30A9A12EAAB824CB847A8F55 /* SearchSchoolService.swift in Sources */,

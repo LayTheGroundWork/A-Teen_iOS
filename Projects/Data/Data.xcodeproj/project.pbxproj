@@ -14,10 +14,13 @@
 		218D8E8B39E1F9A9B826BFC7 /* MyPageServiceImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28DE77FCC1F646270392DF2 /* MyPageServiceImp.swift */; };
 		269FDE67B48834948BE8CFEB /* ImageDataServiceImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D69ADC6424D5E413891FE6D /* ImageDataServiceImp.swift */; };
 		280D3245D317C47ABF10ABF9 /* SignInRepositoryImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37EA6AE52F156E244C89349 /* SignInRepositoryImp.swift */; };
+		436984348144AED8DCDD8B6F /* UserLikeCancelRepositoryImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 949AE8BC299CB727240FF817 /* UserLikeCancelRepositoryImp.swift */; };
 		43E140ABA31D8C975F27CC5D /* TokenStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD13451B610373272A24E936 /* TokenStorage.swift */; };
 		47D2F7C7B037FED0A08E803C /* RequestCodeRepositoryImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011CD3D8C40423C4BEF323A3 /* RequestCodeRepositoryImp.swift */; };
 		50F14E7B0701EF6F91B36332 /* SignServiceImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4E02BD664565FEC69E1BC72 /* SignServiceImp.swift */; };
 		520276E17ECD43FE4957D8D7 /* RemoteImageDataRepositoryImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F89D170C59CF96280A916924 /* RemoteImageDataRepositoryImp.swift */; };
+		53070CB193C533A370912819 /* UserLikeRepositoryImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F1F15873BCFE492B247EA72 /* UserLikeRepositoryImp.swift */; };
+		5685458DF695252A57F683C7 /* UserLikeDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85F62FDD9E44ACACF4346F3B /* UserLikeDTO.swift */; };
 		56B7ABC6DB0674D83F8BC91E /* MyPageRepositoryImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA67D62008DA242B2931D9BA /* MyPageRepositoryImp.swift */; };
 		5A405916EBDE84CC7D4F0A1A /* SignOutRepositoryImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADD9E5A245A84B3D23B8243C /* SignOutRepositoryImp.swift */; };
 		60DC4531DF0967A512AE1618 /* MyPageEditRepositoryImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E03696A5DFB18A0EE60C2E7 /* MyPageEditRepositoryImp.swift */; };
@@ -58,6 +61,7 @@
 		1A6A6CEEAB945077F3444955 /* VerificationCodeDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationCodeDTO.swift; sourceTree = "<group>"; };
 		1C3F20B9358AE17077FF041C /* LogOutDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogOutDTO.swift; sourceTree = "<group>"; };
 		1EFA4E6A6309BAA7ED7C42A7 /* UserFindDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserFindDTO.swift; sourceTree = "<group>"; };
+		2F1F15873BCFE492B247EA72 /* UserLikeRepositoryImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLikeRepositoryImp.swift; sourceTree = "<group>"; };
 		31FB768A22D22E229187A69F /* SchoolDataDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolDataDTO.swift; sourceTree = "<group>"; };
 		4A30E2A1F55D5DBBA360E1A2 /* LogInDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInDTO.swift; sourceTree = "<group>"; };
 		4E75197C294DE74F5162FAA7 /* Data.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Data.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -66,9 +70,11 @@
 		7A46FF8BDF941AEC2297F9F6 /* MyPageDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageDTO.swift; sourceTree = "<group>"; };
 		7C71555F2786000CC02D4FA6 /* DuplicationCheckRepositoryImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DuplicationCheckRepositoryImp.swift; sourceTree = "<group>"; };
 		7F4594D992F594AC7A7D8191 /* UserServiceImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserServiceImp.swift; sourceTree = "<group>"; };
+		85F62FDD9E44ACACF4346F3B /* UserLikeDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLikeDTO.swift; sourceTree = "<group>"; };
 		871673ED893637E87A3ABF7F /* MyPageEditDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageEditDTO.swift; sourceTree = "<group>"; };
 		8D69ADC6424D5E413891FE6D /* ImageDataServiceImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDataServiceImp.swift; sourceTree = "<group>"; };
 		8E03696A5DFB18A0EE60C2E7 /* MyPageEditRepositoryImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageEditRepositoryImp.swift; sourceTree = "<group>"; };
+		949AE8BC299CB727240FF817 /* UserLikeCancelRepositoryImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLikeCancelRepositoryImp.swift; sourceTree = "<group>"; };
 		AA67D62008DA242B2931D9BA /* MyPageRepositoryImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageRepositoryImp.swift; sourceTree = "<group>"; };
 		AD13451B610373272A24E936 /* TokenStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenStorage.swift; sourceTree = "<group>"; };
 		ADD9E5A245A84B3D23B8243C /* SignOutRepositoryImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignOutRepositoryImp.swift; sourceTree = "<group>"; };
@@ -123,6 +129,7 @@
 			children = (
 				F93ABBB0490DAA6F91D4DC64 /* UserDetailDTO.swift */,
 				1EFA4E6A6309BAA7ED7C42A7 /* UserFindDTO.swift */,
+				85F62FDD9E44ACACF4346F3B /* UserLikeDTO.swift */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -272,6 +279,8 @@
 				BDCC80E2080EFD74C7AC2B5C /* AllUserFindRepositoryImp.swift */,
 				CE8943772A18C5185AB97BD7 /* CategoryUserFindRepositoryImp.swift */,
 				6DB2F6BC517E2D1404D26583 /* UserDetailRepositoryImp.swift */,
+				949AE8BC299CB727240FF817 /* UserLikeCancelRepositoryImp.swift */,
+				2F1F15873BCFE492B247EA72 /* UserLikeRepositoryImp.swift */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -360,6 +369,7 @@
 				010F42A3E1E524F1402EF9A7 /* VerificationCodeDTO.swift in Sources */,
 				AB4A668861752C21ACFC2881 /* UserDetailDTO.swift in Sources */,
 				C4F2009F3B1FC79FAA0F5F42 /* UserFindDTO.swift in Sources */,
+				5685458DF695252A57F683C7 /* UserLikeDTO.swift in Sources */,
 				60DC4531DF0967A512AE1618 /* MyPageEditRepositoryImp.swift in Sources */,
 				56B7ABC6DB0674D83F8BC91E /* MyPageRepositoryImp.swift in Sources */,
 				520276E17ECD43FE4957D8D7 /* RemoteImageDataRepositoryImp.swift in Sources */,
@@ -374,6 +384,8 @@
 				DAF4C3923319F860BCDCF27E /* AllUserFindRepositoryImp.swift in Sources */,
 				981C377EC720640804E1138E /* CategoryUserFindRepositoryImp.swift in Sources */,
 				994C365099D378E1253AFF43 /* UserDetailRepositoryImp.swift in Sources */,
+				436984348144AED8DCDD8B6F /* UserLikeCancelRepositoryImp.swift in Sources */,
+				53070CB193C533A370912819 /* UserLikeRepositoryImp.swift in Sources */,
 				43E140ABA31D8C975F27CC5D /* TokenStorage.swift in Sources */,
 				269FDE67B48834948BE8CFEB /* ImageDataServiceImp.swift in Sources */,
 				218D8E8B39E1F9A9B826BFC7 /* MyPageServiceImp.swift in Sources */,

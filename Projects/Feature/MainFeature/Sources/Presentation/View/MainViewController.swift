@@ -305,8 +305,13 @@ extension MainViewController: UITableViewDataSource {
             
             cell.heartButtonAction = { [weak self] in
                 guard let self = self else { return }
-                self.viewModel.didSelectTodayTeenHeartButton()
+                self.viewModel.didSelectTodayTeenHeartButton(row: indexPath.row) {
+                    DispatchQueue.main.async {
+                        self.tableView.reloadData()
+                    }
+                }
             }
+            
             cell.menuButtonAction = { [weak self] in
                 guard let self = self else { return }
                 cell.layoutIfNeeded()

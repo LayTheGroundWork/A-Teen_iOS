@@ -13,18 +13,27 @@ public struct UserServiceImp: UserService {
     private let allUserFindRepository: AllUserFindRepository
     private let categoryUserFindRepository: CategoryUserFindRepository
     private let userDetailRepository: UserDetailRepository
+    private let userLikeRepository: UserLikeRepository
+    private let userLikeCancelRepository: UserLikeCancelRepository
     
     public init(
         allUserFindRepository: AllUserFindRepository,
         categoryUserFindRepository: CategoryUserFindRepository,
-        userDetailRepository: UserDetailRepository
+        userDetailRepository: UserDetailRepository,
+        userLikeRepository: UserLikeRepository,
+        userLikeCancelRepository: UserLikeCancelRepository
     ) {
         self.allUserFindRepository = allUserFindRepository
         self.categoryUserFindRepository = categoryUserFindRepository
         self.userDetailRepository = userDetailRepository
+        self.userLikeRepository = userLikeRepository
+        self.userLikeCancelRepository = userLikeCancelRepository
     }
     
-    public func findAllUser(request: AllUserFindRequest, completion: @escaping ([UserData]) -> Void) {
+    public func findAllUser(
+        request: AllUserFindRequest,
+        completion: @escaping ([UserData]) -> Void
+    ) {
         allUserFindRepository.findAllUser(request: request) { result in
             switch result {
             case .success(let response):
@@ -36,7 +45,10 @@ public struct UserServiceImp: UserService {
         }
     }
     
-    public func findCategoryUser(request: CategoryUserFindRequest, completion: @escaping ([UserData]) -> Void) {
+    public func findCategoryUser(
+        request: CategoryUserFindRequest,
+        completion: @escaping ([UserData]) -> Void
+    ) {
         categoryUserFindRepository.findCategoryUser(request: request) { result in
             switch result {
             case .success(let response):
@@ -48,7 +60,10 @@ public struct UserServiceImp: UserService {
         }
     }
     
-    public func getUserDetailData(request: UserDetailRequest, completion: @escaping (UserDetailData) -> Void) {
+    public func getUserDetailData(
+        request: UserDetailRequest,
+        completion: @escaping (UserDetailData) -> Void
+    ) {
         userDetailRepository.getUserDetailData(request: request) { result in
             switch result {
             case .success(let response):
@@ -69,6 +84,36 @@ public struct UserServiceImp: UserService {
                     snsPlatform: nil,
                     category: "",
                     questions: []))
+            }
+        }
+    }
+    
+    public func updateUserLikeStatus(
+        request: UserLikeRequest,
+        completion: @escaping (String?) -> Void
+    ) {
+        userLikeRepository.updateUserLikeStatus(request: request) { result in
+            switch result {
+            case .success(let response):
+                completion(response.data)
+            case .failure(let error):
+                print(error.localizedDescription)
+                completion(nil)
+            }
+        }
+    }
+    
+    public func cancelUserLikeStatus(
+        request: UserLikeRequest,
+        completion: @escaping (String?) -> Void
+    ) {
+        userLikeCancelRepository.cancelUserLikeStatus(request: request) { result in
+            switch result {
+            case .success(let response):
+                completion(response.data)
+            case .failure(let error):
+                print(error.localizedDescription)
+                completion(nil)
             }
         }
     }

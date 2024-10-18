@@ -15,15 +15,38 @@ public struct UserUseCaseImp: UserUseCase {
         self.userService = userService
     }
     
-    public func findAllUser(request: AllUserFindRequest, completion: @escaping ([UserData]) -> Void) {
+    public func findAllUser(
+        request: AllUserFindRequest,
+        completion: @escaping ([UserData]) -> Void
+    ) {
         userService.findAllUser(request: request, completion: completion)
     }
     
-    public func findCategoryUser(request: CategoryUserFindRequest, completion: @escaping ([UserData]) -> Void) {
+    public func findCategoryUser(
+        request: CategoryUserFindRequest,
+        completion: @escaping ([UserData]) -> Void
+    ) {
         userService.findCategoryUser(request: request, completion: completion)
     }
     
-    public func getUserDetailData(request: UserDetailRequest, completion: @escaping (UserDetailData) -> Void) {
+    public func getUserDetailData(
+        request: UserDetailRequest,
+        completion: @escaping (UserDetailData) -> Void
+    ) {
         userService.getUserDetailData(request: request, completion: completion)
+    }
+    
+    public func updateUserLikeStatus(
+        request: UserLikeRequest,
+        completion: @escaping (String?) -> Void
+    ) {
+        userService.updateUserLikeStatus(request: request, completion: completion)
+    }
+    
+    public func cancelUserLikeStatus(
+        request: UserLikeRequest,
+        completion: @escaping (String?) -> Void
+    ) {
+        userService.cancelUserLikeStatus(request: request, completion: completion)
     }
 }
