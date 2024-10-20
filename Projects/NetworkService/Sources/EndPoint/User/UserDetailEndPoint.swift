@@ -16,7 +16,9 @@ public struct UserDetailEndPoint: EndPoint {
         ""
     }
     
-    public var path: String = "/v1/api/user/find"
+    public var path: String {
+        "/v1/api/user/find/\(request.uniqueId)"
+    }
     
     public var query: [String : String] = [:]
     public var header: [String : String] {
@@ -34,7 +36,6 @@ public struct UserDetailEndPoint: EndPoint {
         request: UserDetailRequest
     ) {
         self.request = request
-        self.path = "/v1/api/user/find/\(request.uniqueId)"
     }
 }
 
