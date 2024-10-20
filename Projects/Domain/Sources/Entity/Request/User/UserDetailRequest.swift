@@ -9,14 +9,11 @@
 import Foundation
 
 public struct UserDetailRequest {
-    public let authorization: String
     public let uniqueId: String
     
     public init(
-        authorization: String,
         uniqueId: String
     ) {
-        self.authorization = authorization
         self.uniqueId = uniqueId
     }
 }

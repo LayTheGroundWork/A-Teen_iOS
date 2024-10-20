@@ -23,13 +23,12 @@ public struct UserDetailEndPoint: EndPoint {
         [
             "Content-Type": "application/json",
             "Accept": "application/json",
-            "Authorization": request.authorization
         ]
     }
     
     public var body: [String : Any] = [:]
     
-    public var method: HTTPMethod = .post
+    public var method: HTTPMethod = .get
     
     public init(
         request: UserDetailRequest

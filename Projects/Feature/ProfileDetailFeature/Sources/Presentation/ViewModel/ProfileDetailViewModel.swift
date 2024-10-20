@@ -59,14 +59,7 @@ extension ProfileDetailViewModel {
     }
     
     func getUserDetailData(completion: @escaping () -> Void) {
-        guard let token = auth.getAccessToken(),
-              auth.isSessionActive      //앱 팅겨서 임시로 넣어놓음
-        else {
-            completion()
-            return
-        }
-        
-        userUseCase.getUserDetailData(request: .init(authorization: token, uniqueId: uniqueId)) { user in
+        userUseCase.getUserDetailData(request: .init(uniqueId: uniqueId)) { user in
             self.user = user
             completion()
         }
