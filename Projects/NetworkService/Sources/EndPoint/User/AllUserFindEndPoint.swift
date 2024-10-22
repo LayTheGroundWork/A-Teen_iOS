@@ -24,7 +24,12 @@ public struct AllUserFindEndPoint: EndPoint {
         }
     }
     
-    public var query: [String : String] = [:]
+    public var query: [String : String] {
+        [
+            "page": String(request.page),
+            "size": String(request.size)
+        ]
+    }
     
     public var header: [String : String] {
         if let authorization = request.authorization {
@@ -43,7 +48,7 @@ public struct AllUserFindEndPoint: EndPoint {
     
     public var body: [String : Any] = [:]
     
-    public var method: HTTPMethod = .post
+    public var method: HTTPMethod = .get
     
     public init(
         request: AllUserFindRequest

@@ -31,7 +31,7 @@ public struct DuplicationCheckEndPoint: EndPoint {
     
     public var body: [String : Any] = [:]
         
-    public var method: HTTPMethod = .post
+    public var method: HTTPMethod = .get
     
     public init(request: DuplicationCheckRequest) {
         self.request = request

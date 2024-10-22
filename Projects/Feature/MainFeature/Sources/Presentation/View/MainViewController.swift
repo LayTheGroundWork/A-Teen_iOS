@@ -70,6 +70,8 @@ public final class MainViewController: UIViewController {
         return tableView
     }()
     
+    let activityIndicator = UIActivityIndicatorView(style: .medium)
+    
     // MARK: - Life Cycle
     init(
         viewModel: MainViewModel,
@@ -296,7 +298,7 @@ extension MainViewController: UITableViewDataSource {
             }
             
             cell.selectionStyle = .none
-            cell.setCell(teen: viewModel.getTodayTeenItemMainViewModel(row: indexPath.row))
+            cell.setCell(teen: viewModel.teenList[indexPath.row])
             
             cell.chatButtonAction = { [weak self] in
                 guard let self = self else { return }
@@ -339,7 +341,7 @@ extension MainViewController: UITableViewDataSource {
         case 0, 1, 2, 3:
             return 1
         case 4:
-            return viewModel.todayTeenList.count
+            return viewModel.teenList.count
         default:
             return 0
         }
@@ -367,7 +369,7 @@ extension MainViewController: UITableViewDelegate {
             
             coordinator?.didSelectAnotherTeenCell(
                 frame: frame,
-                todayTeen: viewModel.getTodayTeenItemMainViewModel(row: indexPath.row), 
+                todayTeen: viewModel.teenList[indexPath.row], 
                 todayTeenFirstImage: cellClicked.getImage())
         default:
             break
@@ -390,6 +392,51 @@ extension MainViewController: UITableViewDelegate {
             return 0
         }
     }
+    
+    public func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        let lastRowIndex = viewModel.teenList.count - 1
+        
+        guard indexPath == IndexPath(row: lastRowIndex, section: 4),
+              !viewModel.isLoading,
+              viewModel.teenList.count == viewModel.currentSize 
+        else { return }
+        
+        self.activityIndicator.startAnimating()
+        viewModel.loadMoreData() { [weak self] in
+            guard let self = self else { return }
+            sleep(2)
+            DispatchQueue.main.async {
+                self.activityIndicator.stopAnimating()
+                self.viewModel.isLoading = false
+                self.tableView.reloadData()
+            }
+        }
+    }
+    
+    public func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        
+        switch section {
+        case 4:
+            //나중에 Lottie 넣기
+            let footerView = UIView()
+            footerView.addSubview(activityIndicator)
+            activityIndicator.snp.makeConstraints { make in
+                make.center.equalToSuperview()
+            }
+            return footerView
+        default:
+            return nil
+        }
+    }
+
+    public func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        switch section {
+        case 4:
+            return 44
+        default:
+            return 0
+        }
+    }
 }
 
 // MARK: - UICollectionViewDataSource
@@ -406,7 +453,7 @@ extension MainViewController: UICollectionViewDataSource {
             return UICollectionViewCell()
         }
         
-        cell.setButton(category: viewModel.getCategoryItemMainViewModel(row: indexPath.row))
+        cell.setButton(category: viewModel.categoryList[indexPath.row])
         return cell
         
     }

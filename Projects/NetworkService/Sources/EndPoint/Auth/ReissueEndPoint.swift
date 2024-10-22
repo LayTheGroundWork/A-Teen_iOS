@@ -29,7 +29,7 @@ public struct ReissueEndPoint: EndPoint {
     
     public var body: [String : Any] = [:]
     
-    public var method: HTTPMethod = .put
+    public var method: HTTPMethod = .post
     
     public init(
         request: ReissueRequest

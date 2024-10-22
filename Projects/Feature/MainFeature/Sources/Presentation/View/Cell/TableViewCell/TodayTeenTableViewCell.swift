@@ -145,7 +145,7 @@ extension TodayTeenTableViewCell: UICollectionViewDataSource {
             return UICollectionViewCell()
         }
         
-        cell.setCell(teen: viewModel.getTodayTeenItemMainViewModel(row: indexPath.row))
+        cell.setCell(teen: viewModel.todayTeenList[indexPath.item])
         
         cell.chatButtonAction = { [weak self] in
             guard let self = self else { return }
@@ -204,7 +204,7 @@ extension TodayTeenTableViewCell: UICollectionViewDelegate {
         stopAutoScroll()
         delegate?.didSelectTodayTeenImage(
             frame: frame,
-            todayTeen: viewModel.getTodayTeenItemMainViewModel(row: indexPath.row), 
+            todayTeen: viewModel.todayTeenList[indexPath.row],
             todayTeenFirstImage: cellClicked.getImage())
     }
 }

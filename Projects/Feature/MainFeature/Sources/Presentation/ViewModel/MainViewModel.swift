@@ -68,131 +68,138 @@ class MainViewModel {
             nickName: "최도혁",
             location: "서울",
             schoolName: "에이틴고등학교",
-            likeStatus: true),
-        .init(
-            id: 5,
-            uniqueId: "tester1",
-            profileImages: "thumbnail_testKey",
-            nickName: "박상준",
-            location: "서울",
-            schoolName: "에이틴고등학교",
-            likeStatus: true),
-        .init(
-            id: 6,
-            uniqueId: "tester1",
-            profileImages: "thumbnail_testKey",
-            nickName: "김영훈",
-            location: "서울",
-            schoolName: "에이틴고등학교",
-            likeStatus: true),
-        .init(
-            id: 7,
-            uniqueId: "tester1",
-            profileImages: "thumbnail_testKey",
-            nickName: "허세라",
-            location: "서울",
-            schoolName: "에이틴고등학교",
-            likeStatus: true),
-        .init(
-            id: 8,
-            uniqueId: "tester1",
-            profileImages: "thumbnail_testKey",
-            nickName: "윤영선",
-            location: "서울",
-            schoolName: "에이틴고등학교",
-            likeStatus: true),
-        .init(
-            id: 9,
-            uniqueId: "tester1",
-            profileImages: "thumbnail_testKey",
-            nickName: "공보경",
-            location: "서울",
-            schoolName: "에이틴고등학교",
             likeStatus: true)
-    ]
+        ]
+    
+    
+    var teenList: [UserData] = []
+    
+    var currentPage: Int = 0
+    var currentSize: Int = 0
+    var isLoading: Bool = false
 }
 
 extension MainViewModel {
-    func getCategoryItemMainViewModel(row: Int) -> ProfileCategory {
-        categoryList[row]
-    }
-    
-    func getTodayTeenItemMainViewModel(row: Int) -> UserData {
-        todayTeenList[row]
-    }
-    
-    func didSelectTodayTeenHeartButton(row: Int, completion: @escaping () -> Void) {
-        guard let token = auth.getAccessToken(),
-              auth.isSessionActive      //앱 팅겨서 임시로 넣어놓음
-        else {
-            completion()
-            return
-        }
-        
-        switch todayTeenList[row].likeStatus {
-        case true:
-            userUseCase.cancelUserLikeStatus(request: .init(authorization: token, id: todayTeenList[row].id)) { data in
-                if let _ = data {
-                    self.todayTeenList[row].likeStatus.toggle()
-                    completion()
-                }
-            }
-        case false:
-            userUseCase.updateUserLikeStatus(request: .init(authorization: token, id: todayTeenList[row].id)) { data in
-                if let _ = data {
-                    self.todayTeenList[row].likeStatus.toggle()
-                    completion()
-                }
-            }
-        }
-    }
-    
-    func findAllUser(completion: @escaping () -> Void) {
-        guard let token = auth.getAccessToken(),
-              auth.isSessionActive      //앱 팅겨서 임시로 넣어놓음
-        else {
-            userUseCase.findAllUser(request: .init(authorization: nil)) { teenList in
-                self.todayTeenList.removeAll()
-                self.todayTeenList = teenList
-                completion()
-            }
-            return
-        }
-        
-        userUseCase.findAllUser(request: .init(authorization: token)) { teenList in
-            self.todayTeenList.removeAll()
-            self.todayTeenList = teenList
-            completion()
-        }
-    }
-    
-    func findCategoryUser(row: Int, completion: @escaping () -> Void) {
-        guard let token = auth.getAccessToken(),
-              auth.isSessionActive      //앱 팅겨서 임시로 넣어놓음
-        else {
-            userUseCase.findCategoryUser(request: .init(authorization: nil, category: categoryList[row].title)) { teenList in
-                self.todayTeenList.removeAll()
-                self.todayTeenList = teenList
-                completion()
-            }
-            return
-        }
-        
-        userUseCase.findCategoryUser(request: .init(authorization: token, category: categoryList[row].title)) { teenList in
-            self.todayTeenList.removeAll()
-            self.todayTeenList = teenList
-            completion()
-        }
-    }
-    
     func didSelectCategoryCell(row: Int) {
         guard let beforeIndex = categoryList.firstIndex(where: { $0.isSelect == true }),
               beforeIndex != row
         else {
             return
         }
-        
         categoryList[beforeIndex].isSelect = false
         categoryList[row].isSelect = true
+        teenList.removeAll()
+        currentPage = 0
+        currentSize = 0
+    }
+    
+    func didSelectTodayTeenHeartButton(
+        row: Int,
+        completion: @escaping () -> Void
+    ) {
+        guard let token = auth.getAccessToken(),
+              auth.isSessionActive      //앱 팅겨서 임시로 넣어놓음
+        else {
+            completion()
+            return
+        }
+        
+        switch teenList[row].likeStatus {
+        case true:
+            userUseCase.cancelUserLikeStatus(request: .init(authorization: token, id: teenList[row].id)) { data in
+                if let _ = data {
+                    self.teenList[row].likeStatus.toggle()
+                    completion()
+                }
+            }
+        case false:
+            userUseCase.updateUserLikeStatus(request: .init(authorization: token, id: teenList[row].id)) { data in
+                if let _ = data {
+                    self.teenList[row].likeStatus.toggle()
+                    completion()
+                }
+            }
+        }
+    }
+    
+    // 전체 유저 리스트
+    func findAllUser(completion: @escaping () -> Void) {
+        guard let token = auth.getAccessToken(),
+              auth.isSessionActive      //로그인 상태 확인(토큰이 유효기한이 있어서 나중에 유효성 검사로 바꿀 예정)
+        else {
+            loadAllUserList(authorization: nil, completion: completion)
+            return
+        }
+        loadAllUserList(authorization: token, completion: completion)
+    }
+    
+    func loadAllUserList(
+        authorization: String?,
+        completion: @escaping () -> Void
+    ) {
+        userUseCase.findAllUser(
+            request: .init(
+                authorization: authorization,
+                page: currentPage,
+                size: 10)
+        ) { teenList in
+            self.teenList.append(contentsOf: teenList)
+            self.currentPage += 1
+            self.currentSize += 10
+            completion()
+        }
+    }
+    
+    // 카테고리 별 유저 리스트
+    func findCategoryUser(row: Int, completion: @escaping () -> Void) {
+        guard let token = auth.getAccessToken(),
+              auth.isSessionActive      //로그인 상태 확인(토큰이 유효기한이 있어서 나중에 유효성 검사로 바꿀 예정)
+        else {
+            loadCategoryUserList(
+                authorization: nil,
+                category: categoryList[row].title,
+                completion: completion)
+            return
+        }
+        loadCategoryUserList(
+            authorization: token,
+            category: categoryList[row].title,
+            completion: completion)
+    }
+    
+    func loadCategoryUserList(
+        authorization: String?,
+        category: String,
+        completion: @escaping () -> Void
+    ) {
+        userUseCase.findCategoryUser(
+            request: .init(
+                authorization: authorization,
+                category: category,
+                page: currentPage,
+                size: 10)
+        ) { teenList in
+            self.teenList.append(contentsOf: teenList)
+            self.currentPage += 1
+            self.currentSize += 10
+            completion()
+        }
+    }
+    
+    // 무한 스크롤
+    func loadMoreData(completion: @escaping () -> Void) {
+        isLoading = true
+        DispatchQueue.global().async {
+            if let index = self.categoryList.firstIndex(where: { $0.isSelect }) {
+                switch index {
+                case 0:
+                    self.findAllUser(completion: completion)
+                case 1, 2, 3, 4, 5, 6:
+                    self.findCategoryUser(row: index, completion: completion)
+                default:
+                    break
+                }
+            }
+        }
     }
 }
