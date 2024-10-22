@@ -9,11 +9,11 @@
 import Foundation
 
 public struct CategoryUserFindRequest {
-    public let authorization: String
+    public let authorization: String?
     public let category: String
     
     public init(
-        authorization: String,
+        authorization: String?,
         category: String
     ) {
         self.authorization = authorization

@@ -16,16 +16,29 @@ public struct AllUserFindEndPoint: EndPoint {
         ""
     }
     
-    public var path: String = "/v1/api/user/find-all"
+    public var path: String {
+        if let _ = request.authorization {
+            "/v1/api/user/find-all"
+        } else {
+            "/v1/api/guest/find-all"
+        }
+    }
     
     public var query: [String : String] = [:]
     
     public var header: [String : String] {
-        [
-            "Content-Type": "application/json",
-            "Accept": "application/json",
-            "Authorization": request.authorization
-        ]
+        if let authorization = request.authorization {
+            [
+                "Content-Type": "application/json",
+                "Accept": "application/json",
+                "Authorization": authorization
+            ]
+        } else {
+            [
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            ]
+        }
     }
     
     public var body: [String : Any] = [:]

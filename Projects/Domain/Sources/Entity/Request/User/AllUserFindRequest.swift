@@ -9,9 +9,9 @@
 import Foundation
 
 public struct AllUserFindRequest {
-    public let authorization: String
+    public let authorization: String?
     
-    public init(authorization: String) {
+    public init(authorization: String?) {
         self.authorization = authorization
     }
 }

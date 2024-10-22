@@ -151,7 +151,11 @@ extension MainViewModel {
         guard let token = auth.getAccessToken(),
               auth.isSessionActive      //앱 팅겨서 임시로 넣어놓음
         else {
-            completion()
+            userUseCase.findAllUser(request: .init(authorization: nil)) { teenList in
+                self.todayTeenList.removeAll()
+                self.todayTeenList = teenList
+                completion()
+            }
             return
         }
         
@@ -166,7 +170,11 @@ extension MainViewModel {
         guard let token = auth.getAccessToken(),
               auth.isSessionActive      //앱 팅겨서 임시로 넣어놓음
         else {
-            completion()
+            userUseCase.findCategoryUser(request: .init(authorization: nil, category: categoryList[row].title)) { teenList in
+                self.todayTeenList.removeAll()
+                self.todayTeenList = teenList
+                completion()
+            }
             return
         }
         
