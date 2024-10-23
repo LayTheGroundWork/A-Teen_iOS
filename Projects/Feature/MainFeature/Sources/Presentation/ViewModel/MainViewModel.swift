@@ -80,6 +80,12 @@ class MainViewModel {
 }
 
 extension MainViewModel {
+    func clearTeenList() {
+        teenList.removeAll()
+        currentPage = 0
+        currentSize = 0
+    }
+    
     func didSelectCategoryCell(row: Int) {
         guard let beforeIndex = categoryList.firstIndex(where: { $0.isSelect == true }),
               beforeIndex != row
@@ -88,9 +94,7 @@ extension MainViewModel {
         }
         categoryList[beforeIndex].isSelect = false
         categoryList[row].isSelect = true
-        teenList.removeAll()
-        currentPage = 0
-        currentSize = 0
+        clearTeenList()
     }
     
     func didSelectTodayTeenHeartButton(

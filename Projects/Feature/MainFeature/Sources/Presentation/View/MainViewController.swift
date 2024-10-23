@@ -133,22 +133,20 @@ public final class MainViewController: UIViewController {
         }
     }
     
-    private func updateUI(isScroll: Bool) {
+    private func updateUI() {
         DispatchQueue.main.async {
             // 카테고리 선택할 떄
-            if isScroll {
-                self.tableView.scrollToRow(
-                    at: IndexPath(row: 0, section: 0),
-                    at: .top,
-                    animated: true)
+            self.tableView.scrollToRow(
+                at: IndexPath(row: 0, section: 0),
+                at: .top,
+                animated: true)
+            
+            self.customNaviView.isHidden = false
+            
+            UIView.animate(withDuration: 0.2, delay: 0, options: .showHideTransitionViews) {
+                self.naviHeightAnchor?.update(offset: 40)
                 
-                self.customNaviView.isHidden = false
-                
-                UIView.animate(withDuration: 0.2, delay: 0, options: .showHideTransitionViews) {
-                    self.naviHeightAnchor?.update(offset: 40)
-                    
-                    self.view.layoutIfNeeded()
-                }
+                self.view.layoutIfNeeded()
             }
             
             for subview in self.tableView.subviews {
@@ -164,7 +162,6 @@ public final class MainViewController: UIViewController {
                     cell.teenCollectionView.reloadData()
                     self.tableView.reloadData()
                     
-                    print(cell.teenCollectionView.numberOfItems(inSection: 0))
                     if cell.teenCollectionView.numberOfItems(inSection: 0) > 0 {
                         self.reStartTimer()
                     } else {
@@ -181,22 +178,25 @@ public final class MainViewController: UIViewController {
         print("LogOut/LogIn -> Reload Data")
         print(viewModel.auth.isSessionActive)
         
-        for (index, category) in viewModel.categoryList.enumerated() {
-            if category.isSelect {
-                if index == 0 {
-                    viewModel.findAllUser { [weak self] in
-                        guard let self = self else { return }
-                        self.updateUI(isScroll: false)
-                    }
-                } else {
-                    viewModel.findCategoryUser(row: index) { [weak self] in
-                        guard let self = self else { return }
-                        DispatchQueue.main.async {
-                            self.updateUI(isScroll: false)
+        if viewModel.auth.isSessionActive {
+            viewModel.clearTeenList()
+            for (index, category) in viewModel.categoryList.enumerated() {
+                if category.isSelect {
+                    if index == 0 {
+                        viewModel.findAllUser { [weak self] in
+                            guard let self = self else { return }
+                            self.updateUI()
+                        }
+                    } else {
+                        viewModel.findCategoryUser(row: index) { [weak self] in
+                            guard let self = self else { return }
+                            DispatchQueue.main.async {
+                                self.updateUI()
+                            }
                         }
                     }
+                    break
                 }
-                break
             }
         }
     }
@@ -496,13 +496,13 @@ extension MainViewController: UICollectionViewDelegate {
         if indexPath.row == 0 {
             viewModel.findAllUser { [weak self] in
                 guard let self = self else { return }
-                self.updateUI(isScroll: true)
+                self.updateUI()
             }
         } else {
             viewModel.findCategoryUser(row: indexPath.row) { [weak self] in
                 guard let self = self else { return }
                 DispatchQueue.main.async {
-                    self.updateUI(isScroll: true)
+                    self.updateUI()
                 }
             }
         }
