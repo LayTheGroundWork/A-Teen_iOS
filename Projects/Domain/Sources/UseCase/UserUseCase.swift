@@ -6,29 +6,12 @@
 //  Copyright © 2024 ATeen. All rights reserved.
 //
 
+import Combine
+
 public protocol UserUseCase {
-    func findAllUser(
-        request: AllUserFindRequest,
-        completion: @escaping ([UserData]) -> Void
-    )
-    
-    func findCategoryUser(
-        request: CategoryUserFindRequest,
-        completion: @escaping ([UserData]) -> Void
-    )
-    
-    func getUserDetailData(
-        request: UserDetailRequest,
-        completion: @escaping (UserDetailData) -> Void
-    )
-    
-    func updateUserLikeStatus(
-        request: UserLikeRequest,
-        completion: @escaping (String?) -> Void
-    )
-    
-    func cancelUserLikeStatus(
-        request: UserLikeRequest,
-        completion: @escaping (String?) -> Void
-    )
+    func findAllUser(request: AllUserFindRequest)  -> AnyPublisher<[UserData], Never>
+    func findCategoryUser(request: CategoryUserFindRequest) -> AnyPublisher<[UserData], Never>
+    func getUserDetailData(request: UserDetailRequest) -> AnyPublisher<UserDetailData?, Never>
+    func updateUserLikeStatus(request: UserLikeRequest) -> AnyPublisher<String?, Never>
+    func cancelUserLikeStatus(request: UserLikeRequest) -> AnyPublisher<String?, Never>
 }

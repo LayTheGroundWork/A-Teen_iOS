@@ -79,9 +79,7 @@ extension AppDelegate {
 
         let imageDataUseCase: ImageDataUseCase = ImageDataUseCaseImp(imageDataService: imageDataService)
         
-        let searchUseCase: SearchUseCase = SearchUseCaseImp(schoolDataRepository: schoolDataRepository)
-        
-        let myPageUseCase: MyPageUseCase = MyPageUseCaseImp(myPageService: myPageService)
+        let myPageUseCase: MyPageUseCase = MyPageUseCaseImp(myPageService: myPageService, searchService: searchService)
         
         // MARK: - Register
         AppContainer.register(
@@ -100,10 +98,6 @@ extension AppDelegate {
             type: ImageDataUseCase.self,
             imageDataUseCase
         )
-        
-        AppContainer.register(
-            type: SearchUseCase.self,
-            searchUseCase)
         
         AppContainer.register(
             type: MyPageUseCase.self,

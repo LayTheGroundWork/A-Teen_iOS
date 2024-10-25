@@ -19,23 +19,19 @@ public struct UserDetailRepositoryImp: UserDetailRepository {
         self.apiClientService = apiClientService
     }
     
-    public func getUserDetailData(
-        request: UserDetailRequest,
-        completion: @escaping (Result<UserDetailResponse, Error>) -> Void
-    ) {
-        Task {
-            do {
-                let endPoint = UserDetailEndPoint(request: request)
-                guard let urlRequest = endPoint.toURLRequest else {
-                    throw ApiError.errorInUrl
-                }
-                let response: UserDetailResponse = try await apiClientService.request(request: urlRequest, type: UserDetailDTO.self).toDomain()
-
-                completion(.success(response))
-            } catch {
-                completion(.failure(error))
+    public func getUserDetailData(request: UserDetailRequest) async -> Result<UserDetailResponse, Error> {
+        do {
+            let endPoint = UserDetailEndPoint(request: request)
+            guard let urlRequest = endPoint.toURLRequest else {
+                throw ApiError.errorInUrl
             }
+            let response: UserDetailResponse = try await apiClientService.request(request: urlRequest, type: UserDetailDTO.self).toDomain()
+            
+            return .success(response)
+        } catch {
+            return .failure(error)
         }
+        
     }
 }
 

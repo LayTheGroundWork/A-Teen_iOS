@@ -9,8 +9,5 @@
 import Foundation
 
 public protocol DuplictaionCheckRepository {
-    func duplicationCheck(
-        request: DuplicationCheckRequest,
-        completion: @escaping (Result<DuplicationCheckResponse, Error>) -> Void
-    )
+    func duplicationCheck(request: DuplicationCheckRequest) async -> Result<DuplicationCheckResponse, Error>
 }

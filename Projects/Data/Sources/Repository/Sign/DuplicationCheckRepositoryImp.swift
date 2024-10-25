@@ -17,21 +17,16 @@ public struct DuplicationCheckRepositoryImp: DuplictaionCheckRepository {
         self.apiClientService = apiClientService
     }
     
-    public func duplicationCheck(
-        request: DuplicationCheckRequest,
-        completion: @escaping (Result<DuplicationCheckResponse, Error>) -> Void
-    ) {
-        Task {
-            do {
-                let endPoint = DuplicationCheckEndPoint(request: request)
-                guard let urlRequest = endPoint.toURLRequest else {
-                    throw ApiError.errorInUrl
-                }
-                let response = try await apiClientService.request(request: urlRequest, type: DuplicationCheckDTO.self).toDomain()
-                completion(.success(response))
-            } catch {
-                completion(.failure(error))
+    public func duplicationCheck(request: DuplicationCheckRequest) async -> Result<DuplicationCheckResponse, Error> {
+        do {
+            let endPoint = DuplicationCheckEndPoint(request: request)
+            guard let urlRequest = endPoint.toURLRequest else {
+                throw ApiError.errorInUrl
             }
+            let response = try await apiClientService.request(request: urlRequest, type: DuplicationCheckDTO.self).toDomain()
+            return .success(response)
+        } catch {
+            return .failure(error)
         }
     }
 }

@@ -9,8 +9,5 @@
 import Foundation
 
 public protocol CategoryUserFindRepository {
-    func findCategoryUser(
-        request: CategoryUserFindRequest,
-        completion: @escaping (Result<UserFindResponse, Error>) -> Void
-    )
+    func findCategoryUser(request: CategoryUserFindRequest) async -> Result<UserFindResponse, Error>
 }

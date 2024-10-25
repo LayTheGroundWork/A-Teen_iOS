@@ -19,21 +19,16 @@ public struct VerificationCodeRepositoryImp: VerificationCodeRepository {
         self.apiClientService = apiClientService
     }
     
-    public func verificareCode(
-        request: PhoneNumberAuthRequest,
-        completion: @escaping (Result<DefaultResponse, Error>) -> Void
-    ) {
-        Task {
-            do {
-                let endPoint = PhoneNumberAuthEndPoint(request: request)
-                guard let urlRequest = endPoint.toURLRequest else {
-                    throw ApiError.errorInUrl
-                }
-                let response = try await apiClientService.request(request: urlRequest, type: VerificationCodeDTO.self).toDomain()
-                completion(.success(response))
-            } catch {
-                completion(.failure(error))
+    public func verifyCode(request: PhoneNumberAuthRequest) async -> Result<DefaultResponse, Error> {
+        do {
+            let endPoint = PhoneNumberAuthEndPoint(request: request)
+            guard let urlRequest = endPoint.toURLRequest else {
+                throw ApiError.errorInUrl
             }
+            let response = try await apiClientService.request(request: urlRequest, type: VerificationCodeDTO.self).toDomain()
+            return .success(response)
+        } catch {
+            return .failure(error)
         }
     }
 }

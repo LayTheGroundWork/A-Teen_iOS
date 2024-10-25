@@ -8,6 +8,7 @@
 import SnapKit
 
 import Common
+import Combine
 import DesignSystem
 import Domain
 import FeatureDependency
@@ -21,6 +22,7 @@ public class ProfileDetailViewController: UIViewController {
     
     private var viewModel: ProfileDetailViewModel
     private weak var coordinator: ProfileDetailViewControllerCoordinator?
+    private var cancellables = Set<AnyCancellable>()
     
     var frame: CGRect?
     var topAnchor: Constraint?
@@ -338,13 +340,8 @@ public class ProfileDetailViewController: UIViewController {
 
     public override func viewDidLoad() {
         super.viewDidLoad()
-        viewModel.getUserDetailData { [weak self] in
-            guard let self = self else { return }
-            
-            DispatchQueue.main.async {
-                self.setUI()
-            }
-        }
+        setupBindings()
+        viewModel.getUserDetailData()
     }
     
     public override func viewWillAppear(_ animated: Bool) {
@@ -358,6 +355,15 @@ public class ProfileDetailViewController: UIViewController {
     public override func viewDidDisappear(_ animated: Bool) {
         navigationController?.navigationBar.isHidden = false
     }
+    
+    private func setupBindings() {
+         viewModel.userLoaded
+             .receive(on: DispatchQueue.main)
+             .sink { [weak self] in
+                 self?.setUI()
+             }
+             .store(in: &cancellables)
+     }
 }
 
 // MARK: Action

@@ -19,22 +19,17 @@ public struct MyPageRepositoryImp: MyPageRepository {
         self.apiClientService = apiClientService
     }
     
-    public func getMyPageData(
-        request: MyPageRequest,
-        completion: @escaping (Result<MyPageResponse, Error>) -> Void
-    ) {
-        Task {
-            do {
-                let endPoint = MyPageEndPoint(request: request)
-                guard let urlRequest = endPoint.toURLRequest else {
-                    throw ApiError.errorInUrl
-                }
-                let response: MyPageResponse = try await apiClientService.request(request: urlRequest, type: MyPageDTO.self).toDomain()
-
-                completion(.success(response))
-            } catch {
-                completion(.failure(error))
+    public func getMyPageData(request: MyPageRequest) async -> Result<MyPageResponse, Error> {
+        do {
+            let endPoint = MyPageEndPoint(request: request)
+            guard let urlRequest = endPoint.toURLRequest else {
+                throw ApiError.errorInUrl
             }
+            let response: MyPageResponse = try await apiClientService.request(request: urlRequest, type: MyPageDTO.self).toDomain()
+            
+            return .success(response)
+        } catch {
+            return .failure(error)
         }
     }
 }

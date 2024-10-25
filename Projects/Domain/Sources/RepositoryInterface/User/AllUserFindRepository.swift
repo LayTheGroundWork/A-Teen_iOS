@@ -9,8 +9,5 @@
 import Foundation
 
 public protocol AllUserFindRepository {
-    func findAllUser(
-        request: AllUserFindRequest,
-        completion: @escaping (Result<UserFindResponse, Error>) -> Void
-    )
+    func findAllUser(request: AllUserFindRequest) async -> Result<UserFindResponse, Error>
 }

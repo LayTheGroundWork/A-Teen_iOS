@@ -7,8 +7,5 @@
 //
 
 public protocol RequestCodeRepository {
-    func requestCode(
-        request: VerificationCodeRequest,
-        completion: @escaping () -> Void
-    )
+    func requestCode(request: VerificationCodeRequest) async
 }

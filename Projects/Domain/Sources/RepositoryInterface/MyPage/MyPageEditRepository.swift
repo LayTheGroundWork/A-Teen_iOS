@@ -9,8 +9,5 @@
 import Foundation
 
 public protocol MyPageEditRepository {
-    func editMyPage(
-        request: MyPageEditRequest,
-        completion: @escaping (Result<DefaultResponse, Error>) -> Void
-    )
+    func editMyPage(request: MyPageEditRequest) async -> Result<DefaultResponse, Error>
 }

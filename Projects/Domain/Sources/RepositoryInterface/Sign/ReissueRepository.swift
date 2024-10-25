@@ -9,8 +9,5 @@
 import Foundation
 
 public protocol ReissueRepository {
-    func reissueToken(
-        request: ReissueRequest,
-        completion: @escaping (Result<DefaultResponse, Error>) -> Void
-    )
+    func reissueToken(request: ReissueRequest) async -> Result<DefaultResponse, Error>
 }

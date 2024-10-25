@@ -19,22 +19,17 @@ public struct MyPageEditRepositoryImp: MyPageEditRepository {
         self.apiClientService = apiClientService
     }
     
-    public func editMyPage(
-        request: MyPageEditRequest,
-        completion: @escaping (Result<DefaultResponse, Error>) -> Void
-    ) {
-        Task {
-            do {
-                let endPoint = MyPageEditEndPoint(request: request)
-                guard let urlRequest = endPoint.toURLRequest else {
-                    throw ApiError.errorInUrl
-                }
-                let response: DefaultResponse = try await apiClientService.request(request: urlRequest, type: MyPageEditDTO.self).toDomain()
-
-                completion(.success(response))
-            } catch {
-                completion(.failure(error))
+    public func editMyPage(request: MyPageEditRequest) async -> Result<DefaultResponse, Error> {
+        do {
+            let endPoint = MyPageEditEndPoint(request: request)
+            guard let urlRequest = endPoint.toURLRequest else {
+                throw ApiError.errorInUrl
             }
+            let response: DefaultResponse = try await apiClientService.request(request: urlRequest, type: MyPageEditDTO.self).toDomain()
+            
+            return .success(response)
+        } catch {
+            return .failure(error)
         }
     }
 }

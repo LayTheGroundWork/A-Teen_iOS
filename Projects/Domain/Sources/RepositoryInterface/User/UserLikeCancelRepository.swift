@@ -9,8 +9,5 @@
 import Foundation
 
 public protocol UserLikeCancelRepository {
-    func cancelUserLikeStatus(
-        request: UserLikeRequest,
-        completion: @escaping (Result<DefaultResponse, Error>) -> Void
-    )
+    func cancelUserLikeStatus(request: UserLikeRequest) async -> Result<DefaultResponse, Error>
 }

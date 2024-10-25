@@ -19,22 +19,17 @@ public struct UserLikeRepositoryImp: UserLikeRepository {
         self.apiClientService = apiClientService
     }
     
-    public func updateUserLikeStatus(
-        request: UserLikeRequest,
-        completion: @escaping (Result<DefaultResponse, Error>) -> Void
-    ) {
-        Task {
-            do {
-                let endPoint = UserLikeEndPoint(request: request)
-                guard let urlRequest = endPoint.toURLRequest else {
-                    throw ApiError.errorInUrl
-                }
-                let response: DefaultResponse = try await apiClientService.request(request: urlRequest, type: UserLikeDTO.self).toDomain()
-
-                completion(.success(response))
-            } catch {
-                completion(.failure(error))
+    public func updateUserLikeStatus(request: UserLikeRequest) async -> Result<DefaultResponse, Error> {
+        do {
+            let endPoint = UserLikeEndPoint(request: request)
+            guard let urlRequest = endPoint.toURLRequest else {
+                throw ApiError.errorInUrl
             }
+            let response: DefaultResponse = try await apiClientService.request(request: urlRequest, type: UserLikeDTO.self).toDomain()
+            
+            return .success(response)
+        } catch {
+            return .failure(error)
         }
     }
 }

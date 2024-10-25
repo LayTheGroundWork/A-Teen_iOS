@@ -7,6 +7,7 @@
 
 import SnapKit
 
+import Combine
 import Common
 import DesignSystem
 import UIKit
@@ -27,6 +28,8 @@ public final class PhoneNumberViewController: UIViewController {
     private weak var coordinator: PhoneNumberViewControllerCoordinator?
     private var currentIndexPath = IndexPath(item: 0, section: 0)
     private let viewModel: PhoneNumberViewModel
+    private var cancellables = Set<AnyCancellable>()
+
     // 뒤로 가기 버튼
     private lazy var backButton: UIBarButtonItem = {
         let button = UIBarButtonItem(image: DesignSystemAsset.leftArrowIcon.image,
@@ -88,6 +91,31 @@ public final class PhoneNumberViewController: UIViewController {
             at: .centeredHorizontally,
             animated: false
         )
+    }
+    
+    private func setupBindings() {
+        viewModel.state
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] state in
+                guard let self = self else { return }
+                switch state {
+                case .codeRequested:
+                    // Handle code requested state if necessary
+                    break
+                case .verificationFailed:
+                    self.coordinator?.openInValidCodeNumberDialog()
+                case .signInSuccess:
+                    self.coordinator?.closeSheet()
+                case .signInFailed:
+                    self.coordinator?.openNoneExistingUserDialog()
+                case .signUpSuccess:
+                    self.coordinator?.openVerificationCompleteDialog()
+                case .signUpFailed:
+                    self.coordinator?.openExistingUserLoginDialog()
+                }
+            }
+            .store(in: &cancellables)
+        
     }
     
     // MARK: - Helpers

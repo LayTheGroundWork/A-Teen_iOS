@@ -20,9 +20,6 @@ public final class SignUpViewModel {
     @Injected(SignUseCase.self)
     public var signUseCase: SignUseCase
     
-    @Injected(SearchUseCase.self)
-    public var searchUseCase: SearchUseCase
-    
     var state = PassthroughSubject<StateController, Never>()
     
     // phoneNumber

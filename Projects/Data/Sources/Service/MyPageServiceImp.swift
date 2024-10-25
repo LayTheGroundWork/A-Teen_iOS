@@ -21,33 +21,25 @@ public struct MyPageServiceImp: MyPageService {
         self.myPageEditRepository = myPageEditRepository
     }
     
-    public func getMyPageData(
-        request: MyPageRequest,
-        completion: @escaping (MyPageData?) -> Void
-    ) {
-        myPageRepository.getMyPageData(request: request) { result in
-            switch result {
-            case .success(let response):
-                completion(response.data)
-            case .failure(let error):
-                print(error.localizedDescription)
-                completion(nil)
-            }
+    public func getMyPageData(request: MyPageRequest) async -> MyPageData? {
+        let response = await myPageRepository.getMyPageData(request: request)
+        
+        switch response {
+        case .success(let response):
+            return response.data
+        case .failure(let failure):
+            return nil
         }
     }
     
-    public func editMyPage(
-        request: MyPageEditRequest,
-        completion: @escaping (String?) -> Void
-    ) {
-        myPageEditRepository.editMyPage(request: request) { result in
-            switch result {
-            case .success(let response):
-                completion(response.data)
-            case .failure(let error):
-                print(error.localizedDescription)
-                completion(nil)
-            }
+    public func editMyPage(request: MyPageEditRequest) async -> String? {
+        let response = await myPageEditRepository.editMyPage(request: request)
+        
+        switch response {
+        case .success(let response):
+            return response.data
+        case .failure(let failure):
+            return nil
         }
     }
 }

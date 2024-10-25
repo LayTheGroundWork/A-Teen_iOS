@@ -19,22 +19,16 @@ public struct AllUserFindRepositoryImp: AllUserFindRepository {
         self.apiClientService = apiClientService
     }
     
-    public func findAllUser(
-        request: AllUserFindRequest,
-        completion: @escaping (Result<UserFindResponse, Error>) -> Void
-    ) {
-        Task {
-            do {
-                let endPoint = AllUserFindEndPoint(request: request)
-                guard let urlRequest = endPoint.toURLRequest else {
-                    throw ApiError.errorInUrl
-                }
-                let response: UserFindResponse = try await apiClientService.request(request: urlRequest, type: UserFindDTO.self).toDomain()
-
-                completion(.success(response))
-            } catch {
-                completion(.failure(error))
+    public func findAllUser(request: AllUserFindRequest) async -> Result<UserFindResponse, Error> {
+        do {
+            let endPoint = AllUserFindEndPoint(request: request)
+            guard let urlRequest = endPoint.toURLRequest else {
+                throw ApiError.errorInUrl
             }
+            let response: UserFindResponse = try await apiClientService.request(request: urlRequest, type: UserFindDTO.self).toDomain()
+            return .success(response)
+        } catch {
+            return .failure(error)
         }
     }
 }

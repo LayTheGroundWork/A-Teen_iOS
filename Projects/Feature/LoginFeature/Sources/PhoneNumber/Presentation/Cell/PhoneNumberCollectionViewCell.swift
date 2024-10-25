@@ -8,6 +8,7 @@
 import SnapKit
 
 import DesignSystem
+import Combine
 import Common
 import UIKit
 
@@ -19,6 +20,9 @@ final class PhoneNumberCollectionViewCell: UICollectionViewCell {
     // MARK: - Private properties
     private weak var delegate: PhoneNumberCollectionViewCellDelegate?
     private var viewModel: PhoneNumberViewModel?
+    
+    private var cancellables = Set<AnyCancellable>()
+
     private lazy var inputNumberLabel: UILabel = {
         let label = UILabel()
         label.text = AppLocalized.inputPhoneNumberText

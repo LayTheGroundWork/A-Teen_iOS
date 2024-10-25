@@ -19,22 +19,17 @@ public struct UserLikeCancelRepositoryImp: UserLikeCancelRepository {
         self.apiClientService = apiClientService
     }
     
-    public func cancelUserLikeStatus(
-        request: UserLikeRequest,
-        completion: @escaping (Result<DefaultResponse, Error>) -> Void
-    ) {
-        Task {
-            do {
-                let endPoint = UserLikeCancelEndPoint(request: request)
-                guard let urlRequest = endPoint.toURLRequest else {
-                    throw ApiError.errorInUrl
-                }
-                let response: DefaultResponse = try await apiClientService.request(request: urlRequest, type: UserLikeDTO.self).toDomain()
-
-                completion(.success(response))
-            } catch {
-                completion(.failure(error))
+    public func cancelUserLikeStatus(request: UserLikeRequest) async -> Result<DefaultResponse, Error> {
+        do {
+            let endPoint = UserLikeCancelEndPoint(request: request)
+            guard let urlRequest = endPoint.toURLRequest else {
+                throw ApiError.errorInUrl
             }
+            let response: DefaultResponse = try await apiClientService.request(request: urlRequest, type: UserLikeDTO.self).toDomain()
+            
+            return .success(response)
+        } catch {
+            return .failure(error)
         }
     }
 }

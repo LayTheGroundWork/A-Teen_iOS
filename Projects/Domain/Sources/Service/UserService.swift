@@ -9,25 +9,9 @@
 import Foundation
 
 public protocol UserService {
-    func findAllUser(
-        request: AllUserFindRequest,
-        completion: @escaping ([UserData]) -> Void)
-    
-    func findCategoryUser(
-        request: CategoryUserFindRequest,
-        completion: @escaping ([UserData]) -> Void)
-    
-    func getUserDetailData(
-        request: UserDetailRequest,
-        completion: @escaping (UserDetailData) -> Void)
-    
-    func updateUserLikeStatus(
-        request: UserLikeRequest,
-        completion: @escaping (String?) -> Void
-    )
-    
-    func cancelUserLikeStatus(
-        request: UserLikeRequest,
-        completion: @escaping (String?) -> Void
-    )
+    func findAllUser(request: AllUserFindRequest) async -> [UserData]
+    func findCategoryUser(request: CategoryUserFindRequest) async -> [UserData]
+    func getUserDetailData(request: UserDetailRequest) async -> UserDetailData?
+    func updateUserLikeStatus(request: UserLikeRequest) async -> String?
+    func cancelUserLikeStatus(request: UserLikeRequest) async -> String?
 }

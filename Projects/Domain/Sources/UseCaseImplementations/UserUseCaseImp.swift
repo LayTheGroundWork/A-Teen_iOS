@@ -6,7 +6,7 @@
 //  Copyright © 2024 ATeen. All rights reserved.
 //
 
-import Foundation
+import Combine
 
 public struct UserUseCaseImp: UserUseCase {
     public let userService: UserService
@@ -15,38 +15,53 @@ public struct UserUseCaseImp: UserUseCase {
         self.userService = userService
     }
     
-    public func findAllUser(
-        request: AllUserFindRequest,
-        completion: @escaping ([UserData]) -> Void
-    ) {
-        userService.findAllUser(request: request, completion: completion)
+    public func findAllUser(request: AllUserFindRequest)  -> AnyPublisher<[UserData], Never> {
+        Future { promise in
+            Task {
+                let data = await userService.findAllUser(request: request)
+                promise(.success(data))
+            }
+        }
+        .eraseToAnyPublisher()
     }
     
-    public func findCategoryUser(
-        request: CategoryUserFindRequest,
-        completion: @escaping ([UserData]) -> Void
-    ) {
-        userService.findCategoryUser(request: request, completion: completion)
+    public func findCategoryUser(request: CategoryUserFindRequest) -> AnyPublisher<[UserData], Never> {
+        Future { promise in
+            Task {
+                let data = await userService.findCategoryUser(request: request)
+                promise(.success(data))
+            }
+        }
+        .eraseToAnyPublisher()
     }
     
-    public func getUserDetailData(
-        request: UserDetailRequest,
-        completion: @escaping (UserDetailData) -> Void
-    ) {
-        userService.getUserDetailData(request: request, completion: completion)
+    public func getUserDetailData(request: UserDetailRequest) -> AnyPublisher<UserDetailData?, Never> {
+        Future { promise in
+            Task {
+                let data = await userService.getUserDetailData(request: request)
+                promise(.success(data))
+            }
+        }
+        .eraseToAnyPublisher()
     }
     
-    public func updateUserLikeStatus(
-        request: UserLikeRequest,
-        completion: @escaping (String?) -> Void
-    ) {
-        userService.updateUserLikeStatus(request: request, completion: completion)
+    public func updateUserLikeStatus(request: UserLikeRequest) -> AnyPublisher<String?, Never> {
+        Future { promise in
+            Task {
+                let data = await userService.updateUserLikeStatus(request: request)
+                promise(.success(data))
+            }
+        }
+        .eraseToAnyPublisher()
     }
     
-    public func cancelUserLikeStatus(
-        request: UserLikeRequest,
-        completion: @escaping (String?) -> Void
-    ) {
-        userService.cancelUserLikeStatus(request: request, completion: completion)
+    public func cancelUserLikeStatus(request: UserLikeRequest) -> AnyPublisher<String?, Never> {
+        Future { promise in
+            Task {
+                let data = await userService.cancelUserLikeStatus(request: request)
+                promise(.success(data))
+            }
+        }
+        .eraseToAnyPublisher()
     }
 }

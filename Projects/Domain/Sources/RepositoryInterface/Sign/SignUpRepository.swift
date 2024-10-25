@@ -9,8 +9,5 @@
 import Foundation
 
 public protocol SignUpRepository {
-    func signUp(
-        request: SignUpRequest,
-        completion: @escaping (Result<(HTTPURLResponse, DefaultResponse), Error>) -> Void
-    )
+    func signUp(request: SignUpRequest) async -> Result<(HTTPURLResponse, DefaultResponse), Error> 
 }

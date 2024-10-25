@@ -6,6 +6,7 @@
 //
 
 import Core
+import Combine
 import Common
 import Combine
 import Domain
@@ -23,81 +24,86 @@ public final class PhoneNumberViewModel {
     
     public var temporaryTokenData: (String, String)?
 
-    var state = PassthroughSubject<StateController, Never>()
+    var state = PassthroughSubject<SignStateController, Never>()
+    private var cancellables = Set<AnyCancellable>()
 }
 
 // MARK: - 인증
 extension PhoneNumberViewModel {
-    func requestCode(completion: @escaping () -> Void) {
-        useCase.requestCode(
-            request: VerificationCodeRequest(phoneNumber: self.phoneNumber),
-            completion: completion)
+    func requestCode() {
+        useCase.requestCode(request: VerificationCodeRequest(phoneNumber: self.phoneNumber))
+            .sink { [weak self] _ in
+                self?.state.send(.codeRequested)
+            }
+            .store(in: &cancellables)
     }
     
-    func verificationCode(completion: @escaping (Bool) -> Void) {
-        print("asd\(auth.isSessionActive)")
-        useCase.verificareCode(request: .init(phoneNumber: phoneNumber, verificationCode: verificationCode)) { data in
-            if let _ = data {
-                completion(true)
-            } else {
-                completion(false)
+    func verifyCode() {
+        useCase.verifyCode(request: .init(phoneNumber: phoneNumber, verificationCode: verificationCode))
+            .sink { [weak self] data in
+                guard let self else { return }
+                if let data = data {
+                    switch self.signType {
+                    case .signIn:
+                        self.signIn()
+                    case .signUp:
+                        self.signUp()
+                    }
+                } else {
+                    self.state.send(.verificationFailed)
+                }
             }
-        }
+            .store(in: &cancellables)
     }
 }
 
 // MARK: - 회원가입 및 로그인
 extension PhoneNumberViewModel {
     func changeSignType(signType: SignType) {
-        switch signType {
-        case .signIn:
-            self.signType = .signIn
-        case .signUp:
-            self.signType = .signUp
-        }
+        self.signType = signType
     }
     
-    func setAuth(
-        accessToken: String,
-        refreshToken: String,
-        completion: () -> Void
-    ) {
+    func setAuth(accessToken: String, refreshToken: String) {
         self.auth.setAccessToken(accessToken)
         self.auth.setRefreshToken(refreshToken)
         self.auth.logIn()
-        
-        completion()
     }
     
-    func signIn(completion: @escaping (Bool) -> Void) {
-        useCase.signIn(request: .init(phoneNumber: phoneNumber)) { response in
-            guard let response = response,
-                  let _ = response.1.data,
-                  let accessToken = response.0.value(forHTTPHeaderField: "authorization"),
-                  let refreshToken = response.0.value(forHTTPHeaderField: "refresh")
-            else {
-                completion(false)
-                return
+    func signIn() {
+        useCase.signIn(request: .init(phoneNumber: phoneNumber))
+            .sink { [weak self] response in
+                guard let self = self,
+                      let response = response,
+                      let _ = response.1.data,
+                      let accessToken = response.0.value(forHTTPHeaderField: "authorization"),
+                      let refreshToken = response.0.value(forHTTPHeaderField: "refresh")
+                else {
+                    self?.state.send(.signInFailed)
+                    return
+                }
+                
+                self.setAuth(accessToken: accessToken, refreshToken: refreshToken)
+                self.state.send(.signInSuccess)
             }
-            
-            self.setAuth(accessToken: accessToken, refreshToken: refreshToken) {
-                completion(true)
-            }
-        }
+            .store(in: &cancellables)
     }
     
-    func signUp(completion: @escaping (Bool) -> Void) {
-        useCase.signIn(request: .init(phoneNumber: phoneNumber)) { response in
-            guard let response = response,
-                  let _ = response.1.data,
-                  let accessToken = response.0.value(forHTTPHeaderField: "authorization"),
-                  let refreshToken = response.0.value(forHTTPHeaderField: "refresh")
-            else {
-                completion(true)
-                return
+    func signUp() {
+        useCase.signIn(request: .init(phoneNumber: phoneNumber))
+            .sink { [weak self] response in
+                guard let self = self,
+                      let response = response,
+                      let _ = response.1.data,
+                      let accessToken = response.0.value(forHTTPHeaderField: "authorization"),
+                      let refreshToken = response.0.value(forHTTPHeaderField: "refresh")
+                else {
+                    self?.state.send(.signUpFailed)
+                    return
+                }
+                
+                self.temporaryTokenData = (accessToken, refreshToken)
+                self.state.send(.signUpSuccess)
             }
-            self.temporaryTokenData = (accessToken, refreshToken)
-            completion(false)
-        }
+            .store(in: &cancellables)
     }
 }

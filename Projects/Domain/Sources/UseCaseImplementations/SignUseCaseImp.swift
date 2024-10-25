@@ -5,6 +5,8 @@
 //  Created by 최동호 on 6/28/24.
 //  Copyright © 2024 ATeen. All rights reserved.
 //
+
+import Combine
 import Foundation
 
 public struct SignUseCaseImp: SignUseCase {
@@ -19,45 +21,64 @@ public struct SignUseCaseImp: SignUseCase {
         self.searchService = searchService
     }
     
-    public func signIn(
-        request: LogInRequest,
-        completion: @escaping ((HTTPURLResponse, DefaultResponse)?) -> Void
-    ) {
-        signService.signIn(request: request, completion: completion)
+    public func signIn(request: LogInRequest) -> AnyPublisher<(HTTPURLResponse, DefaultResponse)?, Never> {
+        Future { promise in
+            Task {
+                let response = await signService.signIn(request: request)
+                promise(.success(response))
+            }
+        }
+        .eraseToAnyPublisher()
     }
     
-    public func signUp(
-        request: SignUpRequest,
-        completion: @escaping ((HTTPURLResponse, DefaultResponse)?) -> Void
-    ) {
-        signService.signUp(request: request, completion: completion)
+    public func signUp(request: SignUpRequest) -> AnyPublisher<(HTTPURLResponse, DefaultResponse)?, Never> {
+        Future { promise in
+            Task {
+                let response = await signService.signUp(request: request)
+                promise(.success(response))
+            }
+        }
+        .eraseToAnyPublisher()
     }
     
-    public func requestCode(
-        request: VerificationCodeRequest,
-        completion: @escaping () -> Void
-    ) {
-        signService.requestCode(request: request, completion: completion)
+    public func requestCode(request: VerificationCodeRequest) -> AnyPublisher<Void, Never> {
+        Future { promise in
+            Task {
+                await signService.requestCode(request: request)
+                promise(.success(()))
+            }
+        }
+        .eraseToAnyPublisher()
     }
     
-    public func verificareCode(
-        request: PhoneNumberAuthRequest,
-        completion: @escaping (String?) -> Void
-    ) {
-        signService.verificareCode(request: request, completion: completion)
+    public func verifyCode(request: PhoneNumberAuthRequest) -> AnyPublisher<String?, Never> {
+        Future { promise in
+            Task {
+                let code = await signService.verifyCode(request: request)
+                promise(.success(code))
+            }
+        }
+        .eraseToAnyPublisher()
     }
     
-    public func searchSchool(
-        request: SchoolDataRequest,
-        completion: @escaping ([SchoolData]) -> Void
-    ) {
-        searchService.searchSchool(request: request, completion: completion)
+    public func searchSchool(request: SchoolDataRequest) -> AnyPublisher<[SchoolData], Never> {
+        Future { promise in
+            Task {
+                let schools = await searchService.searchSchool(request: request)
+                promise(.success(schools))
+            }
+        }
+        .eraseToAnyPublisher()
     }
-   
-    public func duplicationCheck(
-        request: DuplicationCheckRequest,
-        completion: @escaping (Bool) -> Void
-    ) {
-        signService.duplicationCheck(request: request, completion: completion)
+    
+    public func duplicationCheck(request: DuplicationCheckRequest) -> AnyPublisher<Bool, Never> {
+        Future { promise in
+            Task {
+                let isDuplicate = await signService.duplicationCheck(request: request)
+                promise(.success(isDuplicate))
+            }
+        }
+        .eraseToAnyPublisher()
     }
 }
+

@@ -9,8 +9,5 @@
 import Foundation
 
 public protocol UserLikeRepository {
-    func updateUserLikeStatus(
-        request: UserLikeRequest,
-        completion: @escaping (Result<DefaultResponse, Error>) -> Void
-    )
+    func updateUserLikeStatus(request: UserLikeRequest) async -> Result<DefaultResponse, Error>
 }

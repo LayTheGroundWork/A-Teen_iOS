@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 55;
+	objectVersion = 56;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -14,6 +14,7 @@
 		280707E54AEFA2A7DA2650EB /* String+Contraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEE98649F065A0BDE45EED71 /* String+Contraints.swift */; };
 		2AB0F9ED51BBDC9373BDDFF2 /* AppLocalized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 170170CE0C43F0B37C75808F /* AppLocalized.swift */; };
 		38B857630AD16B49A6CC6617 /* ReportDialogType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C21B41B9C69E48E9F1B871E /* ReportDialogType.swift */; };
+		419CE7322CCB8B55007B048B /* SignStateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419CE7312CCB8B55007B048B /* SignStateController.swift */; };
 		47D825F5998991D65FC4DCBA /* BadgeType.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB46466ABC3BB239BD262C34 /* BadgeType.swift */; };
 		50A60507DBC78EC7BB8CCCA8 /* CategoryType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7953C495FF4288845D4E69B4 /* CategoryType.swift */; };
 		53BD92714B0C3B78781D3513 /* AlertDialogType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878FDF405C052006C4AA2688 /* AlertDialogType.swift */; };
@@ -59,6 +60,7 @@
 		3354DE7E2B4F1877FECB508B /* Common-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Common-Info.plist"; sourceTree = "<group>"; };
 		3BC18D9E1C9E0C20652BB6DF /* Badge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Badge.swift; sourceTree = "<group>"; };
 		3DA77FB5518DC2177F7CDB4F /* Common.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Common.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		419CE7312CCB8B55007B048B /* SignStateController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignStateController.swift; sourceTree = "<group>"; };
 		636ED55C583CAE77274FECAE /* AVAsset+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AVAsset+Utils.swift"; sourceTree = "<group>"; };
 		6A81A2C9A17ACE100D4CEDE1 /* TabTag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabTag.swift; sourceTree = "<group>"; };
 		6AE1134CEE040274D4E1D68F /* AssetInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetInfo.swift; sourceTree = "<group>"; };
@@ -133,6 +135,15 @@
 			path = Sources;
 			sourceTree = "<group>";
 		};
+		419CE7302CCB8B3A007B048B /* State */ = {
+			isa = PBXGroup;
+			children = (
+				E5A27B319BAA53136B0907C5 /* StateController.swift */,
+				419CE7312CCB8B55007B048B /* SignStateController.swift */,
+			);
+			path = State;
+			sourceTree = "<group>";
+		};
 		46B7570B57064E55A860C478 /* InfoPlists */ = {
 			isa = PBXGroup;
 			children = (
@@ -144,6 +155,7 @@
 		52576A6025EE611E28726323 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				419CE7302CCB8B3A007B048B /* State */,
 				895CEBF9131539C3F94BC451 /* AlbumType.swift */,
 				878FDF405C052006C4AA2688 /* AlertDialogType.swift */,
 				6AE1134CEE040274D4E1D68F /* AssetInfo.swift */,
@@ -154,7 +166,6 @@
 				B7E28589EB048B9F540E6C97 /* MediaType.swift */,
 				6C21B41B9C69E48E9F1B871E /* ReportDialogType.swift */,
 				82D7601C0DA86991BE4509BC /* SignType.swift */,
-				E5A27B319BAA53136B0907C5 /* StateController.swift */,
 				3340828570C9B92AFBFE3309 /* TextFieldRightViewType.swift */,
 			);
 			path = Components;
@@ -297,8 +308,6 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
 				ORGANIZATIONNAME = ATeen;
-				TargetAttributes = {
-				};
 			};
 			buildConfigurationList = 7A960902591CDB4F68854742 /* Build configuration list for PBXProject "Common" */;
 			compatibilityVersion = "Xcode 14.0";
@@ -359,6 +368,7 @@
 				DA0376CBDFA9631AC9159BFD /* BaseViewModel.swift in Sources */,
 				2AB0F9ED51BBDC9373BDDFF2 /* AppLocalized.swift in Sources */,
 				5DECC8AD550D2C24C26DAC57 /* TabTag.swift in Sources */,
+				419CE7322CCB8B55007B048B /* SignStateController.swift in Sources */,
 				0078C7A7E769769FB8DEBDDD /* Reusable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -386,7 +396,10 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				OTHER_LDFLAGS = "$(inherited) -ObjC";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ATeen.ATeen.Common;
 				PRODUCT_NAME = Common;
 				SDKROOT = iphoneos;
@@ -482,7 +495,10 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				OTHER_LDFLAGS = "$(inherited) -ObjC";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ATeen.ATeen.Common;
 				PRODUCT_NAME = Common;
 				SDKROOT = iphoneos;
@@ -490,10 +506,7 @@
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = (
-					"$(inherited)",
-					DEBUG,
-				);
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG";
 				SWIFT_COMPILATION_MODE = singlefile;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;

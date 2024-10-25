@@ -6,6 +6,7 @@
 //
 
 import Core
+import Combine
 import Domain
 import UIKit
 
@@ -16,8 +17,9 @@ public class ProfileDetailViewModel {
     @Injected(UserUseCase.self)
     public var userUseCase: UserUseCase
     
-    public let uniqueId: String
+    var userLoaded = PassthroughSubject<Void, Never>()
     
+    private var cancellables = Set<AnyCancellable>()
     public var todayTeenImages: [UIImage]
     public var user: UserDetailData = .init(
         id: 0,
@@ -32,7 +34,10 @@ public class ProfileDetailViewModel {
         schoolName: "서울고등학교",
         snsPlatform: nil,
         category: "스포츠",
-        questions: [])
+        questions: []
+    )
+    
+    public let uniqueId: String
     
     public init(
         uniqueId: String,
@@ -58,10 +63,32 @@ extension ProfileDetailViewModel {
         return currentYear - birthYear + 1
     }
     
-    func getUserDetailData(completion: @escaping () -> Void) {
-        userUseCase.getUserDetailData(request: .init(uniqueId: uniqueId)) { user in
-            self.user = user
-            completion()
-        }
+    func getUserDetailData() {
+        userUseCase.getUserDetailData(request: .init(uniqueId: uniqueId))
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] userData in
+                if let userData = userData {
+                    self?.user = userData
+                } else {
+                    self?.user = UserDetailData(
+                        id: 0,
+                        profileImages: [],
+                        likeCount: 0,
+                        nickName: "",
+                        uniqueId: "",
+                        mbti: nil,
+                        introduction: nil,
+                        birthDay: "",
+                        location: "",
+                        schoolName: "",
+                        snsPlatform: nil,
+                        category: "",
+                        questions: []
+                    )
+                }
+
+                self?.userLoaded.send()
+            }
+            .store(in: &cancellables)
     }
 }

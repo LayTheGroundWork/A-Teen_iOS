@@ -6,17 +6,11 @@
 //  Copyright © 2024 ATeen. All rights reserved.
 //
 
-import Foundation
+import Combine
 
 public protocol MyPageUseCase {
-    func getMyPageData(
-        request: MyPageRequest,
-        completion: @escaping (MyPageData?) -> Void
-    )
-    
-    func editMyPage(
-        request: MyPageEditRequest,
-        completion: @escaping (String?) -> Void
-    )
+    func getMyPageData(request: MyPageRequest) -> AnyPublisher<MyPageData?, Never>
+    func editMyPage(request: MyPageEditRequest) -> AnyPublisher<String?, Never>
+    func searchSchool(request: SchoolDataRequest) -> AnyPublisher<[SchoolData], Never>
 }
 

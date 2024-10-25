@@ -30,91 +30,58 @@ public struct UserServiceImp: UserService {
         self.userLikeCancelRepository = userLikeCancelRepository
     }
     
-    public func findAllUser(
-        request: AllUserFindRequest,
-        completion: @escaping ([UserData]) -> Void
-    ) {
-        allUserFindRepository.findAllUser(request: request) { result in
-            switch result {
-            case .success(let response):
-                completion(response.data)
-            case .failure(let error):
-                print(error.localizedDescription)
-                completion([])
-            }
+    public func findAllUser(request: AllUserFindRequest) async -> [UserData] {
+        let response = await allUserFindRepository.findAllUser(request: request)
+        
+        switch response {
+        case .success(let response):
+            return response.data
+        case .failure(let failure):
+            return []
         }
     }
     
-    public func findCategoryUser(
-        request: CategoryUserFindRequest,
-        completion: @escaping ([UserData]) -> Void
-    ) {
-        categoryUserFindRepository.findCategoryUser(request: request) { result in
-            switch result {
-            case .success(let response):
-                completion(response.data)
-            case .failure(let error):
-                print(error.localizedDescription)
-                completion([])
-            }
+    public func findCategoryUser(request: CategoryUserFindRequest) async -> [UserData] {
+        let response = await categoryUserFindRepository.findCategoryUser(request: request)
+        
+        switch response {
+        case .success(let response):
+            return response.data
+        case .failure(let failure):
+            return []
         }
     }
     
-    public func getUserDetailData(
-        request: UserDetailRequest,
-        completion: @escaping (UserDetailData) -> Void
-    ) {
-        userDetailRepository.getUserDetailData(request: request) { result in
-            switch result {
-            case .success(let response):
-                completion(response.data)
-            case .failure(let error):
-                print(error.localizedDescription)
-                completion(.init(
-                    id: 0,
-                    profileImages: [],
-                    likeCount: 0,
-                    nickName: "",
-                    uniqueId: "",
-                    mbti: nil,
-                    introduction: nil,
-                    birthDay: "",
-                    location: "",
-                    schoolName: "",
-                    snsPlatform: nil,
-                    category: "",
-                    questions: []))
-            }
+    public func getUserDetailData(request: UserDetailRequest) async -> UserDetailData? {
+        let response = await userDetailRepository.getUserDetailData(request: request)
+        
+        switch response {
+        case .success(let response):
+            return response.data
+        case .failure(let failure):
+            return nil
+        }
+    }
+  
+    public func updateUserLikeStatus(request: UserLikeRequest) async -> String? {
+        let response = await userLikeRepository.updateUserLikeStatus(request: request)
+      
+        switch response {
+        case .success(let response):
+            return response.data
+        case .failure(let failure):
+            return nil
         }
     }
     
-    public func updateUserLikeStatus(
-        request: UserLikeRequest,
-        completion: @escaping (String?) -> Void
-    ) {
-        userLikeRepository.updateUserLikeStatus(request: request) { result in
-            switch result {
-            case .success(let response):
-                completion(response.data)
-            case .failure(let error):
-                print(error.localizedDescription)
-                completion(nil)
-            }
-        }
-    }
-    
-    public func cancelUserLikeStatus(
-        request: UserLikeRequest,
-        completion: @escaping (String?) -> Void
-    ) {
-        userLikeCancelRepository.cancelUserLikeStatus(request: request) { result in
-            switch result {
-            case .success(let response):
-                completion(response.data)
-            case .failure(let error):
-                print(error.localizedDescription)
-                completion(nil)
-            }
+    public func cancelUserLikeStatus(request: UserLikeRequest) async -> String? {
+        let response = await userLikeCancelRepository.cancelUserLikeStatus(request: request)
+        
+        switch response {
+        case .success(let response):
+            return response.data
+        case .failure(let failure):
+            return nil
         }
     }
 }

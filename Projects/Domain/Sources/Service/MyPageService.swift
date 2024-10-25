@@ -9,14 +9,8 @@
 import Foundation
 
 public protocol MyPageService {
-    func getMyPageData(
-        request: MyPageRequest,
-        completion: @escaping (MyPageData?) -> Void
-    )
+    func getMyPageData(request: MyPageRequest) async -> MyPageData?
     
-    func editMyPage(
-        request: MyPageEditRequest,
-        completion: @escaping (String?) -> Void
-    )
+    func editMyPage(request: MyPageEditRequest) async -> String?
 }
 

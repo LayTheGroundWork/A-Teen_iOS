@@ -9,8 +9,5 @@
 import Foundation
 
 public protocol SchoolDataRepository {
-    func searchSchool(
-        request: SchoolDataRequest,
-        completion: @escaping (Result<[SchoolDataResponse], Error>) -> Void
-    )
+    func searchSchool(request: SchoolDataRequest) async -> Result<[SchoolDataResponse], Error>
 }

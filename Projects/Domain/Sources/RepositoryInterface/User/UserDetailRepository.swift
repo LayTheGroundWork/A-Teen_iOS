@@ -9,8 +9,5 @@
 import Foundation
 
 public protocol UserDetailRepository {
-    func getUserDetailData(
-        request: UserDetailRequest,
-        completion: @escaping (Result<UserDetailResponse, Error>) -> Void
-    )
+    func getUserDetailData(request: UserDetailRequest) async -> Result<UserDetailResponse, Error>
 }

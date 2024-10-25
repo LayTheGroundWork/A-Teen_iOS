@@ -19,9 +19,6 @@ public final class EditSchoolViewModel {
     @Injected(MyPageUseCase.self)
     public var myPageUseCase: MyPageUseCase
     
-    @Injected(SearchUseCase.self)
-    public var searchUseCase: SearchUseCase
-    
     var state = PassthroughSubject<StateController, Never>()
     
     var filteredSchools: [SchoolData] = []
@@ -49,7 +46,7 @@ extension EditSchoolViewModel {
     
     func searchSchoolData(completion: @escaping () -> Void) {
         state.send(.loading)
-        searchUseCase.searchSchool(request: SchoolDataRequest(schoolName: searchSchoolText)) { result in
+        myPageUseCase.searchSchool(request: SchoolDataRequest(schoolName: searchSchoolText)) { result in
             switch result {
             case .success(let schoolDataResponses):
                 self.filteredSchools = schoolDataResponses.map {

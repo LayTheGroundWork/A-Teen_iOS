@@ -9,8 +9,5 @@
 import Foundation
 
 public protocol MyPageRepository {
-    func getMyPageData(
-        request: MyPageRequest,
-        completion: @escaping (Result<MyPageResponse, Error>) -> Void
-    )
+    func getMyPageData(request: MyPageRequest) async -> Result<MyPageResponse, Error>
 }
