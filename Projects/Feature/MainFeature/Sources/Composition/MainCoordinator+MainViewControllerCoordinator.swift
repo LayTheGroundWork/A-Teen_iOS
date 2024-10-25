@@ -54,7 +54,7 @@ extension MainCoordinator: MainViewControllerCoordinator {
         delegate?.didSelectAboutATeenCell(tag: tag)
     }
     
-    public func didSelectTournamentImage(collectionView: UICollectionView, indexPath: IndexPath) {
+    public func didSelectTournamentImage(indexPath: IndexPath) {
         print("clickedTournamentImage: \(indexPath.row)")
     }
     

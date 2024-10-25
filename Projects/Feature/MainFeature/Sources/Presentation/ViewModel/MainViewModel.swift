@@ -6,10 +6,15 @@
 //
 
 import Core
+import Combine
 import Common
 import DesignSystem
 import Domain
 import UIKit
+
+enum LoadType {
+    case viewDidLoad, more, normal
+}
 
 class MainViewModel {
     @Injected(Auth.self)
@@ -17,6 +22,10 @@ class MainViewModel {
     
     @Injected(UserUseCase.self)
     public var userUseCase: UserUseCase
+    
+    var mainState = PassthroughSubject<MainStateController, Never>()
+    var loadState = PassthroughSubject<IndicatorStateController, Never>()
+    private var cancellables = Set<AnyCancellable>()
     
     var categoryList: [ProfileCategory] = [
         ProfileCategory(title: "전체", isSelect: true),
@@ -97,84 +106,108 @@ extension MainViewModel {
         clearTeenList()
     }
     
-    func didSelectTodayTeenHeartButton(
-        row: Int,
-        completion: @escaping () -> Void
-    ) {
+    func didSelectTodayTeenHeartButton(row: Int) {
         guard let token = auth.getAccessToken(),
               auth.isSessionActive      //앱 팅겨서 임시로 넣어놓음
         else {
-            completion()
             return
         }
         
         switch teenList[row].likeStatus {
         case true:
-            userUseCase.cancelUserLikeStatus(request: .init(authorization: token, id: teenList[row].id)) { data in
-                if let _ = data {
-                    self.teenList[row].likeStatus.toggle()
-                    completion()
+            userUseCase.cancelUserLikeStatus(request: 
+                    .init(
+                        authorization: token,
+                        id: teenList[row].id)
+            )
+            .sink { [weak self] data in
+                guard let self = self, let _ = data else {
+                    return
                 }
+                self.teenList[row].likeStatus.toggle()
+                self.mainState.send(.changeHeartState)
             }
+            .store(in: &cancellables)
+            
         case false:
-            userUseCase.updateUserLikeStatus(request: .init(authorization: token, id: teenList[row].id)) { data in
-                if let _ = data {
-                    self.teenList[row].likeStatus.toggle()
-                    completion()
+            userUseCase.updateUserLikeStatus(request:
+                    .init(
+                        authorization: token,
+                        id: teenList[row].id)
+            )
+            .sink { [weak self] data in
+                guard let self = self, let _ = data else {
+                    return
                 }
+                self.teenList[row].likeStatus.toggle()
+                self.mainState.send(.changeHeartState)
             }
+            .store(in: &cancellables)
         }
     }
     
     // 전체 유저 리스트
-    func findAllUser(completion: @escaping () -> Void) {
+    func findAllUser(_ type: LoadType) {
         guard let token = auth.getAccessToken(),
               auth.isSessionActive      //로그인 상태 확인(토큰이 유효기한이 있어서 나중에 유효성 검사로 바꿀 예정)
         else {
-            loadAllUserList(authorization: nil, completion: completion)
+            loadAllUserList(type, authorization: nil)
             return
         }
-        loadAllUserList(authorization: token, completion: completion)
+        loadAllUserList(type, authorization: token)
     }
     
     func loadAllUserList(
-        authorization: String?,
-        completion: @escaping () -> Void
+        _ type: LoadType,
+        authorization: String?
     ) {
         userUseCase.findAllUser(
             request: .init(
                 authorization: authorization,
                 page: currentPage,
                 size: 10)
-        ) { teenList in
-            self.teenList.append(contentsOf: teenList)
+        )
+        .receive(on: type == .more ? DispatchQueue.global() : DispatchQueue.main)
+        .sink { [weak self] data in
+            guard let self else { return }
+            self.teenList.append(contentsOf: data)
             self.currentPage += 1
             self.currentSize += 10
-            completion()
+            
+            switch type {
+            case .viewDidLoad:
+                self.mainState.send(.viewDidLoad)
+            case .normal:
+                self.mainState.send(.getUserDataSuccess)
+            case .more:
+                sleep(2)
+                self.loadState.send(.success)
+            }
         }
+        .store(in: &cancellables)
     }
     
     // 카테고리 별 유저 리스트
-    func findCategoryUser(row: Int, completion: @escaping () -> Void) {
+    func findCategoryUser(_ type: LoadType, row: Int) {
         guard let token = auth.getAccessToken(),
               auth.isSessionActive      //로그인 상태 확인(토큰이 유효기한이 있어서 나중에 유효성 검사로 바꿀 예정)
         else {
             loadCategoryUserList(
+                type,
                 authorization: nil,
-                category: categoryList[row].title,
-                completion: completion)
+                category: categoryList[row].title)
             return
         }
         loadCategoryUserList(
+            type,
             authorization: token,
-            category: categoryList[row].title,
-            completion: completion)
+            category: categoryList[row].title)
     }
     
     func loadCategoryUserList(
+        _ type: LoadType,
         authorization: String?,
-        category: String,
-        completion: @escaping () -> Void
+        category: String
     ) {
         userUseCase.findCategoryUser(
             request: .init(
@@ -182,27 +215,40 @@ extension MainViewModel {
                 category: category,
                 page: currentPage,
                 size: 10)
-        ) { teenList in
-            self.teenList.append(contentsOf: teenList)
+        )
+        .receive(on: type == .more ? DispatchQueue.global() : DispatchQueue.main)
+        .sink { [weak self] data in
+            guard let self else { return }
+            self.teenList.append(contentsOf: data)
             self.currentPage += 1
             self.currentSize += 10
-            completion()
+            
+            switch type {
+            case .viewDidLoad:
+                break
+            case .normal:
+                self.mainState.send(.getUserDataSuccess)
+            case .more:
+                sleep(2)
+                self.loadState.send(.success)
+            }
         }
+        .store(in: &cancellables)
     }
     
     // 무한 스크롤
-    func loadMoreData(completion: @escaping () -> Void) {
+    func loadMoreData() {
+        loadState.send(.loading)
         isLoading = true
-        DispatchQueue.global().async {
-            if let index = self.categoryList.firstIndex(where: { $0.isSelect }) {
-                switch index {
-                case 0:
-                    self.findAllUser(completion: completion)
-                case 1, 2, 3, 4, 5, 6:
-                    self.findCategoryUser(row: index, completion: completion)
-                default:
-                    break
-                }
+        if let index = self.categoryList.firstIndex(where: { $0.isSelect }) {
+            switch index {
+            case 0:
+                self.findAllUser(.more)
+                
+            case 1, 2, 3, 4, 5, 6:
+                self.findCategoryUser(.more, row: index)
+            default:
+                break
             }
         }
     }

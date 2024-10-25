@@ -8,6 +8,7 @@
 
 import SnapKit
 
+import Combine
 import Common
 import DesignSystem
 import Domain
@@ -22,6 +23,8 @@ public final class IntroduceViewController: UIViewController {
     // MARK: - Private properties
     private var viewModel: IntroduceViewModel
     private weak var coordinator: IntroduceViewControllerCoordinator?
+    
+    private var cancellables = Set<AnyCancellable>()
     
     private lazy var backButton: UIBarButtonItem = {
         let button = UIBarButtonItem(
@@ -79,6 +82,7 @@ public final class IntroduceViewController: UIViewController {
         super.viewDidLoad()
         configUserInterface()
         configLayout()
+        setupBindings()
     }
     
     public override func viewWillAppear(_ animated: Bool) {
@@ -98,6 +102,16 @@ public final class IntroduceViewController: UIViewController {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    private func setupBindings() {
+        viewModel.state
+             .receive(on: DispatchQueue.main)
+             .sink { [weak self] in
+                 guard let self else { return }
+                 self.coordinator?.didTabBackButton(user: self.viewModel.user)
+             }
+             .store(in: &cancellables)
+     }
     
     // MARK: - Helpers
     private func configUserInterface() {
@@ -172,12 +186,7 @@ public final class IntroduceViewController: UIViewController {
         if nextAndSaveButton.titleLabel?.text == "건너뛰기" {
             changeWriteCell()
         } else {
-            viewModel.saveChangeValue { [weak self] in
-                guard let self = self else { return }
-                DispatchQueue.main.async {
-                    self.coordinator?.didTabBackButton(user: self.viewModel.user)
-                }
-            }
+            viewModel.saveChangeValue()
         }
     }
 }

@@ -16,14 +16,7 @@ public struct SchoolDataDTO: Decodable {
 }
 
 extension SchoolDataDTO {
-    func toDomain() -> [SchoolDataResponse] {
-        var tmp: [SchoolDataResponse] = []
-        data.forEach { schoolData in
-            let name = schoolData.schoolName
-            let address = schoolData.schoolLocation
-            
-            tmp.append(.init(name: name, address: address))
-        }
-        return tmp
+    func toDomain() -> SchoolDataResponse {
+        return .init(data: data)
     }
 }

@@ -12,13 +12,8 @@ import Combine
 import Common
 import UIKit
 
-protocol PhoneNumberCollectionViewCellDelegate: AnyObject {
-    func didSelectCertificateButton()
-}
-
 final class PhoneNumberCollectionViewCell: UICollectionViewCell {
     // MARK: - Private properties
-    private weak var delegate: PhoneNumberCollectionViewCellDelegate?
     private var viewModel: PhoneNumberViewModel?
     
     private var cancellables = Set<AnyCancellable>()
@@ -124,10 +119,8 @@ final class PhoneNumberCollectionViewCell: UICollectionViewCell {
     }
     
     func setProperty(
-        delegate: PhoneNumberCollectionViewCellDelegate,
         viewModel: PhoneNumberViewModel
     ) {
-        self.delegate = delegate
         self.viewModel = viewModel
     }
     
@@ -137,7 +130,8 @@ final class PhoneNumberCollectionViewCell: UICollectionViewCell {
 //            guard let self = self else { return }
 //            self.delegate?.didSelectCertificateButton()
 //        }
-        self.delegate?.didSelectCertificateButton()
+//        self.delegate?.didSelectCertificateButton()
+        viewModel?.sampleRequestCode()
     }
     
     @objc private func didSelectClearTextButton(_ sender: UIButton) {

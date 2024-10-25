@@ -74,7 +74,7 @@ public struct SignServiceImp: SignService {
         case .success(let response):
             return !response.data
         case .failure(_):
-            return false
+            return true
         }
     }
 }

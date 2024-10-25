@@ -8,6 +8,7 @@
 import SnapKit
 
 import Common
+import Combine
 import DesignSystem
 import Domain
 import UIKit
@@ -17,7 +18,7 @@ public protocol MainViewControllerCoordinator: AnyObject {
     func didSelectTodayTeenChattingButton()
     func didSelectMenuButton(popoverPosition: CGRect)
     func didSelectAboutATeenCell(tag: TabTag)
-    func didSelectTournamentImage(collectionView: UICollectionView, indexPath: IndexPath)
+    func didSelectTournamentImage(indexPath: IndexPath)
     func didSelectTournamentMoreButton()
     func didSelectAnotherTeenCell(frame: CGRect, todayTeen: UserData, todayTeenFirstImage: UIImage)
 }
@@ -31,12 +32,13 @@ public final class MainViewController: UIViewController {
     private var viewModel: MainViewModel
     private weak var coordinator: MainViewControllerCoordinator?
     
+    private var cancellables = Set<AnyCancellable>()
+    
     private var startContentOffset: CGFloat = 0.0
     
     private var naviHeightAnchor: Constraint?
     
     private lazy var customNaviView = CustomNaviView()
-    // CustomNaviView(frame: CGRect(x: 0, y: 0, width: ViewValues.width, height: 40))
     
     private lazy var categoryCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -88,18 +90,49 @@ public final class MainViewController: UIViewController {
     
     public override func viewDidLoad() {
         super.viewDidLoad()
-        viewModel.findAllUser { [weak self] in
-            guard let self = self else { return }
-            DispatchQueue.main.async {
-                self.configUserInterface()
-                self.configLayout()
-                
-                NotificationCenter.default.addObserver(self,
-                                                       selector: #selector(self.updateTableView(_:)),
-                                                       name: .completeLogin,
-                                                       object: nil)
-            }
-        }
+        setupBindings()
+        viewModel.findAllUser(.viewDidLoad)
+    }
+    
+    private func setupBindings() {
+        viewModel.mainState
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] state in
+                guard let self = self else { return }
+                switch state {
+                case .viewDidLoad:
+                    self.configUserInterface()
+                    self.configLayout()
+                    
+                    NotificationCenter.default.addObserver(
+                        self,
+                        selector: #selector(self.updateTableView(_:)),
+                        name: .completeLogin,
+                        object: nil)
+                case .changeHeartState:
+                    self.tableView.reloadData()
+                case .getUserDataSuccess:
+                    self.updateUI()
+                }
+            }.store(in: &cancellables)
+        
+        viewModel.loadState
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] state in
+                guard let self else { return }
+                switch state {
+                case .success:
+                    self.activityIndicator.stopAnimating()
+                    self.viewModel.isLoading = false
+                    self.tableView.reloadData()
+                case .loading:
+                    self.activityIndicator.startAnimating()
+                    break
+                case .fail(error: let error):
+                    self.activityIndicator.stopAnimating()
+                    print("무한 스크롤 실패 \(error)")
+                }
+            }.store(in: &cancellables)
     }
     
     // MARK: - Helpers
@@ -183,17 +216,9 @@ public final class MainViewController: UIViewController {
             for (index, category) in viewModel.categoryList.enumerated() {
                 if category.isSelect {
                     if index == 0 {
-                        viewModel.findAllUser { [weak self] in
-                            guard let self = self else { return }
-                            self.updateUI()
-                        }
+                        viewModel.findAllUser(.normal)
                     } else {
-                        viewModel.findCategoryUser(row: index) { [weak self] in
-                            guard let self = self else { return }
-                            DispatchQueue.main.async {
-                                self.updateUI()
-                            }
-                        }
+                        viewModel.findCategoryUser(.normal, row: index)
                     }
                     break
                 }
@@ -245,9 +270,9 @@ extension MainViewController: UITableViewDataSource {
             }
             
             cell.selectionStyle = .none
-            
-            cell.delegate = coordinator
-            cell.viewModel = viewModel
+            cell.setProperties(
+                delegate: self,
+                viewModel: viewModel)
             return cell
             
         case 1:
@@ -260,7 +285,7 @@ extension MainViewController: UITableViewDataSource {
             }
             
             cell.selectionStyle = .none
-            cell.delegate = coordinator
+            cell.setProperties(delegate: self)
             return cell
             
         case 2:
@@ -273,7 +298,7 @@ extension MainViewController: UITableViewDataSource {
             }
             
             cell.selectionStyle = .none
-            cell.delegate = coordinator
+            cell.setProperties(delegate: self)
             return cell
             
         case 3:
@@ -307,11 +332,7 @@ extension MainViewController: UITableViewDataSource {
             
             cell.heartButtonAction = { [weak self] in
                 guard let self = self else { return }
-                self.viewModel.didSelectTodayTeenHeartButton(row: indexPath.row) {
-                    DispatchQueue.main.async {
-                        self.tableView.reloadData()
-                    }
-                }
+                self.viewModel.didSelectTodayTeenHeartButton(row: indexPath.row)
             }
             
             cell.menuButtonAction = { [weak self] in
@@ -398,19 +419,9 @@ extension MainViewController: UITableViewDelegate {
         
         guard indexPath == IndexPath(row: lastRowIndex, section: 4),
               !viewModel.isLoading,
-              viewModel.teenList.count == viewModel.currentSize 
+              viewModel.teenList.count == viewModel.currentSize
         else { return }
-        
-        self.activityIndicator.startAnimating()
-        viewModel.loadMoreData() { [weak self] in
-            guard let self = self else { return }
-            sleep(2)
-            DispatchQueue.main.async {
-                self.activityIndicator.stopAnimating()
-                self.viewModel.isLoading = false
-                self.tableView.reloadData()
-            }
-        }
+        viewModel.loadMoreData()
     }
     
     public func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
@@ -494,17 +505,9 @@ extension MainViewController: UICollectionViewDelegate {
         collectionView.reloadData()
         
         if indexPath.row == 0 {
-            viewModel.findAllUser { [weak self] in
-                guard let self = self else { return }
-                self.updateUI()
-            }
+            viewModel.findAllUser(.normal)
         } else {
-            viewModel.findCategoryUser(row: indexPath.row) { [weak self] in
-                guard let self = self else { return }
-                DispatchQueue.main.async {
-                    self.updateUI()
-                }
-            }
+            viewModel.findCategoryUser(.normal, row: indexPath.row)
         }
     }
 }
@@ -516,5 +519,35 @@ extension MainViewController: MainViewControllerDelegate {
                 cell.startAutoScroll()
             }
         }
+    }
+}
+
+extension MainViewController: TodayTeenTableViewCellDelegate {
+    func didSelectTodayTeenImage(frame: CGRect, todayTeen: UserData, todayTeenFirstImage: UIImage) {
+        coordinator?.didSelectTodayTeenImage(frame: frame, todayTeen: todayTeen, todayTeenFirstImage: todayTeenFirstImage)
+    }
+    
+    func didSelectTodayTeenChattingButton() {
+        coordinator?.didSelectTodayTeenChattingButton()
+    }
+    
+    func didSelectMenuButton(popoverPosition: CGRect) {
+        coordinator?.didSelectMenuButton(popoverPosition: popoverPosition)
+    }
+}
+
+extension MainViewController: AboutATeenTableViewCellDelegate {
+    func didSelectAboutATeenCell(tag: TabTag) {
+        coordinator?.didSelectAboutATeenCell(tag: tag)
+    }
+}
+
+extension MainViewController: TournamentTableViewCellDelegate {
+    func didSelectTournamentImage(indexPath: IndexPath) {
+        coordinator?.didSelectTournamentImage(indexPath: indexPath)
+    }
+    
+    func didSelectTournamentMoreButton() {
+        coordinator?.didSelectTournamentMoreButton()
     }
 }

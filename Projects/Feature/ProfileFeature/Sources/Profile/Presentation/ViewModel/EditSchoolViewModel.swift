@@ -19,7 +19,9 @@ public final class EditSchoolViewModel {
     @Injected(MyPageUseCase.self)
     public var myPageUseCase: MyPageUseCase
     
-    var state = PassthroughSubject<StateController, Never>()
+    var state = PassthroughSubject<Void, Never>()
+    var loadState = PassthroughSubject<IndicatorStateController, Never>()
+    private var cancellables = Set<AnyCancellable>()
     
     var filteredSchools: [SchoolData] = []
     
@@ -44,30 +46,21 @@ extension EditSchoolViewModel {
         return true
     }
     
-    func searchSchoolData(completion: @escaping () -> Void) {
-        state.send(.loading)
-        myPageUseCase.searchSchool(request: SchoolDataRequest(schoolName: searchSchoolText)) { result in
-            switch result {
-            case .success(let schoolDataResponses):
-                self.filteredSchools = schoolDataResponses.map {
-                    .init(
-                        schoolName: $0.name,
-                        schoolLocation: $0.address
-                    )
-                }
-                self.state.send(.success)
+    func searchSchoolData() {
+        loadState.send(.loading)
+        myPageUseCase.searchSchool(request: SchoolDataRequest(schoolName: searchSchoolText))
+            .sink { [weak self] data in
+                guard let self else { return }
+                self.filteredSchools = data
                 
                 if !self.filteredSchools.isEmpty {
-                    completion()
+                    self.loadState.send(.success)
                 }
-                
-            case .failure(let error):
-                self.state.send(.fail(error: error.localizedDescription))
             }
-        }
+            .store(in: &cancellables)
     }
     
-    func saveChangeValue(completion: @escaping() -> Void) {
+    func saveChangeValue() {
         guard let token = auth.getAccessToken() else { return }
         
         myPageUseCase.editMyPage(
@@ -79,12 +72,13 @@ extension EditSchoolViewModel {
                 mbti: user.mbti,
                 introduction: user.introduction,
                 questions: user.questions)
-        ) { data in
-            if let _ = data {
-                self.user.schoolName = self.changeSchool.schoolName
-                self.user.location = self.changeSchool.schoolLocation
-                completion()
-            }
+        )
+        .sink { [weak self] data in
+            guard let self, let _ = data else { return }
+            self.user.schoolName = self.changeSchool.schoolName
+            self.user.location = self.changeSchool.schoolLocation
+            self.state.send()
         }
+        .store(in: &cancellables)
     }
 }

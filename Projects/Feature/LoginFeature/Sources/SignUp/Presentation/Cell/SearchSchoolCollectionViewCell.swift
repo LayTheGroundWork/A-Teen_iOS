@@ -442,11 +442,7 @@ extension SearchSchoolCollectionViewCell: UITextFieldDelegate {
         debouncer?.call { [weak self] in
             guard let self = self else { return }
             if viewModel?.searchSchoolText.count != .zero {
-                viewModel?.searchSchoolData {
-                    DispatchQueue.main.async {
-                        self.tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: false)
-                    }
-                }
+                viewModel?.searchSchoolData()
             } else {
                 closeSearchScoolTableView()
             }

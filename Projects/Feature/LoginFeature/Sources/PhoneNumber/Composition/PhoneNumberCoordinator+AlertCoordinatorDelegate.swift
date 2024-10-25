@@ -38,16 +38,15 @@ extension PhoneNumberCoordinator: AlertCoordinatorDelegate {
                     return
                 }
                 
-                viewModel.setAuth(accessToken: tokenData.0, refreshToken: tokenData.1) {
-                    viewModel.temporaryTokenData = nil
-                    
-                    // 다이얼로그 닫기
-                    closeDialog(childCoordinator: childCoordinator)
-                    // 인증 화면 -> 로그인 : 뒤로가기
-                    navigateToLoginViewController()
-                    // 로그인 시트 닫기
-                    closeLoginSheet()
-                }
+                viewModel.setAuth(accessToken: tokenData.0, refreshToken: tokenData.1)
+                viewModel.temporaryTokenData = nil
+                
+                // 다이얼로그 닫기
+                closeDialog(childCoordinator: childCoordinator)
+                // 인증 화면 -> 로그인 : 뒤로가기
+                navigateToLoginViewController()
+                // 로그인 시트 닫기
+                closeLoginSheet()
             default:
                 break
             }

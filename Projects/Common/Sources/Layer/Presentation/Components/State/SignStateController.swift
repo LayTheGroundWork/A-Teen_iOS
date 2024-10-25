@@ -13,6 +13,6 @@ public enum SignStateController {
     case verificationFailed
     case signInSuccess
     case signInFailed
-    case signUpSuccess
-    case signUpFailed
+    case goToSignUp
+    case existingUser
 }

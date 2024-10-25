@@ -16,15 +16,15 @@ public enum RegistrationStatus {
     case inValidCodeNumber
 }
 
-public protocol CertificationCodeCollectionViewCellDelegate: AnyObject {
-    func didSelectNextButton(registrationStatus: RegistrationStatus)
-}
+//public protocol CertificationCodeCollectionViewCellDelegate: AnyObject {
+//    func didSelectNextButton(registrationStatus: RegistrationStatus)
+//}
 
 public final class CertificationCodeCollectionViewCell: UICollectionViewCell {
     // MARK: - Public properties
     
     // MARK: - Private properties
-    private weak var delegate: CertificationCodeCollectionViewCellDelegate?
+    //private weak var delegate: CertificationCodeCollectionViewCellDelegate?
     private weak var timer: Timer?
     private var totalTime = 180
     private var viewModel: PhoneNumberViewModel?
@@ -178,42 +178,20 @@ public final class CertificationCodeCollectionViewCell: UICollectionViewCell {
     }
     
     func setProperty(
-        delegate: CertificationCodeCollectionViewCellDelegate,
+        //delegate: CertificationCodeCollectionViewCellDelegate,
         viewModel: PhoneNumberViewModel
     ) {
-        self.delegate = delegate
         self.viewModel = viewModel
     }
     
     // MARK: - Actions
     @objc private func didSelectNextButton(_ sender: UIButton) {
         convertVerificationCode()
-        
-        // TODO: - 다음으로 이동할때, 가입된 사용자인지 검증 후 보내주기
-        viewModel?.verificationCode { [weak self] result in
-            guard let self = self else { return }
-            
-            self.delegate?.didSelectNextButton(registrationStatus: .completeValidCode)
-            
-            //TODO: 인증된 번호 있으면 위에 코드 이걸로 바꿔주기
-//            switch result {
-//            case true:
-//                DispatchQueue.main.async {
-//                    self.delegate?.didSelectNextButton(registrationStatus: .completeValidCode)
-//                }
-//            case false:
-//                DispatchQueue.main.async {
-//                    self.delegate?.didSelectNextButton(registrationStatus: .inValidCodeNumber)
-//                }
-//            }
-        }
+        viewModel?.verifyCode()
     }
     
     @objc private func didSelectResendButton(_ sender: UIButton) {
-        viewModel?.requestCode { [weak self] in
-            guard let self = self else { return }
-            self.resetTimer()
-        }
+        viewModel?.requestCode()
     }
     
     @objc private func updateTimer() {

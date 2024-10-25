@@ -65,6 +65,7 @@ public struct SignUseCaseImp: SignUseCase {
         Future { promise in
             Task {
                 let schools = await searchService.searchSchool(request: request)
+                print("여기 \(schools)")
                 promise(.success(schools))
             }
         }

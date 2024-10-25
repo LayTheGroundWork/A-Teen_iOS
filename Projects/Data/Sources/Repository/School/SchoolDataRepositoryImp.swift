@@ -19,13 +19,13 @@ public struct SchoolDataRepositoryImp: SchoolDataRepository {
         self.apiClientService = apiClientService
     }
 
-    public func searchSchool(request: SchoolDataRequest) async -> Result<[SchoolDataResponse], Error> {
+    public func searchSchool(request: SchoolDataRequest) async -> Result<SchoolDataResponse, Error> {
         do {
             let endPoint = SchoolDataEndPoint(request: request)
             guard let urlRequest = endPoint.toURLRequest else {
                 throw ApiError.errorInUrl
             }
-            let response: [SchoolDataResponse] = try await apiClientService.request(request: urlRequest, type: SchoolDataDTO.self).toDomain()
+            let response: SchoolDataResponse = try await apiClientService.request(request: urlRequest, type: SchoolDataDTO.self).toDomain()
             
             return .success(response)
         } catch {

@@ -7,6 +7,7 @@
 //
 
 import Core
+import Combine
 import Common
 import DesignSystem
 import Domain
@@ -19,6 +20,8 @@ public class IntroduceViewModel {
     @Injected(MyPageUseCase.self)
     public var useCase: MyPageUseCase
     
+    var state = PassthroughSubject<Void, Never>()
+    private var cancellables = Set<AnyCancellable>()
     
     let mbtiExplain: [(String, String)] = [
         ("E", "외향형"),
@@ -88,13 +91,14 @@ extension IntroduceViewModel {
         return false
     }
     
-    func saveChangeValue(completion: @escaping() -> Void) {
+    func saveChangeValue() {
         guard let token = auth.getAccessToken() else { return }
         
         if myMbti != changeMbti || myWriting != changeWriting {
             let stringMbti = changeMbti.reduce("", +)
             let resultMbti = stringMbti == "" ? nil : stringMbti
             let resultIntroduce = changeWriting == "" ? nil : changeWriting
+            
             useCase.editMyPage(
                 request: .init(
                     authorization: token,
@@ -106,13 +110,14 @@ extension IntroduceViewModel {
                     mbti: resultMbti,
                     introduction: resultIntroduce,
                     questions: user.questions)
-            ) { data in
-                if let _ = data {
-                    self.user.mbti = resultMbti
-                    self.user.introduction = resultIntroduce
-                    completion()
-                }
+            )
+            .sink { [weak self] data in
+                guard let self, let _ = data else { return }
+                self.user.mbti = resultMbti
+                self.user.introduction = resultIntroduce
+                self.state.send()
             }
+            .store(in: &cancellables)
         }
     }
 }

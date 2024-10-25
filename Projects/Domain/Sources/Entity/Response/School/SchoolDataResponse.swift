@@ -9,15 +9,10 @@
 import Foundation
 
 public struct SchoolDataResponse: Decodable {
-    public let name: String
-    public let address: String
+    public let data: [SchoolData]
     
-    public init(
-        name: String,
-        address: String
-    ) {
-        self.name = name
-        self.address = address
+    public init(data: [SchoolData]) {
+        self.data = data
     }
 }
 

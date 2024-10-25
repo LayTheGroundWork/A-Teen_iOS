@@ -8,6 +8,7 @@
 
 import SnapKit
 
+import Combine
 import Common
 import DesignSystem
 import Domain
@@ -29,6 +30,8 @@ public final class QuestionsViewController: UIViewController {
     // MARK: - Private properties
     private var viewModel: QuestionsViewModel
     private weak var coordinator: QuestionsViewControllerCoordinator?
+    
+    private var cancellables = Set<AnyCancellable>()
     
     var backgroundViewHeightAnchor: Constraint?
     var tableViewHeightAnchor: Constraint?
@@ -124,6 +127,7 @@ public final class QuestionsViewController: UIViewController {
         super.viewDidLoad()
         configUserInterface()
         configLayout()
+        setupBindings()
     }
     
     public override func viewWillAppear(_ animated: Bool) {
@@ -145,6 +149,16 @@ public final class QuestionsViewController: UIViewController {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    private func setupBindings() {
+        viewModel.state
+             .receive(on: DispatchQueue.main)
+             .sink { [weak self] in
+                 guard let self else { return }
+                 self.coordinator?.didTabBackButton(user: self.viewModel.user)
+             }
+             .store(in: &cancellables)
+     }
     
     // MARK: - Helpers
     private func configUserInterface() {
@@ -307,23 +321,7 @@ public final class QuestionsViewController: UIViewController {
     }
     
     @objc private func clickSaveButton(_ sender: UIButton) {
-        viewModel.saveChangeValue { [weak self] success, error in
-            guard let self = self else { return }
-            if success {
-                DispatchQueue.main.async {
-                    self.coordinator?.didTabBackButton(user: self.viewModel.user)
-                }
-            } else {
-                switch error {
-                case .notChange:
-                    print("변경사항 없음")
-                case .textNil:
-                    print("텍스트 없음")
-                case .none:
-                    break
-                }
-            }
-        }
+        viewModel.saveChangeValue()
     }
 }
 

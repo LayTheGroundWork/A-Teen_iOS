@@ -7,6 +7,7 @@
 //
 
 import Core
+import Combine
 import Common
 import Domain
 import DesignSystem
@@ -18,6 +19,9 @@ public class ProfileViewModel {
     
     @Injected(MyPageUseCase.self)
     public var useCase: MyPageUseCase
+    
+    var state = PassthroughSubject<ProfileStateController, Never>()
+    private var cancellables = Set<AnyCancellable>()
     
     var user: MyPageData = .init(
         id: 0,
@@ -73,17 +77,17 @@ extension ProfileViewModel {
 
 // MARK: - Link
 extension ProfileViewModel {
-    func getMyPageData(completion: @escaping (Bool) -> Void) {
+    func getMyPageData() {
         guard let token = auth.getAccessToken() else { return }
-        useCase.getMyPageData(request: .init(authorization: token)) { data in
-            if let data = data {
+        
+        useCase.getMyPageData(request: .init(authorization: token))
+            .sink { [weak self] data in
+                guard let self, let data = data else { return }
                 self.user = data
                 self.filteringLinks()
-                completion(true)
-            } else {
-                completion(false)
+                self.state.send(.getMyPageDataSuccess)
             }
-        }
+            .store(in: &cancellables)
     }
     
     func changeArrayFromSnsData() {
@@ -114,7 +118,7 @@ extension ProfileViewModel {
         }
     }
     
-    func saveUserLinks(completion: @escaping () -> Void) {
+    func saveUserLinks() {
         // TODO: 서버 저장 로직
         guard let token = auth.getAccessToken() else { return }
         
@@ -127,7 +131,7 @@ extension ProfileViewModel {
                 tiktok: self.changeLinks[2],
                 youtube: self.changeLinks[3])
         }
-
+        
         useCase.editMyPage(
             request: .init(
                 authorization: token,
@@ -139,12 +143,13 @@ extension ProfileViewModel {
                 mbti: user.mbti,
                 introduction: user.introduction,
                 questions: user.questions)
-        ) { data in
-            if let _ = data {
-                self.user.snsPlatform = snsLink
-                self.filteringLinks()
-                completion()
-            }
+        )
+        .sink { [weak self] data in
+            guard let self, let _ = data else { return }
+            self.user.snsPlatform = snsLink
+            self.filteringLinks()
+            self.state.send(.saveDataSuccess)
         }
+        .store(in: &cancellables)
     }
 }

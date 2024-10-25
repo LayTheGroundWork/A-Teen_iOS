@@ -23,10 +23,9 @@ public struct SearchSchoolServiceImp: SearchSchoolService {
         
         switch response {
         case .success(let response):
-            return response.map {
-                SchoolData(schoolName: $0.name, schoolLocation: $0.address)
-            }
-        case .failure(let failure):
+            print(response.data)
+            return response.data
+        case .failure(_):
             return []
         }
     }

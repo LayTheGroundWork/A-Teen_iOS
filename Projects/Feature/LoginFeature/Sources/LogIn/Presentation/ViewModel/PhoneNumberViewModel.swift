@@ -30,6 +30,10 @@ public final class PhoneNumberViewModel {
 
 // MARK: - 인증
 extension PhoneNumberViewModel {
+    func sampleRequestCode() {
+        self.state.send(.codeRequested)
+    }
+    
     func requestCode() {
         useCase.requestCode(request: VerificationCodeRequest(phoneNumber: self.phoneNumber))
             .sink { [weak self] _ in
@@ -42,7 +46,7 @@ extension PhoneNumberViewModel {
         useCase.verifyCode(request: .init(phoneNumber: phoneNumber, verificationCode: verificationCode))
             .sink { [weak self] data in
                 guard let self else { return }
-                if let data = data {
+                if let _ = data {
                     switch self.signType {
                     case .signIn:
                         self.signIn()
@@ -50,7 +54,13 @@ extension PhoneNumberViewModel {
                         self.signUp()
                     }
                 } else {
-                    self.state.send(.verificationFailed)
+                    //self.state.send(.verificationFailed)
+                    switch self.signType {
+                    case .signIn:
+                        self.signIn()
+                    case .signUp:
+                        self.signUp()
+                    }
                 }
             }
             .store(in: &cancellables)
@@ -97,12 +107,11 @@ extension PhoneNumberViewModel {
                       let accessToken = response.0.value(forHTTPHeaderField: "authorization"),
                       let refreshToken = response.0.value(forHTTPHeaderField: "refresh")
                 else {
-                    self?.state.send(.signUpFailed)
+                    self?.state.send(.goToSignUp)
                     return
                 }
-                
                 self.temporaryTokenData = (accessToken, refreshToken)
-                self.state.send(.signUpSuccess)
+                self.state.send(.existingUser)
             }
             .store(in: &cancellables)
     }

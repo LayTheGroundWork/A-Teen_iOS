@@ -7,6 +7,7 @@
 //
 
 import Core
+import Combine
 import Common
 import Domain
 import Foundation
@@ -17,6 +18,9 @@ public class EditUserNameViewModel {
     
     @Injected(MyPageUseCase.self)
     public var useCase: MyPageUseCase
+    
+    var state = PassthroughSubject<Void, Never>()
+    private var cancellables = Set<AnyCancellable>()
     
     var user: MyPageData
     var changeUserName: String
@@ -67,7 +71,7 @@ extension EditUserNameViewModel {
         return !isCompleteKorean && hasIncompleteKorean
     }
     
-    func saveChangeValue(completion: @escaping() -> Void) {
+    func saveChangeValue() {
         guard let token = auth.getAccessToken() else { return }
         
         useCase.editMyPage(
@@ -81,11 +85,12 @@ extension EditUserNameViewModel {
                 mbti: user.mbti,
                 introduction: user.introduction,
                 questions: user.questions)
-        ) { data in
-            if let _ = data {
-                self.user.nickName = self.changeUserName
-                completion()
-            }
+        )
+        .sink { [weak self] data in
+            guard let self, let _ = data else { return }
+            self.user.nickName = self.changeUserName
+            self.state.send()
         }
+        .store(in: &cancellables)
     }
 }

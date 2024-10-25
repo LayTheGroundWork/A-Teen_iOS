@@ -7,6 +7,7 @@
 
 import SnapKit
 
+import Combine
 import Common
 import DesignSystem
 import Domain
@@ -42,6 +43,7 @@ public final class ProfileViewController: UIViewController {
     var questionTextViewHeightAnchor: Constraint?
     
     private var viewModel: ProfileViewModel
+    private var cancellables = Set<AnyCancellable>()
     private weak var coordinator: ProfileViewControllerCoordinator?
 
     private lazy var scrollView: UIScrollView = {
@@ -346,15 +348,8 @@ public final class ProfileViewController: UIViewController {
     // MARK: - Life Cycle
     public override func viewDidLoad() {
         super.viewDidLoad()
-        viewModel.getMyPageData { [weak self] result in
-            guard let self = self else { return }
-            if result {
-                DispatchQueue.main.async {
-                    self.configUserInterfaceAndLayout()
-                    self.setupActions()
-                }
-            }
-        }
+        setupBindings()
+        viewModel.getMyPageData()
     }
     
     public override func viewWillAppear(_ animated: Bool) {
@@ -379,6 +374,37 @@ public final class ProfileViewController: UIViewController {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    private func setupBindings() {
+        viewModel.state
+             .receive(on: DispatchQueue.main)
+             .sink { [weak self] state in
+                 guard let self else { return }
+                 switch state {
+                 case .getMyPageDataSuccess:
+                     self.configUserInterfaceAndLayout()
+                     self.setupActions()
+                 case .saveDataSuccess:
+                     break
+                 case .updateUI:
+                     self.linkView.subviews.forEach {
+                         $0.removeFromSuperview()
+                         $0.snp.removeConstraints()
+                     }
+                     
+                     [self.linkEmptyTextLabel, self.linkView].forEach {
+                         $0.removeFromSuperview()
+                         $0.snp.removeConstraints()
+                     }
+                     
+                     self.addLinkView(count: self.viewModel.filterLinks.count)
+                     
+                     self.linkView.configUserInterface(linkList: viewModel.filterLinks)
+                     self.changeScrollViewSize()
+                 }
+             }
+             .store(in: &cancellables)
+     }
     
     // MARK: - Helpers
     private func configUserInterfaceAndLayout() {
@@ -590,7 +616,7 @@ public final class ProfileViewController: UIViewController {
             self.view.layoutIfNeeded()
             
             self.linkBackViewHeightAnchor?.update(
-                offset: linkTitleLabel.frame.height + linkView.frame.height + 100)
+                offset: Int(linkTitleLabel.frame.height) + linkHeight + linkPadding + 136)
         }
     }
     
@@ -973,14 +999,14 @@ extension ProfileViewController: ProfileViewControllerDelegate {
             $0.snp.removeConstraints()
         }
         
-        linkEmptyTextLabel.snp.removeConstraints()
-        linkView.snp.removeConstraints()
-        linkEmptyTextLabel.removeFromSuperview()
-        linkView.removeFromSuperview()
-        
-        linkView.configUserInterface(linkList: viewModel.filterLinks)
+        [linkEmptyTextLabel, linkView].forEach {
+            $0.removeFromSuperview()
+            $0.snp.removeConstraints()
+        }
         
         addLinkView(count: viewModel.filterLinks.count)
+        
+        linkView.configUserInterface(linkList: viewModel.filterLinks)
         changeScrollViewSize()
     }
     

@@ -20,7 +20,9 @@ public final class SignUpViewModel {
     @Injected(SignUseCase.self)
     public var signUseCase: SignUseCase
     
-    var state = PassthroughSubject<StateController, Never>()
+    var signUpState = PassthroughSubject<SignUpStateController, Never>()
+    var loadState = PassthroughSubject<IndicatorStateController, Never>()
+    private var cancellables = Set<AnyCancellable>()
     
     // phoneNumber
     public var phoneNumber: String = .empty
@@ -57,22 +59,37 @@ public final class SignUpViewModel {
     private let authService = MyPhotoAuthService()
     
     // MARK: - Helpers
-    public func searchSchoolData(completion: @escaping () -> Void) {
-        state.send(.loading)
-        signUseCase.searchSchool(request: SchoolDataRequest(schoolName: searchSchoolText)) { filteredSchools in
-            self.filteredSchools = filteredSchools
-            self.state.send(.success)
-            completion()
-        }
+    public func searchSchoolData() {
+        loadState.send(.loading)
+        signUseCase.searchSchool(request: SchoolDataRequest(schoolName: searchSchoolText))
+            .sink { [weak self] data in
+                guard let self else { return }
+                self.filteredSchools = data
+                self.loadState.send(.success)
+            }
+            .store(in: &cancellables)
     }
     
-    func duplicationCheck(completion: @escaping (Bool) -> Void) {
-        signUseCase.duplicationCheck(request: .init(uniqueId: userId)) { check in
-            completion(check)
-        }
+    func duplicationCheck() {
+        signUseCase.duplicationCheck(request: .init(uniqueId: userId))
+            .sink { [weak self] data in
+                guard let self else { return }
+                if data {
+                    self.signUpState.send(.notDuplication)
+                } else {
+                    self.signUpState.send(.duplication)
+                }
+            }
+            .store(in: &cancellables)
     }
     
-    func signUp(completion: @escaping (Bool) -> Void) {
+    func setAuth(accessToken: String, refreshToken: String) {
+        self.auth.setAccessToken(accessToken)
+        self.auth.setRefreshToken(refreshToken)
+        self.auth.logIn()
+    }
+    
+    func signUp() {
         signUseCase.signUp(request: .init(
             phoneNumber: phoneNumber,
             userId: userId,
@@ -81,16 +98,23 @@ public final class SignUpViewModel {
             schoolData: schoolData,
             category: category.rawValue,
             tournamentJoin: true)
-        ) { data in
-            if let _ = data {
-//                self.auth.setAccessToken(tokenData.accessToken)
-//                self.auth.setRefreshToken(tokenData.refreshToken)
-//                self.auth.logIn()
-                completion(true)
-            } else {
-                completion(false)
+        )
+        .sink { [weak self] response in
+            guard let self = self,
+                  let response = response,
+                  let _ = response.1.data,
+                  let accessToken = response.0.value(forHTTPHeaderField: "authorization"),
+                  let refreshToken = response.0.value(forHTTPHeaderField: "refresh")
+            else {
+                self?.signUpState.send(.signUpFailed)
+                return
             }
+            
+            self.setAuth(accessToken: accessToken, refreshToken: refreshToken)
+            self.auth.logIn()
+            self.signUpState.send(.signUpSuccess)
         }
+        .store(in: &cancellables)
     }
 }
 

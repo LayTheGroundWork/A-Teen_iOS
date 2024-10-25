@@ -16,11 +16,11 @@ public struct DuplicationCheckEndPoint: EndPoint {
         ""
     }
     
-    public var path: String = "/v1/api/user/duplication-check"
-    
-    public var query: [String : String] {
-        ["uniqueId": request.uniqueId]
+    public var path: String {
+        "/v1/api/user/duplication-check/\(request.uniqueId)"
     }
+    
+    public var query: [String : String] = [:]
     
     public var header: [String : String] {
         [

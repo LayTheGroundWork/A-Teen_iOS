@@ -75,6 +75,7 @@ public final class PhoneNumberViewController: UIViewController {
         super.viewDidLoad()
         configUserInterface()
         configLayout()
+        setupBindings()
     }
     
     public override func viewWillAppear(_ animated: Bool) {
@@ -100,7 +101,15 @@ public final class PhoneNumberViewController: UIViewController {
                 guard let self = self else { return }
                 switch state {
                 case .codeRequested:
-                    // Handle code requested state if necessary
+                    currentIndexPath.section += 1
+                    self.collectionView.scrollToItem(
+                        at: self.currentIndexPath,
+                        at: .centeredHorizontally,
+                        animated: true
+                    )
+                    self.view.endEditing(true)
+                    
+                    //리셋 타이머 넣어야됨
                     break
                 case .verificationFailed:
                     self.coordinator?.openInValidCodeNumberDialog()
@@ -108,14 +117,13 @@ public final class PhoneNumberViewController: UIViewController {
                     self.coordinator?.closeSheet()
                 case .signInFailed:
                     self.coordinator?.openNoneExistingUserDialog()
-                case .signUpSuccess:
+                case .goToSignUp:
                     self.coordinator?.openVerificationCompleteDialog()
-                case .signUpFailed:
+                case .existingUser:
                     self.coordinator?.openExistingUserLoginDialog()
                 }
             }
             .store(in: &cancellables)
-        
     }
     
     // MARK: - Helpers
@@ -197,11 +205,7 @@ extension PhoneNumberViewController: UICollectionViewDataSource {
             else {
                 return UICollectionViewCell()
             }
-            
-            cell.setProperty(
-                delegate: self,
-                viewModel: viewModel
-            )
+            cell.setProperty(viewModel: viewModel)
             return cell
         case 1:
             guard
@@ -212,77 +216,10 @@ extension PhoneNumberViewController: UICollectionViewDataSource {
                 return UICollectionViewCell()
             }
             
-            cell.setProperty(
-                delegate: self,
-                viewModel: viewModel
-            )
+            cell.setProperty(viewModel: viewModel)
             return cell
         default:
             return UICollectionViewCell()
         }
-    }
-}
-
-extension PhoneNumberViewController: PhoneNumberCollectionViewCellDelegate {
-    func didSelectCertificateButton() {
-        currentIndexPath.section += 1
-        DispatchQueue.main.async { [weak self] in
-            guard let self = self else { return }
-            self.collectionView.scrollToItem(
-                at: self.currentIndexPath,
-                at: .centeredHorizontally,
-                animated: true
-            )
-            self.view.endEditing(true)
-        }
-    }
-}
-
-extension PhoneNumberViewController: CertificationCodeCollectionViewCellDelegate {
-    public func didSelectNextButton(registrationStatus: RegistrationStatus) {
-        print(viewModel.signType)
-        switch viewModel.signType{
-        case .signIn:
-            switch registrationStatus {
-            case .completeValidCode:
-                self.viewModel.signIn { [weak self] result in
-                    guard let self = self else { return }
-                    switch result {
-                    case true:
-                        DispatchQueue.main.async {
-                            self.coordinator?.closeSheet()
-                        }
-                    case false:
-                        DispatchQueue.main.async {
-                            self.coordinator?.openNoneExistingUserDialog()
-                        }
-                    }
-                }
-            case .inValidCodeNumber:
-                self.coordinator?.openInValidCodeNumberDialog()
-            }
-        case .signUp:
-            switch registrationStatus {
-            case .completeValidCode:
-                self.viewModel.signUp { [weak self] result in
-                    guard let self = self else { return }
-                    switch result {
-                    case true:
-                        //기존 사용자 x
-                        DispatchQueue.main.async {
-                            self.coordinator?.openVerificationCompleteDialog()
-                        }
-                    case false:
-                        //기존 사용자
-                        DispatchQueue.main.async {
-                            self.coordinator?.openExistingUserLoginDialog()
-                        }
-                    }
-                }
-            case .inValidCodeNumber:
-                self.coordinator?.openInValidCodeNumberDialog()
-            }
-        }
-        
     }
 }

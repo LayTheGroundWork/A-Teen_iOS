@@ -26,7 +26,7 @@ protocol SignUpViewControllerDelegate: AnyObject {
 final class SignUpViewController: UIViewController {
     // MARK: - Private properties
     private var currentIndexPath = IndexPath(item: 0, section: 0)
-    private var cancellable = Set<AnyCancellable>()
+    private var cancellables = Set<AnyCancellable>()
     
     private var viewModel: SignUpViewModel
     private weak var coordinator: SignUpViewControllerCoordinator?
@@ -103,7 +103,7 @@ final class SignUpViewController: UIViewController {
         configUserInterface()
         configLayout()
         setupActions()
-        stateController()
+        setupBindings()
     }
     
     // MARK: - Helpers
@@ -146,55 +146,52 @@ final class SignUpViewController: UIViewController {
                              for: .touchUpInside)
     }
     
-    private func stateController() {
-        viewModel
-            .state
+    private func setupBindings() {
+        viewModel.signUpState
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] state in
+                guard let self else { return }
+                switch state {
+                case .notDuplication:
+                    self.changeNextCell()
+                case .duplication:
+                    guard let cell = self.collectionView.cellForItem(at: IndexPath(item: 0, section: 0)) as? UserIdCollectionViewCell else { return }
+                    cell.changeLabelByDuplicationCheck()
+                case .signUpSuccess:
+                    self.coordinator?.didSelectService()
+                case .signUpFailed:
+                    print("회원 가입 실패")
+                }
+            }.store(in: &cancellables)
+        
+        viewModel.loadState
             .receive(on: RunLoop.main)
             .sink { [weak self] state in
+                guard let self else { return }
                 switch state {
                 case .success:
-                    self?.reloadSearchSchoolCollectionViewCell()
+                    self.reloadSearchSchoolCollectionViewCell()
                 case .loading:
-                    self?.showSpinnerSchoolCollectionViewCell()
+                    self.showSpinnerSchoolCollectionViewCell()
                     break
                 case .fail(error: let error):
-                    self?.hideSpinnerSchoolCollectionViewCell()
+                    self.hideSpinnerSchoolCollectionViewCell()
                     print("검색한 학교가 없습니다. \(error)")
                 }
-            }.store(in: &cancellable)
+            }.store(in: &cancellables)
     }
     
     
     // MARK: - Actions
     @objc private func didSelectNextButton(_ sender: UIButton) {
         guard currentIndexPath.section < collectionView.numberOfSections - 1 else {
-            viewModel.signUp { [weak self] result in
-                guard let self = self else { return }
-                switch result {
-                case true:
-                    DispatchQueue.main.async {
-                        self.coordinator?.didSelectService()
-                    }
-                case false:
-                    print("회원가입 실패")
-                }
-            }
+            viewModel.signUp()
             return
         }
         
         switch currentIndexPath.section {
         case 0:
-            viewModel.duplicationCheck { [weak self] check in
-                guard let self = self else { return }
-                DispatchQueue.main.async {
-                    if check {
-                        self.changeNextCell()
-                    } else {
-                        guard let cell = self.collectionView.cellForItem(at: IndexPath(item: 0, section: 0)) as? UserIdCollectionViewCell else { return }
-                        cell.changeLabelByDuplicationCheck()
-                    }
-                }
-            }
+            viewModel.duplicationCheck()
         case 1, 2, 3, 4, 5:
             changeNextCell()
             

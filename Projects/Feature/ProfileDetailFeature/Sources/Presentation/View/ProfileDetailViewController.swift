@@ -22,6 +22,7 @@ public class ProfileDetailViewController: UIViewController {
     
     private var viewModel: ProfileDetailViewModel
     private weak var coordinator: ProfileDetailViewControllerCoordinator?
+    
     private var cancellables = Set<AnyCancellable>()
     
     var frame: CGRect?

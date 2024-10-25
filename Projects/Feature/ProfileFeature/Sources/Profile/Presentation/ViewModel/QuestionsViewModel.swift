@@ -7,12 +7,9 @@
 //
 
 import Core
+import Combine
 import Common
 import Domain
-
-enum SaveError {
-    case notChange, textNil
-}
 
 public class QuestionsViewModel {
     @Injected(Auth.self)
@@ -20,6 +17,9 @@ public class QuestionsViewModel {
     
     @Injected(MyPageUseCase.self)
     public var useCase: MyPageUseCase
+    
+    var state = PassthroughSubject<Void, Never>()
+    private var cancellables = Set<AnyCancellable>()
     
     let sampleQuestionList: [String] = [
         "ONE",
@@ -52,16 +52,12 @@ extension QuestionsViewModel {
         return false
     }
     
-    func saveChangeValue(completion: @escaping(Bool, SaveError?) -> Void) {
+    func saveChangeValue() {
         guard let token = auth.getAccessToken(),
-            user.questions != changeQuestionList else {
-            completion(false, .notChange)
-            return
-        }
+            user.questions != changeQuestionList 
+        else { return }
         
-        if changeQuestionList.contains(where: { $0.answer == "" }) {
-            completion(false, .textNil)
-        } else {
+        if !changeQuestionList.contains(where: { $0.answer == "" }) {
             useCase.editMyPage(
                 request: .init(
                     authorization: token,
@@ -73,12 +69,13 @@ extension QuestionsViewModel {
                     mbti: user.mbti,
                     introduction: user.introduction,
                     questions: changeQuestionList)
-            ) { data in
-                if let _ = data {
-                    self.user.questions = self.changeQuestionList
-                    completion(true, nil)
-                }
+            )
+            .sink { [weak self] data in
+                guard let self, let _ = data else { return }
+                self.user.questions = self.changeQuestionList
+                self.state.send()
             }
+            .store(in: &cancellables)
         }
     }
 }
