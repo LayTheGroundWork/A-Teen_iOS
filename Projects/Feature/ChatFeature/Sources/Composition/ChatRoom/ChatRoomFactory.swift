@@ -22,8 +22,8 @@ public protocol ChatRoomFactory {
     
     func makeOperatingPolicyWebViewCoordinator(
         parentCoordinator: ParentCoordinator,
-        delegate: OperatingPolicyModalCoordinatorDelegate
-    ) -> OperatingPolicyWebViewCoordinator
+        delegate: OperatingPolicyCoordinatorDelegate
+    ) -> OperatingPolicyCoordinator
 }
 
 public struct ChatRoomFactoryImp: ChatRoomFactory {
@@ -72,12 +72,13 @@ public struct ChatRoomFactoryImp: ChatRoomFactory {
     
     public func makeOperatingPolicyWebViewCoordinator(
         parentCoordinator: ParentCoordinator,
-        delegate: OperatingPolicyModalCoordinatorDelegate
-    ) -> OperatingPolicyWebViewCoordinator {
+        delegate: OperatingPolicyCoordinatorDelegate
+    ) -> OperatingPolicyCoordinator {
         let navigationController = UINavigationController()
+        navigationController.modalPresentationStyle = .overFullScreen
         let navigation = NavigationImp(rootViewController: navigationController)
-        let factory = OperatingPolicyWebViewFactoryImp()
-        let coordinator = OperatingPolicyWebViewCoordinator(
+        let factory = OperatingPolicyFactoryImp()
+        let coordinator = OperatingPolicyCoordinator(
             navigation: navigation,
             factory: factory,
             delegate: delegate

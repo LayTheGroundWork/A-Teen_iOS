@@ -215,7 +215,7 @@ extension TournamentViewController: UICollectionViewDataSource {
             cell.setProperties(userName: "김 에스더",
                                school: "서울 중학교",
                                age: 16,
-                               image: DesignSystemAsset.whiteGlass.image)
+                               image: DesignSystemAsset.badge4.image)
             cell.sector = sector
             cell.delegate = coordinator
             return cell

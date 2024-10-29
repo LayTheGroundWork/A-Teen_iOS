@@ -19,19 +19,16 @@ public struct SignOutRepositoryImp: SignOutRepository {
         self.apiClientService = apiClientService
     }
     
-    public func signOut(request: Domain.LogOutRequest, completion: @escaping (Result<Domain.DefaultResponse, Error>) -> Void) {
-        Task {
-            do {
-                let endPoint = LogOutEndPoint(request: request)
-                guard let urlRequest = endPoint.toURLRequest else {
-                    throw ApiError.errorInUrl
-                }
-                let response: DefaultResponse = try await apiClientService.request(request: urlRequest, type: LogOutDTO.self).toDomain()
-                completion(.success(response))
-            } catch {
-                completion(.failure(error))
+    public func signOut(request: LogOutRequest) async -> Result<DefaultResponse, Error> {
+        do {
+            let endPoint = LogOutEndPoint(request: request)
+            guard let urlRequest = endPoint.toURLRequest else {
+                throw ApiError.errorInUrl
             }
+            let response: DefaultResponse = try await apiClientService.request(request: urlRequest, type: LogOutDTO.self).toDomain()
+            return .success(response)
+        } catch {
+            return .failure(error)
         }
     }
-
 }

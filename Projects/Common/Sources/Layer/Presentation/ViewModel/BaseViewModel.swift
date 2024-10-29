@@ -9,7 +9,7 @@
 import Combine
 
 public protocol BaseViewModel {
-    var state: PassthroughSubject<StateController, Never> { get }
+    var state: PassthroughSubject<IndicatorStateController, Never> { get }
     func viewDidLoad()
 }
 

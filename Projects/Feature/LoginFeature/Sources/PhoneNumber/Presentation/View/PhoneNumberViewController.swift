@@ -7,6 +7,7 @@
 
 import SnapKit
 
+import Combine
 import Common
 import DesignSystem
 import UIKit
@@ -27,6 +28,8 @@ public final class PhoneNumberViewController: UIViewController {
     private weak var coordinator: PhoneNumberViewControllerCoordinator?
     private var currentIndexPath = IndexPath(item: 0, section: 0)
     private let viewModel: PhoneNumberViewModel
+    private var cancellables = Set<AnyCancellable>()
+
     // 뒤로 가기 버튼
     private lazy var backButton: UIBarButtonItem = {
         let button = UIBarButtonItem(image: DesignSystemAsset.leftArrowIcon.image,
@@ -72,6 +75,7 @@ public final class PhoneNumberViewController: UIViewController {
         super.viewDidLoad()
         configUserInterface()
         configLayout()
+        setupBindings()
     }
     
     public override func viewWillAppear(_ animated: Bool) {
@@ -88,6 +92,38 @@ public final class PhoneNumberViewController: UIViewController {
             at: .centeredHorizontally,
             animated: false
         )
+    }
+    
+    private func setupBindings() {
+        viewModel.state
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] state in
+                guard let self = self else { return }
+                switch state {
+                case .codeRequested:
+                    currentIndexPath.section += 1
+                    self.collectionView.scrollToItem(
+                        at: self.currentIndexPath,
+                        at: .centeredHorizontally,
+                        animated: true
+                    )
+                    self.view.endEditing(true)
+                    
+                    //리셋 타이머 넣어야됨
+                    break
+                case .verificationFailed:
+                    self.coordinator?.openInValidCodeNumberDialog()
+                case .signInSuccess:
+                    self.coordinator?.closeSheet()
+                case .signInFailed:
+                    self.coordinator?.openNoneExistingUserDialog()
+                case .goToSignUp:
+                    self.coordinator?.openVerificationCompleteDialog()
+                case .existingUser:
+                    self.coordinator?.openExistingUserLoginDialog()
+                }
+            }
+            .store(in: &cancellables)
     }
     
     // MARK: - Helpers
@@ -169,11 +205,7 @@ extension PhoneNumberViewController: UICollectionViewDataSource {
             else {
                 return UICollectionViewCell()
             }
-            
-            cell.setProperty(
-                delegate: self,
-                viewModel: viewModel
-            )
+            cell.setProperty(viewModel: viewModel)
             return cell
         case 1:
             guard
@@ -184,70 +216,10 @@ extension PhoneNumberViewController: UICollectionViewDataSource {
                 return UICollectionViewCell()
             }
             
-            cell.setProperty(
-                delegate: self,
-                viewModel: viewModel
-            )
+            cell.setProperty(viewModel: viewModel)
             return cell
         default:
             return UICollectionViewCell()
         }
-    }
-}
-
-extension PhoneNumberViewController: PhoneNumberCollectionViewCellDelegate {
-
-    func didSelectCertificateButton() {
-        currentIndexPath.section += 1
-        DispatchQueue.main.async { [weak self] in
-            guard let self = self else { return }
-            self.collectionView.scrollToItem(
-                at: self.currentIndexPath,
-                at: .centeredHorizontally,
-                animated: true
-            )
-            self.view.endEditing(true)
-        }
-    }
-}
-
-extension PhoneNumberViewController: CertificationCodeCollectionViewCellDelegate {
-    public func didSelectNextButton(registrationStatus: RegistrationStatus) {
-        switch viewModel.signType{
-        case .signIn:
-            switch registrationStatus {
-            case .signedUp:
-                self.viewModel.signIn { [weak self] result in
-                    guard let self = self else { return }
-                    switch result {
-                    case true:
-                        DispatchQueue.main.async {
-                            self.coordinator?.closeSheet()
-                        }
-                    case false:
-                        DispatchQueue.main.async {
-                            self.coordinator?.closeSheet()
-                        }
-                        print("로그인 실패")
-                    }
-                }
-            case .notSignedUp:
-                self.coordinator?.openNoneExistingUserDialog()
-            case .inValidCodeNumber:
-                self.coordinator?.openInValidCodeNumberDialog()
-            }
-        case .signUp:
-            switch registrationStatus {
-            case .signedUp:
-                self.coordinator?.openExistingUserLoginDialog()
-                
-            case .notSignedUp:
-                self.coordinator?.openVerificationCompleteDialog()
-                
-            case .inValidCodeNumber:
-                self.coordinator?.openInValidCodeNumberDialog()
-            }
-        }
-        
     }
 }

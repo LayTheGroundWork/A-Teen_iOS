@@ -8,8 +8,10 @@
 import SnapKit
 
 import Common
-import FeatureDependency
+import Combine
 import DesignSystem
+import Domain
+import FeatureDependency
 import UIKit
 
 public class ProfileDetailViewController: UIViewController {
@@ -18,35 +20,10 @@ public class ProfileDetailViewController: UIViewController {
         .init(red: 0, green: 0, blue: 0, alpha: 0)
     ]
     
-    let questionList: [Question] = [
-        .init(
-            title: "Lorem ipsum dolor sit amet?",
-            text: """
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            """),
-        .init(
-            title: "Lorem ipsum dolor sit amet?",
-            text: """
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            """),
-        .init(
-            title: "Lorem ipsum dolor sit amet, Lorem ipsum dolor sit amet?",
-            text: """
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            """),
-    ]
-    
     private var viewModel: ProfileDetailViewModel
     private weak var coordinator: ProfileDetailViewControllerCoordinator?
     
-    var todayTeen: TodayTeen?
+    private var cancellables = Set<AnyCancellable>()
     
     var frame: CGRect?
     var topAnchor: Constraint?
@@ -56,19 +33,18 @@ public class ProfileDetailViewController: UIViewController {
     
     var backgroundViewHeightAnchor: Constraint?
     var informationViewHeightAnchor: Constraint?
+    var introduceViewHeightAnchor: Constraint?
     var questionViewHeightAnchor: Constraint?
     var questionTextViewHeightAnchor: Constraint?
     
     public init(
         viewModel: ProfileDetailViewModel,
         coordinator: ProfileDetailViewControllerCoordinator,
-        frame: CGRect,
-        todayTeen: TodayTeen
+        frame: CGRect
     ) {
         self.viewModel = viewModel
         self.coordinator = coordinator
         self.frame = frame
-        self.todayTeen = todayTeen
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -164,11 +140,12 @@ public class ProfileDetailViewController: UIViewController {
     
     lazy var categoryLabel: UILabel = {
         let label = UILabel()
-        //TODO: 카테고리 유저 모델에 있겠지?
-        label.text = "#스포츠"
+        label.text = "#\(viewModel.user.category)"
         label.textColor = UIColor.white
         label.textAlignment = .center
-        label.font = UIFont.customFont(forTextStyle: .footnote, weight: .regular)
+        label.font = UIFont.customFont(forTextStyle: .footnote, weight: .semibold)
+        label.clipsToBounds = true
+        label.backgroundColor = UIColor.black.withAlphaComponent(0.3)
         label.layer.cornerRadius = 10
         label.layer.borderWidth = 1
         label.layer.borderColor = DesignSystemAsset.profileDetailCategoryBorderColor.color.cgColor
@@ -180,7 +157,7 @@ public class ProfileDetailViewController: UIViewController {
             imageName: DesignSystemAsset.heartIcon.name,
             imageColor: .white,
             textColor: .white,
-            labelText: "123",
+            labelText: "\(viewModel.user.likeCount)",
             buttonBackgroundColor: .black,
             labelFont: UIFont.preferredFont(
                 forTextStyle: .footnote),
@@ -196,9 +173,18 @@ public class ProfileDetailViewController: UIViewController {
         return view
     }()
     
+    lazy var idLabel: UILabel = {
+        let label = UILabel()
+        label.text = viewModel.user.uniqueId
+        label.textColor = .black
+        label.textAlignment = .left
+        label.font = UIFont.customFont(forTextStyle: .footnote, weight: .regular)
+        return label
+    }()
+    
     lazy var nameLabel: UILabel = {
         let label = UILabel()
-        label.text = self.todayTeen?.name
+        label.text = viewModel.user.nickName
         label.textColor = .black
         label.textAlignment = .left
         label.font = UIFont.customFont(forTextStyle: .largeTitle, weight: .bold)
@@ -207,14 +193,14 @@ public class ProfileDetailViewController: UIViewController {
     
     lazy var schoolImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(systemName: "graduationcap.fill")
-        imageView.tintColor = DesignSystemAsset.gray01.color
+        imageView.image = DesignSystemAsset.schoolGrayIcon.image
+        imageView.contentMode = .scaleAspectFill
         return imageView
     }()
     
     lazy var schoolLabel: UILabel = {
         let label = UILabel()
-        label.text = "인덕원고등학교, 18세"
+        label.text = "\(viewModel.user.schoolName), \(viewModel.getUserAge())세"
         label.textColor = DesignSystemAsset.gray01.color
         label.textAlignment = .left
         label.font = UIFont.customFont(forTextStyle: .footnote, weight: .regular)
@@ -243,7 +229,13 @@ public class ProfileDetailViewController: UIViewController {
         return button
     }()
     
-    lazy var aboutMeTitleLabel: UILabel = {
+    private lazy var introduceView: UIView = {
+        let view = UIView()
+        view.backgroundColor = UIColor.clear
+        return view
+    }()
+    
+    lazy var introduceTitleLabel: UILabel = {
         let label = UILabel()
         label.text = "자기 소개"
         label.textColor = .black
@@ -252,27 +244,38 @@ public class ProfileDetailViewController: UIViewController {
         return label
     }()
     
-    lazy var mbtiLabel: UILabel = {
+    private lazy var introduceMbtiView: UIView = {
+        let view = UIView()
+        view.backgroundColor = DesignSystemAsset.gray03.color
+        view.clipsToBounds = true
+        view.layer.cornerRadius = 10
+        return view
+    }()
+    
+    private lazy var introduceMbtiLabel: UILabel = {
         let label = UILabel()
-        label.text = "INFP"
+        label.text = viewModel.user.mbti
         label.textColor = DesignSystemAsset.gray02.color
         label.textAlignment = .center
-        label.font = UIFont.customFont(forTextStyle: .footnote, weight: .regular)
-        label.backgroundColor = DesignSystemAsset.grayMbtiCellColor.color
-        label.layer.masksToBounds = true
-        label.layer.cornerRadius = 10
+        label.font = .customFont(forTextStyle: .footnote, weight: .regular)
         return label
     }()
     
-    lazy var aboutMeTextLabel: UILabel = {
+    lazy var introduceTextLabel: UILabel = {
         let label = UILabel()
-        label.text = """
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-        """
+        label.text = viewModel.user.introduction ?? ""
         label.textColor = DesignSystemAsset.gray02.color
         label.textAlignment = .left
         label.numberOfLines = 0
         label.font = UIFont.customFont(forTextStyle: .footnote, weight: .regular)
+        return label
+    }()
+    
+    private lazy var introduceEmptyTextLabel: UILabel = {
+        let label = UILabel()
+        label.text = "등록된 소개글이 없습니다."
+        label.font = .customFont(forTextStyle: .footnote, weight: .regular)
+        label.textColor = DesignSystemAsset.gray02.color
         return label
     }()
     
@@ -286,7 +289,7 @@ public class ProfileDetailViewController: UIViewController {
     
     lazy var questionTitleLabel: UILabel = {
         let label = UILabel()
-        label.text = "10문 10답"
+        label.text = "자문자답"
         label.textColor = UIColor.black
         label.textAlignment = .left
         label.font = UIFont.customFont(forTextStyle: .title3, weight: .bold)
@@ -294,8 +297,16 @@ public class ProfileDetailViewController: UIViewController {
     }()
     
     lazy var questionTextView: CustomQuestionView = {
-        let view = CustomQuestionView(frame: .zero, questionList: self.questionList)
+        let view = CustomQuestionView(frame: .zero, questionList: viewModel.user.questions)
         return view
+    }()
+    
+    private lazy var questionEmptyTextLabel: UILabel = {
+        let label = UILabel()
+        label.text = "등록된 문답이 없습니다."
+        label.font = .customFont(forTextStyle: .footnote, weight: .regular)
+        label.textColor = DesignSystemAsset.gray02.color
+        return label
     }()
     
     lazy var moreBackgroundView: UIView = {
@@ -330,7 +341,8 @@ public class ProfileDetailViewController: UIViewController {
 
     public override func viewDidLoad() {
         super.viewDidLoad()
-        setUI()
+        setupBindings()
+        viewModel.getUserDetailData()
     }
     
     public override func viewWillAppear(_ animated: Bool) {
@@ -344,6 +356,15 @@ public class ProfileDetailViewController: UIViewController {
     public override func viewDidDisappear(_ animated: Bool) {
         navigationController?.navigationBar.isHidden = false
     }
+    
+    private func setupBindings() {
+         viewModel.userLoaded
+             .receive(on: DispatchQueue.main)
+             .sink { [weak self] in
+                 self?.setUI()
+             }
+             .store(in: &cancellables)
+     }
 }
 
 // MARK: Action
@@ -388,14 +409,14 @@ extension ProfileDetailViewController {
         view.addSubview(barView)
         
         scrollView.snp.makeConstraints { make in
-            self.topAnchor = make.top.equalToSuperview().offset(frame.origin.y).constraint
-            self.leadingAnchor = make.leading.equalToSuperview().offset(frame.origin.x).constraint
+            topAnchor = make.top.equalToSuperview().offset(frame.origin.y).constraint
+            leadingAnchor = make.leading.equalToSuperview().offset(frame.origin.x).constraint
             
-            self.widthAnchor = make.width.equalTo(frame.width).constraint
-            self.heightAnchor = make.height.equalTo(frame.height).constraint
+            widthAnchor = make.width.equalTo(frame.width).constraint
+            heightAnchor = make.height.equalTo(frame.height).constraint
         }
         
-        self.barView.snp.makeConstraints { make in
+        barView.snp.makeConstraints { make in
             make.leading.trailing.bottom.equalToSuperview()
             make.height.equalTo(90)
         }
@@ -406,10 +427,10 @@ extension ProfileDetailViewController {
     private func addBackgroundView(frame: CGRect) {
         scrollView.addSubview(backgroundView)
         
-        self.backgroundView.snp.makeConstraints { make in
+        backgroundView.snp.makeConstraints { make in
             make.top.equalToSuperview()
-            make.leading.trailing.equalTo(self.scrollView.frameLayoutGuide)
-            self.backgroundViewHeightAnchor = make.height.equalTo(frame.height).constraint
+            make.leading.trailing.equalTo(scrollView.frameLayoutGuide)
+            backgroundViewHeightAnchor = make.height.equalTo(frame.height).constraint
         }
         
         addBackgroundComponentView()
@@ -419,10 +440,18 @@ extension ProfileDetailViewController {
         backgroundView.addSubview(teenCollectionView)
         backgroundView.addSubview(categoryLabel)
         backgroundView.addSubview(informationView)
-        backgroundView.addSubview(divider)
-        backgroundView.addSubview(questionView)
         backgroundView.addSubview(heartButton)
         backgroundView.addSubview(pageControl)
+        
+        let blurEffect = UIBlurEffect(style: .systemUltraThinMaterial)
+        let blurEffectView = UIVisualEffectView(effect: blurEffect)
+        blurEffectView.frame = self.categoryLabel.frame
+        blurEffectView.alpha = 0.1
+        blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        blurEffectView.layer.cornerRadius = 10
+        blurEffectView.clipsToBounds = true
+        
+        categoryLabel.addSubview(blurEffectView)
         
         teenCollectionView.snp.makeConstraints { make in
             make.leading.trailing.top.equalToSuperview()
@@ -433,73 +462,66 @@ extension ProfileDetailViewController {
             make.top.equalToSuperview().offset(100)
             make.leading.equalToSuperview().offset(16)
             make.width.equalTo(
-                (self.categoryLabel.text! as NSString).size(withAttributes: [NSAttributedString.Key.font: self.categoryLabel.font!]).width + 40)
+                (categoryLabel.text! as NSString).size(withAttributes: [NSAttributedString.Key.font: categoryLabel.font!]).width + 40)
             make.height.equalTo(26)
         }
         
         informationView.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview()
-            make.top.equalTo(self.teenCollectionView.snp.bottom)
-            self.informationViewHeightAnchor = make.height.equalTo(0).constraint
-        }
-        
-        divider.snp.makeConstraints { make in
-            make.leading.trailing.equalToSuperview()
-            make.top.equalTo(self.informationView.snp.bottom)
-        }
-        
-        questionView.snp.makeConstraints { make in
-            make.leading.trailing.equalToSuperview()
-            make.top.equalTo(self.divider.snp.bottom)
-            self.questionViewHeightAnchor = make.height.equalTo(0).constraint
+            make.top.equalTo(teenCollectionView.snp.bottom)
+            informationViewHeightAnchor = make.height.equalTo(0).constraint
         }
         
         heartButton.snp.makeConstraints { make in
-            make.top.equalTo(self.teenCollectionView.snp.bottom).offset(-35)
+            make.top.equalTo(teenCollectionView.snp.bottom).offset(-35)
             make.centerX.equalToSuperview()
             make.width.height.equalTo(70)
         }
         
         pageControl.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
-            make.bottom.equalTo(self.heartButton.snp.top).offset(-14)
+            make.bottom.equalTo(heartButton.snp.top).offset(-14)
             make.height.equalTo(5)
         }
         
-        self.view.layoutIfNeeded()
+        view.layoutIfNeeded()
         
-        self.topGradientLayer.frame = CGRect(
+        topGradientLayer.frame = CGRect(
             x: 0,
             y: 0,
-            width: self.teenCollectionView.frame.width,
-            height: self.teenCollectionView.frame.height/2)
+            width: teenCollectionView.frame.width,
+            height: teenCollectionView.frame.height/2)
         
-        self.bottomGradientLayer.frame = CGRect(
+        bottomGradientLayer.frame = CGRect(
             x: 0,
-            y: self.teenCollectionView.frame.height/2,
-            width: self.teenCollectionView.frame.width,
-            height: self.teenCollectionView.frame.height/2)
+            y: teenCollectionView.frame.height/2,
+            width: teenCollectionView.frame.width,
+            height: teenCollectionView.frame.height/2)
         
-        addInfomationComponentView()
-        addQuestionComponentView()
+        addInfomationComponent()
+        addIntroduceComponent()
+        addQuestionComponent()
     }
     
-    private func addInfomationComponentView() {
+    private func addInfomationComponent() {
+        informationView.addSubview(idLabel)
         informationView.addSubview(nameLabel)
         informationView.addSubview(schoolImageView)
         informationView.addSubview(schoolLabel)
         informationView.addSubview(badgeButton)
         informationView.addSubview(tournamentButton)
-        informationView.addSubview(aboutMeTitleLabel)
-        informationView.addSubview(mbtiLabel)
-        informationView.addSubview(aboutMeTextLabel)
+        
+        idLabel.snp.makeConstraints { make in
+            make.leading.equalToSuperview().offset(ViewValues.defaultPadding)
+            make.top.equalToSuperview().offset(29)
+            make.trailing.equalTo(view.snp.centerX)
+        }
         
         nameLabel.snp.makeConstraints { make in
-            make.leading.equalToSuperview().offset(16)
-            make.top.equalToSuperview().offset(40)
+            make.leading.equalToSuperview().offset(ViewValues.defaultPadding)
+            make.top.equalTo(idLabel.snp.bottom).offset(1)
             make.width.equalTo(
                 (self.nameLabel.text! as NSString).size(withAttributes: [NSAttributedString.Key.font: self.nameLabel.font!]).width + 10)
-            make.height.equalTo(38)
         }
         
         schoolImageView.snp.makeConstraints { make in
@@ -511,8 +533,7 @@ extension ProfileDetailViewController {
         schoolLabel.snp.makeConstraints { make in
             make.trailing.equalToSuperview().offset(-16)
             make.leading.equalTo(self.schoolImageView.snp.trailing).offset(2)
-            make.bottom.equalTo(self.nameLabel.snp.bottom)
-            make.height.equalTo(24)
+            make.centerY.equalTo(self.schoolImageView).offset(2)
         }
         
         badgeButton.snp.makeConstraints { make in
@@ -529,76 +550,165 @@ extension ProfileDetailViewController {
             make.height.equalTo(97)
         }
         
-        aboutMeTitleLabel.snp.makeConstraints { make in
-            make.leading.equalToSuperview().offset(16)
-            make.trailing.equalToSuperview().offset(-16)
-            make.top.equalTo(self.badgeButton.snp.bottom).offset(40)
-            make.height.equalTo(24)
-        }
+        view.layoutIfNeeded()
         
-        mbtiLabel.snp.makeConstraints { make in
-            make.leading.equalToSuperview().offset(16)
-            make.top.equalTo(self.aboutMeTitleLabel.snp.bottom).offset(7)
-            make.width.equalTo(74)
-            make.height.equalTo(26)
-        }
-        
-        aboutMeTextLabel.snp.makeConstraints { make in
-            make.leading.equalToSuperview().offset(16)
-            make.trailing.equalToSuperview().offset(-16)
-            make.top.equalTo(self.mbtiLabel.snp.bottom).offset(7)
-            make.height.greaterThanOrEqualTo(
-                (self.nameLabel.text! as NSString).size(withAttributes: [NSAttributedString.Key.font: self.nameLabel.font!]).height)
-        }
-        
-        self.view.layoutIfNeeded()
-        
-        self.informationViewHeightAnchor?.update(
-            offset: nameLabel.frame.height + badgeButton.frame.height + aboutMeTitleLabel.frame.height + mbtiLabel.frame.height + aboutMeTextLabel.frame.height + 159
+        informationViewHeightAnchor?.update(
+            offset: idLabel.frame.height + nameLabel.frame.height + badgeButton.frame.height + 88
         )
     }
     
-    private func addQuestionComponentView() {
-        questionView.addSubview(questionTitleLabel)
-        questionView.addSubview(questionTextView)
+    private func addIntroduceComponent() {
+        backgroundView.addSubview(introduceView)
+        introduceView.addSubview(introduceTitleLabel)
         
-        questionTitleLabel.snp.makeConstraints { make in
-            make.leading.equalToSuperview().offset(16)
-            make.trailing.equalToSuperview().offset(-16)
-            make.top.equalToSuperview().offset(28)
-            make.height.equalTo(24)
+        introduceView.snp.makeConstraints { make in
+            make.top.equalTo(informationView.snp.bottom)
+            make.leading.trailing.equalToSuperview()
+            self.introduceViewHeightAnchor = make.height.equalTo(0).constraint
         }
         
-        self.view.layoutIfNeeded()
+        introduceTitleLabel.snp.makeConstraints { make in
+            make.top.equalToSuperview()
+            make.leading.equalToSuperview().offset(ViewValues.defaultPadding)
+            make.trailing.equalToSuperview().offset(-ViewValues.defaultPadding)
+        }
+        addIntroduceTextView()
+    }
+    
+    private func addIntroduceTextView() {
+        introduceView.addSubview(introduceMbtiView)
         
-        let height = questionTextView.oneTitleLabel.frame.height + questionTextView.oneTextLabel.frame.height + questionTextView.twoTitleLabel.frame.height + questionTextView.twoTextLabel.frame.height
+        if viewModel.user.introduction == nil {
+            introduceView.addSubview(introduceEmptyTextLabel)
+        } else {
+            introduceView.addSubview(introduceTextLabel)
+        }
         
-        questionTextView.snp.makeConstraints { make in
-            make.leading.equalToSuperview().offset(16)
-            make.trailing.equalToSuperview().offset(-16)
-            make.top.equalTo(self.questionTitleLabel.snp.bottom).offset(22)
-            if self.questionList.count > 2 {
-                self.questionTextViewHeightAnchor = make.height.equalTo(height + 44).constraint
+        introduceMbtiView.snp.makeConstraints { make in
+            make.top.equalTo(introduceTitleLabel.snp.bottom).offset(ViewValues.defaultPadding)
+            make.leading.equalToSuperview().offset(ViewValues.defaultPadding)
+            make.width.equalTo(74)
+            
+            if viewModel.user.mbti == nil {
+                make.height.equalTo(0)
             } else {
-                if self.questionList.count == 1 {
-                    self.questionTextViewHeightAnchor = make.height.equalTo(height + 37).constraint
-                } else {
-                    self.questionTextViewHeightAnchor = make.height.equalTo(height + 59).constraint
-                }
+                make.height.equalTo(26)
             }
         }
         
-        self.view.layoutIfNeeded()
-        
-        if self.questionList.count > 2 {
-            self.questionViewHeightAnchor?.update(offset: questionTitleLabel.frame.height + questionTextView.frame.height + 210)
+        if viewModel.user.mbti != nil {
+            introduceMbtiView.addSubview(introduceMbtiLabel)
             
-            addMoreBackgroundViewComponentView()
-        } else {
-            self.questionViewHeightAnchor?.update(offset: questionTitleLabel.frame.height + questionTextView.frame.height + 130)
-            
-            animateView()
+            introduceMbtiLabel.snp.makeConstraints { make in
+                make.edges.equalToSuperview()
+            }
         }
+        
+        if viewModel.user.introduction == nil {
+            introduceEmptyTextLabel.snp.makeConstraints { make in
+                make.leading.equalToSuperview().offset(ViewValues.defaultPadding)
+                make.trailing.equalToSuperview().offset(-ViewValues.defaultPadding)
+                
+                if viewModel.user.mbti == nil {
+                    make.top.equalTo(introduceTitleLabel.snp.bottom).offset(ViewValues.defaultPadding)
+                } else {
+                    make.top.equalTo(introduceMbtiView.snp.bottom).offset(10)
+                }
+            }
+            
+            view.layoutIfNeeded()
+            
+            introduceViewHeightAnchor?.update(
+                offset: introduceTitleLabel.frame.height + introduceMbtiView.frame.height + introduceEmptyTextLabel.frame.height + 66)
+        } else {
+            introduceTextLabel.snp.makeConstraints { make in
+                make.leading.equalToSuperview().offset(ViewValues.defaultPadding)
+                make.trailing.equalToSuperview().offset(-ViewValues.defaultPadding)
+                
+                if viewModel.user.mbti == nil {
+                    make.top.equalTo(introduceTitleLabel.snp.bottom).offset(ViewValues.defaultPadding)
+                } else {
+                    make.top.equalTo(introduceMbtiView.snp.bottom).offset(10)
+                }
+            }
+            
+            view.layoutIfNeeded()
+            
+            introduceViewHeightAnchor?.update(
+                offset: introduceTitleLabel.frame.height + introduceMbtiView.frame.height + introduceTextLabel.frame.height + 66)
+        }
+    }
+
+    private func addQuestionComponent() {
+        backgroundView.addSubview(divider)
+        backgroundView.addSubview(questionView)
+        questionView.addSubview(questionTitleLabel)
+        
+        divider.snp.makeConstraints { make in
+            make.top.equalTo(introduceView.snp.bottom)
+            make.leading.trailing.equalToSuperview()
+        }
+        
+        questionView.snp.makeConstraints { make in
+            make.top.equalTo(divider.snp.bottom)
+            make.leading.trailing.equalToSuperview()
+            self.questionViewHeightAnchor = make.height.equalTo(0).constraint
+        }
+        
+        questionTitleLabel.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(39)
+            make.leading.equalToSuperview().offset(ViewValues.defaultPadding)
+            make.trailing.equalToSuperview().offset(-ViewValues.defaultPadding)
+        }
+        addQuestionTextView()
+    }
+    
+    private func addQuestionTextView() {
+        if viewModel.user.questions.isEmpty {
+            questionView.addSubview(questionEmptyTextLabel)
+            
+            questionEmptyTextLabel.snp.makeConstraints { make in
+                make.top.equalTo(questionTitleLabel.snp.bottom).offset(10)
+                make.leading.equalToSuperview().offset(ViewValues.defaultPadding)
+                make.trailing.equalToSuperview().offset(-ViewValues.defaultPadding)
+            }
+            
+            self.view.layoutIfNeeded()
+            
+            self.questionViewHeightAnchor?.update(offset: questionTitleLabel.frame.height + questionEmptyTextLabel.frame.height + 129)
+        } else {
+            questionView.addSubview(questionTextView)
+            
+            self.view.layoutIfNeeded()
+            
+            let height = Int(questionTextView.oneTitleLabel.frame.height + questionTextView.oneTextLabel.frame.height) * min(2, viewModel.user.questions.count)
+            
+            questionTextView.snp.makeConstraints { make in
+                make.leading.equalToSuperview().offset(ViewValues.defaultPadding)
+                make.trailing.equalToSuperview().offset(-ViewValues.defaultPadding)
+                make.top.equalTo(self.questionTitleLabel.snp.bottom).offset(22)
+                if self.viewModel.user.questions.count > 2 {
+                    self.questionTextViewHeightAnchor = make.height.equalTo(height + 44).constraint
+                } else {
+                    if self.viewModel.user.questions.count == 1 {
+                        self.questionTextViewHeightAnchor = make.height.equalTo(height + 37).constraint
+                    } else {
+                        self.questionTextViewHeightAnchor = make.height.equalTo(height + 59).constraint
+                    }
+                }
+            }
+            
+            self.view.layoutIfNeeded()
+            
+            if viewModel.user.questions.count > 2 {
+                self.questionViewHeightAnchor?.update(offset: questionTitleLabel.frame.height + questionTextView.frame.height + 210)
+                
+                addMoreBackgroundViewComponentView()
+            } else {
+                self.questionViewHeightAnchor?.update(offset: questionTitleLabel.frame.height + questionTextView.frame.height + 130)
+            }
+        }
+        animateView()
     }
     
     private func addMoreBackgroundViewComponentView() {
@@ -627,8 +737,6 @@ extension ProfileDetailViewController {
             make.width.equalTo(65)
             make.height.equalTo(17)
         }
-        
-        animateView()
     }
     
     private func addNaviButton(){
@@ -675,12 +783,13 @@ extension ProfileDetailViewController {
     }
     
     private func addSampleImages() {
-        for _ in 0..<9 {
-            self.todayTeen?.images.append(DesignSystemAsset.blackGlass.image)
+        if viewModel.user.profileImages.count > 1 {
+            for _ in 0..<viewModel.user.profileImages.count - 1 {
+                viewModel.todayTeenImages.append(DesignSystemAsset.badge2.image)
+            }
         }
         
-        guard let imagesCount = self.todayTeen?.images.count else { return }
-        
+        let imagesCount = viewModel.todayTeenImages.count
         pageControl.pages = imagesCount
         
         if imagesCount <= 5 {
@@ -702,10 +811,12 @@ extension ProfileDetailViewController {
             self.leadingAnchor?.update(offset: 0)
             self.widthAnchor?.update(offset: self.view.frame.width)
             self.heightAnchor?.update(offset: self.view.frame.height)
+            self.view.layoutIfNeeded()
             
             self.teenCollectionView.collectionViewLayout = self.setCollectionViewLayout(
                 width: self.view.frame.width,
-                height: self.view.frame.height)
+                height: self.teenCollectionView.frame.height)
+
             
             self.scrollView.layer.cornerRadius = 0
             self.backgroundView.layer.cornerRadius = 0
@@ -725,7 +836,7 @@ extension ProfileDetailViewController {
             
             self.view.layoutIfNeeded()
             
-            self.backgroundViewHeightAnchor?.update(offset: self.teenCollectionView.frame.height + self.informationView.frame.height + self.divider.frame.height + self.questionView.frame.height)
+            self.backgroundViewHeightAnchor?.update(offset: self.teenCollectionView.frame.height + self.informationView.frame.height + self.introduceView.frame.height + self.divider.frame.height + self.questionView.frame.height)
             
             self.view.layoutIfNeeded()
             
@@ -777,7 +888,7 @@ extension ProfileDetailViewController {
                 self.questionViewHeightAnchor?.update(offset: self.questionTitleLabel.frame.height + self.questionTextView.frame.height + 210)
                 
                 self.view.layoutIfNeeded()
-                self.backgroundViewHeightAnchor?.update(offset: self.teenCollectionView.frame.height + self.informationView.frame.height + self.divider.frame.height + self.questionView.frame.height)
+                self.backgroundViewHeightAnchor?.update(offset: self.teenCollectionView.frame.height + self.informationView.frame.height + self.introduceView.frame.height + self.divider.frame.height + self.questionView.frame.height)
                 
                 self.view.layoutIfNeeded()
                 self.scrollView.contentSize = CGSize(width: self.view.frame.width, height: self.backgroundView.frame.height)
@@ -795,7 +906,7 @@ extension ProfileDetailViewController {
                 self.questionViewHeightAnchor?.update(offset: self.questionTitleLabel.frame.height + self.questionTextView.frame.height + 210)
                 
                 self.view.layoutIfNeeded()
-                self.backgroundViewHeightAnchor?.update(offset: self.teenCollectionView.frame.height + self.informationView.frame.height + self.divider.frame.height + self.questionView.frame.height)
+                self.backgroundViewHeightAnchor?.update(offset: self.teenCollectionView.frame.height + self.informationView.frame.height + self.introduceView.frame.height + self.divider.frame.height + self.questionView.frame.height)
                 
                 self.view.layoutIfNeeded()
                 self.scrollView.contentSize = CGSize(width: self.view.frame.width, height: self.backgroundView.frame.height)
@@ -830,17 +941,17 @@ extension ProfileDetailViewController: UICollectionViewDataSource {
         guard
             let cell = collectionView.dequeueReusableCell(
                 withReuseIdentifier: TeenImageCellCollectionViewCell.reuseIdentifier,
-                for: indexPath) as? TeenImageCellCollectionViewCell, let todayTeen = self.todayTeen
+                for: indexPath) as? TeenImageCellCollectionViewCell
         else {
             return UICollectionViewCell()
         }
-        cell.setImage(image: todayTeen.images[indexPath.row])
+        cell.setImage(image: viewModel.todayTeenImages[indexPath.row])
         
         return cell
     }
 
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        self.todayTeen?.images.count ?? 1
+        viewModel.todayTeenImages.count
     }
 }
 

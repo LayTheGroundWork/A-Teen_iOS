@@ -5,33 +5,15 @@
 //  Created by 최동호 on 6/28/24.
 //  Copyright © 2024 ATeen. All rights reserved.
 //
+
+import Combine
 import Foundation
 
 public protocol SignUseCase {
-    func signIn(
-        request: LogInRequest,
-        completion: @escaping (Result<LogInResponse, Error>) -> Void
-    )
-    func signUp(
-        request: SignUpRequest,
-        completion: @escaping (Result<LogInResponse, Error>) -> Void
-    )
-    func requestCode(
-        request: VerificationCodeRequest,
-        completion: @escaping () -> Void
-    )
-    func verificareCode(
-        request: PhoneNumberAuthRequest,
-        completion: @escaping (String?) -> Void
-    )
-    
-    func searchSchool(
-        request: SchoolDataRequest,
-        completion: @escaping ([SchoolData]) -> Void
-    )
-    
-    func duplicationCheck(
-        request: DuplicationCheckRequest,
-        completion: @escaping (Bool) -> Void
-    )
+    func signIn(request: LogInRequest) -> AnyPublisher<(HTTPURLResponse, DefaultResponse)?, Never>
+    func signUp(request: SignUpRequest) -> AnyPublisher<(HTTPURLResponse, DefaultResponse)?, Never>
+    func requestCode(request: VerificationCodeRequest) -> AnyPublisher<Void, Never>
+    func verifyCode(request: PhoneNumberAuthRequest) -> AnyPublisher<String?, Never>
+    func searchSchool(request: SchoolDataRequest) -> AnyPublisher<[SchoolData], Never>
+    func duplicationCheck(request: DuplicationCheckRequest) -> AnyPublisher<Bool, Never>
 }

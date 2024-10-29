@@ -128,10 +128,7 @@ public struct ProfileFactoryImp: ProfileFactory {
         delegate: IntroduceCoordinatorDelegate,
         childCoordinators: [Coordinator]
     ) -> Coordinator {
-        let mbti = viewModel.userMBTI.map { String($0) }
-        let factory = IntroduceFactoryImp(
-            myMbti: mbti,
-            myWriting: viewModel.userIntroduce)
+        let factory = IntroduceFactoryImp(user: viewModel.user)
         let coordinator = IntroduceCoordinator(
             navigation: navigation,
             factory: factory,
@@ -146,7 +143,7 @@ public struct ProfileFactoryImp: ProfileFactory {
         delegate: QuestionsCoordinatorDelegate,
         childCoordinators: [Coordinator]
     ) -> Coordinator {
-        let factory = QuestionsFactoryImp(questionList: viewModel.questionList)
+        let factory = QuestionsFactoryImp(user: viewModel.user)
         let coordinator = QuestionsCoordinator(
             navigation: navigation,
             factory: factory,
@@ -177,7 +174,7 @@ public struct ProfileFactoryImp: ProfileFactory {
         delegate: EditUserNameCoordinatorDelegate,
         childCoordinators: [Coordinator]
     ) -> Coordinator {
-        let factory = EditUserNameFactoryImp(userName: viewModel.userName)
+        let factory = EditUserNameFactoryImp(user: viewModel.user)
         let coordinator = EditUserNameCoordinator(
             navigation: navigation,
             factory: factory,
@@ -192,7 +189,7 @@ public struct ProfileFactoryImp: ProfileFactory {
         delegate: EditSchoolCoordinatorDelegate,
         childCoordinators: [Coordinator]
     ) -> Coordinator {
-        let factory = EditSchoolFactoryImp(schoolData: viewModel.userSchool)
+        let factory = EditSchoolFactoryImp(user: viewModel.user)
         let coordinator = EditSchoolCoordinator(
             navigation: navigation,
             factory: factory,

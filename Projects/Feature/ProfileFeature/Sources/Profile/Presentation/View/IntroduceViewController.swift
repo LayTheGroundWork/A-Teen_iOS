@@ -8,12 +8,14 @@
 
 import SnapKit
 
+import Combine
 import Common
 import DesignSystem
+import Domain
 import UIKit
 
 public protocol IntroduceViewControllerCoordinator: AnyObject {
-    func didTabBackButton()
+    func didTabBackButton(user: MyPageData)
     func configTabbarState(view: ProfileFeatureViewNames)
 }
 
@@ -21,6 +23,8 @@ public final class IntroduceViewController: UIViewController {
     // MARK: - Private properties
     private var viewModel: IntroduceViewModel
     private weak var coordinator: IntroduceViewControllerCoordinator?
+    
+    private var cancellables = Set<AnyCancellable>()
     
     private lazy var backButton: UIBarButtonItem = {
         let button = UIBarButtonItem(
@@ -78,6 +82,7 @@ public final class IntroduceViewController: UIViewController {
         super.viewDidLoad()
         configUserInterface()
         configLayout()
+        setupBindings()
     }
     
     public override func viewWillAppear(_ animated: Bool) {
@@ -97,6 +102,16 @@ public final class IntroduceViewController: UIViewController {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    private func setupBindings() {
+        viewModel.state
+             .receive(on: DispatchQueue.main)
+             .sink { [weak self] in
+                 guard let self else { return }
+                 self.coordinator?.didTabBackButton(user: self.viewModel.user)
+             }
+             .store(in: &cancellables)
+     }
     
     // MARK: - Helpers
     private func configUserInterface() {
@@ -158,7 +173,7 @@ public final class IntroduceViewController: UIViewController {
     // MARK: - Actions
     @objc private func clickBackButton(_ sender: UIBarButtonItem) {
         if nextAndSaveButton.titleLabel?.text == "건너뛰기" {
-            coordinator?.didTabBackButton()
+            coordinator?.didTabBackButton(user: viewModel.user)
         } else {
             guard let cell = collectionView.cellForItem(at: IndexPath(item: 0, section: 1)) as? IntroduceWritingCollectionViewCell else { return }
             cell.writingTextView.endEditing(true)
@@ -171,9 +186,7 @@ public final class IntroduceViewController: UIViewController {
         if nextAndSaveButton.titleLabel?.text == "건너뛰기" {
             changeWriteCell()
         } else {
-            viewModel.saveChangeValue {
-                self.coordinator?.didTabBackButton()
-            }
+            viewModel.saveChangeValue()
         }
     }
 }

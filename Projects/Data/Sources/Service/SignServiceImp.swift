@@ -10,7 +10,6 @@ import Domain
 import Foundation
 
 public struct SignServiceImp: SignService {
-    
     private let signInRepository: SignInRepository
     private let signUpRepository: SignUpRepository
     private let duplicationCheckRepository: DuplictaionCheckRepository
@@ -31,54 +30,51 @@ public struct SignServiceImp: SignService {
         self.verificationCodeRepository = verificationCodeRepository
     }
     
-    public func signIn(
-        request: LogInRequest,
-        completion: @escaping (Result<LogInResponse, Error>) -> Void
-    ) {
-        signInRepository.signIn(request: request, completion: completion)
-    }
-    
-    public func signUp(
-        request: SignUpRequest,
-        completion: @escaping (Result<LogInResponse, Error>) -> Void
-    ) {
-        signUpRepository.signUp(request: request, completion: completion)
-    }
-    
-    public func requestCode(
-        request: VerificationCodeRequest,
-        completion: @escaping () -> Void
-    ) {
-        requestCodeRepository.requestCode(request: request, completion: completion)
-    }
-    
-    public func verificareCode(
-        request: PhoneNumberAuthRequest,
-        completion: @escaping (String?) -> Void
-    ) {
-        verificationCodeRepository.verificareCode(request: request) { result in
-            switch result {
-            case .success(let response):
-                completion(response.data)
-            case .failure(let error):
-                print(error.localizedDescription)
-                completion("")
-            }
+    public func signIn(request: LogInRequest) async -> (HTTPURLResponse, DefaultResponse)? {
+        let response = await signInRepository.signIn(request: request)
+            
+        switch response {
+        case .success(let response):
+            return response
+        case .failure(_):
+            return nil
         }
     }
     
-    public func duplicationCheck(
-        request: DuplicationCheckRequest,
-        completion: @escaping (Bool) -> Void
-    ) {
-        duplicationCheckRepository.duplicationCheck(request: request) { result in
-            switch result {
-            case .success(let response):
-                completion(!response.data)
-            case .failure(let error):
-                print(error.localizedDescription)
-                completion(false)
-            }
+    public func signUp(request: SignUpRequest) async -> (HTTPURLResponse, DefaultResponse)? {
+        let response = await signUpRepository.signUp(request: request)
+        
+        switch response {
+        case .success(let response):
+            return response
+        case .failure(_):
+            return nil
+        }
+    }
+    
+    public func requestCode(request: VerificationCodeRequest) async {
+        await requestCodeRepository.requestCode(request: request)
+    }
+    
+    public func verifyCode(request: PhoneNumberAuthRequest) async -> String? {
+        let response = await verificationCodeRepository.verifyCode(request: request)
+        
+        switch response {
+        case .success(let response):
+            return response.data
+        case .failure(_):
+            return nil
+        }
+    }
+    
+    public func duplicationCheck(request: DuplicationCheckRequest) async -> Bool {
+        let response = await duplicationCheckRepository.duplicationCheck(request: request)
+        
+        switch response {
+        case .success(let response):
+            return !response.data
+        case .failure(_):
+            return true
         }
     }
 }

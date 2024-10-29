@@ -6,6 +6,7 @@
 //  Copyright © 2024 ATeen. All rights reserved.
 //
 
+import Domain
 import UIKit
 
 public protocol EditUserNameFactory {
@@ -13,12 +14,10 @@ public protocol EditUserNameFactory {
 }
 
 public struct EditUserNameFactoryImp: EditUserNameFactory {
-    private(set) var userName: String
+    private(set) var user: MyPageData
     
     public func makeUserNameViewController(coordinator: EditUserNameViewControllerCoordinator) -> UIViewController {
-        let viewModel = EditUserNameViewModel(
-            userName: userName,
-            changeUserName: userName)
+        let viewModel = EditUserNameViewModel(user: user)
         let controller = EditUserNameViewController(
             viewModel: viewModel,
             coordinator: coordinator)

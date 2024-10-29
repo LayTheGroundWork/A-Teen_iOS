@@ -13,22 +13,26 @@ import Domain
 import UIKit
 
 public final class EditSchoolViewModel {
-    @Injected(SignUseCase.self)
-    public var signUseCase: SignUseCase
+    @Injected(Auth.self)
+    public var auth: Auth
     
-    @Injected(SearchUseCase.self)
-    public var searchUseCase: SearchUseCase
+    @Injected(MyPageUseCase.self)
+    public var myPageUseCase: MyPageUseCase
     
-    var state = PassthroughSubject<StateController, Never>()
+    var state = PassthroughSubject<Void, Never>()
+    var loadState = PassthroughSubject<IndicatorStateController, Never>()
+    private var cancellables = Set<AnyCancellable>()
     
     var filteredSchools: [SchoolData] = []
     
+    var user: MyPageData
     var originSchool: SchoolData
     var changeSchool: SchoolData
     var searchSchoolText: String
     
-    public init(originSchool: SchoolData) {
-        self.originSchool = originSchool
+    public init(user: MyPageData) {
+        self.user = user
+        self.originSchool = .init(schoolName: user.schoolName, schoolLocation: user.location)
         self.changeSchool = originSchool
         self.searchSchoolText = originSchool.schoolName
     }
@@ -42,26 +46,39 @@ extension EditSchoolViewModel {
         return true
     }
     
-    func searchSchoolData(completion: @escaping () -> Void) {
-        state.send(.loading)
-        searchUseCase.searchSchool(request: SchoolDataRequest(schoolName: searchSchoolText)) { result in
-            switch result {
-            case .success(let schoolDataResponses):
-                self.filteredSchools = schoolDataResponses.map {
-                    .init(
-                        schoolName: $0.name,
-                        schoolLocation: $0.address
-                    )
-                }
-                self.state.send(.success)
+    func searchSchoolData() {
+        loadState.send(.loading)
+        myPageUseCase.searchSchool(request: SchoolDataRequest(schoolName: searchSchoolText))
+            .sink { [weak self] data in
+                guard let self else { return }
+                self.filteredSchools = data
                 
                 if !self.filteredSchools.isEmpty {
-                    completion()
+                    self.loadState.send(.success)
                 }
-                
-            case .failure(let error):
-                self.state.send(.fail(error: error.localizedDescription))
             }
+            .store(in: &cancellables)
+    }
+    
+    func saveChangeValue() {
+        guard let token = auth.getAccessToken() else { return }
+        
+        myPageUseCase.editMyPage(
+            request: .init(
+                authorization: token,
+                nickName: user.nickName,
+                schoolData: changeSchool,
+                snsPlatform: user.snsPlatform,
+                mbti: user.mbti,
+                introduction: user.introduction,
+                questions: user.questions)
+        )
+        .sink { [weak self] data in
+            guard let self, let _ = data else { return }
+            self.user.schoolName = self.changeSchool.schoolName
+            self.user.location = self.changeSchool.schoolLocation
+            self.state.send()
         }
+        .store(in: &cancellables)
     }
 }

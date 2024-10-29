@@ -13,16 +13,22 @@
 		4A25E8BE1156684357DAC52F /* LogInEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE9987B527C6D0232D055D1 /* LogInEndPoint.swift */; };
 		4E73CAAA79D1BE736AD3B7FA /* VerificationCodeEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BA75336359A120CBA17BA7D /* VerificationCodeEndPoint.swift */; };
 		5CD81B418DCC7667165005CA /* ApiClientServiceImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE374FAFF5AD8033061042B6 /* ApiClientServiceImp.swift */; };
+		6CE3233F63C4B6305D83FC15 /* UserLikeEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CB0049A12EBA4FCD609D5A9 /* UserLikeEndPoint.swift */; };
 		6E603AA8BBD6517702881483 /* Domain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD5312BF635CBE4D99FAE162 /* Domain.framework */; };
 		759753D185FBA434CB7A41B8 /* ApiClientService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17754DA0A8AF217686219AFF /* ApiClientService.swift */; };
 		7A4C181A2942A2CA8F105272 /* PhoneNumberAuthEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226E662994065E6F77D84AA1 /* PhoneNumberAuthEndPoint.swift */; };
+		ACACD3512631434B2DF7844F /* UserDetailEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5F0D8F3733FF1E80D04A98 /* UserDetailEndPoint.swift */; };
+		AD73BA42E8039790C431AA21 /* MyPageEditEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B0CE67A9252733A1EADA6D0 /* MyPageEditEndPoint.swift */; };
 		BF7B74B2497062943DAB0D72 /* EndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39E9564068243164AE0397F4 /* EndPoint.swift */; };
 		C2D528B369D066456ADFD047 /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30B8FE33444F24DC3915A82C /* HTTPMethod.swift */; };
 		C4B30C7C31F170EE6B5031C4 /* SchoolDataEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96A12936168FB570D38EB471 /* SchoolDataEndPoint.swift */; };
 		CD593DB7F1E285C350370335 /* SignUpEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76A9F67BDB9E1485D6AEA416 /* SignUpEndPoint.swift */; };
 		CFF2233929252944D87FFEA8 /* DuplicationCheckEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B6CB251F3D081EC5D9CC015 /* DuplicationCheckEndPoint.swift */; };
+		D740F503237078B97DA47FF8 /* CategoryUserFindEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06488193E372026C49A0017 /* CategoryUserFindEndPoint.swift */; };
 		E26FE6FDA0290C66230ED42E /* MyPageEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2FB368ED67E4FEA290EBCE4 /* MyPageEndPoint.swift */; };
 		E49761BCFD373FD6A8B61A23 /* LogOutEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B3BAB3E928E61A2F4D92A4F /* LogOutEndPoint.swift */; };
+		E5FA1DB4AC5C809C4BB8C351 /* AllUserFindEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078CFF338C0767EDC8EE7F07 /* AllUserFindEndPoint.swift */; };
+		EBB6FD8741D3B4BBF4B009A1 /* UserLikeCancelEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 377923D794C9B5C4B87607EB /* UserLikeCancelEndPoint.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -39,14 +45,18 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		078CFF338C0767EDC8EE7F07 /* AllUserFindEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllUserFindEndPoint.swift; sourceTree = "<group>"; };
 		0EE9987B527C6D0232D055D1 /* LogInEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInEndPoint.swift; sourceTree = "<group>"; };
 		17754DA0A8AF217686219AFF /* ApiClientService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiClientService.swift; sourceTree = "<group>"; };
 		226E662994065E6F77D84AA1 /* PhoneNumberAuthEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberAuthEndPoint.swift; sourceTree = "<group>"; };
 		26DF9FED1221312C46C36A20 /* ApiError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiError.swift; sourceTree = "<group>"; };
 		2BA75336359A120CBA17BA7D /* VerificationCodeEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationCodeEndPoint.swift; sourceTree = "<group>"; };
+		2CB0049A12EBA4FCD609D5A9 /* UserLikeEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLikeEndPoint.swift; sourceTree = "<group>"; };
 		30B8FE33444F24DC3915A82C /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
+		377923D794C9B5C4B87607EB /* UserLikeCancelEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLikeCancelEndPoint.swift; sourceTree = "<group>"; };
 		39E9564068243164AE0397F4 /* EndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPoint.swift; sourceTree = "<group>"; };
 		423A93F1015E6C9CF4DB82B2 /* Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
+		4B0CE67A9252733A1EADA6D0 /* MyPageEditEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageEditEndPoint.swift; sourceTree = "<group>"; };
 		564371F685EE5EF450EB138A /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
 		6B3BAB3E928E61A2F4D92A4F /* LogOutEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogOutEndPoint.swift; sourceTree = "<group>"; };
 		76A9F67BDB9E1485D6AEA416 /* SignUpEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpEndPoint.swift; sourceTree = "<group>"; };
@@ -56,8 +66,10 @@
 		ADC9183B12D666BFB5351F52 /* NetworkService.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = NetworkService.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD5312BF635CBE4D99FAE162 /* Domain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Domain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C463F8FAE8AE26DF76BDB73C /* NetworkService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "NetworkService-Info.plist"; sourceTree = "<group>"; };
+		CE5F0D8F3733FF1E80D04A98 /* UserDetailEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailEndPoint.swift; sourceTree = "<group>"; };
 		D14C05E4D710518F379088FD /* HttpResponseStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpResponseStatus.swift; sourceTree = "<group>"; };
 		DEF134EE57A5BC5E99B5C34C /* ReissueEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReissueEndPoint.swift; sourceTree = "<group>"; };
+		F06488193E372026C49A0017 /* CategoryUserFindEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryUserFindEndPoint.swift; sourceTree = "<group>"; };
 		FE374FAFF5AD8033061042B6 /* ApiClientServiceImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiClientServiceImp.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -100,6 +112,18 @@
 				30B8FE33444F24DC3915A82C /* HTTPMethod.swift */,
 			);
 			path = Sources;
+			sourceTree = "<group>";
+		};
+		6A4817DE7FD56C464535D78D /* User */ = {
+			isa = PBXGroup;
+			children = (
+				078CFF338C0767EDC8EE7F07 /* AllUserFindEndPoint.swift */,
+				F06488193E372026C49A0017 /* CategoryUserFindEndPoint.swift */,
+				CE5F0D8F3733FF1E80D04A98 /* UserDetailEndPoint.swift */,
+				377923D794C9B5C4B87607EB /* UserLikeCancelEndPoint.swift */,
+				2CB0049A12EBA4FCD609D5A9 /* UserLikeEndPoint.swift */,
+			);
+			path = User;
 			sourceTree = "<group>";
 		};
 		6AB8D2B24361D1C2B97C7999 /* Auth */ = {
@@ -145,6 +169,7 @@
 		8EB54BD97336FB78B8157DB8 /* MyPage */ = {
 			isa = PBXGroup;
 			children = (
+				4B0CE67A9252733A1EADA6D0 /* MyPageEditEndPoint.swift */,
 				A2FB368ED67E4FEA290EBCE4 /* MyPageEndPoint.swift */,
 			);
 			path = MyPage;
@@ -189,6 +214,7 @@
 				6AB8D2B24361D1C2B97C7999 /* Auth */,
 				8EB54BD97336FB78B8157DB8 /* MyPage */,
 				AA8EC847DBD5E30D7A139BB0 /* Search */,
+				6A4817DE7FD56C464535D78D /* User */,
 				39E9564068243164AE0397F4 /* EndPoint.swift */,
 			);
 			path = EndPoint;
@@ -286,8 +312,14 @@
 				CD593DB7F1E285C350370335 /* SignUpEndPoint.swift in Sources */,
 				4E73CAAA79D1BE736AD3B7FA /* VerificationCodeEndPoint.swift in Sources */,
 				BF7B74B2497062943DAB0D72 /* EndPoint.swift in Sources */,
+				AD73BA42E8039790C431AA21 /* MyPageEditEndPoint.swift in Sources */,
 				E26FE6FDA0290C66230ED42E /* MyPageEndPoint.swift in Sources */,
 				C4B30C7C31F170EE6B5031C4 /* SchoolDataEndPoint.swift in Sources */,
+				E5FA1DB4AC5C809C4BB8C351 /* AllUserFindEndPoint.swift in Sources */,
+				D740F503237078B97DA47FF8 /* CategoryUserFindEndPoint.swift in Sources */,
+				ACACD3512631434B2DF7844F /* UserDetailEndPoint.swift in Sources */,
+				EBB6FD8741D3B4BBF4B009A1 /* UserLikeCancelEndPoint.swift in Sources */,
+				6CE3233F63C4B6305D83FC15 /* UserLikeEndPoint.swift in Sources */,
 				036B6550D85D013E9E45D716 /* ApiError.swift in Sources */,
 				C2D528B369D066456ADFD047 /* HTTPMethod.swift in Sources */,
 				5CD81B418DCC7667165005CA /* ApiClientServiceImp.swift in Sources */,

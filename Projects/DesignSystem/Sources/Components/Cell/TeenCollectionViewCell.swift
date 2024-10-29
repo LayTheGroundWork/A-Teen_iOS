@@ -9,6 +9,7 @@
 import SnapKit
 
 import Common
+import Domain
 import UIKit
 
 public final class TeenCollectionViewCell: UICollectionViewCell {
@@ -43,7 +44,7 @@ public final class TeenCollectionViewCell: UICollectionViewCell {
         return layer
     }()
     
-    private lazy var titleImageView: UIImageView = {
+    public lazy var titleImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
@@ -128,6 +129,14 @@ public final class TeenCollectionViewCell: UICollectionViewCell {
         
     }
     
+    public override func prepareForReuse() {
+        titleImageView.image = nil
+        schoolLabel.text = ""
+        nameLabel.text = ""
+        idLabel.text = ""
+        heartButton.setImage(DesignSystemAsset.heartIcon.image, for: .normal)
+    }
+    
     // MARK: - Helpers
     private func configUserInterface() {
         contentView.addSubview(titleImageView)
@@ -193,9 +202,42 @@ public final class TeenCollectionViewCell: UICollectionViewCell {
         menuButton.addTarget(self, action: #selector(clickMenuButton(_:)), for: .touchUpInside)
     }
     
-    public func setCell(teen: TodayTeen) {
-        titleImageView.image = teen.images[0]
-        nameLabel.text = teen.name
+    public func setCell(teen: UserData) {
+        if teen.profileImages == nil || teen.profileImages == "thumbnail_testKey" {
+            switch teen.id {
+            case 0:
+                titleImageView.image = DesignSystemAsset.badge1.image
+            case 1:
+                titleImageView.image = DesignSystemAsset.badge8.image
+            case 2:
+                titleImageView.image = DesignSystemAsset.badge7.image
+            case 3:
+                titleImageView.image = DesignSystemAsset.badge4.image
+            case 4:
+                titleImageView.image = DesignSystemAsset.badge5.image
+            case 5:
+                titleImageView.image = DesignSystemAsset.badge3.image
+            case 6:
+                titleImageView.image = DesignSystemAsset.badge9.image
+            case 7:
+                titleImageView.image = DesignSystemAsset.badge6.image
+            case 8:
+                titleImageView.image = DesignSystemAsset.badge10.image
+            default:
+                titleImageView.image = DesignSystemAsset.badge2.image
+            }
+        } else {
+            //TODO: url로 사진 가져오기
+            titleImageView.image = DesignSystemAsset.badge4.image
+        }
+        schoolLabel.text = teen.schoolName
+        nameLabel.text = teen.nickName
+        idLabel.text = teen.uniqueId
+        teen.likeStatus ? heartButton.setImage(DesignSystemAsset.heartFillIcon.image, for: .normal) :  heartButton.setImage(DesignSystemAsset.heartIcon.image, for: .normal)
+    }
+    
+    public func getImage() -> UIImage {
+        titleImageView.image ?? UIImage()
     }
     
     // MARK: - Actions

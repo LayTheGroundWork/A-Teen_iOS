@@ -10,13 +10,10 @@ import Foundation
 
 public struct LogInRequest {
     public let phoneNumber: String
-    public let verificationCode: String
     
     public init(
-        phoneNumber: String,
-        verificationCode: String
+        phoneNumber: String
     ) {
         self.phoneNumber = phoneNumber
-        self.verificationCode = verificationCode
     }
 }

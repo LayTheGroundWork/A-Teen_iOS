@@ -11,14 +11,18 @@ import Foundation
 
 public struct SignUpEndPoint: EndPoint {
     private let request: SignUpRequest
-        
+    
     public var port: String {
         ""
     }
     
     public var path: String = "/v1/api/user/sign-up"
     
-    public var query: [String: String] = [:]
+    public var query: [String: String] {
+        [
+            "profileImageKeys": request.profileImageKeys.joined(separator: ",")
+        ]
+    }
     
     public var header: [String : String] {
         [
@@ -46,5 +50,4 @@ public struct SignUpEndPoint: EndPoint {
     ) {
         self.request = request
     }
-    
 }

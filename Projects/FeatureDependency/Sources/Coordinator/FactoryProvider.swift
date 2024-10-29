@@ -7,13 +7,15 @@
 //
 
 import Common
+import Domain
 import UIKit
 
 public protocol FactoryProvider {
     func makeProfileDetailCoordinator(
         delegate: ProfileDetailCoordinatorDelegate,
         frame: CGRect,
-        todayTeen: TodayTeen
+        todayTeen: UserData,
+        todayTeenFirstImage: UIImage
     ) -> Coordinator
     
     func makeAlbumCoordinator(

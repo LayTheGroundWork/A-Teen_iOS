@@ -8,6 +8,7 @@
 
 import Common
 import DesignSystem
+import Domain
 import FeatureDependency
 import UIKit
 
@@ -18,12 +19,14 @@ extension TeenDetailCoordinator: TeenDetailViewControllerCoordinator {
     
     public func didSelectTeenImage(
         frame: CGRect,
-        teen: TodayTeen
+        teen: UserData,
+        todayTeenFirstImage: UIImage
     ) {
         let profileDetailCoordinator = coordinatorProvider.makeProfileDetailCoordinator(
             delegate: self,
             frame: frame,
-            todayTeen: teen)
+            todayTeen: teen,
+            todayTeenFirstImage: todayTeenFirstImage)
         
         addChildCoordinatorStart(profileDetailCoordinator)
         

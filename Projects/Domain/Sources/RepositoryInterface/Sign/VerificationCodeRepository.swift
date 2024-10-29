@@ -7,9 +7,6 @@
 //
 
 public protocol VerificationCodeRepository {
-    func verificareCode(
-        request: PhoneNumberAuthRequest,
-        completion: @escaping (Result<DefaultResponse, Error>) -> Void
-    )
+    func verifyCode(request: PhoneNumberAuthRequest) async -> Result<DefaultResponse, Error>
 }
 

@@ -85,19 +85,19 @@ public final class RankingResultViewController: UIViewController {
     }()
     
     private lazy var firstBox: UIView = CustomRankingTopView(
-        image: DesignSystemAsset.dressGlass.image,
+        image: DesignSystemAsset.badge8.image,
         rank: .first,
         userName: "XXX",
         proportion: 20.0)
     
     private lazy var secondBox: UIView = CustomRankingTopView(
-        image: DesignSystemAsset.blackGlass.image,
+        image: DesignSystemAsset.badge6.image,
         rank: .second,
         userName: "흐르미",
         proportion: 18.7)
     
     private lazy var thirdBox: UIView = CustomRankingTopView(
-        image: DesignSystemAsset.whiteGlass.image,
+        image: DesignSystemAsset.badge2.image,
         rank: .third,
         userName: "XXX",
         proportion: 12.3)

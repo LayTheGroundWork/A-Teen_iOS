@@ -20,10 +20,9 @@ public final class SignUpViewModel {
     @Injected(SignUseCase.self)
     public var signUseCase: SignUseCase
     
-    @Injected(SearchUseCase.self)
-    public var searchUseCase: SearchUseCase
-    
-    var state = PassthroughSubject<StateController, Never>()
+    var signUpState = PassthroughSubject<SignUpStateController, Never>()
+    var loadState = PassthroughSubject<IndicatorStateController, Never>()
+    private var cancellables = Set<AnyCancellable>()
     
     // phoneNumber
     public var phoneNumber: String = .empty
@@ -60,43 +59,62 @@ public final class SignUpViewModel {
     private let authService = MyPhotoAuthService()
     
     // MARK: - Helpers
-    public func searchSchoolData(completion: @escaping () -> Void) {
-        state.send(.loading)
-        signUseCase.searchSchool(request: SchoolDataRequest(schoolName: searchSchoolText)) { filteredSchools in
-            self.filteredSchools = filteredSchools
-            self.state.send(.success)
-            completion()
-        }
+    public func searchSchoolData() {
+        loadState.send(.loading)
+        signUseCase.searchSchool(request: SchoolDataRequest(schoolName: searchSchoolText))
+            .sink { [weak self] data in
+                guard let self else { return }
+                self.filteredSchools = data
+                self.loadState.send(.success)
+            }
+            .store(in: &cancellables)
     }
     
-    func duplicationCheck(completion: @escaping (Bool) -> Void) {
-        signUseCase.duplicationCheck(request: .init(uniqueId: userId)) { check in
-            completion(check)
-        }
-    }
-    
-    func signUp(completion: @escaping (Bool) -> Void) {
-        signUseCase.signUp(
-            request: .init(
-                phoneNumber: phoneNumber,
-                userId: userId,
-                userName: userName,
-                birthDate: "\(year)-\(month)-\(day)",
-                schoolData: schoolData,
-                category: category.rawValue,
-                tournamentJoin: true
-            )) { result in
-                switch result {
-                case .success(let tokenData):
-                    self.auth.setAccessToken(tokenData.authToken)
-                    self.auth.setRefreshToken(tokenData.refreshToken)
-                    self.auth.logIn()
-                    completion(self.auth.isSessionActive)
-                case .failure(let error):
-                    print("회원가입 실패:", error.localizedDescription)
-                    completion(false)
+    func duplicationCheck() {
+        signUseCase.duplicationCheck(request: .init(uniqueId: userId))
+            .sink { [weak self] data in
+                guard let self else { return }
+                if data {
+                    self.signUpState.send(.notDuplication)
+                } else {
+                    self.signUpState.send(.duplication)
                 }
             }
+            .store(in: &cancellables)
+    }
+    
+    func setAuth(accessToken: String, refreshToken: String) {
+        self.auth.setAccessToken(accessToken)
+        self.auth.setRefreshToken(refreshToken)
+        self.auth.logIn()
+    }
+    
+    func signUp() {
+        signUseCase.signUp(request: .init(
+            phoneNumber: phoneNumber,
+            userId: userId,
+            userName: userName,
+            birthDate: "\(year)-\(month.count == 1 ? "0\(month)" : month)-\(day.count == 1 ? "0\(day)" : day)",
+            schoolData: schoolData,
+            category: category.rawValue,
+            tournamentJoin: true)
+        )
+        .sink { [weak self] response in
+            guard let self = self,
+                  let response = response,
+                  let _ = response.1.data,
+                  let accessToken = response.0.value(forHTTPHeaderField: "authorization"),
+                  let refreshToken = response.0.value(forHTTPHeaderField: "refresh")
+            else {
+                self?.signUpState.send(.signUpFailed)
+                return
+            }
+            
+            self.setAuth(accessToken: accessToken, refreshToken: refreshToken)
+            self.auth.logIn()
+            self.signUpState.send(.signUpSuccess)
+        }
+        .store(in: &cancellables)
     }
 }
 

@@ -9,14 +9,21 @@ import SnapKit
 
 import Common
 import DesignSystem
+import Domain
 import UIKit
 
+protocol TodayTeenTableViewCellDelegate: AnyObject {
+    func didSelectTodayTeenImage(frame: CGRect, todayTeen: UserData, todayTeenFirstImage: UIImage)
+    func didSelectTodayTeenChattingButton()
+    func didSelectMenuButton(popoverPosition: CGRect)
+}
+
 class TodayTeenTableViewCell: UITableViewCell {
-    weak var delegate: MainViewControllerCoordinator?
-    var viewModel: MainViewModel = .init()
+    weak var delegate: TodayTeenTableViewCellDelegate?
+    var viewModel: MainViewModel?
     
     // MARK: - Private properties
-    private var currentTeenIndexPath: IndexPath = .init(row: 0, section: 0)
+    var currentTeenIndexPath: IndexPath = .init(row: 0, section: 0)
     private var teenCollectionViewAutoScrollTimer: Timer?
     
     private lazy var titleLabel: UILabel = {
@@ -27,7 +34,7 @@ class TodayTeenTableViewCell: UITableViewCell {
         return label
     }()
     
-    private lazy var teenCollectionView: UICollectionView = {
+    public lazy var teenCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         layout.minimumLineSpacing = 16
@@ -99,6 +106,14 @@ class TodayTeenTableViewCell: UITableViewCell {
         }
     }
     
+    public func setProperties(
+        delegate: TodayTeenTableViewCellDelegate,
+        viewModel: MainViewModel
+    ) {
+        self.delegate = delegate
+        self.viewModel = viewModel
+    }
+    
     // 자동 스크롤 시작
     func startAutoScroll() {
         teenCollectionViewAutoScrollTimer?.invalidate() // 중복 실행 방지
@@ -112,13 +127,14 @@ class TodayTeenTableViewCell: UITableViewCell {
     }
     
     // 자동 스크롤 정지
-    private func stopAutoScroll() {
+    func stopAutoScroll() {
         teenCollectionViewAutoScrollTimer?.invalidate()
         teenCollectionViewAutoScrollTimer = nil
     }
     
     // 자동 스크롤 : 다음 cell 로 페이징 스크롤
     @objc private func scrollToNextItem() {
+        guard let viewModel = viewModel else { return }
         var nextItem = currentTeenIndexPath.item + 1
         if nextItem >= viewModel.todayTeenList.count {
             nextItem = 0
@@ -140,12 +156,13 @@ extension TodayTeenTableViewCell: UICollectionViewDataSource {
         guard
             let cell = collectionView.dequeueReusableCell(
                 withReuseIdentifier: TeenCollectionViewCell.reuseIdentifier,
-                for: indexPath) as? TeenCollectionViewCell
+                for: indexPath) as? TeenCollectionViewCell,
+            let viewModel = viewModel
         else {
             return UICollectionViewCell()
         }
         
-        cell.setCell(teen: viewModel.getTodayTeenItemMainViewModel(row: indexPath.row))
+        cell.setCell(teen: viewModel.todayTeenList[indexPath.item])
         
         cell.chatButtonAction = { [weak self] in
             guard let self = self else { return }
@@ -155,7 +172,7 @@ extension TodayTeenTableViewCell: UICollectionViewDataSource {
         
         cell.heartButtonAction = { [weak self] in
             guard let self = self else { return }
-            self.viewModel.didSelectTodayTeenHeartButton()
+            self.viewModel?.didSelectCategoryCell(row: indexPath.row)
         }
         
         cell.menuButtonAction = { [weak self] in
@@ -184,7 +201,7 @@ extension TodayTeenTableViewCell: UICollectionViewDataSource {
         _ collectionView: UICollectionView,
         numberOfItemsInSection section: Int
     ) -> Int {
-        viewModel.todayTeenList.count
+        viewModel?.todayTeenList.count ?? 0
     }
 }
 
@@ -194,13 +211,15 @@ extension TodayTeenTableViewCell: UICollectionViewDelegate {
         _ collectionView: UICollectionView,
         didSelectItemAt indexPath: IndexPath
     ) {
-        guard let cellClicked = collectionView.cellForItem(at: indexPath),
-              let frame = cellClicked.superview?.convert(cellClicked.frame, to: nil)
+        guard let cellClicked = collectionView.cellForItem(at: indexPath) as? TeenCollectionViewCell,
+              let frame = cellClicked.superview?.convert(cellClicked.frame, to: nil),
+              let viewModel = viewModel
         else { return }
         stopAutoScroll()
         delegate?.didSelectTodayTeenImage(
             frame: frame,
-            todayTeen: viewModel.getTodayTeenItemMainViewModel(row: indexPath.row))
+            todayTeen: viewModel.todayTeenList[indexPath.row],
+            todayTeenFirstImage: cellClicked.getImage())
     }
 }
 
@@ -232,7 +251,7 @@ extension TodayTeenTableViewCell: UICollectionViewDelegateFlowLayout {
             nextPage = 0
         }
         // 맨 뒤
-        if Int(nextPage) >= viewModel.todayTeenList.count {
+        if Int(nextPage) >= viewModel?.todayTeenList.count ?? 0 {
             nextPage -= 1
         }
         // 현재 페이지 IndexPath 설정

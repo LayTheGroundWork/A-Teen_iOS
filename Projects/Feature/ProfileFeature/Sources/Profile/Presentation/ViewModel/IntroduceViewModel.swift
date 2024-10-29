@@ -6,15 +6,22 @@
 //  Copyright © 2024 ATeen. All rights reserved.
 //
 
+import Core
+import Combine
 import Common
 import DesignSystem
+import Domain
 import UIKit
 
 public class IntroduceViewModel {
-    var myMbti: [String]
-    var myWriting: String
-    var changeMbti: [String] = []
-    var changeWriting: String = ""
+    @Injected(Auth.self)
+    public var auth: Auth
+    
+    @Injected(MyPageUseCase.self)
+    public var useCase: MyPageUseCase
+    
+    var state = PassthroughSubject<Void, Never>()
+    private var cancellables = Set<AnyCancellable>()
     
     let mbtiExplain: [(String, String)] = [
         ("E", "외향형"),
@@ -27,13 +34,17 @@ public class IntroduceViewModel {
         ("P", "인식형 (융통성)")
     ]
     
-    public init(
-        myMbti: [String],
-        myWriting: String
-    ) {
-        self.myMbti = myMbti
-        self.myWriting = myWriting
-        
+    var user: MyPageData
+    
+    var myMbti: [String]
+    var myWriting: String
+    var changeMbti: [String] = []
+    var changeWriting: String = ""
+    
+    public init(user: MyPageData){
+        self.user = user
+        self.myMbti = user.mbti?.map { String($0) } ?? ["", "", "", ""]
+        self.myWriting = user.introduction ?? ""
         self.changeMbti = myMbti
         self.changeWriting = myWriting
     }
@@ -80,10 +91,33 @@ extension IntroduceViewModel {
         return false
     }
     
-    func saveChangeValue(completion: @escaping() -> Void) {
+    func saveChangeValue() {
+        guard let token = auth.getAccessToken() else { return }
+        
         if myMbti != changeMbti || myWriting != changeWriting {
-            //TODO: 서버 저장 로직(mbti 완성 안됬을떄랑 소개글 비었을때 생갹해야됨)
-            completion()
+            let stringMbti = changeMbti.reduce("", +)
+            let resultMbti = stringMbti == "" ? nil : stringMbti
+            let resultIntroduce = changeWriting == "" ? nil : changeWriting
+            
+            useCase.editMyPage(
+                request: .init(
+                    authorization: token,
+                    nickName: user.nickName,
+                    schoolData: .init(
+                        schoolName: user.schoolName,
+                        schoolLocation: user.location),
+                    snsPlatform: user.snsPlatform,
+                    mbti: resultMbti,
+                    introduction: resultIntroduce,
+                    questions: user.questions)
+            )
+            .sink { [weak self] data in
+                guard let self, let _ = data else { return }
+                self.user.mbti = resultMbti
+                self.user.introduction = resultIntroduce
+                self.state.send()
+            }
+            .store(in: &cancellables)
         }
     }
 }

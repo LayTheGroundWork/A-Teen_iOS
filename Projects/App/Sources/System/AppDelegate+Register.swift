@@ -14,10 +14,19 @@ import Foundation
 
 extension AppDelegate {
     func registerDependencies() {
-        let auth: Auth = Auth()
         let apiClientService: ApiClientService = ApiClientServiceImp()
         
         // MARK: - Repository
+        // userDefaults
+        let tokenStorage: TokenStorage = TokenStorage()
+        
+        // user
+        let allUserFindRepository: AllUserFindRepository = AllUserFindRepositoryImp(apiClientService: apiClientService)
+        let categoryUserFindRepository: CategoryUserFindRepository = CategoryUserFindRepositoryImp(apiClientService: apiClientService)
+        let userDetailRepository: UserDetailRepository = UserDetailRepositoryImp(apiClientService: apiClientService)
+        let userLikeRepository: UserLikeRepository = UserLikeRepositoryImp(apiClientService: apiClientService)
+        let userLikeCancelRepository: UserLikeCancelRepository = UserLikeCancelRepositoryImp(apiClientService: apiClientService)
+        
         // sign
         let signInRepository: SignInRepository = SignInRepositoryImp(apiClientService: apiClientService)
         let signUpRepository: SignUpRepository = SignUpRepositoryImp(apiClientService: apiClientService)
@@ -31,7 +40,18 @@ extension AppDelegate {
         // image
         let remoteImageDataRepository: RemoteImageDataRepository = RemoteImageDataRepositoryImp(apiClientService: apiClientService)
         
+        // mypage
+        let myPageRepository: MyPageRepository = MyPageRepositoryImp(apiClientService: apiClientService)
+        let myPageEditRepository: MyPageEditRepository = MyPageEditRepositoryImp(apiClientService: apiClientService)
+        
         // MARK: - Service
+        let userService: UserService = UserServiceImp(
+            allUserFindRepository: allUserFindRepository,
+            categoryUserFindRepository: categoryUserFindRepository,
+            userDetailRepository: userDetailRepository,
+            userLikeRepository: userLikeRepository,
+            userLikeCancelRepository: userLikeCancelRepository)
+        
         let signService: SignService = SignServiceImp(
             signInRepository: signInRepository,
             signUpRepository: signUpRepository,
@@ -43,7 +63,15 @@ extension AppDelegate {
         
         let imageDataService: ImageDataService = ImageDataServiceImp(remoteImageDataRepository: remoteImageDataRepository)
         
+        let myPageService: MyPageService = MyPageServiceImp(
+            myPageRepository: myPageRepository,
+            myPageEditRepository: myPageEditRepository)
+        
         // MARK: - UseCase
+        let auth: Auth = Auth(tokenHandler: tokenStorage)
+        
+        let userUseCase: UserUseCase = UserUseCaseImp(userService: userService)
+        
         let signUseCase: SignUseCase = SignUseCaseImp(
             signService: signService, 
             searchService: searchService
@@ -51,12 +79,16 @@ extension AppDelegate {
 
         let imageDataUseCase: ImageDataUseCase = ImageDataUseCaseImp(imageDataService: imageDataService)
         
-        let searchUseCase: SearchUseCase = SearchUseCaseImp(schoolDataRepository: schoolDataRepository)
+        let myPageUseCase: MyPageUseCase = MyPageUseCaseImp(myPageService: myPageService, searchService: searchService)
         
         // MARK: - Register
         AppContainer.register(
             type: Auth.self,
             auth)
+        
+        AppContainer.register(
+            type: UserUseCase.self,
+            userUseCase)
         
         AppContainer.register(
             type: SignUseCase.self,
@@ -68,7 +100,7 @@ extension AppDelegate {
         )
         
         AppContainer.register(
-            type: SearchUseCase.self,
-            searchUseCase)
+            type: MyPageUseCase.self,
+            myPageUseCase)
     }
 }

@@ -23,7 +23,6 @@ public protocol PhoneNumberFactory {
 }
 
 public struct PhoneNumberFactoryImp: PhoneNumberFactory {
-    
     public let coordinatorProvider: CoordinatorProvider
     public let signType: SignType
     

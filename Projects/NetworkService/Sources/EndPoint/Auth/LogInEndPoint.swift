@@ -18,7 +18,11 @@ public struct LogInEndPoint: EndPoint {
     
     public var path: String = "/v1/api/user/sign-in"
     
-    public var query: [String : String] = [:]
+    public var query: [String : String] {
+        [
+            "phoneNumber": request.phoneNumber
+        ]
+    }
     
     public var header: [String : String] {
         [
@@ -27,12 +31,7 @@ public struct LogInEndPoint: EndPoint {
         ]
     }
     
-    public var body: [String : Any] {
-        [
-            "phoneNumber": request.phoneNumber,
-            "verificationCode": request.verificationCode
-        ]
-    }
+    public var body: [String : Any] = [:]
     
     public var method: HTTPMethod = .post
     

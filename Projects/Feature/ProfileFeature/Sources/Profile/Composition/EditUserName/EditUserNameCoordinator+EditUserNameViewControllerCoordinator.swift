@@ -6,9 +6,11 @@
 //  Copyright © 2024 ATeen. All rights reserved.
 //
 
+import Domain
+
 extension EditUserNameCoordinator: EditUserNameViewControllerCoordinator {
-    public func didTabBackButton() {
-        delegate?.didFinishUserNameViewController(childCoordinator: self)
+    public func didTabBackButton(user: MyPageData) {
+        delegate?.didFinishUserNameViewController(childCoordinator: self, user: user)
     }
     
     public func configTabbarState(view: ProfileFeatureViewNames) {

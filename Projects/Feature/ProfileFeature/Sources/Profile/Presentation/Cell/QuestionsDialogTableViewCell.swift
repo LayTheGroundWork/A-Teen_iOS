@@ -49,7 +49,7 @@ class QuestionsDialogTableViewCell: UITableViewCell {
         self.viewModel = viewModel
         self.questionLabel.text = "\(String(index + 1)). \(viewModel.sampleQuestionList[index])"
         
-        if viewModel.changeQuestionList.contains(where: { $0.title == viewModel.sampleQuestionList[index]}) {
+        if viewModel.changeQuestionList.contains(where: { $0.question == viewModel.sampleQuestionList[index]}) {
             self.questionLabel.font = .customFont(forTextStyle: .footnote, weight: .bold)
         } else {
             self.questionLabel.font = .customFont(forTextStyle: .footnote, weight: .regular)

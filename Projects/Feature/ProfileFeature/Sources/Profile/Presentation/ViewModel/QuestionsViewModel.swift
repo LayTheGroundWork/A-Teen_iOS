@@ -6,59 +6,76 @@
 //  Copyright © 2024 ATeen. All rights reserved.
 //
 
+import Core
+import Combine
 import Common
-
-enum SaveError {
-    case notChange, textNil
-}
+import Domain
 
 public class QuestionsViewModel {
+    @Injected(Auth.self)
+    public var auth: Auth
+    
+    @Injected(MyPageUseCase.self)
+    public var useCase: MyPageUseCase
+    
+    var state = PassthroughSubject<Void, Never>()
+    private var cancellables = Set<AnyCancellable>()
+    
     let sampleQuestionList: [String] = [
-        "내가 사는 곳은 어딘가요?",
-        "나의 취미는 뭔가요?",
-        "나는 누구인가요?",
-        "질문거리가 생각이 안나요",
-        "내가 좋아하는 것은 뭔가요?",
-        "허허",
-        "하하",
-        "호호",
-        "후후",
-        "긴거 실험용입니다~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+        "ONE",
+        "TWO",
+        "THREE",
+        "FOUR",
+        "FIVE"
     ]
     
-    var questionList: [Question]
-    var changeQuestionList: [Question] = []
+    var user: MyPageData
+    var changeQuestionList: [QuestionData] = []
     
-    public init(questionList: [Question]) {
-        self.questionList = questionList
-        self.changeQuestionList = questionList
+    public init(user: MyPageData) {
+        self.user = user
+        self.changeQuestionList = user.questions
     }
 }
 
 extension QuestionsViewModel {
     func checkChangeQuestion() -> Bool {
-        if questionList == changeQuestionList {
+        if user.questions == changeQuestionList {
             return true
         }
         
         for questionList in changeQuestionList {
-            if questionList.text == AppLocalized.textViewPlaceHolder {
+            if questionList.answer == AppLocalized.textViewPlaceHolder {
                 return true
             }
         }
         return false
     }
     
-    func saveChangeValue(completion: @escaping(Bool, SaveError?) -> Void) {
-        if questionList != changeQuestionList {
-            if changeQuestionList.contains(where: { $0.text == "" }) {
-                completion(false, .textNil)
-            } else {
-                //TODO: 서버 저장 로직
-                completion(true, nil)
+    func saveChangeValue() {
+        guard let token = auth.getAccessToken(),
+            user.questions != changeQuestionList 
+        else { return }
+        
+        if !changeQuestionList.contains(where: { $0.answer == "" }) {
+            useCase.editMyPage(
+                request: .init(
+                    authorization: token,
+                    nickName: user.nickName,
+                    schoolData: .init(
+                        schoolName: user.schoolName,
+                        schoolLocation: user.location),
+                    snsPlatform: user.snsPlatform,
+                    mbti: user.mbti,
+                    introduction: user.introduction,
+                    questions: changeQuestionList)
+            )
+            .sink { [weak self] data in
+                guard let self, let _ = data else { return }
+                self.user.questions = self.changeQuestionList
+                self.state.send()
             }
-        } else {
-            completion(false, .notChange)
+            .store(in: &cancellables)
         }
     }
 }

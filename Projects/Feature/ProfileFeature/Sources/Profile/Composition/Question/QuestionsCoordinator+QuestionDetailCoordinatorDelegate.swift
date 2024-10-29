@@ -7,12 +7,13 @@
 //
 
 import Common
+import Domain
 import FeatureDependency
 
 extension QuestionsCoordinator: QuestionDetailCoordinatorDelegate {
     public func didFinishQuestionDetailViewController(
         childCoordinator: Coordinator,
-        question: Question,
+        question: QuestionData,
         index: Int
     ) {
         childCoordinator.navigation.dismissNavigation = nil

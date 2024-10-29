@@ -19,18 +19,16 @@ public struct RequestCodeRepositoryImp: RequestCodeRepository {
         self.apiClientService = apiClientService
     }
     
-    public func requestCode(request: Domain.VerificationCodeRequest, completion: @escaping () -> Void) {
-        Task {
-            do {
-                let endPoint = VerificationCodeEndPoint(request: request)
-                guard let urlRequest = endPoint.toURLRequest else {
-                    throw ApiError.errorInUrl
-                }
-                try await apiClientService.request(request: urlRequest)
-                completion()
-            } catch {
-                print("인증코드 요청 오류: ", error.localizedDescription)
+    public func requestCode(request: VerificationCodeRequest) async {
+        do {
+            let endPoint = VerificationCodeEndPoint(request: request)
+            guard let urlRequest = endPoint.toURLRequest else {
+                throw ApiError.errorInUrl
             }
+            try await apiClientService.request(request: urlRequest)
+            
+        } catch {
+            print("인증코드 요청 오류: ", error.localizedDescription)
         }
     }
 }

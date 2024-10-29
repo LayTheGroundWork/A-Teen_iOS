@@ -9,8 +9,5 @@
 import Foundation
 
 public protocol SignOutRepository {
-    func signOut(
-        request: LogOutRequest,
-        completion: @escaping (Result<DefaultResponse, Error>) -> Void
-    )
+    func signOut(request: LogOutRequest) async -> Result<DefaultResponse, Error>
 }

@@ -8,12 +8,14 @@
 
 import SnapKit
 
+import Combine
 import Common
 import DesignSystem
+import Domain
 import UIKit
 
 public protocol QuestionsViewControllerCoordinator: AnyObject {
-    func didTabBackButton()
+    func didTabBackButton(user: MyPageData)
     func didTabCell(index: Int)
     func didTabSelectQuestionButton()
     func configTabbarState(view: ProfileFeatureViewNames)
@@ -28,6 +30,8 @@ public final class QuestionsViewController: UIViewController {
     // MARK: - Private properties
     private var viewModel: QuestionsViewModel
     private weak var coordinator: QuestionsViewControllerCoordinator?
+    
+    private var cancellables = Set<AnyCancellable>()
     
     var backgroundViewHeightAnchor: Constraint?
     var tableViewHeightAnchor: Constraint?
@@ -123,6 +127,7 @@ public final class QuestionsViewController: UIViewController {
         super.viewDidLoad()
         configUserInterface()
         configLayout()
+        setupBindings()
     }
     
     public override func viewWillAppear(_ animated: Bool) {
@@ -144,6 +149,16 @@ public final class QuestionsViewController: UIViewController {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    private func setupBindings() {
+        viewModel.state
+             .receive(on: DispatchQueue.main)
+             .sink { [weak self] in
+                 guard let self else { return }
+                 self.coordinator?.didTabBackButton(user: self.viewModel.user)
+             }
+             .store(in: &cancellables)
+     }
     
     // MARK: - Helpers
     private func configUserInterface() {
@@ -255,7 +270,7 @@ public final class QuestionsViewController: UIViewController {
         var totalHeight: CGFloat = 0.0
         
         viewModel.changeQuestionList.forEach { question in
-            titleLabel.text = question.title
+            titleLabel.text = question.question
             
             let height = calculateLabelHeight(for: titleLabel, width: ViewValues.width - 96) + textLabelHeight + 43
             totalHeight += height
@@ -298,7 +313,7 @@ public final class QuestionsViewController: UIViewController {
     
     // MARK: - Actions
     @objc private func clickBackButton(_ sender: UIBarButtonItem) {
-        coordinator?.didTabBackButton()
+        coordinator?.didTabBackButton(user: viewModel.user)
     }
     
     @objc private func clickSelectQuestionButton(_ sender: UIButton) {
@@ -306,20 +321,7 @@ public final class QuestionsViewController: UIViewController {
     }
     
     @objc private func clickSaveButton(_ sender: UIButton) {
-        viewModel.saveChangeValue { success, error in
-            if success {
-                self.coordinator?.didTabBackButton()     //일단 끝나면 뒤로 처리
-            } else {
-                switch error {
-                case .notChange:
-                    print("변경사항 없음")
-                case .textNil:
-                    print("텍스트 없음")
-                case .none:
-                    break
-                }
-            }
-        }
+        viewModel.saveChangeValue()
     }
 }
 

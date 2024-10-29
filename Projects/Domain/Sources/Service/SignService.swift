@@ -9,25 +9,13 @@
 import Foundation
 
 public protocol SignService {
-    func signIn(
-        request: LogInRequest,
-        completion: @escaping (Result<LogInResponse, Error>) -> Void
-    )
-    func signUp(
-        request: SignUpRequest,
-        completion: @escaping (Result<LogInResponse, Error>) -> Void
-    )
-    func requestCode(
-        request: VerificationCodeRequest,
-        completion: @escaping () -> Void
-    )
-    func verificareCode(
-        request: PhoneNumberAuthRequest,
-        completion: @escaping (String?) -> Void
-    )
+    func signIn(request: LogInRequest) async -> (HTTPURLResponse, DefaultResponse)?
     
-    func duplicationCheck(
-        request: DuplicationCheckRequest,
-        completion: @escaping (Bool) -> Void
-    )
+    func signUp(request: SignUpRequest) async -> (HTTPURLResponse, DefaultResponse)?
+    
+    func requestCode(request: VerificationCodeRequest) async
+    
+    func verifyCode(request: PhoneNumberAuthRequest) async -> String?
+    
+    func duplicationCheck(request: DuplicationCheckRequest) async -> Bool
 }

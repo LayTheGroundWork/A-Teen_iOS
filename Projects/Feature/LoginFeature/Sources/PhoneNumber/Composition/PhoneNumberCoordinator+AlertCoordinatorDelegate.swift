@@ -33,6 +33,14 @@ extension PhoneNumberCoordinator: AlertCoordinatorDelegate {
             case 0:
                 closeDialog(childCoordinator: childCoordinator)
             case 1:
+                guard let tokenData = viewModel.temporaryTokenData else {
+                    closeDialog(childCoordinator: childCoordinator)
+                    return
+                }
+                
+                viewModel.setAuth(accessToken: tokenData.0, refreshToken: tokenData.1)
+                viewModel.temporaryTokenData = nil
+                
                 // 다이얼로그 닫기
                 closeDialog(childCoordinator: childCoordinator)
                 // 인증 화면 -> 로그인 : 뒤로가기

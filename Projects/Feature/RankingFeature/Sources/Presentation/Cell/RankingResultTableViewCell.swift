@@ -31,7 +31,7 @@ final class RankingResultTableViewCell: UITableViewCell {
     
     private lazy var userImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = DesignSystemAsset.nightGlass.image
+        imageView.image = DesignSystemAsset.badge1.image
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
         imageView.layer.cornerRadius = 10

@@ -55,6 +55,7 @@ open class QuestionsDialogViewController: UIViewController {
         let view = UIView()
         view.backgroundColor = UIColor.white
         view.layer.cornerRadius = ViewValues.defaultRadius
+        view.clipsToBounds = true
         return view
     }()
     
@@ -175,13 +176,14 @@ open class QuestionsDialogViewController: UIViewController {
 // MARK: - Action
 extension QuestionsDialogViewController {
     private func updateCustomIndicator() {
-        self.view.layoutIfNeeded()
+        view.layoutIfNeeded()
         
         let contentHeight = tableView.contentSize.height
-        let visibleHeight = tableView.frame.height
-        let indicatorHeight = (visibleHeight / contentHeight) * visibleHeight
-        let yOffset = (tableView.contentOffset.y / contentHeight * visibleHeight) + 27
+        let visibleHeight = customIndicatorBackgroudView.frame.height
         let bottomLine = self.tableBackgroundView.frame.height - 27
+        let yOffset = tableView.contentOffset.y / contentHeight * visibleHeight + 27
+        let indicatorHeight = tableView.frame.height / contentHeight * visibleHeight
+        let maxHeight = customIndicatorBackgroudView.frame.height
         
         if contentHeight == 0 {
             self.customIndicatorViewTopAnchor?.update(offset: 27)
@@ -193,11 +195,10 @@ extension QuestionsDialogViewController {
                 if (indicatorHeight + yOffset - 27) <= 0 {
                     self.customIndicatorViewHeightAnchor?.update(offset: 0)
                 } else {
-                    self.customIndicatorViewHeightAnchor?.update(offset: indicatorHeight + yOffset - 27)
+                    self.customIndicatorViewHeightAnchor?.update(offset: min(maxHeight, indicatorHeight + yOffset - 27))
                 }
             } else if yOffset + indicatorHeight > bottomLine {
                 self.customIndicatorViewTopAnchor?.update(offset: yOffset)
-                
                 if bottomLine <= yOffset {
                     self.customIndicatorViewHeightAnchor?.update(offset: 0)
                 } else {
@@ -289,7 +290,7 @@ extension QuestionsDialogViewController: UITableViewDelegate {
     }
     
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if let index = viewModel.changeQuestionList.firstIndex(where: { $0.title == viewModel.sampleQuestionList[indexPath.row] }) {
+        if let index = viewModel.changeQuestionList.firstIndex(where: { $0.question == viewModel.sampleQuestionList[indexPath.row] }) {
             viewModel.changeQuestionList.remove(at: index)
             
             guard let cell = tableView.cellForRow(at: indexPath) as? QuestionsDialogTableViewCell else { return }
@@ -298,8 +299,8 @@ extension QuestionsDialogViewController: UITableViewDelegate {
         } else {
             viewModel.changeQuestionList.append(
                 .init(
-                    title: viewModel.sampleQuestionList[indexPath.row],
-                    text: AppLocalized.textViewPlaceHolder)
+                    question: viewModel.sampleQuestionList[indexPath.row],
+                    answer: AppLocalized.textViewPlaceHolder)
             )
             coordinator?.didFinish(changeValue: true)
         }

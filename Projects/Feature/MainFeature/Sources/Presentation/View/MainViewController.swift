@@ -8,17 +8,19 @@
 import SnapKit
 
 import Common
+import Combine
 import DesignSystem
+import Domain
 import UIKit
 
 public protocol MainViewControllerCoordinator: AnyObject {
-    func didSelectTodayTeenImage(frame: CGRect, todayTeen: TodayTeen)
+    func didSelectTodayTeenImage(frame: CGRect, todayTeen: UserData, todayTeenFirstImage: UIImage)
     func didSelectTodayTeenChattingButton()
     func didSelectMenuButton(popoverPosition: CGRect)
     func didSelectAboutATeenCell(tag: TabTag)
-    func didSelectTournamentImage(collectionView: UICollectionView, indexPath: IndexPath)
+    func didSelectTournamentImage(indexPath: IndexPath)
     func didSelectTournamentMoreButton()
-    func didSelectAnotherTeenCell(frame: CGRect, todayTeen: TodayTeen)
+    func didSelectAnotherTeenCell(frame: CGRect, todayTeen: UserData, todayTeenFirstImage: UIImage)
 }
 
 protocol MainViewControllerDelegate: AnyObject {
@@ -30,12 +32,13 @@ public final class MainViewController: UIViewController {
     private var viewModel: MainViewModel
     private weak var coordinator: MainViewControllerCoordinator?
     
+    private var cancellables = Set<AnyCancellable>()
+    
     private var startContentOffset: CGFloat = 0.0
     
     private var naviHeightAnchor: Constraint?
     
     private lazy var customNaviView = CustomNaviView()
-    // CustomNaviView(frame: CGRect(x: 0, y: 0, width: ViewValues.width, height: 40))
     
     private lazy var categoryCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -48,6 +51,9 @@ public final class MainViewController: UIViewController {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.backgroundColor = UIColor.white
         collectionView.showsHorizontalScrollIndicator = false
+        collectionView.dataSource = self
+        collectionView.delegate = self
+        collectionView.register(CategoryTodayCollectionViewCell.self, forCellWithReuseIdentifier: CategoryTodayCollectionViewCell.reuseIdentifier)
         return collectionView
     }()
     
@@ -66,6 +72,8 @@ public final class MainViewController: UIViewController {
         return tableView
     }()
     
+    let activityIndicator = UIActivityIndicatorView(style: .medium)
+    
     // MARK: - Life Cycle
     init(
         viewModel: MainViewModel,
@@ -82,23 +90,52 @@ public final class MainViewController: UIViewController {
     
     public override func viewDidLoad() {
         super.viewDidLoad()
-        registerDelegate()
-        configUserInterface()
-        configLayout()
+        setupBindings()
+        viewModel.findAllUser(.viewDidLoad)
+    }
+    
+    private func setupBindings() {
+        viewModel.mainState
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] state in
+                guard let self = self else { return }
+                switch state {
+                case .viewDidLoad:
+                    self.configUserInterface()
+                    self.configLayout()
+                    
+                    NotificationCenter.default.addObserver(
+                        self,
+                        selector: #selector(self.updateTableView(_:)),
+                        name: .completeLogin,
+                        object: nil)
+                case .changeHeartState:
+                    self.tableView.reloadData()
+                case .getUserDataSuccess:
+                    self.updateUI()
+                }
+            }.store(in: &cancellables)
         
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(updateTableView(_:)),
-                                               name: .completeLogin,
-                                               object: nil)
+        viewModel.loadState
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] state in
+                guard let self else { return }
+                switch state {
+                case .success:
+                    self.activityIndicator.stopAnimating()
+                    self.viewModel.isLoading = false
+                    self.tableView.reloadData()
+                case .loading:
+                    self.activityIndicator.startAnimating()
+                    break
+                case .fail(error: let error):
+                    self.activityIndicator.stopAnimating()
+                    print("무한 스크롤 실패 \(error)")
+                }
+            }.store(in: &cancellables)
     }
     
     // MARK: - Helpers
-    private func registerDelegate() {
-        self.categoryCollectionView.dataSource = self
-        self.categoryCollectionView.delegate = self
-        self.categoryCollectionView.register(CategoryTodayCollectionViewCell.self, forCellWithReuseIdentifier: CategoryTodayCollectionViewCell.reuseIdentifier)
-    }
-    
     private func configUserInterface() {
         self.navigationController?.isNavigationBarHidden = true
         
@@ -129,11 +166,63 @@ public final class MainViewController: UIViewController {
         }
     }
     
+    private func updateUI() {
+        DispatchQueue.main.async {
+            self.tableView.scrollToRow(
+                at: IndexPath(row: 0, section: 0),
+                at: .top,
+                animated: false)
+            
+            self.customNaviView.isHidden = false
+            
+            UIView.animate(withDuration: 0.2, delay: 0, options: .showHideTransitionViews) {
+                self.naviHeightAnchor?.update(offset: 40)
+                
+                self.view.layoutIfNeeded()
+            }
+            
+            for subview in self.tableView.subviews {
+                if let cell = subview as? TodayTeenTableViewCell {
+                    if cell.teenCollectionView.numberOfItems(inSection: 0) > 0 {
+                        cell.teenCollectionView.scrollToItem(
+                            at: IndexPath(item: 0, section: 0),
+                            at: .centeredHorizontally,
+                            animated: true)
+                        cell.currentTeenIndexPath = .init(item: 0, section: 0)
+                    }
+                    
+                    cell.teenCollectionView.reloadData()
+                    self.tableView.reloadData()
+                    
+                    if cell.teenCollectionView.numberOfItems(inSection: 0) > 0 {
+                        self.reStartTimer()
+                    } else {
+                        cell.stopAutoScroll()
+                    }
+                    break
+                }
+            }
+        }
+    }
+    
     // MARK: - Actions
     @objc private func updateTableView(_ notification: Notification) {
         print("LogOut/LogIn -> Reload Data")
-        tableView.reloadData()
-        reStartTimer()
+        print(viewModel.auth.isSessionActive)
+        
+        if viewModel.auth.isSessionActive {
+            viewModel.clearTeenList()
+            for (index, category) in viewModel.categoryList.enumerated() {
+                if category.isSelect {
+                    if index == 0 {
+                        viewModel.findAllUser(.normal)
+                    } else {
+                        viewModel.findCategoryUser(.normal, row: index)
+                    }
+                    break
+                }
+            }
+        }
     }
 }
 
@@ -180,9 +269,9 @@ extension MainViewController: UITableViewDataSource {
             }
             
             cell.selectionStyle = .none
-            
-            cell.delegate = coordinator
-            cell.viewModel = viewModel
+            cell.setProperties(
+                delegate: self,
+                viewModel: viewModel)
             return cell
             
         case 1:
@@ -195,7 +284,7 @@ extension MainViewController: UITableViewDataSource {
             }
             
             cell.selectionStyle = .none
-            cell.delegate = coordinator
+            cell.setProperties(delegate: self)
             return cell
             
         case 2:
@@ -208,7 +297,7 @@ extension MainViewController: UITableViewDataSource {
             }
             
             cell.selectionStyle = .none
-            cell.delegate = coordinator
+            cell.setProperties(delegate: self)
             return cell
             
         case 3:
@@ -233,7 +322,7 @@ extension MainViewController: UITableViewDataSource {
             }
             
             cell.selectionStyle = .none
-            cell.setCell(teen: viewModel.getTodayTeenItemMainViewModel(row: indexPath.row))
+            cell.setCell(teen: viewModel.teenList[indexPath.row])
             
             cell.chatButtonAction = { [weak self] in
                 guard let self = self else { return }
@@ -242,8 +331,9 @@ extension MainViewController: UITableViewDataSource {
             
             cell.heartButtonAction = { [weak self] in
                 guard let self = self else { return }
-                self.viewModel.didSelectTodayTeenHeartButton()
+                self.viewModel.didSelectTodayTeenHeartButton(row: indexPath.row)
             }
+            
             cell.menuButtonAction = { [weak self] in
                 guard let self = self else { return }
                 cell.layoutIfNeeded()
@@ -271,7 +361,7 @@ extension MainViewController: UITableViewDataSource {
         case 0, 1, 2, 3:
             return 1
         case 4:
-            return viewModel.todayTeenList.count
+            return viewModel.teenList.count
         default:
             return 0
         }
@@ -287,7 +377,7 @@ extension MainViewController: UITableViewDelegate {
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.section {
         case 4:
-            guard let cellClicked = tableView.cellForRow(at: indexPath),
+            guard let cellClicked = tableView.cellForRow(at: indexPath) as? TeenTableViewCell,
                   let frame = cellClicked.superview?.convert(
                     CGRect(
                         x: 16,
@@ -299,7 +389,8 @@ extension MainViewController: UITableViewDelegate {
             
             coordinator?.didSelectAnotherTeenCell(
                 frame: frame,
-                todayTeen: viewModel.getTodayTeenItemMainViewModel(row: indexPath.row))
+                todayTeen: viewModel.teenList[indexPath.row], 
+                todayTeenFirstImage: cellClicked.getImage())
         default:
             break
         }
@@ -321,6 +412,41 @@ extension MainViewController: UITableViewDelegate {
             return 0
         }
     }
+    
+    public func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        let lastRowIndex = viewModel.teenList.count - 1
+        
+        guard indexPath == IndexPath(row: lastRowIndex, section: 4),
+              !viewModel.isLoading,
+              viewModel.teenList.count == viewModel.currentSize
+        else { return }
+        viewModel.loadMoreData()
+    }
+    
+    public func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        
+        switch section {
+        case 4:
+            //나중에 Lottie 넣기
+            let footerView = UIView()
+            footerView.addSubview(activityIndicator)
+            activityIndicator.snp.makeConstraints { make in
+                make.center.equalToSuperview()
+            }
+            return footerView
+        default:
+            return nil
+        }
+    }
+
+    public func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        switch section {
+        case 4:
+            return 44
+        default:
+            return 0
+        }
+    }
 }
 
 // MARK: - UICollectionViewDataSource
@@ -337,7 +463,7 @@ extension MainViewController: UICollectionViewDataSource {
             return UICollectionViewCell()
         }
         
-        cell.setButton(category: viewModel.getCategoryItemMainViewModel(row: indexPath.row))
+        cell.setButton(category: viewModel.categoryList[indexPath.row])
         return cell
         
     }
@@ -376,12 +502,51 @@ extension MainViewController: UICollectionViewDelegate {
         
         viewModel.didSelectCategoryCell(row: indexPath.row)
         collectionView.reloadData()
+        
+        if indexPath.row == 0 {
+            viewModel.findAllUser(.normal)
+        } else {
+            viewModel.findCategoryUser(.normal, row: indexPath.row)
+        }
     }
 }
 
 extension MainViewController: MainViewControllerDelegate {
     func reStartTimer() {
-        guard let cell = tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? TodayTeenTableViewCell else { return }
-        cell.startAutoScroll()
+        for subview in tableView.subviews {
+            if let cell = subview as? TodayTeenTableViewCell {
+                cell.startAutoScroll()
+            }
+        }
+    }
+}
+
+extension MainViewController: TodayTeenTableViewCellDelegate {
+    func didSelectTodayTeenImage(frame: CGRect, todayTeen: UserData, todayTeenFirstImage: UIImage) {
+        coordinator?.didSelectTodayTeenImage(frame: frame, todayTeen: todayTeen, todayTeenFirstImage: todayTeenFirstImage)
+    }
+    
+    func didSelectTodayTeenChattingButton() {
+        coordinator?.didSelectTodayTeenChattingButton()
+    }
+    
+    func didSelectMenuButton(popoverPosition: CGRect) {
+        coordinator?.didSelectMenuButton(popoverPosition: popoverPosition)
+    }
+}
+
+extension MainViewController: AboutATeenTableViewCellDelegate {
+    func didSelectAboutATeenCell(tag: TabTag) {
+        coordinator?.didSelectAboutATeenCell(tag: tag)
+    }
+}
+
+extension MainViewController: TournamentTableViewCellDelegate {
+    func didSelectTournamentImage(indexPath: IndexPath) {
+        coordinator?.didSelectTournamentImage(indexPath: indexPath)
+    }
+    
+    func didSelectTournamentMoreButton() {
+        coordinator?.didSelectTournamentMoreButton()
     }
 }

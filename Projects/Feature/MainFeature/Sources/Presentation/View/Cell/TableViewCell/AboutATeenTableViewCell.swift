@@ -9,8 +9,12 @@ import DesignSystem
 import Common
 import UIKit
 
+protocol AboutATeenTableViewCellDelegate: AnyObject {
+    func didSelectAboutATeenCell(tag: TabTag)
+}
+
 class AboutATeenTableViewCell: UITableViewCell {
-    weak var delegate: MainViewControllerCoordinator?
+    weak var delegate: AboutATeenTableViewCellDelegate?
     
     lazy var titleLabel: UILabel = {
         let label = UILabel()
@@ -132,6 +136,10 @@ class AboutATeenTableViewCell: UITableViewCell {
     override func prepareForReuse() {
         super.prepareForReuse()
         
+    }
+    
+    public func setProperties(delegate: AboutATeenTableViewCellDelegate) {
+        self.delegate = delegate
     }
 }
 

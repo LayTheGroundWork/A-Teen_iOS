@@ -8,6 +8,7 @@
 
 import SnapKit
 
+import Combine
 import Common
 import DesignSystem
 import UIKit
@@ -20,6 +21,8 @@ final class LinksDialogViewController: UIViewController {
     // MARK: - Private properties
     private var viewModel: ProfileViewModel
     private weak var coordinator: LinksDialogViewControllerCoordinator?
+    
+    private var cancellables = Set<AnyCancellable>()
     
     private lazy var dialogView: UIView = {
         let view = UIView()
@@ -86,7 +89,25 @@ final class LinksDialogViewController: UIViewController {
         super.viewDidLoad()
         configUserInterface()
         configLayout()
+        setupBindings()
     }
+    
+    private func setupBindings() {
+        viewModel.state
+             .receive(on: DispatchQueue.main)
+             .sink { [weak self] state in
+                 guard let self else { return }
+                 switch state {
+                 case .getMyPageDataSuccess:
+                     break
+                 case .saveDataSuccess:
+                     self.coordinator?.didFinish()
+                 case .updateUI:
+                     break
+                 }
+             }
+             .store(in: &cancellables)
+     }
     
     // MARK: - Helpers
     private func configUserInterface() {
@@ -192,7 +213,6 @@ final class LinksDialogViewController: UIViewController {
     
     @objc private func clickCheckButton(_ sender: UIButton) {
         viewModel.saveUserLinks()
-        coordinator?.didFinish()
     }
     
     @objc private func clickClearTextButton(_ sender: UIButton) {

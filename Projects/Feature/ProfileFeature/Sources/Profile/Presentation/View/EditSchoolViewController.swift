@@ -9,21 +9,23 @@
 import SnapKit
 
 import Common
+import Combine
 import DesignSystem
 import Domain
 import UIKit
 
 public protocol EditSchoolViewControllerCoordinator: AnyObject {
-    func didTabBackButton()
+    func didTabBackButton(user: MyPageData)
     func configTabbarState(view: ProfileFeatureViewNames)
 }
 
 public final class EditSchoolViewController: UIViewController {
     // MARK: - Private properties
-    private var searchTask: DispatchWorkItem?
     private var debouncer: Debouncer?
     private var viewModel: EditSchoolViewModel
     private weak var coordinator: EditSchoolViewControllerCoordinator?
+    
+    private var cancellables = Set<AnyCancellable>()
     
     var customIndicatorViewTopAnchor: Constraint?
     var customIndicatorViewBottomAnchor: Constraint?
@@ -169,6 +171,7 @@ public final class EditSchoolViewController: UIViewController {
         super.viewDidLoad()
         configUserInterface()
         configLayout()
+        setupBindings()
         
         debouncer = Debouncer(interval: 0.5)
     }
@@ -197,6 +200,34 @@ public final class EditSchoolViewController: UIViewController {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    private func setupBindings() {
+        viewModel.state
+             .receive(on: DispatchQueue.main)
+             .sink { [weak self] in
+                 guard let self else { return }
+                 self.coordinator?.didTabBackButton(user: self.viewModel.user)
+             }
+             .store(in: &cancellables)
+        
+        viewModel.loadState
+            .receive(on: RunLoop.main)
+            .sink { [weak self] state in
+                guard let self else { return }
+                switch state {
+                case .success:
+                    self.changeTextFieldRigthView(view: .clearImage)
+                    self.reloadTableViewData()
+                    self.tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: false)
+                case .loading:
+                    self.changeTextFieldRigthView(view: .spinner)
+                    break
+                case .fail(error: let error):
+                    self.changeTextFieldRigthView(view: .searchImage)
+                    print("검색한 학교가 없습니다. \(error)")
+                }
+            }.store(in: &cancellables)
+     }
     
     // MARK: - Helpers
     private func configUserInterface() {
@@ -314,13 +345,14 @@ public final class EditSchoolViewController: UIViewController {
         }
     }
     
-    private func closeSearchScoolTableView() {
+    private func closeSearchSchoolTableView() {
         tableBackgroundViewHeightAnchor?.update(offset: 0)
+        customIndicatorView.isHidden = true
     }
     
     private func reloadTableViewData() {
         if viewModel.filteredSchools.isEmpty {
-            closeSearchScoolTableView()
+            closeSearchSchoolTableView()
         } else {
             openSearchSchoolTableView()
         }
@@ -366,12 +398,11 @@ public final class EditSchoolViewController: UIViewController {
 // MARK: - Actions
 extension EditSchoolViewController {
     @objc private func clickBackButton(_ sender: UIBarButtonItem) {
-        coordinator?.didTabBackButton()
+        coordinator?.didTabBackButton(user: viewModel.user)
     }
     
     @objc private func clickSaveButton(_ sender: UIButton) {
-        // TODO: 서버 저장 로직 필요
-        coordinator?.didTabBackButton()
+        viewModel.saveChangeValue()
     }
     
     @objc private func textFieldDidChange(_ sender: Any?) {
@@ -380,6 +411,7 @@ extension EditSchoolViewController {
         if text.isEmpty {
             changeTextFieldRigthView(view: .searchImage)
         } else {
+            customIndicatorView.isHidden = false
             changeTextFieldRigthView(view: .clearImage)
         }
     }
@@ -389,7 +421,7 @@ extension EditSchoolViewController {
         viewModel.searchSchoolText = .empty
         viewModel.changeSchool = .init(schoolName: .empty, schoolLocation: .empty)
         changeTextFieldRigthView(view: .searchImage)
-        closeSearchScoolTableView()
+        closeSearchSchoolTableView()
     }
     
     @objc func handlePanGesture(_ gestureRecognizer: UIPanGestureRecognizer) {
@@ -483,6 +515,7 @@ extension EditSchoolViewController: UITableViewDelegate {
                 isBold: true)
             
             let schoolData = viewModel.filteredSchools[indexPath.row]
+            viewModel.filteredSchools = [schoolData]
             viewModel.changeSchool = schoolData
             viewModel.searchSchoolText = schoolData.schoolName
             schoolTextField.text = schoolData.schoolName
@@ -490,7 +523,7 @@ extension EditSchoolViewController: UITableViewDelegate {
             
             view.endEditing(true)
             changeCheckSchoolData()
-            closeSearchScoolTableView()
+            closeSearchSchoolTableView()
             
             self.view.layoutIfNeeded()
         }
@@ -520,14 +553,9 @@ extension EditSchoolViewController: UITextFieldDelegate {
                 guard let self = self else { return }
                 
                 if viewModel.searchSchoolText.count > 0 {
-                    viewModel.searchSchoolData {
-                        DispatchQueue.main.async {
-                            self.reloadTableViewData()
-                            self.tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: false)
-                        }
-                    }
+                    viewModel.searchSchoolData()
                 } else {
-                    closeSearchScoolTableView()
+                    closeSearchSchoolTableView()
                 }
             }
         }

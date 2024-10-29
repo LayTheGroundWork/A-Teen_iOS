@@ -14,10 +14,10 @@ public protocol EditSchoolFactory {
 }
 
 public struct EditSchoolFactoryImp: EditSchoolFactory {
-    private(set) var schoolData: SchoolData
+    private(set) var user: MyPageData
     
     public func makeEditSchoolViewController(coordinator: EditSchoolViewControllerCoordinator) -> UIViewController {
-        let viewModel = EditSchoolViewModel(originSchool: schoolData)
+        let viewModel = EditSchoolViewModel(user: user)
         let controller = EditSchoolViewController(
             viewModel: viewModel,
             coordinator: coordinator)

@@ -7,9 +7,10 @@
 //
 
 import Common
+import Domain
 
 extension QuestionDetailCoordinator: QuestionDetailViewControllerCoordinator {
-    public func didTabBackButton(question: Question, index: Int) {
+    public func didTabBackButton(question: QuestionData, index: Int) {
         delegate?.didFinishQuestionDetailViewController(
             childCoordinator: self,
             question: question,

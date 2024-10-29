@@ -6,19 +6,28 @@
 //  Copyright © 2024 ATeen. All rights reserved.
 //
 
+import Core
+import Combine
 import Common
+import Domain
 import Foundation
 
 public class EditUserNameViewModel {
-    public var userName: String
-    public var changeUserName: String
+    @Injected(Auth.self)
+    public var auth: Auth
     
-    public init(
-        userName: String,
-        changeUserName: String
-    ) {
-        self.userName = userName
-        self.changeUserName = changeUserName
+    @Injected(MyPageUseCase.self)
+    public var useCase: MyPageUseCase
+    
+    var state = PassthroughSubject<Void, Never>()
+    private var cancellables = Set<AnyCancellable>()
+    
+    var user: MyPageData
+    var changeUserName: String
+    
+    public init(user: MyPageData) {
+        self.user = user
+        self.changeUserName = user.nickName
     }
 }
 
@@ -30,7 +39,7 @@ extension EditUserNameViewModel {
            text.count >= 2,
            text.count <= 8,
            !isIncompleteKoreanWord(text),
-           userName != changeUserName {
+           user.nickName != changeUserName {
             return true
         } else {
             return false
@@ -60,5 +69,28 @@ extension EditUserNameViewModel {
         let isCompleteKorean = completeRegex.firstMatch(in: text, options: [], range: range) != nil
         let hasIncompleteKorean = incompleteRegex.firstMatch(in: text, options: [], range: range) != nil
         return !isCompleteKorean && hasIncompleteKorean
+    }
+    
+    func saveChangeValue() {
+        guard let token = auth.getAccessToken() else { return }
+        
+        useCase.editMyPage(
+            request: .init(
+                authorization: token,
+                nickName: changeUserName,
+                schoolData: .init(
+                    schoolName: user.schoolName,
+                    schoolLocation: user.location),
+                snsPlatform: user.snsPlatform,
+                mbti: user.mbti,
+                introduction: user.introduction,
+                questions: user.questions)
+        )
+        .sink { [weak self] data in
+            guard let self, let _ = data else { return }
+            self.user.nickName = self.changeUserName
+            self.state.send()
+        }
+        .store(in: &cancellables)
     }
 }

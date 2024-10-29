@@ -9,11 +9,13 @@
 import SnapKit
 
 import Common
+import Combine
 import DesignSystem
+import Domain
 import UIKit
 
 public protocol EditUserNameViewControllerCoordinator: AnyObject {
-    func didTabBackButton()
+    func didTabBackButton(user: MyPageData)
     func configTabbarState(view: ProfileFeatureViewNames)
 }
 
@@ -21,6 +23,8 @@ public final class EditUserNameViewController: UIViewController {
     // MARK: - Private properties
     private var viewModel: EditUserNameViewModel
     private weak var coordinator: EditUserNameViewControllerCoordinator?
+    
+    private var cancellables = Set<AnyCancellable>()
     
     private var errorMessageLabelHeight: Constraint?
     
@@ -124,6 +128,7 @@ public final class EditUserNameViewController: UIViewController {
         super.viewDidLoad()
         configUserInterface()
         configLayout()
+        setupBindings()
     }
     
     public override func viewWillAppear(_ animated: Bool) {
@@ -147,6 +152,16 @@ public final class EditUserNameViewController: UIViewController {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    private func setupBindings() {
+        viewModel.state
+             .receive(on: DispatchQueue.main)
+             .sink { [weak self] in
+                 guard let self else { return }
+                 self.coordinator?.didTabBackButton(user: self.viewModel.user)
+             }
+             .store(in: &cancellables)
+     }
     
     // MARK: - Helpers
     private func configUserInterface() {
@@ -216,7 +231,7 @@ public final class EditUserNameViewController: UIViewController {
                 errorMessageLabel.text = AppLocalized.userNameNumberErrrorMessage
                 errorMessageLabelHeight?.update(offset: 16)
             } else {
-                if viewModel.userName == text {
+                if viewModel.user.nickName == text {
                     textField.layer.borderColor = DesignSystemAsset.mainColor.color.cgColor
                     errorMessageLabel.text = ""
                     errorMessageLabelHeight?.update(offset: 0)
@@ -231,7 +246,7 @@ public final class EditUserNameViewController: UIViewController {
     
     // MARK: - Actions
     @objc private func clickBackButton(_ sender: UIBarButtonItem) {
-        coordinator?.didTabBackButton()
+        coordinator?.didTabBackButton(user: viewModel.user)
     }
     
     @objc private func didSelectClearTextButton(_ sender: UIButton) {
@@ -241,8 +256,7 @@ public final class EditUserNameViewController: UIViewController {
     }
     
     @objc private func clickSaveButton(_ sender: UIButton) {
-        // TODO: 서버 저장 로직 필요
-        coordinator?.didTabBackButton()
+        viewModel.saveChangeValue()
     }
 }
 

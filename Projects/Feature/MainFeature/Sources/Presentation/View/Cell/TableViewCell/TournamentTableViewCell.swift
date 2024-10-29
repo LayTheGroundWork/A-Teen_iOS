@@ -9,8 +9,12 @@ import Common
 import DesignSystem
 import UIKit
 
+protocol TournamentTableViewCellDelegate: AnyObject {
+    func didSelectTournamentImage(indexPath: IndexPath)
+    func didSelectTournamentMoreButton()
+}
+
 class TournamentTableViewCell: UITableViewCell {
-    
     let categoryArr: [TournamentCategory] = [
         TournamentCategory(title: "운동", image: "exercise"),
         TournamentCategory(title: "스터디", image: "study"),
@@ -20,7 +24,7 @@ class TournamentTableViewCell: UITableViewCell {
         TournamentCategory(title: "노래", image: "exercise")
     ]
     
-    weak var delegate: MainViewControllerCoordinator?
+    weak var delegate: TournamentTableViewCellDelegate?
     
     lazy var titleLabel: UILabel = {
         let label = UILabel()
@@ -104,6 +108,10 @@ class TournamentTableViewCell: UITableViewCell {
         
     }
     
+    public func setProperties(delegate: TournamentTableViewCellDelegate) {
+        self.delegate = delegate
+    }
+    
     private func registerDelegate(){
         self.categoryCollectionView.dataSource = self
         self.categoryCollectionView.delegate = self
@@ -127,7 +135,7 @@ extension TournamentTableViewCell: UICollectionViewDataSource {
 // MARK: - UICollectionViewDelegate
 extension TournamentTableViewCell: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        delegate?.didSelectTournamentImage(collectionView: collectionView, indexPath: indexPath)
+        delegate?.didSelectTournamentImage(indexPath: indexPath)
     }
 }
 
