@@ -168,11 +168,10 @@ public final class MainViewController: UIViewController {
     
     private func updateUI() {
         DispatchQueue.main.async {
-            // 카테고리 선택할 떄
             self.tableView.scrollToRow(
                 at: IndexPath(row: 0, section: 0),
                 at: .top,
-                animated: true)
+                animated: false)
             
             self.customNaviView.isHidden = false
             

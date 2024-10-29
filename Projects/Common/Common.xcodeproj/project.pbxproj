@@ -3,13 +3,14 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 55;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		0078C7A7E769769FB8DEBDDD /* Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AD12D17FEFCE8C52B86D2A4 /* Reusable.swift */; };
 		0150114DC8925AFBB8000EAD /* SignUpStateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49338222B87299F9C1BEFD1 /* SignUpStateController.swift */; };
 		0464B73A350A2F0C9D2DD508 /* SignStateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0100D8EF6A47A09A01C2926 /* SignStateController.swift */; };
+		0A2C9DAC65B5818520C9163E /* IndicatorStateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE90157052BA7B3ACD89AAC /* IndicatorStateController.swift */; };
 		111327D482A2C643D3A8D570 /* Badge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC18D9E1C9E0C20652BB6DF /* Badge.swift */; };
 		24F5061ECC00125F3693E096 /* ViewValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4906F43F6A038295B5589D3 /* ViewValues.swift */; };
 		2754EE32C637ABD22C607FAD /* PhotoAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C03B37E51C7C476802065B23 /* PhotoAuthService.swift */; };
@@ -30,7 +31,6 @@
 		8230E047D5CE7D5E951017CE /* UIImage+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 115B67997FED4CB9FDCD3DC3 /* UIImage+Utils.swift */; };
 		8C216E86336FF6D62BC28AEF /* TournamentCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4202B36EB996E66B6AA4F4A /* TournamentCategory.swift */; };
 		A2631D6EB461A07445E1C6E9 /* CMTime+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F8A3BC8FA7F59A2E0A515B0 /* CMTime+Utils.swift */; };
-		BCF17C220CD4DE3BD231ACB0 /* IndicatorStateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 936DC0009D02B1E575E23529 /* IndicatorStateController.swift */; };
 		C62C2C499AE8058EC46454E9 /* Debouncer.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED8FBB7E6BA564519AA6407 /* Debouncer.swift */; };
 		C7327928996CA0A97E1DB6E5 /* MediaType.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7E28589EB048B9F540E6C97 /* MediaType.swift */; };
 		DA0376CBDFA9631AC9159BFD /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E93D6A592CC58F27504DAC /* BaseViewModel.swift */; };
@@ -72,7 +72,6 @@
 		82D7601C0DA86991BE4509BC /* SignType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignType.swift; sourceTree = "<group>"; };
 		878FDF405C052006C4AA2688 /* AlertDialogType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertDialogType.swift; sourceTree = "<group>"; };
 		895CEBF9131539C3F94BC451 /* AlbumType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumType.swift; sourceTree = "<group>"; };
-		936DC0009D02B1E575E23529 /* IndicatorStateController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndicatorStateController.swift; sourceTree = "<group>"; };
 		AFCDE72C33C19AADE9F4B8B5 /* Notification+Name.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification+Name.swift"; sourceTree = "<group>"; };
 		B0100D8EF6A47A09A01C2926 /* SignStateController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignStateController.swift; sourceTree = "<group>"; };
 		B7E28589EB048B9F540E6C97 /* MediaType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaType.swift; sourceTree = "<group>"; };
@@ -84,6 +83,7 @@
 		E4906F43F6A038295B5589D3 /* ViewValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewValues.swift; sourceTree = "<group>"; };
 		E81A216314320B2606E3AEC3 /* CustomDialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDialog.swift; sourceTree = "<group>"; };
 		EED8FBB7E6BA564519AA6407 /* Debouncer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Debouncer.swift; sourceTree = "<group>"; };
+		EEE90157052BA7B3ACD89AAC /* IndicatorStateController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndicatorStateController.swift; sourceTree = "<group>"; };
 		EF5D8026C179716C6CFA404D /* MainStateController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainStateController.swift; sourceTree = "<group>"; };
 		F3BE6050A0C10BC33871F757 /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
 		F4202B36EB996E66B6AA4F4A /* TournamentCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TournamentCategory.swift; sourceTree = "<group>"; };
@@ -279,11 +279,11 @@
 		FE813BE2882C7975E9B07C0C /* State */ = {
 			isa = PBXGroup;
 			children = (
+				EEE90157052BA7B3ACD89AAC /* IndicatorStateController.swift */,
 				EF5D8026C179716C6CFA404D /* MainStateController.swift */,
 				725FA1DDFC369DA815E7A71B /* ProfileStateController.swift */,
 				B0100D8EF6A47A09A01C2926 /* SignStateController.swift */,
 				F49338222B87299F9C1BEFD1 /* SignUpStateController.swift */,
-				936DC0009D02B1E575E23529 /* IndicatorStateController.swift */,
 			);
 			path = State;
 			sourceTree = "<group>";
@@ -317,6 +317,8 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
 				ORGANIZATIONNAME = ATeen;
+				TargetAttributes = {
+				};
 			};
 			buildConfigurationList = 7A960902591CDB4F68854742 /* Build configuration list for PBXProject "Common" */;
 			compatibilityVersion = "Xcode 14.0";
@@ -372,11 +374,11 @@
 				C7327928996CA0A97E1DB6E5 /* MediaType.swift in Sources */,
 				38B857630AD16B49A6CC6617 /* ReportDialogType.swift in Sources */,
 				55E4FC1F94DD90C91BF7B82F /* SignType.swift in Sources */,
+				0A2C9DAC65B5818520C9163E /* IndicatorStateController.swift in Sources */,
 				5301E7605CB20A1DBC27F112 /* MainStateController.swift in Sources */,
 				E06E953895802338D7DEAD78 /* ProfileStateController.swift in Sources */,
 				0464B73A350A2F0C9D2DD508 /* SignStateController.swift in Sources */,
 				0150114DC8925AFBB8000EAD /* SignUpStateController.swift in Sources */,
-				BCF17C220CD4DE3BD231ACB0 /* IndicatorStateController.swift in Sources */,
 				5D39428DAD315E13B2601B5B /* TextFieldRightViewType.swift in Sources */,
 				DA0376CBDFA9631AC9159BFD /* BaseViewModel.swift in Sources */,
 				2AB0F9ED51BBDC9373BDDFF2 /* AppLocalized.swift in Sources */,
@@ -408,10 +410,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					"-ObjC",
-				);
+				OTHER_LDFLAGS = "$(inherited) -ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ATeen.ATeen.Common;
 				PRODUCT_NAME = Common;
 				SDKROOT = iphoneos;
@@ -507,10 +506,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					"-ObjC",
-				);
+				OTHER_LDFLAGS = "$(inherited) -ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ATeen.ATeen.Common;
 				PRODUCT_NAME = Common;
 				SDKROOT = iphoneos;
@@ -518,7 +514,10 @@
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = (
+					"$(inherited)",
+					DEBUG,
+				);
 				SWIFT_COMPILATION_MODE = singlefile;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
