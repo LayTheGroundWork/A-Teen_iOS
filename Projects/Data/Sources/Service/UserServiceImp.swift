@@ -36,7 +36,7 @@ public struct UserServiceImp: UserService {
         switch response {
         case .success(let response):
             return response.data
-        case .failure(let failure):
+        case .failure(_):
             return []
         }
     }
@@ -47,7 +47,7 @@ public struct UserServiceImp: UserService {
         switch response {
         case .success(let response):
             return response.data
-        case .failure(let failure):
+        case .failure(_):
             return []
         }
     }
@@ -58,7 +58,7 @@ public struct UserServiceImp: UserService {
         switch response {
         case .success(let response):
             return response.data
-        case .failure(let failure):
+        case .failure(_):
             return nil
         }
     }
@@ -69,7 +69,7 @@ public struct UserServiceImp: UserService {
         switch response {
         case .success(let response):
             return response.data
-        case .failure(let failure):
+        case .failure(_):
             return nil
         }
     }
@@ -80,7 +80,7 @@ public struct UserServiceImp: UserService {
         switch response {
         case .success(let response):
             return response.data
-        case .failure(let failure):
+        case .failure(_):
             return nil
         }
     }
