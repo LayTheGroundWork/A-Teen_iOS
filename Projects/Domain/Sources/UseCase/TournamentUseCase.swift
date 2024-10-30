@@ -9,5 +9,6 @@
 import Combine
 
 public protocol TournamentUseCase {
-    func searchTournament()  -> AnyPublisher<[TournamentSearchData], Never>
+    func searchTournament() -> AnyPublisher<[TournamentSearchData], Never>
+    func getTournamentResult(request: TournamentResultRequest) -> AnyPublisher<[TournamentResultData], Never>
 }

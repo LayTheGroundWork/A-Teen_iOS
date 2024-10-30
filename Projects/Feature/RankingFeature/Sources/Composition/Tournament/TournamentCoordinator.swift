@@ -13,8 +13,9 @@ public protocol TournamentCoordinatorDelegate: RankingConfigTabbarStateDelegate 
     func quitTournament(childCoordinator: Coordinator)
     func finishTournament(
         childCoordinator: Coordinator,
-        sector: String,
-        session: String
+        category: String,
+        round: Int,
+        tournamentNo: Int
     )
 }
 

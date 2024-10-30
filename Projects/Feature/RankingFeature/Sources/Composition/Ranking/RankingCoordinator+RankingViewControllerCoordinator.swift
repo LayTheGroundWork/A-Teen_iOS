@@ -39,15 +39,17 @@ extension RankingCoordinator: RankingViewControllerCoordinator {
     }
     
     public func didTapRankingCollectionViewCell(
-        sector: String,
-        session: String
+        category: String,
+        round: Int,
+        tournamentNo: Int
     ) {
         let rankingResultCoordinator = factory.makeRankingResultCoordinator(
             navigation: navigation,
             delegate: self,
             withAnimation: true,
-            sector: sector,
-            session: session)
+            category: category,
+            round: round,
+            tournamentNo: tournamentNo)
         addChildCoordinatorStart(rankingResultCoordinator)
     }
 }

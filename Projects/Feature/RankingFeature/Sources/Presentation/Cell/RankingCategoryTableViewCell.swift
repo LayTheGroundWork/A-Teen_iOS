@@ -14,7 +14,10 @@ import UIKit
 
 protocol RankingCategoryTableViewCellDelegate: AnyObject {
     func didTapVoteButton(category: String)
-    func didTapRankingCollectionViewCell(sector: String, session: String)
+    func didTapRankingCollectionViewCell(
+        category: String,
+        round: Int,
+        tournamentNo: Int)
 }
 
 public final class RankingCategoryTableViewCell: UITableViewCell {
@@ -96,19 +99,13 @@ extension RankingCategoryTableViewCell: UICollectionViewDataSource {
 
 extension RankingCategoryTableViewCell: UICollectionViewDelegate {
     public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        var session: String
-        switch indexPath.item {
-        case 0:
-            return
-        default:
-            let reversedIndex = collectionView.numberOfItems(inSection: indexPath.section) - indexPath.item
-            session = "\(reversedIndex)회차"
-        }
-        
+        guard let tournamentListInCategory = tournamentListInCategory,
+              indexPath.item != 0
+        else { return }
         delegate?.didTapRankingCollectionViewCell(
-            sector: "",
-            session: session
-        )
+            category: tournamentListInCategory.category,
+            round: tournamentListInCategory.winner[indexPath.item - 1].round,
+            tournamentNo: tournamentListInCategory.winner[indexPath.item - 1].tournamentNo)
     }
 }
 

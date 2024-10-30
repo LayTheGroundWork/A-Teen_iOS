@@ -19,31 +19,21 @@ public final class RankingResultCoordinator: Coordinator {
     public var childCoordinators: [Coordinator] = []
     weak var delegate: RankingResultCoordinatorDelegate?
     let withAnimation: Bool
-    let sector: String
-    let session: String
     
     public init(
         navigation: Navigation,
         factory: RankingResultFactory,
         delegate: RankingResultCoordinatorDelegate,
-        withAnimation: Bool,
-        sector: String,
-        session: String
+        withAnimation: Bool
     ) {
         self.navigation = navigation
         self.factory = factory
         self.delegate = delegate
         self.withAnimation = withAnimation
-        self.sector = sector
-        self.session = session
     }
     
     public func start() {
-        let controller = factory.makeRankingResultViewController(
-            coordinator: self,
-            withAnimation: withAnimation,
-            sector: sector,
-            session: session)
+        let controller = factory.makeRankingResultViewController(coordinator: self)
         navigation.pushViewController(controller, animated: withAnimation)
     }
 }

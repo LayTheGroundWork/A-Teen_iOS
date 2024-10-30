@@ -3,29 +3,30 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 55;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		047B64B2767CE2521A9A5DBD /* RankingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B386D68CC70A9A69734B0E08 /* RankingCoordinator.swift */; };
-		0528352AD2F27155FBE17D94 /* RankingCategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 620B3987A029C9A17E3D7B35 /* RankingCategoryCollectionViewCell.swift */; };
 		08F2D5197440572503AFFB64 /* TournamentRoundCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3963D325305A7084BBC2C402 /* TournamentRoundCollectionViewCell.swift */; };
 		2761642EC3AA6193EFB7BA74 /* RankingCoordinator+TournamentCoordiantorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEBFB70C0756575A713D492E /* RankingCoordinator+TournamentCoordiantorDelegate.swift */; };
 		279A4873A2F1398079F1C64F /* RankingCoordinator+RankingResultCoordinatorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E83EEE751A1E2BB07A0070E4 /* RankingCoordinator+RankingResultCoordinatorDelegate.swift */; };
 		285C1D8F0A5E6D740CDDB996 /* RankingFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33823F9794E067BB652D02CD /* RankingFactory.swift */; };
 		34B2EE4170DB302D44950724 /* RankingResultFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E9277BE720A9EFACA047BE /* RankingResultFactory.swift */; };
+		3EA694EE9130EF251755352E /* RankingCategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CE3E33E9C00DFFC5995E4C1 /* RankingCategoryTableViewCell.swift */; };
 		401869244406100412A97E0C /* RankingCoordinator+RankingViewControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B7C4CCE346089D4B969B3D /* RankingCoordinator+RankingViewControllerCoordinator.swift */; };
 		40D431D98735A2853C1272BB /* RankingCoordinator+AlertCoordinatorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97390FCBCB90C16236326DB0 /* RankingCoordinator+AlertCoordinatorDelegate.swift */; };
 		4FC48A2C059D8023FAE823F4 /* RankingResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A73C4568FE67A73CE37FC5 /* RankingResultViewController.swift */; };
 		549D6FB98A7E9B30728C625E /* TournamentCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5761FB77EA2BCD471E90D73A /* TournamentCoordinator.swift */; };
 		5A74E957BE03D0FEB0118673 /* FeatureDependency.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B25C900F858DDF43F8CF34AB /* FeatureDependency.framework */; };
+		602C0415E399D60353465E86 /* RankingCategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6448E830829B3D8845AC063 /* RankingCategoryCollectionViewCell.swift */; };
 		63B7372E72D9426BFD3B9E9C /* TournamentCoordinator+TournamentViewControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA7BA5F1E14E99D5B23EC54 /* TournamentCoordinator+TournamentViewControllerCoordinator.swift */; };
 		6F7E4F8B0AF62C4AC3F5D3B2 /* DashedBorderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A02FC49D1002F3B1D94A4E7 /* DashedBorderView.swift */; };
 		74D180E4AF5C27DAF5E90D52 /* RankingCoordinator+RankingConfigTabbarStateDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ACC88DC37DF3160AE81C2AA /* RankingCoordinator+RankingConfigTabbarStateDelegate.swift */; };
 		7507003B372B673482EB7BC6 /* TournamentEndCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01187BD6A56E56548CF0096E /* TournamentEndCollectionViewCell.swift */; };
 		806C3BFED45A009C6FD308E4 /* TournamentUserCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD58DEA719A1E2CF0558DE9F /* TournamentUserCollectionViewCell.swift */; };
-		8C6FCEC9BD87FF3D1B6A8721 /* RankingCategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDAF6CDF6C2A968F44AC6B4A /* RankingCategoryTableViewCell.swift */; };
 		9E115CCD5FA38A46F9BE9DBA /* TournamentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09754A6680D7BB7FFCC22A07 /* TournamentViewController.swift */; };
+		A9D8ADD7CA9704649B7F0506 /* RankingResultViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEAABD2C143EE93BFF1D95DA /* RankingResultViewModel.swift */; };
 		B0A50669BBE92E007AD00795 /* RankingResultCoordinator+RankingResultViewControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CBC89FA22B6FAA379890C31 /* RankingResultCoordinator+RankingResultViewControllerCoordinator.swift */; };
 		B5338677A16E8F89F350935B /* RankingResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DCE331E56B76D6578E5B7E5 /* RankingResultTableViewCell.swift */; };
 		B878873C911459BA121C8188 /* TournamentFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97BA09AEBAC0614D4BE32DB0 /* TournamentFactory.swift */; };
@@ -56,6 +57,7 @@
 		09754A6680D7BB7FFCC22A07 /* TournamentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TournamentViewController.swift; sourceTree = "<group>"; };
 		20A73C4568FE67A73CE37FC5 /* RankingResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingResultViewController.swift; sourceTree = "<group>"; };
 		22CAF4869F79BE74ABC6E364 /* RankingResultCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingResultCoordinator.swift; sourceTree = "<group>"; };
+		2CE3E33E9C00DFFC5995E4C1 /* RankingCategoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingCategoryTableViewCell.swift; sourceTree = "<group>"; };
 		2DA7BA5F1E14E99D5B23EC54 /* TournamentCoordinator+TournamentViewControllerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TournamentCoordinator+TournamentViewControllerCoordinator.swift"; sourceTree = "<group>"; };
 		33823F9794E067BB652D02CD /* RankingFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingFactory.swift; sourceTree = "<group>"; };
 		3963D325305A7084BBC2C402 /* TournamentRoundCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TournamentRoundCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -64,7 +66,6 @@
 		49E9277BE720A9EFACA047BE /* RankingResultFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingResultFactory.swift; sourceTree = "<group>"; };
 		4DA469756E9E7924C93A0AE6 /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
 		5761FB77EA2BCD471E90D73A /* TournamentCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TournamentCoordinator.swift; sourceTree = "<group>"; };
-		620B3987A029C9A17E3D7B35 /* RankingCategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingCategoryCollectionViewCell.swift; sourceTree = "<group>"; };
 		64A3CED8496F43900CC4174E /* TournamentUserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TournamentUserView.swift; sourceTree = "<group>"; };
 		6A02FC49D1002F3B1D94A4E7 /* DashedBorderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashedBorderView.swift; sourceTree = "<group>"; };
 		6DCE331E56B76D6578E5B7E5 /* RankingResultTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingResultTableViewCell.swift; sourceTree = "<group>"; };
@@ -73,16 +74,17 @@
 		97390FCBCB90C16236326DB0 /* RankingCoordinator+AlertCoordinatorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RankingCoordinator+AlertCoordinatorDelegate.swift"; sourceTree = "<group>"; };
 		97BA09AEBAC0614D4BE32DB0 /* TournamentFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TournamentFactory.swift; sourceTree = "<group>"; };
 		9EB80507C330FC5368109A92 /* Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
+		A6448E830829B3D8845AC063 /* RankingCategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingCategoryCollectionViewCell.swift; sourceTree = "<group>"; };
 		B25C900F858DDF43F8CF34AB /* FeatureDependency.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FeatureDependency.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B386D68CC70A9A69734B0E08 /* RankingCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingCoordinator.swift; sourceTree = "<group>"; };
 		BF94B1FAB18A9083A68FD4C9 /* RankingFeature.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RankingFeature.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		CDAF6CDF6C2A968F44AC6B4A /* RankingCategoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingCategoryTableViewCell.swift; sourceTree = "<group>"; };
 		D3BCA9636AA9610EADC7CE79 /* RankingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingViewController.swift; sourceTree = "<group>"; };
 		DEBFB70C0756575A713D492E /* RankingCoordinator+TournamentCoordiantorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RankingCoordinator+TournamentCoordiantorDelegate.swift"; sourceTree = "<group>"; };
 		E83EEE751A1E2BB07A0070E4 /* RankingCoordinator+RankingResultCoordinatorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RankingCoordinator+RankingResultCoordinatorDelegate.swift"; sourceTree = "<group>"; };
 		EF3FB0946221184185478D25 /* CustomRankingTopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomRankingTopView.swift; sourceTree = "<group>"; };
 		F04DF6C1A61542685A4FFD39 /* RankingFeature-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "RankingFeature-Info.plist"; sourceTree = "<group>"; };
 		FD58DEA719A1E2CF0558DE9F /* TournamentUserCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TournamentUserCollectionViewCell.swift; sourceTree = "<group>"; };
+		FEAABD2C143EE93BFF1D95DA /* RankingResultViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingResultViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,9 +110,9 @@
 		3133B999CA77995F4F165F81 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				A6448E830829B3D8845AC063 /* RankingCategoryCollectionViewCell.swift */,
+				2CE3E33E9C00DFFC5995E4C1 /* RankingCategoryTableViewCell.swift */,
 				6DCE331E56B76D6578E5B7E5 /* RankingResultTableViewCell.swift */,
-				CDAF6CDF6C2A968F44AC6B4A /* RankingCategoryTableViewCell.swift */,
-				620B3987A029C9A17E3D7B35 /* RankingCategoryCollectionViewCell.swift */,
 				01187BD6A56E56548CF0096E /* TournamentEndCollectionViewCell.swift */,
 				3963D325305A7084BBC2C402 /* TournamentRoundCollectionViewCell.swift */,
 				FD58DEA719A1E2CF0558DE9F /* TournamentUserCollectionViewCell.swift */,
@@ -121,6 +123,7 @@
 		31B83E01FBB76280FED932D2 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				FEAABD2C143EE93BFF1D95DA /* RankingResultViewModel.swift */,
 				7770474523CFA83976BAB6F3 /* RankingViewModel.swift */,
 			);
 			path = ViewModel;
@@ -285,6 +288,8 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
 				ORGANIZATIONNAME = ATeen;
+				TargetAttributes = {
+				};
 			};
 			buildConfigurationList = B342376EBCA2AFCF06DDAED1 /* Build configuration list for PBXProject "RankingFeature" */;
 			compatibilityVersion = "Xcode 14.0";
@@ -336,15 +341,16 @@
 				63B7372E72D9426BFD3B9E9C /* TournamentCoordinator+TournamentViewControllerCoordinator.swift in Sources */,
 				549D6FB98A7E9B30728C625E /* TournamentCoordinator.swift in Sources */,
 				B878873C911459BA121C8188 /* TournamentFactory.swift in Sources */,
+				602C0415E399D60353465E86 /* RankingCategoryCollectionViewCell.swift in Sources */,
+				3EA694EE9130EF251755352E /* RankingCategoryTableViewCell.swift in Sources */,
 				B5338677A16E8F89F350935B /* RankingResultTableViewCell.swift in Sources */,
-				8C6FCEC9BD87FF3D1B6A8721 /* RankingCategoryTableViewCell.swift in Sources */,
-				0528352AD2F27155FBE17D94 /* RankingCategoryCollectionViewCell.swift in Sources */,
 				7507003B372B673482EB7BC6 /* TournamentEndCollectionViewCell.swift in Sources */,
 				08F2D5197440572503AFFB64 /* TournamentRoundCollectionViewCell.swift in Sources */,
 				806C3BFED45A009C6FD308E4 /* TournamentUserCollectionViewCell.swift in Sources */,
 				4FC48A2C059D8023FAE823F4 /* RankingResultViewController.swift in Sources */,
 				ED153AA6276581EE149DBB13 /* RankingViewController.swift in Sources */,
 				9E115CCD5FA38A46F9BE9DBA /* TournamentViewController.swift in Sources */,
+				A9D8ADD7CA9704649B7F0506 /* RankingResultViewModel.swift in Sources */,
 				BCB3D852B0C045A2D89ADFD4 /* RankingViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -425,10 +431,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					"-ObjC",
-				);
+				OTHER_LDFLAGS = "$(inherited) -ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ATeen.ATeen.RankingFeature;
 				PRODUCT_NAME = RankingFeature;
 				SDKROOT = iphoneos;
@@ -436,7 +439,10 @@
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = (
+					"$(inherited)",
+					DEBUG,
+				);
 				SWIFT_COMPILATION_MODE = singlefile;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -466,10 +472,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					"-ObjC",
-				);
+				OTHER_LDFLAGS = "$(inherited) -ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ATeen.ATeen.RankingFeature;
 				PRODUCT_NAME = RankingFeature;
 				SDKROOT = iphoneos;

@@ -24,4 +24,14 @@ public struct TournamentUseCaseImp: TournamentUseCase {
         }
         .eraseToAnyPublisher()
     }
+    
+    public func getTournamentResult(request: TournamentResultRequest) -> AnyPublisher<[TournamentResultData], Never> {
+        Future { promise in
+            Task {
+                let data = await tournamentService.getTournamentResult(request: request)
+                promise(.success(data))
+            }
+        }
+        .eraseToAnyPublisher()
+    }
 }

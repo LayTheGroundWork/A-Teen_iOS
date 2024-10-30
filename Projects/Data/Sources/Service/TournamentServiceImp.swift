@@ -11,13 +11,29 @@ import Foundation
 
 public struct TournamentServiceImp: TournamentService {
     private let tournamentSearchRepository: TournamentSearchRepository
+    private let tournamentResultRepository: TournamentResultRepository
     
-    public init(tournamentSearchRepository: TournamentSearchRepository) {
+    public init(
+        tournamentSearchRepository: TournamentSearchRepository,
+        tournamentResultRepository: TournamentResultRepository
+    ) {
         self.tournamentSearchRepository = tournamentSearchRepository
+        self.tournamentResultRepository = tournamentResultRepository
     }
     
     public func searchTournament() async -> [TournamentSearchData] {
         let response = await tournamentSearchRepository.searchTournament()
+        
+        switch response {
+        case .success(let response):
+            return response.data
+        case .failure(_):
+            return []
+        }
+    }
+    
+    public func getTournamentResult(request: TournamentResultRequest) async -> [TournamentResultData] {
+        let response = await tournamentResultRepository.getTournamentResult(request: request)
         
         switch response {
         case .success(let response):

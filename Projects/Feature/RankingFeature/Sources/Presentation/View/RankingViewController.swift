@@ -12,7 +12,10 @@ import UIKit
 
 public protocol RankingViewControllerCoordinator: AnyObject {
     func didTapVoteButton(category: String)
-    func didTapRankingCollectionViewCell(sector: String, session: String)
+    func didTapRankingCollectionViewCell(
+        category: String,
+        round: Int,
+        tournamentNo: Int)
     func configTabbarState(view: RankingFeatureViewNames)
 }
 
@@ -261,7 +264,14 @@ extension RankingViewController: RankingCategoryTableViewCellDelegate {
         coordinator?.didTapVoteButton(category: category)
     }
     
-    func didTapRankingCollectionViewCell(sector: String, session: String) {
-        coordinator?.didTapRankingCollectionViewCell(sector: sector, session: session)
+    func didTapRankingCollectionViewCell(
+        category: String,
+        round: Int,
+        tournamentNo: Int
+    ) {
+        coordinator?.didTapRankingCollectionViewCell(
+            category: category,
+            round: round,
+            tournamentNo: tournamentNo)
     }
 }

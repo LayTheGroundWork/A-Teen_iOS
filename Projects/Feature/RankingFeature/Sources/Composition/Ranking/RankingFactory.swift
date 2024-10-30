@@ -13,13 +13,14 @@ public protocol RankingFactory {
     func makeRankingViewController(
         coordinator: RankingViewControllerCoordinator
     ) -> UIViewController
-
+    
     func makeRankingResultCoordinator(
         navigation: Navigation,
         delegate: RankingResultCoordinatorDelegate,
         withAnimation: Bool,
-        sector: String,
-        session: String
+        category: String,
+        round: Int,
+        tournamentNo: Int
     ) -> Coordinator
     
     func makeTournamentCoordinator(
@@ -48,18 +49,19 @@ public struct RankingFactoryImp: RankingFactory {
         navigation: Navigation,
         delegate: RankingResultCoordinatorDelegate,
         withAnimation: Bool,
-        sector: String,
-        session: String
+        category: String,
+        round: Int,
+        tournamentNo: Int
     ) -> Coordinator {
-        let factory = RankingResultFactoryImp()
+        let factory = RankingResultFactoryImp(
+            category: category,
+            round: round,
+            tournamentNo: tournamentNo)
         return RankingResultCoordinator(
             navigation: navigation,
             factory: factory,
             delegate: delegate,
-            withAnimation: withAnimation,
-            sector: sector,
-            session: session
-        )
+            withAnimation: withAnimation)
     }
     
     public func makeTournamentCoordinator(
