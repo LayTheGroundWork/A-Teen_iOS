@@ -6,6 +6,8 @@
 //  Copyright © 2024 ATeen. All rights reserved.
 //
 
+import SnapKit
+
 import Common
 import DesignSystem
 import UIKit

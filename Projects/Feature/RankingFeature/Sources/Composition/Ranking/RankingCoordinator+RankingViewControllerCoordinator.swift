@@ -12,14 +12,14 @@ import FeatureDependency
 import UIKit
 
 extension RankingCoordinator: RankingViewControllerCoordinator {
-    public func didTapVoteButton(sector: String) {
-        self.sector = sector
+    public func didTapVoteButton(category: String) {
+        self.category = category
         let coordinator = coordinatorProvider.makeAlertCoordinator(
             dialogType: .twoButton,
             delegate: self,
             dialogData: CustomDialog(
                 dialogImage: UIImage(),
-                dialogTitle: "\(sector) 투표에 참여하시겠어요?",
+                dialogTitle: "\(category) 투표에 참여하시겠어요?",
                 titleColor: .black,
                 titleNumberOfLine: 1,
                 titleFont: .customFont(forTextStyle: .callout, weight: .bold),

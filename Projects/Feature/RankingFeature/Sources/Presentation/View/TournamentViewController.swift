@@ -57,7 +57,7 @@ public protocol TournamentViewControllerCoordinator: AnyObject {
 }
 
 public final class TournamentViewController: UIViewController {
-    let sector: String
+    let category: String
     
     // MARK: - Private properties
     private weak var coordinator: TournamentViewControllerCoordinator?
@@ -74,7 +74,7 @@ public final class TournamentViewController: UIViewController {
                          for: .touchUpInside)
 
         let label = UILabel()
-        label.text = sector
+        label.text = category
         label.textColor = UIColor.white
         label.font = .customFont(forTextStyle: .title3, weight: .bold)
         label.textAlignment = .center
@@ -123,10 +123,10 @@ public final class TournamentViewController: UIViewController {
     
     init(
         coordinator: TournamentViewControllerCoordinator,
-        sector: String
+        category: String
     ) {
         self.coordinator = coordinator
-        self.sector = sector
+        self.category = category
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -216,7 +216,7 @@ extension TournamentViewController: UICollectionViewDataSource {
                                school: "서울 중학교",
                                age: 16,
                                image: DesignSystemAsset.badge4.image)
-            cell.sector = sector
+            cell.sector = category
             cell.delegate = coordinator
             return cell
         }

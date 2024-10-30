@@ -40,6 +40,9 @@ extension AppDelegate {
         // image
         let remoteImageDataRepository: RemoteImageDataRepository = RemoteImageDataRepositoryImp(apiClientService: apiClientService)
         
+        // tournament
+        let tournamentSearchRepository: TournamentSearchRepository = TournamentSearchRepositoryImp(apiClientService: apiClientService)
+        
         // mypage
         let myPageRepository: MyPageRepository = MyPageRepositoryImp(apiClientService: apiClientService)
         let myPageEditRepository: MyPageEditRepository = MyPageEditRepositoryImp(apiClientService: apiClientService)
@@ -63,6 +66,8 @@ extension AppDelegate {
         
         let imageDataService: ImageDataService = ImageDataServiceImp(remoteImageDataRepository: remoteImageDataRepository)
         
+        let tournamentService: TournamentService = TournamentServiceImp(tournamentSearchRepository: tournamentSearchRepository)
+        
         let myPageService: MyPageService = MyPageServiceImp(
             myPageRepository: myPageRepository,
             myPageEditRepository: myPageEditRepository)
@@ -78,6 +83,8 @@ extension AppDelegate {
         )
 
         let imageDataUseCase: ImageDataUseCase = ImageDataUseCaseImp(imageDataService: imageDataService)
+        
+        let tournamentUseCase: TournamentUseCase = TournamentUseCaseImp(tournamentService: tournamentService)
         
         let myPageUseCase: MyPageUseCase = MyPageUseCaseImp(myPageService: myPageService, searchService: searchService)
         
@@ -98,6 +105,10 @@ extension AppDelegate {
             type: ImageDataUseCase.self,
             imageDataUseCase
         )
+        
+        AppContainer.register(
+            type: TournamentUseCase.self,
+            tournamentUseCase)
         
         AppContainer.register(
             type: MyPageUseCase.self,

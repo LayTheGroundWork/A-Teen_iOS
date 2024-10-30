@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		036B6550D85D013E9E45D716 /* ApiError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26DF9FED1221312C46C36A20 /* ApiError.swift */; };
 		0422C1E028807B6222269C0E /* HttpResponseStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = D14C05E4D710518F379088FD /* HttpResponseStatus.swift */; };
+		39AFE023D7F0792F54311B03 /* TournamentSearchEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4554CD4854353C4E70EAE542 /* TournamentSearchEndPoint.swift */; };
 		3ABC1C37BC738A4E0B60E939 /* ReissueEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEF134EE57A5BC5E99B5C34C /* ReissueEndPoint.swift */; };
 		4A25E8BE1156684357DAC52F /* LogInEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE9987B527C6D0232D055D1 /* LogInEndPoint.swift */; };
 		4E73CAAA79D1BE736AD3B7FA /* VerificationCodeEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BA75336359A120CBA17BA7D /* VerificationCodeEndPoint.swift */; };
@@ -56,6 +57,7 @@
 		377923D794C9B5C4B87607EB /* UserLikeCancelEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLikeCancelEndPoint.swift; sourceTree = "<group>"; };
 		39E9564068243164AE0397F4 /* EndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPoint.swift; sourceTree = "<group>"; };
 		423A93F1015E6C9CF4DB82B2 /* Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
+		4554CD4854353C4E70EAE542 /* TournamentSearchEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TournamentSearchEndPoint.swift; sourceTree = "<group>"; };
 		4B0CE67A9252733A1EADA6D0 /* MyPageEditEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageEditEndPoint.swift; sourceTree = "<group>"; };
 		564371F685EE5EF450EB138A /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
 		6B3BAB3E928E61A2F4D92A4F /* LogOutEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogOutEndPoint.swift; sourceTree = "<group>"; };
@@ -85,6 +87,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		01CC5A52152CE9896DD76318 /* Tournament */ = {
+			isa = PBXGroup;
+			children = (
+				4554CD4854353C4E70EAE542 /* TournamentSearchEndPoint.swift */,
+			);
+			path = Tournament;
+			sourceTree = "<group>";
+		};
 		0D0E7ECA2FE1D2974B2941D6 /* StatusResponse */ = {
 			isa = PBXGroup;
 			children = (
@@ -214,6 +224,7 @@
 				6AB8D2B24361D1C2B97C7999 /* Auth */,
 				8EB54BD97336FB78B8157DB8 /* MyPage */,
 				AA8EC847DBD5E30D7A139BB0 /* Search */,
+				01CC5A52152CE9896DD76318 /* Tournament */,
 				6A4817DE7FD56C464535D78D /* User */,
 				39E9564068243164AE0397F4 /* EndPoint.swift */,
 			);
@@ -315,6 +326,7 @@
 				AD73BA42E8039790C431AA21 /* MyPageEditEndPoint.swift in Sources */,
 				E26FE6FDA0290C66230ED42E /* MyPageEndPoint.swift in Sources */,
 				C4B30C7C31F170EE6B5031C4 /* SchoolDataEndPoint.swift in Sources */,
+				39AFE023D7F0792F54311B03 /* TournamentSearchEndPoint.swift in Sources */,
 				E5FA1DB4AC5C809C4BB8C351 /* AllUserFindEndPoint.swift in Sources */,
 				D740F503237078B97DA47FF8 /* CategoryUserFindEndPoint.swift in Sources */,
 				ACACD3512631434B2DF7844F /* UserDetailEndPoint.swift in Sources */,

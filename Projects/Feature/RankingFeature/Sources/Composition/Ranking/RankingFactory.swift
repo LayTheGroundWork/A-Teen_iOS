@@ -26,18 +26,20 @@ public protocol RankingFactory {
         navigation: Navigation,
         delegate: TournamentCoordinatorDelegate,
         coordinatorProvider: CoordinatorProvider,
-        sector: String
+        category: String
     ) -> Coordinator
 }
 
 public struct RankingFactoryImp: RankingFactory {
-
+    let viewModel = RankingViewModel()
+    
     public init() { }
     
     public func makeRankingViewController(
         coordinator: RankingViewControllerCoordinator
     ) -> UIViewController {
         let controller = RankingViewController(
+            viewModel: viewModel,
             coordinator: coordinator)
         return controller
     }
@@ -64,7 +66,7 @@ public struct RankingFactoryImp: RankingFactory {
         navigation: Navigation,
         delegate: TournamentCoordinatorDelegate,
         coordinatorProvider: CoordinatorProvider,
-        sector: String
+        category: String
     ) -> Coordinator {
         let factory = TournamentFactoryImp()
         return TournamentCoordinator(
@@ -72,7 +74,7 @@ public struct RankingFactoryImp: RankingFactory {
             factory: factory,
             delegate: delegate,
             coordinatorProvider: coordinatorProvider,
-            sector: sector
+            category: category
         )
     }
 }

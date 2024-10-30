@@ -19,6 +19,7 @@
 		2500BF61DE5C0E2BE486E162 /* UserLikeRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF331E89DE74BA7D9F8F62C3 /* UserLikeRepository.swift */; };
 		30A9A12EAAB824CB847A8F55 /* SearchSchoolService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49451361217E78799DEB15E /* SearchSchoolService.swift */; };
 		33DCF949EEBC3A2BD32B7BBF /* VerificationCodeRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4379208B31B7C01AB4F9897D /* VerificationCodeRequest.swift */; };
+		364F3A4A0C3E8E4E6F3C6417 /* TournamentSearchRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4882794C7316473C37DE00D /* TournamentSearchRepository.swift */; };
 		3D657B9ECD0624182B20B930 /* UserDetailRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED0A566217AED812986D0CF2 /* UserDetailRepository.swift */; };
 		46FFF702E799485168786812 /* ReissueRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612D6B6422F772C1E2D6F5C0 /* ReissueRepository.swift */; };
 		4B8EC7D2C9769F6023CC4475 /* SchoolDataResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E706264EE7208D0CEE3472 /* SchoolDataResponse.swift */; };
@@ -27,6 +28,7 @@
 		54245B85066C204827A163A8 /* LogInRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DB203B60AC0D1DC139D0787 /* LogInRequest.swift */; };
 		5AACBF8F2CA31275CAF2BC75 /* DuplicationCodeResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8308C6071C68612B62C5393 /* DuplicationCodeResponse.swift */; };
 		5F91AF7D6B0308938FCAF2FF /* DefaultResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DA43F19140408AF5002EC6 /* DefaultResponse.swift */; };
+		62CB62DF829F34E0CF7F8EA0 /* TournamentUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFAAA98B6E1C8FC06D733080 /* TournamentUseCase.swift */; };
 		6FF40068FE38C2FAB9E666E4 /* ReissueRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F38D8BFB5238DE851C69B24 /* ReissueRequest.swift */; };
 		77EEC29764D1D277B000EE29 /* ImageDataUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451ACE222BE8C01F4B361381 /* ImageDataUseCase.swift */; };
 		7C4AF6D0AE4C261F7D520694 /* AllUserFindRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2DFFA8FC6456E305F4BC4B4 /* AllUserFindRepository.swift */; };
@@ -51,12 +53,15 @@
 		ADE46DB026DD08F36838B2E8 /* ImageDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCAFDEA13881228AC3ACE0A9 /* ImageDataService.swift */; };
 		AF8A8BC3F18BCBBA3EAF35E4 /* SchoolDataRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A890C29EF31D1E2258209C /* SchoolDataRequest.swift */; };
 		BD211DA628D7C8A4A41F4EA6 /* MyPageEditRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DDB17E7865D360F33A52903 /* MyPageEditRequest.swift */; };
+		C0BD402AB78357BC6B4A16DA /* TournamentService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4254C61B0B7E56A1A117BC /* TournamentService.swift */; };
 		C54D083201D9E2316E0E0CEB /* SignUpRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB47865804E063CF2820CF8 /* SignUpRequest.swift */; };
+		D19CC565A6B2FEF82F611377 /* TournamentUseCaseImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 471C341DCA12BAB287C00875 /* TournamentUseCaseImp.swift */; };
 		DFF8EC9EC21377641608EBCA /* SignUpRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52322FBE6CCBD4EC164281FF /* SignUpRepository.swift */; };
 		E1918B6741294E3762624C8D /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C129FCFD85A6B44DEA0F0034 /* UserService.swift */; };
 		E8889ABBD56674F100CC3741 /* SchoolDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = D50C4A68B380C6F561FFF5A3 /* SchoolDataRepository.swift */; };
 		EB418175EBD284B055113D0C /* DuplictaionCheckRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF02CC704DF7A69F3955F70 /* DuplictaionCheckRepository.swift */; };
 		EFFDA97C6DFF686E06018F8F /* UserDetailRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12BB015FF8CFDE00B6A6003F /* UserDetailRequest.swift */; };
+		F9B789C60518C92B29EF6FAE /* TournamentSearchResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75011FDC0C2CA74E26D57112 /* TournamentSearchResponse.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -76,6 +81,7 @@
 		001C74C7CE3C2E6C83A38038 /* MyPageUseCaseImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageUseCaseImp.swift; sourceTree = "<group>"; };
 		0D0E7625A5F57D7EC04CB5C6 /* RemoteImageDataRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteImageDataRepository.swift; sourceTree = "<group>"; };
 		12BB015FF8CFDE00B6A6003F /* UserDetailRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailRequest.swift; sourceTree = "<group>"; };
+		1F4254C61B0B7E56A1A117BC /* TournamentService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TournamentService.swift; sourceTree = "<group>"; };
 		261679B89057804E12EBBCC2 /* UserUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserUseCase.swift; sourceTree = "<group>"; };
 		29DA43F19140408AF5002EC6 /* DefaultResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultResponse.swift; sourceTree = "<group>"; };
 		2DDB17E7865D360F33A52903 /* MyPageEditRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageEditRequest.swift; sourceTree = "<group>"; };
@@ -86,6 +92,7 @@
 		3A4620A0019C901EC7C993A2 /* Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
 		4379208B31B7C01AB4F9897D /* VerificationCodeRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationCodeRequest.swift; sourceTree = "<group>"; };
 		451ACE222BE8C01F4B361381 /* ImageDataUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDataUseCase.swift; sourceTree = "<group>"; };
+		471C341DCA12BAB287C00875 /* TournamentUseCaseImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TournamentUseCaseImp.swift; sourceTree = "<group>"; };
 		49D2BEE257FCC359726E442C /* CategoryUserFindRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryUserFindRequest.swift; sourceTree = "<group>"; };
 		4A4C42F6E670175AB8E4F74B /* MyPageResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageResponse.swift; sourceTree = "<group>"; };
 		4CF02CC704DF7A69F3955F70 /* DuplictaionCheckRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DuplictaionCheckRepository.swift; sourceTree = "<group>"; };
@@ -100,6 +107,7 @@
 		62A4711A7C08A7C98E2ECBDD /* MyPageUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageUseCase.swift; sourceTree = "<group>"; };
 		6F7E20649795CE869B561CE8 /* UserLikeRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLikeRequest.swift; sourceTree = "<group>"; };
 		710F7C147A43E62A5D8CDFB6 /* SignService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignService.swift; sourceTree = "<group>"; };
+		75011FDC0C2CA74E26D57112 /* TournamentSearchResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TournamentSearchResponse.swift; sourceTree = "<group>"; };
 		75372B5C13D99F8B2A7AE5E7 /* UserUseCaseImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserUseCaseImp.swift; sourceTree = "<group>"; };
 		7616981B4BB1B2D11994DCC8 /* ImageDataUseCaseImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDataUseCaseImp.swift; sourceTree = "<group>"; };
 		77D3BD52B440E6A9AD8B7C0B /* VerificationCodeRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationCodeRepository.swift; sourceTree = "<group>"; };
@@ -121,9 +129,11 @@
 		D583C45BA24EA5F279216A5F /* MyPageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageService.swift; sourceTree = "<group>"; };
 		DCAFDEA13881228AC3ACE0A9 /* ImageDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDataService.swift; sourceTree = "<group>"; };
 		E327D8D4868DB89EFE9E2B12 /* MyPageEditRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageEditRepository.swift; sourceTree = "<group>"; };
+		E4882794C7316473C37DE00D /* TournamentSearchRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TournamentSearchRepository.swift; sourceTree = "<group>"; };
 		EC9D0548A4DB530E9B7F3EE0 /* SignUseCaseImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUseCaseImp.swift; sourceTree = "<group>"; };
 		ED0A566217AED812986D0CF2 /* UserDetailRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailRepository.swift; sourceTree = "<group>"; };
 		EF331E89DE74BA7D9F8F62C3 /* UserLikeRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLikeRepository.swift; sourceTree = "<group>"; };
+		EFAAA98B6E1C8FC06D733080 /* TournamentUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TournamentUseCase.swift; sourceTree = "<group>"; };
 		F154F3B95D4EB80DAE20FA58 /* MyPageRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageRequest.swift; sourceTree = "<group>"; };
 		F2DFFA8FC6456E305F4BC4B4 /* AllUserFindRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllUserFindRepository.swift; sourceTree = "<group>"; };
 		FD49F277B86481D3D105FAC8 /* Domain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Domain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -140,6 +150,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		02F2C4C358E40BC66F92049C /* Tournament */ = {
+			isa = PBXGroup;
+			children = (
+				75011FDC0C2CA74E26D57112 /* TournamentSearchResponse.swift */,
+			);
+			path = Tournament;
+			sourceTree = "<group>";
+		};
 		0341B6BC3BB2B1CDE266CAF5 /* Derived */ = {
 			isa = PBXGroup;
 			children = (
@@ -191,6 +209,7 @@
 				451ACE222BE8C01F4B361381 /* ImageDataUseCase.swift */,
 				62A4711A7C08A7C98E2ECBDD /* MyPageUseCase.swift */,
 				A97F7B0D49B77A55DE5D9C86 /* SignUseCase.swift */,
+				EFAAA98B6E1C8FC06D733080 /* TournamentUseCase.swift */,
 				261679B89057804E12EBBCC2 /* UserUseCase.swift */,
 			);
 			path = UseCase;
@@ -241,6 +260,7 @@
 				B7AC71969D12AA7D4470E9E3 /* MyPage */,
 				6636F7ABB59EB12FD0656297 /* School */,
 				A5B80CC6583FC5B42E58E61D /* Sign */,
+				AEF7D6272C3CB86940115937 /* Tournament */,
 				3F42BE675B0C5D74CA202460 /* User */,
 				0D0E7625A5F57D7EC04CB5C6 /* RemoteImageDataRepository.swift */,
 			);
@@ -254,6 +274,7 @@
 				21B63D96A7D168BC080E0B75 /* MyPage */,
 				B5B75ECA0DAF578276DF48D0 /* School */,
 				37D971C84589EEBE00E797EE /* Sign */,
+				02F2C4C358E40BC66F92049C /* Tournament */,
 				7E4139F4ED15212D1113ECF4 /* User */,
 			);
 			path = Response;
@@ -274,6 +295,7 @@
 				D583C45BA24EA5F279216A5F /* MyPageService.swift */,
 				A49451361217E78799DEB15E /* SearchSchoolService.swift */,
 				710F7C147A43E62A5D8CDFB6 /* SignService.swift */,
+				1F4254C61B0B7E56A1A117BC /* TournamentService.swift */,
 				C129FCFD85A6B44DEA0F0034 /* UserService.swift */,
 			);
 			path = Service;
@@ -356,12 +378,21 @@
 			path = Sign;
 			sourceTree = "<group>";
 		};
+		AEF7D6272C3CB86940115937 /* Tournament */ = {
+			isa = PBXGroup;
+			children = (
+				E4882794C7316473C37DE00D /* TournamentSearchRepository.swift */,
+			);
+			path = Tournament;
+			sourceTree = "<group>";
+		};
 		B272B02E964808DBD04F94F7 /* UseCaseImplementations */ = {
 			isa = PBXGroup;
 			children = (
 				7616981B4BB1B2D11994DCC8 /* ImageDataUseCaseImp.swift */,
 				001C74C7CE3C2E6C83A38038 /* MyPageUseCaseImp.swift */,
 				EC9D0548A4DB530E9B7F3EE0 /* SignUseCaseImp.swift */,
+				471C341DCA12BAB287C00875 /* TournamentUseCaseImp.swift */,
 				75372B5C13D99F8B2A7AE5E7 /* UserUseCaseImp.swift */,
 			);
 			path = UseCaseImplementations;
@@ -493,6 +524,7 @@
 				4B8EC7D2C9769F6023CC4475 /* SchoolDataResponse.swift in Sources */,
 				5AACBF8F2CA31275CAF2BC75 /* DuplicationCodeResponse.swift in Sources */,
 				8658AE87AB971BFA9120C146 /* LogInResponse.swift in Sources */,
+				F9B789C60518C92B29EF6FAE /* TournamentSearchResponse.swift in Sources */,
 				016537623338C62C47BE43CB /* UserDetailResponse.swift in Sources */,
 				943295B6568A660984F92E50 /* UserFindResponse.swift in Sources */,
 				95E72FAB69618A38F46CD2C9 /* MyPageEditRepository.swift in Sources */,
@@ -506,6 +538,7 @@
 				AB6FBDD9EEDC697F20206F85 /* SignOutRepository.swift in Sources */,
 				DFF8EC9EC21377641608EBCA /* SignUpRepository.swift in Sources */,
 				931A16AFD8D3FF10A1DD3B97 /* VerificationCodeRepository.swift in Sources */,
+				364F3A4A0C3E8E4E6F3C6417 /* TournamentSearchRepository.swift in Sources */,
 				7C4AF6D0AE4C261F7D520694 /* AllUserFindRepository.swift in Sources */,
 				168BF7311229C821CB540C9B /* CategoryUserFindRepository.swift in Sources */,
 				3D657B9ECD0624182B20B930 /* UserDetailRepository.swift in Sources */,
@@ -515,14 +548,17 @@
 				53F62693E37D8E68F56AF139 /* MyPageService.swift in Sources */,
 				30A9A12EAAB824CB847A8F55 /* SearchSchoolService.swift in Sources */,
 				8323AECB90EFE773F20B7248 /* SignService.swift in Sources */,
+				C0BD402AB78357BC6B4A16DA /* TournamentService.swift in Sources */,
 				E1918B6741294E3762624C8D /* UserService.swift in Sources */,
 				77EEC29764D1D277B000EE29 /* ImageDataUseCase.swift in Sources */,
 				8B104383DEAD1B0406DB1051 /* MyPageUseCase.swift in Sources */,
 				968DA3475B63B63D4443BD7A /* SignUseCase.swift in Sources */,
+				62CB62DF829F34E0CF7F8EA0 /* TournamentUseCase.swift in Sources */,
 				7CCA7B41D2B2CAA9A02E0647 /* UserUseCase.swift in Sources */,
 				83D7B4EF66F988EE6F958100 /* ImageDataUseCaseImp.swift in Sources */,
 				A84436C824913E46B7CF1ACE /* MyPageUseCaseImp.swift in Sources */,
 				8F82A8BB68E309F441F21D31 /* SignUseCaseImp.swift in Sources */,
+				D19CC565A6B2FEF82F611377 /* TournamentUseCaseImp.swift in Sources */,
 				835D36BCD25786D8D5207735 /* UserUseCaseImp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -13,7 +13,7 @@ import UIKit
 public protocol TournamentFactory {
     func makeTournamentViewController(
         coordinator: TournamentViewControllerCoordinator,
-        sector: String
+        category: String
     ) -> UIViewController
 }
 
@@ -23,11 +23,11 @@ public struct TournamentFactoryImp: TournamentFactory {
     
     public func makeTournamentViewController(
         coordinator: TournamentViewControllerCoordinator,
-        sector: String
+        category: String
     ) -> UIViewController {
         let controller = TournamentViewController(
             coordinator: coordinator,
-            sector: sector)
+            category: category)
         return controller
     }
 }

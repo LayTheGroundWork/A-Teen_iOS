@@ -5,21 +5,23 @@
 //  Created by 강치우 on 6/13/24.
 //
 
+import Combine
 import Common
 import DesignSystem
 import UIKit
 
 public protocol RankingViewControllerCoordinator: AnyObject {
-    func didTapVoteButton(sector: String)
+    func didTapVoteButton(category: String)
     func didTapRankingCollectionViewCell(sector: String, session: String)
     func configTabbarState(view: RankingFeatureViewNames)
 }
 
 public final class RankingViewController: UIViewController {
     // MARK: - Private properties
+    private var viewModel: RankingViewModel
     private weak var coordinator: RankingViewControllerCoordinator?
     
-    private let sectionTitles: [String] = ["전체", "뷰티", "운동", "요리", "춤", "노래"]
+    private var cancellables = Set<AnyCancellable>()
     
     private let headerView: UIView = {
         let view = UIView()
@@ -41,8 +43,7 @@ public final class RankingViewController: UIViewController {
         let titleLabel = UILabel()
         titleLabel.text = AppLocalized.rankingTitleLabel
         titleLabel.textColor = .white
-        titleLabel.font = UIFont.customFont(forTextStyle: .title3,
-                                            weight: .bold)
+        titleLabel.font = UIFont.customFont(forTextStyle: .title3, weight: .bold)
         return titleLabel
     }()
     
@@ -50,8 +51,7 @@ public final class RankingViewController: UIViewController {
         let label = UILabel()
         label.text = AppLocalized.rankingTextLabel
         label.textColor = .white
-        label.font = UIFont.customFont(forTextStyle: .title3,
-                                       weight: .regular)
+        label.font = UIFont.customFont(forTextStyle: .title3, weight: .regular)
         return label
     }()
     
@@ -70,23 +70,28 @@ public final class RankingViewController: UIViewController {
         return stackView
     }()
     
-    private lazy var homeFeedTable: UITableView = {
-        let table = UITableView(frame: .zero, style: .grouped)
-        table.register(RankingSectorTableViewCell.self, forCellReuseIdentifier: RankingSectorTableViewCell.reuseIdentifier)
-        table.backgroundColor = .white
-        table.separatorStyle = .none
-        table.contentInsetAdjustmentBehavior = .never
-        table.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 60, right: 0)
-        table.tableHeaderView = headerView
-        return table
+    private lazy var homeFeedTableView: UITableView = {
+        let tableView = UITableView(frame: .zero, style: .grouped)
+        tableView.backgroundColor = .systemBackground
+        tableView.separatorStyle = .none
+        tableView.showsVerticalScrollIndicator = false
+        tableView.contentInsetAdjustmentBehavior = .never
+        tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 100, right: 0)
+        tableView.tableHeaderView = headerView
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.register(RankingCategoryTableViewCell.self, forCellReuseIdentifier: RankingCategoryTableViewCell.reuseIdentifier)
+        return tableView
     }()
     
     private lazy var categoryButtons: [UIButton] = []
     
     // MARK: - Life Cycle
     init(
+        viewModel: RankingViewModel,
         coordinator: RankingViewControllerCoordinator
     ) {
+        self.viewModel = viewModel
         self.coordinator = coordinator
         super.init(nibName: nil, bundle: nil)
     }
@@ -96,16 +101,11 @@ public final class RankingViewController: UIViewController {
     }
     
     public override func viewDidLoad() {
-          super.viewDidLoad()
-          view.backgroundColor = .systemBackground
-          
-          homeFeedTable.delegate = self
-          homeFeedTable.dataSource = self
-          
-          configUserInterface()
-          configLayout()
-          setupCategoryButtons()
-      }
+        super.viewDidLoad()
+        setupBindings()
+        
+        viewModel.searchTournamentList()
+    }
     
     public override func viewWillAppear(_ animated: Bool) {
         coordinator?.configTabbarState(view: .ranking)
@@ -113,12 +113,16 @@ public final class RankingViewController: UIViewController {
     }
     
     private func configUserInterface() {
-        view.addSubview(homeFeedTable)
+        view.backgroundColor = .systemBackground
+        
+        view.addSubview(homeFeedTableView)
+        
         headerView.addSubview(heroImageView)
         headerView.addSubview(textLabel)
         headerView.addSubview(categoryScrollView)
-        categoryScrollView.addSubview(categoryStackView)
         headerView.addSubview(titleLabel)
+        
+        categoryScrollView.addSubview(categoryStackView)
     }
     
     private func configLayout() {
@@ -133,7 +137,7 @@ public final class RankingViewController: UIViewController {
             make.height.equalToSuperview()
         }
         
-        homeFeedTable.snp.makeConstraints { make in
+        homeFeedTableView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
         
@@ -155,11 +159,11 @@ public final class RankingViewController: UIViewController {
     }
     
     private func setupCategoryButtons() {
-        for (index, category) in sectionTitles.enumerated() {
-            let button = UIButton(type: .system)
-            button.setTitle(category, for: .normal)
-            button.setTitleColor(.black, for: .normal)
-            button.backgroundColor = .white
+        for (index, tournamentList) in viewModel.tournamentList.enumerated() {
+            let button = UIButton()
+            button.setTitle(tournamentList.category, for: .normal)
+            button.setTitleColor(index == 0 ? .white : .black, for: .normal)
+            button.backgroundColor = index == 0 ? .black : .white
             button.layer.cornerRadius = ViewValues.defaultRadius
             button.layer.borderWidth = 1
             button.layer.borderColor = UIColor.black.cgColor
@@ -172,6 +176,17 @@ public final class RankingViewController: UIViewController {
                 make.width.equalTo(74.5)
             }
         }
+    }
+    
+    private func setupBindings() {
+        viewModel.state
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] in
+                guard let self = self else { return }
+                self.configUserInterface()
+                self.configLayout()
+                self.setupCategoryButtons()
+            }.store(in: &cancellables)
     }
     
     @objc private func categoryButtonTapped(_ sender: UIButton) {
@@ -190,7 +205,7 @@ public final class RankingViewController: UIViewController {
 // MARK: - Extensions here
 extension RankingViewController: UITableViewDataSource {
     public func numberOfSections(in tableView: UITableView) -> Int {
-        return sectionTitles.count
+        return viewModel.tournamentList.count
     }
     
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -198,16 +213,17 @@ extension RankingViewController: UITableViewDataSource {
     }
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: RankingSectorTableViewCell.reuseIdentifier, for: indexPath) as? RankingSectorTableViewCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: RankingCategoryTableViewCell.reuseIdentifier, for: indexPath) as? RankingCategoryTableViewCell else {
             return UITableViewCell()
         }
-        cell.delegate = coordinator
-        cell.sector = sectionTitles[indexPath.section]
+        
+        cell.setProperty(delegate: self, tournamentListInCategory: viewModel.tournamentList[indexPath.section])
+        
         return cell
     }
     
     public func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return sectionTitles[section]
+        return viewModel.tournamentList[section].category
     }
 }
 
@@ -237,5 +253,15 @@ extension RankingViewController: UIScrollViewDelegate {
         if scrollView.contentOffset.y < 0 {
             scrollView.contentOffset.y = 0
         }
+    }
+}
+
+extension RankingViewController: RankingCategoryTableViewCellDelegate {
+    func didTapVoteButton(category: String) {
+        coordinator?.didTapVoteButton(category: category)
+    }
+    
+    func didTapRankingCollectionViewCell(sector: String, session: String) {
+        coordinator?.didTapRankingCollectionViewCell(sector: sector, session: session)
     }
 }
