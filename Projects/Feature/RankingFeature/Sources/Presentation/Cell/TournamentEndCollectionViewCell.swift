@@ -10,12 +10,16 @@ import SnapKit
 
 import Common
 import DesignSystem
+import Domain
 import UIKit
 
-final class TournamentEndCollectionViewCell: UICollectionViewCell {
-    var sector: String?
-    weak var delegate: TournamentViewControllerCoordinator?
+protocol TournamentEndCollectionViewCellDelegate: AnyObject {
+    func finishTournament()
+}
 
+final class TournamentEndCollectionViewCell: UICollectionViewCell {
+    weak var delegate: TournamentEndCollectionViewCellDelegate?
+    
     // MARK: - Private properties
     private lazy var infoMessageView: UIView = {
         let view = UIView()
@@ -25,28 +29,28 @@ final class TournamentEndCollectionViewCell: UICollectionViewCell {
         return view
     }()
     
-    private lazy var filledCircle: UIView = {
+    private lazy var filledCircleView: UIView = {
         let circle = UIView()
         circle.backgroundColor = DesignSystemAsset.mainColor.color
         circle.layer.cornerRadius = 60
         return circle
     }()
     
-    private lazy var borderCircle1: DashedBorderView = {
+    private lazy var oneBorderCircleView: DashedBorderView = {
         let circle = DashedBorderView()
         circle.backgroundColor = UIColor.clear
         circle.layer.cornerRadius = 22
         return circle
     }()
     
-    private lazy var borderCircle2: DashedBorderView = {
+    private lazy var twoBorderCircleView: DashedBorderView = {
         let circle = DashedBorderView()
         circle.backgroundColor = UIColor.clear
         circle.layer.cornerRadius = 28
         return circle
     }()
     
-    private lazy var mainText: UILabel = {
+    private lazy var mainTextLabel: UILabel = {
         let label = UILabel()
         label.text = "투표 완료!"
         label.textColor = UIColor.white
@@ -55,7 +59,7 @@ final class TournamentEndCollectionViewCell: UICollectionViewCell {
         return label
     }()
     
-    private lazy var subText: UILabel = {
+    private lazy var subTextLabel: UILabel = {
         let label = UILabel()
         label.text = "이번 투표 결과는 이번 주\n토너먼트에 반영됩니다."
         label.textColor = UIColor.white
@@ -65,8 +69,8 @@ final class TournamentEndCollectionViewCell: UICollectionViewCell {
         return label
     }()
     
-    private lazy var textStack: UIStackView = {
-        let stack = UIStackView(arrangedSubviews: [mainText, subText])
+    private lazy var textStackView: UIStackView = {
+        let stack = UIStackView(arrangedSubviews: [mainTextLabel, subTextLabel])
         stack.axis = .vertical
         stack.spacing = 5
         stack.alignment = .center
@@ -96,13 +100,13 @@ final class TournamentEndCollectionViewCell: UICollectionViewCell {
         return label
     }()
     
-    private lazy var schoolEmoji: UIImageView = {
+    private lazy var schoolImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = DesignSystemAsset.schoolIcon.image
         return imageView
     }()
     
-    private lazy var userInfo: UILabel = {
+    private lazy var userInfoLabel: UILabel = {
         let label = UILabel()
         label.textColor = UIColor.white
         label.font = .customFont(forTextStyle: .footnote, weight: .regular)
@@ -117,6 +121,7 @@ final class TournamentEndCollectionViewCell: UICollectionViewCell {
         button.titleLabel?.font = .customFont(forTextStyle: .callout, weight: .regular)
         button.backgroundColor = DesignSystemAsset.mainColor.color
         button.layer.cornerRadius = ViewValues.defaultRadius
+        button.addTarget(self, action: #selector(didTapSelectButton(_: )), for: .touchUpInside)
         return button
     }()
     
@@ -125,7 +130,6 @@ final class TournamentEndCollectionViewCell: UICollectionViewCell {
         super.init(frame: frame)
         configUserInterface()
         configLayout()
-        setupActions()
     }
     
     required init?(coder: NSCoder) {
@@ -137,18 +141,18 @@ final class TournamentEndCollectionViewCell: UICollectionViewCell {
         contentView.backgroundColor = UIColor.black
         
         contentView.addSubview(infoMessageView)
-        infoMessageView.addSubview(filledCircle)
-        infoMessageView.addSubview(borderCircle1)
-        infoMessageView.addSubview(borderCircle2)
-        infoMessageView.addSubview(textStack)
-        
         contentView.addSubview(userView)
+        contentView.addSubview(selectButton)
+        
+        infoMessageView.addSubview(filledCircleView)
+        infoMessageView.addSubview(oneBorderCircleView)
+        infoMessageView.addSubview(twoBorderCircleView)
+        infoMessageView.addSubview(textStackView)
+        
         userView.addSubview(userImage)
         userView.addSubview(userNameLabel)
-        userView.addSubview(schoolEmoji)
-        userView.addSubview(userInfo)
-        
-        contentView.addSubview(selectButton)
+        userView.addSubview(userInfoLabel)
+        userView.addSubview(schoolImageView)
     }
     
     private func configLayout() {
@@ -164,25 +168,25 @@ final class TournamentEndCollectionViewCell: UICollectionViewCell {
             make.trailing.equalToSuperview().offset(-48)
         }
         
-        filledCircle.snp.makeConstraints { make in
+        filledCircleView.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(-45)
             make.leading.equalToSuperview().offset(-35)
             make.width.height.equalTo(120)
         }
         
-        borderCircle1.snp.makeConstraints { make in
+        oneBorderCircleView.snp.makeConstraints { make in
             make.leading.equalToSuperview().offset(68)
             make.bottom.equalToSuperview().offset(22)
             make.width.height.equalTo(44)
         }
         
-        borderCircle2.snp.makeConstraints { make in
+        twoBorderCircleView.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(45)
             make.trailing.equalToSuperview().offset(7)
             make.width.height.equalTo(56)
         }
         
-        textStack.snp.makeConstraints { make in
+        textStackView.snp.makeConstraints { make in
             make.center.equalToSuperview()
         }
         
@@ -190,13 +194,13 @@ final class TournamentEndCollectionViewCell: UICollectionViewCell {
             make.top.equalTo(infoMessageView.snp.bottom).offset(10)
             make.leading.equalToSuperview().offset(48)
             make.trailing.equalToSuperview().offset(-48)
+            make.height.equalTo((ViewValues.width - 96) * 1.16 + 80)
         }
         
         userImage.snp.makeConstraints { make in
             make.top.leading.equalToSuperview().offset(10)
             make.trailing.equalToSuperview().offset(-10)
-            make.height.equalTo(ViewValues.height * 0.35)
-            make.width.equalTo(userImage.snp.height).multipliedBy(0.86)
+            make.height.equalTo((ViewValues.width - 96) * 1.16)
         }
         
         userNameLabel.snp.makeConstraints { make in
@@ -205,14 +209,15 @@ final class TournamentEndCollectionViewCell: UICollectionViewCell {
             make.bottom.equalToSuperview().offset(-23)
         }
         
-        schoolEmoji.snp.makeConstraints { make in
-            make.centerY.equalTo(userNameLabel.snp.centerY)
-            make.trailing.equalTo(userInfo.snp.leading).offset(-2)
+        userInfoLabel.snp.makeConstraints { make in
+            make.bottom.equalTo(userNameLabel.snp.bottom)
+            make.trailing.equalToSuperview().offset(-10)
         }
         
-        userInfo.snp.makeConstraints { make in
-            make.centerY.equalTo(userNameLabel.snp.centerY)
-            make.trailing.equalToSuperview().offset(-10)
+        schoolImageView.snp.makeConstraints { make in
+            make.centerY.equalTo(userInfoLabel.snp.centerY)
+            make.trailing.equalTo(userInfoLabel.snp.leading).offset(-2)
+            make.width.height.equalTo(24)
         }
         
         selectButton.snp.makeConstraints { make in
@@ -226,29 +231,22 @@ final class TournamentEndCollectionViewCell: UICollectionViewCell {
             }
         }
     }
-    
-    // MARK: - Actions
-    private func setupActions() {
-        selectButton.addTarget(self,
-                               action: #selector(didTapSelectButton(_: )),
-                               for: .touchUpInside)
-    }
-    
-    public func setProperties(
-        userName: String,
-        school: String,
-        age: Int,
-        image: UIImage
+        
+    func setProperties(
+        delegate: TournamentEndCollectionViewCellDelegate,
+        winner: TournamentParticipantData,
+        age: Int
     ) {
-        self.userImage.image = image
-        self.userNameLabel.text = userName
-        self.userInfo.text = "\(school), \(age)세"
+        self.delegate = delegate
+        
+        self.userImage.image = DesignSystemAsset.badge7.image
+        self.userNameLabel.text = winner.userName
+        self.userInfoLabel.text = "\(winner.userSchool), \(age)세"
     }
     
     // MARK: - Actions
     @objc private func didTapSelectButton(_ sender: UIButton) {
-        // 토너먼트 종료 후, sheet 닫고 Result 로 이동
-        delegate?.finishTournament(sector: sector ?? "", session: "이번 주")
+        delegate?.finishTournament()
     }
 }
 

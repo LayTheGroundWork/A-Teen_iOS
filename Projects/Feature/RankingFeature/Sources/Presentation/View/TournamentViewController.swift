@@ -10,102 +10,56 @@ import Common
 import DesignSystem
 import UIKit
 
-// MARK: - 토너먼트 각 Round 에 맞는 enum
-enum TournamentRound: String, CaseIterable {
-    case roundOf16 = "16강"
-    case roundOf8 = "8강"
-    case semifinals = "4강"
-    case final = "결승전"
-    case end = ""
-    
-    var matches: Int {
-        switch self {
-        case .roundOf16:
-            return 8
-        case .roundOf8:
-            return 4
-        case .semifinals:
-            return 2
-        case .final:
-            return 1
-        case .end:
-            return 0
-        }
-    }
-    
-    var progress: Float {
-        switch self {
-        case .roundOf16:
-            return 0.125
-        case .roundOf8:
-            return 0.25
-        case .semifinals:
-            return 0.5
-        case .final:
-            return 1
-        case .end:
-            return 0
-        }
-    }
-}
-
 public protocol TournamentViewControllerCoordinator: AnyObject {
     func quitTournament()
-    func finishTournament(sector: String, session: String)
+    func finishTournament(
+        category: String,
+        round: Int,
+        tournamentNo: Int)
     func openQuitDialog()
     func configTabbarState(view: RankingFeatureViewNames)
 }
 
 public final class TournamentViewController: UIViewController {
-    let category: String
-    
-    // MARK: - Private properties
+    private var viewModel: TournamentViewModel
     private weak var coordinator: TournamentViewControllerCoordinator?
-
-    private var currentRound: TournamentRound = TournamentRound.allCases.first ?? .roundOf16
     
     private lazy var closeButton: UIBarButtonItem = {
-        let button = UIButton()
-        button.setImage(DesignSystemAsset.xMarkWhiteIcon.image,
-                        for: .normal)
-        button.tintColor = UIColor.white
-        button.addTarget(self,
-                         action: #selector(didSelectCloseButton(_:)),
-                         for: .touchUpInside)
-
+        let button = UIBarButtonItem(
+            image: DesignSystemAsset.leftArrowWhiteIcon.image,
+            style: .plain,
+            target: self,
+            action: #selector(didSelectCloseButton(_:)))
+        button.tintColor = .white
+        return button
+    }()
+    
+    private lazy var titleLabel: UILabel = {
         let label = UILabel()
-        label.text = category
+        label.text = viewModel.category
         label.textColor = UIColor.white
         label.font = .customFont(forTextStyle: .title3, weight: .bold)
         label.textAlignment = .center
-        
-        let customView = UIStackView(arrangedSubviews: [button, label])
-        customView.axis = .horizontal
-        customView.alignment = .center
-        customView.spacing = 10
-        
-        let buttonItem = UIBarButtonItem(customView: customView)
-        return buttonItem
+        return label
     }()
-
+    
     private lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
-        layout.itemSize = CGSize(width: ViewValues.width,
-                                 height: ViewValues.height - 80)
-        let collectionView = UICollectionView(frame: .zero,
-                                              collectionViewLayout: layout)
+        layout.itemSize = CGSize(
+            width: ViewValues.width,
+            height: ViewValues.height - 80)
+        let collectionView = UICollectionView(
+            frame: .zero,
+            collectionViewLayout: layout)
         collectionView.backgroundColor = UIColor.black
         collectionView.contentInsetAdjustmentBehavior = .never
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.isScrollEnabled = false
         collectionView.isPagingEnabled = true
-        collectionView.register(TournamentRoundCollectionViewCell.self,
-                                forCellWithReuseIdentifier: TournamentRoundCollectionViewCell.reuseIdentifier)
-        collectionView.register(TournamentEndCollectionViewCell.self,
-                                forCellWithReuseIdentifier: TournamentEndCollectionViewCell.reuseIdentifier)
-        collectionView.delegate = self
         collectionView.dataSource = self
+        collectionView.register(TournamentRoundCollectionViewCell.self, forCellWithReuseIdentifier: TournamentRoundCollectionViewCell.reuseIdentifier)
+        collectionView.register(TournamentEndCollectionViewCell.self, forCellWithReuseIdentifier: TournamentEndCollectionViewCell.reuseIdentifier)
         return collectionView
     }()
     
@@ -122,11 +76,11 @@ public final class TournamentViewController: UIViewController {
     }
     
     init(
-        coordinator: TournamentViewControllerCoordinator,
-        category: String
+        viewModel: TournamentViewModel,
+        coordinator: TournamentViewControllerCoordinator
     ) {
+        self.viewModel = viewModel
         self.coordinator = coordinator
-        self.category = category
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -139,6 +93,7 @@ public final class TournamentViewController: UIViewController {
         view.backgroundColor = UIColor.black
         
         navigationItem.leftBarButtonItem = closeButton
+        navigationItem.titleView = titleLabel
         
         view.addSubview(collectionView)
     }
@@ -151,97 +106,85 @@ public final class TournamentViewController: UIViewController {
         }
     }
     
-    // MARK: - Actions
-    @objc private func didSelectCloseButton(_ sender: UIButton) {
-        switch currentRound {
-        case .roundOf16, .roundOf8, .semifinals, .final:
-            // QuitTournamentDialog 띄우기
-            coordinator?.openQuitDialog()
-        case .end:
-            // 토너먼트 종료
-            coordinator?.quitTournament()
-        }
+    private func scrollToPage(section: Int) {
+        let indexPath = IndexPath(item: 0, section: section)
+        collectionView.scrollToItem(
+            at: indexPath,
+            at: .centeredHorizontally,
+            animated: false)
     }
     
-    private func scrollToPage(at index: Int) {
-        let indexPath = IndexPath(item: 0, section: index)
-        collectionView.scrollToItem(at: indexPath,
-                                    at: .centeredHorizontally,
-                                    animated: false)
+    // MARK: - Actions
+    @objc private func didSelectCloseButton(_ sender: UIButton) {
+        switch viewModel.currentRound {
+        case .roundOf16, .roundOf8, .semifinals, .final:
+            coordinator?.openQuitDialog()
+        case .end:
+            coordinator?.quitTournament()
+        }
     }
 }
 
 // MARK: - Extensions here
 extension TournamentViewController: UICollectionViewDataSource {
-    public func collectionView(
-        _ collectionView: UICollectionView,
-        numberOfItemsInSection section: Int
-    ) -> Int {
+    public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         1
     }
     
-    public func numberOfSections(
-        in collectionView: UICollectionView
-    ) -> Int {
+    public func numberOfSections(in collectionView: UICollectionView) -> Int {
         // 16강, 8강, 4강, 결승 + 완료 페이지
-        TournamentRound.allCases.count
+        TournamentRoundType.allCases.count
     }
     
-    public func collectionView(
-        _ collectionView: UICollectionView,
-        cellForItemAt indexPath: IndexPath
-    ) -> UICollectionViewCell {
-        if indexPath.section == 0 ||
-           indexPath.section == 1 ||
-           indexPath.section == 2 ||
-           indexPath.section == 3 {
+    public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        switch indexPath.section {
+        case 4:
+            guard let cell = collectionView.dequeueReusableCell(
+                withReuseIdentifier: TournamentEndCollectionViewCell.reuseIdentifier,
+                for: indexPath) as? TournamentEndCollectionViewCell,
+                  let winner = viewModel.winner
+            else {
+                return UICollectionViewCell()
+            }
+            
+            viewModel.editVoteResult()
+            
+            cell.setProperties(
+                delegate: self,
+                winner: winner,
+                age: viewModel.getUserAge(userBirth: winner.userBirth))
+ 
+            return cell
+            
+        default:
             guard let cell = collectionView.dequeueReusableCell(
                 withReuseIdentifier: TournamentRoundCollectionViewCell.reuseIdentifier,
                 for: indexPath) as? TournamentRoundCollectionViewCell
             else {
                 return UICollectionViewCell()
             }
-            cell.setProperties(round: currentRound)
-            cell.delegate = coordinator
-            cell.roundDelegate = self
-            return cell
-        } else {
-            guard let cell = collectionView.dequeueReusableCell(
-                withReuseIdentifier: TournamentEndCollectionViewCell.reuseIdentifier,
-                for: indexPath) as? TournamentEndCollectionViewCell
-            else {
-                return UICollectionViewCell()
-            }
-            cell.setProperties(userName: "김 에스더",
-                               school: "서울 중학교",
-                               age: 16,
-                               image: DesignSystemAsset.badge4.image)
-            cell.sector = category
-            cell.delegate = coordinator
+            
+            cell.setProperties(delegate: self, viewModel: viewModel)
+            
             return cell
         }
     }
 }
 
-extension TournamentViewController: UICollectionViewDelegate { }
-
 extension TournamentViewController: TournamentRoundCollectionViewCellDelegate {
     public func nextRound() {
-        switch currentRound {
-        case .roundOf16:
-            currentRound = .roundOf8
-            scrollToPage(at: 1)
-        case .roundOf8:
-            currentRound = .semifinals
-            scrollToPage(at: 2)
-        case .semifinals:
-            currentRound = .final
-            scrollToPage(at: 3)
-        case .final:
-            currentRound = .end
-            scrollToPage(at: 4)
-        case .end:
-            break
-        }
+        guard let section = viewModel.changeRound() else { return }
+        scrollToPage(section: section)
+    }
+}
+
+extension TournamentViewController: TournamentEndCollectionViewCellDelegate {
+    func finishTournament() {
+        guard let winner = viewModel.winner else { return }
+        // TODO: 서버 저장 로직 그거 끝나면 밑에 로직 실행 combine
+        coordinator?.finishTournament(
+            category: viewModel.category,
+            round: 0,
+            tournamentNo: winner.thisWeekTournamentNo)
     }
 }

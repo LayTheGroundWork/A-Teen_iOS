@@ -8,6 +8,7 @@
 import Combine
 import Common
 import DesignSystem
+import Domain
 import UIKit
 
 public protocol RankingViewControllerCoordinator: AnyObject {
@@ -184,11 +185,18 @@ public final class RankingViewController: UIViewController {
     private func setupBindings() {
         viewModel.state
             .receive(on: DispatchQueue.main)
-            .sink { [weak self] in
+            .sink { [weak self] state in
                 guard let self = self else { return }
-                self.configUserInterface()
-                self.configLayout()
-                self.setupCategoryButtons()
+                
+                switch state {
+                case .searchTournamentListSuccess:
+                    self.configUserInterface()
+                    self.configLayout()
+                    self.setupCategoryButtons()
+                    
+                case .getThisWeekParticipantsSuccess:
+                    self.coordinator?.didTapVoteButton(category: viewModel.voteCategory)
+                }
             }.store(in: &cancellables)
     }
     
@@ -261,7 +269,7 @@ extension RankingViewController: UIScrollViewDelegate {
 
 extension RankingViewController: RankingCategoryTableViewCellDelegate {
     func didTapVoteButton(category: String) {
-        coordinator?.didTapVoteButton(category: category)
+        viewModel.getThisWeekParticipantList(category: category)
     }
     
     func didTapRankingCollectionViewCell(

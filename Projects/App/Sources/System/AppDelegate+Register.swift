@@ -43,6 +43,7 @@ extension AppDelegate {
         // tournament
         let tournamentSearchRepository: TournamentSearchRepository = TournamentSearchRepositoryImp(apiClientService: apiClientService)
         let tournamentResultRepository: TournamentResultRepository = TournamentResultRepositoryImp(apiClientService: apiClientService)
+        let thisWeekParticipantsRepository: ThisWeekParticipantsRepository = ThisWeekParticipantsRepositoryImp(apiClientService: apiClientService)
         
         // mypage
         let myPageRepository: MyPageRepository = MyPageRepositoryImp(apiClientService: apiClientService)
@@ -69,7 +70,8 @@ extension AppDelegate {
         
         let tournamentService: TournamentService = TournamentServiceImp(
             tournamentSearchRepository: tournamentSearchRepository,
-            tournamentResultRepository: tournamentResultRepository)
+            tournamentResultRepository: tournamentResultRepository, 
+            thisWeekParticipantsRepository: thisWeekParticipantsRepository)
         
         let myPageService: MyPageService = MyPageServiceImp(
             myPageRepository: myPageRepository,

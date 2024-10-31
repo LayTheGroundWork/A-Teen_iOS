@@ -26,7 +26,6 @@ public final class RankingCoordinator: Coordinator {
     public var childCoordinators: [Coordinator] = []
     weak var delegate: RankingCoordinatorDelegate?
     public let coordinatorProvider: CoordinatorProvider
-    var category: String = ""
     
     public init(
         navigation: Navigation,

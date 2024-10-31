@@ -25,26 +25,21 @@ public final class TournamentCoordinator: Coordinator {
     public var childCoordinators: [Coordinator] = []
     weak var delegate: TournamentCoordinatorDelegate?
     public let coordinatorProvider: CoordinatorProvider
-    let category: String
     
     public init(
         navigation: Navigation,
         factory: TournamentFactory,
         delegate: TournamentCoordinatorDelegate,
-        coordinatorProvider: CoordinatorProvider,
-        category: String
+        coordinatorProvider: CoordinatorProvider
     ) {
         self.navigation = navigation
         self.factory = factory
         self.delegate = delegate
         self.coordinatorProvider = coordinatorProvider
-        self.category = category
     }
     
     public func start() {
-        let controller = factory.makeTournamentViewController(
-            coordinator: self,
-            category: category)
+        let controller = factory.makeTournamentViewController(coordinator: self)
         navigation.pushViewController(controller, animated: true)
     }
 }

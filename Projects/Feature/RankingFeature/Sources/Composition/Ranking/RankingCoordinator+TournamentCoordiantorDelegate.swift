@@ -24,7 +24,7 @@ extension RankingCoordinator: TournamentCoordinatorDelegate {
         childCoordinator.navigation.dismissNavigation = nil
         removeChildCoordinator(childCoordinator)
         navigation.popViewController(animated: false)
-        //
+        
         let rankingResultCoordinator = factory.makeRankingResultCoordinator(
             navigation: navigation,
             delegate: self,

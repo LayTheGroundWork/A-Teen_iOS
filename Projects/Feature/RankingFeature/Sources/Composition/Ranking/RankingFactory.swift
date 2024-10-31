@@ -6,6 +6,7 @@
 //
 
 import Core
+import Domain
 import FeatureDependency
 import UIKit
 
@@ -27,7 +28,8 @@ public protocol RankingFactory {
         navigation: Navigation,
         delegate: TournamentCoordinatorDelegate,
         coordinatorProvider: CoordinatorProvider,
-        category: String
+        category: String,
+        participantList: [TournamentParticipantData]
     ) -> Coordinator
 }
 
@@ -68,15 +70,15 @@ public struct RankingFactoryImp: RankingFactory {
         navigation: Navigation,
         delegate: TournamentCoordinatorDelegate,
         coordinatorProvider: CoordinatorProvider,
-        category: String
+        category: String,
+        participantList: [TournamentParticipantData]
     ) -> Coordinator {
-        let factory = TournamentFactoryImp()
+        let factory = TournamentFactoryImp(category: category, participantList: participantList)
         return TournamentCoordinator(
             navigation: navigation,
             factory: factory,
             delegate: delegate,
-            coordinatorProvider: coordinatorProvider,
-            category: category
+            coordinatorProvider: coordinatorProvider
         )
     }
 }

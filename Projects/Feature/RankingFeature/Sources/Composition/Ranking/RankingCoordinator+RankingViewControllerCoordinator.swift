@@ -8,12 +8,12 @@
 
 import Common
 import DesignSystem
+import Domain
 import FeatureDependency
 import UIKit
 
 extension RankingCoordinator: RankingViewControllerCoordinator {
     public func didTapVoteButton(category: String) {
-        self.category = category
         let coordinator = coordinatorProvider.makeAlertCoordinator(
             dialogType: .twoButton,
             delegate: self,

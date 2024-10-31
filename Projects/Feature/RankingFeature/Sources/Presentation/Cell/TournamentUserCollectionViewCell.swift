@@ -10,6 +10,7 @@ import SnapKit
 
 import Common
 import DesignSystem
+import Domain
 import UIKit
 
 protocol TournamentUserCollectionViewCellDelegate: AnyObject {
@@ -18,6 +19,10 @@ protocol TournamentUserCollectionViewCellDelegate: AnyObject {
 
 final class TournamentUserCollectionViewCell: UICollectionViewCell {
     weak var delegate: TournamentUserCollectionViewCellDelegate?
+    var viewModel: TournamentViewModel?
+    
+    var aUserInfo: TournamentParticipantData?
+    var bUserInfo: TournamentParticipantData?
     
     var aUserViewLeadingConstraint: Constraint?
     var aUserViewWidthConstraint: Constraint?
@@ -30,15 +35,20 @@ final class TournamentUserCollectionViewCell: UICollectionViewCell {
     let originHeight = ViewValues.height * 0.35
     
     // MARK: - Private properties
-    private lazy var aUserView = TournamentUserView(frame: .zero,
-                                                    tag: 0,
-                                                    image: DesignSystemAsset.badge2.image,
-                                                    delegate: self)
+    private lazy var aUserView: TournamentUserView = {
+        let view = TournamentUserView(frame: .zero, tag: 0)
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap(_:)))
+        view.addGestureRecognizer(tapGesture)
+        return view
+    }()
     
-    private lazy var bUserView = TournamentUserView(frame: .zero,
-                                                    tag: 1,
-                                                    image: DesignSystemAsset.badge6.image,
-                                                    delegate: self)
+    private lazy var bUserView: TournamentUserView = {
+        let view = TournamentUserView(frame: .zero, tag: 1)
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap(_:)))
+        view.addGestureRecognizer(tapGesture)
+        return view
+    }()
+    
     // MARK: - Life Cycle
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -79,6 +89,27 @@ final class TournamentUserCollectionViewCell: UICollectionViewCell {
         }
     }
     
+    public func setProperties(
+        delegate: TournamentUserCollectionViewCellDelegate,
+        viewModel: TournamentViewModel,
+        aUserInfo: TournamentParticipantData,
+        bUserInfo: TournamentParticipantData
+    ) {
+        self.delegate = delegate
+        
+        self.aUserInfo = aUserInfo
+        self.bUserInfo = bUserInfo
+        
+        aUserView.changeUI(participant: aUserInfo, age: viewModel.getUserAge(userBirth: aUserInfo.userBirth))
+        bUserView.changeUI(participant: bUserInfo, age: viewModel.getUserAge(userBirth: bUserInfo.userBirth))
+    }
+    
+    // MARK: - Action
+    @objc func handleTap(_ sender: UITapGestureRecognizer) {
+        guard let tag = sender.view?.tag else { return }
+        delegate?.didTapSelectButton(tag: tag)
+    }
+    
     // MARK: - animation
     func prepareAnimation() {
         aUserView.isHidden = false
@@ -114,10 +145,13 @@ final class TournamentUserCollectionViewCell: UICollectionViewCell {
         }
     }
     
-    func selectAnimation(
-        tag: Int,
-        completion: @escaping () -> Void
-    ) {
+    func selectAnimation(tag: Int, completion: @escaping () -> Void) {
+        switch tag {
+        case 0:  self.aUserView.changeFontSize()
+        case 1:  self.bUserView.changeFontSize()
+        default: break
+        }
+        
         UIView.animate(
             withDuration: 1,
             delay: 0,
@@ -131,12 +165,14 @@ final class TournamentUserCollectionViewCell: UICollectionViewCell {
                 self.aUserViewHeightConstraint?.update(offset: changeWidth * 1.16)
                 self.aUserViewWidthConstraint?.update(offset: changeWidth)
                 
+                self.bUserView.transform = CGAffineTransform(rotationAngle: -CGFloat.pi / 9)
                 self.bUserViewTrailingConstraint?.update(offset: -ViewValues.width * 1.2)
             case 1:
                 self.bUserViewHeightConstraint?.update(offset: changeWidth * 1.16)
                 self.bUserViewWidthConstraint?.update(offset: changeWidth)
                 
-                self.aUserViewLeadingConstraint?.update(offset: ViewValues.width * 1.2)
+                self.aUserView.transform = CGAffineTransform(rotationAngle: -CGFloat.pi / 9)
+                self.aUserViewLeadingConstraint?.update(offset: -ViewValues.width * 1.2)
             default:
                 break
             }
@@ -154,8 +190,8 @@ final class TournamentUserCollectionViewCell: UICollectionViewCell {
                 self.aUserView.transform = CGAffineTransform(rotationAngle: CGFloat.pi / 9)
                 self.aUserViewLeadingConstraint?.update(offset: ViewValues.width * 1.2)
             case 1:
-                self.bUserView.transform = CGAffineTransform(rotationAngle: -CGFloat.pi / 9)
-                self.bUserViewTrailingConstraint?.update(offset: -ViewValues.width * 1.2)
+                self.bUserView.transform = CGAffineTransform(rotationAngle: CGFloat.pi / 9)
+                self.bUserViewTrailingConstraint?.update(offset: ViewValues.width * 1.2)
             default:
                 break
             }
@@ -166,12 +202,4 @@ final class TournamentUserCollectionViewCell: UICollectionViewCell {
     }
 }
 
-// MARK: - Extensions here
 extension TournamentUserCollectionViewCell: Reusable { }
-
-// MARK: - Extensions here
-extension TournamentUserCollectionViewCell: TournamentUserCollectionViewCellDelegate {
-    func didTapSelectButton(tag: Int) {
-        delegate?.didTapSelectButton(tag: tag)
-    }
-}

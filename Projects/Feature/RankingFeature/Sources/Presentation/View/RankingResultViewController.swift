@@ -45,7 +45,7 @@ public final class RankingResultViewController: UIViewController {
     
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
-        label.text = "\(viewModel.round)회차 대결"
+        label.text = viewModel.round == 0 ? "이번 주 대결" : "\(viewModel.round)회차 대결"
         label.textColor = UIColor.white
         label.font = .customFont(forTextStyle: .title3, weight: .bold)
         label.textAlignment = .center
@@ -59,16 +59,6 @@ public final class RankingResultViewController: UIViewController {
         label.textColor = UIColor.white
         return label
     }()
-    
-//    private lazy var firstBox: CustomRankingTopView = {
-//        let view = CustomRankingTopView(
-//            image: DesignSystemAsset.badge8.image,
-//            rank: .first,
-//            userName: viewModel.tournamentResultList[0].rankerNickName,
-//            proportion: viewModel.getPercentage(voteCount: viewModel.tournamentResultList[0].voteCount))
-//
-//
-//    }()
     
     private lazy var firstBox: UIView = CustomRankingTopView(
         image: DesignSystemAsset.badge8.image,

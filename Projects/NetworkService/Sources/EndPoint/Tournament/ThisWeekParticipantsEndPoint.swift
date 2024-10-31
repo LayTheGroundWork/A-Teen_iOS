@@ -1,28 +1,26 @@
 //
-//  TournamentResultEndPoint.swift
+//  ThisWeekParticipantsEndPoint.swift
 //  NetworkService
 //
-//  Created by 노주영 on 10/30/24.
+//  Created by 노주영 on 10/31/24.
 //  Copyright © 2024 ATeen. All rights reserved.
 //
 
 import Domain
 import Foundation
 
-public struct TournamentResultEndPoint: EndPoint {
-    private let request: TournamentResultRequest
+public struct ThisWeekParticipantsEndPoint: EndPoint {
+    private let request: ThisWeekParticipantsRequest
     
     public var port: String {
         ""
     }
     
-    public var path: String = "/v1/api/tournament/final/result"
-    
-    public var query: [String : String] {
-        [
-            "tournamentNo": String(request.tournamentNo)
-        ]
+    public var path: String {
+        "/v1/api/tournament/participant/\(request.category)/this-week"
     }
+    
+    public var query: [String : String] = [:]
     
     public var header: [String : String] {
         [
@@ -36,7 +34,7 @@ public struct TournamentResultEndPoint: EndPoint {
     public var method: HTTPMethod = .get
     
     public init(
-        request: TournamentResultRequest
+        request: ThisWeekParticipantsRequest
     ) {
         self.request = request
     }

@@ -12,13 +12,16 @@ import Foundation
 public struct TournamentServiceImp: TournamentService {
     private let tournamentSearchRepository: TournamentSearchRepository
     private let tournamentResultRepository: TournamentResultRepository
+    private let thisWeekParticipantsRepository: ThisWeekParticipantsRepository
     
     public init(
         tournamentSearchRepository: TournamentSearchRepository,
-        tournamentResultRepository: TournamentResultRepository
+        tournamentResultRepository: TournamentResultRepository,
+        thisWeekParticipantsRepository: ThisWeekParticipantsRepository
     ) {
         self.tournamentSearchRepository = tournamentSearchRepository
         self.tournamentResultRepository = tournamentResultRepository
+        self.thisWeekParticipantsRepository = thisWeekParticipantsRepository
     }
     
     public func searchTournament() async -> [TournamentSearchData] {
@@ -34,6 +37,17 @@ public struct TournamentServiceImp: TournamentService {
     
     public func getTournamentResult(request: TournamentResultRequest) async -> [TournamentResultData] {
         let response = await tournamentResultRepository.getTournamentResult(request: request)
+        
+        switch response {
+        case .success(let response):
+            return response.data
+        case .failure(_):
+            return []
+        }
+    }
+    
+    public func getThisWeekParticipants(request: ThisWeekParticipantsRequest) async -> [TournamentParticipantData] {
+        let response = await thisWeekParticipantsRepository.getThisWeekParticipants(request: request)
         
         switch response {
         case .success(let response):

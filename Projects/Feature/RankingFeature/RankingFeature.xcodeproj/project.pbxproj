@@ -30,6 +30,7 @@
 		B0A50669BBE92E007AD00795 /* RankingResultCoordinator+RankingResultViewControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CBC89FA22B6FAA379890C31 /* RankingResultCoordinator+RankingResultViewControllerCoordinator.swift */; };
 		B5338677A16E8F89F350935B /* RankingResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DCE331E56B76D6578E5B7E5 /* RankingResultTableViewCell.swift */; };
 		B878873C911459BA121C8188 /* TournamentFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97BA09AEBAC0614D4BE32DB0 /* TournamentFactory.swift */; };
+		B8B2787344C960A14B18FDE3 /* TournamentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207962392A4FD3583300B4C4 /* TournamentViewModel.swift */; };
 		BCB3D852B0C045A2D89ADFD4 /* RankingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7770474523CFA83976BAB6F3 /* RankingViewModel.swift */; };
 		C47C26702928F77C4D86ADF1 /* CustomRankingTopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF3FB0946221184185478D25 /* CustomRankingTopView.swift */; };
 		D27CDBFAF78176887C7F6DAA /* RankingResultCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22CAF4869F79BE74ABC6E364 /* RankingResultCoordinator.swift */; };
@@ -55,6 +56,7 @@
 		01187BD6A56E56548CF0096E /* TournamentEndCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TournamentEndCollectionViewCell.swift; sourceTree = "<group>"; };
 		06B7C4CCE346089D4B969B3D /* RankingCoordinator+RankingViewControllerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RankingCoordinator+RankingViewControllerCoordinator.swift"; sourceTree = "<group>"; };
 		09754A6680D7BB7FFCC22A07 /* TournamentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TournamentViewController.swift; sourceTree = "<group>"; };
+		207962392A4FD3583300B4C4 /* TournamentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TournamentViewModel.swift; sourceTree = "<group>"; };
 		20A73C4568FE67A73CE37FC5 /* RankingResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingResultViewController.swift; sourceTree = "<group>"; };
 		22CAF4869F79BE74ABC6E364 /* RankingResultCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingResultCoordinator.swift; sourceTree = "<group>"; };
 		2CE3E33E9C00DFFC5995E4C1 /* RankingCategoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingCategoryTableViewCell.swift; sourceTree = "<group>"; };
@@ -125,6 +127,7 @@
 			children = (
 				FEAABD2C143EE93BFF1D95DA /* RankingResultViewModel.swift */,
 				7770474523CFA83976BAB6F3 /* RankingViewModel.swift */,
+				207962392A4FD3583300B4C4 /* TournamentViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -352,6 +355,7 @@
 				9E115CCD5FA38A46F9BE9DBA /* TournamentViewController.swift in Sources */,
 				A9D8ADD7CA9704649B7F0506 /* RankingResultViewModel.swift in Sources */,
 				BCB3D852B0C045A2D89ADFD4 /* RankingViewModel.swift in Sources */,
+				B8B2787344C960A14B18FDE3 /* TournamentViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
