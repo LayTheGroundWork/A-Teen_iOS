@@ -64,16 +64,27 @@ public struct ApiClientServiceImp: ApiClientService {
         
         print(httpResponse)
         
-        switch httpResponse.statusCode {
+        if let jsonObject = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: Any],
+           let statusCode = jsonObject["status"] as? Int,
+           let message = jsonObject["message"] as? String {
+            return try checkError(statusCode: statusCode, message: message, data: data)
+        }
+        return try checkError(statusCode: httpResponse.statusCode, message: nil, data: data)
+    }
+    
+    private func checkError<T: Decodable>(
+        statusCode: Int,
+        message: String?,
+        data: Data
+    ) throws -> T {
+        switch statusCode {
         case HttpResponseStatus.ok:
             return try decodeModel(data: data)
         case HttpResponseStatus.clientError:
-            if let jsonObject = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: Any],
-               let message = jsonObject["message"] as? String {
-                throw ApiError.custom(message: message)
-            } else {
+            guard let message = message else {
                 throw ApiError.clientError
             }
+            throw ApiError.custom(message: message)
         case HttpResponseStatus.serverError:
             throw ApiError.serverError
         default:
