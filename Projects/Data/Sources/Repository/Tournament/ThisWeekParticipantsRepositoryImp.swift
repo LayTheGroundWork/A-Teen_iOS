@@ -26,7 +26,6 @@ public struct ThisWeekParticipantsRepositoryImp: ThisWeekParticipantsRepository 
                 throw ApiError.errorInUrl
             }
             let response: ThisWeekParticipantsResponse = try await apiClientService.request(request: urlRequest, type: ThisWeekParticipantsDTO.self).toDomain()
-            
             return .success(response)
         } catch {
             return .failure(error)

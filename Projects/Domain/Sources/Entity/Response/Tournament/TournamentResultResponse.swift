@@ -20,20 +20,20 @@ public struct TournamentResultData: Decodable {
     public let rankerId: String
     public let rankerNickName: String
     public let rank: Int
-    public let voteCount: Int
+    public let score: Int
     public let profileImageUrl: String
     
     public init(
         rankerId: String,
         rankerNickName: String,
         rank: Int, 
-        voteCount: Int,
+        score: Int,
         profileImageUrl: String
     ) {
         self.rankerId = rankerId
         self.rankerNickName = rankerNickName
         self.rank = rank
-        self.voteCount = voteCount
+        self.score = score
         self.profileImageUrl = profileImageUrl
     }
 }

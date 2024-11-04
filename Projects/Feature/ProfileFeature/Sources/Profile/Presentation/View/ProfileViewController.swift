@@ -349,17 +349,19 @@ public final class ProfileViewController: UIViewController {
     public override func viewDidLoad() {
         super.viewDidLoad()
         setupBindings()
-        viewModel.getMyPageData()
     }
     
     public override func viewWillAppear(_ animated: Bool) {
         guard let coordinator = coordinator else { return }
         coordinator.configTabbarState(view: .profile)
         self.navigationItem.titleView = CustomNaviView(
-            frame: CGRect(x: 0, y: 0, width: ViewValues.width, height: 40
-            ),
+            frame: CGRect(x: 0, y: 0, width: ViewValues.width, height: 40),
             delegate: coordinator
         )
+        
+        if viewModel.user.uniqueId == "" {
+            viewModel.getMyPageData()
+        }
     }
     
     public init(

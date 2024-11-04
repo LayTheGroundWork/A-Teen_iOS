@@ -64,19 +64,19 @@ public final class RankingResultViewController: UIViewController {
         image: DesignSystemAsset.badge8.image,
         rank: .first,
         userName: viewModel.tournamentResultList[0].rankerNickName,
-        proportion: viewModel.getPercentage(voteCount: viewModel.tournamentResultList[0].voteCount))
+        proportion: viewModel.getPercentage(voteCount: viewModel.tournamentResultList[0].score))
     
     private lazy var secondBox: UIView = CustomRankingTopView(
         image: DesignSystemAsset.badge6.image,
         rank: .second,
         userName: viewModel.tournamentResultList[1].rankerNickName,
-        proportion: viewModel.getPercentage(voteCount: viewModel.tournamentResultList[1].voteCount))
+        proportion: viewModel.getPercentage(voteCount: viewModel.tournamentResultList[1].score))
     
     private lazy var thirdBox: UIView = CustomRankingTopView(
         image: DesignSystemAsset.badge2.image,
         rank: .third,
         userName: viewModel.tournamentResultList[2].rankerNickName,
-        proportion: viewModel.getPercentage(voteCount: viewModel.tournamentResultList[2].voteCount))
+        proportion: viewModel.getPercentage(voteCount: viewModel.tournamentResultList[2].score))
     
     private lazy var topThreeStack: UIStackView = {
         let stack = UIStackView(arrangedSubviews: [
@@ -212,7 +212,7 @@ extension RankingResultViewController: UITableViewDataSource {
         let ranker = viewModel.tournamentResultList[indexPath.row + 3]
         cell.setProperties(rank: ranker.rank,
                            userName: ranker.rankerNickName,
-                           proportion: viewModel.getPercentage(voteCount: ranker.voteCount))
+                           proportion: viewModel.getPercentage(voteCount: ranker.score))
         return cell
     }
 }

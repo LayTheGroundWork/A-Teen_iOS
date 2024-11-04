@@ -68,7 +68,12 @@ public struct ApiClientServiceImp: ApiClientService {
         case HttpResponseStatus.ok:
             return try decodeModel(data: data)
         case HttpResponseStatus.clientError:
-            throw ApiError.clientError
+            if let jsonObject = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: Any],
+               let message = jsonObject["message"] as? String {
+                throw ApiError.custom(message: message)
+            } else {
+                throw ApiError.clientError
+            }
         case HttpResponseStatus.serverError:
             throw ApiError.serverError
         default:

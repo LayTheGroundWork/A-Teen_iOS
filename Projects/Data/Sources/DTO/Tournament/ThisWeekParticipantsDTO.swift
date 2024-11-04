@@ -17,7 +17,7 @@ public struct ThisWeekParticipantsDTO: Decodable {
 
 extension ThisWeekParticipantsDTO {
     func toDomain() -> ThisWeekParticipantsResponse {
-        .init(data: data)
+        .init(data: data, message: message)
     }
 }
 

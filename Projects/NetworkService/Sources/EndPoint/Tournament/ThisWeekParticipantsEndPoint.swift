@@ -25,7 +25,8 @@ public struct ThisWeekParticipantsEndPoint: EndPoint {
     public var header: [String : String] {
         [
             "Content-Type": "application/json",
-            "Accept": "application/json"
+            "Accept": "application/json",
+            "Authorization": request.authorization
         ]
     }
     

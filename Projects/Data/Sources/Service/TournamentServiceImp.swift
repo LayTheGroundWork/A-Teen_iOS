@@ -46,14 +46,14 @@ public struct TournamentServiceImp: TournamentService {
         }
     }
     
-    public func getThisWeekParticipants(request: ThisWeekParticipantsRequest) async -> [TournamentParticipantData] {
+    public func getThisWeekParticipants(request: ThisWeekParticipantsRequest) async -> ([TournamentParticipantData]?, String) {
         let response = await thisWeekParticipantsRepository.getThisWeekParticipants(request: request)
         
         switch response {
         case .success(let response):
-            return response.data
-        case .failure(_):
-            return []
+            return (response.data, response.message)
+        case .failure(let error):
+            return (nil, error.localizedDescription)
         }
     }
 }

@@ -11,5 +11,5 @@ import Foundation
 public protocol TournamentService {
     func searchTournament() async -> [TournamentSearchData]
     func getTournamentResult(request: TournamentResultRequest) async -> [TournamentResultData]
-    func getThisWeekParticipants(request: ThisWeekParticipantsRequest) async -> [TournamentParticipantData]
+    func getThisWeekParticipants(request: ThisWeekParticipantsRequest) async -> ([TournamentParticipantData]?, String)
 }

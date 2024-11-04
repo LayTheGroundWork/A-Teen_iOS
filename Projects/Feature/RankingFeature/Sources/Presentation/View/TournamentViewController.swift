@@ -147,8 +147,6 @@ extension TournamentViewController: UICollectionViewDataSource {
                 return UICollectionViewCell()
             }
             
-            viewModel.editVoteResult()
-            
             cell.setProperties(
                 delegate: self,
                 winner: winner,

@@ -16,7 +16,7 @@ class TournamentViewModel {
     var currentRound: TournamentRoundType = .roundOf16
     var participantList: [TournamentParticipantData]
     var loseParticipantList: [String] = []
-    var voteResultList: [TournamentParticipantData] = []
+    var voteResultList: [String] = []
     var winner: TournamentParticipantData?
     
     init(
@@ -24,51 +24,35 @@ class TournamentViewModel {
         participantList: [TournamentParticipantData]
     ) {
         self.category = category
-        
-        if participantList.count == 32 {
-            //32명 와서 API 수정해야됨
-            self.participantList = Array(participantList.prefix(16))
-        } else {
-            self.participantList = participantList
-        }
+        self.participantList = participantList
     }
 }
 
 extension TournamentViewModel {
     func saveLoseParticipant(tournamentParticipant: TournamentParticipantData) {
         loseParticipantList.append(tournamentParticipant.userId)
-        voteResultList.append(tournamentParticipant)
     }
     
     func removeLoseParticipant() {
         loseParticipantList.forEach { id in
             if let index = participantList.firstIndex(where: { $0.userId == id}) {
+                if loseParticipantList.count <= 2 {
+                    voteResultList.append(participantList[index].userId)
+                }
                 participantList.remove(at: index)
             }
         }
         loseParticipantList.removeAll()
         
         if participantList.count == 1 {
-            winner = participantList[0]
+            editVoteResult()
         }
     }
     
     func editVoteResult() {
-        voteResultList.append(participantList[0])
+        winner = participantList[0]
+        voteResultList.append(participantList[0].userId)
         voteResultList.reverse()
-    }
-    
-    func getUserAge(userBirth: String) -> Int {
-        let currentDate = Date()
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy"
-        
-        guard let currentYear = Int(dateFormatter.string(from: currentDate)),
-              let birthYearString = userBirth.components(separatedBy: "-").first,
-              let birthYear = Int(birthYearString)
-        else { return 0 }
-        
-        return currentYear - birthYear + 1
     }
     
     func changeRound() -> Int? {
@@ -99,5 +83,18 @@ extension TournamentViewModel {
             self.currentMatch += 1
             return false
         }
+    }
+    
+    func getUserAge(userBirth: String) -> Int {
+        let currentDate = Date()
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy"
+        
+        guard let currentYear = Int(dateFormatter.string(from: currentDate)),
+              let birthYearString = userBirth.components(separatedBy: "-").first,
+              let birthYear = Int(birthYearString)
+        else { return 0 }
+        
+        return currentYear - birthYear + 1
     }
 }

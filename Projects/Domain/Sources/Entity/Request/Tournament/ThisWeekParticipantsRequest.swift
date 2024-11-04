@@ -9,9 +9,14 @@
 import Foundation
 
 public struct ThisWeekParticipantsRequest {
+    public let authorization: String
     public let category: String
 
-    public init(category: String) {
+    public init(
+        authorization: String,
+        category: String
+    ) {
+        self.authorization = authorization
         self.category = category
     }
 }

@@ -9,10 +9,15 @@
 import Foundation
 
 public struct ThisWeekParticipantsResponse: Decodable {
-    public let data: [TournamentParticipantData]
+    public let data: [TournamentParticipantData]?
+    public let message: String
     
-    public init(data: [TournamentParticipantData]) {
+    public init(
+        data: [TournamentParticipantData],
+        message: String
+    ) {
         self.data = data
+        self.message = message
     }
 }
 
