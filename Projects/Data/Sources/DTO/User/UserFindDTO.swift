@@ -11,7 +11,7 @@ import Foundation
 
 public struct UserFindDTO: Decodable {
     public let status: Int
-    public let data: [UserData]
+    public let data: UserData
     public let message: String
 }
 

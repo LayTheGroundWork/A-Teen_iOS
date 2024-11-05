@@ -17,7 +17,7 @@ public protocol TeenDetailViewControllerCoordinator: AnyObject {
     func didTapBackButton()
     func didSelectTeenImage(
         frame: CGRect,
-        teen: UserData,
+        teen: User,
         todayTeenFirstImage: UIImage)
     func didSelectTeenChattingButton()
     func didSelectMenuButton(popoverPosition: CGRect)

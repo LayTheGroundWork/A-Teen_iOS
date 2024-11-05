@@ -30,25 +30,25 @@ public struct UserServiceImp: UserService {
         self.userLikeCancelRepository = userLikeCancelRepository
     }
     
-    public func findAllUser(request: AllUserFindRequest) async -> [UserData] {
+    public func findAllUser(request: AllUserFindRequest) async -> UserData {
         let response = await allUserFindRepository.findAllUser(request: request)
         
         switch response {
         case .success(let response):
             return response.data
         case .failure(_):
-            return []
+            return .init(users: [], totalPage: 0)
         }
     }
     
-    public func findCategoryUser(request: CategoryUserFindRequest) async -> [UserData] {
+    public func findCategoryUser(request: CategoryUserFindRequest) async -> UserData {
         let response = await categoryUserFindRepository.findCategoryUser(request: request)
         
         switch response {
         case .success(let response):
             return response.data
         case .failure(_):
-            return []
+            return .init(users: [], totalPage: 0)
         }
     }
     

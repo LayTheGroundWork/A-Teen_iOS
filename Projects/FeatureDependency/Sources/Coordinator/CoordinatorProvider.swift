@@ -14,7 +14,7 @@ public protocol CoordinatorProvider {
     func makeProfileDetailCoordinator(
         delegate: ProfileDetailCoordinatorDelegate,
         frame: CGRect,
-        todayTeen: UserData,
+        todayTeen: User,
         todayTeenFirstImage: UIImage
     ) -> Coordinator
     

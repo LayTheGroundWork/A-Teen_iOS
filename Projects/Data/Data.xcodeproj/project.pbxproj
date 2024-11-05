@@ -3,21 +3,20 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 55;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		010F42A3E1E524F1402EF9A7 /* VerificationCodeDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A6A6CEEAB945077F3444955 /* VerificationCodeDTO.swift */; };
 		06E9C36A9D8B797217C6B7A6 /* TournamentResultDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F6FF6A6325427AEC1A4974 /* TournamentResultDTO.swift */; };
 		0AEA963F8B42D73715E05DDB /* ReissueRepositoryImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1F87B0388BF607A3F82CF10 /* ReissueRepositoryImp.swift */; };
+		0DB292FA04667E292D0C9615 /* TournamentVoteDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894AB834F4C42B79EE104492 /* TournamentVoteDTO.swift */; };
 		0DBCAF3ECEE41D1C03C9E875 /* NetworkService.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAC8A24EF2DA38A8911C0332 /* NetworkService.framework */; };
 		0F5010ECFBB208D0E8695C02 /* DuplicationCheckRepositoryImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C71555F2786000CC02D4FA6 /* DuplicationCheckRepositoryImp.swift */; };
 		218D8E8B39E1F9A9B826BFC7 /* MyPageServiceImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28DE77FCC1F646270392DF2 /* MyPageServiceImp.swift */; };
 		269FDE67B48834948BE8CFEB /* ImageDataServiceImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D69ADC6424D5E413891FE6D /* ImageDataServiceImp.swift */; };
 		280D3245D317C47ABF10ABF9 /* SignInRepositoryImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37EA6AE52F156E244C89349 /* SignInRepositoryImp.swift */; };
 		31B12574B944A13A23A2D7AE /* TournamentServiceImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE54168BE453EF79B023278E /* TournamentServiceImp.swift */; };
-		41902D732CDA754600BB7489 /* TournamentVoteDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41902D722CDA754600BB7489 /* TournamentVoteDTO.swift */; };
-		41902D752CDA763400BB7489 /* TournamentVoteRepositoryImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41902D742CDA763400BB7489 /* TournamentVoteRepositoryImp.swift */; };
 		436984348144AED8DCDD8B6F /* UserLikeCancelRepositoryImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 949AE8BC299CB727240FF817 /* UserLikeCancelRepositoryImp.swift */; };
 		43E140ABA31D8C975F27CC5D /* TokenStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD13451B610373272A24E936 /* TokenStorage.swift */; };
 		47BA10052FE156F600D61DC3 /* TournamentSearchRepositoryImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62416AB95E020C012042AD9B /* TournamentSearchRepositoryImp.swift */; };
@@ -41,6 +40,7 @@
 		A66D4C863111F27F4BFC83C1 /* TournamentSearchDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0380C0B6EB1ECF67416262E3 /* TournamentSearchDTO.swift */; };
 		AB4A668861752C21ACFC2881 /* UserDetailDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = F93ABBB0490DAA6F91D4DC64 /* UserDetailDTO.swift */; };
 		ACDF35AF9D6FEB2A809A8FEE /* UserServiceImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F4594D992F594AC7A7D8191 /* UserServiceImp.swift */; };
+		B77321C769910BFCD872F32E /* TournamentVoteRepositoryImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B928C1EFC2E04E30118AE23 /* TournamentVoteRepositoryImp.swift */; };
 		C4F2009F3B1FC79FAA0F5F42 /* UserFindDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EFA4E6A6309BAA7ED7C42A7 /* UserFindDTO.swift */; };
 		D35894226EDF568B3A83FCB6 /* SearchSchoolServiceImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBAFBEBD1A165F75FAA04A2 /* SearchSchoolServiceImp.swift */; };
 		D9CCDBFECF829DB34D205C50 /* SignUpRepositoryImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53044F93EF0D12264A1F4044 /* SignUpRepositoryImp.swift */; };
@@ -74,19 +74,19 @@
 		2F1F15873BCFE492B247EA72 /* UserLikeRepositoryImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLikeRepositoryImp.swift; sourceTree = "<group>"; };
 		31FB768A22D22E229187A69F /* SchoolDataDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolDataDTO.swift; sourceTree = "<group>"; };
 		347636D471A5BA1D44DB2D86 /* TournamentResultRepositoryImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TournamentResultRepositoryImp.swift; sourceTree = "<group>"; };
-		41902D722CDA754600BB7489 /* TournamentVoteDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TournamentVoteDTO.swift; sourceTree = "<group>"; };
-		41902D742CDA763400BB7489 /* TournamentVoteRepositoryImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TournamentVoteRepositoryImp.swift; sourceTree = "<group>"; };
 		4A30E2A1F55D5DBBA360E1A2 /* LogInDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInDTO.swift; sourceTree = "<group>"; };
 		4E75197C294DE74F5162FAA7 /* Data.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Data.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		53044F93EF0D12264A1F4044 /* SignUpRepositoryImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpRepositoryImp.swift; sourceTree = "<group>"; };
 		62416AB95E020C012042AD9B /* TournamentSearchRepositoryImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TournamentSearchRepositoryImp.swift; sourceTree = "<group>"; };
 		6DB2F6BC517E2D1404D26583 /* UserDetailRepositoryImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailRepositoryImp.swift; sourceTree = "<group>"; };
 		7A46FF8BDF941AEC2297F9F6 /* MyPageDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageDTO.swift; sourceTree = "<group>"; };
+		7B928C1EFC2E04E30118AE23 /* TournamentVoteRepositoryImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TournamentVoteRepositoryImp.swift; sourceTree = "<group>"; };
 		7C71555F2786000CC02D4FA6 /* DuplicationCheckRepositoryImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DuplicationCheckRepositoryImp.swift; sourceTree = "<group>"; };
 		7F4594D992F594AC7A7D8191 /* UserServiceImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserServiceImp.swift; sourceTree = "<group>"; };
 		858E3E35B0DE106CEF8D8ED0 /* ThisWeekParticipantsRepositoryImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThisWeekParticipantsRepositoryImp.swift; sourceTree = "<group>"; };
 		85F62FDD9E44ACACF4346F3B /* UserLikeDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLikeDTO.swift; sourceTree = "<group>"; };
 		871673ED893637E87A3ABF7F /* MyPageEditDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageEditDTO.swift; sourceTree = "<group>"; };
+		894AB834F4C42B79EE104492 /* TournamentVoteDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TournamentVoteDTO.swift; sourceTree = "<group>"; };
 		8D69ADC6424D5E413891FE6D /* ImageDataServiceImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDataServiceImp.swift; sourceTree = "<group>"; };
 		8E03696A5DFB18A0EE60C2E7 /* MyPageEditRepositoryImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageEditRepositoryImp.swift; sourceTree = "<group>"; };
 		949AE8BC299CB727240FF817 /* UserLikeCancelRepositoryImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLikeCancelRepositoryImp.swift; sourceTree = "<group>"; };
@@ -282,7 +282,7 @@
 				858E3E35B0DE106CEF8D8ED0 /* ThisWeekParticipantsRepositoryImp.swift */,
 				347636D471A5BA1D44DB2D86 /* TournamentResultRepositoryImp.swift */,
 				62416AB95E020C012042AD9B /* TournamentSearchRepositoryImp.swift */,
-				41902D742CDA763400BB7489 /* TournamentVoteRepositoryImp.swift */,
+				7B928C1EFC2E04E30118AE23 /* TournamentVoteRepositoryImp.swift */,
 			);
 			path = Tournament;
 			sourceTree = "<group>";
@@ -301,7 +301,7 @@
 				A8A4F1340F079BDDE5F9B1E6 /* ThisWeekParticipantsDTO.swift */,
 				D5F6FF6A6325427AEC1A4974 /* TournamentResultDTO.swift */,
 				0380C0B6EB1ECF67416262E3 /* TournamentSearchDTO.swift */,
-				41902D722CDA754600BB7489 /* TournamentVoteDTO.swift */,
+				894AB834F4C42B79EE104492 /* TournamentVoteDTO.swift */,
 			);
 			path = Tournament;
 			sourceTree = "<group>";
@@ -367,6 +367,8 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
 				ORGANIZATIONNAME = ATeen;
+				TargetAttributes = {
+				};
 			};
 			buildConfigurationList = BDB112DA78B2B42275EC3A62 /* Build configuration list for PBXProject "Data" */;
 			compatibilityVersion = "Xcode 14.0";
@@ -405,14 +407,13 @@
 				98F2A69DFDA2818B9A7591F8 /* MyPageDTO.swift in Sources */,
 				DF61C0F40B96C8F7EBDB66A9 /* MyPageEditDTO.swift in Sources */,
 				86B4D3F2CC340BC8FEF2B26D /* SchoolDataDTO.swift in Sources */,
-				41902D732CDA754600BB7489 /* TournamentVoteDTO.swift in Sources */,
 				6F7DDA867A9D76007732B1C2 /* DuplicationCheckDTO.swift in Sources */,
 				66E8291E69D88BDA34900FFA /* LogInDTO.swift in Sources */,
 				010F42A3E1E524F1402EF9A7 /* VerificationCodeDTO.swift in Sources */,
 				48A2EBF355BDC342CD687C40 /* ThisWeekParticipantsDTO.swift in Sources */,
 				06E9C36A9D8B797217C6B7A6 /* TournamentResultDTO.swift in Sources */,
-				41902D752CDA763400BB7489 /* TournamentVoteRepositoryImp.swift in Sources */,
 				A66D4C863111F27F4BFC83C1 /* TournamentSearchDTO.swift in Sources */,
+				0DB292FA04667E292D0C9615 /* TournamentVoteDTO.swift in Sources */,
 				AB4A668861752C21ACFC2881 /* UserDetailDTO.swift in Sources */,
 				C4F2009F3B1FC79FAA0F5F42 /* UserFindDTO.swift in Sources */,
 				5685458DF695252A57F683C7 /* UserLikeDTO.swift in Sources */,
@@ -430,6 +431,7 @@
 				829EBFFF4EA9B66EDF41FE3A /* ThisWeekParticipantsRepositoryImp.swift in Sources */,
 				F2DE49EEC24B70DBC7B1D3D2 /* TournamentResultRepositoryImp.swift in Sources */,
 				47BA10052FE156F600D61DC3 /* TournamentSearchRepositoryImp.swift in Sources */,
+				B77321C769910BFCD872F32E /* TournamentVoteRepositoryImp.swift in Sources */,
 				DAF4C3923319F860BCDCF27E /* AllUserFindRepositoryImp.swift in Sources */,
 				981C377EC720640804E1138E /* CategoryUserFindRepositoryImp.swift in Sources */,
 				994C365099D378E1253AFF43 /* UserDetailRepositoryImp.swift in Sources */,
@@ -468,10 +470,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					"-ObjC",
-				);
+				OTHER_LDFLAGS = "$(inherited) -ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ATeen.ATeen.Data;
 				PRODUCT_NAME = Data;
 				SDKROOT = iphoneos;
@@ -479,7 +478,10 @@
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = (
+					"$(inherited)",
+					DEBUG,
+				);
 				SWIFT_COMPILATION_MODE = singlefile;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -509,10 +511,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					"-ObjC",
-				);
+				OTHER_LDFLAGS = "$(inherited) -ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ATeen.ATeen.Data;
 				PRODUCT_NAME = Data;
 				SDKROOT = iphoneos;

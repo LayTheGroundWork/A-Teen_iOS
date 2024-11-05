@@ -12,4 +12,7 @@ public enum MainStateController {
     case viewDidLoad
     case changeHeartState
     case getUserDataSuccess
+    case loadMoreSuccess
+    case loadMoreLoading
+    case loadMoreFail(error: String)
 }

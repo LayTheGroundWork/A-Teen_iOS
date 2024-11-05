@@ -14,13 +14,13 @@ import Domain
 import UIKit
 
 public protocol MainViewControllerCoordinator: AnyObject {
-    func didSelectTodayTeenImage(frame: CGRect, todayTeen: UserData, todayTeenFirstImage: UIImage)
+    func didSelectTodayTeenImage(frame: CGRect, todayTeen: User, todayTeenFirstImage: UIImage)
     func didSelectTodayTeenChattingButton()
     func didSelectMenuButton(popoverPosition: CGRect)
     func didSelectAboutATeenCell(tag: TabTag)
     func didSelectTournamentImage(indexPath: IndexPath)
     func didSelectTournamentMoreButton()
-    func didSelectAnotherTeenCell(frame: CGRect, todayTeen: UserData, todayTeenFirstImage: UIImage)
+    func didSelectAnotherTeenCell(frame: CGRect, todayTeen: User, todayTeenFirstImage: UIImage)
 }
 
 protocol MainViewControllerDelegate: AnyObject {
@@ -95,7 +95,7 @@ public final class MainViewController: UIViewController {
     }
     
     private func setupBindings() {
-        viewModel.mainState
+        viewModel.state
             .receive(on: DispatchQueue.main)
             .sink { [weak self] state in
                 guard let self = self else { return }
@@ -109,26 +109,22 @@ public final class MainViewController: UIViewController {
                         selector: #selector(self.updateTableView(_:)),
                         name: .completeLogin,
                         object: nil)
+                    
                 case .changeHeartState:
                     self.tableView.reloadData()
+                    
                 case .getUserDataSuccess:
                     self.updateUI()
-                }
-            }.store(in: &cancellables)
-        
-        viewModel.loadState
-            .receive(on: DispatchQueue.main)
-            .sink { [weak self] state in
-                guard let self else { return }
-                switch state {
-                case .success:
+                    
+                case .loadMoreSuccess:
                     self.activityIndicator.stopAnimating()
                     self.viewModel.isLoading = false
                     self.tableView.reloadData()
-                case .loading:
+                    
+                case .loadMoreLoading:
                     self.activityIndicator.startAnimating()
-                    break
-                case .fail(error: let error):
+                    
+                case .loadMoreFail(error: let error):
                     self.activityIndicator.stopAnimating()
                     print("무한 스크롤 실패 \(error)")
                 }
@@ -207,9 +203,6 @@ public final class MainViewController: UIViewController {
     
     // MARK: - Actions
     @objc private func updateTableView(_ notification: Notification) {
-        print("LogOut/LogIn -> Reload Data")
-        print(viewModel.auth.isSessionActive)
-        
         if viewModel.auth.isSessionActive {
             viewModel.clearTeenList()
             for (index, category) in viewModel.categoryList.enumerated() {
@@ -234,7 +227,7 @@ extension MainViewController: UIScrollViewDelegate {
     
     public func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         let offsetY = scrollView.contentOffset.y
-
+        
         if offsetY > startContentOffset {
             UIView.animate(withDuration: 0.2, delay: 0, options: .showHideTransitionViews) {
                 self.naviHeightAnchor?.update(offset: 0)
@@ -389,7 +382,7 @@ extension MainViewController: UITableViewDelegate {
             
             coordinator?.didSelectAnotherTeenCell(
                 frame: frame,
-                todayTeen: viewModel.teenList[indexPath.row], 
+                todayTeen: viewModel.teenList[indexPath.row],
                 todayTeenFirstImage: cellClicked.getImage())
         default:
             break
@@ -416,9 +409,9 @@ extension MainViewController: UITableViewDelegate {
     public func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         let lastRowIndex = viewModel.teenList.count - 1
         
-        guard indexPath == IndexPath(row: lastRowIndex, section: 4),
-              !viewModel.isLoading,
-              viewModel.teenList.count == viewModel.currentSize
+        guard let _ = viewModel.randomPage,
+              indexPath == IndexPath(row: lastRowIndex, section: 4),
+              !viewModel.isLoading
         else { return }
         viewModel.loadMoreData()
     }
@@ -438,7 +431,7 @@ extension MainViewController: UITableViewDelegate {
             return nil
         }
     }
-
+    
     public func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         switch section {
         case 4:
@@ -522,7 +515,7 @@ extension MainViewController: MainViewControllerDelegate {
 }
 
 extension MainViewController: TodayTeenTableViewCellDelegate {
-    func didSelectTodayTeenImage(frame: CGRect, todayTeen: UserData, todayTeenFirstImage: UIImage) {
+    func didSelectTodayTeenImage(frame: CGRect, todayTeen: User, todayTeenFirstImage: UIImage) {
         coordinator?.didSelectTodayTeenImage(frame: frame, todayTeen: todayTeen, todayTeenFirstImage: todayTeenFirstImage)
     }
     

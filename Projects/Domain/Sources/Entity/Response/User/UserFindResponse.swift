@@ -9,17 +9,30 @@
 import Foundation
 
 public struct UserFindResponse: Decodable {
-    public let data: [UserData]
+    public let data: UserData
     
-    public init(data: [UserData]) {
+    public init(data: UserData) {
         self.data = data
     }
 }
 
 public struct UserData: Decodable {
+    public let users: [User]
+    public let totalPage: Int
+    
+    public init(
+        users: [User],
+        totalPage: Int
+    ) {
+        self.users = users
+        self.totalPage = totalPage
+    }
+}
+
+public struct User: Decodable {
     public let id: Int
     public let uniqueId: String
-    public let profileImages: String?
+    public let profileImage: String?
     public let nickName: String
     public let location: String
     public let schoolName: String
@@ -28,7 +41,7 @@ public struct UserData: Decodable {
     public init(
         id: Int,
         uniqueId: String,
-        profileImages: String?,
+        profileImage: String?,
         nickName: String,
         location: String,
         schoolName: String,
@@ -36,7 +49,7 @@ public struct UserData: Decodable {
     ) {
         self.id = id
         self.uniqueId = uniqueId
-        self.profileImages = profileImages
+        self.profileImage = profileImage
         self.nickName = nickName
         self.location = location
         self.schoolName = schoolName

@@ -23,8 +23,7 @@ class MainViewModel {
     @Injected(UserUseCase.self)
     public var userUseCase: UserUseCase
     
-    var mainState = PassthroughSubject<MainStateController, Never>()
-    var loadState = PassthroughSubject<IndicatorStateController, Never>()
+    var state = PassthroughSubject<MainStateController, Never>()
     private var cancellables = Set<AnyCancellable>()
     
     var categoryList: [ProfileCategory] = [
@@ -37,11 +36,11 @@ class MainViewModel {
         ProfileCategory(title: "기타", isSelect: false)
     ]
     
-    var todayTeenList: [UserData] = [
+    var todayTeenList: [User] = [
         .init(
             id: 0,
             uniqueId: "tester1",
-            profileImages: "thumbnail_testKey",
+            profileImage: "thumbnail_testKey",
             nickName: "노주영",
             location: "안양",
             schoolName: "인덕원고둥학교",
@@ -49,7 +48,7 @@ class MainViewModel {
         .init(
             id: 1,
             uniqueId: "tester1",
-            profileImages: "thumbnail_testKey",
+            profileImage: "thumbnail_testKey",
             nickName: "최동호",
             location: "부산",
             schoolName: "대연고등학교",
@@ -57,7 +56,7 @@ class MainViewModel {
         .init(
             id: 2,
             uniqueId: "tester1",
-            profileImages: "thumbnail_testKey",
+            profileImage: "thumbnail_testKey",
             nickName: "김명현",
             location: "부산",
             schoolName: "센텀고등학교",
@@ -65,7 +64,7 @@ class MainViewModel {
         .init(
             id: 3,
             uniqueId: "tester1",
-            profileImages: "thumbnail_testKey",
+            profileImage: "thumbnail_testKey",
             nickName: "이창준",
             location: "서울",
             schoolName: "에이틴고등학교",
@@ -73,26 +72,26 @@ class MainViewModel {
         .init(
             id: 4,
             uniqueId: "tester1",
-            profileImages: "thumbnail_testKey",
+            profileImage: "thumbnail_testKey",
             nickName: "최도혁",
             location: "서울",
             schoolName: "에이틴고등학교",
             likeStatus: true)
         ]
     
-    
-    var teenList: [UserData] = []
-    
-    var currentPage: Int = 0
-    var currentSize: Int = 0
+    var teenList: [User] = []
+    var totalPage: Int?
+    var pageArray: [Int] = []
+    var randomPage: Int? = 0
     var isLoading: Bool = false
 }
 
 extension MainViewModel {
     func clearTeenList() {
         teenList.removeAll()
-        currentPage = 0
-        currentSize = 0
+        totalPage = nil
+        pageArray.removeAll()
+        randomPage = 0
     }
     
     func didSelectCategoryCell(row: Int) {
@@ -125,7 +124,7 @@ extension MainViewModel {
                     return
                 }
                 self.teenList[row].likeStatus.toggle()
-                self.mainState.send(.changeHeartState)
+                self.state.send(.changeHeartState)
             }
             .store(in: &cancellables)
             
@@ -140,7 +139,7 @@ extension MainViewModel {
                     return
                 }
                 self.teenList[row].likeStatus.toggle()
-                self.mainState.send(.changeHeartState)
+                self.state.send(.changeHeartState)
             }
             .store(in: &cancellables)
         }
@@ -149,7 +148,7 @@ extension MainViewModel {
     // 전체 유저 리스트
     func findAllUser(_ type: LoadType) {
         guard let token = auth.getAccessToken(),
-              auth.isSessionActive      //로그인 상태 확인(토큰이 유효기한이 있어서 나중에 유효성 검사로 바꿀 예정)
+              auth.isSessionActive
         else {
             loadAllUserList(type, authorization: nil)
             return
@@ -164,81 +163,55 @@ extension MainViewModel {
         userUseCase.findAllUser(
             request: .init(
                 authorization: authorization,
-                page: currentPage,
+                page: randomPage ?? 0,
                 size: 10)
         )
         .receive(on: type == .more ? DispatchQueue.global() : DispatchQueue.main)
         .sink { [weak self] data in
             guard let self else { return }
-            self.teenList.append(contentsOf: data)
-            self.currentPage += 1
-            self.currentSize += 10
-            
-            switch type {
-            case .viewDidLoad:
-                self.mainState.send(.viewDidLoad)
-            case .normal:
-                self.mainState.send(.getUserDataSuccess)
-            case .more:
-                sleep(2)
-                self.loadState.send(.success)
-            }
+            self.processByType(type, data: data, row: nil)
         }
         .store(in: &cancellables)
     }
     
     // 카테고리 별 유저 리스트
     func findCategoryUser(_ type: LoadType, row: Int) {
-        guard let token = auth.getAccessToken(),
-              auth.isSessionActive      //로그인 상태 확인(토큰이 유효기한이 있어서 나중에 유효성 검사로 바꿀 예정)
-        else {
+        guard let token = auth.getAccessToken() else {
             loadCategoryUserList(
                 type,
                 authorization: nil,
-                category: categoryList[row].title)
+                row: row)
             return
         }
         loadCategoryUserList(
             type,
             authorization: token,
-            category: categoryList[row].title)
+            row: row)
     }
     
     func loadCategoryUserList(
         _ type: LoadType,
         authorization: String?,
-        category: String
+        row: Int
     ) {
         userUseCase.findCategoryUser(
             request: .init(
                 authorization: authorization,
-                category: category,
-                page: currentPage,
+                category: changeCategoryName(categoryList[row].title),
+                page: randomPage ?? 0,
                 size: 10)
         )
         .receive(on: type == .more ? DispatchQueue.global() : DispatchQueue.main)
         .sink { [weak self] data in
             guard let self else { return }
-            self.teenList.append(contentsOf: data)
-            self.currentPage += 1
-            self.currentSize += 10
-            
-            switch type {
-            case .viewDidLoad:
-                break
-            case .normal:
-                self.mainState.send(.getUserDataSuccess)
-            case .more:
-                sleep(2)
-                self.loadState.send(.success)
-            }
+            self.processByType(type, data: data, row: row)
         }
         .store(in: &cancellables)
     }
     
     // 무한 스크롤
     func loadMoreData() {
-        loadState.send(.loading)
+        state.send(.loadMoreLoading)
         isLoading = true
         if let index = self.categoryList.firstIndex(where: { $0.isSelect }) {
             switch index {
@@ -250,6 +223,71 @@ extension MainViewModel {
             default:
                 break
             }
+        }
+    }
+    
+    private func processByType(_ type: LoadType, data: UserData, row: Int?) {
+        switch type {
+        case .viewDidLoad:
+            if let _ = self.totalPage {
+                self.teenList.append(contentsOf: data.users)
+                self.extractRandomElement()
+                self.state.send(.viewDidLoad)
+            } else {
+                self.totalPage = data.totalPage
+                self.makeRandomPages()
+                self.findAllUser(.viewDidLoad)
+            }
+        case .normal:
+            if let _ = self.totalPage {
+                self.teenList.append(contentsOf: data.users)
+                self.extractRandomElement()
+                self.state.send(.getUserDataSuccess)
+            } else {
+                self.totalPage = data.totalPage
+                self.makeRandomPages()
+                
+                if let row = row {
+                    self.findCategoryUser(.normal, row: row)
+                } else {
+                    self.findAllUser(.normal)
+                }
+            }
+        case .more:
+            self.teenList.append(contentsOf: data.users)
+            self.extractRandomElement()
+            sleep(2)
+            self.state.send(.loadMoreSuccess)
+        }
+    }
+    
+    private func makeRandomPages() {
+        guard let totalPage = totalPage else { return }
+        pageArray = Array(0..<totalPage)
+        extractRandomElement()
+    }
+    
+    private func extractRandomElement() {
+        guard !pageArray.isEmpty else {
+            randomPage = nil
+            return
+        }
+        randomPage = pageArray.randomElement()!
+        
+        if let index = pageArray.firstIndex(of: randomPage ?? 0) {
+            pageArray.remove(at: index)
+        }
+    }
+    
+    private func changeCategoryName(_ category: String) -> String {
+        switch category {
+        case "뷰티": return "BEAUTY"
+        case "운동": return "SPORT"
+        case "공부": return "STUDY"
+        case "예술": return "ART"
+        case "게임": return "GAME"
+        case "기타": return "ETC"
+        default: return ""
         }
     }
 }

@@ -19,7 +19,7 @@ extension TeenDetailCoordinator: TeenDetailViewControllerCoordinator {
     
     public func didSelectTeenImage(
         frame: CGRect,
-        teen: UserData,
+        teen: User,
         todayTeenFirstImage: UIImage
     ) {
         let profileDetailCoordinator = coordinatorProvider.makeProfileDetailCoordinator(

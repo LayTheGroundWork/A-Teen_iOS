@@ -14,7 +14,7 @@ import UIKit
 extension MainCoordinator: MainViewControllerCoordinator {
     public func didSelectTodayTeenImage(
         frame: CGRect,
-        todayTeen: UserData,
+        todayTeen: User,
         todayTeenFirstImage: UIImage
     ) {
         let profileDetailCoordinator = coordinatorProvider.makeProfileDetailCoordinator(
@@ -64,7 +64,7 @@ extension MainCoordinator: MainViewControllerCoordinator {
     
     public func didSelectAnotherTeenCell(
         frame: CGRect,
-        todayTeen: UserData,
+        todayTeen: User,
         todayTeenFirstImage: UIImage
     ) {
         let profileDetailCoordinator = coordinatorProvider.makeProfileDetailCoordinator(

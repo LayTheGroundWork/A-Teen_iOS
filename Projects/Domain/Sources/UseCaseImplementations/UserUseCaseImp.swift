@@ -15,7 +15,7 @@ public struct UserUseCaseImp: UserUseCase {
         self.userService = userService
     }
     
-    public func findAllUser(request: AllUserFindRequest)  -> AnyPublisher<[UserData], Never> {
+    public func findAllUser(request: AllUserFindRequest)  -> AnyPublisher<UserData, Never> {
         Future { promise in
             Task {
                 let data = await userService.findAllUser(request: request)
@@ -25,7 +25,7 @@ public struct UserUseCaseImp: UserUseCase {
         .eraseToAnyPublisher()
     }
     
-    public func findCategoryUser(request: CategoryUserFindRequest) -> AnyPublisher<[UserData], Never> {
+    public func findCategoryUser(request: CategoryUserFindRequest) -> AnyPublisher<UserData, Never> {
         Future { promise in
             Task {
                 let data = await userService.findCategoryUser(request: request)

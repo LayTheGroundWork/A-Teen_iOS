@@ -13,7 +13,7 @@ import Domain
 import UIKit
 
 protocol TodayTeenTableViewCellDelegate: AnyObject {
-    func didSelectTodayTeenImage(frame: CGRect, todayTeen: UserData, todayTeenFirstImage: UIImage)
+    func didSelectTodayTeenImage(frame: CGRect, todayTeen: User, todayTeenFirstImage: UIImage)
     func didSelectTodayTeenChattingButton()
     func didSelectMenuButton(popoverPosition: CGRect)
 }
@@ -116,7 +116,7 @@ class TodayTeenTableViewCell: UITableViewCell {
     
     // 자동 스크롤 시작
     func startAutoScroll() {
-        teenCollectionViewAutoScrollTimer?.invalidate() // 중복 실행 방지
+        teenCollectionViewAutoScrollTimer?.invalidate()
         teenCollectionViewAutoScrollTimer = Timer.scheduledTimer(
             timeInterval: 4.0,
             target: self,
