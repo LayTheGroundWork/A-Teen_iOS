@@ -14,15 +14,12 @@ extension RankingCoordinator: AlertCoordinatorDelegate {
         removeChildCoordinator(childCoordinator)
         navigation.dismiss(animated: false)
         
-        guard let factory = factory as? RankingFactoryImp else { return }
         switch selectIndex {
         case 1:
             let tournamentCoordinator = factory.makeTournamentCoordinator(
                 navigation: navigation,
                 delegate: self,
-                coordinatorProvider: coordinatorProvider,
-                category: factory.viewModel.voteCategory,
-                participantList: factory.viewModel.thisWeekParticipantList)
+                coordinatorProvider: coordinatorProvider)
             addChildCoordinatorStart(tournamentCoordinator)
         default:
             break

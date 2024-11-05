@@ -11,4 +11,5 @@ import Foundation
 public enum RankingStateController {
     case searchTournamentListSuccess
     case getThisWeekParticipantsSuccess
+    case alreadyParticipatedTournament
 }

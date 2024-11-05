@@ -7,6 +7,7 @@
 //
 
 import Common
+import Combine
 import DesignSystem
 import UIKit
 
@@ -23,7 +24,8 @@ public protocol TournamentViewControllerCoordinator: AnyObject {
 public final class TournamentViewController: UIViewController {
     private var viewModel: TournamentViewModel
     private weak var coordinator: TournamentViewControllerCoordinator?
-    
+    private var cancellables = Set<AnyCancellable>()
+
     private lazy var closeButton: UIBarButtonItem = {
         let button = UIBarButtonItem(
             image: DesignSystemAsset.leftArrowWhiteIcon.image,
@@ -68,6 +70,7 @@ public final class TournamentViewController: UIViewController {
         super.viewDidLoad()
         configUserInterface()
         configLayout()
+        setupBindings()
     }
     
     public override func viewWillAppear(_ animated: Bool) {
@@ -112,6 +115,16 @@ public final class TournamentViewController: UIViewController {
             at: indexPath,
             at: .centeredHorizontally,
             animated: false)
+    }
+    
+    private func setupBindings() {
+        viewModel.state
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] in
+                guard let self else { return }
+                self.scrollToPage(section: 4)
+            }
+            .store(in: &cancellables)
     }
     
     // MARK: - Actions
@@ -178,11 +191,10 @@ extension TournamentViewController: TournamentRoundCollectionViewCellDelegate {
 
 extension TournamentViewController: TournamentEndCollectionViewCellDelegate {
     func finishTournament() {
-        guard let winner = viewModel.winner else { return }
         // TODO: 서버 저장 로직 그거 끝나면 밑에 로직 실행 combine
         coordinator?.finishTournament(
             category: viewModel.category,
             round: 0,
-            tournamentNo: winner.thisWeekTournamentNo)
+            tournamentNo: viewModel.thisWeekTournamentNumber)
     }
 }

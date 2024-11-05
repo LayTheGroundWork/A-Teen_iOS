@@ -195,7 +195,13 @@ public final class RankingViewController: UIViewController {
                     self.setupCategoryButtons()
                     
                 case .getThisWeekParticipantsSuccess:
-                    self.coordinator?.didTapVoteButton(category: viewModel.voteCategory)
+                    self.coordinator?.didTapVoteButton(category: viewModel.tournamentList[viewModel.tournamentIndex].category)
+                    
+                case .alreadyParticipatedTournament:
+                    self.coordinator?.didTapRankingCollectionViewCell(
+                        category: viewModel.tournamentList[viewModel.tournamentIndex].category,
+                        round: 0,
+                        tournamentNo: viewModel.tournamentList[viewModel.tournamentIndex].thisWeekTournamentNo)
                 }
             }.store(in: &cancellables)
     }

@@ -13,15 +13,18 @@ public struct TournamentServiceImp: TournamentService {
     private let tournamentSearchRepository: TournamentSearchRepository
     private let tournamentResultRepository: TournamentResultRepository
     private let thisWeekParticipantsRepository: ThisWeekParticipantsRepository
+    private let tournamentVoteRepository: TournamentVoteRepository
     
     public init(
         tournamentSearchRepository: TournamentSearchRepository,
         tournamentResultRepository: TournamentResultRepository,
-        thisWeekParticipantsRepository: ThisWeekParticipantsRepository
+        thisWeekParticipantsRepository: ThisWeekParticipantsRepository,
+        tournamentVoteRepository: TournamentVoteRepository
     ) {
         self.tournamentSearchRepository = tournamentSearchRepository
         self.tournamentResultRepository = tournamentResultRepository
         self.thisWeekParticipantsRepository = thisWeekParticipantsRepository
+        self.tournamentVoteRepository = tournamentVoteRepository
     }
     
     public func searchTournament() async -> [TournamentSearchData] {
@@ -56,4 +59,16 @@ public struct TournamentServiceImp: TournamentService {
             return (nil, error.localizedDescription)
         }
     }
+    
+    public func tournamentVote(request: TournamentVoteRequest) async -> String? {
+        let response = await tournamentVoteRepository.tournamentVote(request: request)
+        
+        switch response {
+        case .success(let response):
+            return response.data
+        case .failure(_):
+            return nil
+        }
+    }
+    
 }

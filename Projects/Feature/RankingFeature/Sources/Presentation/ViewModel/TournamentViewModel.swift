@@ -7,23 +7,37 @@
 //
 
 import Common
+import Core
+import Combine
 import Domain
 import Foundation
 
 class TournamentViewModel {
+    @Injected(Auth.self)
+    public var auth: Auth
+    
+    @Injected(TournamentUseCase.self)
+    public var tournamentUseCase: TournamentUseCase
+    
     var category: String
+    var thisWeekTournamentNumber: Int
+    var participantList: [TournamentParticipantData]
     var currentMatch: Int = 1
     var currentRound: TournamentRoundType = .roundOf16
-    var participantList: [TournamentParticipantData]
     var loseParticipantList: [String] = []
     var voteResultList: [String] = []
     var winner: TournamentParticipantData?
     
+    var state = PassthroughSubject<Void, Never>()
+    private var cancellables = Set<AnyCancellable>()
+
     init(
         category: String,
+        thisWeekTournamentNumber: Int,
         participantList: [TournamentParticipantData]
     ) {
         self.category = category
+        self.thisWeekTournamentNumber = thisWeekTournamentNumber
         self.participantList = participantList
     }
 }
@@ -53,6 +67,25 @@ extension TournamentViewModel {
         winner = participantList[0]
         voteResultList.append(participantList[0].userId)
         voteResultList.reverse()
+        
+        guard let token = auth.getAccessToken() else {
+             return
+        }
+        
+        tournamentUseCase.tournamentVote(request: .init(
+            authorization: token,
+            tournamentNo: thisWeekTournamentNumber,
+            participantIdsOrderByRank: voteResultList))
+        .sink { [weak self] data in
+            guard let self = self else { return }
+            if let _ = data {
+                self.state.send()
+            } else {
+                print("refresh")
+            }
+        }
+        .store(in: &cancellables)
+
     }
     
     func changeRound() -> Int? {
@@ -67,10 +100,8 @@ extension TournamentViewModel {
         case .semifinals:
             currentRound = .final
             return 3
-        case .final:
+        case .final, .end:
             currentRound = .end
-            return 4
-        case .end:
             return nil
         }
     }

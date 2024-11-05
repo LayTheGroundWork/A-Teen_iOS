@@ -18,13 +18,16 @@ public struct TournamentSearchResponse: Decodable {
 
 public struct TournamentSearchData: Decodable {
     public let category: String
+    public let thisWeekTournamentNo: Int
     public var winner: [TournamentWinnerData]
-    
+
     public init(
         category: String,
+        thisWeekTournamentNo: Int,
         winner: [TournamentWinnerData]
     ) {
         self.category = category
+        self.thisWeekTournamentNo = thisWeekTournamentNo
         self.winner = winner
     }
 }

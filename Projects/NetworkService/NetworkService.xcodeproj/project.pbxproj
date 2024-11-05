@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 55;
+	objectVersion = 56;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -12,6 +12,7 @@
 		39AFE023D7F0792F54311B03 /* TournamentSearchEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4554CD4854353C4E70EAE542 /* TournamentSearchEndPoint.swift */; };
 		3ABC1C37BC738A4E0B60E939 /* ReissueEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEF134EE57A5BC5E99B5C34C /* ReissueEndPoint.swift */; };
 		3E2877DD0E16E92EBD594CF3 /* ThisWeekParticipantsEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0B0E2ADDCF0DEFB55A53EC /* ThisWeekParticipantsEndPoint.swift */; };
+		41902D6D2CDA745300BB7489 /* TournamentVoteEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41902D6C2CDA745300BB7489 /* TournamentVoteEndPoint.swift */; };
 		4A25E8BE1156684357DAC52F /* LogInEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE9987B527C6D0232D055D1 /* LogInEndPoint.swift */; };
 		4E73CAAA79D1BE736AD3B7FA /* VerificationCodeEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BA75336359A120CBA17BA7D /* VerificationCodeEndPoint.swift */; };
 		5CD81B418DCC7667165005CA /* ApiClientServiceImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE374FAFF5AD8033061042B6 /* ApiClientServiceImp.swift */; };
@@ -58,6 +59,7 @@
 		30B8FE33444F24DC3915A82C /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
 		377923D794C9B5C4B87607EB /* UserLikeCancelEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLikeCancelEndPoint.swift; sourceTree = "<group>"; };
 		39E9564068243164AE0397F4 /* EndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPoint.swift; sourceTree = "<group>"; };
+		41902D6C2CDA745300BB7489 /* TournamentVoteEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TournamentVoteEndPoint.swift; sourceTree = "<group>"; };
 		423A93F1015E6C9CF4DB82B2 /* Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
 		4554CD4854353C4E70EAE542 /* TournamentSearchEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TournamentSearchEndPoint.swift; sourceTree = "<group>"; };
 		4B0CE67A9252733A1EADA6D0 /* MyPageEditEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageEditEndPoint.swift; sourceTree = "<group>"; };
@@ -97,6 +99,7 @@
 				5B0B0E2ADDCF0DEFB55A53EC /* ThisWeekParticipantsEndPoint.swift */,
 				DF6125BC3B2996861BBDE1BB /* TournamentResultEndPoint.swift */,
 				4554CD4854353C4E70EAE542 /* TournamentSearchEndPoint.swift */,
+				41902D6C2CDA745300BB7489 /* TournamentVoteEndPoint.swift */,
 			);
 			path = Tournament;
 			sourceTree = "<group>";
@@ -284,8 +287,6 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
 				ORGANIZATIONNAME = ATeen;
-				TargetAttributes = {
-				};
 			};
 			buildConfigurationList = FFC6118989876A9280B17F0F /* Build configuration list for PBXProject "NetworkService" */;
 			compatibilityVersion = "Xcode 14.0";
@@ -342,6 +343,7 @@
 				6CE3233F63C4B6305D83FC15 /* UserLikeEndPoint.swift in Sources */,
 				036B6550D85D013E9E45D716 /* ApiError.swift in Sources */,
 				C2D528B369D066456ADFD047 /* HTTPMethod.swift in Sources */,
+				41902D6D2CDA745300BB7489 /* TournamentVoteEndPoint.swift in Sources */,
 				5CD81B418DCC7667165005CA /* ApiClientServiceImp.swift in Sources */,
 				0422C1E028807B6222269C0E /* HttpResponseStatus.swift in Sources */,
 			);
@@ -370,7 +372,10 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				OTHER_LDFLAGS = "$(inherited) -ObjC";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ATeen.ATeen.NetworkService;
 				PRODUCT_NAME = NetworkService;
 				SDKROOT = iphoneos;
@@ -407,7 +412,10 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				OTHER_LDFLAGS = "$(inherited) -ObjC";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ATeen.ATeen.NetworkService;
 				PRODUCT_NAME = NetworkService;
 				SDKROOT = iphoneos;
@@ -415,10 +423,7 @@
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = (
-					"$(inherited)",
-					DEBUG,
-				);
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG";
 				SWIFT_COMPILATION_MODE = singlefile;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;

@@ -212,6 +212,7 @@ extension RankingResultViewController: UITableViewDataSource {
         let ranker = viewModel.tournamentResultList[indexPath.row + 3]
         cell.setProperties(rank: ranker.rank,
                            userName: ranker.rankerNickName,
+                           userID: ranker.rankerId,
                            proportion: viewModel.getPercentage(voteCount: ranker.score))
         return cell
     }

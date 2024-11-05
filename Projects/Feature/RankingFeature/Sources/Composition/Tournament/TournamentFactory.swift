@@ -17,11 +17,13 @@ public protocol TournamentFactory {
 
 public struct TournamentFactoryImp: TournamentFactory {
     private (set) var category: String
+    private (set) var thisWeekTournamentNumber: Int
     private (set) var participantList: [TournamentParticipantData]
     
     public func makeTournamentViewController(coordinator: TournamentViewControllerCoordinator) -> UIViewController {
         let viewModel = TournamentViewModel(
             category: category,
+            thisWeekTournamentNumber: thisWeekTournamentNumber,
             participantList: participantList)
         let controller = TournamentViewController(
             viewModel: viewModel,

@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 55;
+	objectVersion = 56;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -22,6 +22,8 @@
 		33DCF949EEBC3A2BD32B7BBF /* VerificationCodeRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4379208B31B7C01AB4F9897D /* VerificationCodeRequest.swift */; };
 		364F3A4A0C3E8E4E6F3C6417 /* TournamentSearchRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4882794C7316473C37DE00D /* TournamentSearchRepository.swift */; };
 		3D657B9ECD0624182B20B930 /* UserDetailRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED0A566217AED812986D0CF2 /* UserDetailRepository.swift */; };
+		41902D6F2CDA748700BB7489 /* TournamentVoteRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41902D6E2CDA748700BB7489 /* TournamentVoteRequest.swift */; };
+		41902D772CDA771E00BB7489 /* TournamentVoteRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41902D762CDA771E00BB7489 /* TournamentVoteRepository.swift */; };
 		46FFF702E799485168786812 /* ReissueRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612D6B6422F772C1E2D6F5C0 /* ReissueRepository.swift */; };
 		4B8EC7D2C9769F6023CC4475 /* SchoolDataResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E706264EE7208D0CEE3472 /* SchoolDataResponse.swift */; };
 		4F0E4152653E65AA94070895 /* UserLikeRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F7E20649795CE869B561CE8 /* UserLikeRequest.swift */; };
@@ -98,6 +100,8 @@
 		305B73859E470278CF75C23B /* MyPageRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageRepository.swift; sourceTree = "<group>"; };
 		3854105DDC9CDA62E56A09EF /* SignInRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInRepository.swift; sourceTree = "<group>"; };
 		3A4620A0019C901EC7C993A2 /* Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
+		41902D6E2CDA748700BB7489 /* TournamentVoteRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TournamentVoteRequest.swift; sourceTree = "<group>"; };
+		41902D762CDA771E00BB7489 /* TournamentVoteRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TournamentVoteRepository.swift; sourceTree = "<group>"; };
 		4379208B31B7C01AB4F9897D /* VerificationCodeRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationCodeRequest.swift; sourceTree = "<group>"; };
 		451ACE222BE8C01F4B361381 /* ImageDataUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDataUseCase.swift; sourceTree = "<group>"; };
 		471AFB78283BAC18C30F77D7 /* ThisWeekParticipantsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThisWeekParticipantsResponse.swift; sourceTree = "<group>"; };
@@ -384,6 +388,7 @@
 			children = (
 				0FDF1FCA2924DC87242BEBC5 /* ThisWeekParticipantsRequest.swift */,
 				8C730F25460C827D3F76833B /* TournamentResultRequest.swift */,
+				41902D6E2CDA748700BB7489 /* TournamentVoteRequest.swift */,
 			);
 			path = Tournament;
 			sourceTree = "<group>";
@@ -408,6 +413,7 @@
 				680E8FF88BAB6BF4E6A4EFCC /* ThisWeekParticipantsRepository.swift */,
 				B9566D2C3ACDB34D694E11F9 /* TournamentResultRepository.swift */,
 				E4882794C7316473C37DE00D /* TournamentSearchRepository.swift */,
+				41902D762CDA771E00BB7489 /* TournamentVoteRepository.swift */,
 			);
 			path = Tournament;
 			sourceTree = "<group>";
@@ -495,8 +501,6 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
 				ORGANIZATIONNAME = ATeen;
-				TargetAttributes = {
-				};
 			};
 			buildConfigurationList = 5B17347D429F14C389327C78 /* Build configuration list for PBXProject "Domain" */;
 			compatibilityVersion = "Xcode 14.0";
@@ -577,6 +581,8 @@
 				00149FC1B870802F79A844F2 /* UserLikeCancelRepository.swift in Sources */,
 				2500BF61DE5C0E2BE486E162 /* UserLikeRepository.swift in Sources */,
 				ADE46DB026DD08F36838B2E8 /* ImageDataService.swift in Sources */,
+				41902D772CDA771E00BB7489 /* TournamentVoteRepository.swift in Sources */,
+				41902D6F2CDA748700BB7489 /* TournamentVoteRequest.swift in Sources */,
 				53F62693E37D8E68F56AF139 /* MyPageService.swift in Sources */,
 				30A9A12EAAB824CB847A8F55 /* SearchSchoolService.swift in Sources */,
 				8323AECB90EFE773F20B7248 /* SignService.swift in Sources */,
@@ -671,7 +677,10 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				OTHER_LDFLAGS = "$(inherited) -ObjC";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ATeen.ATeen.Domain;
 				PRODUCT_NAME = Domain;
 				SDKROOT = iphoneos;
@@ -767,7 +776,10 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				OTHER_LDFLAGS = "$(inherited) -ObjC";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ATeen.ATeen.Domain;
 				PRODUCT_NAME = Domain;
 				SDKROOT = iphoneos;
@@ -775,10 +787,7 @@
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = (
-					"$(inherited)",
-					DEBUG,
-				);
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG";
 				SWIFT_COMPILATION_MODE = singlefile;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;

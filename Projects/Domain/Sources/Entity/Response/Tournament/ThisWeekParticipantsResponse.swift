@@ -22,7 +22,6 @@ public struct ThisWeekParticipantsResponse: Decodable {
 }
 
 public struct TournamentParticipantData: Decodable {
-    public let thisWeekTournamentNo: Int
     public let userId: String
     public let profileImageUrl: String
     public let userName: String
@@ -30,14 +29,12 @@ public struct TournamentParticipantData: Decodable {
     public let userBirth: String
 
     public init(
-        thisWeekTournamentNo: Int,
         userId: String,
         profileImageUrl: String,
         userName: String,
         userSchool: String, 
         userBirth: String
     ) {
-        self.thisWeekTournamentNo = thisWeekTournamentNo
         self.userId = userId
         self.profileImageUrl = profileImageUrl
         self.userName = userName

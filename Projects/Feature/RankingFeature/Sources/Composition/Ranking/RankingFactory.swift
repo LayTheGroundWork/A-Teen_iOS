@@ -27,9 +27,7 @@ public protocol RankingFactory {
     func makeTournamentCoordinator(
         navigation: Navigation,
         delegate: TournamentCoordinatorDelegate,
-        coordinatorProvider: CoordinatorProvider,
-        category: String,
-        participantList: [TournamentParticipantData]
+        coordinatorProvider: CoordinatorProvider
     ) -> Coordinator
 }
 
@@ -69,11 +67,12 @@ public struct RankingFactoryImp: RankingFactory {
     public func makeTournamentCoordinator(
         navigation: Navigation,
         delegate: TournamentCoordinatorDelegate,
-        coordinatorProvider: CoordinatorProvider,
-        category: String,
-        participantList: [TournamentParticipantData]
+        coordinatorProvider: CoordinatorProvider
     ) -> Coordinator {
-        let factory = TournamentFactoryImp(category: category, participantList: participantList)
+        let factory = TournamentFactoryImp(
+            category: viewModel.tournamentList[viewModel.tournamentIndex].category,
+            thisWeekTournamentNumber: viewModel.tournamentList[viewModel.tournamentIndex].thisWeekTournamentNo,
+            participantList: viewModel.thisWeekParticipantList)
         return TournamentCoordinator(
             navigation: navigation,
             factory: factory,

@@ -24,7 +24,8 @@ class RankingViewModel {
     
     var tournamentList: [TournamentSearchData] = []
     var thisWeekParticipantList: [TournamentParticipantData] = []
-    var voteCategory: String = ""
+    var tournamentIndex: Int = 0
+    
 }
 
 extension RankingViewModel {
@@ -33,6 +34,7 @@ extension RankingViewModel {
             .sink { [weak self] data in
                 guard let self = self else { return }
                 self.tournamentList = data
+                print(self.tournamentList)
                 self.state.send(.searchTournamentListSuccess)
             }
             .store(in: &cancellables)
@@ -40,25 +42,22 @@ extension RankingViewModel {
     
     func getThisWeekParticipantList(category: String) {
         guard let token = auth.getAccessToken(),
-              let chageCategory = changeCategoryName(category: category),
-              auth.isSessionActive
+              let index = tournamentList.firstIndex(where: { $0.category == category })
         else {
-            
-            
+            // 로그인 시트 올리기
             return
         }
-        
+        tournamentIndex = index
         tournamentUseCase.getThisWeekParticipants(
             request: .init(
                 authorization: token,
-                category: chageCategory)
+                category: changeCategoryName(tournamentList[tournamentIndex].category))
         )
         .sink { [weak self] (data, message) in
             guard let self = self else { return }
             
             if let data = data {
                 self.thisWeekParticipantList = data.shuffled()
-                self.voteCategory = category
                 self.state.send(.getThisWeekParticipantsSuccess)
             } else {
                 switch message {
@@ -66,7 +65,7 @@ extension RankingViewModel {
                     // TODO: refresh token 요청 코드
                     print("refresh")
                 case AppLocalized.participatedTournament:
-                    print("결과창 이동")
+                    self.state.send(.alreadyParticipatedTournament)
                     // TODO: 최종결과창 이동
                 default:
                     break
@@ -76,15 +75,15 @@ extension RankingViewModel {
         .store(in: &cancellables)
     }
     
-    func changeCategoryName(category: String) -> String? {
+    private func changeCategoryName(_ category: String) -> String {
         switch category {
-        case "뷰티": "BEAUTY"
-        case "운동": "SPORT"
-        case "공부": "STUDY"
-        case "예술": "ART"
-        case "게임": "GAME"
-        case "기타": "ETC"
-        default: nil
+        case "뷰티": return "BEAUTY"
+        case "운동": return "SPORT"
+        case "공부": return "STUDY"
+        case "예술": return "ART"
+        case "게임": return "GAME"
+        case "기타": return "ETC"
+        default: return ""
         }
     }
 }

@@ -163,7 +163,6 @@ extension TournamentRoundCollectionViewCell: TournamentUserCollectionViewCellDel
         case 0:
             viewModel.saveLoseParticipant(
                 tournamentParticipant: cell.bUserInfo ?? .init(
-                    thisWeekTournamentNo: 0,
                     userId: "",
                     profileImageUrl: "",
                     userName: "",
@@ -174,7 +173,6 @@ extension TournamentRoundCollectionViewCell: TournamentUserCollectionViewCellDel
         case 1:
             viewModel.saveLoseParticipant(
                 tournamentParticipant: cell.aUserInfo ?? .init(
-                    thisWeekTournamentNo: 0,
                     userId: "",
                     profileImageUrl: "",
                     userName: "",
