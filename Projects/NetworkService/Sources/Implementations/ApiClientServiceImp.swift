@@ -98,9 +98,6 @@ public struct ApiClientServiceImp: ApiClientService {
         let decoder = JSONDecoder()
         let model = try? decoder.decode(T.self, from: data)
         guard let model = model else { throw ApiError.errorDecoding }
-        
-        print("디코딩 성공")
-        print(model)
         return model
     }
     

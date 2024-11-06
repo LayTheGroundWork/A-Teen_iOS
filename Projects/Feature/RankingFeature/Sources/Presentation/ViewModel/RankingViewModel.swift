@@ -58,11 +58,9 @@ extension RankingViewModel {
             } else {
                 switch message {
                 case AppLocalized.expiredToken:
-                    // TODO: refresh token 요청 코드
-                    print("refresh")
+                    self.state.send(.openLoginSheet)
                 case AppLocalized.participatedTournament:
                     self.state.send(.alreadyParticipatedTournament)
-                    // TODO: 최종결과창 이동
                 default:
                     break
                 }

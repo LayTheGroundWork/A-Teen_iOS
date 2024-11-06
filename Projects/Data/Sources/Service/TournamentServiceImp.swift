@@ -67,9 +67,9 @@ public struct TournamentServiceImp: TournamentService {
             switch error.localizedDescription {
             case AppLocalized.expiredToken:
                 guard let newToken = await reissueToken() else {
+                    auth.logOut()
                     return (nil, error.localizedDescription)
                 }
-                
                 return await getThisWeekParticipants(request: .init(
                     authorization: newToken,
                     category: request.category))
@@ -89,9 +89,9 @@ public struct TournamentServiceImp: TournamentService {
             switch error.localizedDescription {
             case AppLocalized.expiredToken:
                 guard let newToken = await reissueToken() else {
+                    auth.logOut()
                     return nil
                 }
-                
                 return await tournamentVote(request: .init(
                     authorization: newToken,
                     tournamentNo: request.tournamentNo,

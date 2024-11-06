@@ -39,6 +39,7 @@ public struct MyPageServiceImp: MyPageService {
             switch error.localizedDescription {
             case AppLocalized.expiredToken:
                 guard let newToken = await reissueToken() else {
+                    auth.logOut()
                     return nil
                 }
                 return await getMyPageData(request: .init(authorization: newToken))
@@ -58,9 +59,9 @@ public struct MyPageServiceImp: MyPageService {
             switch error.localizedDescription {
             case AppLocalized.expiredToken:
                 guard let newToken = await reissueToken() else {
+                    auth.logOut()
                     return nil
                 }
-                
                 return await editMyPage(request: .init(
                     authorization: newToken,
                     nickName: request.nickName,

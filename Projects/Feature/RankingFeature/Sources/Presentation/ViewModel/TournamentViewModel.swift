@@ -78,7 +78,7 @@ extension TournamentViewModel {
             if let _ = data {
                 self.state.send()
             } else {
-                print("refresh")
+                print("refresh 토큰 받기 실패")
             }
         }
         .store(in: &cancellables)

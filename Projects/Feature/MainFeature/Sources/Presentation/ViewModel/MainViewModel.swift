@@ -129,6 +129,7 @@ extension MainViewModel {
             )
             .sink { [weak self] data in
                 guard let self = self, let _ = data else {
+                    self?.state.send(.openLoginSheet)
                     return
                 }
                 self.teenList[row].likeStatus.toggle()
@@ -144,6 +145,7 @@ extension MainViewModel {
             )
             .sink { [weak self] data in
                 guard let self = self, let _ = data else {
+                    self?.state.send(.openLoginSheet)
                     return
                 }
                 self.teenList[row].likeStatus.toggle()

@@ -48,17 +48,14 @@ public struct UserServiceImp: UserService {
             switch error.localizedDescription {
             case AppLocalized.expiredToken:
                 guard let newToken = await reissueToken() else {
-                    return .init(users: [], totalPage: 0)
+                    auth.logOut()
+                    return await findAllUser(request: .init(
+                        authorization: nil,
+                        page: request.page,
+                        size: request.size))
                 }
                 return await findAllUser(request: .init(
                     authorization: newToken,
-                    page: request.page,
-                    size: request.size))
-                
-            case AppLocalized.unauthorizedToken:
-                auth.logOut()
-                return await findAllUser(request: .init(
-                    authorization: nil,
                     page: request.page,
                     size: request.size))
             default:
@@ -77,9 +74,9 @@ public struct UserServiceImp: UserService {
             switch error.localizedDescription {
             case AppLocalized.expiredToken:
                 guard let newToken = await reissueToken() else {
+                    auth.logOut()
                     return .init(users: [], totalPage: 0)
                 }
-                
                 return await findCategoryUser(request: .init(
                     authorization: newToken,
                     category: request.category,
@@ -112,9 +109,9 @@ public struct UserServiceImp: UserService {
             switch error.localizedDescription {
             case AppLocalized.expiredToken:
                 guard let newToken = await reissueToken() else {
+                    auth.logOut()
                     return nil
                 }
-                
                 return await updateUserLikeStatus(request: .init(
                     authorization: newToken,
                     id: request.id))
@@ -134,9 +131,9 @@ public struct UserServiceImp: UserService {
             switch error.localizedDescription {
             case AppLocalized.expiredToken:
                 guard let newToken = await reissueToken() else {
+                    auth.logOut()
                     return nil
                 }
-                
                 return await cancelUserLikeStatus(request: .init(
                     authorization: newToken,
                     id: request.id))
