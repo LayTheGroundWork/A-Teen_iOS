@@ -6,13 +6,9 @@
 //  Copyright © 2024 ATeen. All rights reserved.
 //
 
-import Core
 import Foundation
 
 public struct ApiClientServiceImp: ApiClientService {
-    @Injected(Auth.self)
-    public var auth: Auth
-    
     let session: URLSession
     
     public init(session: URLSession = URLSession.shared) {

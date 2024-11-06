@@ -17,9 +17,6 @@ enum LoadType {
 }
 
 class MainViewModel {
-    @Injected(Auth.self)
-    public var auth: Auth
-    
     @Injected(UserUseCase.self)
     public var userUseCase: UserUseCase
     
@@ -107,7 +104,7 @@ extension MainViewModel {
     }
     
     func didSelectChattingButton() {
-        guard let token = auth.getAccessToken() else {
+        guard let _ = userUseCase.getAuthToken() else {
             // 로그인 시트 올리기
             state.send(.openLoginSheet)
             return
@@ -117,7 +114,7 @@ extension MainViewModel {
     }
     
     func didSelectTodayTeenHeartButton(row: Int) {
-        guard let token = auth.getAccessToken() else {
+        guard let token = userUseCase.getAuthToken() else {
             // 로그인 시트 올리기
             state.send(.openLoginSheet)
             return
@@ -158,9 +155,7 @@ extension MainViewModel {
     
     // 전체 유저 리스트
     func findAllUser(_ type: LoadType) {
-        guard let token = auth.getAccessToken(),
-              auth.isSessionActive
-        else {
+        guard let token = userUseCase.getAuthToken() else {
             loadAllUserList(type, authorization: nil)
             return
         }
@@ -187,7 +182,7 @@ extension MainViewModel {
     
     // 카테고리 별 유저 리스트
     func findCategoryUser(_ type: LoadType, row: Int) {
-        guard let token = auth.getAccessToken() else {
+        guard let token = userUseCase.getAuthToken() else {
             loadCategoryUserList(
                 type,
                 authorization: nil,

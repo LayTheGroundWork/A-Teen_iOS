@@ -14,4 +14,5 @@ public protocol UserUseCase {
     func getUserDetailData(request: UserDetailRequest) -> AnyPublisher<UserDetailData?, Never>
     func updateUserLikeStatus(request: UserLikeRequest) -> AnyPublisher<String?, Never>
     func cancelUserLikeStatus(request: UserLikeRequest) -> AnyPublisher<String?, Never>
+    func getAuthToken() -> String?
 }

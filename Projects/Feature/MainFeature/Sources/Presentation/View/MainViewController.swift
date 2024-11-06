@@ -209,7 +209,8 @@ public final class MainViewController: UIViewController {
     
     // MARK: - Actions
     @objc private func updateTableView(_ notification: Notification) {
-        if viewModel.auth.isSessionActive {
+        // TODO: - 요류 테스트 필요
+        if let _ = viewModel.userUseCase.getAuthToken() {
             viewModel.clearTeenList()
             for (index, category) in viewModel.categoryList.enumerated() {
                 if category.isSelect {

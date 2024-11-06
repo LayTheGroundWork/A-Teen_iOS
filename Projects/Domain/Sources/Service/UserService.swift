@@ -14,4 +14,5 @@ public protocol UserService {
     func getUserDetailData(request: UserDetailRequest) async -> UserDetailData?
     func updateUserLikeStatus(request: UserLikeRequest) async -> String?
     func cancelUserLikeStatus(request: UserLikeRequest) async -> String?
+    func getAuthToken() -> String?
 }

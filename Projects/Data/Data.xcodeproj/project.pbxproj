@@ -47,6 +47,7 @@
 		DAF4C3923319F860BCDCF27E /* AllUserFindRepositoryImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDCC80E2080EFD74C7AC2B5C /* AllUserFindRepositoryImp.swift */; };
 		DF61C0F40B96C8F7EBDB66A9 /* MyPageEditDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871673ED893637E87A3ABF7F /* MyPageEditDTO.swift */; };
 		E1E4104CAA7784999CA4E7FB /* LogOutDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C3F20B9358AE17077FF041C /* LogOutDTO.swift */; };
+		F148039B5F91592C5380466A /* Core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6799EBC84F4DBDEDB6C2FB0 /* Core.framework */; };
 		F2ADF29D2DCC944985A257FA /* SchoolDataRepositoryImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDBD20F4DD38348A842A0633 /* SchoolDataRepositoryImp.swift */; };
 		F2DE49EEC24B70DBC7B1D3D2 /* TournamentResultRepositoryImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 347636D471A5BA1D44DB2D86 /* TournamentResultRepositoryImp.swift */; };
 /* End PBXBuildFile section */
@@ -105,6 +106,7 @@
 		D5F6FF6A6325427AEC1A4974 /* TournamentResultDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TournamentResultDTO.swift; sourceTree = "<group>"; };
 		DE54168BE453EF79B023278E /* TournamentServiceImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TournamentServiceImp.swift; sourceTree = "<group>"; };
 		E1457F5C26408BE9EBAC27CA /* Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
+		E6799EBC84F4DBDEDB6C2FB0 /* Core.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Core.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8FC649E8938EE57402066D8 /* VerificationCodeRepositoryImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationCodeRepositoryImp.swift; sourceTree = "<group>"; };
 		EDBD20F4DD38348A842A0633 /* SchoolDataRepositoryImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolDataRepositoryImp.swift; sourceTree = "<group>"; };
 		F37EA6AE52F156E244C89349 /* SignInRepositoryImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInRepositoryImp.swift; sourceTree = "<group>"; };
@@ -118,6 +120,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F148039B5F91592C5380466A /* Core.framework in Frameworks */,
 				0DBCAF3ECEE41D1C03C9E875 /* NetworkService.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -136,6 +139,7 @@
 		20629251A4CAB947CD938921 /* Products */ = {
 			isa = PBXGroup;
 			children = (
+				E6799EBC84F4DBDEDB6C2FB0 /* Core.framework */,
 				4E75197C294DE74F5162FAA7 /* Data.framework */,
 				FAC8A24EF2DA38A8911C0332 /* NetworkService.framework */,
 			);

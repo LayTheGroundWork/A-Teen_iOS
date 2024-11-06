@@ -17,9 +17,6 @@ extension AppDelegate {
         let apiClientService: ApiClientService = ApiClientServiceImp()
         
         // MARK: - Repository
-        // userDefaults
-        let tokenStorage: TokenStorage = TokenStorage()
-        
         // user
         let allUserFindRepository: AllUserFindRepository = AllUserFindRepositoryImp(apiClientService: apiClientService)
         let categoryUserFindRepository: CategoryUserFindRepository = CategoryUserFindRepositoryImp(apiClientService: apiClientService)
@@ -33,6 +30,7 @@ extension AppDelegate {
         let duplicationCheckRepository: DuplictaionCheckRepository = DuplicationCheckRepositoryImp(apiClientService: apiClientService)
         let requestCodeRepository: RequestCodeRepository = RequestCodeRepositoryImp(apiClientService: apiClientService)
         let verificationCodeRepository: VerificationCodeRepository = VerificationCodeRepositoryImp(apiClientService: apiClientService)
+        let reissueRepository: ReissueRepository = ReissueRepositoryImp(apiClientService: apiClientService)
         
         // school
         let schoolDataRepository: SchoolDataRepository = SchoolDataRepositoryImp(apiClientService: apiClientService)
@@ -49,15 +47,24 @@ extension AppDelegate {
         let myPageRepository: MyPageRepository = MyPageRepositoryImp(apiClientService: apiClientService)
         let myPageEditRepository: MyPageEditRepository = MyPageEditRepositoryImp(apiClientService: apiClientService)
         
+        // MARK: - DataStore
+        // userDefaults
+        let tokenStorage: TokenStorage = TokenStorage()
+        // Auth
+        let auth: Auth = Auth(tokenHandler: tokenStorage)
+        
         // MARK: - Service
         let userService: UserService = UserServiceImp(
+            auth: auth,
             allUserFindRepository: allUserFindRepository,
             categoryUserFindRepository: categoryUserFindRepository,
             userDetailRepository: userDetailRepository,
             userLikeRepository: userLikeRepository,
-            userLikeCancelRepository: userLikeCancelRepository)
+            userLikeCancelRepository: userLikeCancelRepository,
+            reissueRepository: reissueRepository)
         
         let signService: SignService = SignServiceImp(
+            auth: auth,
             signInRepository: signInRepository,
             signUpRepository: signUpRepository,
             duplicationCheckRepository: duplicationCheckRepository,
@@ -69,18 +76,20 @@ extension AppDelegate {
         let imageDataService: ImageDataService = ImageDataServiceImp(remoteImageDataRepository: remoteImageDataRepository)
         
         let tournamentService: TournamentService = TournamentServiceImp(
+            auth: auth,
             tournamentSearchRepository: tournamentSearchRepository,
             tournamentResultRepository: tournamentResultRepository, 
             thisWeekParticipantsRepository: thisWeekParticipantsRepository,
-            tournamentVoteRepository: tournamentVoteRepository)
+            tournamentVoteRepository: tournamentVoteRepository,
+            reissueRepository: reissueRepository)
         
         let myPageService: MyPageService = MyPageServiceImp(
+            auth: auth,
             myPageRepository: myPageRepository,
-            myPageEditRepository: myPageEditRepository)
+            myPageEditRepository: myPageEditRepository,
+            reissueRepository: reissueRepository)
         
         // MARK: - UseCase
-        let auth: Auth = Auth(tokenHandler: tokenStorage)
-        
         let userUseCase: UserUseCase = UserUseCaseImp(userService: userService)
         
         let signUseCase: SignUseCase = SignUseCaseImp(
@@ -95,10 +104,6 @@ extension AppDelegate {
         let myPageUseCase: MyPageUseCase = MyPageUseCaseImp(myPageService: myPageService, searchService: searchService)
         
         // MARK: - Register
-        AppContainer.register(
-            type: Auth.self,
-            auth)
-        
         AppContainer.register(
             type: UserUseCase.self,
             userUseCase)

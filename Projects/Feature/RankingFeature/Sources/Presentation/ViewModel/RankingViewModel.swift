@@ -13,19 +13,15 @@ import Domain
 import Foundation
 
 class RankingViewModel {
-    @Injected(Auth.self)
-    public var auth: Auth
-    
     @Injected(TournamentUseCase.self)
     public var tournamentUseCase: TournamentUseCase
-    
-    var state = PassthroughSubject<RankingStateController, Never>()
+
     private var cancellables = Set<AnyCancellable>()
     
+    var state = PassthroughSubject<RankingStateController, Never>()
     var tournamentList: [TournamentSearchData] = []
     var thisWeekParticipantList: [TournamentParticipantData] = []
     var tournamentIndex: Int = 0
-    
 }
 
 extension RankingViewModel {
@@ -41,7 +37,7 @@ extension RankingViewModel {
     }
     
     func getThisWeekParticipantList(category: String) {
-        guard let token = auth.getAccessToken(),
+        guard let token = tournamentUseCase.getAuthToken(),
               let index = tournamentList.firstIndex(where: { $0.category == category })
         else {
             state.send(.openLoginSheet)

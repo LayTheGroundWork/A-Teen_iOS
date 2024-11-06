@@ -203,7 +203,6 @@ extension LogInViewController {
     
     @objc func didSelectSignInButton(_ sender: UIButton) {
         viewModel?.changeSignType(signType: .signIn)
-        viewModel?.auth.logOut()
         coordinator?.didSelectSignButton()
     }
 }

@@ -50,4 +50,8 @@ public struct MyPageUseCaseImp: MyPageUseCase {
         }
         .eraseToAnyPublisher()
     }
+    
+    public func getAuthToken() -> String? {
+        myPageService.getAuthToken()
+    }
 }

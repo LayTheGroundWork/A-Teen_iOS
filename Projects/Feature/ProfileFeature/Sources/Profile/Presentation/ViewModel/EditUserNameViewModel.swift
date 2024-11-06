@@ -13,9 +13,6 @@ import Domain
 import Foundation
 
 public class EditUserNameViewModel {
-    @Injected(Auth.self)
-    public var auth: Auth
-    
     @Injected(MyPageUseCase.self)
     public var useCase: MyPageUseCase
     
@@ -72,7 +69,7 @@ extension EditUserNameViewModel {
     }
     
     func saveChangeValue() {
-        guard let token = auth.getAccessToken() else { return }
+        guard let token = useCase.getAuthToken() else { return }
         
         useCase.editMyPage(
             request: .init(

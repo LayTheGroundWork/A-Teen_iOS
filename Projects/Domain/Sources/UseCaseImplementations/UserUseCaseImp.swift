@@ -64,4 +64,8 @@ public struct UserUseCaseImp: UserUseCase {
         }
         .eraseToAnyPublisher()
     }
+    
+    public func getAuthToken() -> String? {
+        userService.getAuthToken()
+    }
 }

@@ -22,7 +22,7 @@ public struct SignUseCaseImp: SignUseCase {
         self.searchService = searchService
     }
     
-    public func signIn(request: LogInRequest) -> AnyPublisher<(HTTPURLResponse, DefaultResponse)?, Never> {
+    public func signIn(request: LogInRequest) -> AnyPublisher<String?, Never> {
         Future { promise in
             Task {
                 let response = await signService.signIn(request: request)
@@ -32,7 +32,7 @@ public struct SignUseCaseImp: SignUseCase {
         .eraseToAnyPublisher()
     }
     
-    public func signUp(request: SignUpRequest) -> AnyPublisher<(HTTPURLResponse, DefaultResponse)?, Never> {
+    public func signUp(request: SignUpRequest) -> AnyPublisher<String?, Never> {
         Future { promise in
             Task {
                 let response = await signService.signUp(request: request)
@@ -81,6 +81,10 @@ public struct SignUseCaseImp: SignUseCase {
             }
         }
         .eraseToAnyPublisher()
+    }
+    
+    public func deleteToken() {
+        signService.deleteToken()
     }
 }
 

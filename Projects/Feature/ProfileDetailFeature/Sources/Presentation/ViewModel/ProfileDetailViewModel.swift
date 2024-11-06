@@ -11,9 +11,6 @@ import Domain
 import UIKit
 
 public class ProfileDetailViewModel {
-    @Injected(Auth.self)
-    public var auth: Auth
-    
     @Injected(UserUseCase.self)
     public var userUseCase: UserUseCase
     

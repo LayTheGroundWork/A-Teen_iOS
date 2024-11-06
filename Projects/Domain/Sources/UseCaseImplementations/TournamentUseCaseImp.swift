@@ -54,4 +54,8 @@ public struct TournamentUseCaseImp: TournamentUseCase {
         }
         .eraseToAnyPublisher()
     }
+    
+    public func getAuthToken() -> String? {
+        tournamentService.getAuthToken()
+    }
 }

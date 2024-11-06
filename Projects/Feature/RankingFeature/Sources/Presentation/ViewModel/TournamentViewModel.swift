@@ -13,9 +13,6 @@ import Domain
 import Foundation
 
 class TournamentViewModel {
-    @Injected(Auth.self)
-    public var auth: Auth
-    
     @Injected(TournamentUseCase.self)
     public var tournamentUseCase: TournamentUseCase
     
@@ -68,7 +65,7 @@ extension TournamentViewModel {
         voteResultList.append(participantList[0].userId)
         voteResultList.reverse()
         
-        guard let token = auth.getAccessToken() else {
+        guard let token = tournamentUseCase.getAuthToken() else {
              return
         }
         

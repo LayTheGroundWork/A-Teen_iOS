@@ -14,9 +14,6 @@ import Photos
 import UIKit
 
 public final class SignUpViewModel {
-    @Injected(Auth.self)
-    public var auth: Auth
-    
     @Injected(SignUseCase.self)
     public var signUseCase: SignUseCase
     
@@ -82,13 +79,7 @@ public final class SignUpViewModel {
             }
             .store(in: &cancellables)
     }
-    
-    func setAuth(accessToken: String, refreshToken: String) {
-        self.auth.setAccessToken(accessToken)
-        self.auth.setRefreshToken(refreshToken)
-        self.auth.logIn()
-    }
-    
+
     func signUp() {
         signUseCase.signUp(request: .init(
             phoneNumber: phoneNumber,
@@ -99,19 +90,13 @@ public final class SignUpViewModel {
             category: category.rawValue,
             tournamentJoin: true)
         )
-        .sink { [weak self] response in
+        .sink { [weak self] data in
             guard let self = self,
-                  let response = response,
-                  let _ = response.1.data,
-                  let accessToken = response.0.value(forHTTPHeaderField: "authorization"),
-                  let refreshToken = response.0.value(forHTTPHeaderField: "refresh")
+                  let _ = data
             else {
                 self?.signUpState.send(.signUpFailed)
                 return
             }
-            
-            self.setAuth(accessToken: accessToken, refreshToken: refreshToken)
-            self.auth.logIn()
             self.signUpState.send(.signUpSuccess)
         }
         .store(in: &cancellables)

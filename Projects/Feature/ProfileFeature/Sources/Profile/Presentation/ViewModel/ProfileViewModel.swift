@@ -14,9 +14,6 @@ import DesignSystem
 import UIKit
 
 public class ProfileViewModel {
-    @Injected(Auth.self)
-    public var auth: Auth
-    
     @Injected(MyPageUseCase.self)
     public var useCase: MyPageUseCase
     
@@ -78,7 +75,7 @@ extension ProfileViewModel {
 // MARK: - Link
 extension ProfileViewModel {
     func getMyPageData() {
-        guard let token = auth.getAccessToken() else { return }
+        guard let token = useCase.getAuthToken() else { return }
         
         useCase.getMyPageData(request: .init(authorization: token))
             .sink { [weak self] data in
@@ -120,7 +117,7 @@ extension ProfileViewModel {
     
     func saveUserLinks() {
         // TODO: 서버 저장 로직
-        guard let token = auth.getAccessToken() else { return }
+        guard let token = useCase.getAuthToken() else { return }
         
         var snsLink: SnsLinkData? = nil
         

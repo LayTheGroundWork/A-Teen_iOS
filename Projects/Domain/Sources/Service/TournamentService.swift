@@ -13,4 +13,5 @@ public protocol TournamentService {
     func getTournamentResult(request: TournamentResultRequest) async -> [TournamentResultData]
     func getThisWeekParticipants(request: ThisWeekParticipantsRequest) async -> ([TournamentParticipantData]?, String)
     func tournamentVote(request: TournamentVoteRequest) async -> String?
+    func getAuthToken() -> String?
 }

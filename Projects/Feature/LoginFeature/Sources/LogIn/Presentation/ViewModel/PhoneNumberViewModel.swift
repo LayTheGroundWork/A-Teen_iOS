@@ -12,17 +12,12 @@ import Combine
 import Domain
 
 public final class PhoneNumberViewModel {
-    @Injected(Auth.self)
-    public var auth: Auth
-    
     @Injected(SignUseCase.self)
     public var useCase: SignUseCase
     
     public var signType: SignType = .signUp
     public var phoneNumber: String = .empty
     public var verificationCode: String = .empty
-    
-    public var temporaryTokenData: (String, String)?
 
     var state = PassthroughSubject<SignStateController, Never>()
     private var cancellables = Set<AnyCancellable>()
@@ -72,27 +67,16 @@ extension PhoneNumberViewModel {
     func changeSignType(signType: SignType) {
         self.signType = signType
     }
-    
-    func setAuth(accessToken: String, refreshToken: String) {
-        self.auth.setAccessToken(accessToken)
-        self.auth.setRefreshToken(refreshToken)
-        self.auth.logIn()
-    }
-    
+
     func signIn() {
         useCase.signIn(request: .init(phoneNumber: phoneNumber))
-            .sink { [weak self] response in
+            .sink { [weak self] data in
                 guard let self = self,
-                      let response = response,
-                      let _ = response.1.data,
-                      let accessToken = response.0.value(forHTTPHeaderField: "authorization"),
-                      let refreshToken = response.0.value(forHTTPHeaderField: "refresh")
+                      let _ = data
                 else {
                     self?.state.send(.signInFailed)
                     return
                 }
-                
-                self.setAuth(accessToken: accessToken, refreshToken: refreshToken)
                 self.state.send(.signInSuccess)
             }
             .store(in: &cancellables)
@@ -100,17 +84,13 @@ extension PhoneNumberViewModel {
     
     func signUp() {
         useCase.signIn(request: .init(phoneNumber: phoneNumber))
-            .sink { [weak self] response in
+            .sink { [weak self] data in
                 guard let self = self,
-                      let response = response,
-                      let _ = response.1.data,
-                      let accessToken = response.0.value(forHTTPHeaderField: "authorization"),
-                      let refreshToken = response.0.value(forHTTPHeaderField: "refresh")
+                      let _ = data
                 else {
                     self?.state.send(.goToSignUp)
                     return
                 }
-                self.temporaryTokenData = (accessToken, refreshToken)
                 self.state.send(.existingUser)
             }
             .store(in: &cancellables)
