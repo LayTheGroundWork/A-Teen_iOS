@@ -52,6 +52,10 @@ extension Auth {
     public func setRefreshToken(_ refreshToken: String) {
         tokenHandler.setRefreshToken(refreshToken)
     }
+    
+    public func deleteToken() {
+        tokenHandler.deleteToken()
+    }
 }
 
 extension Auth: SessionCheckAuth {

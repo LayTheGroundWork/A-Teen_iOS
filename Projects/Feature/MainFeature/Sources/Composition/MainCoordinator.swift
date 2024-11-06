@@ -10,7 +10,7 @@ import FeatureDependency
 import UIKit
 
 public protocol MainCoordinatorDelegate: AnyObject {
-    func didSelectChattingButton()
+    func openLoginCoordinator()
     func didSelectAboutATeenCell(tag: TabTag)
 }
 

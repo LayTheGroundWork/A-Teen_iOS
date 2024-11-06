@@ -44,7 +44,7 @@ extension RankingViewModel {
         guard let token = auth.getAccessToken(),
               let index = tournamentList.firstIndex(where: { $0.category == category })
         else {
-            // 로그인 시트 올리기
+            state.send(.openLoginSheet)
             return
         }
         tournamentIndex = index

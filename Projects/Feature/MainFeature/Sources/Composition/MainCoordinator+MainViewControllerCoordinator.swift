@@ -34,10 +34,6 @@ extension MainCoordinator: MainViewControllerCoordinator {
         }
     }
     
-    public func didSelectTodayTeenChattingButton() {
-        delegate?.didSelectChattingButton()
-    }
-    
     public func didSelectMenuButton(popoverPosition: CGRect) {
         let reportPopoverCoordinator = coordinatorProvider.makePopoverCoordinator(
             popoverPosition: popoverPosition,
@@ -47,7 +43,10 @@ extension MainCoordinator: MainViewControllerCoordinator {
         navigation.present(
             reportPopoverCoordinator.navigation.rootViewController,
             animated: false)
-        
+    }
+    
+    public func openLoginSheet() {
+        delegate?.openLoginCoordinator()
     }
     
     public func didSelectAboutATeenCell(tag: TabTag) {
@@ -83,4 +82,6 @@ extension MainCoordinator: MainViewControllerCoordinator {
             self?.removeChildCoordinator(profileDetailCoordinator)
         }
     }
+    
+  
 }

@@ -14,7 +14,6 @@ import UIKit
 
 protocol TodayTeenTableViewCellDelegate: AnyObject {
     func didSelectTodayTeenImage(frame: CGRect, todayTeen: User, todayTeenFirstImage: UIImage)
-    func didSelectTodayTeenChattingButton()
     func didSelectMenuButton(popoverPosition: CGRect)
 }
 
@@ -167,7 +166,7 @@ extension TodayTeenTableViewCell: UICollectionViewDataSource {
         cell.chatButtonAction = { [weak self] in
             guard let self = self else { return }
             stopAutoScroll()
-            self.delegate?.didSelectTodayTeenChattingButton()
+            self.viewModel?.didSelectChattingButton()
         }
         
         cell.heartButtonAction = { [weak self] in

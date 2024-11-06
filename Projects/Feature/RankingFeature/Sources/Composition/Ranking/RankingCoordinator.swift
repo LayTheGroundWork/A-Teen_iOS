@@ -18,7 +18,9 @@ public protocol RankingConfigTabbarStateDelegate: AnyObject {
     func configTabbarState(view: RankingFeatureViewNames)
 }
 
-public protocol RankingCoordinatorDelegate: RankingConfigTabbarStateDelegate { }
+public protocol RankingCoordinatorDelegate: RankingConfigTabbarStateDelegate {
+    func openLoginCoordinator()
+}
 
 public final class RankingCoordinator: Coordinator {
     public var navigation: Navigation

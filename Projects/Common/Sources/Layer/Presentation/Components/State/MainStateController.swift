@@ -15,4 +15,6 @@ public enum MainStateController {
     case loadMoreSuccess
     case loadMoreLoading
     case loadMoreFail(error: String)
+    case openLoginSheet
+    case gotoChattingRoom
 }

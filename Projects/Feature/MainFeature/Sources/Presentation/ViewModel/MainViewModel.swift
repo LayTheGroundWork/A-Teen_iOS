@@ -84,6 +84,7 @@ class MainViewModel {
     var pageArray: [Int] = []
     var randomPage: Int? = 0
     var isLoading: Bool = false
+
 }
 
 extension MainViewModel {
@@ -105,10 +106,20 @@ extension MainViewModel {
         clearTeenList()
     }
     
+    func didSelectChattingButton() {
+        guard let token = auth.getAccessToken() else {
+            // 로그인 시트 올리기
+            state.send(.openLoginSheet)
+            return
+        }
+        
+        state.send(.gotoChattingRoom)
+    }
+    
     func didSelectTodayTeenHeartButton(row: Int) {
-        guard let token = auth.getAccessToken(),
-              auth.isSessionActive      //앱 팅겨서 임시로 넣어놓음
-        else {
+        guard let token = auth.getAccessToken() else {
+            // 로그인 시트 올리기
+            state.send(.openLoginSheet)
             return
         }
         

@@ -18,6 +18,7 @@ public protocol RankingViewControllerCoordinator: AnyObject {
         round: Int,
         tournamentNo: Int)
     func configTabbarState(view: RankingFeatureViewNames)
+    func openLoginSheet()
 }
 
 public final class RankingViewController: UIViewController {
@@ -202,6 +203,8 @@ public final class RankingViewController: UIViewController {
                         category: viewModel.tournamentList[viewModel.tournamentIndex].category,
                         round: 0,
                         tournamentNo: viewModel.tournamentList[viewModel.tournamentIndex].thisWeekTournamentNo)
+                case .openLoginSheet:
+                    coordinator?.openLoginSheet()
                 }
             }.store(in: &cancellables)
     }

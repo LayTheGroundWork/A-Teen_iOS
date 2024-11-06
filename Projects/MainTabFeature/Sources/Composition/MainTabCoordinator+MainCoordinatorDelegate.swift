@@ -10,7 +10,7 @@ import MainFeature
 import UIKit
 
 extension MainTabCoordinator: MainCoordinatorDelegate {
-    public func didSelectChattingButton() {
+    public func openLoginCoordinator() {
         let loginCoordinator = factory.makeLoginCoordinator(delegate: self)
         
         addChildCoordinatorStart(loginCoordinator)

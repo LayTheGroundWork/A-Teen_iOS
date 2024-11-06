@@ -15,7 +15,7 @@ import UIKit
 
 public protocol MainViewControllerCoordinator: AnyObject {
     func didSelectTodayTeenImage(frame: CGRect, todayTeen: User, todayTeenFirstImage: UIImage)
-    func didSelectTodayTeenChattingButton()
+    func openLoginSheet()
     func didSelectMenuButton(popoverPosition: CGRect)
     func didSelectAboutATeenCell(tag: TabTag)
     func didSelectTournamentImage(indexPath: IndexPath)
@@ -127,6 +127,12 @@ public final class MainViewController: UIViewController {
                 case .loadMoreFail(error: let error):
                     self.activityIndicator.stopAnimating()
                     print("무한 스크롤 실패 \(error)")
+                    
+                case .openLoginSheet:
+                    coordinator?.openLoginSheet()
+                    
+                case .gotoChattingRoom:
+                    print("채팅방 이동")
                 }
             }.store(in: &cancellables)
     }
@@ -319,7 +325,7 @@ extension MainViewController: UITableViewDataSource {
             
             cell.chatButtonAction = { [weak self] in
                 guard let self = self else { return }
-                self.coordinator?.didSelectTodayTeenChattingButton()
+                viewModel.didSelectChattingButton()
             }
             
             cell.heartButtonAction = { [weak self] in
@@ -517,10 +523,6 @@ extension MainViewController: MainViewControllerDelegate {
 extension MainViewController: TodayTeenTableViewCellDelegate {
     func didSelectTodayTeenImage(frame: CGRect, todayTeen: User, todayTeenFirstImage: UIImage) {
         coordinator?.didSelectTodayTeenImage(frame: frame, todayTeen: todayTeen, todayTeenFirstImage: todayTeenFirstImage)
-    }
-    
-    func didSelectTodayTeenChattingButton() {
-        coordinator?.didSelectTodayTeenChattingButton()
     }
     
     func didSelectMenuButton(popoverPosition: CGRect) {

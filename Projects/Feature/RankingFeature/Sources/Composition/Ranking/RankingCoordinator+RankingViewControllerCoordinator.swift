@@ -13,6 +13,10 @@ import FeatureDependency
 import UIKit
 
 extension RankingCoordinator: RankingViewControllerCoordinator {
+    public func openLoginSheet() {
+        delegate?.openLoginCoordinator()
+    }
+    
     public func didTapVoteButton(category: String) {
         let coordinator = coordinatorProvider.makeAlertCoordinator(
             dialogType: .twoButton,

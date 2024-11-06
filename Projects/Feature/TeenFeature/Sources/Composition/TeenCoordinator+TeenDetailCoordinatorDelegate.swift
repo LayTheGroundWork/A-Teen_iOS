@@ -18,6 +18,6 @@ extension TeenCoordinator: TeenDetailCoordinatorDelegate {
     }
     
     public func didSelectChattingButton() {
-        delegate?.didSelectChattingButton()
+        delegate?.openLoginCoordinator()
     }
 }
