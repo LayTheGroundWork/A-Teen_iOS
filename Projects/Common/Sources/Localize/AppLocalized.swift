@@ -175,6 +175,7 @@ public enum AppLocalized {
     public static let invalidToken = "Invalid Token"
     public static let expiredToken = "Expired Token"
     public static let participatedTournament = "이미 참가한 토너먼트입니다."
+    public static let unauthorizedToken = "Unauthorized Token"
 }
 
 // MARK: - Regex 모음

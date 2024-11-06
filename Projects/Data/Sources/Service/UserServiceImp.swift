@@ -50,9 +50,15 @@ public struct UserServiceImp: UserService {
                 guard let newToken = await reissueToken() else {
                     return .init(users: [], totalPage: 0)
                 }
-                
                 return await findAllUser(request: .init(
                     authorization: newToken,
+                    page: request.page,
+                    size: request.size))
+                
+            case AppLocalized.unauthorizedToken:
+                auth.logOut()
+                return await findAllUser(request: .init(
+                    authorization: nil,
                     page: request.page,
                     size: request.size))
             default:
@@ -147,7 +153,8 @@ public struct UserServiceImp: UserService {
     private func reissueToken() async -> String? {
         guard let token = auth.getAccessToken(),
               let refresh = auth.getRefreshToken() else { return nil }
-        let response = await reissueRepository.reissueToken(request: .init(refresh: token, authorization: refresh))
+        
+        let response = await reissueRepository.reissueToken(request: .init(authorization: token, refresh: refresh))
         
         switch response {
         case .success(let response):
@@ -165,5 +172,4 @@ public struct UserServiceImp: UserService {
         auth.setRefreshToken(refreshToken)
         return accessToken
     }
-    
 }

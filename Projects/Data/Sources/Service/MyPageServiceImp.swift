@@ -82,7 +82,7 @@ public struct MyPageServiceImp: MyPageService {
     private func reissueToken() async -> String? {
         guard let token = auth.getAccessToken(),
               let refresh = auth.getRefreshToken() else { return nil }
-        let response = await reissueRepository.reissueToken(request: .init(refresh: token, authorization: refresh))
+        let response = await reissueRepository.reissueToken(request: .init(authorization: token, refresh: refresh))
         
         switch response {
         case .success(let response):
