@@ -13,6 +13,7 @@ let project = Project.makeProject(
     moduleType: .dynamicFramework,
     hasResource: true,
     dependencies: [
+        .common,
         .external(name: "SnapKit")
     ]
 )

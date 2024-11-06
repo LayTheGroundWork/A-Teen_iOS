@@ -7,6 +7,7 @@
 //
 
 import Combine
+import Common
 
 public struct MyPageUseCaseImp: MyPageUseCase {
     private let myPageService: MyPageService

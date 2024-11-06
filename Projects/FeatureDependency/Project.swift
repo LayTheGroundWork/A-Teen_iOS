@@ -13,7 +13,6 @@ let project = Project.makeProject(
     moduleType: .dynamicFramework,
     dependencies: [
         .designSystem,
-        .common,
         .domain
     ]
 )

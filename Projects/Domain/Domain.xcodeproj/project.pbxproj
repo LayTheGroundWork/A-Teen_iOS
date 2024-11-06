@@ -57,6 +57,7 @@
 		AB6FBDD9EEDC697F20206F85 /* SignOutRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84056B1C20BD8AB114402AF /* SignOutRepository.swift */; };
 		ADE46DB026DD08F36838B2E8 /* ImageDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCAFDEA13881228AC3ACE0A9 /* ImageDataService.swift */; };
 		AF8A8BC3F18BCBBA3EAF35E4 /* SchoolDataRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A890C29EF31D1E2258209C /* SchoolDataRequest.swift */; };
+		B9FF2C939FADA82E2B18048F /* Common.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A017294042D1AF1C824ECFAC /* Common.framework */; };
 		BA22887C53439FB9FA996F57 /* TournamentResultRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9566D2C3ACDB34D694E11F9 /* TournamentResultRepository.swift */; };
 		BD211DA628D7C8A4A41F4EA6 /* MyPageEditRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DDB17E7865D360F33A52903 /* MyPageEditRequest.swift */; };
 		C0BD402AB78357BC6B4A16DA /* TournamentService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4254C61B0B7E56A1A117BC /* TournamentService.swift */; };
@@ -128,6 +129,7 @@
 		930527EF52E62AD0CB816D2B /* LogInResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInResponse.swift; sourceTree = "<group>"; };
 		94E706264EE7208D0CEE3472 /* SchoolDataResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolDataResponse.swift; sourceTree = "<group>"; };
 		972BC3AECB5DC82D43441A78 /* CategoryUserFindRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryUserFindRepository.swift; sourceTree = "<group>"; };
+		A017294042D1AF1C824ECFAC /* Common.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Common.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A49451361217E78799DEB15E /* SearchSchoolService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchSchoolService.swift; sourceTree = "<group>"; };
 		A97F7B0D49B77A55DE5D9C86 /* SignUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUseCase.swift; sourceTree = "<group>"; };
 		B55759C9EED1F9864F56739B /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
@@ -160,6 +162,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B9FF2C939FADA82E2B18048F /* Common.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -204,6 +207,7 @@
 		23FB790DBB2E2B4343512188 /* Products */ = {
 			isa = PBXGroup;
 			children = (
+				A017294042D1AF1C824ECFAC /* Common.framework */,
 				FD49F277B86481D3D105FAC8 /* Domain.framework */,
 			);
 			name = Products;

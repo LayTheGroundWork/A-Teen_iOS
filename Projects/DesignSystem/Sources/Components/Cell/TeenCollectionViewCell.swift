@@ -9,7 +9,6 @@
 import SnapKit
 
 import Common
-import Domain
 import UIKit
 
 public final class TeenCollectionViewCell: UICollectionViewCell {

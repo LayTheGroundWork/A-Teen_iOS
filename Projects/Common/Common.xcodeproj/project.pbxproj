@@ -32,7 +32,10 @@
 		8C216E86336FF6D62BC28AEF /* TournamentCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4202B36EB996E66B6AA4F4A /* TournamentCategory.swift */; };
 		9E81DE232874E8C7DDEC821F /* AlertDialogType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FF4560DFE874D45D4C0F7BA /* AlertDialogType.swift */; };
 		A2631D6EB461A07445E1C6E9 /* CMTime+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F8A3BC8FA7F59A2E0A515B0 /* CMTime+Utils.swift */; };
+		B030E3A2B254CBF370DB5851 /* SchoolData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2BA6248A6DADC659C75FFFB /* SchoolData.swift */; };
 		B2F775E53439023289524BD8 /* ReportDialogType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B9D86B836474A94C554E8DB /* ReportDialogType.swift */; };
+		C1ABED9C799ACF5778D1B9A6 /* QuestionData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE052163E755F264BC88852 /* QuestionData.swift */; };
+		CAB3674BF0D8CAF6100B4AC5 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA3BCB35E6C58DDA52E0CC5 /* User.swift */; };
 		D12F6BC4391DF4D19707E6B5 /* AssetInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28C71A0EBB2FB98E795FB9B /* AssetInfo.swift */; };
 		D8D16D2AA7659BBEC235971B /* Debouncer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B1E6B9EF942B6A2DB946F0 /* Debouncer.swift */; };
 		DA0376CBDFA9631AC9159BFD /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E93D6A592CC58F27504DAC /* BaseViewModel.swift */; };
@@ -65,7 +68,9 @@
 		170170CE0C43F0B37C75808F /* AppLocalized.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLocalized.swift; sourceTree = "<group>"; };
 		3354DE7E2B4F1877FECB508B /* Common-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Common-Info.plist"; sourceTree = "<group>"; };
 		3DA77FB5518DC2177F7CDB4F /* Common.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Common.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3FE052163E755F264BC88852 /* QuestionData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionData.swift; sourceTree = "<group>"; };
 		4326897C83B33026228F63B5 /* RankingStateController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingStateController.swift; sourceTree = "<group>"; };
+		5DA3BCB35E6C58DDA52E0CC5 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		5FF4560DFE874D45D4C0F7BA /* AlertDialogType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertDialogType.swift; sourceTree = "<group>"; };
 		636ED55C583CAE77274FECAE /* AVAsset+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AVAsset+Utils.swift"; sourceTree = "<group>"; };
 		6A81A2C9A17ACE100D4CEDE1 /* TabTag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabTag.swift; sourceTree = "<group>"; };
@@ -73,6 +78,7 @@
 		725FA1DDFC369DA815E7A71B /* ProfileStateController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileStateController.swift; sourceTree = "<group>"; };
 		7E9F60A87DF324EB00CE1C4A /* MediaType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaType.swift; sourceTree = "<group>"; };
 		A28C71A0EBB2FB98E795FB9B /* AssetInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetInfo.swift; sourceTree = "<group>"; };
+		A2BA6248A6DADC659C75FFFB /* SchoolData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolData.swift; sourceTree = "<group>"; };
 		AAAB5F101E0C98482A00195B /* TournamentRoundType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TournamentRoundType.swift; sourceTree = "<group>"; };
 		AFCDE72C33C19AADE9F4B8B5 /* Notification+Name.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification+Name.swift"; sourceTree = "<group>"; };
 		B0100D8EF6A47A09A01C2926 /* SignStateController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignStateController.swift; sourceTree = "<group>"; };
@@ -273,7 +279,10 @@
 			children = (
 				E81A216314320B2606E3AEC3 /* CustomDialog.swift */,
 				CB1744A0E6D22DAAF822DBEA /* ProfileCategory.swift */,
+				3FE052163E755F264BC88852 /* QuestionData.swift */,
+				A2BA6248A6DADC659C75FFFB /* SchoolData.swift */,
 				F4202B36EB996E66B6AA4F4A /* TournamentCategory.swift */,
+				5DA3BCB35E6C58DDA52E0CC5 /* User.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -392,7 +401,10 @@
 				748E6F12BFA02A9B5E511B16 /* UIImageView+Utils.swift in Sources */,
 				53F06C00D26255EC07247A70 /* CustomDialog.swift in Sources */,
 				72CE949BD5BACD4D0F7D1B68 /* ProfileCategory.swift in Sources */,
+				C1ABED9C799ACF5778D1B9A6 /* QuestionData.swift in Sources */,
+				B030E3A2B254CBF370DB5851 /* SchoolData.swift in Sources */,
 				8C216E86336FF6D62BC28AEF /* TournamentCategory.swift in Sources */,
+				CAB3674BF0D8CAF6100B4AC5 /* User.swift in Sources */,
 				2754EE32C637ABD22C607FAD /* PhotoAuthService.swift in Sources */,
 				9E81DE232874E8C7DDEC821F /* AlertDialogType.swift in Sources */,
 				34A564F0E895E172D972CC0D /* BadgeType.swift in Sources */,

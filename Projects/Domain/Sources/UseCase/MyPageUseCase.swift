@@ -7,6 +7,7 @@
 //
 
 import Combine
+import Common
 
 public protocol MyPageUseCase {
     func getMyPageData(request: MyPageRequest) -> AnyPublisher<MyPageData?, Never>
