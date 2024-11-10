@@ -11,27 +11,19 @@ import FeatureDependency
 import UIKit
 
 public protocol RankingResultFactory {
-    func makeRankingResultViewController(
-        coordinator: RankingResultViewControllerCoordinator,
-        withAnimation: Bool,
-        sector: String,
-        session: String
-    ) -> UIViewController
+    func makeRankingResultViewController(coordinator: RankingResultViewControllerCoordinator) -> UIViewController
 }
 
 public struct RankingResultFactoryImp: RankingResultFactory {
-    public init() { }
+    private (set) var category: String
+    private (set) var round: Int
+    private (set) var tournamentNo: Int
     
-    public func makeRankingResultViewController(
-        coordinator: RankingResultViewControllerCoordinator,
-        withAnimation: Bool,
-        sector: String,
-        session: String
-    ) -> UIViewController {
+    public func makeRankingResultViewController(coordinator: RankingResultViewControllerCoordinator) -> UIViewController {
+        let viewModel = RankingResultViewModel(category: category, round: round, tournamentNo: tournamentNo)
         let controller = RankingResultViewController(
-            coordinator: coordinator,
-            sector: sector,
-            session: session)
+            viewModel: viewModel,
+            coordinator: coordinator)
         return controller
     }
 }

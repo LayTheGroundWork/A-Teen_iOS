@@ -19,7 +19,7 @@ final class FactoryProviderImp: FactoryProvider {
     func makeProfileDetailCoordinator(
         delegate: ProfileDetailCoordinatorDelegate,
         frame: CGRect,
-        todayTeen: UserData,
+        todayTeen: User,
         todayTeenFirstImage: UIImage
     ) -> Coordinator {
         let navigationController = UINavigationController()

@@ -13,9 +13,7 @@ import UIKit
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
-    
-    var auth: SessionCheckAuth?
-    
+        
     public var host: String {
         Bundle.main.object(forInfoDictionaryKey: "SERVER_URL") as? String ?? .empty
     }
@@ -24,19 +22,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         registerDependencies()
-     
-        print(host)
-        
-        guard
-            let auth = auth
-        else {
-            loadHomeDate()
-            return true
-        }
-
-        // 토큰값 유효 검사 -> 자동로그인
-        
-        auth.isSessionActive ? loadAllData() : loadHomeDate()
         return true
     }
   

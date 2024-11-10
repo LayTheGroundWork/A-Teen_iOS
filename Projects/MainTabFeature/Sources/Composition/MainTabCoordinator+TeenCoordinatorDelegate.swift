@@ -11,7 +11,6 @@ import TeenFeature
 import UIKit
 
 extension MainTabCoordinator: TeenCoordinatorDelegate {
-    
     // didSelectChattingButton -> MainTabCoordinator+MainCoordinatorDelegate
     
     public func configTabbarState(view: TeenFeatureViewNames) {

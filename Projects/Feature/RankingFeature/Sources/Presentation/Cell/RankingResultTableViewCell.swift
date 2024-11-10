@@ -6,13 +6,13 @@
 //  Copyright © 2024 ATeen. All rights reserved.
 //
 
+import SnapKit
+
 import Common
 import DesignSystem
 import UIKit
 
 final class RankingResultTableViewCell: UITableViewCell {
-    let imageWidth = (ViewValues.width - 32) * 0.19
-    let imageHeight = (((ViewValues.width - 32) * 0.19) * 1.14)
     
     // MARK: - Private properties
     private lazy var background: UIView = {
@@ -28,19 +28,17 @@ final class RankingResultTableViewCell: UITableViewCell {
         label.font = .customFont(forTextStyle: .footnote, weight: .bold)
         return label
     }()
-    
-    private lazy var userImageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.image = DesignSystemAsset.badge1.image
-        imageView.contentMode = .scaleAspectFill
-        imageView.clipsToBounds = true
-        imageView.layer.cornerRadius = 10
-        return imageView
-    }()
-    
+
     private lazy var userNameLabel: UILabel = {
         let label = UILabel()
         label.textColor = DesignSystemAsset.mainColor.color
+        label.font = .customFont(forTextStyle: .footnote, weight: .regular)
+        return label
+    }()
+    
+    private lazy var userIDLabel: UILabel = {
+        let label = UILabel()
+        label.textColor = DesignSystemAsset.gray01.color
         label.font = .customFont(forTextStyle: .footnote, weight: .regular)
         return label
     }()
@@ -81,8 +79,8 @@ final class RankingResultTableViewCell: UITableViewCell {
         
         contentView.addSubview(background)
         background.addSubview(rankLabel)
-        background.addSubview(userImageView)
         background.addSubview(userNameLabel)
+        background.addSubview(userIDLabel)
         background.addSubview(proportionLabel)
         background.addSubview(chevronImage)
     }
@@ -109,16 +107,14 @@ final class RankingResultTableViewCell: UITableViewCell {
             make.centerY.equalToSuperview()
         }
         
-        userImageView.snp.makeConstraints { make in
-            make.leading.equalTo(rankLabel.snp.trailing).offset(11)
-            make.centerY.equalToSuperview()
-            make.width.equalTo(imageWidth)
-            make.height.equalTo(imageHeight)
-        }
-        
         userNameLabel.snp.makeConstraints { make in
-            make.leading.equalTo(userImageView.snp.trailing).offset(11)
-            make.centerY.equalToSuperview()
+            make.leading.equalTo(rankLabel.snp.trailing).offset(27)
+            make.bottom.equalTo(rankLabel.snp.centerY).offset(-2)
+        }
+    
+        userIDLabel.snp.makeConstraints { make in
+            make.leading.equalTo(userNameLabel.snp.leading)
+            make.top.equalTo(rankLabel.snp.centerY).offset(2)
         }
         
         chevronImage.snp.makeConstraints { make in
@@ -135,10 +131,12 @@ final class RankingResultTableViewCell: UITableViewCell {
     func setProperties(
         rank: Int,
         userName: String,
+        userID: String,
         proportion: Double
     ) {
         rankLabel.text = String(rank)
         userNameLabel.text = userName
+        userIDLabel.text = userID
         proportionLabel.text = "\(proportion)%"
     }
 }

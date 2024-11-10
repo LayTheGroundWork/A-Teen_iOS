@@ -97,7 +97,8 @@ public struct MainTabFactoryImp: MainTabFactory {
             navigation: navigation,
             factory: factory,
             delegate: delegate,
-            coordinatorProvider: coordinatorProvider)
+            coordinatorProvider: coordinatorProvider
+        )
     }
     
     private func makeRankingCoordinator(

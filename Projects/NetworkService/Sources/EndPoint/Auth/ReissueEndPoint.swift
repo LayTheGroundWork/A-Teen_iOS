@@ -22,8 +22,8 @@ public struct ReissueEndPoint: EndPoint {
         [
             "Content-Type": "application/json",
             "Accept": "application/json",
-            "Refresh": request.refresh,
-            "Authorization": request.authorization
+            "Authorization": request.authorization,
+            "Refresh": request.refresh
         ]
     }
     

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		12CB705402E4127A285C7D1C /* SpinnerDisplayable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 446B3DF68D777459DF78D819 /* SpinnerDisplayable.swift */; };
 		199491A7273569B2A1F12C00 /* SearchSchoolResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A22D563A28568EEB07DB08B2 /* SearchSchoolResultTableViewCell.swift */; };
+		227F8AF163BB979585F22C8B /* Common.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA0E49413E083F3070150E6A /* Common.framework */; };
 		28B8C6913CE7FAF386D00351 /* PhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2683CC5C4689C6FF07AA9C7 /* PhotoCollectionViewCell.swift */; };
 		2AE2442457DCECCC55C49611 /* UIView+Layer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9347F19E7CA63054E643E5C /* UIView+Layer.swift */; };
 		32E85901F7A04A4096C803EB /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9005F43599E3AE2CCB247B4F /* SnapKit.framework */; };
@@ -63,6 +64,7 @@
 		A22D563A28568EEB07DB08B2 /* SearchSchoolResultTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchSchoolResultTableViewCell.swift; sourceTree = "<group>"; };
 		A5263BC75B281154AC0B5A7B /* TuistAssets+DesignSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TuistAssets+DesignSystem.swift"; sourceTree = "<group>"; };
 		A85CAE797083F72B19BA5031 /* UIView+Constraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Constraints.swift"; sourceTree = "<group>"; };
+		AA0E49413E083F3070150E6A /* Common.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Common.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B9347F19E7CA63054E643E5C /* UIView+Layer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Layer.swift"; sourceTree = "<group>"; };
 		BE4AD9735556ECA8C8008FEC /* TuistBundle+DesignSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TuistBundle+DesignSystem.swift"; sourceTree = "<group>"; };
 		BE58EFD462BFA138CA32B350 /* CustomQuestionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomQuestionView.swift; sourceTree = "<group>"; };
@@ -78,6 +80,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				227F8AF163BB979585F22C8B /* Common.framework in Frameworks */,
 				32E85901F7A04A4096C803EB /* SnapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -118,6 +121,7 @@
 		82664F67710540CBDEBE5B11 /* Products */ = {
 			isa = PBXGroup;
 			children = (
+				AA0E49413E083F3070150E6A /* Common.framework */,
 				69B7BBEAD5472C7195924AC8 /* DesignSystem.framework */,
 				9005F43599E3AE2CCB247B4F /* SnapKit.framework */,
 			);

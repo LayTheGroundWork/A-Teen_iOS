@@ -7,27 +7,27 @@
 //
 
 import Core
+import Domain
 import FeatureDependency
 import UIKit
 
 public protocol TournamentFactory {
-    func makeTournamentViewController(
-        coordinator: TournamentViewControllerCoordinator,
-        sector: String
-    ) -> UIViewController
+    func makeTournamentViewController(coordinator: TournamentViewControllerCoordinator) -> UIViewController
 }
 
 public struct TournamentFactoryImp: TournamentFactory {
-
-    public init() { }
+    private (set) var category: String
+    private (set) var thisWeekTournamentNumber: Int
+    private (set) var participantList: [TournamentParticipantData]
     
-    public func makeTournamentViewController(
-        coordinator: TournamentViewControllerCoordinator,
-        sector: String
-    ) -> UIViewController {
+    public func makeTournamentViewController(coordinator: TournamentViewControllerCoordinator) -> UIViewController {
+        let viewModel = TournamentViewModel(
+            category: category,
+            thisWeekTournamentNumber: thisWeekTournamentNumber,
+            participantList: participantList)
         let controller = TournamentViewController(
-            coordinator: coordinator,
-            sector: sector)
+            viewModel: viewModel,
+            coordinator: coordinator)
         return controller
     }
 }

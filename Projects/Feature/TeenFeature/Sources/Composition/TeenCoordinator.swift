@@ -15,7 +15,7 @@ public enum TeenFeatureViewNames {
 }
 
 public protocol TeenCoordinatorDelegate: AnyObject, TeenConfigTabbarStateDelegate {
-    func didSelectChattingButton()
+    func openLoginCoordinator()
 }
 
 public protocol TeenConfigTabbarStateDelegate: AnyObject {

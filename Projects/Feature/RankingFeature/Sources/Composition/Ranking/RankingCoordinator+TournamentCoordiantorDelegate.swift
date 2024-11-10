@@ -17,19 +17,21 @@ extension RankingCoordinator: TournamentCoordinatorDelegate {
     
     public func finishTournament(
         childCoordinator: Coordinator,
-        sector: String,
-        session: String
+        category: String,
+        round: Int,
+        tournamentNo: Int
     ) {
         childCoordinator.navigation.dismissNavigation = nil
         removeChildCoordinator(childCoordinator)
         navigation.popViewController(animated: false)
-        //
+        
         let rankingResultCoordinator = factory.makeRankingResultCoordinator(
             navigation: navigation,
             delegate: self,
             withAnimation: false,
-            sector: sector,
-            session: session)
+            category: category,
+            round: round,
+            tournamentNo: tournamentNo)
         addChildCoordinatorStart(rankingResultCoordinator)
     }
 }

@@ -12,9 +12,6 @@ import Common
 import Domain
 
 public class QuestionsViewModel {
-    @Injected(Auth.self)
-    public var auth: Auth
-    
     @Injected(MyPageUseCase.self)
     public var useCase: MyPageUseCase
     
@@ -53,8 +50,8 @@ extension QuestionsViewModel {
     }
     
     func saveChangeValue() {
-        guard let token = auth.getAccessToken(),
-            user.questions != changeQuestionList 
+        guard let token = useCase.getAuthToken(),
+            user.questions != changeQuestionList
         else { return }
         
         if !changeQuestionList.contains(where: { $0.answer == "" }) {

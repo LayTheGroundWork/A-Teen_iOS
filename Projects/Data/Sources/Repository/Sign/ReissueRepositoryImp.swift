@@ -19,14 +19,17 @@ public struct ReissueRepositoryImp: ReissueRepository {
         self.apiClientService = apiClientService
     }
     
-    public func reissueToken(request: ReissueRequest) async -> Result<DefaultResponse, Error> {
+    public func reissueToken(request: ReissueRequest) async -> Result<(HTTPURLResponse, DefaultResponse), Error> {
         do {
             let endPoint = ReissueEndPoint(request: request)
             guard let urlRequest = endPoint.toURLRequest else {
                 throw ApiError.errorInUrl
             }
-            let response: Domain.DefaultResponse = try await apiClientService.request(request: urlRequest, type: LogInDTO.self).toDomain()
-            return .success(response)
+            let result = try await apiClientService.requestToken(request: urlRequest, type: LogInDTO.self)
+            let response: DefaultResponse = result.1.toDomain()
+            
+            return .success((result.0, response))
+
         } catch {
             return .failure(error)
         }

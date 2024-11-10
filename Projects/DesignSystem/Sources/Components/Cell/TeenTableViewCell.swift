@@ -9,7 +9,6 @@
 import SnapKit
 
 import Common
-import Domain
 import UIKit
 
 public final class TeenTableViewCell: UITableViewCell {
@@ -203,8 +202,8 @@ public final class TeenTableViewCell: UITableViewCell {
         menuButton.addTarget(self, action: #selector(clickMenuButton(_:)), for: .touchUpInside)
     }
     
-    public func setCell(teen: UserData) {
-        if teen.profileImages == nil || teen.profileImages == "thumbnail_testKey" {
+    public func setCell(teen: User) {
+        if teen.profileImage == nil || teen.profileImage == "thumbnail_testKey" {
             switch teen.id {
             case 0:
                 titleImageView.image = DesignSystemAsset.badge1.image

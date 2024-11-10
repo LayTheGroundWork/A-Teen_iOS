@@ -18,7 +18,6 @@
 		D9E476C84DD337B987665D6E /* CoordinatorProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE07CEEFFE78EB276DDD110 /* CoordinatorProvider.swift */; };
 		DA093DEC550B1ABE40E59ABD /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8A97B948C4FCB50C6D4C232 /* Coordinator.swift */; };
 		E2D34EAA81253F1CF67EDB25 /* NavigationImp+UIAdaptivePresentationControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A89129054D3C68F35AD3285 /* NavigationImp+UIAdaptivePresentationControllerDelegate.swift */; };
-		E3B5163B8FEB63D6E9D0A12C /* Common.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB638A5213C88B0A680A33B2 /* Common.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -44,7 +43,6 @@
 		88129F417957DB056A1EDD0D /* NavigationImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationImp.swift; sourceTree = "<group>"; };
 		939F3779A22132EC7A7DB6BB /* ProfileDetailCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDetailCoordinator.swift; sourceTree = "<group>"; };
 		B6B0127E16B0B94B695FADC2 /* FeatureDependency-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "FeatureDependency-Info.plist"; sourceTree = "<group>"; };
-		BB638A5213C88B0A680A33B2 /* Common.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Common.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB983D791EF444CC0D5743FB /* Navigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Navigation.swift; sourceTree = "<group>"; };
 		CCBDEAA694D3842787209B51 /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
 		DEE07CEEFFE78EB276DDD110 /* CoordinatorProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorProvider.swift; sourceTree = "<group>"; };
@@ -58,7 +56,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E3B5163B8FEB63D6E9D0A12C /* Common.framework in Frameworks */,
 				1F40C285259449366B062F3A /* DesignSystem.framework in Frameworks */,
 				7BCD024C0C7BCA2BB4D7E2D8 /* Domain.framework in Frameworks */,
 			);
@@ -119,7 +116,6 @@
 		81B7BF5EC5C622C0F9EECB2F /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				BB638A5213C88B0A680A33B2 /* Common.framework */,
 				85F2AEFD97774332C0860EDA /* DesignSystem.framework */,
 				F8763176478CF17417DDB83C /* Domain.framework */,
 				7165894E1415D1FDA533C4AF /* FeatureDependency.framework */,

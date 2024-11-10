@@ -29,7 +29,7 @@ open class TwoButtonDialogViewController: UIViewController {
     var rightButtonColor: UIColor
     
     private weak var coordinator: AlertViewControllerCoordinator?
-
+    
     // MARK: - Private properties
     private lazy var dialogView: UIView = {
         let view = UIView()
@@ -91,7 +91,7 @@ open class TwoButtonDialogViewController: UIViewController {
     private lazy var buttonStackView: UIStackView = {
         let stack = UIStackView(arrangedSubviews: [leftButton, rightButton])
         stack.axis = .horizontal
-        stack.distribution = .fill
+        stack.distribution = .fillEqually
         stack.spacing = ViewValues.defaultSpacing
         return stack
     }()
@@ -144,9 +144,9 @@ open class TwoButtonDialogViewController: UIViewController {
     // MARK: - Helpers
     private func configUserInterface() {
         view.backgroundColor = .black.withAlphaComponent(0.5)
-
+        
         view.addSubview(dialogView)
-//        dialogView.addSubview(dialogImageView)
+        //        dialogView.addSubview(dialogImageView)
         dialogView.addSubview(titleLabel)
         dialogView.addSubview(messageLabel)
         dialogView.addSubview(leftButton)
@@ -170,10 +170,6 @@ open class TwoButtonDialogViewController: UIViewController {
             make.centerX.equalToSuperview()
         }
         
-        leftButton.snp.makeConstraints { make in
-            make.width.equalTo((ViewValues.width - 32 - 32 - 16) * 0.44)
-        }
-        
         buttonStackView.snp.makeConstraints { make in
             make.top.equalTo(messageLabel.snp.bottom).offset(25)
             make.leading.equalToSuperview().offset(ViewValues.defaultPadding)
@@ -184,13 +180,15 @@ open class TwoButtonDialogViewController: UIViewController {
         }
     }
     
-     func setupActions() {
-        leftButton.addTarget(self,
-                                action: #selector(clickLeftButton(_:)),
-                                for: .touchUpInside)
-        rightButton.addTarget(self,
-                                action: #selector(clickRightButton(_:)),
-                                for: .touchUpInside)
+    func setupActions() {
+        leftButton.addTarget(
+            self,
+            action: #selector(clickLeftButton(_:)),
+            for: .touchUpInside)
+        rightButton.addTarget(
+            self,
+            action: #selector(clickRightButton(_:)),
+            for: .touchUpInside)
     }
     
     // MARK: - Actions

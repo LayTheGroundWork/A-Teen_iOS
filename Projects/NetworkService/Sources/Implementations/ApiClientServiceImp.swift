@@ -6,13 +6,9 @@
 //  Copyright © 2024 ATeen. All rights reserved.
 //
 
-import Core
 import Foundation
 
 public struct ApiClientServiceImp: ApiClientService {
-    @Injected(Auth.self)
-    public var auth: Auth
-    
     let session: URLSession
     
     public init(session: URLSession = URLSession.shared) {
@@ -64,11 +60,27 @@ public struct ApiClientServiceImp: ApiClientService {
         
         print(httpResponse)
         
-        switch httpResponse.statusCode {
+        if let jsonObject = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: Any],
+           let statusCode = jsonObject["status"] as? Int,
+           let message = jsonObject["message"] as? String {
+            return try checkError(statusCode: statusCode, message: message, data: data)
+        }
+        return try checkError(statusCode: httpResponse.statusCode, message: nil, data: data)
+    }
+    
+    private func checkError<T: Decodable>(
+        statusCode: Int,
+        message: String?,
+        data: Data
+    ) throws -> T {
+        switch statusCode {
         case HttpResponseStatus.ok:
             return try decodeModel(data: data)
         case HttpResponseStatus.clientError:
-            throw ApiError.clientError
+            guard let message = message else {
+                throw ApiError.clientError
+            }
+            throw ApiError.custom(message: message)
         case HttpResponseStatus.serverError:
             throw ApiError.serverError
         default:

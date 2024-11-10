@@ -6,40 +6,27 @@
 //  Copyright © 2024 ATeen. All rights reserved.
 //
 
+import Common
 import Foundation
 
 public struct UserFindResponse: Decodable {
-    public let data: [UserData]
+    public let data: UserData
     
-    public init(data: [UserData]) {
+    public init(data: UserData) {
         self.data = data
     }
 }
 
 public struct UserData: Decodable {
-    public let id: Int
-    public let uniqueId: String
-    public let profileImages: String?
-    public let nickName: String
-    public let location: String
-    public let schoolName: String
-    public var likeStatus: Bool
+    public let users: [User]
+    public let totalPage: Int
     
     public init(
-        id: Int,
-        uniqueId: String,
-        profileImages: String?,
-        nickName: String,
-        location: String,
-        schoolName: String,
-        likeStatus: Bool
+        users: [User],
+        totalPage: Int
     ) {
-        self.id = id
-        self.uniqueId = uniqueId
-        self.profileImages = profileImages
-        self.nickName = nickName
-        self.location = location
-        self.schoolName = schoolName
-        self.likeStatus = likeStatus
+        self.users = users
+        self.totalPage = totalPage
     }
 }
+

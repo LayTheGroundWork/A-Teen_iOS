@@ -14,9 +14,6 @@ import Domain
 import UIKit
 
 public class IntroduceViewModel {
-    @Injected(Auth.self)
-    public var auth: Auth
-    
     @Injected(MyPageUseCase.self)
     public var useCase: MyPageUseCase
     
@@ -92,7 +89,7 @@ extension IntroduceViewModel {
     }
     
     func saveChangeValue() {
-        guard let token = auth.getAccessToken() else { return }
+        guard let token = useCase.getAuthToken() else { return }
         
         if myMbti != changeMbti || myWriting != changeWriting {
             let stringMbti = changeMbti.reduce("", +)

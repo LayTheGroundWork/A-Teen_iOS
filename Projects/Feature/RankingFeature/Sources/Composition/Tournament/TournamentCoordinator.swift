@@ -13,8 +13,9 @@ public protocol TournamentCoordinatorDelegate: RankingConfigTabbarStateDelegate 
     func quitTournament(childCoordinator: Coordinator)
     func finishTournament(
         childCoordinator: Coordinator,
-        sector: String,
-        session: String
+        category: String,
+        round: Int,
+        tournamentNo: Int
     )
 }
 
@@ -24,26 +25,21 @@ public final class TournamentCoordinator: Coordinator {
     public var childCoordinators: [Coordinator] = []
     weak var delegate: TournamentCoordinatorDelegate?
     public let coordinatorProvider: CoordinatorProvider
-    let sector: String
     
     public init(
         navigation: Navigation,
         factory: TournamentFactory,
         delegate: TournamentCoordinatorDelegate,
-        coordinatorProvider: CoordinatorProvider,
-        sector: String
+        coordinatorProvider: CoordinatorProvider
     ) {
         self.navigation = navigation
         self.factory = factory
         self.delegate = delegate
         self.coordinatorProvider = coordinatorProvider
-        self.sector = sector
     }
     
     public func start() {
-        let controller = factory.makeTournamentViewController(
-            coordinator: self,
-            sector: sector)
+        let controller = factory.makeTournamentViewController(coordinator: self)
         navigation.pushViewController(controller, animated: true)
     }
 }

@@ -10,7 +10,7 @@ import Foundation
 
 public protocol MyPageService {
     func getMyPageData(request: MyPageRequest) async -> MyPageData?
-    
     func editMyPage(request: MyPageEditRequest) async -> String?
+    func getAuthToken() -> String?
 }
 

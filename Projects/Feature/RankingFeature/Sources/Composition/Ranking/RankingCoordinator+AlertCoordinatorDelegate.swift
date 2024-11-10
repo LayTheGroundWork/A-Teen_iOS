@@ -13,16 +13,13 @@ extension RankingCoordinator: AlertCoordinatorDelegate {
         childCoordinator.navigation.dismissNavigation = nil
         removeChildCoordinator(childCoordinator)
         navigation.dismiss(animated: false)
+        
         switch selectIndex {
-        case 0:
-            print("no")
         case 1:
-            print("hi")
             let tournamentCoordinator = factory.makeTournamentCoordinator(
                 navigation: navigation,
                 delegate: self,
-                coordinatorProvider: coordinatorProvider,
-                sector: sector)
+                coordinatorProvider: coordinatorProvider)
             addChildCoordinatorStart(tournamentCoordinator)
         default:
             break

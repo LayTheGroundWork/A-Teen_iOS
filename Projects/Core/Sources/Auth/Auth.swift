@@ -7,18 +7,6 @@
 
 import Foundation
 
-public protocol SessionCheckAuth {
-    var isSessionActive: Bool { get }
-}
-
-public protocol LogInAuth {
-    func logIn()
-}
-
-public protocol LogOutAuth {
-    func logOut()
-}
-
 public protocol TokenHandler {
     func getAccessToken() -> String?
     func setAccessToken(_ accessToken: String)
@@ -28,7 +16,6 @@ public protocol TokenHandler {
 }
 
 public final class Auth {
-    private var session = false
     private let tokenHandler: TokenHandler
     
     public init(tokenHandler: TokenHandler) {
@@ -52,23 +39,8 @@ extension Auth {
     public func setRefreshToken(_ refreshToken: String) {
         tokenHandler.setRefreshToken(refreshToken)
     }
-}
-
-extension Auth: SessionCheckAuth {
-    public var isSessionActive: Bool {
-        session
-    }
-}
-
-extension Auth: LogInAuth {
-    public func logIn() {
-        session = true
-    }
-}
-
-extension Auth: LogOutAuth {
+    
     public func logOut() {
-        session = false
         tokenHandler.deleteToken()
     }
 }

@@ -13,6 +13,7 @@ let project = Project.makeProject(
     moduleType: .dynamicFramework,
     hasResource: false,
     dependencies: [
-        .networkService
+        .networkService,
+        .core
     ]
 )

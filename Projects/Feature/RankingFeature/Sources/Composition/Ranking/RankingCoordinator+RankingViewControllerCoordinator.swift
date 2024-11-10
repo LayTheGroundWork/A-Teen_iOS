@@ -8,18 +8,22 @@
 
 import Common
 import DesignSystem
+import Domain
 import FeatureDependency
 import UIKit
 
 extension RankingCoordinator: RankingViewControllerCoordinator {
-    public func didTapVoteButton(sector: String) {
-        self.sector = sector
+    public func openLoginSheet() {
+        delegate?.openLoginCoordinator()
+    }
+    
+    public func didTapVoteButton(category: String) {
         let coordinator = coordinatorProvider.makeAlertCoordinator(
             dialogType: .twoButton,
             delegate: self,
             dialogData: CustomDialog(
                 dialogImage: UIImage(),
-                dialogTitle: "\(sector) 투표에 참여하시겠어요?",
+                dialogTitle: "\(category) 투표에 참여하시겠어요?",
                 titleColor: .black,
                 titleNumberOfLine: 1,
                 titleFont: .customFont(forTextStyle: .callout, weight: .bold),
@@ -39,15 +43,17 @@ extension RankingCoordinator: RankingViewControllerCoordinator {
     }
     
     public func didTapRankingCollectionViewCell(
-        sector: String,
-        session: String
+        category: String,
+        round: Int,
+        tournamentNo: Int
     ) {
         let rankingResultCoordinator = factory.makeRankingResultCoordinator(
             navigation: navigation,
             delegate: self,
             withAnimation: true,
-            sector: sector,
-            session: session)
+            category: category,
+            round: round,
+            tournamentNo: tournamentNo)
         addChildCoordinatorStart(rankingResultCoordinator)
     }
 }

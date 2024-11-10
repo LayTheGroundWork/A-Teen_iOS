@@ -7,6 +7,7 @@
 //
 
 import Combine
+import Common
 
 public struct MyPageUseCaseImp: MyPageUseCase {
     private let myPageService: MyPageService
@@ -48,5 +49,9 @@ public struct MyPageUseCaseImp: MyPageUseCase {
             }
         }
         .eraseToAnyPublisher()
+    }
+    
+    public func getAuthToken() -> String? {
+        myPageService.getAuthToken()
     }
 }

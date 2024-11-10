@@ -9,14 +9,14 @@
 import Foundation
 
 public struct ReissueRequest {
-    public let refresh: String
     public let authorization: String
+    public let refresh: String
 
     public init(
-        refresh: String,
-        authorization: String
+        authorization: String,
+        refresh: String
     ) {
-        self.refresh = refresh
         self.authorization = authorization
+        self.refresh = refresh
     }
 }

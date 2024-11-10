@@ -9,14 +9,18 @@
 /* Begin PBXBuildFile section */
 		036B6550D85D013E9E45D716 /* ApiError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26DF9FED1221312C46C36A20 /* ApiError.swift */; };
 		0422C1E028807B6222269C0E /* HttpResponseStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = D14C05E4D710518F379088FD /* HttpResponseStatus.swift */; };
+		39AFE023D7F0792F54311B03 /* TournamentSearchEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4554CD4854353C4E70EAE542 /* TournamentSearchEndPoint.swift */; };
 		3ABC1C37BC738A4E0B60E939 /* ReissueEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEF134EE57A5BC5E99B5C34C /* ReissueEndPoint.swift */; };
+		3E2877DD0E16E92EBD594CF3 /* ThisWeekParticipantsEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0B0E2ADDCF0DEFB55A53EC /* ThisWeekParticipantsEndPoint.swift */; };
 		4A25E8BE1156684357DAC52F /* LogInEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE9987B527C6D0232D055D1 /* LogInEndPoint.swift */; };
 		4E73CAAA79D1BE736AD3B7FA /* VerificationCodeEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BA75336359A120CBA17BA7D /* VerificationCodeEndPoint.swift */; };
 		5CD81B418DCC7667165005CA /* ApiClientServiceImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE374FAFF5AD8033061042B6 /* ApiClientServiceImp.swift */; };
+		64BE71AA2639DF304F3BA995 /* TournamentResultEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6125BC3B2996861BBDE1BB /* TournamentResultEndPoint.swift */; };
 		6CE3233F63C4B6305D83FC15 /* UserLikeEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CB0049A12EBA4FCD609D5A9 /* UserLikeEndPoint.swift */; };
 		6E603AA8BBD6517702881483 /* Domain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD5312BF635CBE4D99FAE162 /* Domain.framework */; };
 		759753D185FBA434CB7A41B8 /* ApiClientService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17754DA0A8AF217686219AFF /* ApiClientService.swift */; };
 		7A4C181A2942A2CA8F105272 /* PhoneNumberAuthEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226E662994065E6F77D84AA1 /* PhoneNumberAuthEndPoint.swift */; };
+		9492EF245960F6D1C61EF5D6 /* TournamentVoteEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 150B9BCA36CD5B14912E8807 /* TournamentVoteEndPoint.swift */; };
 		ACACD3512631434B2DF7844F /* UserDetailEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5F0D8F3733FF1E80D04A98 /* UserDetailEndPoint.swift */; };
 		AD73BA42E8039790C431AA21 /* MyPageEditEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B0CE67A9252733A1EADA6D0 /* MyPageEditEndPoint.swift */; };
 		BF7B74B2497062943DAB0D72 /* EndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39E9564068243164AE0397F4 /* EndPoint.swift */; };
@@ -47,6 +51,7 @@
 /* Begin PBXFileReference section */
 		078CFF338C0767EDC8EE7F07 /* AllUserFindEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllUserFindEndPoint.swift; sourceTree = "<group>"; };
 		0EE9987B527C6D0232D055D1 /* LogInEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInEndPoint.swift; sourceTree = "<group>"; };
+		150B9BCA36CD5B14912E8807 /* TournamentVoteEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TournamentVoteEndPoint.swift; sourceTree = "<group>"; };
 		17754DA0A8AF217686219AFF /* ApiClientService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiClientService.swift; sourceTree = "<group>"; };
 		226E662994065E6F77D84AA1 /* PhoneNumberAuthEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberAuthEndPoint.swift; sourceTree = "<group>"; };
 		26DF9FED1221312C46C36A20 /* ApiError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiError.swift; sourceTree = "<group>"; };
@@ -56,8 +61,10 @@
 		377923D794C9B5C4B87607EB /* UserLikeCancelEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLikeCancelEndPoint.swift; sourceTree = "<group>"; };
 		39E9564068243164AE0397F4 /* EndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPoint.swift; sourceTree = "<group>"; };
 		423A93F1015E6C9CF4DB82B2 /* Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
+		4554CD4854353C4E70EAE542 /* TournamentSearchEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TournamentSearchEndPoint.swift; sourceTree = "<group>"; };
 		4B0CE67A9252733A1EADA6D0 /* MyPageEditEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageEditEndPoint.swift; sourceTree = "<group>"; };
 		564371F685EE5EF450EB138A /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
+		5B0B0E2ADDCF0DEFB55A53EC /* ThisWeekParticipantsEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThisWeekParticipantsEndPoint.swift; sourceTree = "<group>"; };
 		6B3BAB3E928E61A2F4D92A4F /* LogOutEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogOutEndPoint.swift; sourceTree = "<group>"; };
 		76A9F67BDB9E1485D6AEA416 /* SignUpEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpEndPoint.swift; sourceTree = "<group>"; };
 		7B6CB251F3D081EC5D9CC015 /* DuplicationCheckEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DuplicationCheckEndPoint.swift; sourceTree = "<group>"; };
@@ -69,6 +76,7 @@
 		CE5F0D8F3733FF1E80D04A98 /* UserDetailEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailEndPoint.swift; sourceTree = "<group>"; };
 		D14C05E4D710518F379088FD /* HttpResponseStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpResponseStatus.swift; sourceTree = "<group>"; };
 		DEF134EE57A5BC5E99B5C34C /* ReissueEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReissueEndPoint.swift; sourceTree = "<group>"; };
+		DF6125BC3B2996861BBDE1BB /* TournamentResultEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TournamentResultEndPoint.swift; sourceTree = "<group>"; };
 		F06488193E372026C49A0017 /* CategoryUserFindEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryUserFindEndPoint.swift; sourceTree = "<group>"; };
 		FE374FAFF5AD8033061042B6 /* ApiClientServiceImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiClientServiceImp.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -85,6 +93,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		01CC5A52152CE9896DD76318 /* Tournament */ = {
+			isa = PBXGroup;
+			children = (
+				5B0B0E2ADDCF0DEFB55A53EC /* ThisWeekParticipantsEndPoint.swift */,
+				DF6125BC3B2996861BBDE1BB /* TournamentResultEndPoint.swift */,
+				4554CD4854353C4E70EAE542 /* TournamentSearchEndPoint.swift */,
+				150B9BCA36CD5B14912E8807 /* TournamentVoteEndPoint.swift */,
+			);
+			path = Tournament;
+			sourceTree = "<group>";
+		};
 		0D0E7ECA2FE1D2974B2941D6 /* StatusResponse */ = {
 			isa = PBXGroup;
 			children = (
@@ -214,6 +233,7 @@
 				6AB8D2B24361D1C2B97C7999 /* Auth */,
 				8EB54BD97336FB78B8157DB8 /* MyPage */,
 				AA8EC847DBD5E30D7A139BB0 /* Search */,
+				01CC5A52152CE9896DD76318 /* Tournament */,
 				6A4817DE7FD56C464535D78D /* User */,
 				39E9564068243164AE0397F4 /* EndPoint.swift */,
 			);
@@ -315,6 +335,10 @@
 				AD73BA42E8039790C431AA21 /* MyPageEditEndPoint.swift in Sources */,
 				E26FE6FDA0290C66230ED42E /* MyPageEndPoint.swift in Sources */,
 				C4B30C7C31F170EE6B5031C4 /* SchoolDataEndPoint.swift in Sources */,
+				3E2877DD0E16E92EBD594CF3 /* ThisWeekParticipantsEndPoint.swift in Sources */,
+				64BE71AA2639DF304F3BA995 /* TournamentResultEndPoint.swift in Sources */,
+				39AFE023D7F0792F54311B03 /* TournamentSearchEndPoint.swift in Sources */,
+				9492EF245960F6D1C61EF5D6 /* TournamentVoteEndPoint.swift in Sources */,
 				E5FA1DB4AC5C809C4BB8C351 /* AllUserFindEndPoint.swift in Sources */,
 				D740F503237078B97DA47FF8 /* CategoryUserFindEndPoint.swift in Sources */,
 				ACACD3512631434B2DF7844F /* UserDetailEndPoint.swift in Sources */,

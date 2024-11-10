@@ -9,13 +9,10 @@
 import Foundation
 
 public protocol SignService {
-    func signIn(request: LogInRequest) async -> (HTTPURLResponse, DefaultResponse)?
-    
-    func signUp(request: SignUpRequest) async -> (HTTPURLResponse, DefaultResponse)?
-    
+    func signIn(request: LogInRequest) async -> String?
+    func signUp(request: SignUpRequest) async -> String?
     func requestCode(request: VerificationCodeRequest) async
-    
     func verifyCode(request: PhoneNumberAuthRequest) async -> String?
-    
     func duplicationCheck(request: DuplicationCheckRequest) async -> Bool
+    func deleteToken()
 }

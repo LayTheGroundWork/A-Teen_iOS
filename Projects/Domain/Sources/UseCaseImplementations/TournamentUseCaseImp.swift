@@ -1,0 +1,61 @@
+//
+//  TournamentUseCaseImp.swift
+//  Domain
+//
+//  Created by 노주영 on 10/30/24.
+//  Copyright © 2024 ATeen. All rights reserved.
+//
+
+import Combine
+
+public struct TournamentUseCaseImp: TournamentUseCase {
+    public let tournamentService: TournamentService
+    
+    public init(tournamentService: TournamentService) {
+        self.tournamentService = tournamentService
+    }
+    
+    public func searchTournament() -> AnyPublisher<[TournamentSearchData], Never> {
+        Future { promise in
+            Task {
+                let data = await tournamentService.searchTournament()
+                promise(.success(data))
+            }
+        }
+        .eraseToAnyPublisher()
+    }
+    
+    public func getTournamentResult(request: TournamentResultRequest) -> AnyPublisher<[TournamentResultData], Never> {
+        Future { promise in
+            Task {
+                let data = await tournamentService.getTournamentResult(request: request)
+                promise(.success(data))
+            }
+        }
+        .eraseToAnyPublisher()
+    }
+    
+    public func getThisWeekParticipants(request: ThisWeekParticipantsRequest) -> AnyPublisher<([TournamentParticipantData]?, String), Never> {
+        Future { promise in
+            Task {
+                let data = await tournamentService.getThisWeekParticipants(request: request)
+                promise(.success(data))
+            }
+        }
+        .eraseToAnyPublisher()
+    }
+    
+    public func tournamentVote(request: TournamentVoteRequest) -> AnyPublisher<String?, Never> {
+        Future { promise in
+            Task {
+                let data = await tournamentService.tournamentVote(request: request)
+                promise(.success(data))
+            }
+        }
+        .eraseToAnyPublisher()
+    }
+    
+    public func getAuthToken() -> String? {
+        tournamentService.getAuthToken()
+    }
+}

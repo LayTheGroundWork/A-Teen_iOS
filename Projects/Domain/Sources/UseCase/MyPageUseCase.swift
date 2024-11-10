@@ -7,10 +7,12 @@
 //
 
 import Combine
+import Common
 
 public protocol MyPageUseCase {
     func getMyPageData(request: MyPageRequest) -> AnyPublisher<MyPageData?, Never>
     func editMyPage(request: MyPageEditRequest) -> AnyPublisher<String?, Never>
     func searchSchool(request: SchoolDataRequest) -> AnyPublisher<[SchoolData], Never>
+    func getAuthToken() -> String?
 }
 

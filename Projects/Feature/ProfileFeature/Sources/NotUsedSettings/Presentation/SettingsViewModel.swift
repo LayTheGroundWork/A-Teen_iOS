@@ -36,18 +36,8 @@ final class SettingsViewModel {
             navigation: .noNavigation),
     ]
     
-    private let auth: LogOutAuth?
-    
     var settingsCount: Int {
         itemSettingViewModel.count
-    }
-    
-    init(auth: LogOutAuth? = nil) {
-        self.auth = auth
-    }
-    
-    private func logOut() {
-        auth?.logOut()
     }
     
     func getItemSettingsViewModel(row: Int) -> ItemSettingViewModel {
@@ -56,9 +46,6 @@ final class SettingsViewModel {
     
     func cellSelected(row: Int) -> SettingsViewNavigation {
         let navigation = itemSettingViewModel[row].navigation
-        if navigation == .logout {
-            logOut()
-        }
         
         return navigation
     }

@@ -13,11 +13,11 @@ import Domain
 import UIKit
 
 public final class TeenDetailViewModel {
-    var teenList: [UserData] = [
+    var teenList: [User] = [
         .init(
             id: 0,
             uniqueId: "tester1",
-            profileImages: "thumbnail_testKey",
+            profileImage: "thumbnail_testKey",
             nickName: "노주영",
             location: "안양",
             schoolName: "인덕원고둥학교",
@@ -25,7 +25,7 @@ public final class TeenDetailViewModel {
         .init(
             id: 1,
             uniqueId: "tester1",
-            profileImages: "thumbnail_testKey",
+            profileImage: "thumbnail_testKey",
             nickName: "최동호",
             location: "부산",
             schoolName: "대연고등학교",
@@ -33,7 +33,7 @@ public final class TeenDetailViewModel {
         .init(
             id: 2,
             uniqueId: "tester1",
-            profileImages: "thumbnail_testKey",
+            profileImage: "thumbnail_testKey",
             nickName: "김명현",
             location: "부산",
             schoolName: "센텀고등학교",
@@ -41,14 +41,14 @@ public final class TeenDetailViewModel {
         .init(
             id: 3,
             uniqueId: "tester1",
-            profileImages: "thumbnail_testKey",
+            profileImage: "thumbnail_testKey",
             nickName: "이창준",
             location: "서울",
             schoolName: "에이틴고등학교",
             likeStatus: true)
     ]
     
-    func getTeenItemTeenViewModel(row: Int) -> UserData {
+    func getTeenItemTeenViewModel(row: Int) -> User {
         teenList[row]
     }
     

@@ -8,49 +8,41 @@
 
 import Common
 import DesignSystem
+import Domain
 import UIKit
 
 final class TournamentUserView: UIView {
-    let width = ViewValues.height * 0.35 * 0.86
-    let height = ViewValues.height * 0.35
-    var image: UIImage?
-    weak var delegate: TournamentUserCollectionViewCellDelegate?
-    
     // MARK: - Private properties
     private lazy var imageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = image
+        imageView.image = DesignSystemAsset.badge9.image
         imageView.contentMode = .scaleAspectFill
         return imageView
     }()
     
-    private lazy var selectButton: UIButton = {
-        let button = UIButton()
-        button.setTitle("투표 하기", for: .normal)
-        button.setTitleColor(UIColor.white, for: .normal)
-        button.setTitleColor(UIColor.black.withAlphaComponent(0.2), for: .highlighted)
-        button.titleLabel?.font = .customFont(forTextStyle: .footnote, weight: .regular)
-        button.backgroundColor = DesignSystemAsset.mainColor.color
-        button.layer.cornerRadius = ViewValues.defaultRadius
-        return button
+    private lazy var schoolAndAgeLabel: UILabel = {
+        let label = UILabel()
+        label.textAlignment = .left
+        label.textColor = UIColor.white
+        label.font = UIFont.customFont(forTextStyle: .footnote, weight: .regular)
+        return label
+    }()
+    
+    private lazy var nameLabel: UILabel = {
+        let label = UILabel()
+        label.textAlignment = .left
+        label.textColor = UIColor.white
+        label.font = UIFont.customFont(forTextStyle: .callout, weight: .bold)
+        return label
     }()
     
     // MARK: - Life Cycle
-    init(
-        frame: CGRect,
-        tag: Int,
-        image: UIImage,
-        delegate: TournamentUserCollectionViewCellDelegate
-    ) {
-        self.image = image
-        self.delegate = delegate
+    init(frame: CGRect, tag: Int) {
         super.init(frame: frame)
         
         self.tag = tag
         
         configUserInterface()
-        configShadow()
-        setupActions()
     }
     
     required init?(coder: NSCoder) {
@@ -59,32 +51,22 @@ final class TournamentUserView: UIView {
     
     // MARK: - Helpers
     private func configUserInterface() {
-        self.backgroundColor = UIColor.white
         self.clipsToBounds = true
         self.layer.cornerRadius = ViewValues.defaultRadius
         
         addSubview(imageView)
-        addSubview(selectButton)
+        imageView.addSubview(schoolAndAgeLabel)
+        imageView.addSubview(nameLabel)
     }
     
-    private func configShadow() {
-        selectButton.addDropYShadow(width: width - 32,
-                                    height: 36,
-                                    color: UIColor.black,
-                                    opacity: 0.25,
-                                    radius: 4,
-                                    offset: CGSize(width: 0, height: 4))
+    func changeUI(participant: TournamentParticipantData, age: Int) {
+        nameLabel.text = participant.userName
+        schoolAndAgeLabel.text = "\(participant.userSchool) | \(age)세"
     }
     
-    private func setupActions() {
-        selectButton.addTarget(self,
-                               action: #selector(didTapSelectButton(_: )),
-                               for: .touchUpInside)
-    }
-    
-    // MARK: - Actions
-    @objc private func didTapSelectButton(_ sender: UIButton) {
-        delegate?.didTapSelectButton(tag: self.tag)
+    func changeFontSize() {
+        nameLabel.font = UIFont.customFont(forTextStyle: .title3, weight: .bold)
+        schoolAndAgeLabel.font = UIFont.customFont(forTextStyle: .callout, weight: .regular)
     }
 }
 
@@ -94,15 +76,18 @@ extension TournamentUserView {
         super.layoutSubviews()
         
         imageView.snp.makeConstraints { make in
-            make.center.equalToSuperview()
-            make.width.equalToSuperview()
-            make.height.equalToSuperview()
+            make.edges.equalToSuperview()
         }
         
-        selectButton.snp.makeConstraints { make in
+        schoolAndAgeLabel.snp.makeConstraints { make in
             make.leading.equalToSuperview().offset(ViewValues.defaultPadding)
             make.bottom.trailing.equalToSuperview().offset(-ViewValues.defaultPadding)
-            make.height.equalTo(36)
+        }
+        
+        nameLabel.snp.makeConstraints { make in
+            make.leading.equalToSuperview().offset(ViewValues.defaultPadding)
+            make.bottom.equalTo(schoolAndAgeLabel.snp.top).offset(-8)
+            make.trailing.equalTo(imageView.snp.centerX)
         }
     }
 }

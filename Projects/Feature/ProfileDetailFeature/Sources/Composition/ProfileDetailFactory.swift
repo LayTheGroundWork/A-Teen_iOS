@@ -22,12 +22,12 @@ public protocol ProfileDetailFactory {
 
 public struct ProfileDetailFactoryImp: ProfileDetailFactory {
     private(set) var frame: CGRect
-    private(set) var todayTeen: UserData
+    private(set) var todayTeen: User
     private(set) var todayTeenFirstImage: UIImage
     
     public init(
         frame: CGRect,
-        todayTeen: UserData,
+        todayTeen: User,
         todayTeenFirstImage: UIImage
     ) {
         self.frame = frame

@@ -13,9 +13,6 @@ import Domain
 import UIKit
 
 public final class EditSchoolViewModel {
-    @Injected(Auth.self)
-    public var auth: Auth
-    
     @Injected(MyPageUseCase.self)
     public var myPageUseCase: MyPageUseCase
     
@@ -61,7 +58,7 @@ extension EditSchoolViewModel {
     }
     
     func saveChangeValue() {
-        guard let token = auth.getAccessToken() else { return }
+        guard let token = myPageUseCase.getAuthToken() else { return }
         
         myPageUseCase.editMyPage(
             request: .init(

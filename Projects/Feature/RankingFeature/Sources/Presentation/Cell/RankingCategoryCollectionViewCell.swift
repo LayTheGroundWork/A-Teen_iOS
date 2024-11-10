@@ -1,26 +1,26 @@
 //
-//  SectorCollectionViewCell.swift
+//  RankingCategoryCollectionViewCell.swift
 //  RankingFeature
 //
 //  Created by 김명현 on 6/26/24.
 //  Copyright © 2024 ATeen. All rights reserved.
 //
 
+import SnapKit
+
 import Common
 import DesignSystem
+import Domain
 import UIKit
 
-final class SectorCollectionViewCell: UICollectionViewCell {
-    var sector: String?
-    weak var delegate: RankingViewControllerCoordinator?
+protocol RankingCategoryCollectionViewCellDelegate: AnyObject {
+    func didTapVoteButton(category: String)
+}
 
-    private lazy var containerView: UIView = {
-        let view = UIView()
-        view.layer.cornerRadius = ViewValues.defaultRadius
-        view.clipsToBounds = true
-        
-        return view
-    }()
+final class RankingCategoryCollectionViewCell: UICollectionViewCell {
+    weak var delegate: RankingCategoryCollectionViewCellDelegate?
+    var category: String?
+    var winner: TournamentWinnerData?
     
     private lazy var imageView: UIImageView = {
         let imageView = UIImageView()
@@ -30,7 +30,7 @@ final class SectorCollectionViewCell: UICollectionViewCell {
         return imageView
     }()
     
-    lazy var voteButton: UIButton = {
+    private lazy var voteButton: UIButton = {
         let button = UIButton(type: .system)
         // TODO: - 투표를 이미 했다면, "결과 확인하기" 로 버튼 Text 변경되도록 수정 필요
         button.setTitle("투표 참여하기", for: .normal)
@@ -44,7 +44,7 @@ final class SectorCollectionViewCell: UICollectionViewCell {
         return button
     }()
     
-    lazy var winnerBackgroundView: UIView = {
+    private lazy var winnerBackgroundView: UIView = {
         let view = UIView()
         view.clipsToBounds = true
         view.backgroundColor = UIColor.black.withAlphaComponent(0.3)
@@ -53,7 +53,14 @@ final class SectorCollectionViewCell: UICollectionViewCell {
         return view
     }()
     
-    lazy var winnerLabel: UILabel = {
+    private lazy var crownImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = DesignSystemAsset.crownWhiteIcon.image
+        imageView.contentMode = .scaleAspectFill
+        return imageView
+    }()
+    
+    private lazy var winnerLabel: UILabel = {
         let label = UILabel()
         label.textColor = UIColor.white
         label.textAlignment = .center
@@ -65,7 +72,6 @@ final class SectorCollectionViewCell: UICollectionViewCell {
         super.init(frame: frame)
         
         configUserInterface()
-        configLayout()
     }
     
     required init?(coder: NSCoder) {
@@ -73,18 +79,18 @@ final class SectorCollectionViewCell: UICollectionViewCell {
     }
     
     private func configUserInterface() {
-        contentView.addSubview(containerView)
-        containerView.addSubview(imageView)
-        containerView.addSubview(voteButton)
-        containerView.addSubview(winnerBackgroundView)
+        contentView.layer.cornerRadius = ViewValues.defaultRadius
+        contentView.clipsToBounds = true
+        
+        contentView.addSubview(imageView)
+        contentView.addSubview(voteButton)
+        contentView.addSubview(winnerBackgroundView)
+        
+        winnerBackgroundView.addSubview(crownImageView)
         winnerBackgroundView.addSubview(winnerLabel)
     }
     
     private func configLayout() {
-        containerView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
-        }
-        
         imageView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
@@ -99,24 +105,63 @@ final class SectorCollectionViewCell: UICollectionViewCell {
         winnerBackgroundView.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(20)
             make.leading.equalToSuperview().offset(20)
+            make.width.equalTo(
+                (winnerLabel.text! as NSString).size(withAttributes: [NSAttributedString.Key.font: winnerLabel.font!]).width + 53)
             make.height.equalTo(34)
         }
         
-        winnerLabel.snp.makeConstraints { make in
-            make.centerY.equalToSuperview()
+        crownImageView.snp.makeConstraints { make in
             make.leading.equalToSuperview().offset(12)
+            make.top.equalToSuperview().offset(5)
+            make.width.height.equalTo(24)
+        }
+        
+        winnerLabel.snp.makeConstraints { make in
+            make.leading.equalTo(crownImageView.snp.trailing)
             make.trailing.equalToSuperview().offset(-12)
+            make.top.equalToSuperview().offset(5)
+            make.height.equalTo(24)
+        }
+    }
+    
+    func setProperty(
+        delegate: RankingCategoryCollectionViewCellDelegate,
+        category: String,
+        winner: TournamentWinnerData?
+    ) {
+        self.delegate = delegate
+        self.category = category
+        self.winner = winner
+        
+        winnerLabel.text = "\(winner?.round ?? 0)회차 우승자"
+        
+        configLayout()
+    }
+    
+    // 투표하기 버튼, 우승자 라벨 가시성 함수
+    func chooseCellUI(index: Int) {
+        switch index {
+        case 0:
+            voteButton.isHidden = false
+            
+            winnerBackgroundView.isHidden = true
+            crownImageView.isHidden = true
+            winnerLabel.isHidden = true
+        default:
+            voteButton.isHidden = true
+            
+            winnerBackgroundView.isHidden = false
+            crownImageView.isHidden = false
+            winnerLabel.isHidden = false
         }
     }
     
     @objc private func didTapVoteButton() {
         // TODO: - 투표를 이미 했다면, 현재 진행중인 투표 현황을 볼 수 있도록 RankingResult 로 이동
-        // ...
-        
         // 투표 안했을 경우, 아래 로직 수행
-        guard let sector = sector else { return }
-        delegate?.didTapVoteButton(sector: sector)
+        guard let category = category else { return }
+        delegate?.didTapVoteButton(category: category)
     }
 }
 
-extension SectorCollectionViewCell: Reusable { }
+extension RankingCategoryCollectionViewCell: Reusable { }

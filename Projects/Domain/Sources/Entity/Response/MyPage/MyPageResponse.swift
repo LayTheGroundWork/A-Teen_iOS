@@ -6,6 +6,7 @@
 //  Copyright © 2024 ATeen. All rights reserved.
 //
 
+import Common
 import Foundation
 
 public struct MyPageResponse: Decodable {
@@ -81,15 +82,4 @@ public struct SnsLinkData: Codable {
     }
 }
 
-public struct QuestionData: Codable, Equatable {
-    public var question: String
-    public var answer: String
-    
-    public init(
-        question: String,
-        answer: String
-    ) {
-        self.question = question
-        self.answer = answer
-    }
-}
+

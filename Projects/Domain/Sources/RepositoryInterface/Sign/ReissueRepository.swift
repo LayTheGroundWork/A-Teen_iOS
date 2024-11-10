@@ -9,5 +9,5 @@
 import Foundation
 
 public protocol ReissueRepository {
-    func reissueToken(request: ReissueRequest) async -> Result<DefaultResponse, Error>
+    func reissueToken(request: ReissueRequest) async -> Result<(HTTPURLResponse, DefaultResponse), Error> 
 }

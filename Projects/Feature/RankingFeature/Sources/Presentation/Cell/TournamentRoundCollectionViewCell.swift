@@ -6,6 +6,8 @@
 //  Copyright © 2024 ATeen. All rights reserved.
 //
 
+import SnapKit
+
 import Common
 import DesignSystem
 import UIKit
@@ -15,12 +17,8 @@ protocol TournamentRoundCollectionViewCellDelegate: AnyObject {
 }
 
 final class TournamentRoundCollectionViewCell: UICollectionViewCell {
-    weak var delegate: TournamentViewControllerCoordinator?
-    weak var roundDelegate: TournamentRoundCollectionViewCellDelegate?
-    
-    // MARK: - Private properties
-    private var round: TournamentRound?
-    private var currentMatch: Int = 1
+    weak var delegate: TournamentRoundCollectionViewCellDelegate?
+    var viewModel: TournamentViewModel?
     
     private lazy var roundLabel: UILabel = {
         let label = UILabel()
@@ -40,17 +38,18 @@ final class TournamentRoundCollectionViewCell: UICollectionViewCell {
     private lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
-        layout.itemSize = CGSize(width: ViewValues.width,
-                                 height: (ViewValues.height * 0.35 * 2) + 10)
-        let collectionView = UICollectionView(frame: .zero,
-                                              collectionViewLayout: layout)
+        layout.itemSize = CGSize(
+            width: ViewValues.width,
+            height: (ViewValues.height * 0.35 * 2) + 10)
+        let collectionView = UICollectionView(
+            frame: .zero,
+            collectionViewLayout: layout)
         collectionView.backgroundColor = UIColor.black
         collectionView.contentInsetAdjustmentBehavior = .never
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.isScrollEnabled = false
         collectionView.isPagingEnabled = true
-        collectionView.register(TournamentUserCollectionViewCell.self,
-                                forCellWithReuseIdentifier: TournamentUserCollectionViewCell.reuseIdentifier)
+        collectionView.register(TournamentUserCollectionViewCell.self, forCellWithReuseIdentifier: TournamentUserCollectionViewCell.reuseIdentifier)
         collectionView.delegate = self
         collectionView.dataSource = self
         return collectionView
@@ -95,48 +94,53 @@ final class TournamentRoundCollectionViewCell: UICollectionViewCell {
         }
     }
     
-    public func setProperties(round: TournamentRound) {
-        self.round = round
+    public func setProperties(
+        delegate: TournamentRoundCollectionViewCellDelegate,
+        viewModel: TournamentViewModel
+    ) {
+        self.delegate = delegate
+        self.viewModel = viewModel
         
-        roundLabel.text = round.rawValue
-        progressView.progress = round.progress
+        roundLabel.text = viewModel.currentRound.rawValue
+        progressView.progress = viewModel.currentRound.progress
     }
     
     // MARK: - Actions
     private func scrollToPage(at index: Int) {
         let indexPath = IndexPath(item: 0, section: index - 1)
-        collectionView.scrollToItem(at: indexPath,
-                                    at: .centeredHorizontally,
-                                    animated: false)
+        collectionView.scrollToItem(
+            at: indexPath,
+            at: .centeredHorizontally,
+            animated: false)
     }
 }
 
 // MARK: - Extensions here
 extension TournamentRoundCollectionViewCell: UICollectionViewDataSource {
-    func collectionView(
-        _ collectionView: UICollectionView,
-        numberOfItemsInSection section: Int
-    ) -> Int {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         1
     }
     
-    func numberOfSections(
-        in collectionView: UICollectionView
-    ) -> Int {
-        round?.matches ?? 1
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        viewModel?.currentRound.matches ?? 1
     }
     
-    func collectionView(
-        _ collectionView: UICollectionView,
-        cellForItemAt indexPath: IndexPath
-    ) -> UICollectionViewCell {
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(
             withReuseIdentifier: TournamentUserCollectionViewCell.reuseIdentifier,
-            for: indexPath) as? TournamentUserCollectionViewCell
+            for: indexPath) as? TournamentUserCollectionViewCell,
+              let viewModel = viewModel
         else {
             return UICollectionViewCell()
         }
-        cell.delegate = self
+        
+        let participantIndex = indexPath.section * 2
+        cell.setProperties(
+            delegate: self,
+            viewModel: viewModel,
+            aUserInfo: viewModel.participantList[participantIndex],
+            bUserInfo: viewModel.participantList[participantIndex + 1])
+        
         return cell
     }
 }
@@ -144,32 +148,57 @@ extension TournamentRoundCollectionViewCell: UICollectionViewDataSource {
 extension TournamentRoundCollectionViewCell: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         guard let cell = cell as? TournamentUserCollectionViewCell else { return }
-        
         cell.startAnimation()
     }
 }
 
 extension TournamentRoundCollectionViewCell: TournamentUserCollectionViewCellDelegate {
     func didTapSelectButton(tag: Int) {
-        guard let cell = collectionView.cellForItem(at: IndexPath(item: 0, section: currentMatch - 1)) as? TournamentUserCollectionViewCell else {
+        guard let viewModel = viewModel,
+              let cell = collectionView.cellForItem(at: IndexPath(item: 0, section: viewModel.currentMatch - 1)) as? TournamentUserCollectionViewCell else {
             return
         }
         
+        switch tag {
+        case 0:
+            viewModel.saveLoseParticipant(
+                tournamentParticipant: cell.bUserInfo ?? .init(
+                    userId: "",
+                    profileImageUrl: "",
+                    userName: "",
+                    userSchool: "",
+                    userBirth: "")
+            )
+            
+        case 1:
+            viewModel.saveLoseParticipant(
+                tournamentParticipant: cell.aUserInfo ?? .init(
+                    userId: "",
+                    profileImageUrl: "",
+                    userName: "",
+                    userSchool: "",
+                    userBirth: "")
+            )
+        default:
+            break
+        }
+        
         cell.selectAnimation(tag: tag) {
-            if self.currentMatch == self.round?.matches {
-                self.currentMatch = 1
-                self.scrollToPage(at: self.currentMatch)
-                self.roundDelegate?.nextRound()
-            } else {
-                self.currentMatch += 1
-                self.scrollToPage(at: self.currentMatch)
-                UIView.animate(withDuration: 0.25) { [weak self] in
-                    guard let self = self else { return }
-                    
-                    progressView.setProgress(
-                        progressView.progress + (self.round?.progress ?? 0),
-                        animated: true)
-                }
+            if viewModel.compareCurrentValues() {
+                self.delegate?.nextRound()
+            }
+            self.scrollToPage(at: viewModel.currentMatch)
+            
+            UIView.animate(
+                withDuration: 1,
+                delay: 0,
+                usingSpringWithDamping: 0.7,
+                initialSpringVelocity: 0
+            ) { [weak self] in
+                guard let self = self else { return }
+                progressView.setProgress(
+                    progressView.progress + (self.viewModel?.currentRound.progress ?? 0),
+                    animated: true)
             }
         }
     }

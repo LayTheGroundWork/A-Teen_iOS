@@ -13,13 +13,15 @@ import UIKit
 
 extension TournamentCoordinator: TournamentViewControllerCoordinator {
     public func finishTournament(
-        sector: String,
-        session: String
+        category: String,
+        round: Int,
+        tournamentNo: Int
     ) {
         delegate?.finishTournament(
             childCoordinator: self,
-            sector: sector,
-            session: session
+            category: category,
+            round: round,
+            tournamentNo: tournamentNo
         )
     }
     
