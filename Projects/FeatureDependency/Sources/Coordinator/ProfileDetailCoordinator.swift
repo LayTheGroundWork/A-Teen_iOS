@@ -13,8 +13,5 @@ public protocol ProfileDetailCoordinator: Coordinator {
 }
 
 public protocol ProfileDetailViewControllerCoordinator: AnyObject {
-    func didTapSNSButton(
-        contentViewController: UIViewController
-    )
     func didFinishFlow()
 }

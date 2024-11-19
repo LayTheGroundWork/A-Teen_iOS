@@ -60,6 +60,14 @@ extension ProfileDetailViewModel {
         return currentYear - birthYear + 1
     }
     
+    func getSnsPlatformCount() -> Int {
+        guard let snsPlatform = user.snsPlatform else { return 0 }
+        
+        let snsList = [snsPlatform.instagram, snsPlatform.x, snsPlatform.youtube, snsPlatform.tiktok]
+        
+        return snsList.filter { !$0.isEmpty }.count
+    }
+    
     func getUserDetailData() {
         userUseCase.getUserDetailData(request: .init(uniqueId: uniqueId))
             .receive(on: DispatchQueue.main)

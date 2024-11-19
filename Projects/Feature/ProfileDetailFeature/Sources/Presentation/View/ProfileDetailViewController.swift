@@ -15,11 +15,6 @@ import FeatureDependency
 import UIKit
 
 public class ProfileDetailViewController: UIViewController {
-    let colors: [CGColor] = [
-        .init(red: 0, green: 0, blue: 0, alpha: 0.5),
-        .init(red: 0, green: 0, blue: 0, alpha: 0)
-    ]
-    
     private var viewModel: ProfileDetailViewModel
     private weak var coordinator: ProfileDetailViewControllerCoordinator?
     
@@ -37,6 +32,8 @@ public class ProfileDetailViewController: UIViewController {
     var questionViewHeightAnchor: Constraint?
     var questionTextViewHeightAnchor: Constraint?
     
+    var snsViewTopAnchor: Constraint?
+    
     public init(
         viewModel: ProfileDetailViewModel,
         coordinator: ProfileDetailViewControllerCoordinator,
@@ -51,25 +48,7 @@ public class ProfileDetailViewController: UIViewController {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    lazy var topGradientLayer: CAGradientLayer = {
-        let layer = CAGradientLayer()
-        layer.colors = colors
-        layer.startPoint = CGPoint(x: 0.5, y: 0.0)
-        layer.endPoint = CGPoint(x: 0.5, y: 1.0)
-        layer.locations = [0.0, 0.44, 1.0]
-        return layer
-    }()
-    
-    lazy var bottomGradientLayer: CAGradientLayer = {
-        let layer = CAGradientLayer()
-        layer.colors = colors
-        layer.startPoint = CGPoint(x: 0.5, y: 1.0)
-        layer.endPoint = CGPoint(x: 0.5, y: 0.0)
-        layer.locations = [0.0, 0.44, 1.0]
-        return layer
-    }()
-    
+
     lazy var naviView: UIView = {
         let view = UIView()
         view.backgroundColor = .clear
@@ -122,8 +101,6 @@ public class ProfileDetailViewController: UIViewController {
         collectionView.backgroundColor = UIColor.white
         collectionView.isPagingEnabled = true
         collectionView.showsHorizontalScrollIndicator = false
-        collectionView.layer.addSublayer(topGradientLayer)
-        collectionView.layer.addSublayer(bottomGradientLayer)
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.register(TeenImageCellCollectionViewCell.self, forCellWithReuseIdentifier: TeenImageCellCollectionViewCell.reuseIdentifier)
@@ -334,8 +311,15 @@ public class ProfileDetailViewController: UIViewController {
     }()
     
     lazy var barView: UIView = {
-        let view = ProfileDetailBottomBar(frame: .zero,
-                                          coordinator: self)
+        let view = ProfileDetailBottomBar(frame: .zero, coordinator: self)
+        return view
+    }()
+    
+    lazy var snsView: SnsPlatformView = {
+        let view = SnsPlatformView(
+            frame: .zero,
+            coordinator: self,
+            snsPlatform: viewModel.user.snsPlatform)
         return view
     }()
 
@@ -407,6 +391,9 @@ extension ProfileDetailViewController {
     private func addScrollView(frame: CGRect) {
         view.addSubview(scrollView)
         view.addSubview(barView)
+        view.addSubview(snsView)
+        
+        view.bringSubviewToFront(barView)
         
         scrollView.snp.makeConstraints { make in
             topAnchor = make.top.equalToSuperview().offset(frame.origin.y).constraint
@@ -419,6 +406,15 @@ extension ProfileDetailViewController {
         barView.snp.makeConstraints { make in
             make.leading.trailing.bottom.equalToSuperview()
             make.height.equalTo(90)
+        }
+        
+        snsView.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.height.equalTo(50)
+            self.snsViewTopAnchor = make.top.equalTo(barView.snp.top).constraint
+            
+            let count = viewModel.getSnsPlatformCount()
+            make.width.equalTo(70 * count + 2 * max(0, count - 1))
         }
         
         addBackgroundView(frame: frame)
@@ -485,18 +481,6 @@ extension ProfileDetailViewController {
         }
         
         view.layoutIfNeeded()
-        
-        topGradientLayer.frame = CGRect(
-            x: 0,
-            y: 0,
-            width: teenCollectionView.frame.width,
-            height: teenCollectionView.frame.height/2)
-        
-        bottomGradientLayer.frame = CGRect(
-            x: 0,
-            y: teenCollectionView.frame.height/2,
-            width: teenCollectionView.frame.width,
-            height: teenCollectionView.frame.height/2)
         
         addInfomationComponent()
         addIntroduceComponent()
@@ -820,19 +804,6 @@ extension ProfileDetailViewController {
             
             self.scrollView.layer.cornerRadius = 0
             self.backgroundView.layer.cornerRadius = 0
-            self.view.layoutIfNeeded()
-            
-            self.topGradientLayer.frame = CGRect(
-                x: 0,
-                y: 0,
-                width: self.teenCollectionView.frame.width,
-                height: self.teenCollectionView.frame.height / 2)
-            
-            self.bottomGradientLayer.frame = CGRect(
-                x: 0,
-                y: self.teenCollectionView.frame.height / 2,
-                width: self.teenCollectionView.frame.width,
-                height: self.teenCollectionView.frame.height / 2)
             
             self.view.layoutIfNeeded()
             
@@ -932,6 +903,18 @@ extension ProfileDetailViewController: UIScrollViewDelegate {
                 menuButton.setImage(DesignSystemAsset.menuIcon.image, for: .normal)
             }
         }
+        
+        if self.snsView.frame.origin.y < self.barView.frame.origin.y {
+            UIView.animate(
+                withDuration: 0.5,
+                delay: 0,
+                usingSpringWithDamping: 0.7,
+                initialSpringVelocity: 0
+            ) {
+                self.snsViewTopAnchor?.update(offset: 0)
+                self.view.layoutIfNeeded()
+            }
+        }
     }
 }
 
@@ -970,11 +953,29 @@ extension ProfileDetailViewController: UICollectionViewDelegate {
 }
 
 
-//MARK: - ProfileDetailBottomBarDelegate
+// MARK: - ProfileDetailBottomBarDelegate
 extension ProfileDetailViewController: ProfileDetailBottomBarDelegate {
-    public func didTapSNSButton(
-        contentViewController: UIViewController
-    ) {
-        coordinator?.didTapSNSButton(contentViewController: contentViewController)
+    public func didTapSNSButton() {
+        UIView.animate(
+            withDuration: 0.5,
+            delay: 0,
+            usingSpringWithDamping: 0.7,
+            initialSpringVelocity: 0
+        ) {
+            if self.snsView.frame.origin.y < self.barView.frame.origin.y {
+                self.snsViewTopAnchor?.update(offset: 0)
+            } else {
+                self.snsViewTopAnchor?.update(offset: -60)
+            }
+            self.view.layoutIfNeeded()
+        }
+    }
+}
+
+// MARK: - SnsPlatformViewDelegate
+extension ProfileDetailViewController: SnsPlatformViewDelegate {
+    public func didTapSnsPlatformButton(index: Int) {
+        // TODO: SNS 앱으로 이동
+        print(index)
     }
 }
