@@ -46,4 +46,16 @@ extension MainTabCoordinator: MainCoordinatorDelegate {
             tab.clickButton(tab.profileButton)
         }
     }
+    
+    public func configTabbarState(view: MainViewNames) {
+        guard let tab = navigation.viewControllers.first as? MainTabController else { return }
+        
+        switch view {
+        case .main:
+            tab.showTabbar()
+            
+        case .search:
+            tab.hideTabbar()
+        }
+    }
 }

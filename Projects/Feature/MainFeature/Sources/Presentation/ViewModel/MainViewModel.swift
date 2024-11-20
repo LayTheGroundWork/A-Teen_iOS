@@ -36,7 +36,7 @@ class MainViewModel {
     var todayTeenList: [User] = [
         .init(
             id: 0,
-            uniqueId: "tester1",
+            uniqueId: "tester2",
             profileImage: "thumbnail_testKey",
             nickName: "노주영",
             location: "안양",

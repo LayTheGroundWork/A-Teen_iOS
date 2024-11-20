@@ -12,6 +12,19 @@ import FeatureDependency
 import UIKit
 
 extension MainCoordinator: MainViewControllerCoordinator {
+    public func openLoginSheet() {
+        delegate?.openLoginCoordinator()
+    }
+    
+    public func didSelectSearchButton() {
+        let searchUserCoordinator = factory.makeSearchUserCoordinator(
+            navigation: navigation,
+            coordinatorProvider: coordinatorProvider,
+            delegate: self,
+            childCoordinators: childCoordinators)
+        addChildCoordinatorStart(searchUserCoordinator)
+    }
+    
     public func didSelectTodayTeenImage(
         frame: CGRect,
         todayTeen: User,
@@ -43,10 +56,6 @@ extension MainCoordinator: MainViewControllerCoordinator {
         navigation.present(
             reportPopoverCoordinator.navigation.rootViewController,
             animated: false)
-    }
-    
-    public func openLoginSheet() {
-        delegate?.openLoginCoordinator()
     }
     
     public func didSelectAboutATeenCell(tag: TabTag) {
@@ -82,6 +91,4 @@ extension MainCoordinator: MainViewControllerCoordinator {
             self?.removeChildCoordinator(profileDetailCoordinator)
         }
     }
-    
-  
 }

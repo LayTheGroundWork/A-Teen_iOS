@@ -21,7 +21,7 @@ final class CoordinatorProviderImp: CoordinatorProvider {
 extension CoordinatorProviderImp {
     func makeProfileDetailCoordinator(
         delegate: ProfileDetailCoordinatorDelegate,
-        frame: CGRect,
+        frame: CGRect?,
         todayTeen: User,
         todayTeenFirstImage: UIImage
     ) -> Coordinator {

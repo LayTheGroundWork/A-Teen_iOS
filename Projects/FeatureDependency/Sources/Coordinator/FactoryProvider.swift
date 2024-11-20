@@ -13,7 +13,7 @@ import UIKit
 public protocol FactoryProvider {
     func makeProfileDetailCoordinator(
         delegate: ProfileDetailCoordinatorDelegate,
-        frame: CGRect,
+        frame: CGRect?,
         todayTeen: User,
         todayTeenFirstImage: UIImage
     ) -> Coordinator

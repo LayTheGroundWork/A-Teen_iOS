@@ -56,6 +56,7 @@ extension RankingViewModel {
                 self.thisWeekParticipantList = data.shuffled()
                 self.state.send(.getThisWeekParticipantsSuccess)
             } else {
+                print(message)
                 switch message {
                 case AppLocalized.expiredToken:
                     self.state.send(.openLoginSheet)
