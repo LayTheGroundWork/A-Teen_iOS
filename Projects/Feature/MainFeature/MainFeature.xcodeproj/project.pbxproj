@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 55;
+	objectVersion = 56;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -91,7 +91,6 @@
 		207DD46D7CF7C7493DDF1D8D /* View */ = {
 			isa = PBXGroup;
 			children = (
-				A84DD29D312BB44083844161 /* Cell */,
 				5BC68D160038C3AED5DD9DB7 /* MainViewController.swift */,
 			);
 			path = View;
@@ -108,6 +107,7 @@
 		54434BD74A79CCB06EC28E10 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				A84DD29D312BB44083844161 /* Cell */,
 				207DD46D7CF7C7493DDF1D8D /* View */,
 				D9511F88C5BA2161C63AE5BD /* ViewModel */,
 			);
@@ -246,8 +246,6 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
 				ORGANIZATIONNAME = ATeen;
-				TargetAttributes = {
-				};
 			};
 			buildConfigurationList = EAACB9E6F08918F3B50EE017 /* Build configuration list for PBXProject "MainFeature" */;
 			compatibilityVersion = "Xcode 14.0";
@@ -322,7 +320,10 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				OTHER_LDFLAGS = "$(inherited) -ObjC";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ATeen.ATeen.MainFeature;
 				PRODUCT_NAME = MainFeature;
 				SDKROOT = iphoneos;
@@ -330,10 +331,7 @@
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = (
-					"$(inherited)",
-					DEBUG,
-				);
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG";
 				SWIFT_COMPILATION_MODE = singlefile;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -363,7 +361,10 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				OTHER_LDFLAGS = "$(inherited) -ObjC";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ATeen.ATeen.MainFeature;
 				PRODUCT_NAME = MainFeature;
 				SDKROOT = iphoneos;

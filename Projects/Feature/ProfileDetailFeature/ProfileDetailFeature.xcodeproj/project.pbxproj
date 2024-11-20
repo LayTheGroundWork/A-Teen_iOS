@@ -3,17 +3,17 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 55;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		1CF4AF9AAEE5DCAF480AD3EE /* FeatureDependency.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46298C4EFDC4672E09C3EDF3 /* FeatureDependency.framework */; };
 		2EB4557D901ECF9A12C834EE /* ProfileDetailFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A43EB6119562050FB155947 /* ProfileDetailFactory.swift */; };
+		37EF2C8FB5E8EC75E8098C22 /* SnsPlatformView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A49890879A048C8AF1A5D68 /* SnsPlatformView.swift */; };
 		497F04F766144F24D9081390 /* ProfileDetailCoordinatorImp+ProfileDetailViewControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A64BBFEFCB47F6014A41023C /* ProfileDetailCoordinatorImp+ProfileDetailViewControllerCoordinator.swift */; };
 		5DD49C53C2A86A14236D7FED /* TeenImageCellCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 367CCE582E5175E1DE0BBD7B /* TeenImageCellCollectionViewCell.swift */; };
-		73F6CE042CEC6081008A4EE3 /* SnsPlatformView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73F6CE032CEC6081008A4EE3 /* SnsPlatformView.swift */; };
-		73F6CE062CEC8493008A4EE3 /* CustomSnsButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73F6CE052CEC8493008A4EE3 /* CustomSnsButton.swift */; };
 		8B9ADA99106D2357F17B7889 /* CustomHeartButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3C44FA71744D6F4F0817AC /* CustomHeartButton.swift */; };
+		C54E98CBF02B3001CA710C9D /* CustomSnsButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54BB9D3DCC5E110A8FA85768 /* CustomSnsButton.swift */; };
 		E71E926FD6866151B500EB92 /* CustomVoteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8852B8B7CA23BC191935C3AC /* CustomVoteButton.swift */; };
 		E8FA98278D78200AC911AEB9 /* ProfileDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A62956AACF348719350390B /* ProfileDetailViewController.swift */; };
 		F475F8605C01B8F7398DFECB /* ProfileDetailCoordinatorImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A509B9F085C4A804E9A5CF /* ProfileDetailCoordinatorImp.swift */; };
@@ -37,12 +37,12 @@
 /* Begin PBXFileReference section */
 		01174DEA02D1DDC348B0CCBC /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
 		367CCE582E5175E1DE0BBD7B /* TeenImageCellCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeenImageCellCollectionViewCell.swift; sourceTree = "<group>"; };
+		3A49890879A048C8AF1A5D68 /* SnsPlatformView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnsPlatformView.swift; sourceTree = "<group>"; };
 		46298C4EFDC4672E09C3EDF3 /* FeatureDependency.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FeatureDependency.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		48A509B9F085C4A804E9A5CF /* ProfileDetailCoordinatorImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDetailCoordinatorImp.swift; sourceTree = "<group>"; };
 		4F6AE01DD4B6F0D1794206D1 /* ProfileDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDetailViewModel.swift; sourceTree = "<group>"; };
+		54BB9D3DCC5E110A8FA85768 /* CustomSnsButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSnsButton.swift; sourceTree = "<group>"; };
 		5A62956AACF348719350390B /* ProfileDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDetailViewController.swift; sourceTree = "<group>"; };
-		73F6CE032CEC6081008A4EE3 /* SnsPlatformView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnsPlatformView.swift; sourceTree = "<group>"; };
-		73F6CE052CEC8493008A4EE3 /* CustomSnsButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSnsButton.swift; sourceTree = "<group>"; };
 		8852B8B7CA23BC191935C3AC /* CustomVoteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomVoteButton.swift; sourceTree = "<group>"; };
 		9A43EB6119562050FB155947 /* ProfileDetailFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDetailFactory.swift; sourceTree = "<group>"; };
 		9D3C44FA71744D6F4F0817AC /* CustomHeartButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomHeartButton.swift; sourceTree = "<group>"; };
@@ -77,7 +77,7 @@
 			isa = PBXGroup;
 			children = (
 				DE408B2BCF2173C4643AB346 /* ProfileDetailBottomBar.swift */,
-				73F6CE032CEC6081008A4EE3 /* SnsPlatformView.swift */,
+				3A49890879A048C8AF1A5D68 /* SnsPlatformView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -105,8 +105,8 @@
 			isa = PBXGroup;
 			children = (
 				9D3C44FA71744D6F4F0817AC /* CustomHeartButton.swift */,
+				54BB9D3DCC5E110A8FA85768 /* CustomSnsButton.swift */,
 				8852B8B7CA23BC191935C3AC /* CustomVoteButton.swift */,
-				73F6CE052CEC8493008A4EE3 /* CustomSnsButton.swift */,
 			);
 			path = Button;
 			sourceTree = "<group>";
@@ -229,6 +229,8 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
 				ORGANIZATIONNAME = ATeen;
+				TargetAttributes = {
+				};
 			};
 			buildConfigurationList = 24E039D9F663739F86E017A6 /* Build configuration list for PBXProject "ProfileDetailFeature" */;
 			compatibilityVersion = "Xcode 14.0";
@@ -264,13 +266,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				8B9ADA99106D2357F17B7889 /* CustomHeartButton.swift in Sources */,
+				C54E98CBF02B3001CA710C9D /* CustomSnsButton.swift in Sources */,
 				E71E926FD6866151B500EB92 /* CustomVoteButton.swift in Sources */,
 				FCB76CF995D35B798E8DC3F4 /* ProfileDetailBottomBar.swift in Sources */,
+				37EF2C8FB5E8EC75E8098C22 /* SnsPlatformView.swift in Sources */,
 				497F04F766144F24D9081390 /* ProfileDetailCoordinatorImp+ProfileDetailViewControllerCoordinator.swift in Sources */,
 				F475F8605C01B8F7398DFECB /* ProfileDetailCoordinatorImp.swift in Sources */,
-				73F6CE062CEC8493008A4EE3 /* CustomSnsButton.swift in Sources */,
 				2EB4557D901ECF9A12C834EE /* ProfileDetailFactory.swift in Sources */,
-				73F6CE042CEC6081008A4EE3 /* SnsPlatformView.swift in Sources */,
 				5DD49C53C2A86A14236D7FED /* TeenImageCellCollectionViewCell.swift in Sources */,
 				E8FA98278D78200AC911AEB9 /* ProfileDetailViewController.swift in Sources */,
 				FF09C008A3512D2463C9656C /* ProfileDetailViewModel.swift in Sources */,
@@ -300,10 +302,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					"-ObjC",
-				);
+				OTHER_LDFLAGS = "$(inherited) -ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ATeen.ATeen.ProfileDetailFeature;
 				PRODUCT_NAME = ProfileDetailFeature;
 				SDKROOT = iphoneos;
@@ -311,7 +310,10 @@
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = (
+					"$(inherited)",
+					DEBUG,
+				);
 				SWIFT_COMPILATION_MODE = singlefile;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -341,10 +343,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					"-ObjC",
-				);
+				OTHER_LDFLAGS = "$(inherited) -ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ATeen.ATeen.ProfileDetailFeature;
 				PRODUCT_NAME = ProfileDetailFeature;
 				SDKROOT = iphoneos;
