@@ -119,19 +119,13 @@ public final class IntroduceViewController: UIViewController {
         
         navigationController?.isNavigationBarHidden = false
         navigationItem.leftBarButtonItem = backButton
+        navigationItem.titleView = titleLabel
         
-        view.addSubview(titleLabel)
         view.addSubview(nextAndSaveButton)
         view.addSubview(collectionView)
     }
     
     private func configLayout() {
-        titleLabel.snp.makeConstraints { make in
-            make.leading.equalToSuperview().offset(ViewValues.defaultPadding)
-            make.trailing.equalToSuperview().offset(-ViewValues.defaultPadding)
-            make.top.equalTo(self.view.safeAreaLayoutGuide.snp.top).offset(13)
-        }
-        
         nextAndSaveButton.snp.makeConstraints { make in
             make.trailing.equalToSuperview().offset(-ViewValues.defaultPadding)
             make.bottom.equalToSuperview().offset(-48)
@@ -141,7 +135,7 @@ public final class IntroduceViewController: UIViewController {
         
         collectionView.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview()
-            make.top.equalTo(titleLabel.snp.bottom).offset(10)
+            make.top.equalTo(self.view.safeAreaLayoutGuide.snp.top).offset(ViewValues.defaultPadding)
             make.height.equalTo(430)
         }
     }

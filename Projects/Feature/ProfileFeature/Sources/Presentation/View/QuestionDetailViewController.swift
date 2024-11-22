@@ -97,7 +97,7 @@ public final class QuestionDetailViewController: UIViewController {
         titleLabel.snp.makeConstraints { make in
             make.leading.equalToSuperview().offset(ViewValues.defaultPadding)
             make.trailing.equalToSuperview().offset(-ViewValues.defaultPadding)
-            make.top.equalTo(self.view.safeAreaLayoutGuide.snp.top).offset(13)
+            make.top.equalTo(self.view.safeAreaLayoutGuide.snp.top).offset(ViewValues.defaultPadding)
         }
         
         writingTextView.snp.makeConstraints { make in

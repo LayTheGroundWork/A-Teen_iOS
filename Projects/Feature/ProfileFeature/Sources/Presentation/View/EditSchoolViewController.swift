@@ -235,8 +235,8 @@ public final class EditSchoolViewController: UIViewController {
         
         navigationController?.isNavigationBarHidden = false
         navigationItem.leftBarButtonItem = backButton
+        navigationItem.titleView = titleLabel
         
-        view.addSubview(titleLabel)
         view.addSubview(subTitleLabel)
         view.addSubview(schoolTextField)
         view.addSubview(tableBackgroundView)
@@ -248,16 +248,10 @@ public final class EditSchoolViewController: UIViewController {
     }
     
     private func configLayout() {
-        titleLabel.snp.makeConstraints { make in
-            make.leading.equalToSuperview().offset(ViewValues.defaultPadding)
-            make.trailing.equalToSuperview().offset(-ViewValues.defaultPadding)
-            make.top.equalTo(self.view.safeAreaLayoutGuide.snp.top).offset(13)
-        }
-        
         subTitleLabel.snp.makeConstraints { make in
             make.leading.equalToSuperview().offset(ViewValues.defaultPadding)
             make.trailing.equalToSuperview().offset(-ViewValues.defaultPadding)
-            make.top.equalTo(titleLabel.snp.bottom).offset(10)
+            make.top.equalTo(self.view.safeAreaLayoutGuide.snp.top).offset(ViewValues.defaultPadding)
         }
         
         schoolTextField.snp.makeConstraints { make in

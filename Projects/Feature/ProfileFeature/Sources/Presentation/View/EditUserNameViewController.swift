@@ -169,8 +169,8 @@ public final class EditUserNameViewController: UIViewController {
         
         navigationController?.isNavigationBarHidden = false
         navigationItem.leftBarButtonItem = backButton
+        navigationItem.titleView = titleLabel
         
-        view.addSubview(titleLabel)
         view.addSubview(textField)
         view.addSubview(errorMessageLabel)
         view.addSubview(charCountLabel)
@@ -179,14 +179,8 @@ public final class EditUserNameViewController: UIViewController {
     }
     
     private func configLayout() {
-        titleLabel.snp.makeConstraints { make in
-            make.leading.equalToSuperview().offset(ViewValues.defaultPadding)
-            make.trailing.equalToSuperview().offset(-ViewValues.defaultPadding)
-            make.top.equalTo(self.view.safeAreaLayoutGuide.snp.top).offset(13)
-        }
-        
         textField.snp.makeConstraints { make in
-            make.top.equalTo(titleLabel.snp.bottom).offset(40)
+            make.top.equalTo(self.view.safeAreaLayoutGuide.snp.top).offset(50)
             make.leading.trailing.equalToSuperview().inset(ViewValues.defaultPadding)
             make.height.equalTo(50)
         }

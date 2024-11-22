@@ -82,7 +82,7 @@ extension IntroduceViewModel {
     }
     
     func checkChangeIntroduce() -> Bool {
-        if myMbti != changeMbti || myWriting != changeWriting {
+        if (myMbti != changeMbti || myWriting != changeWriting) && !changeMbti.contains("") {
             return true
         }
         return false

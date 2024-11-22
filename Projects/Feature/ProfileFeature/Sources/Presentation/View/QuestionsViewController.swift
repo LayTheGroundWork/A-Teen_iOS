@@ -166,8 +166,8 @@ public final class QuestionsViewController: UIViewController {
         
         navigationController?.isNavigationBarHidden = false
         navigationItem.leftBarButtonItem = backButton
+        navigationItem.titleView = titleLabel
         
-        view.addSubview(titleLabel)
         view.addSubview(explainCountLabel)
         view.addSubview(questionsLabel)
         view.addSubview(saveButton)
@@ -180,15 +180,9 @@ public final class QuestionsViewController: UIViewController {
     }
     
     private func configLayout() {
-        titleLabel.snp.makeConstraints { make in
-            make.leading.equalToSuperview().offset(ViewValues.defaultPadding)
-            make.trailing.equalToSuperview().offset(-ViewValues.defaultPadding)
-            make.top.equalTo(self.view.safeAreaLayoutGuide.snp.top).offset(13)
-        }
-        
         explainCountLabel.snp.makeConstraints { make in
             make.trailing.equalToSuperview().offset(-ViewValues.defaultPadding)
-            make.top.equalTo(titleLabel.snp.bottom).offset(39)
+            make.bottom.equalTo(questionsLabel.snp.bottom)
             make.width.equalTo(60)
             make.height.equalTo(17)
         }
@@ -196,7 +190,7 @@ public final class QuestionsViewController: UIViewController {
         questionsLabel.snp.makeConstraints { make in
             make.leading.equalToSuperview().offset(ViewValues.defaultPadding)
             make.trailing.equalTo(explainCountLabel.snp.leading).offset(-10)
-            make.bottom.equalTo(explainCountLabel.snp.bottom)
+            make.top.equalTo(self.view.safeAreaLayoutGuide.snp.top).offset(ViewValues.defaultPadding)
         }
         
         saveButton.snp.makeConstraints { make in
