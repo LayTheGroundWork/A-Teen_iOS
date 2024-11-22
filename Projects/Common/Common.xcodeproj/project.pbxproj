@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 55;
+	objectVersion = 56;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -26,6 +26,7 @@
 		53F06C00D26255EC07247A70 /* CustomDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = E81A216314320B2606E3AEC3 /* CustomDialog.swift */; };
 		5DECC8AD550D2C24C26DAC57 /* TabTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A81A2C9A17ACE100D4CEDE1 /* TabTag.swift */; };
 		72CE949BD5BACD4D0F7D1B68 /* ProfileCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB1744A0E6D22DAAF822DBEA /* ProfileCategory.swift */; };
+		738E32DC2CF0721500BE2370 /* UserSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 738E32DB2CF0721500BE2370 /* UserSettings.swift */; };
 		748E6F12BFA02A9B5E511B16 /* UIImageView+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6E67776B079891DB7B0921A /* UIImageView+Utils.swift */; };
 		80D0328E2C69A2AFB4628B12 /* AlbumType.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BC6068CAE5ADDA9289EB1F /* AlbumType.swift */; };
 		8230E047D5CE7D5E951017CE /* UIImage+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 115B67997FED4CB9FDCD3DC3 /* UIImage+Utils.swift */; };
@@ -76,6 +77,7 @@
 		6A81A2C9A17ACE100D4CEDE1 /* TabTag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabTag.swift; sourceTree = "<group>"; };
 		6D2D3228D4C2DFDD8B31619A /* TextFieldRightViewType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldRightViewType.swift; sourceTree = "<group>"; };
 		725FA1DDFC369DA815E7A71B /* ProfileStateController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileStateController.swift; sourceTree = "<group>"; };
+		738E32DB2CF0721500BE2370 /* UserSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettings.swift; sourceTree = "<group>"; };
 		7E9F60A87DF324EB00CE1C4A /* MediaType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaType.swift; sourceTree = "<group>"; };
 		A28C71A0EBB2FB98E795FB9B /* AssetInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetInfo.swift; sourceTree = "<group>"; };
 		A2BA6248A6DADC659C75FFFB /* SchoolData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolData.swift; sourceTree = "<group>"; };
@@ -193,6 +195,7 @@
 				B2BC6068CAE5ADDA9289EB1F /* AlbumType.swift */,
 				A28C71A0EBB2FB98E795FB9B /* AssetInfo.swift */,
 				F83D8A69B1A5F074A943706D /* Badge.swift */,
+				738E32DB2CF0721500BE2370 /* UserSettings.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -356,8 +359,6 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
 				ORGANIZATIONNAME = ATeen;
-				TargetAttributes = {
-				};
 			};
 			buildConfigurationList = 7A960902591CDB4F68854742 /* Build configuration list for PBXProject "Common" */;
 			compatibilityVersion = "Xcode 14.0";
@@ -421,6 +422,7 @@
 				5301E7605CB20A1DBC27F112 /* MainStateController.swift in Sources */,
 				E06E953895802338D7DEAD78 /* ProfileStateController.swift in Sources */,
 				2ED6215D227B31B87D4C6470 /* RankingStateController.swift in Sources */,
+				738E32DC2CF0721500BE2370 /* UserSettings.swift in Sources */,
 				0464B73A350A2F0C9D2DD508 /* SignStateController.swift in Sources */,
 				0150114DC8925AFBB8000EAD /* SignUpStateController.swift in Sources */,
 				D8D16D2AA7659BBEC235971B /* Debouncer.swift in Sources */,
@@ -454,7 +456,10 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				OTHER_LDFLAGS = "$(inherited) -ObjC";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ATeen.ATeen.Common;
 				PRODUCT_NAME = Common;
 				SDKROOT = iphoneos;
@@ -550,7 +555,10 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				OTHER_LDFLAGS = "$(inherited) -ObjC";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ATeen.ATeen.Common;
 				PRODUCT_NAME = Common;
 				SDKROOT = iphoneos;
@@ -558,10 +566,7 @@
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = (
-					"$(inherited)",
-					DEBUG,
-				);
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG";
 				SWIFT_COMPILATION_MODE = singlefile;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;

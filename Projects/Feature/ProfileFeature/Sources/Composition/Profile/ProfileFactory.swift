@@ -84,7 +84,12 @@ public struct ProfileFactoryImp: ProfileFactory {
         delegate: SettingsCoordinatorDelegate,
         childCoordinators: [Coordinator]
     ) -> Coordinator {
-        let factory = SettingsFactoryImp()
+        // TODO: API DTO 변경되면 userSettings 넣어주기
+        let factory = SettingsFactoryImp(
+            userSettings: .init(
+                isNotificationSetting: true,
+                isTournamentJoin: true,
+                videoPlayType: 0))
         let coordinator = SettingsCoordinator(
             navigation: navigation,
             factory: factory,

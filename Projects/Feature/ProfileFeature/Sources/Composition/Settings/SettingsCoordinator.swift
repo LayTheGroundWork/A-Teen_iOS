@@ -9,7 +9,8 @@ import FeatureDependency
 import UIKit
 
 public protocol SettingsCoordinatorDelegate: AnyObject {
-    func didTapLogOut()
+    func didFinishSettingsViewController(childCoordinator: Coordinator)
+    func didTapLogOut(childCoordinator: Coordinator)
 }
 
 public final class SettingsCoordinator: Coordinator {
