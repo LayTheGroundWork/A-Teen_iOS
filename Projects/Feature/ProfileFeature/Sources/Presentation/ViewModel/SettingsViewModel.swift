@@ -9,6 +9,7 @@ import Common
 
 class SettingsViewModel {
     var userSettings: UserSettings
+    var isDeleteUser: Bool = false
     
     init(userSettings: UserSettings) {
         self.userSettings = userSettings
@@ -46,7 +47,20 @@ extension SettingsViewModel {
         }
     }
     
+    func performUserAction() {
+        if isDeleteUser {
+            deleteUser()
+        }
+        logOut()
+    }
+    
+    func logOut() {
+        // TODO: 토큰 지우기
+        print("delete Token")
+    }
+    
     func deleteUser() {
-        
+        // TODO: 회원 탈퇴 API
+        print("delete User")
     }
 }

@@ -111,10 +111,8 @@ class SettingsTableViewCell: UITableViewCell {
                 titleLabel.text = "앱 버전"
                 contentView.addSubview(subTextLabel)
             case 4:
-                titleLabel.textColor = UIColor.red
                 titleLabel.text = "로그아웃"
             case 5:
-                titleLabel.textColor = UIColor.red
                 titleLabel.text = "회원 탈퇴"
             default:
                 break

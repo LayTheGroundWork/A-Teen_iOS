@@ -52,7 +52,7 @@
 		6F4F55EFA60F8653A2FD57CF /* MyBadgeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 533CEACC96ABD99AE9697B8A /* MyBadgeCoordinator.swift */; };
 		70FD4B5AF7603DBB13CA8BF5 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D98CF78E4A27E6C6674A24C4 /* SettingsViewModel.swift */; };
 		715D0E7F9D77DAA383D5D2FF /* QuestionDetailCoordinator+QuestionDetailViewControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF1BEBEE986C510319D5BD16 /* QuestionDetailCoordinator+QuestionDetailViewControllerCoordinator.swift */; };
-		738E32DE2CF0777000BE2370 /* SettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 738E32DD2CF0777000BE2370 /* SettingsTableViewCell.swift */; };
+		73DAAD8D2CF6166A0020FE4D /* SettingsCoordinator+AlertCoordinatorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73DAAD8C2CF6166A0020FE4D /* SettingsCoordinator+AlertCoordinatorDelegate.swift */; };
 		756DD4AA05A241918FA38F70 /* EditMyPhotoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3301B0234A35342653F809 /* EditMyPhotoViewModel.swift */; };
 		7B35E2B85D939916DF07B07A /* ProfileCoordinator+EditUserNameCoordinatorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF26FF14349714F5569D1555 /* ProfileCoordinator+EditUserNameCoordinatorDelegate.swift */; };
 		7C505E7E6CAF70CEDA9F10FC /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 382C671EC413AA0DEB71E990 /* ProfileViewModel.swift */; };
@@ -83,6 +83,7 @@
 		EEE3EA3D8152F4EA534751AF /* IntroduceWritingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0312603942ACDEF58925580B /* IntroduceWritingCollectionViewCell.swift */; };
 		EF44F0F7664A789ACE2C8F1D /* EditUserNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DCE2BE20E7D8F6CA2320B2E /* EditUserNameViewController.swift */; };
 		EF5A0D3817ADA9AE05826AC2 /* QuestionsDialogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E04127B7334656036D4AB00 /* QuestionsDialogViewController.swift */; };
+		EF934992428139AC754020D9 /* SettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2439A94D6CC2FA9C2B1D78C5 /* SettingsTableViewCell.swift */; };
 		F0ED6D806F33213B447E8C07 /* QuestionsFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 555D9EB46ED7F03D56BC4449 /* QuestionsFactory.swift */; };
 		F551D0785EAA1B25D1755A90 /* EditMyPhotoFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C37705EDF58DE446C309E81 /* EditMyPhotoFactory.swift */; };
 		F71FE135882B9261A301672B /* SettingsCoordinator+SettingsViewControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAD109B94FE6E58E024C1C68 /* SettingsCoordinator+SettingsViewControllerCoordinator.swift */; };
@@ -115,6 +116,7 @@
 		22ABD069CABD76A565FC581C /* EditSchoolCoordinator+EditSchoolViewControllerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EditSchoolCoordinator+EditSchoolViewControllerCoordinator.swift"; sourceTree = "<group>"; };
 		239696F69969B860A4B1CA03 /* MyBadgeDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyBadgeDetailViewController.swift; sourceTree = "<group>"; };
 		2418B97204143459A8926FD7 /* QuestionsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionsTableViewCell.swift; sourceTree = "<group>"; };
+		2439A94D6CC2FA9C2B1D78C5 /* SettingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewCell.swift; sourceTree = "<group>"; };
 		244059F7ADF9DF20E59A98F2 /* EditUserNameCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditUserNameCoordinator.swift; sourceTree = "<group>"; };
 		283CD0A8C1028D03725762A5 /* QuestionsDialogCoordinator+QuestionsDialogViewControllerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "QuestionsDialogCoordinator+QuestionsDialogViewControllerCoordinator.swift"; sourceTree = "<group>"; };
 		28EAC45189F0B88F6BBABDFE /* IntroduceCoordinator+IntroduceViewControllerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "IntroduceCoordinator+IntroduceViewControllerCoordinator.swift"; sourceTree = "<group>"; };
@@ -144,7 +146,7 @@
 		66B570A0E1AD14610490C1BF /* MyBadgeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyBadgeCollectionViewCell.swift; sourceTree = "<group>"; };
 		6D83568570D25A642B1CF04D /* ProfileFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileFactory.swift; sourceTree = "<group>"; };
 		6F653EF71AEDDDF72F07C6C3 /* MyBadgeCoordinator+MyBadgeViewControllerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MyBadgeCoordinator+MyBadgeViewControllerCoordinator.swift"; sourceTree = "<group>"; };
-		738E32DD2CF0777000BE2370 /* SettingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewCell.swift; sourceTree = "<group>"; };
+		73DAAD8C2CF6166A0020FE4D /* SettingsCoordinator+AlertCoordinatorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SettingsCoordinator+AlertCoordinatorDelegate.swift"; sourceTree = "<group>"; };
 		76CB95371BDD602B561496E4 /* LinksDialogFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinksDialogFactory.swift; sourceTree = "<group>"; };
 		7D75411655BD7C1F2248A03D /* ProfileFeature.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ProfileFeature.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7E45D109E82BFC5DAF771D41 /* CustomSelectQuestionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSelectQuestionButton.swift; sourceTree = "<group>"; };
@@ -289,6 +291,7 @@
 			children = (
 				C44BB0A946B7D2D7792E7784 /* SettingsCoordinator.swift */,
 				BAD109B94FE6E58E024C1C68 /* SettingsCoordinator+SettingsViewControllerCoordinator.swift */,
+				73DAAD8C2CF6166A0020FE4D /* SettingsCoordinator+AlertCoordinatorDelegate.swift */,
 				B510A9EE10C065FCC93E50DA /* SettingsFactory.swift */,
 			);
 			path = Settings;
@@ -401,7 +404,7 @@
 				66B570A0E1AD14610490C1BF /* MyBadgeCollectionViewCell.swift */,
 				30D4C899D521B4175D9FD507 /* QuestionsDialogTableViewCell.swift */,
 				2418B97204143459A8926FD7 /* QuestionsTableViewCell.swift */,
-				738E32DD2CF0777000BE2370 /* SettingsTableViewCell.swift */,
+				2439A94D6CC2FA9C2B1D78C5 /* SettingsTableViewCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -527,6 +530,7 @@
 				D53844C1B57C33ED736CE922 /* CustomNaviView.swift in Sources */,
 				8A6DB6D20B2C2A51378E2CC6 /* CustomSchoolButton.swift in Sources */,
 				902DEC54AD81BD7C96EF037D /* CustomSelectQuestionButton.swift in Sources */,
+				73DAAD8D2CF6166A0020FE4D /* SettingsCoordinator+AlertCoordinatorDelegate.swift in Sources */,
 				6C3366C4B7ED170879389B97 /* EditMyPhotoCoordinator+AlbumCoordinatorDelegate.swift in Sources */,
 				5730F443B6689A67DE64B30E /* EditMyPhotoCoordinator+EditMyPhotoViewControllerCoordinator.swift in Sources */,
 				47C882B228D4D18455C84BA5 /* EditMyPhotoCoordinator.swift in Sources */,
@@ -581,6 +585,7 @@
 				1DE99A5B6CFD360858E63D25 /* MyBadgeCollectionViewCell.swift in Sources */,
 				1F10CE9A24C402D86A4C181B /* QuestionsDialogTableViewCell.swift in Sources */,
 				AD7FBB796998704193CA7A56 /* QuestionsTableViewCell.swift in Sources */,
+				EF934992428139AC754020D9 /* SettingsTableViewCell.swift in Sources */,
 				0628CD4A4A81FCDECA0D6582 /* EditMyPhotoViewController.swift in Sources */,
 				2147490AB1FBF5720770E157 /* EditSchoolViewController.swift in Sources */,
 				EF44F0F7664A789ACE2C8F1D /* EditUserNameViewController.swift in Sources */,
@@ -595,7 +600,6 @@
 				56038CF5620576CB26844C72 /* SettingsViewController.swift in Sources */,
 				756DD4AA05A241918FA38F70 /* EditMyPhotoViewModel.swift in Sources */,
 				92B0746C1E65DED3A7D88073 /* EditSchoolViewModel.swift in Sources */,
-				738E32DE2CF0777000BE2370 /* SettingsTableViewCell.swift in Sources */,
 				62D396FCAFDEB089BE3ADA02 /* EditUserNameViewModel.swift in Sources */,
 				2526EF0DA283B362A7FF3524 /* IntroduceViewModel.swift in Sources */,
 				E410C57B100BA5AB65A0E276 /* MyBadgeViewModel.swift in Sources */,

@@ -14,14 +14,13 @@ public protocol SettingsFactory {
 }
 
 public struct SettingsFactoryImp: SettingsFactory {
-    private (set) var userSettings: UserSettings
+    var viewModel: SettingsViewModel
 
     public init(userSettings: UserSettings) {
-        self.userSettings = userSettings
+        viewModel = SettingsViewModel(userSettings: userSettings)
     }
     
     public func makeSettingsCotroller(coordinator: SettingsViewControllerCoordinator) -> UIViewController {
-        let viewModel = SettingsViewModel(userSettings: userSettings)
         let controller = SettingsViewController(
             viewModel: viewModel,
             coordinator: coordinator)

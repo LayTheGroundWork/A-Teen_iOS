@@ -31,7 +31,6 @@ public final class ProfileCoordinator: Coordinator {
         coordinatorProvider: CoordinatorProvider,
         factory: ProfileFactory,
         delegate: ProfileCoordinatorDelegate
-
     ) {
         self.navigation = navigation
         self.coordinatorProvider = coordinatorProvider

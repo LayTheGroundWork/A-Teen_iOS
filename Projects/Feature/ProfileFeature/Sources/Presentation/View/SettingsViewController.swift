@@ -13,12 +13,13 @@ import UIKit
 
 public protocol SettingsViewControllerCoordinator: AnyObject {
     func didTapBackButton()
-    func didTapLogOut()
     func didTapVideoPlayType()
     func didTapService()
     func didTapInformation()
     func didTapInquire()
     func didTapVersion()
+    func didTapLogOut()
+    func didTapDeleteUser()
 }
 
 final class SettingsViewController: UIViewController {
@@ -147,10 +148,11 @@ extension SettingsViewController: UITableViewDataSource {
             case 3:
                 coordinator?.didTapVersion()
             case 4:
+                viewModel.isDeleteUser = false
                 coordinator?.didTapLogOut()
             case 5:
-                // TODO: 회원 탈퇴 로직
-                coordinator?.didTapLogOut()
+                viewModel.isDeleteUser = true
+                coordinator?.didTapDeleteUser()
             default:
                 break
             }

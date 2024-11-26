@@ -14,7 +14,7 @@ public protocol ProfileFactory {
     
     func makeSettingCoordinator(
         navigation: Navigation,
-        parentCoordinator: ParentCoordinator,
+        coordinatorProvider: CoordinatorProvider,
         delegate: SettingsCoordinatorDelegate,
         childCoordinators: [Coordinator]
     ) -> Coordinator
@@ -80,7 +80,7 @@ public struct ProfileFactoryImp: ProfileFactory {
     
     public func makeSettingCoordinator(
         navigation: Navigation,
-        parentCoordinator: ParentCoordinator,
+        coordinatorProvider: CoordinatorProvider,
         delegate: SettingsCoordinatorDelegate,
         childCoordinators: [Coordinator]
     ) -> Coordinator {
@@ -92,6 +92,7 @@ public struct ProfileFactoryImp: ProfileFactory {
                 videoPlayType: 0))
         let coordinator = SettingsCoordinator(
             navigation: navigation,
+            coordinatorProvider: coordinatorProvider,
             factory: factory,
             delegate: delegate,
             childCoordinators: childCoordinators)

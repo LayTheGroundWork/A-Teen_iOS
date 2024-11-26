@@ -11,7 +11,7 @@ extension ProfileCoordinator: ProfileViewControllerCoordinator {
     public func didTabSettingButton() {
         let coordinator = factory.makeSettingCoordinator(
             navigation: navigation,
-            parentCoordinator: self,
+            coordinatorProvider: coordinatorProvider,
             delegate: self,
             childCoordinators: childCoordinators)
         addChildCoordinatorStart(coordinator)

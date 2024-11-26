@@ -15,17 +15,20 @@ public protocol SettingsCoordinatorDelegate: AnyObject {
 
 public final class SettingsCoordinator: Coordinator {
     public var navigation: Navigation
+    public var coordinatorProvider: CoordinatorProvider
     public var factory: SettingsFactory
     weak var delegate: SettingsCoordinatorDelegate?
     public var childCoordinators: [Coordinator]
     
     public init(
         navigation: Navigation,
+        coordinatorProvider: CoordinatorProvider,
         factory: SettingsFactory,
         delegate: SettingsCoordinatorDelegate,
         childCoordinators: [Coordinator]
     ) {
         self.navigation = navigation
+        self.coordinatorProvider = coordinatorProvider
         self.factory = factory
         self.delegate = delegate
         self.childCoordinators = childCoordinators
