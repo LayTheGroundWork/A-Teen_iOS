@@ -16,6 +16,8 @@ public enum ProfileFeatureViewNames {
 public protocol ProfileCoordinatorDelegate: AnyObject {
     func didTapLogOut()
     func configTabbarState(view: ProfileFeatureViewNames)
+    func openLoginCoordinator()
+    func changeToMainTap()
 }
 
 public final class ProfileCoordinator: Coordinator {

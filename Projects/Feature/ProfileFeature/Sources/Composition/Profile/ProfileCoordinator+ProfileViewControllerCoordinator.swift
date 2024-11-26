@@ -83,4 +83,12 @@ extension ProfileCoordinator: ProfileViewControllerCoordinator {
     public func configTabbarState(view: ProfileFeatureViewNames) {
         delegate?.configTabbarState(view: view)
     }
+    
+    public func openLoginSheet() {
+        delegate?.openLoginCoordinator()
+    }
+    
+    public func changeToMainTap() {
+        delegate?.changeToMainTap()
+    }
 }

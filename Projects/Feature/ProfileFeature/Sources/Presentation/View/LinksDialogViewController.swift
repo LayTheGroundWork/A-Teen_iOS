@@ -104,6 +104,8 @@ final class LinksDialogViewController: UIViewController {
                      self.coordinator?.didFinish()
                  case .updateUI:
                      break
+                 case .openLoginSheet:
+                     break
                  }
              }
              .store(in: &cancellables)

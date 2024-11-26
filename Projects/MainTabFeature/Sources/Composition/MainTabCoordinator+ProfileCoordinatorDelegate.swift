@@ -25,4 +25,9 @@ extension MainTabCoordinator: ProfileCoordinatorDelegate {
             tab.hideTabbar()
         }
     }
+    
+    public func changeToMainTap() {
+        guard let tab = navigation.viewControllers.first as? MainTabController else { return }
+        tab.clickButton(tab.mainButton)
+    }
 }

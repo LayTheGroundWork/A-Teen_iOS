@@ -23,14 +23,14 @@ public class ProfileViewModel {
     var user: MyPageData = .init(
         id: 0,
         profileImages: [],
-        likeCount: 15,
-        nickName: "철수",
+        likeCount: 0,
+        nickName: "",
         uniqueId: "",
         mbti: nil,
         introduction: nil,
         birthDay: "1997-09-01",
-        location: "서울",
-        schoolName: "서울고등학교",
+        location: "",
+        schoolName: "",
         snsPlatform: nil,
         category: "",
         questions: [])
@@ -75,7 +75,10 @@ extension ProfileViewModel {
 // MARK: - Link
 extension ProfileViewModel {
     func getMyPageData() {
-        guard let token = useCase.getAuthToken() else { return }
+        guard let token = useCase.getAuthToken() else {
+            self.state.send(.openLoginSheet)
+            return
+        }
         
         useCase.getMyPageData(request: .init(authorization: token))
             .sink { [weak self] data in

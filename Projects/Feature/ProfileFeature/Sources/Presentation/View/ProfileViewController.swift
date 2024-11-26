@@ -23,6 +23,8 @@ public protocol ProfileViewControllerCoordinator: AnyObject {
     func didTabIntroduceButton()
     func didTabQuestionButton()
     func configTabbarState(view: ProfileFeatureViewNames)
+    func openLoginSheet()
+    func changeToMainTap()
 }
 
 public protocol ProfileViewControllerDelegate: AnyObject {
@@ -45,7 +47,7 @@ public final class ProfileViewController: UIViewController {
     private var viewModel: ProfileViewModel
     private var cancellables = Set<AnyCancellable>()
     private weak var coordinator: ProfileViewControllerCoordinator?
-
+    
     private lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.backgroundColor = UIColor.systemBackground
@@ -75,7 +77,7 @@ public final class ProfileViewController: UIViewController {
         label.textColor = UIColor.black
         label.font = .customFont(forTextStyle: .body, weight: .bold)
         label.numberOfLines = 2
-
+        
         if let text = label.text {
             let attributeString = NSMutableAttributedString(string: text)
             attributeString.addAttribute(
@@ -349,6 +351,12 @@ public final class ProfileViewController: UIViewController {
     public override func viewDidLoad() {
         super.viewDidLoad()
         setupBindings()
+        
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(updateProfileView(_:)),
+            name: .completeLogin,
+            object: nil)
     }
     
     public override func viewWillAppear(_ animated: Bool) {
@@ -379,34 +387,36 @@ public final class ProfileViewController: UIViewController {
     
     private func setupBindings() {
         viewModel.state
-             .receive(on: DispatchQueue.main)
-             .sink { [weak self] state in
-                 guard let self else { return }
-                 switch state {
-                 case .getMyPageDataSuccess:
-                     self.configUserInterfaceAndLayout()
-                     self.setupActions()
-                 case .saveDataSuccess:
-                     break
-                 case .updateUI:
-                     self.linkView.subviews.forEach {
-                         $0.removeFromSuperview()
-                         $0.snp.removeConstraints()
-                     }
-                     
-                     [self.linkEmptyTextLabel, self.linkView].forEach {
-                         $0.removeFromSuperview()
-                         $0.snp.removeConstraints()
-                     }
-                     
-                     self.addLinkView(count: self.viewModel.filterLinks.count)
-                     
-                     self.linkView.configUserInterface(linkList: viewModel.filterLinks)
-                     self.changeScrollViewSize()
-                 }
-             }
-             .store(in: &cancellables)
-     }
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] state in
+                guard let self else { return }
+                switch state {
+                case .getMyPageDataSuccess:
+                    self.configUserInterfaceAndLayout()
+                    self.setupActions()
+                case .saveDataSuccess:
+                    break
+                case .updateUI:
+                    self.linkView.subviews.forEach {
+                        $0.removeFromSuperview()
+                        $0.snp.removeConstraints()
+                    }
+                    
+                    [self.linkEmptyTextLabel, self.linkView].forEach {
+                        $0.removeFromSuperview()
+                        $0.snp.removeConstraints()
+                    }
+                    
+                    self.addLinkView(count: self.viewModel.filterLinks.count)
+                    
+                    self.linkView.configUserInterface(linkList: viewModel.filterLinks)
+                    self.changeScrollViewSize()
+                case .openLoginSheet:
+                    coordinator?.openLoginSheet()
+                }
+            }
+            .store(in: &cancellables)
+    }
     
     // MARK: - Helpers
     private func configUserInterfaceAndLayout() {
@@ -432,7 +442,7 @@ public final class ProfileViewController: UIViewController {
     
     private func addBackgroundView() {
         scrollView.addSubview(backgroundView)
-
+        
         backgroundView.snp.makeConstraints { make in
             make.top.equalToSuperview()
             make.leading.trailing.equalTo(self.scrollView.frameLayoutGuide)
@@ -607,7 +617,7 @@ public final class ProfileViewController: UIViewController {
             
             let linkHeight = Int(self.linkView.oneLinkImageView.frame.height) * count
             let linkPadding = (count - 1) * 28
-
+            
             self.linkView.snp.makeConstraints { make in
                 make.top.equalTo(self.linkTitleLabel.snp.bottom).offset(22)
                 make.leading.equalToSuperview().offset(ViewValues.defaultPadding)
@@ -736,7 +746,7 @@ public final class ProfileViewController: UIViewController {
             make.leading.trailing.equalToSuperview()
             self.questionViewHeightAnchor = make.height.equalTo(0).constraint
         }
-
+        
         questionRightButton.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(39)
             make.trailing.equalToSuperview().offset(-ViewValues.defaultPadding)
@@ -749,7 +759,7 @@ public final class ProfileViewController: UIViewController {
             make.trailing.equalTo(introduceRightButton.snp.leading).offset(-ViewValues.defaultPadding)
             make.height.equalTo(24)
         }
-
+        
         addQuestionTextView()
     }
     
@@ -764,7 +774,7 @@ public final class ProfileViewController: UIViewController {
             }
             
             self.view.layoutIfNeeded()
-
+            
             self.questionViewHeightAnchor?.update(offset: questionTitleLabel.frame.height + questionEmptyTextLabel.frame.height + 129)
         } else {
             questionView.addSubview(questionTextView)
@@ -865,7 +875,7 @@ public final class ProfileViewController: UIViewController {
         
         scrollView.contentSize = CGSize(width: view.frame.width, height: backgroundView.frame.height)
     }
-
+    
     private func setupActions() {
         editImageButton.addTarget(
             self,
@@ -942,7 +952,14 @@ public final class ProfileViewController: UIViewController {
     @objc private func clickMoreBottomButton(_ sender: UIButton) {
         moreButtonAnimation(sender)
     }
-
+    
+    @objc private func updateProfileView(_ notification: Notification) {
+        if let _ = viewModel.useCase.getAuthToken() {
+            viewModel.getMyPageData()
+        } else {
+            coordinator?.changeToMainTap()
+        }
+    }
 }
 
 // MARK: - Animation
@@ -962,7 +979,7 @@ extension ProfileViewController {
             UIView.animate(withDuration: 0.3, delay: 0, options: .showHideTransitionViews) {
                 self.view.layoutIfNeeded()
                 let originHeight = self.questionTextView.oneTitleLabel.frame.height + self.questionTextView.oneTextLabel.frame.height + self.questionTextView.twoTitleLabel.frame.height + self.questionTextView.twoTextLabel.frame.height + 44
-
+                
                 self.questionTextViewHeightAnchor?.update(offset: originHeight)
                 
                 self.view.layoutIfNeeded()
@@ -979,7 +996,7 @@ extension ProfileViewController: ProfileViewControllerDelegate {
     public func didTabBackButtonFromEditUserNameViewController(user: MyPageData) {
         viewModel.user = user
         userNameLabel.text = "\(user.nickName) 님\n오늘도 좋은 하루 보내세요!"
-       
+        
         if let text = userNameLabel.text {
             let attributeString = NSMutableAttributedString(string: text)
             attributeString.addAttribute(
