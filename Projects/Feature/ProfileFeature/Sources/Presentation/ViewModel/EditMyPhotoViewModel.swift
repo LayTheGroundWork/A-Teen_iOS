@@ -13,8 +13,8 @@ import UIKit
 public final class EditMyPhotoViewModel {
     private let authService = MyPhotoAuthService()
 
-    var originMyPhotoList: [AlbumType] = [.init(image: nil), .init(image: nil)]
-    var myPhotoList: [AlbumType] = [.init(image: nil), .init(image: nil)]
+    var originMyPhotoList: [AlbumType] = []
+    var myPhotoList: [AlbumType] = []
 
     public func extractImageFromVideo(asset: AVAsset, completion: @escaping(UIImage) -> Void) {
         let imageGenerator = AVAssetImageGenerator(asset: asset)
@@ -41,9 +41,8 @@ public final class EditMyPhotoViewModel {
         completion()
     }
     
-    func deleteAlbumItem(index: Int, completion: () -> Void) {
+    func deleteAlbumItem(index: Int) {
         myPhotoList.remove(at: index)
-        completion()
     }
     
     func checkEditValue() -> Bool {

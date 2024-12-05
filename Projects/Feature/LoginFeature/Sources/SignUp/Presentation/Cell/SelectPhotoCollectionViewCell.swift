@@ -130,18 +130,14 @@ extension SelectPhotoCollectionViewCell: UICollectionViewDataSource {
         else {
             return UICollectionViewCell()
         }
-
-        let itemIndex = indexPath.item
-        let maxPhotoCount = 2
         
-        cell.setCellCustom(item: itemIndex)
-        
-        guard itemIndex < viewModel.selectPhotoList.count || viewModel.selectPhotoList.count == maxPhotoCount else {
+        guard indexPath.item < viewModel.selectPhotoList.count else {
+            cell.setCellCustom(item: indexPath.item)
             return cell
         }
-
-        let selectedItem = viewModel.selectPhotoList[itemIndex]
-
+        
+        let selectedItem = viewModel.selectPhotoList[indexPath.item]
+        
         if let image = selectedItem.image {
             cell.setImage(image: image)
         } else if let asset = selectedItem.avAsset {
@@ -153,9 +149,8 @@ extension SelectPhotoCollectionViewCell: UICollectionViewDataSource {
         
         cell.removeImageButtonAction = { [weak self] in
             guard let self else { return }
-            self.viewModel?.deleteAlbumItem(index: itemIndex) { [weak cell] in
-                cell?.clearCell()
-            }
+            self.viewModel?.deleteAlbumItem(index: indexPath.item)
+            collectionView.reloadData()
         }
 
         return cell

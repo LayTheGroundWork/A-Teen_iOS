@@ -52,7 +52,7 @@ extension AppDelegate {
         let tokenStorage: TokenStorage = TokenStorage()
         // Auth
         let auth: Auth = Auth(tokenHandler: tokenStorage)
-        
+        auth.logOut()
         // MARK: - Service
         let userService: UserService = UserServiceImp(
             auth: auth,

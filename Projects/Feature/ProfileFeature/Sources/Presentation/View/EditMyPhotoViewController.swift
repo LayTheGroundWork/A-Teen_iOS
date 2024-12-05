@@ -188,17 +188,14 @@ extension EditMyPhotoViewController: UICollectionViewDataSource {
         else {
             return UICollectionViewCell()
         }
-        
-        let itemIndex = indexPath.item
-        let maxPhotoCount = 2
-        
-        cell.setCellCustom(item: itemIndex)
 
-        guard itemIndex < viewModel.myPhotoList.count || viewModel.myPhotoList.count == maxPhotoCount else {
+        guard indexPath.item < viewModel.myPhotoList.count else {
+            cell.setCellCustom(item: indexPath.item)
             return cell
         }
         
-        let selectedItem = viewModel.myPhotoList[itemIndex]
+        let selectedItem = viewModel.myPhotoList[indexPath.item]
+        
         if let image = selectedItem.image {
             cell.setImage(image: image)
         } else if let asset = selectedItem.avAsset {
@@ -210,9 +207,8 @@ extension EditMyPhotoViewController: UICollectionViewDataSource {
         
         cell.removeImageButtonAction = { [weak self] in
             guard let self else { return }
-            self.viewModel.deleteAlbumItem(index: itemIndex) { [weak cell] in
-                cell?.clearCell()
-            }
+            self.viewModel.deleteAlbumItem(index: indexPath.item)
+            collectionView.reloadData()
         }
         
         return cell

@@ -102,6 +102,9 @@ public final class PhotoCollectionViewCell: UICollectionViewCell {
 
     // MARK: - Actions
     public func setCellCustom(item: Int) {
+        contentView.layer.borderWidth = 0
+        contentView.layer.borderColor = nil
+        
         plusImageView.isHidden = false
         photoImageView.isHidden = true
         videoMarkView.isHidden = true
@@ -120,16 +123,6 @@ public final class PhotoCollectionViewCell: UICollectionViewCell {
     
     public func showVideoMark() {
         videoMarkView.isHidden = false
-    }
-    
-    public func clearCell() {
-        contentView.layer.borderWidth = 0
-        contentView.layer.borderColor = nil
-        
-        plusImageView.isHidden = false
-        photoImageView.isHidden = true
-        videoMarkView.isHidden = true
-        removeImageButton.isHidden = true
     }
     
     @objc func clickRemoveButton(_ sender: UIButton){

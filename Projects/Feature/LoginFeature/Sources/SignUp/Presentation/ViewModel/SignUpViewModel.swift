@@ -51,7 +51,7 @@ public final class SignUpViewModel {
     ]
     
     //SelectPhoto
-    var selectPhotoList: [AlbumType] = [.init(image: nil), .init(image: nil)]
+    var selectPhotoList: [AlbumType] = []
     
     private let authService = MyPhotoAuthService()
     
@@ -201,8 +201,7 @@ extension SignUpViewModel {
         completion()
     }
     
-    func deleteAlbumItem(index: Int, completion: () -> Void) {
+    func deleteAlbumItem(index: Int) {
         selectPhotoList.remove(at: index)
-        completion()
     }
 }
