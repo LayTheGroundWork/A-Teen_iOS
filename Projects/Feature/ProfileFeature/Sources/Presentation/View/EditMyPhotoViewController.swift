@@ -72,6 +72,11 @@ final class EditMyPhotoViewController: UIViewController {
         return collectionView
     }()
     
+    private lazy var photoGuideButton: UIButton = {
+        let button = CustomShowDetailButton(labelText: AppLocalized.photoGuideButton)
+        return button
+    }()
+    
     private lazy var completeButton: UIButton = {
         let button = UIButton()
         button.titleLabel?.font = UIFont.customFont(forTextStyle: .callout,
@@ -121,6 +126,7 @@ final class EditMyPhotoViewController: UIViewController {
         view.addSubview(photoGuideLabel)
         view.addSubview(completeButton)
         view.addSubview(collectionView)
+        view.addSubview(photoGuideButton)
     }
     
     private func configLayout() {
@@ -139,7 +145,14 @@ final class EditMyPhotoViewController: UIViewController {
         collectionView.snp.makeConstraints { make in
             make.top.equalTo(photoGuideLabel.snp.bottom).offset(ViewValues.defaultPadding)
             make.leading.trailing.equalToSuperview()
-            make.bottom.equalTo(completeButton.snp.top).offset(-ViewValues.defaultPadding)
+            make.height.equalTo(ViewValues.editMyPhotoCollectionViewCellHeight)
+        }
+        
+        photoGuideButton.snp.makeConstraints { make in
+            make.leading.equalToSuperview().offset(ViewValues.defaultPadding)
+            make.top.equalTo(collectionView.snp.bottom).offset(26)
+            make.width.equalTo(177)
+            make.height.equalTo(24)
         }
     }
     
@@ -166,13 +179,7 @@ final class EditMyPhotoViewController: UIViewController {
 // MARK: - UICollectionViewDataSource
 extension EditMyPhotoViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        let count = viewModel.myPhotoList.count
-        
-        if count == 10 {
-            return count
-        } else {
-            return count + 1
-        }
+        return 2
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -183,7 +190,7 @@ extension EditMyPhotoViewController: UICollectionViewDataSource {
         }
         
         let itemIndex = indexPath.item
-        let maxPhotoCount = 10
+        let maxPhotoCount = 2
         
         cell.setCellCustom(item: itemIndex)
 
@@ -197,6 +204,14 @@ extension EditMyPhotoViewController: UICollectionViewDataSource {
         } else if let asset = selectedItem.avAsset {
             viewModel.extractImageFromVideo(asset: asset) { [weak cell] image in
                 cell?.setImage(image: image)
+                cell?.showVideoMark()
+            }
+        }
+        
+        cell.removeImageButtonAction = { [weak self] in
+            guard let self else { return }
+            self.viewModel.deleteAlbumItem(index: itemIndex) { [weak cell] in
+                cell?.clearCell()
             }
         }
         

@@ -120,12 +120,7 @@ final class SelectPhotoCollectionViewCell: UICollectionViewCell {
 // MARK: - UICollectionViewDataSource
 extension SelectPhotoCollectionViewCell: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        guard let count = viewModel?.selectPhotoList.count else { return 0 }
-        if count == 10 {
-            return count
-        } else {
-            return count + 1
-        }
+        return 2
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -137,7 +132,7 @@ extension SelectPhotoCollectionViewCell: UICollectionViewDataSource {
         }
 
         let itemIndex = indexPath.item
-        let maxPhotoCount = 10
+        let maxPhotoCount = 2
         
         cell.setCellCustom(item: itemIndex)
         
@@ -152,6 +147,14 @@ extension SelectPhotoCollectionViewCell: UICollectionViewDataSource {
         } else if let asset = selectedItem.avAsset {
             viewModel.extractImageFromVideo(asset: asset) { [weak cell] image in
                 cell?.setImage(image: image)
+                cell?.showVideoMark()
+            }
+        }
+        
+        cell.removeImageButtonAction = { [weak self] in
+            guard let self else { return }
+            self.viewModel?.deleteAlbumItem(index: itemIndex) { [weak cell] in
+                cell?.clearCell()
             }
         }
 

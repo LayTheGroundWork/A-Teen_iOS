@@ -103,6 +103,7 @@ extension AppDelegate {
         
         let myPageUseCase: MyPageUseCase = MyPageUseCaseImp(myPageService: myPageService, searchService: searchService)
         
+        
         // MARK: - Register
         AppContainer.register(
             type: UserUseCase.self,

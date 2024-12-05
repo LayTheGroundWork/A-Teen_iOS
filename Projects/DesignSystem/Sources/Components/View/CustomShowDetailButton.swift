@@ -1,21 +1,21 @@
 //
 //  CustomShowDetailButton.swift
-//  ATeen
+//  DesignSystem
 //
-//  Created by 최동호 on 5/29/24.
+//  Created by 최동호 on 12/4/24.
+//  Copyright © 2024 ATeen. All rights reserved.
 //
 
 import Common
-import DesignSystem
 import UIKit
 
-final class CustomShowDetailButton: CustomImageLabelButton {
-    override init(
+public final class CustomShowDetailButton: CustomImageLabelButton {
+    public override init(
         imageName: String = "chevron.right",
         selectedImageName: String? = nil,
-        imageColor: UIColor? = DesignSystemAsset.gray01.color,
+        imageColor: UIColor? = DesignSystemAsset.gray02.color,
         selectedImageColor: UIColor? = nil,
-        textColor: UIColor = DesignSystemAsset.gray01.color,
+        textColor: UIColor = DesignSystemAsset.gray02.color,
         labelText: String,
         buttonBackgroundColor: UIColor = .clear,
         labelFont: UIFont = UIFont.customFont(forTextStyle: .footnote,
@@ -42,7 +42,7 @@ final class CustomShowDetailButton: CustomImageLabelButton {
 
 // MARK: - Custom Show Detail Button Layout
 extension CustomShowDetailButton {
-    override func layoutSubviews() {
+    public override func layoutSubviews() {
         super.layoutSubviews()
         
         customLabel.snp.makeConstraints { make in

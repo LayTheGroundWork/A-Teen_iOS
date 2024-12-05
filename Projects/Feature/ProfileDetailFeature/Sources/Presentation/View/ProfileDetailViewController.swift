@@ -560,6 +560,7 @@ extension ProfileDetailViewController {
             make.leading.equalToSuperview().offset(ViewValues.defaultPadding)
             make.trailing.equalToSuperview().offset(-ViewValues.defaultPadding)
         }
+        
         addIntroduceTextView()
     }
     
@@ -648,6 +649,7 @@ extension ProfileDetailViewController {
             make.leading.equalToSuperview().offset(ViewValues.defaultPadding)
             make.trailing.equalToSuperview().offset(-ViewValues.defaultPadding)
         }
+        
         addQuestionTextView()
     }
     

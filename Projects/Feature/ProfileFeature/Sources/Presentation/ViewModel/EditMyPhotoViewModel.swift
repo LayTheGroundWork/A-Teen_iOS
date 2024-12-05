@@ -41,6 +41,11 @@ public final class EditMyPhotoViewModel {
         completion()
     }
     
+    func deleteAlbumItem(index: Int, completion: () -> Void) {
+        myPhotoList.remove(at: index)
+        completion()
+    }
+    
     func checkEditValue() -> Bool {
         originMyPhotoList != myPhotoList
     }

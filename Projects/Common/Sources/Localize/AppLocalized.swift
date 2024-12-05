@@ -166,7 +166,7 @@ public enum AppLocalized {
     
     // MARK: - Profile
     public static let editMyPhotoTitle = "사진 수정"
-    public static let photoGuideTextLabel = "*사진, 동영상 포함 최대 10장을 등록할 수 있어요"
+    public static let photoGuideTextLabel = "*최대 2개를 등록할 수 있어요"
     public static let completeEdit = "수정 완료"
     public static let textViewPlaceHolder = "질문에 관한 간단한 답을 작성해주세요"
     public static let myBadgeTitle = "내 배지"

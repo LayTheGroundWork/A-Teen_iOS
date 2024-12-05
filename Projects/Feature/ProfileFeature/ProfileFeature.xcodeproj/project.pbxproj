@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 55;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -52,7 +52,6 @@
 		6F4F55EFA60F8653A2FD57CF /* MyBadgeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 533CEACC96ABD99AE9697B8A /* MyBadgeCoordinator.swift */; };
 		70FD4B5AF7603DBB13CA8BF5 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D98CF78E4A27E6C6674A24C4 /* SettingsViewModel.swift */; };
 		715D0E7F9D77DAA383D5D2FF /* QuestionDetailCoordinator+QuestionDetailViewControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF1BEBEE986C510319D5BD16 /* QuestionDetailCoordinator+QuestionDetailViewControllerCoordinator.swift */; };
-		73DAAD8D2CF6166A0020FE4D /* SettingsCoordinator+AlertCoordinatorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73DAAD8C2CF6166A0020FE4D /* SettingsCoordinator+AlertCoordinatorDelegate.swift */; };
 		756DD4AA05A241918FA38F70 /* EditMyPhotoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3301B0234A35342653F809 /* EditMyPhotoViewModel.swift */; };
 		7B35E2B85D939916DF07B07A /* ProfileCoordinator+EditUserNameCoordinatorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF26FF14349714F5569D1555 /* ProfileCoordinator+EditUserNameCoordinatorDelegate.swift */; };
 		7C505E7E6CAF70CEDA9F10FC /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 382C671EC413AA0DEB71E990 /* ProfileViewModel.swift */; };
@@ -85,6 +84,7 @@
 		EF5A0D3817ADA9AE05826AC2 /* QuestionsDialogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E04127B7334656036D4AB00 /* QuestionsDialogViewController.swift */; };
 		EF934992428139AC754020D9 /* SettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2439A94D6CC2FA9C2B1D78C5 /* SettingsTableViewCell.swift */; };
 		F0ED6D806F33213B447E8C07 /* QuestionsFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 555D9EB46ED7F03D56BC4449 /* QuestionsFactory.swift */; };
+		F503EBB39D9CD945564E7AE5 /* SettingsCoordinator+AlertCoordinatorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72663802D0EC5BAD6065AFA6 /* SettingsCoordinator+AlertCoordinatorDelegate.swift */; };
 		F551D0785EAA1B25D1755A90 /* EditMyPhotoFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C37705EDF58DE446C309E81 /* EditMyPhotoFactory.swift */; };
 		F71FE135882B9261A301672B /* SettingsCoordinator+SettingsViewControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAD109B94FE6E58E024C1C68 /* SettingsCoordinator+SettingsViewControllerCoordinator.swift */; };
 		FBC45648C88BF39457AC9171 /* CustomLinkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F166EAC68233528E97146BE4 /* CustomLinkView.swift */; };
@@ -146,7 +146,7 @@
 		66B570A0E1AD14610490C1BF /* MyBadgeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyBadgeCollectionViewCell.swift; sourceTree = "<group>"; };
 		6D83568570D25A642B1CF04D /* ProfileFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileFactory.swift; sourceTree = "<group>"; };
 		6F653EF71AEDDDF72F07C6C3 /* MyBadgeCoordinator+MyBadgeViewControllerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MyBadgeCoordinator+MyBadgeViewControllerCoordinator.swift"; sourceTree = "<group>"; };
-		73DAAD8C2CF6166A0020FE4D /* SettingsCoordinator+AlertCoordinatorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SettingsCoordinator+AlertCoordinatorDelegate.swift"; sourceTree = "<group>"; };
+		72663802D0EC5BAD6065AFA6 /* SettingsCoordinator+AlertCoordinatorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SettingsCoordinator+AlertCoordinatorDelegate.swift"; sourceTree = "<group>"; };
 		76CB95371BDD602B561496E4 /* LinksDialogFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinksDialogFactory.swift; sourceTree = "<group>"; };
 		7D75411655BD7C1F2248A03D /* ProfileFeature.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ProfileFeature.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7E45D109E82BFC5DAF771D41 /* CustomSelectQuestionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSelectQuestionButton.swift; sourceTree = "<group>"; };
@@ -290,8 +290,8 @@
 			isa = PBXGroup;
 			children = (
 				C44BB0A946B7D2D7792E7784 /* SettingsCoordinator.swift */,
+				72663802D0EC5BAD6065AFA6 /* SettingsCoordinator+AlertCoordinatorDelegate.swift */,
 				BAD109B94FE6E58E024C1C68 /* SettingsCoordinator+SettingsViewControllerCoordinator.swift */,
-				73DAAD8C2CF6166A0020FE4D /* SettingsCoordinator+AlertCoordinatorDelegate.swift */,
 				B510A9EE10C065FCC93E50DA /* SettingsFactory.swift */,
 			);
 			path = Settings;
@@ -492,6 +492,8 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
 				ORGANIZATIONNAME = ATeen;
+				TargetAttributes = {
+				};
 			};
 			buildConfigurationList = 820D491C7A089E9609C5577D /* Build configuration list for PBXProject "ProfileFeature" */;
 			compatibilityVersion = "Xcode 14.0";
@@ -530,7 +532,6 @@
 				D53844C1B57C33ED736CE922 /* CustomNaviView.swift in Sources */,
 				8A6DB6D20B2C2A51378E2CC6 /* CustomSchoolButton.swift in Sources */,
 				902DEC54AD81BD7C96EF037D /* CustomSelectQuestionButton.swift in Sources */,
-				73DAAD8D2CF6166A0020FE4D /* SettingsCoordinator+AlertCoordinatorDelegate.swift in Sources */,
 				6C3366C4B7ED170879389B97 /* EditMyPhotoCoordinator+AlbumCoordinatorDelegate.swift in Sources */,
 				5730F443B6689A67DE64B30E /* EditMyPhotoCoordinator+EditMyPhotoViewControllerCoordinator.swift in Sources */,
 				47C882B228D4D18455C84BA5 /* EditMyPhotoCoordinator.swift in Sources */,
@@ -576,6 +577,7 @@
 				5A3611D064BEAE7BC301E1B6 /* QuestionsDialogCoordinator.swift in Sources */,
 				8B18398D4AC24190B862E160 /* QuestionsDialogFactory.swift in Sources */,
 				F0ED6D806F33213B447E8C07 /* QuestionsFactory.swift in Sources */,
+				F503EBB39D9CD945564E7AE5 /* SettingsCoordinator+AlertCoordinatorDelegate.swift in Sources */,
 				F71FE135882B9261A301672B /* SettingsCoordinator+SettingsViewControllerCoordinator.swift in Sources */,
 				5B82067E200AE10CFFAC461E /* SettingsCoordinator.swift in Sources */,
 				0CAAD85CF771BABCC8A603F6 /* SettingsFactory.swift in Sources */,
@@ -744,10 +746,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					"-ObjC",
-				);
+				OTHER_LDFLAGS = "$(inherited) -ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ATeen.ATeen.ProfileFeature;
 				PRODUCT_NAME = ProfileFeature;
 				SDKROOT = iphoneos;
@@ -755,7 +754,10 @@
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = (
+					"$(inherited)",
+					DEBUG,
+				);
 				SWIFT_COMPILATION_MODE = singlefile;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -785,10 +787,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					"-ObjC",
-				);
+				OTHER_LDFLAGS = "$(inherited) -ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ATeen.ATeen.ProfileFeature;
 				PRODUCT_NAME = ProfileFeature;
 				SDKROOT = iphoneos;

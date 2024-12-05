@@ -200,4 +200,9 @@ extension SignUpViewModel {
         }
         completion()
     }
+    
+    func deleteAlbumItem(index: Int, completion: () -> Void) {
+        selectPhotoList.remove(at: index)
+        completion()
+    }
 }
