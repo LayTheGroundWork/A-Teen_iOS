@@ -70,7 +70,6 @@ extension AlbumViewModel {
         size: CGSize,
         completion: @escaping (AVAsset?, AVAudioMix?) -> Void
     ) {
-        
         photoService.fetchVideo(
             phAsset: phAsset,
             size: size) { avAsset, avAudio in

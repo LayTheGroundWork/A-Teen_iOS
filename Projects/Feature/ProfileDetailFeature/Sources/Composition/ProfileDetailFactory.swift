@@ -12,21 +12,15 @@ import UIKit
 
 public protocol ProfileDetailFactory {
     func makeProfileDetailViewController(coordinator: ProfileDetailViewControllerCoordinator) -> UIViewController
-    func makeSNSBottomSheetCoordinator(
-        navigation: Navigation,
-        childCoordinators: [Coordinator],
-        contentViewController: UIViewController,
-        delegate: SNSBottomSheetCoordinatorDelegate
-    ) -> Coordinator
 }
 
 public struct ProfileDetailFactoryImp: ProfileDetailFactory {
-    private(set) var frame: CGRect
+    private(set) var frame: CGRect?
     private(set) var todayTeen: User
     private(set) var todayTeenFirstImage: UIImage
     
     public init(
-        frame: CGRect,
+        frame: CGRect?,
         todayTeen: User,
         todayTeenFirstImage: UIImage
     ) {
@@ -45,20 +39,5 @@ public struct ProfileDetailFactoryImp: ProfileDetailFactory {
         controller.modalPresentationStyle = .overFullScreen
         
         return controller
-    }
-    
-    public func makeSNSBottomSheetCoordinator(
-        navigation: Navigation,
-        childCoordinators: [Coordinator],
-        contentViewController: UIViewController,
-        delegate: SNSBottomSheetCoordinatorDelegate
-    ) -> Coordinator {
-        let factory = SNSBottomSheetFactoryImp()
-        return SNSBottomSheetCoordinator(
-            navigation: navigation,
-            factory: factory,
-            childCoordinators: childCoordinators,
-            contentViewController: contentViewController,
-            delegate: delegate)
     }
 }

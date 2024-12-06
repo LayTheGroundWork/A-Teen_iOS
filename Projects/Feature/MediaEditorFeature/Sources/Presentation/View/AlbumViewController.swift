@@ -183,9 +183,7 @@ final class AlbumViewController: UIViewController {
         mediaType: MediaType,
         completion: @escaping () -> Void
     ) {
-        viewModel.loadAlbums(mediaType: mediaType) {
-            completion()
-        }
+        viewModel.loadAlbums(mediaType: mediaType, completion: completion)
     }
     
     private func loadImages() {

@@ -19,6 +19,7 @@
 		57A989A749C8ADCC52F49835 /* PageIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F729088FA1FB40AAFC082CB /* PageIndicatorView.swift */; };
 		7A0C54B5DEB0870B0D784605 /* CustomClearXmarkTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DACC874CD3124AFC15FB08 /* CustomClearXmarkTextField.swift */; };
 		7A74F05268085075D27FBD1D /* TeenTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4EF6BE0491455A8516B7E3C /* TeenTableViewCell.swift */; };
+		81CE2A547D80D61AD24A7B51 /* CustomShowDetailButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3ABAC4926BEC7BF10AAD378 /* CustomShowDetailButton.swift */; };
 		ABB14811E13F7B1ECCF8B086 /* TuistAssets+DesignSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5263BC75B281154AC0B5A7B /* TuistAssets+DesignSystem.swift */; };
 		CEE409F6A52B994A79F4E3FA /* CustomQuestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE58EFD462BFA138CA32B350 /* CustomQuestionView.swift */; };
 		CFE4925AA440C85B6D8D28D7 /* UIView+ImageRender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 920DA469DBBE73FF7D4216D5 /* UIView+ImageRender.swift */; };
@@ -72,6 +73,7 @@
 		D4EF6BE0491455A8516B7E3C /* TeenTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeenTableViewCell.swift; sourceTree = "<group>"; };
 		E2683CC5C4689C6FF07AA9C7 /* PhotoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewCell.swift; sourceTree = "<group>"; };
 		E28C4F1461F3FFE982430588 /* Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
+		E3ABAC4926BEC7BF10AAD378 /* CustomShowDetailButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomShowDetailButton.swift; sourceTree = "<group>"; };
 		FACF52A264004877C59F67A9 /* CustomProfileBadgeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomProfileBadgeButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -146,6 +148,7 @@
 				62470A1A3593316470358F97 /* CustomPageControlView.swift */,
 				FACF52A264004877C59F67A9 /* CustomProfileBadgeButton.swift */,
 				BE58EFD462BFA138CA32B350 /* CustomQuestionView.swift */,
+				E3ABAC4926BEC7BF10AAD378 /* CustomShowDetailButton.swift */,
 				7F729088FA1FB40AAFC082CB /* PageIndicatorView.swift */,
 				446B3DF68D777459DF78D819 /* SpinnerDisplayable.swift */,
 			);
@@ -296,6 +299,7 @@
 				E712F21D1D733A4FDE518D15 /* CustomPageControlView.swift in Sources */,
 				531BB57B066A3652A1867246 /* CustomProfileBadgeButton.swift in Sources */,
 				CEE409F6A52B994A79F4E3FA /* CustomQuestionView.swift in Sources */,
+				81CE2A547D80D61AD24A7B51 /* CustomShowDetailButton.swift in Sources */,
 				57A989A749C8ADCC52F49835 /* PageIndicatorView.swift in Sources */,
 				12CB705402E4127A285C7D1C /* SpinnerDisplayable.swift in Sources */,
 				4288F5B555587A91E8DACF93 /* UIFont+TextStyle.swift in Sources */,

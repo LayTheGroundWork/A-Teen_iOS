@@ -13,20 +13,4 @@ extension ProfileDetailCoordinatorImp: ProfileDetailViewControllerCoordinator {
     public func didFinishFlow() {
         delegate?.didFinish(childCoordinator: self)
     }
-    
-    public func didTapSNSButton(
-        contentViewController: UIViewController
-    ) {
-        let snsBottomSheetCoordinator = factory.makeSNSBottomSheetCoordinator(
-            navigation: navigation,
-            childCoordinators: childCoordinators,
-            contentViewController: contentViewController,
-            delegate: self)
-        
-        addChildCoordinatorStart(snsBottomSheetCoordinator)
-        
-        snsBottomSheetCoordinator.navigation.dismissNavigation = { [weak self] in
-            self?.didFinish(childCoordinator: snsBottomSheetCoordinator)
-        }
-    }
 }

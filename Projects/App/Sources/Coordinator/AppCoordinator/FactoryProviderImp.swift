@@ -18,7 +18,7 @@ import UIKit
 final class FactoryProviderImp: FactoryProvider {
     func makeProfileDetailCoordinator(
         delegate: ProfileDetailCoordinatorDelegate,
-        frame: CGRect,
+        frame: CGRect?,
         todayTeen: User,
         todayTeenFirstImage: UIImage
     ) -> Coordinator {

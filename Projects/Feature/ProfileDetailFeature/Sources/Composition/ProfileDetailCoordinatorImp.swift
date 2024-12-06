@@ -12,7 +12,7 @@ import UIKit
 
 public final class ProfileDetailCoordinatorImp: ProfileDetailCoordinator {
     public let factory: ProfileDetailFactory
-    public let frame: CGRect
+    public let frame: CGRect?
     public let todayTeen: User
     public var navigation: Navigation
     public var childCoordinators: [Coordinator]
@@ -21,7 +21,7 @@ public final class ProfileDetailCoordinatorImp: ProfileDetailCoordinator {
     
     public init(
         factory: ProfileDetailFactory,
-        frame: CGRect,
+        frame: CGRect?,
         todayTeen: User,
         navigation: Navigation,
         childCoordinators: [Coordinator],

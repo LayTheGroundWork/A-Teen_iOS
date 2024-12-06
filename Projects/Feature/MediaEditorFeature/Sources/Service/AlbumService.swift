@@ -34,7 +34,7 @@ final public class MyAlbumService: AlbumService {
             .init(
                 fetchResult: standardFetchResult,
                 albumName: mediaType.title))
-        
+                
         // 3. smart 앨범을 query로 이미지 가져오기
         let smartAlbums = PHAssetCollection.fetchAssetCollections(
             with: .smartAlbum,
@@ -63,7 +63,6 @@ final public class MyAlbumService: AlbumService {
                         albumName: mediaType.title))
             }
         }
-
     }
     
     private func getPredicate(mediaType: MediaType) -> NSPredicate {

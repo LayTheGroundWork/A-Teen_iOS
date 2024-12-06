@@ -14,13 +14,15 @@ import Domain
 import UIKit
 
 public protocol MainViewControllerCoordinator: AnyObject {
-    func didSelectTodayTeenImage(frame: CGRect, todayTeen: User, todayTeenFirstImage: UIImage)
     func openLoginSheet()
+    func didSelectSearchButton()
+    func didSelectTodayTeenImage(frame: CGRect, todayTeen: User, todayTeenFirstImage: UIImage)
     func didSelectMenuButton(popoverPosition: CGRect)
     func didSelectAboutATeenCell(tag: TabTag)
     func didSelectTournamentImage(indexPath: IndexPath)
     func didSelectTournamentMoreButton()
     func didSelectAnotherTeenCell(frame: CGRect, todayTeen: User, todayTeenFirstImage: UIImage)
+    func configTabbarState(view: MainViewNames)
 }
 
 protocol MainViewControllerDelegate: AnyObject {
@@ -38,7 +40,7 @@ public final class MainViewController: UIViewController {
     
     private var naviHeightAnchor: Constraint?
     
-    private lazy var customNaviView = CustomNaviView()
+    private lazy var customNaviView = CustomNaviView(frame: .zero, delegate: self)
     
     private lazy var categoryCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -92,6 +94,11 @@ public final class MainViewController: UIViewController {
         super.viewDidLoad()
         setupBindings()
         viewModel.findAllUser(.viewDidLoad)
+    }
+    
+    public override func viewWillAppear(_ animated: Bool) {
+        coordinator?.configTabbarState(view: .main)
+        navigationController?.isNavigationBarHidden = true
     }
     
     private func setupBindings() {
@@ -518,6 +525,16 @@ extension MainViewController: MainViewControllerDelegate {
                 cell.startAutoScroll()
             }
         }
+    }
+}
+
+extension MainViewController: CustomNaviViewDelegate {
+    func didTapSearchButton() {
+        coordinator?.didSelectSearchButton()
+    }
+    
+    func didTapAlarmButton() {
+        //TODO: 알람버튼 눌렀을 떄
     }
 }
 

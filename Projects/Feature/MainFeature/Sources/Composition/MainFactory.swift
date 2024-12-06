@@ -12,6 +12,12 @@ import UIKit
 
 public protocol MainFactory {
     func makeMainViewController(coordinator: MainViewControllerCoordinator) -> UIViewController
+    func makeSearchUserCoordinator(
+        navigation: Navigation,
+        coordinatorProvider: CoordinatorProvider,
+        delegate: SearchUserCoordinatorDelegate,
+        childCoordinators: [Coordinator]
+    ) -> Coordinator
 }
 
 public struct MainFactoryImp: MainFactory {
@@ -25,5 +31,20 @@ public struct MainFactoryImp: MainFactory {
             viewModel: viewModel,
             coordinator: coordinator)
         return controller
+    }
+    
+    public func makeSearchUserCoordinator(
+        navigation: Navigation,
+        coordinatorProvider: CoordinatorProvider,
+        delegate: SearchUserCoordinatorDelegate,
+        childCoordinators: [Coordinator]
+    ) -> Coordinator {
+        let factory = SearchUserFactoryImp()
+        return SearchUserCoordinator(
+            navigation: navigation,
+            coordinatorProvider: coordinatorProvider,
+            factory: factory,
+            delegate: delegate,
+            childCoordinators: childCoordinators)
     }
 }

@@ -12,4 +12,5 @@ public enum ProfileStateController {
     case getMyPageDataSuccess
     case saveDataSuccess
     case updateUI
+    case openLoginSheet
 }

@@ -9,9 +9,15 @@ import Common
 import FeatureDependency
 import UIKit
 
+public enum MainViewNames {
+    case main
+    case search
+}
+
 public protocol MainCoordinatorDelegate: AnyObject {
     func openLoginCoordinator()
     func didSelectAboutATeenCell(tag: TabTag)
+    func configTabbarState(view: MainViewNames)
 }
 
 public final class MainCoordinator: Coordinator {

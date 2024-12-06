@@ -1,0 +1,206 @@
+//
+//  ProfileFactory.swift
+//  ATeen
+//
+//  Created by 최동호 on 5/23/24.
+//
+
+import Core
+import FeatureDependency
+import UIKit
+
+public protocol ProfileFactory {
+    func makeProfileViewController(coordinator: ProfileViewControllerCoordinator) -> UIViewController
+    
+    func makeSettingCoordinator(
+        navigation: Navigation,
+        coordinatorProvider: CoordinatorProvider,
+        delegate: SettingsCoordinatorDelegate,
+        childCoordinators: [Coordinator]
+    ) -> Coordinator
+    
+    func makeMyBadgeCoordinator(
+        navigation: Navigation,
+        parentCoordinator: ParentCoordinator,
+        delegate: MyBadgeCoordinatorDelegate,
+        childCoordinators: [Coordinator]
+    ) -> Coordinator
+    
+    func makeLinksDialogCoordinator(
+        delegate: LinksDialogCoordinatorDelegate
+    ) -> Coordinator
+    
+    func makeIntroduceCoordinator(
+        navigation: Navigation,
+        parentCoordinator: ParentCoordinator,
+        delegate: IntroduceCoordinatorDelegate,
+        childCoordinators: [Coordinator]
+    ) -> Coordinator
+    
+    func makeQuestionsCoordinator(
+        navigation: Navigation,
+        parentCoordinator: ParentCoordinator,
+        delegate: QuestionsCoordinatorDelegate,
+        childCoordinators: [Coordinator]
+    ) -> Coordinator
+    
+    func makeEditMyPhotoCoordinator(
+        navigation: Navigation,
+        coordinatorProvider: CoordinatorProvider,
+        childCoordinators: [Coordinator],
+        delegate: EditMyPhotoCoordinatorDelegate
+    ) -> Coordinator
+    
+    func makeEditUserNameCoordinator(
+        navigation: Navigation,
+        parentCoordinator: ParentCoordinator,
+        delegate: EditUserNameCoordinatorDelegate,
+        childCoordinators: [Coordinator]
+    ) -> Coordinator
+    
+    func makeEditSchoolCoordinator(
+        navigation: Navigation,
+        parentCoordinator: ParentCoordinator,
+        delegate: EditSchoolCoordinatorDelegate,
+        childCoordinators: [Coordinator]
+    ) -> Coordinator
+}
+
+public struct ProfileFactoryImp: ProfileFactory {
+    let viewModel = ProfileViewModel()
+    
+    public init() { }
+    
+    public func makeProfileViewController(
+        coordinator: ProfileViewControllerCoordinator
+    ) -> UIViewController {
+        let controller = ProfileViewController(viewModel: viewModel, coordinator: coordinator)
+        return controller
+    }
+    
+    public func makeSettingCoordinator(
+        navigation: Navigation,
+        coordinatorProvider: CoordinatorProvider,
+        delegate: SettingsCoordinatorDelegate,
+        childCoordinators: [Coordinator]
+    ) -> Coordinator {
+        // TODO: API DTO 변경되면 userSettings 넣어주기
+        let factory = SettingsFactoryImp(
+            userSettings: .init(
+                isNotificationSetting: true,
+                isTournamentJoin: true,
+                videoPlayType: 0))
+        let coordinator = SettingsCoordinator(
+            navigation: navigation,
+            coordinatorProvider: coordinatorProvider,
+            factory: factory,
+            delegate: delegate,
+            childCoordinators: childCoordinators)
+        return coordinator
+    }
+    
+    public func makeMyBadgeCoordinator(
+        navigation: Navigation,
+        parentCoordinator:ParentCoordinator,
+        delegate: MyBadgeCoordinatorDelegate,
+        childCoordinators: [Coordinator]
+    ) -> Coordinator {
+        let factory = MyBadgeFactoryImp(badgeList: viewModel.userBadge)
+        let coordinator = MyBadgeCoordinator(
+            navigation: navigation,
+            factory: factory,
+            delegate: delegate,
+            childCoordinators: childCoordinators)
+        return coordinator
+    }
+    
+    public func makeLinksDialogCoordinator(delegate: LinksDialogCoordinatorDelegate) -> Coordinator {
+        let navigationController = UINavigationController()
+        navigationController.modalPresentationStyle = .overFullScreen
+        navigationController.view.backgroundColor = UIColor.clear
+        let navigation = NavigationImp(rootViewController: navigationController)
+        let factory = LinksDialogFactoryImp(viewModel: viewModel)
+        
+        let coordinator = LinksDialogCoordinator(
+            navigation: navigation,
+            factory: factory,
+            delegate: delegate)
+        return coordinator
+    }
+    
+    public func makeIntroduceCoordinator(
+        navigation: Navigation,
+        parentCoordinator: ParentCoordinator,
+        delegate: IntroduceCoordinatorDelegate,
+        childCoordinators: [Coordinator]
+    ) -> Coordinator {
+        let factory = IntroduceFactoryImp(user: viewModel.user)
+        let coordinator = IntroduceCoordinator(
+            navigation: navigation,
+            factory: factory,
+            delegate: delegate,
+            childCoordinators: childCoordinators)
+        return coordinator
+    }
+    
+    public func makeQuestionsCoordinator(
+        navigation: Navigation,
+        parentCoordinator: ParentCoordinator,
+        delegate: QuestionsCoordinatorDelegate,
+        childCoordinators: [Coordinator]
+    ) -> Coordinator {
+        let factory = QuestionsFactoryImp(user: viewModel.user)
+        let coordinator = QuestionsCoordinator(
+            navigation: navigation,
+            factory: factory,
+            delegate: delegate,
+            childCoordinators: childCoordinators)
+        return coordinator
+    }
+    
+    public func makeEditMyPhotoCoordinator(
+        navigation: Navigation,
+        coordinatorProvider: CoordinatorProvider,
+        childCoordinators: [Coordinator],
+        delegate: EditMyPhotoCoordinatorDelegate
+    ) -> Coordinator {
+        let factory = EditMyPhotoFactoryImp()
+        let coordinator = EditMyPhotoCoordinator(
+            navigation: navigation,
+            coordinatorProvider: coordinatorProvider,
+            childCoordinators: childCoordinators,
+            factory: factory,
+            delegate: delegate)
+        return coordinator
+    }
+    
+    public func makeEditUserNameCoordinator(
+        navigation: Navigation,
+        parentCoordinator: ParentCoordinator,
+        delegate: EditUserNameCoordinatorDelegate,
+        childCoordinators: [Coordinator]
+    ) -> Coordinator {
+        let factory = EditUserNameFactoryImp(user: viewModel.user)
+        let coordinator = EditUserNameCoordinator(
+            navigation: navigation,
+            factory: factory,
+            delegate: delegate,
+            childCoordinators: childCoordinators)
+        return coordinator
+    }
+    
+    public func makeEditSchoolCoordinator(
+        navigation: Navigation,
+        parentCoordinator: ParentCoordinator,
+        delegate: EditSchoolCoordinatorDelegate,
+        childCoordinators: [Coordinator]
+    ) -> Coordinator {
+        let factory = EditSchoolFactoryImp(user: viewModel.user)
+        let coordinator = EditSchoolCoordinator(
+            navigation: navigation,
+            factory: factory,
+            delegate: delegate,
+            childCoordinators: childCoordinators)
+        return coordinator
+    }
+}

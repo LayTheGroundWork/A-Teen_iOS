@@ -42,7 +42,10 @@ final class MyMediaService: NSObject, ConvertToMediaService {
         album: PHFetchResult<PHAsset>,
         completion: @escaping ([PHAsset]) -> Void
     ) {
-        guard 0 < album.count else { return }
+        guard 0 < album.count else {
+            completion([])    
+            return
+        }
         
         var phAssets = [PHAsset]()
         

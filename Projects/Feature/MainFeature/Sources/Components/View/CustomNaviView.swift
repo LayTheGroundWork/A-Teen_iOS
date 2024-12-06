@@ -10,7 +10,14 @@ import SnapKit
 import DesignSystem
 import UIKit
 
+protocol CustomNaviViewDelegate: AnyObject {
+    func didTapSearchButton()
+    func didTapAlarmButton()
+}
+
 class CustomNaviView: UIView {
+    weak var delegate: CustomNaviViewDelegate?
+    
     lazy var titleImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = DesignSystemAsset.mainLogo.image
@@ -34,8 +41,13 @@ class CustomNaviView: UIView {
         return button
     }()
     
-    override init(frame: CGRect) {
+    init(
+        frame: CGRect,
+        delegate: CustomNaviViewDelegate
+    ) {
         super.init(frame: frame)
+        
+        self.delegate = delegate
     }
     
     required init?(coder: NSCoder) {
@@ -75,11 +87,11 @@ extension CustomNaviView {
 // MARK: - Action
 extension CustomNaviView {
     @objc func clickSearchButton(_ sender: UIButton) {
-        print("검색 버튼 클릭")
+        delegate?.didTapSearchButton()
     }
     
     @objc func clickAlarmButton(_ sender: UIButton) {
-        print("알림 버튼 클릭")
+        delegate?.didTapAlarmButton()
     }
 }
 

@@ -1,0 +1,45 @@
+//
+//  SettingsCoordinator.swift
+//  ATeen
+//
+//  Created by 최동호 on 5/17/24.
+//
+
+import FeatureDependency
+import UIKit
+
+public protocol SettingsCoordinatorDelegate: AnyObject {
+    func didFinishSettingsViewController(childCoordinator: Coordinator)
+    func didTapLogOut(childCoordinator: Coordinator)
+}
+
+public final class SettingsCoordinator: Coordinator {
+    public var navigation: Navigation
+    public var coordinatorProvider: CoordinatorProvider
+    public var factory: SettingsFactory
+    weak var delegate: SettingsCoordinatorDelegate?
+    public var childCoordinators: [Coordinator]
+    
+    public init(
+        navigation: Navigation,
+        coordinatorProvider: CoordinatorProvider,
+        factory: SettingsFactory,
+        delegate: SettingsCoordinatorDelegate,
+        childCoordinators: [Coordinator]
+    ) {
+        self.navigation = navigation
+        self.coordinatorProvider = coordinatorProvider
+        self.factory = factory
+        self.delegate = delegate
+        self.childCoordinators = childCoordinators
+    }
+    
+    public func start() {
+        let controller = factory.makeSettingsCotroller(coordinator: self)
+        navigation.pushViewController(controller, animated: true)
+    }
+}
+
+extension SettingsCoordinator: ParentCoordinator { }
+
+

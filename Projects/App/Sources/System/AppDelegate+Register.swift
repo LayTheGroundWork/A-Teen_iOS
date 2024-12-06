@@ -52,7 +52,7 @@ extension AppDelegate {
         let tokenStorage: TokenStorage = TokenStorage()
         // Auth
         let auth: Auth = Auth(tokenHandler: tokenStorage)
-        
+        auth.logOut()
         // MARK: - Service
         let userService: UserService = UserServiceImp(
             auth: auth,
@@ -102,6 +102,7 @@ extension AppDelegate {
         let tournamentUseCase: TournamentUseCase = TournamentUseCaseImp(tournamentService: tournamentService)
         
         let myPageUseCase: MyPageUseCase = MyPageUseCaseImp(myPageService: myPageService, searchService: searchService)
+        
         
         // MARK: - Register
         AppContainer.register(

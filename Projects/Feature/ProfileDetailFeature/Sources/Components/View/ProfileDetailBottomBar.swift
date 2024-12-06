@@ -10,13 +10,12 @@ import DesignSystem
 import UIKit
 
 public protocol ProfileDetailBottomBarDelegate: AnyObject {
-    func didTapSNSButton(
-        contentViewController: UIViewController
-    )
+    func didTapSNSButton()
 }
 
 final class ProfileDetailBottomBar: UIView {
-    // MARK: - Private properties
+    private weak var coordinator: ProfileDetailBottomBarDelegate?
+    
     lazy var voteButton: UIButton = {
         let button = CustomVoteButton(
             imageName: "heartIcon",
@@ -31,10 +30,7 @@ final class ProfileDetailBottomBar: UIView {
     }()
     
     lazy var messageButton: UIButton = makeSmallButton(imageName: "blackChattingIcon")
-    
     lazy var snsButton: UIButton = makeSmallButton(imageName: "linkBlackIcon")
-    
-    private weak var coordinator: ProfileDetailBottomBarDelegate?
     
     init(
         frame: CGRect,
@@ -151,52 +147,6 @@ final class ProfileDetailBottomBar: UIView {
     }
     
     @objc private func didTapSNSButton() {
-        let contentViewController = SNSBottomSheetViewController(linkList: LinkItem.linkData)
-        contentViewController.modalPresentationStyle = .pageSheet
-
-        if let sheet = contentViewController.sheetPresentationController {
-            // 지원할 크기 지정
-            if #available(iOS 16.0, *) {
-                sheet.detents = [.custom { context in
-                    return 150
-                }]
-            } else {
-                sheet.detents = [.medium()]
-            }
-            
-            sheet.delegate = self
-            
-            // 시트 상단에 그래버 표시
-            sheet.prefersGrabberVisible = true
-            
-            sheet.preferredCornerRadius = 25
-            
-            // 처음 크기 지정
-            sheet.selectedDetentIdentifier = .medium
-            
-            // 뒤 배경 흐리게 제거
-            // sheet.largestUndimmedDetentIdentifier = .medium
-        }
-
-        parentViewController?.present(contentViewController, animated: true, completion: nil)
-
-        coordinator?.didTapSNSButton(
-            contentViewController: contentViewController
-        )
+        coordinator?.didTapSNSButton()
     }
 }
-
-extension UIView {
-    var parentViewController: UIViewController? {
-        var parentResponder: UIResponder? = self
-        while parentResponder != nil {
-            parentResponder = parentResponder?.next
-            if let viewController = parentResponder as? UIViewController {
-                return viewController
-            }
-        }
-        return nil
-    }
-}
-
-extension ProfileDetailBottomBar: UISheetPresentationControllerDelegate { }
