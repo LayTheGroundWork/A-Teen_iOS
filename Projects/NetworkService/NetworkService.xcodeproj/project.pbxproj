@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		036B6550D85D013E9E45D716 /* ApiError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26DF9FED1221312C46C36A20 /* ApiError.swift */; };
 		0422C1E028807B6222269C0E /* HttpResponseStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = D14C05E4D710518F379088FD /* HttpResponseStatus.swift */; };
+		3069FDD8E91207FA82641BAA /* DeleteAccountEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D893C50A571718ABC47899 /* DeleteAccountEndPoint.swift */; };
 		39AFE023D7F0792F54311B03 /* TournamentSearchEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4554CD4854353C4E70EAE542 /* TournamentSearchEndPoint.swift */; };
 		3ABC1C37BC738A4E0B60E939 /* ReissueEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEF134EE57A5BC5E99B5C34C /* ReissueEndPoint.swift */; };
 		3E2877DD0E16E92EBD594CF3 /* ThisWeekParticipantsEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0B0E2ADDCF0DEFB55A53EC /* ThisWeekParticipantsEndPoint.swift */; };
@@ -49,6 +50,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		04D893C50A571718ABC47899 /* DeleteAccountEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteAccountEndPoint.swift; sourceTree = "<group>"; };
 		078CFF338C0767EDC8EE7F07 /* AllUserFindEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllUserFindEndPoint.swift; sourceTree = "<group>"; };
 		0EE9987B527C6D0232D055D1 /* LogInEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInEndPoint.swift; sourceTree = "<group>"; };
 		150B9BCA36CD5B14912E8807 /* TournamentVoteEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TournamentVoteEndPoint.swift; sourceTree = "<group>"; };
@@ -148,6 +150,7 @@
 		6AB8D2B24361D1C2B97C7999 /* Auth */ = {
 			isa = PBXGroup;
 			children = (
+				04D893C50A571718ABC47899 /* DeleteAccountEndPoint.swift */,
 				7B6CB251F3D081EC5D9CC015 /* DuplicationCheckEndPoint.swift */,
 				0EE9987B527C6D0232D055D1 /* LogInEndPoint.swift */,
 				6B3BAB3E928E61A2F4D92A4F /* LogOutEndPoint.swift */,
@@ -324,6 +327,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				759753D185FBA434CB7A41B8 /* ApiClientService.swift in Sources */,
+				3069FDD8E91207FA82641BAA /* DeleteAccountEndPoint.swift in Sources */,
 				CFF2233929252944D87FFEA8 /* DuplicationCheckEndPoint.swift in Sources */,
 				4A25E8BE1156684357DAC52F /* LogInEndPoint.swift in Sources */,
 				E49761BCFD373FD6A8B61A23 /* LogOutEndPoint.swift in Sources */,

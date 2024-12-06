@@ -54,7 +54,7 @@ extension SettingsCoordinator: SettingsViewControllerCoordinator {
                 secondButtonColor: .red))
         
         addChildCoordinatorStart(coordinator)
-        
+
         navigation.present(
             coordinator.navigation.rootViewController,
             animated: false)

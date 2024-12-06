@@ -35,7 +35,8 @@ public final class SettingsCoordinator: Coordinator {
     }
     
     public func start() {
-        let controller = factory.makeSettingsCotroller(coordinator: self)
+        let controller = factory.makeSettingsCotroller(
+            coordinator: self)
         navigation.pushViewController(controller, animated: true)
     }
 }

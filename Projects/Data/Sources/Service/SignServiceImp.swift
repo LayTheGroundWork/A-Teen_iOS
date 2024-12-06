@@ -95,5 +95,4 @@ public struct SignServiceImp: SignService {
         auth.setAccessToken(accessToken)
         auth.setRefreshToken(refreshToken)
     }
-    
 }

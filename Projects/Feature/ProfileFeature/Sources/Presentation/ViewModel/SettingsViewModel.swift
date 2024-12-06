@@ -5,9 +5,16 @@
 //  Created by 최동호 on 5/17/24.
 //
 
+import Core
+
 import Common
+import Domain
+import Foundation
 
 class SettingsViewModel {
+    @Injected(SettingsUseCase.self)
+    public var useCase: SettingsUseCase
+    
     var userSettings: UserSettings
     var isDeleteUser: Bool = false
     
@@ -48,19 +55,23 @@ extension SettingsViewModel {
     }
     
     func performUserAction() {
+        guard let token = useCase.getAuthToken() else { return }
+        
         if isDeleteUser {
-            deleteUser()
+            deleteUser(authorization: token)
+        } else {
+            logOut(authorization: token)
         }
-        logOut()
+        
     }
     
-    func logOut() {
+    func logOut(authorization: String) {
         // TODO: 토큰 지우기
-        print("delete Token")
+        useCase.logOut(request: .init(authorization: authorization))
     }
     
-    func deleteUser() {
+    func deleteUser(authorization: String) {
         // TODO: 회원 탈퇴 API
-        print("delete User")
+        useCase.deleteAccount(request: .init(authorization: authorization))
     }
 }

@@ -10,7 +10,9 @@ import FeatureDependency
 import UIKit
 
 public protocol SettingsFactory {
-    func makeSettingsCotroller(coordinator: SettingsViewControllerCoordinator) -> UIViewController
+    func makeSettingsCotroller(
+        coordinator: SettingsViewControllerCoordinator
+    ) -> UIViewController
 }
 
 public struct SettingsFactoryImp: SettingsFactory {
@@ -20,10 +22,13 @@ public struct SettingsFactoryImp: SettingsFactory {
         viewModel = SettingsViewModel(userSettings: userSettings)
     }
     
-    public func makeSettingsCotroller(coordinator: SettingsViewControllerCoordinator) -> UIViewController {
+    public func makeSettingsCotroller(
+        coordinator: SettingsViewControllerCoordinator
+    ) -> UIViewController {
         let controller = SettingsViewController(
             viewModel: viewModel,
             coordinator: coordinator)
+ 
         return controller
     }
 }

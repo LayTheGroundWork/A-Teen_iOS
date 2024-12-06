@@ -16,7 +16,7 @@ public protocol MyBadgeDetailFactory {
 }
 
 public struct MyBadgeDetailFactoryImp: MyBadgeDetailFactory {
-    private (set) var badge: Badge
+    private(set) var badge: Badge
     
     public func makeMyBadgeDetailViewController(
         coordinator: MyBadgeDetailViewControllerCoordinator

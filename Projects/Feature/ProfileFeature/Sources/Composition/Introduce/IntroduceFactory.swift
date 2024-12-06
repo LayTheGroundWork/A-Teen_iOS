@@ -16,7 +16,7 @@ public protocol IntroduceFactory {
 }
 
 public struct IntroduceFactoryImp: IntroduceFactory {
-    private (set) var user: MyPageData
+    private(set) var user: MyPageData
     
     public func makeIntroduceViewController(
         coordinator: IntroduceViewControllerCoordinator

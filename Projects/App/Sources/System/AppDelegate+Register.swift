@@ -31,6 +31,8 @@ extension AppDelegate {
         let requestCodeRepository: RequestCodeRepository = RequestCodeRepositoryImp(apiClientService: apiClientService)
         let verificationCodeRepository: VerificationCodeRepository = VerificationCodeRepositoryImp(apiClientService: apiClientService)
         let reissueRepository: ReissueRepository = ReissueRepositoryImp(apiClientService: apiClientService)
+        let signOutRepository: SignOutRepository = SignOutRepositoryImp(apiClientService: apiClientService)
+        let deleteAccountRepository: DeleteAccountRepository = DeleteAccountRepositoryImp(apiClientService: apiClientService)
         
         // school
         let schoolDataRepository: SchoolDataRepository = SchoolDataRepositoryImp(apiClientService: apiClientService)
@@ -43,6 +45,7 @@ extension AppDelegate {
         let tournamentResultRepository: TournamentResultRepository = TournamentResultRepositoryImp(apiClientService: apiClientService)
         let thisWeekParticipantsRepository: ThisWeekParticipantsRepository = ThisWeekParticipantsRepositoryImp(apiClientService: apiClientService)
         let tournamentVoteRepository: TournamentVoteRepository = TournamentVoteRepositoryImp(apiClientService: apiClientService)
+        
         // mypage
         let myPageRepository: MyPageRepository = MyPageRepositoryImp(apiClientService: apiClientService)
         let myPageEditRepository: MyPageEditRepository = MyPageEditRepositoryImp(apiClientService: apiClientService)
@@ -52,7 +55,7 @@ extension AppDelegate {
         let tokenStorage: TokenStorage = TokenStorage()
         // Auth
         let auth: Auth = Auth(tokenHandler: tokenStorage)
-        auth.logOut()
+        
         // MARK: - Service
         let userService: UserService = UserServiceImp(
             auth: auth,
@@ -89,6 +92,11 @@ extension AppDelegate {
             myPageEditRepository: myPageEditRepository,
             reissueRepository: reissueRepository)
         
+        let settingsService: SettingsService = SettingsServiceImp(
+            auth: auth,
+            signOutRepository: signOutRepository,
+            deleteAccountRepository: deleteAccountRepository)
+        
         // MARK: - UseCase
         let userUseCase: UserUseCase = UserUseCaseImp(userService: userService)
         
@@ -103,6 +111,7 @@ extension AppDelegate {
         
         let myPageUseCase: MyPageUseCase = MyPageUseCaseImp(myPageService: myPageService, searchService: searchService)
         
+        let settingsUseCase: SettingsUseCase = SettingsUseCaseImp(settingsService: settingsService)
         
         // MARK: - Register
         AppContainer.register(
@@ -125,5 +134,9 @@ extension AppDelegate {
         AppContainer.register(
             type: MyPageUseCase.self,
             myPageUseCase)
+        
+        AppContainer.register(
+            type: SettingsUseCase.self,
+            settingsUseCase)
     }
 }

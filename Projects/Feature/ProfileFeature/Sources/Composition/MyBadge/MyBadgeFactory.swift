@@ -19,7 +19,7 @@ public protocol MyBadgeFactory {
 }
 
 public struct MyBadgeFactoryImp: MyBadgeFactory {
-    private (set) var badgeList: [Badge]
+    private(set) var badgeList: [Badge]
     
     let viewModel: MyBadgeViewModel
     

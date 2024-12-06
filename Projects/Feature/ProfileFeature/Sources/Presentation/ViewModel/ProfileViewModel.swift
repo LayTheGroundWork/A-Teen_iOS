@@ -11,7 +11,7 @@ import Combine
 import Common
 import Domain
 import DesignSystem
-import UIKit
+import Foundation
 
 public class ProfileViewModel {
     @Injected(MyPageUseCase.self)
