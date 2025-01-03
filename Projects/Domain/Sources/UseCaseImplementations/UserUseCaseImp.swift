@@ -14,17 +14,7 @@ public struct UserUseCaseImp: UserUseCase {
     public init(userService: UserService) {
         self.userService = userService
     }
-    
-    public func findAllUser(request: AllUserFindRequest)  -> AnyPublisher<UserData, Never> {
-        Future { promise in
-            Task {
-                let data = await userService.findAllUser(request: request)
-                promise(.success(data))
-            }
-        }
-        .eraseToAnyPublisher()
-    }
-    
+
     public func findCategoryUser(request: CategoryUserFindRequest) -> AnyPublisher<UserData, Never> {
         Future { promise in
             Task {

@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 55;
+	objectVersion = 56;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -35,14 +35,12 @@
 		63725BB688A8F691A3D3FEAC /* ThisWeekParticipantsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 471AFB78283BAC18C30F77D7 /* ThisWeekParticipantsResponse.swift */; };
 		6FF40068FE38C2FAB9E666E4 /* ReissueRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F38D8BFB5238DE851C69B24 /* ReissueRequest.swift */; };
 		77EEC29764D1D277B000EE29 /* ImageDataUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451ACE222BE8C01F4B361381 /* ImageDataUseCase.swift */; };
-		7C4AF6D0AE4C261F7D520694 /* AllUserFindRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2DFFA8FC6456E305F4BC4B4 /* AllUserFindRepository.swift */; };
 		7CCA7B41D2B2CAA9A02E0647 /* UserUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261679B89057804E12EBBCC2 /* UserUseCase.swift */; };
 		8323AECB90EFE773F20B7248 /* SignService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710F7C147A43E62A5D8CDFB6 /* SignService.swift */; };
 		835D36BCD25786D8D5207735 /* UserUseCaseImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75372B5C13D99F8B2A7AE5E7 /* UserUseCaseImp.swift */; };
 		83D7B4EF66F988EE6F958100 /* ImageDataUseCaseImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7616981B4BB1B2D11994DCC8 /* ImageDataUseCaseImp.swift */; };
 		8658AE87AB971BFA9120C146 /* LogInResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 930527EF52E62AD0CB816D2B /* LogInResponse.swift */; };
 		86E271BA4DD4D6FDA1618ACD /* PhoneNumberAuthRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5697AC77D598034365D6A652 /* PhoneNumberAuthRequest.swift */; };
-		88A959294BF68E752832E6A8 /* AllUserFindRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E19B92956A3C595168A242F /* AllUserFindRequest.swift */; };
 		8B104383DEAD1B0406DB1051 /* MyPageUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A4711A7C08A7C98E2ECBDD /* MyPageUseCase.swift */; };
 		8EACC9847284316E0AB60324 /* TournamentVoteRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C163C15764283E8A47082C22 /* TournamentVoteRequest.swift */; };
 		8F82A8BB68E309F441F21D31 /* SignUseCaseImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC9D0548A4DB530E9B7F3EE0 /* SignUseCaseImp.swift */; };
@@ -115,7 +113,6 @@
 		4A4C42F6E670175AB8E4F74B /* MyPageResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageResponse.swift; sourceTree = "<group>"; };
 		4CF02CC704DF7A69F3955F70 /* DuplictaionCheckRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DuplictaionCheckRepository.swift; sourceTree = "<group>"; };
 		4DB203B60AC0D1DC139D0787 /* LogInRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInRequest.swift; sourceTree = "<group>"; };
-		4E19B92956A3C595168A242F /* AllUserFindRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllUserFindRequest.swift; sourceTree = "<group>"; };
 		52322FBE6CCBD4EC164281FF /* SignUpRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpRepository.swift; sourceTree = "<group>"; };
 		5300EDFD229D6293593CDB12 /* LogOutRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogOutRequest.swift; sourceTree = "<group>"; };
 		556A34C8BA55D82986ADD6CA /* DuplicationCheckRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DuplicationCheckRequest.swift; sourceTree = "<group>"; };
@@ -163,7 +160,6 @@
 		EF331E89DE74BA7D9F8F62C3 /* UserLikeRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLikeRepository.swift; sourceTree = "<group>"; };
 		EFAAA98B6E1C8FC06D733080 /* TournamentUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TournamentUseCase.swift; sourceTree = "<group>"; };
 		F154F3B95D4EB80DAE20FA58 /* MyPageRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageRequest.swift; sourceTree = "<group>"; };
-		F2DFFA8FC6456E305F4BC4B4 /* AllUserFindRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllUserFindRepository.swift; sourceTree = "<group>"; };
 		FD49F277B86481D3D105FAC8 /* Domain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Domain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -278,7 +274,6 @@
 		3F42BE675B0C5D74CA202460 /* User */ = {
 			isa = PBXGroup;
 			children = (
-				F2DFFA8FC6456E305F4BC4B4 /* AllUserFindRepository.swift */,
 				972BC3AECB5DC82D43441A78 /* CategoryUserFindRepository.swift */,
 				ED0A566217AED812986D0CF2 /* UserDetailRepository.swift */,
 				D00825F1528267ED1ECA29A5 /* UserLikeCancelRepository.swift */,
@@ -362,7 +357,6 @@
 		87EBEAC899AA9E35E314E3F1 /* User */ = {
 			isa = PBXGroup;
 			children = (
-				4E19B92956A3C595168A242F /* AllUserFindRequest.swift */,
 				49D2BEE257FCC359726E442C /* CategoryUserFindRequest.swift */,
 				12BB015FF8CFDE00B6A6003F /* UserDetailRequest.swift */,
 				6F7E20649795CE869B561CE8 /* UserLikeRequest.swift */,
@@ -520,8 +514,6 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
 				ORGANIZATIONNAME = ATeen;
-				TargetAttributes = {
-				};
 			};
 			buildConfigurationList = 5B17347D429F14C389327C78 /* Build configuration list for PBXProject "Domain" */;
 			compatibilityVersion = "Xcode 14.0";
@@ -570,7 +562,6 @@
 				F19C4DA4502A688D14AC43F6 /* ThisWeekParticipantsRequest.swift in Sources */,
 				FD4F6B57C430272B55F2DE40 /* TournamentResultRequest.swift in Sources */,
 				8EACC9847284316E0AB60324 /* TournamentVoteRequest.swift in Sources */,
-				88A959294BF68E752832E6A8 /* AllUserFindRequest.swift in Sources */,
 				A4FE1498C2C8FD30F507B7DF /* CategoryUserFindRequest.swift in Sources */,
 				EFFDA97C6DFF686E06018F8F /* UserDetailRequest.swift in Sources */,
 				4F0E4152653E65AA94070895 /* UserLikeRequest.swift in Sources */,
@@ -600,7 +591,6 @@
 				BA22887C53439FB9FA996F57 /* TournamentResultRepository.swift in Sources */,
 				364F3A4A0C3E8E4E6F3C6417 /* TournamentSearchRepository.swift in Sources */,
 				A9D9BAB240735DDC8389528D /* TournamentVoteRepository.swift in Sources */,
-				7C4AF6D0AE4C261F7D520694 /* AllUserFindRepository.swift in Sources */,
 				168BF7311229C821CB540C9B /* CategoryUserFindRepository.swift in Sources */,
 				3D657B9ECD0624182B20B930 /* UserDetailRepository.swift in Sources */,
 				00149FC1B870802F79A844F2 /* UserLikeCancelRepository.swift in Sources */,
@@ -703,7 +693,10 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				OTHER_LDFLAGS = "$(inherited) -ObjC";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ATeen.ATeen.Domain;
 				PRODUCT_NAME = Domain;
 				SDKROOT = iphoneos;
@@ -799,7 +792,10 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				OTHER_LDFLAGS = "$(inherited) -ObjC";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ATeen.ATeen.Domain;
 				PRODUCT_NAME = Domain;
 				SDKROOT = iphoneos;
@@ -807,10 +803,7 @@
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = (
-					"$(inherited)",
-					DEBUG,
-				);
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG";
 				SWIFT_COMPILATION_MODE = singlefile;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;

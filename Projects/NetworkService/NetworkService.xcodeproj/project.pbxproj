@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 55;
+	objectVersion = 56;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -32,7 +32,6 @@
 		D740F503237078B97DA47FF8 /* CategoryUserFindEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06488193E372026C49A0017 /* CategoryUserFindEndPoint.swift */; };
 		E26FE6FDA0290C66230ED42E /* MyPageEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2FB368ED67E4FEA290EBCE4 /* MyPageEndPoint.swift */; };
 		E49761BCFD373FD6A8B61A23 /* LogOutEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B3BAB3E928E61A2F4D92A4F /* LogOutEndPoint.swift */; };
-		E5FA1DB4AC5C809C4BB8C351 /* AllUserFindEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078CFF338C0767EDC8EE7F07 /* AllUserFindEndPoint.swift */; };
 		EBB6FD8741D3B4BBF4B009A1 /* UserLikeCancelEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 377923D794C9B5C4B87607EB /* UserLikeCancelEndPoint.swift */; };
 /* End PBXBuildFile section */
 
@@ -51,7 +50,6 @@
 
 /* Begin PBXFileReference section */
 		04D893C50A571718ABC47899 /* DeleteAccountEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteAccountEndPoint.swift; sourceTree = "<group>"; };
-		078CFF338C0767EDC8EE7F07 /* AllUserFindEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllUserFindEndPoint.swift; sourceTree = "<group>"; };
 		0EE9987B527C6D0232D055D1 /* LogInEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInEndPoint.swift; sourceTree = "<group>"; };
 		150B9BCA36CD5B14912E8807 /* TournamentVoteEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TournamentVoteEndPoint.swift; sourceTree = "<group>"; };
 		17754DA0A8AF217686219AFF /* ApiClientService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiClientService.swift; sourceTree = "<group>"; };
@@ -138,7 +136,6 @@
 		6A4817DE7FD56C464535D78D /* User */ = {
 			isa = PBXGroup;
 			children = (
-				078CFF338C0767EDC8EE7F07 /* AllUserFindEndPoint.swift */,
 				F06488193E372026C49A0017 /* CategoryUserFindEndPoint.swift */,
 				CE5F0D8F3733FF1E80D04A98 /* UserDetailEndPoint.swift */,
 				377923D794C9B5C4B87607EB /* UserLikeCancelEndPoint.swift */,
@@ -290,8 +287,6 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
 				ORGANIZATIONNAME = ATeen;
-				TargetAttributes = {
-				};
 			};
 			buildConfigurationList = FFC6118989876A9280B17F0F /* Build configuration list for PBXProject "NetworkService" */;
 			compatibilityVersion = "Xcode 14.0";
@@ -343,7 +338,6 @@
 				64BE71AA2639DF304F3BA995 /* TournamentResultEndPoint.swift in Sources */,
 				39AFE023D7F0792F54311B03 /* TournamentSearchEndPoint.swift in Sources */,
 				9492EF245960F6D1C61EF5D6 /* TournamentVoteEndPoint.swift in Sources */,
-				E5FA1DB4AC5C809C4BB8C351 /* AllUserFindEndPoint.swift in Sources */,
 				D740F503237078B97DA47FF8 /* CategoryUserFindEndPoint.swift in Sources */,
 				ACACD3512631434B2DF7844F /* UserDetailEndPoint.swift in Sources */,
 				EBB6FD8741D3B4BBF4B009A1 /* UserLikeCancelEndPoint.swift in Sources */,
@@ -378,7 +372,10 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				OTHER_LDFLAGS = "$(inherited) -ObjC";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ATeen.ATeen.NetworkService;
 				PRODUCT_NAME = NetworkService;
 				SDKROOT = iphoneos;
@@ -415,7 +412,10 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				OTHER_LDFLAGS = "$(inherited) -ObjC";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ATeen.ATeen.NetworkService;
 				PRODUCT_NAME = NetworkService;
 				SDKROOT = iphoneos;
@@ -423,10 +423,7 @@
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = (
-					"$(inherited)",
-					DEBUG,
-				);
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG";
 				SWIFT_COMPILATION_MODE = singlefile;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;

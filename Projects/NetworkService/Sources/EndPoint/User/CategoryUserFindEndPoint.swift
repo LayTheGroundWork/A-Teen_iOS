@@ -18,9 +18,9 @@ public struct CategoryUserFindEndPoint: EndPoint {
     
     public var path: String {
         if let _ = request.authorization {
-            "/v1/api/user/find-all-by-category/\(request.category)"
+            "/v1/api/user/find-all/\(request.category)"
         } else {
-            "/v1/api/guest/find-all-by-category/\(request.category)"
+            "/v1/api/guest/find-all/\(request.category)"
         }
     }
     

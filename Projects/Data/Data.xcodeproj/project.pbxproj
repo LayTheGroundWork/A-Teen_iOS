@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 55;
+	objectVersion = 56;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -47,7 +47,6 @@
 		C4F2009F3B1FC79FAA0F5F42 /* UserFindDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EFA4E6A6309BAA7ED7C42A7 /* UserFindDTO.swift */; };
 		D35894226EDF568B3A83FCB6 /* SearchSchoolServiceImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBAFBEBD1A165F75FAA04A2 /* SearchSchoolServiceImp.swift */; };
 		D9CCDBFECF829DB34D205C50 /* SignUpRepositoryImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53044F93EF0D12264A1F4044 /* SignUpRepositoryImp.swift */; };
-		DAF4C3923319F860BCDCF27E /* AllUserFindRepositoryImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDCC80E2080EFD74C7AC2B5C /* AllUserFindRepositoryImp.swift */; };
 		DF61C0F40B96C8F7EBDB66A9 /* MyPageEditDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871673ED893637E87A3ABF7F /* MyPageEditDTO.swift */; };
 		E1E4104CAA7784999CA4E7FB /* LogOutDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C3F20B9358AE17077FF041C /* LogOutDTO.swift */; };
 		F148039B5F91592C5380466A /* Core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6799EBC84F4DBDEDB6C2FB0 /* Core.framework */; };
@@ -102,7 +101,6 @@
 		ADD9E5A245A84B3D23B8243C /* SignOutRepositoryImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignOutRepositoryImp.swift; sourceTree = "<group>"; };
 		B18494A6F49C9E7E63656332 /* DuplicationCheckDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DuplicationCheckDTO.swift; sourceTree = "<group>"; };
 		B284CD75BAD317D668DD797D /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
-		BDCC80E2080EFD74C7AC2B5C /* AllUserFindRepositoryImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllUserFindRepositoryImp.swift; sourceTree = "<group>"; };
 		BDD38ABDC7D680ACC0559661 /* DeleteAccountRepositoryImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteAccountRepositoryImp.swift; sourceTree = "<group>"; };
 		CE8943772A18C5185AB97BD7 /* CategoryUserFindRepositoryImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryUserFindRepositoryImp.swift; sourceTree = "<group>"; };
 		CEBAFBEBD1A165F75FAA04A2 /* SearchSchoolServiceImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchSchoolServiceImp.swift; sourceTree = "<group>"; };
@@ -332,7 +330,6 @@
 		E64020F8EE38D534A7EB5C69 /* User */ = {
 			isa = PBXGroup;
 			children = (
-				BDCC80E2080EFD74C7AC2B5C /* AllUserFindRepositoryImp.swift */,
 				CE8943772A18C5185AB97BD7 /* CategoryUserFindRepositoryImp.swift */,
 				6DB2F6BC517E2D1404D26583 /* UserDetailRepositoryImp.swift */,
 				949AE8BC299CB727240FF817 /* UserLikeCancelRepositoryImp.swift */,
@@ -380,8 +377,6 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
 				ORGANIZATIONNAME = ATeen;
-				TargetAttributes = {
-				};
 			};
 			buildConfigurationList = BDB112DA78B2B42275EC3A62 /* Build configuration list for PBXProject "Data" */;
 			compatibilityVersion = "Xcode 14.0";
@@ -447,7 +442,6 @@
 				F2DE49EEC24B70DBC7B1D3D2 /* TournamentResultRepositoryImp.swift in Sources */,
 				47BA10052FE156F600D61DC3 /* TournamentSearchRepositoryImp.swift in Sources */,
 				B77321C769910BFCD872F32E /* TournamentVoteRepositoryImp.swift in Sources */,
-				DAF4C3923319F860BCDCF27E /* AllUserFindRepositoryImp.swift in Sources */,
 				981C377EC720640804E1138E /* CategoryUserFindRepositoryImp.swift in Sources */,
 				994C365099D378E1253AFF43 /* UserDetailRepositoryImp.swift in Sources */,
 				436984348144AED8DCDD8B6F /* UserLikeCancelRepositoryImp.swift in Sources */,
@@ -486,7 +480,10 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				OTHER_LDFLAGS = "$(inherited) -ObjC";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ATeen.ATeen.Data;
 				PRODUCT_NAME = Data;
 				SDKROOT = iphoneos;
@@ -494,10 +491,7 @@
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = (
-					"$(inherited)",
-					DEBUG,
-				);
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG";
 				SWIFT_COMPILATION_MODE = singlefile;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -527,7 +521,10 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				OTHER_LDFLAGS = "$(inherited) -ObjC";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ATeen.ATeen.Data;
 				PRODUCT_NAME = Data;
 				SDKROOT = iphoneos;

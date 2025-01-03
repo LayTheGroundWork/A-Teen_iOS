@@ -13,7 +13,6 @@ import Foundation
 
 public struct UserServiceImp: UserService {
     public let auth: Auth
-    private let allUserFindRepository: AllUserFindRepository
     private let categoryUserFindRepository: CategoryUserFindRepository
     private let userDetailRepository: UserDetailRepository
     private let userLikeRepository: UserLikeRepository
@@ -22,7 +21,6 @@ public struct UserServiceImp: UserService {
 
     public init(
         auth: Auth,
-        allUserFindRepository: AllUserFindRepository,
         categoryUserFindRepository: CategoryUserFindRepository,
         userDetailRepository: UserDetailRepository,
         userLikeRepository: UserLikeRepository,
@@ -30,40 +28,13 @@ public struct UserServiceImp: UserService {
         reissueRepository: ReissueRepository
     ) {
         self.auth = auth
-        self.allUserFindRepository = allUserFindRepository
         self.categoryUserFindRepository = categoryUserFindRepository
         self.userDetailRepository = userDetailRepository
         self.userLikeRepository = userLikeRepository
         self.userLikeCancelRepository = userLikeCancelRepository
         self.reissueRepository = reissueRepository
     }
-    
-    public func findAllUser(request: AllUserFindRequest) async -> UserData {
-        let response = await allUserFindRepository.findAllUser(request: request)
-        
-        switch response {
-        case .success(let response):
-            return response.data
-        case .failure(let error):
-            switch error.localizedDescription {
-            case AppLocalized.expiredToken:
-                guard let newToken = await reissueToken() else {
-                    auth.logOut()
-                    return await findAllUser(request: .init(
-                        authorization: nil,
-                        page: request.page,
-                        size: request.size))
-                }
-                return await findAllUser(request: .init(
-                    authorization: newToken,
-                    page: request.page,
-                    size: request.size))
-            default:
-                return .init(users: [], totalPage: 0)
-            }
-        }
-    }
-    
+
     public func findCategoryUser(request: CategoryUserFindRequest) async -> UserData {
         let response = await categoryUserFindRepository.findCategoryUser(request: request)
         

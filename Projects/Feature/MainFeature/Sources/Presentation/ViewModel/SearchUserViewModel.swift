@@ -29,6 +29,7 @@ extension SearchUserViewModel {
             nickName: "노주영",
             location: "안양",
             schoolName: "인덕원고둥학교",
+            birthDay: "2025-01-03",
             likeStatus: false))
     }
 }

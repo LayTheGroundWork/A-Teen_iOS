@@ -93,7 +93,7 @@ public final class MainViewController: UIViewController {
     public override func viewDidLoad() {
         super.viewDidLoad()
         setupBindings()
-        viewModel.findAllUser(.viewDidLoad)
+        viewModel.findCategoryUser(.viewDidLoad, row: 0)
     }
     
     public override func viewWillAppear(_ animated: Bool) {
@@ -216,16 +216,11 @@ public final class MainViewController: UIViewController {
     
     // MARK: - Actions
     @objc private func updateTableView(_ notification: Notification) {
-        // TODO: - 요류 테스트 필요
         if let _ = viewModel.userUseCase.getAuthToken() {
             viewModel.clearTeenList()
             for (index, category) in viewModel.categoryList.enumerated() {
                 if category.isSelect {
-                    if index == 0 {
-                        viewModel.findAllUser(.normal)
-                    } else {
-                        viewModel.findCategoryUser(.normal, row: index)
-                    }
+                    viewModel.findCategoryUser(.normal, row: index)
                     break
                 }
             }
@@ -431,7 +426,6 @@ extension MainViewController: UITableViewDelegate {
     }
     
     public func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        
         switch section {
         case 4:
             //나중에 Lottie 넣기
@@ -509,12 +503,7 @@ extension MainViewController: UICollectionViewDelegate {
         
         viewModel.didSelectCategoryCell(row: indexPath.row)
         collectionView.reloadData()
-        
-        if indexPath.row == 0 {
-            viewModel.findAllUser(.normal)
-        } else {
-            viewModel.findCategoryUser(.normal, row: indexPath.row)
-        }
+        viewModel.findCategoryUser(.normal, row: indexPath.row)
     }
 }
 

@@ -15,6 +15,7 @@ public struct User: Decodable {
     public let nickName: String
     public let location: String
     public let schoolName: String
+    public let birthDay: String
     public var likeStatus: Bool
     
     public init(
@@ -24,6 +25,7 @@ public struct User: Decodable {
         nickName: String,
         location: String,
         schoolName: String,
+        birthDay: String,
         likeStatus: Bool
     ) {
         self.id = id
@@ -32,6 +34,7 @@ public struct User: Decodable {
         self.nickName = nickName
         self.location = location
         self.schoolName = schoolName
+        self.birthDay = birthDay
         self.likeStatus = likeStatus
     }
 }

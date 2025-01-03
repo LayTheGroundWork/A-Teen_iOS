@@ -20,7 +20,8 @@ public final class TeenDetailViewModel {
             profileImage: "thumbnail_testKey",
             nickName: "노주영",
             location: "안양",
-            schoolName: "인덕원고둥학교",
+            schoolName: "인덕원고둥학교", 
+            birthDay: "2025-01-03",
             likeStatus: false),
         .init(
             id: 1,
@@ -29,6 +30,7 @@ public final class TeenDetailViewModel {
             nickName: "최동호",
             location: "부산",
             schoolName: "대연고등학교",
+            birthDay: "2025-01-03",
             likeStatus: true),
         .init(
             id: 2,
@@ -37,6 +39,7 @@ public final class TeenDetailViewModel {
             nickName: "김명현",
             location: "부산",
             schoolName: "센텀고등학교",
+            birthDay: "2025-01-03",
             likeStatus: true),
         .init(
             id: 3,
@@ -45,6 +48,7 @@ public final class TeenDetailViewModel {
             nickName: "이창준",
             location: "서울",
             schoolName: "에이틴고등학교",
+            birthDay: "2025-01-03",
             likeStatus: true)
     ]
     

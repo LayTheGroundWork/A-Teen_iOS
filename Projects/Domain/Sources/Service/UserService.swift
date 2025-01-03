@@ -9,7 +9,6 @@
 import Foundation
 
 public protocol UserService {
-    func findAllUser(request: AllUserFindRequest) async -> UserData
     func findCategoryUser(request: CategoryUserFindRequest) async -> UserData
     func getUserDetailData(request: UserDetailRequest) async -> UserDetailData?
     func updateUserLikeStatus(request: UserLikeRequest) async -> String?

@@ -41,6 +41,7 @@ class MainViewModel {
             nickName: "노주영",
             location: "안양",
             schoolName: "인덕원고둥학교",
+            birthDay: "2025-01-03",
             likeStatus: false),
         .init(
             id: 1,
@@ -49,6 +50,7 @@ class MainViewModel {
             nickName: "최동호",
             location: "부산",
             schoolName: "대연고등학교",
+            birthDay: "2025-01-03",
             likeStatus: true),
         .init(
             id: 2,
@@ -57,6 +59,7 @@ class MainViewModel {
             nickName: "김명현",
             location: "부산",
             schoolName: "센텀고등학교",
+            birthDay: "2025-01-03",
             likeStatus: true),
         .init(
             id: 3,
@@ -65,6 +68,7 @@ class MainViewModel {
             nickName: "이창준",
             location: "서울",
             schoolName: "에이틴고등학교",
+            birthDay: "2025-01-03",
             likeStatus: true),
         .init(
             id: 4,
@@ -73,6 +77,7 @@ class MainViewModel {
             nickName: "최도혁",
             location: "서울",
             schoolName: "에이틴고등학교",
+            birthDay: "2025-01-03",
             likeStatus: true)
         ]
     
@@ -155,33 +160,6 @@ extension MainViewModel {
         }
     }
     
-    // 전체 유저 리스트
-    func findAllUser(_ type: LoadType) {
-        guard let token = userUseCase.getAuthToken() else {
-            loadAllUserList(type, authorization: nil)
-            return
-        }
-        loadAllUserList(type, authorization: token)
-    }
-    
-    func loadAllUserList(
-        _ type: LoadType,
-        authorization: String?
-    ) {
-        userUseCase.findAllUser(
-            request: .init(
-                authorization: authorization,
-                page: randomPage ?? 0,
-                size: 10)
-        )
-        .receive(on: type == .more ? DispatchQueue.global() : DispatchQueue.main)
-        .sink { [weak self] data in
-            guard let self else { return }
-            self.processByType(type, data: data, row: nil)
-        }
-        .store(in: &cancellables)
-    }
-    
     // 카테고리 별 유저 리스트
     func findCategoryUser(_ type: LoadType, row: Int) {
         guard let token = userUseCase.getAuthToken() else {
@@ -221,20 +199,13 @@ extension MainViewModel {
     func loadMoreData() {
         state.send(.loadMoreLoading)
         isLoading = true
+        
         if let index = self.categoryList.firstIndex(where: { $0.isSelect }) {
-            switch index {
-            case 0:
-                self.findAllUser(.more)
-                
-            case 1, 2, 3, 4, 5, 6:
-                self.findCategoryUser(.more, row: index)
-            default:
-                break
-            }
+            self.findCategoryUser(.more, row: index)
         }
     }
     
-    private func processByType(_ type: LoadType, data: UserData, row: Int?) {
+    private func processByType(_ type: LoadType, data: UserData, row: Int) {
         switch type {
         case .viewDidLoad:
             if let _ = self.totalPage {
@@ -244,7 +215,7 @@ extension MainViewModel {
             } else {
                 self.totalPage = data.totalPage
                 self.makeRandomPages()
-                self.findAllUser(.viewDidLoad)
+                self.findCategoryUser(.viewDidLoad, row: row)
             }
         case .normal:
             if let _ = self.totalPage {
@@ -254,12 +225,7 @@ extension MainViewModel {
             } else {
                 self.totalPage = data.totalPage
                 self.makeRandomPages()
-                
-                if let row = row {
-                    self.findCategoryUser(.normal, row: row)
-                } else {
-                    self.findAllUser(.normal)
-                }
+                self.findCategoryUser(.normal, row: row)
             }
         case .more:
             self.teenList.append(contentsOf: data.users)
@@ -289,6 +255,7 @@ extension MainViewModel {
     
     private func changeCategoryName(_ category: String) -> String {
         switch category {
+        case "전체": return "ALL"
         case "뷰티": return "BEAUTY"
         case "운동": return "SPORT"
         case "공부": return "STUDY"
