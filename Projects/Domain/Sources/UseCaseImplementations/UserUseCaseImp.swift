@@ -7,12 +7,23 @@
 //
 
 import Combine
+import Common
 
 public struct UserUseCaseImp: UserUseCase {
     public let userService: UserService
     
     public init(userService: UserService) {
         self.userService = userService
+    }
+    
+    public func findCategoryTodatTeen(request: CategoryTodayTeenFindRequest) -> AnyPublisher<[User], Never> {
+        Future { promise in
+            Task {
+                let data = await userService.findCategoryTodayTeen(request: request)
+                promise(.success(data))
+            }
+        }
+        .eraseToAnyPublisher()
     }
 
     public func findCategoryUser(request: CategoryUserFindRequest) -> AnyPublisher<UserData, Never> {

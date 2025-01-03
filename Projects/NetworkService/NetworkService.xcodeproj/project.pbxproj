@@ -3,12 +3,13 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 55;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		036B6550D85D013E9E45D716 /* ApiError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26DF9FED1221312C46C36A20 /* ApiError.swift */; };
 		0422C1E028807B6222269C0E /* HttpResponseStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = D14C05E4D710518F379088FD /* HttpResponseStatus.swift */; };
+		1E8E90E672C8601CB1872BA8 /* CategoryTodayTeenFindEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4AA30515E595491CF2F91D /* CategoryTodayTeenFindEndPoint.swift */; };
 		3069FDD8E91207FA82641BAA /* DeleteAccountEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D893C50A571718ABC47899 /* DeleteAccountEndPoint.swift */; };
 		39AFE023D7F0792F54311B03 /* TournamentSearchEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4554CD4854353C4E70EAE542 /* TournamentSearchEndPoint.swift */; };
 		3ABC1C37BC738A4E0B60E939 /* ReissueEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEF134EE57A5BC5E99B5C34C /* ReissueEndPoint.swift */; };
@@ -69,6 +70,7 @@
 		76A9F67BDB9E1485D6AEA416 /* SignUpEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpEndPoint.swift; sourceTree = "<group>"; };
 		7B6CB251F3D081EC5D9CC015 /* DuplicationCheckEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DuplicationCheckEndPoint.swift; sourceTree = "<group>"; };
 		96A12936168FB570D38EB471 /* SchoolDataEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolDataEndPoint.swift; sourceTree = "<group>"; };
+		9D4AA30515E595491CF2F91D /* CategoryTodayTeenFindEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTodayTeenFindEndPoint.swift; sourceTree = "<group>"; };
 		A2FB368ED67E4FEA290EBCE4 /* MyPageEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageEndPoint.swift; sourceTree = "<group>"; };
 		ADC9183B12D666BFB5351F52 /* NetworkService.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = NetworkService.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD5312BF635CBE4D99FAE162 /* Domain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Domain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -136,6 +138,7 @@
 		6A4817DE7FD56C464535D78D /* User */ = {
 			isa = PBXGroup;
 			children = (
+				9D4AA30515E595491CF2F91D /* CategoryTodayTeenFindEndPoint.swift */,
 				F06488193E372026C49A0017 /* CategoryUserFindEndPoint.swift */,
 				CE5F0D8F3733FF1E80D04A98 /* UserDetailEndPoint.swift */,
 				377923D794C9B5C4B87607EB /* UserLikeCancelEndPoint.swift */,
@@ -287,6 +290,8 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
 				ORGANIZATIONNAME = ATeen;
+				TargetAttributes = {
+				};
 			};
 			buildConfigurationList = FFC6118989876A9280B17F0F /* Build configuration list for PBXProject "NetworkService" */;
 			compatibilityVersion = "Xcode 14.0";
@@ -338,6 +343,7 @@
 				64BE71AA2639DF304F3BA995 /* TournamentResultEndPoint.swift in Sources */,
 				39AFE023D7F0792F54311B03 /* TournamentSearchEndPoint.swift in Sources */,
 				9492EF245960F6D1C61EF5D6 /* TournamentVoteEndPoint.swift in Sources */,
+				1E8E90E672C8601CB1872BA8 /* CategoryTodayTeenFindEndPoint.swift in Sources */,
 				D740F503237078B97DA47FF8 /* CategoryUserFindEndPoint.swift in Sources */,
 				ACACD3512631434B2DF7844F /* UserDetailEndPoint.swift in Sources */,
 				EBB6FD8741D3B4BBF4B009A1 /* UserLikeCancelEndPoint.swift in Sources */,
@@ -372,10 +378,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					"-ObjC",
-				);
+				OTHER_LDFLAGS = "$(inherited) -ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ATeen.ATeen.NetworkService;
 				PRODUCT_NAME = NetworkService;
 				SDKROOT = iphoneos;
@@ -412,10 +415,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					"-ObjC",
-				);
+				OTHER_LDFLAGS = "$(inherited) -ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ATeen.ATeen.NetworkService;
 				PRODUCT_NAME = NetworkService;
 				SDKROOT = iphoneos;
@@ -423,7 +423,10 @@
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = (
+					"$(inherited)",
+					DEBUG,
+				);
 				SWIFT_COMPILATION_MODE = singlefile;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;

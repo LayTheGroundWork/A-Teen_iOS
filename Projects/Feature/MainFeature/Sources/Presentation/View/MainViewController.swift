@@ -93,7 +93,7 @@ public final class MainViewController: UIViewController {
     public override func viewDidLoad() {
         super.viewDidLoad()
         setupBindings()
-        viewModel.findCategoryUser(.viewDidLoad, row: 0)
+        viewModel.findCategoryData(.viewDidLoad, row: 0)
     }
     
     public override func viewWillAppear(_ animated: Bool) {
@@ -118,7 +118,13 @@ public final class MainViewController: UIViewController {
                         object: nil)
                     
                 case .changeHeartState:
-                    self.tableView.reloadData()
+                    for subview in self.tableView.subviews {
+                        if let cell = subview as? TodayTeenTableViewCell {
+                            cell.teenCollectionView.reloadData()
+                            self.tableView.reloadData()
+                            break
+                        }
+                    }
                     
                 case .getUserDataSuccess:
                     self.updateUI()
@@ -220,7 +226,7 @@ public final class MainViewController: UIViewController {
             viewModel.clearTeenList()
             for (index, category) in viewModel.categoryList.enumerated() {
                 if category.isSelect {
-                    viewModel.findCategoryUser(.normal, row: index)
+                    viewModel.findCategoryData(.normal, row: index)
                     break
                 }
             }
@@ -333,7 +339,7 @@ extension MainViewController: UITableViewDataSource {
             
             cell.heartButtonAction = { [weak self] in
                 guard let self = self else { return }
-                self.viewModel.didSelectTodayTeenHeartButton(row: indexPath.row)
+                self.viewModel.didSelectTodayTeenHeartButton(isTodayTeen: false, row: indexPath.row)
             }
             
             cell.menuButtonAction = { [weak self] in
@@ -503,7 +509,6 @@ extension MainViewController: UICollectionViewDelegate {
         
         viewModel.didSelectCategoryCell(row: indexPath.row)
         collectionView.reloadData()
-        viewModel.findCategoryUser(.normal, row: indexPath.row)
     }
 }
 

@@ -13,6 +13,7 @@ import Foundation
 
 public struct UserServiceImp: UserService {
     public let auth: Auth
+    private let categoryTodayTeenFindRepository: CategoryTodayTeenFindRepository
     private let categoryUserFindRepository: CategoryUserFindRepository
     private let userDetailRepository: UserDetailRepository
     private let userLikeRepository: UserLikeRepository
@@ -21,6 +22,7 @@ public struct UserServiceImp: UserService {
 
     public init(
         auth: Auth,
+        categoryTodayTeenFindRepository: CategoryTodayTeenFindRepository,
         categoryUserFindRepository: CategoryUserFindRepository,
         userDetailRepository: UserDetailRepository,
         userLikeRepository: UserLikeRepository,
@@ -28,11 +30,34 @@ public struct UserServiceImp: UserService {
         reissueRepository: ReissueRepository
     ) {
         self.auth = auth
+        self.categoryTodayTeenFindRepository = categoryTodayTeenFindRepository
         self.categoryUserFindRepository = categoryUserFindRepository
         self.userDetailRepository = userDetailRepository
         self.userLikeRepository = userLikeRepository
         self.userLikeCancelRepository = userLikeCancelRepository
         self.reissueRepository = reissueRepository
+    }
+    
+    public func findCategoryTodayTeen(request: CategoryTodayTeenFindRequest) async -> [User] {
+        let response = await categoryTodayTeenFindRepository.findCategoryTodayTeen(request: request)
+        
+        switch response {
+        case .success(let response):
+            return response.data
+        case .failure(let error):
+            switch error.localizedDescription {
+            case AppLocalized.expiredToken:
+                guard let newToken = await reissueToken() else {
+                    auth.logOut()
+                    return []
+                }
+                return await findCategoryTodayTeen(request: .init(
+                    authorization: newToken,
+                    category: request.category))
+            default:
+                return []
+            }
+        }
     }
 
     public func findCategoryUser(request: CategoryUserFindRequest) async -> UserData {

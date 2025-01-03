@@ -32,65 +32,18 @@ class MainViewModel {
         ProfileCategory(title: "게임", isSelect: false),
         ProfileCategory(title: "기타", isSelect: false)
     ]
-    
-    var todayTeenList: [User] = [
-        .init(
-            id: 0,
-            uniqueId: "tester2",
-            profileImage: "thumbnail_testKey",
-            nickName: "노주영",
-            location: "안양",
-            schoolName: "인덕원고둥학교",
-            birthDay: "2025-01-03",
-            likeStatus: false),
-        .init(
-            id: 1,
-            uniqueId: "tester1",
-            profileImage: "thumbnail_testKey",
-            nickName: "최동호",
-            location: "부산",
-            schoolName: "대연고등학교",
-            birthDay: "2025-01-03",
-            likeStatus: true),
-        .init(
-            id: 2,
-            uniqueId: "tester1",
-            profileImage: "thumbnail_testKey",
-            nickName: "김명현",
-            location: "부산",
-            schoolName: "센텀고등학교",
-            birthDay: "2025-01-03",
-            likeStatus: true),
-        .init(
-            id: 3,
-            uniqueId: "tester1",
-            profileImage: "thumbnail_testKey",
-            nickName: "이창준",
-            location: "서울",
-            schoolName: "에이틴고등학교",
-            birthDay: "2025-01-03",
-            likeStatus: true),
-        .init(
-            id: 4,
-            uniqueId: "tester1",
-            profileImage: "thumbnail_testKey",
-            nickName: "최도혁",
-            location: "서울",
-            schoolName: "에이틴고등학교",
-            birthDay: "2025-01-03",
-            likeStatus: true)
-        ]
-    
+    var todayTeenList: [User] = []
     var teenList: [User] = []
     var totalPage: Int?
     var pageArray: [Int] = []
     var randomPage: Int? = 0
     var isLoading: Bool = false
-
+    
 }
 
 extension MainViewModel {
     func clearTeenList() {
+        todayTeenList.removeAll()
         teenList.removeAll()
         totalPage = nil
         pageArray.removeAll()
@@ -106,6 +59,7 @@ extension MainViewModel {
         categoryList[beforeIndex].isSelect = false
         categoryList[row].isSelect = true
         clearTeenList()
+        findCategoryData(.normal, row: row)
     }
     
     func didSelectChattingButton() {
@@ -118,26 +72,28 @@ extension MainViewModel {
         state.send(.gotoChattingRoom)
     }
     
-    func didSelectTodayTeenHeartButton(row: Int) {
+    func didSelectTodayTeenHeartButton(isTodayTeen: Bool, row: Int) {
         guard let token = userUseCase.getAuthToken() else {
             // 로그인 시트 올리기
             state.send(.openLoginSheet)
             return
         }
         
-        switch teenList[row].likeStatus {
+        let selectedTeen = isTodayTeen ? todayTeenList[row] : teenList[row]
+        
+        switch selectedTeen.likeStatus {
         case true:
-            userUseCase.cancelUserLikeStatus(request: 
+            userUseCase.cancelUserLikeStatus(request:
                     .init(
                         authorization: token,
-                        id: teenList[row].id)
+                        id: selectedTeen.id)
             )
             .sink { [weak self] data in
                 guard let self = self, let _ = data else {
                     self?.state.send(.openLoginSheet)
                     return
                 }
-                self.teenList[row].likeStatus.toggle()
+                self.toggleLikeStatus(isTodayTeen: isTodayTeen, row: row)
                 self.state.send(.changeHeartState)
             }
             .store(in: &cancellables)
@@ -146,18 +102,81 @@ extension MainViewModel {
             userUseCase.updateUserLikeStatus(request:
                     .init(
                         authorization: token,
-                        id: teenList[row].id)
+                        id: selectedTeen.id)
             )
             .sink { [weak self] data in
                 guard let self = self, let _ = data else {
                     self?.state.send(.openLoginSheet)
                     return
                 }
-                self.teenList[row].likeStatus.toggle()
+                self.toggleLikeStatus(isTodayTeen: isTodayTeen, row: row)
                 self.state.send(.changeHeartState)
             }
             .store(in: &cancellables)
         }
+    }
+    
+    private func toggleLikeStatus(isTodayTeen: Bool, row: Int) {
+        if isTodayTeen {
+            todayTeenList[row].likeStatus.toggle()
+            
+            if let index = teenList.firstIndex(where: { $0.id == todayTeenList[row].id }) {
+                teenList[index].likeStatus.toggle()
+            }
+        } else {
+            teenList[row].likeStatus.toggle()
+            
+            if let index = todayTeenList.firstIndex(where: { $0.id == teenList[row].id }) {
+                todayTeenList[index].likeStatus.toggle()
+            }
+        }
+    }
+    
+    // 오늘의 틴 및 유저 리스트 동시 처리
+    func findCategoryData(_ type: LoadType, row: Int) {
+        guard let token = userUseCase.getAuthToken() else {
+            loadCategoryData(
+                type,
+                authorization: nil,
+                row: row)
+            return
+        }
+        loadCategoryData(
+            type,
+            authorization: token,
+            row: row)
+    }
+    
+    private func loadCategoryData(
+        _ type: LoadType,
+        authorization: String?,
+        row: Int
+    ) {
+        let todayTeenPublisher = userUseCase.findCategoryTodatTeen(
+            request: .init(
+                authorization: authorization,
+                category: changeCategoryName(categoryList[row].title))
+        )
+        
+        let userListPublisher = userUseCase.findCategoryUser(
+            request: .init(
+                authorization: authorization,
+                category: changeCategoryName(categoryList[row].title),
+                page: randomPage ?? 0,
+                size: 10)
+        )
+        
+        Publishers.Zip(todayTeenPublisher, userListPublisher)
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] todayTeenData, userData in
+                guard let self else { return }
+                self.todayTeenList = todayTeenData
+                self.processByType(
+                    type,
+                    data: userData,
+                    row: row)
+            }
+            .store(in: &cancellables)
     }
     
     // 카테고리 별 유저 리스트
@@ -175,7 +194,7 @@ extension MainViewModel {
             row: row)
     }
     
-    func loadCategoryUserList(
+    private func loadCategoryUserList(
         _ type: LoadType,
         authorization: String?,
         row: Int
@@ -190,7 +209,10 @@ extension MainViewModel {
         .receive(on: type == .more ? DispatchQueue.global() : DispatchQueue.main)
         .sink { [weak self] data in
             guard let self else { return }
-            self.processByType(type, data: data, row: row)
+            self.processByType(
+                type,
+                data: data,
+                row: row)
         }
         .store(in: &cancellables)
     }
@@ -205,7 +227,11 @@ extension MainViewModel {
         }
     }
     
-    private func processByType(_ type: LoadType, data: UserData, row: Int) {
+    private func processByType(
+        _ type: LoadType,
+        data: UserData,
+        row: Int
+    ) {
         switch type {
         case .viewDidLoad:
             if let _ = self.totalPage {

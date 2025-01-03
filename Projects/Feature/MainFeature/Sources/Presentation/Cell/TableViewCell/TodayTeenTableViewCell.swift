@@ -171,7 +171,7 @@ extension TodayTeenTableViewCell: UICollectionViewDataSource {
         
         cell.heartButtonAction = { [weak self] in
             guard let self = self else { return }
-            self.viewModel?.didSelectCategoryCell(row: indexPath.row)
+            self.viewModel?.didSelectTodayTeenHeartButton(isTodayTeen: true, row: indexPath.row)
         }
         
         cell.menuButtonAction = { [weak self] in

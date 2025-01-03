@@ -18,6 +18,7 @@ extension AppDelegate {
         
         // MARK: - Repository
         // user
+        let categoryTodayTeenFindRepository: CategoryTodayTeenFindRepository = CategoryTodayTeenFindRepositoryImp(apiClientService: apiClientService)
         let categoryUserFindRepository: CategoryUserFindRepository = CategoryUserFindRepositoryImp(apiClientService: apiClientService)
         let userDetailRepository: UserDetailRepository = UserDetailRepositoryImp(apiClientService: apiClientService)
         let userLikeRepository: UserLikeRepository = UserLikeRepositoryImp(apiClientService: apiClientService)
@@ -57,7 +58,8 @@ extension AppDelegate {
         
         // MARK: - Service
         let userService: UserService = UserServiceImp(
-            auth: auth,
+            auth: auth, 
+            categoryTodayTeenFindRepository: categoryTodayTeenFindRepository,
             categoryUserFindRepository: categoryUserFindRepository,
             userDetailRepository: userDetailRepository,
             userLikeRepository: userLikeRepository,

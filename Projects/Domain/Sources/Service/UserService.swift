@@ -6,9 +6,11 @@
 //  Copyright © 2024 ATeen. All rights reserved.
 //
 
+import Common
 import Foundation
 
 public protocol UserService {
+    func findCategoryTodayTeen(request: CategoryTodayTeenFindRequest) async -> [User]
     func findCategoryUser(request: CategoryUserFindRequest) async -> UserData
     func getUserDetailData(request: UserDetailRequest) async -> UserDetailData?
     func updateUserLikeStatus(request: UserLikeRequest) async -> String?
