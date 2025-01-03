@@ -9,6 +9,7 @@
 import SnapKit
 
 import Common
+import Combine
 import DesignSystem
 import UIKit
 
@@ -22,6 +23,8 @@ final class SearchUserViewController: UIViewController {
     private var debouncer: Debouncer?
     private var viewModel: SearchUserViewModel
     private weak var coordinator: SearchUserViewControllerCoordinator?
+    
+    private var cancellables = Set<AnyCancellable>()
     
     private lazy var naviView: UIView = {
         let view = UIView()
@@ -159,7 +162,25 @@ final class SearchUserViewController: UIViewController {
     }
 
     private func setupBindings() {
-        
+        viewModel.state
+            .receive(on: RunLoop.main)
+            .sink { [weak self] state in
+                guard let self else { return }
+                switch state {
+                case .success:
+                    self.changeTextFieldRightView(view: .clearImage)
+                    self.searchTableView.reloadData()
+                    if !viewModel.searchUserList.isEmpty {
+                        self.searchTableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: false)
+                    }
+                case .loading:
+                    self.changeTextFieldRightView(view: .spinner)
+                    break
+                case .fail(error: let error):
+                    self.changeTextFieldRightView(view: .searchImage)
+                    print("검색한 학교가 없습니다. \(error)")
+                }
+            }.store(in: &cancellables)
     }
     
     private func changeTextFieldRightView(view: TextFieldRightViewType) {
@@ -204,7 +225,16 @@ extension SearchUserViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: SearchUserCell.reuseIdentifier, for: indexPath) as? SearchUserCell else { return UITableViewCell() }
-        cell.setProperties(user: viewModel.searchUserList[indexPath.row])
+        let teen = viewModel.searchUserList[indexPath.row]
+        cell.setProperties(user: .init(
+            id: 0,
+            uniqueId: teen.uniqueId,
+            profileImage: teen.thumbnailUrl,
+            nickName: teen.nickName,
+            location: "",
+            schoolName: "",
+            birthDay: "",
+            likeStatus: false))
         return cell
     }
 }
@@ -216,9 +246,18 @@ extension SearchUserViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let teen = viewModel.searchUserList[indexPath.row]
         coordinator?.didSelectUser(
             frame: nil,
-            todayTeen: viewModel.searchUserList[indexPath.row],
+            todayTeen: .init(
+                id: 0,
+                uniqueId: teen.uniqueId,
+                profileImage: teen.thumbnailUrl,
+                nickName: teen.nickName,
+                location: "",
+                schoolName: "",
+                birthDay: "",
+                likeStatus: false),
             todayTeenFirstImage: DesignSystemAsset.badge1.image)
     }
 }

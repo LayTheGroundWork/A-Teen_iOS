@@ -12,6 +12,7 @@ import UIKit
 
 public protocol CoordinatorProvider {
     func makeProfileDetailCoordinator(
+        navigation: Navigation?,
         delegate: ProfileDetailCoordinatorDelegate,
         frame: CGRect?,
         todayTeen: User,

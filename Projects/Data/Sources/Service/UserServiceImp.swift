@@ -18,6 +18,7 @@ public struct UserServiceImp: UserService {
     private let userDetailRepository: UserDetailRepository
     private let userLikeRepository: UserLikeRepository
     private let userLikeCancelRepository: UserLikeCancelRepository
+    private let searchUserRepository: SearchUserRepository
     private let reissueRepository: ReissueRepository
 
     public init(
@@ -27,6 +28,7 @@ public struct UserServiceImp: UserService {
         userDetailRepository: UserDetailRepository,
         userLikeRepository: UserLikeRepository,
         userLikeCancelRepository: UserLikeCancelRepository,
+        searchUserRepository: SearchUserRepository,
         reissueRepository: ReissueRepository
     ) {
         self.auth = auth
@@ -35,6 +37,7 @@ public struct UserServiceImp: UserService {
         self.userDetailRepository = userDetailRepository
         self.userLikeRepository = userLikeRepository
         self.userLikeCancelRepository = userLikeCancelRepository
+        self.searchUserRepository = searchUserRepository
         self.reissueRepository = reissueRepository
     }
     
@@ -136,6 +139,18 @@ public struct UserServiceImp: UserService {
             default:
                 return nil
             }
+        }
+    }
+    
+    public func searchUserList(request: SearchUserRequest) async -> [SearchUserData] {
+        let response = await searchUserRepository.searchUserList(request: request)
+        
+        switch response {
+        case .success(let response):
+            print(response.data)
+            return response.data
+        case .failure(_):
+            return []
         }
     }
     

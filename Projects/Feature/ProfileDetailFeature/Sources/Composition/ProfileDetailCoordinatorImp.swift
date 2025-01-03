@@ -38,7 +38,12 @@ public final class ProfileDetailCoordinatorImp: ProfileDetailCoordinator {
     public func start() {
         let controller = factory.makeProfileDetailViewController(
             coordinator: self)
-        navigation.viewControllers = [controller]
+        
+        if let _ = frame {
+            navigation.viewControllers = [controller]
+        } else {
+            navigation.pushViewController(controller, animated: true)
+        }
     }
 }
 extension ProfileDetailCoordinatorImp: ParentCoordinator { }

@@ -23,6 +23,7 @@ extension TeenDetailCoordinator: TeenDetailViewControllerCoordinator {
         todayTeenFirstImage: UIImage
     ) {
         let profileDetailCoordinator = coordinatorProvider.makeProfileDetailCoordinator(
+            navigation: nil,
             delegate: self,
             frame: frame,
             todayTeen: teen,

@@ -31,6 +31,7 @@ extension MainCoordinator: MainViewControllerCoordinator {
         todayTeenFirstImage: UIImage
     ) {
         let profileDetailCoordinator = coordinatorProvider.makeProfileDetailCoordinator(
+            navigation: nil, 
             delegate: self,
             frame: frame,
             todayTeen: todayTeen, 
@@ -76,6 +77,7 @@ extension MainCoordinator: MainViewControllerCoordinator {
         todayTeenFirstImage: UIImage
     ) {
         let profileDetailCoordinator = coordinatorProvider.makeProfileDetailCoordinator(
+            navigation: nil, 
             delegate: self,
             frame: frame,
             todayTeen: todayTeen, 

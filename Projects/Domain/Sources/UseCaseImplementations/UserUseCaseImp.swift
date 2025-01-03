@@ -66,6 +66,16 @@ public struct UserUseCaseImp: UserUseCase {
         .eraseToAnyPublisher()
     }
     
+    public func searchUserList(request: SearchUserRequest) -> AnyPublisher<[SearchUserData], Never> {
+        Future { promise in
+            Task {
+                let data = await userService.searchUserList(request: request)
+                promise(.success(data))
+            }
+        }
+        .eraseToAnyPublisher()
+    }
+    
     public func getAuthToken() -> String? {
         userService.getAuthToken()
     }

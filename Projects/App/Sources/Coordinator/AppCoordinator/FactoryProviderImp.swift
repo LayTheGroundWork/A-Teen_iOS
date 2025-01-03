@@ -17,23 +17,35 @@ import UIKit
 
 final class FactoryProviderImp: FactoryProvider {
     func makeProfileDetailCoordinator(
+        navigation: Navigation?,
         delegate: ProfileDetailCoordinatorDelegate,
         frame: CGRect?,
         todayTeen: User,
         todayTeenFirstImage: UIImage
     ) -> Coordinator {
-        let navigationController = UINavigationController()
-        navigationController.modalPresentationStyle = .overFullScreen
-        navigationController.view.backgroundColor = UIColor.clear
-        let navigation = NavigationImp(rootViewController: navigationController)
         let factory = ProfileDetailFactoryImp(frame: frame, todayTeen: todayTeen, todayTeenFirstImage: todayTeenFirstImage)
-        return ProfileDetailCoordinatorImp(
-            factory: factory,
-            frame: frame,
-            todayTeen: todayTeen,
-            navigation: navigation,
-            childCoordinators: [],
-            delegate: delegate)
+        
+        if let navigation = navigation {
+            return ProfileDetailCoordinatorImp(
+                factory: factory,
+                frame: frame,
+                todayTeen: todayTeen,
+                navigation: navigation,
+                childCoordinators: [],
+                delegate: delegate)
+        } else {
+            let navigationController = UINavigationController()
+            navigationController.modalPresentationStyle = .overFullScreen
+            navigationController.view.backgroundColor = UIColor.clear
+            let navigation = NavigationImp(rootViewController: navigationController)
+            return ProfileDetailCoordinatorImp(
+                factory: factory,
+                frame: frame,
+                todayTeen: todayTeen,
+                navigation: navigation,
+                childCoordinators: [],
+                delegate: delegate)
+        }
     }
     
     func makeAlbumCoordinator(

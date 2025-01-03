@@ -20,19 +20,12 @@ extension SearchUserCoordinator: SearchUserViewControllerCoordinator {
     
     func didSelectUser(frame: CGRect?, todayTeen: User, todayTeenFirstImage: UIImage) {
         let profileDetailCoordinator = coordinatorProvider.makeProfileDetailCoordinator(
+            navigation: navigation,
             delegate: self,
             frame: frame,
             todayTeen: todayTeen,
             todayTeenFirstImage: todayTeenFirstImage)
         
         addChildCoordinatorStart(profileDetailCoordinator)
-        
-        navigation.present(
-            profileDetailCoordinator.navigation.rootViewController,
-            animated: false)
-        
-        profileDetailCoordinator.navigation.dismissNavigation = { [weak self] in
-            self?.removeChildCoordinator(profileDetailCoordinator)
-        }
     }
 }

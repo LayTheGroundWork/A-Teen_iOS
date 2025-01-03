@@ -57,7 +57,11 @@ public class ProfileDetailViewController: UIViewController {
     
     lazy var closeButton: UIButton = {
         let button = UIButton()
-        button.setImage(DesignSystemAsset.xMarkWhiteIcon.image, for: .normal)
+        if let _ = frame {
+            button.setImage(DesignSystemAsset.xMarkWhiteIcon.image, for: .normal)
+        } else {
+            button.setImage(DesignSystemAsset.leftArrowWhiteIcon.image, for: .normal)
+        }
         button.tintColor = .white
         button.alpha = 0
         button.addTarget(self, action: #selector(clickCloseButton(_:)), for: .touchUpInside)
@@ -758,10 +762,19 @@ extension ProfileDetailViewController {
             make.width.height.equalTo(30)
         }
         
-        UIView.animate(withDuration: 0.1, delay: 0.3, options: .showHideTransitionViews) {
+        if let _ = frame {
+            UIView.animate(withDuration: 0.1, delay: 0.3, options: .showHideTransitionViews) {
+                self.closeButton.alpha = 1
+                self.menuButton.alpha = 1
+            } completion: { _ in
+                self.view.layoutIfNeeded()
+                
+                self.backgroundViewHeightAnchor?.update(offset: self.backgroundView.recursiveUnionInDepthFor(view: self.backgroundView).height)
+            }
+        } else {
             self.closeButton.alpha = 1
             self.menuButton.alpha = 1
-        } completion: { _ in
+            
             self.view.layoutIfNeeded()
             
             self.backgroundViewHeightAnchor?.update(offset: self.backgroundView.recursiveUnionInDepthFor(view: self.backgroundView).height)

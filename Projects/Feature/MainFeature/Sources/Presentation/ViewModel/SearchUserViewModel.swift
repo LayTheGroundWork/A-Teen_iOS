@@ -6,11 +6,20 @@
 //  Copyright © 2024 ATeen. All rights reserved.
 //
 
+import Core
+import Combine
 import Common
+import Domain
 import Foundation
 
 class SearchUserViewModel {
-    var searchUserList: [User] = []
+    @Injected(UserUseCase.self)
+    public var userUseCase: UserUseCase
+    
+    var state = PassthroughSubject<IndicatorStateController, Never>()
+    private var cancellables = Set<AnyCancellable>()
+    
+    var searchUserList: [SearchUserData] = []
     var searchUserText: String = ""
 }
 
@@ -21,15 +30,14 @@ extension SearchUserViewModel {
     }
     
     func getSearchUserList() {
-        // TODO: 검색 api 로직
-        searchUserList.append(.init(
-            id: 0,
-            uniqueId: "tester2",
-            profileImage: "thumbnail_testKey",
-            nickName: "노주영",
-            location: "안양",
-            schoolName: "인덕원고둥학교",
-            birthDay: "2025-01-03",
-            likeStatus: false))
+        state.send(.loading)
+        userUseCase.searchUserList(request: .init(searchWord: searchUserText))
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] data in
+                guard let self = self else { return }
+                self.searchUserList = data
+                state.send(.success)
+            }
+            .store(in: &cancellables)
     }
 }

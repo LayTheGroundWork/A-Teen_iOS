@@ -23,6 +23,7 @@ extension AppDelegate {
         let userDetailRepository: UserDetailRepository = UserDetailRepositoryImp(apiClientService: apiClientService)
         let userLikeRepository: UserLikeRepository = UserLikeRepositoryImp(apiClientService: apiClientService)
         let userLikeCancelRepository: UserLikeCancelRepository = UserLikeCancelRepositoryImp(apiClientService: apiClientService)
+        let searchUserRepository: SearchUserRepository = SearchUserRepositoryImp(apiClientService: apiClientService)
         
         // sign
         let signInRepository: SignInRepository = SignInRepositoryImp(apiClientService: apiClientService)
@@ -64,6 +65,7 @@ extension AppDelegate {
             userDetailRepository: userDetailRepository,
             userLikeRepository: userLikeRepository,
             userLikeCancelRepository: userLikeCancelRepository,
+            searchUserRepository: searchUserRepository,
             reissueRepository: reissueRepository)
         
         let signService: SignService = SignServiceImp(
